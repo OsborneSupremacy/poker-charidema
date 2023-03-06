@@ -8,5 +8,5 @@ public record Hand
 
     public List<Bet> Bets { get; init; }
 
-    public Double Ante { get; init; }
+    public double Ante { get; init; }
 }

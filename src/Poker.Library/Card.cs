@@ -4,6 +4,5 @@ public record Card
 {
     public Rank Rank { get; init; }
 
-    public Suit Suit { get; set; }
-
+    public Suit Suit { get; init; }
 }
