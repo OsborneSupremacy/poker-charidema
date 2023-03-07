@@ -1,6 +1,4 @@
-﻿using Poker.Library;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class Rounds
 {
