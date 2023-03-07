@@ -4,6 +4,8 @@ public record Game
 {
     public Variant Variant { get; init; }
 
+    public double Ante { get; init; }
+
     public double Pot { get; init; }
 
     public Deck Deck { get; init; }

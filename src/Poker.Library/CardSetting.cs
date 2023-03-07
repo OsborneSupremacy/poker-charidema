@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Poker.Library;
 
-public record ButtonMatch : Match
+public record CardSetting
 {
+    public CardOrientations CardOrientation { get; init; }
+
+    public CardDestinations CardDestination { get; init; }
 }

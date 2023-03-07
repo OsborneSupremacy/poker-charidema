@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Poker.Library;
 
-public record DealerMatch : Match
+public record class AcceptBetsAction : RoundAction
 {
 
 }

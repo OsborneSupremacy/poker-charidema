@@ -1,10 +1,10 @@
 ﻿namespace Poker.Library;
 
-public record Variant
+public abstract record Variant
 {
-    public string Name { get; init; }
+    public abstract string Name { get; }
 
-    public List<Round> Rounds { get; init; }
+    public abstract List<RoundAction> RoundActions { get; }
 
     // settings for wild cards
 
