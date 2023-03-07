@@ -1,10 +1,15 @@
 ﻿using Poker.Library.RoundActions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Poker.Library.Variants;
 
-public record class TexasHoldEm : Variant
+public record SevenCardStud : Variant
 {
-    public override string Name => "Texas Hold 'Em";
+    public override string Name => "5 Card Draw";
 
     public override List<RoundAction> RoundActions =>
         new()
@@ -12,7 +17,7 @@ public record class TexasHoldEm : Variant
             new DealCards()
             {
                 Count = 2,
-                Name = "Deal",
+                Name = "Hole Cards",
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
             },
@@ -21,7 +26,8 @@ public record class TexasHoldEm : Variant
             new AcceptBets(),
             new Turn(),
             new AcceptBets(),
-            new Street(),
+            new River(),
+            new DrawCards(),
             new AcceptBets()
         };
 }

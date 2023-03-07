@@ -1,4 +1,6 @@
-﻿namespace Poker.Library;
+﻿using Poker.Library.RoundActions;
+
+namespace Poker.Library;
 
 public abstract record Variant
 {

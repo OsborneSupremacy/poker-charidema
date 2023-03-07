@@ -1,6 +1,6 @@
-﻿namespace Poker.Library;
+﻿namespace Poker.Library.RoundActions;
 
-public record DrawCardsAction : RoundAction
+public record DrawCards : RoundAction
 {
     public uint Maximums { get; init; }
 

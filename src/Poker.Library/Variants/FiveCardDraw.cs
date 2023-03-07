@@ -1,4 +1,6 @@
-﻿namespace Poker.Library.Variants;
+﻿using Poker.Library.RoundActions;
+
+namespace Poker.Library.Variants;
 
 public record FiveCardDraw : Variant
 {
@@ -7,15 +9,15 @@ public record FiveCardDraw : Variant
     public override List<RoundAction> RoundActions =>
         new()
         {
-            new DealCardsAction()
+            new DealCards()
             {
                 Count = 5,
                 Name = "Deal",
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
             },
-            new AcceptBetsAction(),
-            new DrawCardsAction(),
-            new AcceptBetsAction()
+            new AcceptBets(),
+            new DrawCards(),
+            new AcceptBets()
         };
 }
