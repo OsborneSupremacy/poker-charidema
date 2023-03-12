@@ -23,7 +23,7 @@ public class MatchService
         _handService = handService ?? throw new ArgumentNullException(nameof(handService));
     }
 
-    public void Execute()
+    public async Task<MatchResult> PlayAsync()
     {
         //BuildDeck();
         //Shuffle();
@@ -48,7 +48,36 @@ public class MatchService
         //    Players
         //    .Where(p => p.IsInHand)
         //    .Single();
-        return;
+
+        Match match = new()
+        {
+
+        };
+
+
+
+
+        while(match.FixedNumberOfGames.HasValue && match.Games.Count < match.FixedNumberOfGames)
+        {
+            await PlayGameAsync();
+        };
+
+        if(!match.FixedNumberOfGames.HasValue)
+        {
+            await PlayGameAsync();
+        }
+
+        return new MatchResult();
+    }
+
+    protected Task<Game> PlayGameAsync()
+    {
+        return Task.FromResult(new Game());
+    }
+
+    protected Task<List<Player>> DetermineWinners()
+    {
+        return Task.FromResult(new List<Player>());
     }
 
 }

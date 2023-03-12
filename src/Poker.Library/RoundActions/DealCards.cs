@@ -9,4 +9,6 @@ public record DealCards : RoundAction
     public CardOrientations CardOrientation { get; init; }
 
     public CardDestinations CardDestination { get; init; }
+
+    public override bool GameCanEndAfter => false;
 }

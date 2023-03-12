@@ -5,6 +5,8 @@ public record DrawCards : RoundAction
     public uint Maximums { get; init; }
 
     public List<DrawCardsMaximums> Overrides { get; init; }
+
+    public override bool GameCanEndAfter => false;
 }
 
 public record DrawCardsMaximums

@@ -1,4 +1,4 @@
-# GAME FLOWCHART
+# MATCH FLOWCHART
 
 ```mermaid
 flowchart TD
@@ -17,9 +17,10 @@ flowchart TD
             G2
             G3
         end
+        MatchResult
     end
     subgraph Game
-        Variant
+        SelectedVariant[Variant]
         Pot
         subgraph CardStacks
             Deck
@@ -38,10 +39,18 @@ flowchart TD
             DetermineWinner
         end
     end
-    subgraph KnownVariant
+    subgraph Variant
+        subgraph RoundActions
+        end
         DeckFactory
         InitialDealStrategy
         RoundStrategies
+    end
+    subgraph RoundAction
+        DealCards
+        DrawCards
+        AcceptBets
+        GameCanEndAfter
     end
     subgraph Player
         Name
@@ -49,12 +58,6 @@ flowchart TD
         Hand
         HasButton
         HasBet
-    end
-    subgraph Round
-        DealAction
-        DrawAction
-        AcceptBets
-        DetermineEarlyWinner
     end
     subgraph BettingActions
         InitialBet
@@ -73,10 +76,11 @@ flowchart TD
     R1 --> Round
     R2 --> Round
     R3 --> Round
-    Variant -->|Is A| KnownVariant
-    KnownVariant -->|Determines| InitialDeal
-    KnownVariant -->|Determines| DealAction
-    KnownVariant -->|Determines| DrawAction
+    SelectedVariant --> Variant
+    RoundActions --> RoundAction
+    Variant -->|Determines| InitialDeal
+    Variant -->|Determines| DealAction
+    Variant -->|Determines| DrawAction
     DeckFactory --> Deck
     Shuffle --> Deck
     InitialDealStrategy --> Deck --> Hand
@@ -92,4 +96,5 @@ flowchart TD
     InitialBet --> Stack --> Pot
     Call --> Stack --> Pot
     Raise --> Stack --> Pot
+    Games -->|When All Complete| MatchResult
 ```
