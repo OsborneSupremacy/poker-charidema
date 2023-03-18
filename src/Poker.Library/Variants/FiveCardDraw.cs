@@ -4,7 +4,7 @@ namespace Poker.Library.Variants;
 
 public record FiveCardDraw : Variant
 {
-    public override string Name => "5 Card Draw";
+    public override string Name => "Five Card Draw";
 
     public override List<RoundAction> RoundActions =>
         new()
@@ -16,8 +16,8 @@ public record FiveCardDraw : Variant
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
             },
-            new AcceptBets(),
+            new BettingInterval(),
             new DrawCards(),
-            new AcceptBets()
+            new BettingInterval()
         };
 }

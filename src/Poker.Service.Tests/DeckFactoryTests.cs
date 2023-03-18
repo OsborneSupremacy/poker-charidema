@@ -16,14 +16,14 @@ public class DeckFactoryTests
 
         Deck expectedResult = new Deck() with
         {
-            Cards = new List<Card>()
+            Cards = new List<ICard>()
             {
-                new Card() { 
+                new StandardCard() { 
                     Suit = spades,
                     Rank = ace,
                     CardOrientation = CardOrientations.Facedown
                 },
-                new Card() {
+                new StandardCard() {
                     Suit = hearts,
                     Rank = ace,
                     CardOrientation = CardOrientations.Facedown
@@ -31,7 +31,7 @@ public class DeckFactoryTests
             }
         };
 
-        DeckFactoryInputs inputs = new(ranks, suit);
+        DeckFactoryArgs inputs = new(ranks, suit);
 
         DeckFactory sut = new();
         
@@ -46,7 +46,7 @@ public class DeckFactoryTests
     public void Create_Expected_Count_Standard_Deck()
     {
         // arrange
-        DeckFactoryInputs inputs = new(
+        DeckFactoryArgs inputs = new(
             new RankFactory().CreateStandard(),
             new SuitFactory().CreateStandard()
         );
@@ -57,7 +57,29 @@ public class DeckFactoryTests
         var result = sut.Create(inputs);
 
         // assert
-        result.Cards.Count().Should().Be(52);
+        result.Cards.Count.Should().Be(52);
         result.Cards.Distinct().Count().Should().Be(52);
+    }
+
+
+    [Fact]
+    public void Create_Expected_Count_Standard_Deck_With_Jokers()
+    {
+        // arrange
+        DeckFactoryArgs inputs = new(
+            new RankFactory().CreateStandard(),
+            new SuitFactory().CreateStandard(),
+            2
+        );
+
+        DeckFactory sut = new();
+
+        // act
+        var result = sut.Create(inputs);
+
+        // assert
+        result.Cards.Count.Should().Be(54);
+        result.Cards.Distinct().Count().Should().Be(53);
+        result.Cards.Where(x => x is Joker).Count().Should().Be(2);
     }
 }

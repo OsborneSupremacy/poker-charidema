@@ -16,12 +16,12 @@ public record class TexasHoldEm : Variant
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
             },
-            new AcceptBets(),
+            new BettingInterval(),
             new Flop(),
-            new AcceptBets(),
+            new BettingInterval(),
             new Turn(),
-            new AcceptBets(),
+            new BettingInterval(),
             new Street(),
-            new AcceptBets()
+            new BettingInterval()
         };
 }

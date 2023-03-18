@@ -2,82 +2,71 @@
 
 public class MatchService
 {
-    private readonly Match _match;
 
-    private readonly Deck _deck;
+    private readonly IUiService _uiService;
 
-    private readonly Rounds _handService;
+    private readonly IGameService _gameService;
 
-    public MatchService(
-        List<Player> players,
-        Deck deck,
-        Rounds handService
-        )
+
+    private async Task PlayFixedNumberOfGames(Match match)
     {
-        _match = new Match()
-        {
-            Players = players,
-            Games = new()
-        };
-        _deck = deck ?? throw new ArgumentNullException(nameof(deck));
-        _handService = handService ?? throw new ArgumentNullException(nameof(handService));
+        while (match.Games.Count < match.FixedNumberOfGames)
+            match = await PlayGameAsync(match);
+        return;
+    }
+
+    private async Task PlayIndefinitely(Match match)
+    {
+        while (
+            match.Games.Count == 0 // don't prompt to play again if it's the first game
+            || await _uiService.PromptToPlayAgainAsync(match.Games.Count)
+            )
+            match = await PlayGameAsync(match);
+        return;
     }
 
     public async Task<MatchResult> PlayAsync()
     {
-        //BuildDeck();
-        //Shuffle();
-        //PromptForAnte();
-        //Deal();
-        //AcceptBets();
-
-        //List<Player> winners = EvaluateWinners();
-
-        //if(winners.Any())
-        //    return (winners, _match.po // should be game's pot
-
-        //foreach(var round)
-
-        //while(
-        //    _match
-        //        .Players
-        //        .Where(p => p.IsInHand).Count() > 1)
-        //    _handService.Play();
-
-        //return _match.
-        //    Players
-        //    .Where(p => p.IsInHand)
-        //    .Single();
-
         Match match = new()
         {
 
         };
 
-
-
-
-        while(match.FixedNumberOfGames.HasValue && match.Games.Count < match.FixedNumberOfGames)
+        await (match.FixedNumberOfGames.HasValue switch
         {
-            await PlayGameAsync();
+            true => PlayFixedNumberOfGames(match),
+            _ => PlayIndefinitely(match)
+        });
+
+        return await EvaluateResult(match);
+    }
+
+    protected async Task<Match> PlayGameAsync(Match matchIn)
+    {
+        var game = await _gameService.PlayAsync(
+            new GameArgs()
+            {
+                Players = matchIn.Players,
+                MatchType = matchIn.MatchType,
+                Variant = null,
+                Deck = null
+            }
+        );
+
+        List<Game> gamesOut = matchIn.Games;
+        gamesOut.Add(game);
+
+        Match matchOut = matchIn with
+        {
+            Games = gamesOut
         };
 
-        if(!match.FixedNumberOfGames.HasValue)
-        {
-            await PlayGameAsync();
-        }
-
-        return new MatchResult();
+        return matchOut;
     }
 
-    protected Task<Game> PlayGameAsync()
+    protected Task<MatchResult> EvaluateResult(Match match)
     {
-        return Task.FromResult(new Game());
-    }
-
-    protected Task<List<Player>> DetermineWinners()
-    {
-        return Task.FromResult(new List<Player>());
+        return Task.FromResult(new MatchResult());
     }
 
 }

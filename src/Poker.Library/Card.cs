@@ -1,12 +1,8 @@
 ﻿namespace Poker.Library;
 
-public record Card
+public abstract record Card
 {
     public CardOrientations CardOrientation { get; init; }
-
-    public Rank Rank { get; init; }
-
-    public Suit Suit { get; init; }
 
     public bool IsWild { get; set; }
 }
