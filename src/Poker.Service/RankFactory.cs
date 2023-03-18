@@ -2,7 +2,7 @@
 
 public class RankFactory
 {
-    public List<Rank> CreateStandardPointCardRanks() =>
+    public List<Rank> CreateStandardSpotCardRanks() =>
         new()
         {
             new("Two", 2),

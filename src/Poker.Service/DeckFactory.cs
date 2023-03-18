@@ -1,6 +1,5 @@
 ﻿using Poker.Library.Cards;
 using Poker.Library.Interface;
-using Poker.Library.Variants;
 
 namespace Poker.Service;
 
@@ -11,7 +10,7 @@ public class DeckFactory
         var deck = new Deck() with
         {
             Cards = args
-                .PointCardRanks
+                .SpotCardRanks
                 .Union(args.FaceCardRanks)
                 .SelectMany(x => args.Suits,
                     (r, s) => new SpotCard()
@@ -32,7 +31,7 @@ public class DeckFactory
 
 public record DeckFactoryArgs
 {
-    public List<Rank> PointCardRanks { get; init; }
+    public List<Rank> SpotCardRanks { get; init; }
 
     public List<Rank> FaceCardRanks { get; init; }
 
@@ -40,17 +39,17 @@ public record DeckFactoryArgs
 
     public uint NumberOfJokers { get; init; }
 
-    public DeckFactoryArgs(List<Rank> pointCardRanks, List<Rank> faceCardRanks, List<Suit> suits)
+    public DeckFactoryArgs(List<Rank> spotCardRanks, List<Rank> faceCardRanks, List<Suit> suits)
     {
-        PointCardRanks = pointCardRanks ?? throw new ArgumentNullException(nameof(pointCardRanks));
+        SpotCardRanks = spotCardRanks ?? throw new ArgumentNullException(nameof(spotCardRanks));
         FaceCardRanks = faceCardRanks ?? throw new ArgumentNullException(nameof(faceCardRanks));
         Suits = suits ?? throw new ArgumentNullException(nameof(suits));
     }
 
     public DeckFactoryArgs(
-        List<Rank> pointCardRanks,
+        List<Rank> spotCardRanks,
         List<Rank> faceCardRanks,
-        List<Suit> suits, uint numberOfJokers) : this(pointCardRanks, faceCardRanks, suits)
+        List<Suit> suits, uint numberOfJokers) : this(spotCardRanks, faceCardRanks, suits)
     {
         NumberOfJokers = numberOfJokers;
     }

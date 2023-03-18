@@ -13,7 +13,7 @@ public class DeckFactoryTests
         Suit spades = new("Spades", 1);
         Suit hearts = new("Hearts", 1);
 
-        List<Rank> pointCardRanks = new() { ace };
+        List<Rank> spotCardRanks = new() { ace };
         List<Rank> faceCardRanks = new();
         List<Suit> suit = new() { spades, hearts };
 
@@ -34,7 +34,7 @@ public class DeckFactoryTests
             }
         };
 
-        DeckFactoryArgs inputs = new(pointCardRanks, faceCardRanks, suit);
+        DeckFactoryArgs inputs = new(spotCardRanks, faceCardRanks, suit);
 
         DeckFactory sut = new();
         
@@ -50,7 +50,7 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandardPointCardRanks(),
+            new RankFactory().CreateStandardSpotCardRanks(),
             new RankFactory().CreateStandardFaceCardRanks(),
             new SuitFactory().CreateStandard()
         );
@@ -71,7 +71,7 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandardPointCardRanks(),
+            new RankFactory().CreateStandardSpotCardRanks(),
             new RankFactory().CreateStandardFaceCardRanks(),
             new SuitFactory().CreateStandard(),
             2
