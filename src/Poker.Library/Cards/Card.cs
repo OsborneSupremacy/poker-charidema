@@ -1,4 +1,4 @@
-﻿namespace Poker.Library;
+﻿namespace Poker.Library.Cards;
 
 public abstract record Card
 {

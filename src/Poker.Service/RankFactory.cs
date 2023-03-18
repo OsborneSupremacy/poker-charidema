@@ -2,7 +2,7 @@
 
 public class RankFactory
 {
-    public List<Rank> CreateStandard() =>
+    public List<Rank> CreateStandardPointCardRanks() =>
         new()
         {
             new("Two", 2),
@@ -14,9 +14,14 @@ public class RankFactory
             new("Eight", 8),
             new("Nine", 9),
             new("Ten", 10),
+            new("Ace", 14)
+        };
+
+    public List<Rank> CreateStandardFaceCardRanks() =>
+        new()
+        {
             new("Jack", 11),
             new("Queen", 12),
-            new("King", 13),
-            new("Ace", 14)
+            new("King", 13)
         };
 }

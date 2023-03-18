@@ -1,3 +1,5 @@
+using Poker.Library.Cards;
+
 namespace Poker.Service.Tests;
 
 [ExcludeFromCodeCoverage]
@@ -11,19 +13,20 @@ public class DeckFactoryTests
         Suit spades = new("Spades", 1);
         Suit hearts = new("Hearts", 1);
 
-        List<Rank> ranks = new() { ace };
+        List<Rank> pointCardRanks = new() { ace };
+        List<Rank> faceCardRanks = new();
         List<Suit> suit = new() { spades, hearts };
 
         Deck expectedResult = new Deck() with
         {
             Cards = new List<ICard>()
             {
-                new StandardCard() { 
+                new SpotCard() { 
                     Suit = spades,
                     Rank = ace,
                     CardOrientation = CardOrientations.Facedown
                 },
-                new StandardCard() {
+                new SpotCard() {
                     Suit = hearts,
                     Rank = ace,
                     CardOrientation = CardOrientations.Facedown
@@ -31,7 +34,7 @@ public class DeckFactoryTests
             }
         };
 
-        DeckFactoryArgs inputs = new(ranks, suit);
+        DeckFactoryArgs inputs = new(pointCardRanks, faceCardRanks, suit);
 
         DeckFactory sut = new();
         
@@ -47,7 +50,8 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandard(),
+            new RankFactory().CreateStandardPointCardRanks(),
+            new RankFactory().CreateStandardFaceCardRanks(),
             new SuitFactory().CreateStandard()
         );
 
@@ -67,7 +71,8 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandard(),
+            new RankFactory().CreateStandardPointCardRanks(),
+            new RankFactory().CreateStandardFaceCardRanks(),
             new SuitFactory().CreateStandard(),
             2
         );

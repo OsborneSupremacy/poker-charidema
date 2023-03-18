@@ -1,4 +1,6 @@
-﻿using Poker.Library.Interface;
+﻿using Poker.Library.Cards;
+using Poker.Library.Interface;
+using Poker.Library.Variants;
 
 namespace Poker.Service;
 
@@ -9,9 +11,10 @@ public class DeckFactory
         var deck = new Deck() with
         {
             Cards = args
-                .Ranks
+                .PointCardRanks
+                .Union(args.FaceCardRanks)
                 .SelectMany(x => args.Suits,
-                    (r, s) => new StandardCard()
+                    (r, s) => new SpotCard()
                     {
                         Rank = r,
                         Suit = s,
@@ -19,8 +22,6 @@ public class DeckFactory
                     }
                 ).ToList<ICard>()
         };
-
-        var maxValue = args.Ranks.Select(x => x.Value).Max();
 
         for (uint j = 0; j < args.NumberOfJokers; j++)
             deck.Cards.Add(new Joker());
@@ -31,23 +32,26 @@ public class DeckFactory
 
 public record DeckFactoryArgs
 {
-    public List<Rank> Ranks { get; init; }
+    public List<Rank> PointCardRanks { get; init; }
+
+    public List<Rank> FaceCardRanks { get; init; }
 
     public List<Suit> Suits { get; init; }
 
     public uint NumberOfJokers { get; init; }
 
-    public DeckFactoryArgs(List<Rank> ranks, List<Suit> suits)
+    public DeckFactoryArgs(List<Rank> pointCardRanks, List<Rank> faceCardRanks, List<Suit> suits)
     {
-        Ranks = ranks ?? throw new ArgumentNullException(nameof(ranks));
+        PointCardRanks = pointCardRanks ?? throw new ArgumentNullException(nameof(pointCardRanks));
+        FaceCardRanks = faceCardRanks ?? throw new ArgumentNullException(nameof(faceCardRanks));
         Suits = suits ?? throw new ArgumentNullException(nameof(suits));
-        NumberOfJokers = 0;
     }
 
-    public DeckFactoryArgs(List<Rank> ranks, List<Suit> suits, uint numberOfJokers)
+    public DeckFactoryArgs(
+        List<Rank> pointCardRanks,
+        List<Rank> faceCardRanks,
+        List<Suit> suits, uint numberOfJokers) : this(pointCardRanks, faceCardRanks, suits)
     {
-        Ranks = ranks ?? throw new ArgumentNullException(nameof(ranks));
-        Suits = suits ?? throw new ArgumentNullException(nameof(suits));
         NumberOfJokers = numberOfJokers;
     }
 }

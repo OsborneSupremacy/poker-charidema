@@ -1,8 +1,10 @@
-﻿namespace Poker.Library.RoundActions;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Library.RoundActions;
 
 public record DealCards : RoundAction
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     public uint Count { get; init; }
 

@@ -1,4 +1,6 @@
-﻿namespace Poker.Library.RoundActions;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Library.RoundActions;
 
 public record Turn : DealCards
 {

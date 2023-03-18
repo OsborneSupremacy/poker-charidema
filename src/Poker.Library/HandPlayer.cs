@@ -1,4 +1,6 @@
-﻿namespace Poker.Library;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Library;
 
 public record HandPlayer : Player
 {
