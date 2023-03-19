@@ -62,6 +62,7 @@ public class DeckFactoryTests
 
         // assert
         result.Cards.Count.Should().Be(52);
+        result.Cards.Where(x => x is FaceCard).Count().Should().Be(12);
         result.Cards.Distinct().Count().Should().Be(52);
     }
 
@@ -85,6 +86,7 @@ public class DeckFactoryTests
         // assert
         result.Cards.Count.Should().Be(54);
         result.Cards.Distinct().Count().Should().Be(53);
+        result.Cards.Where(x => x is FaceCard).Count().Should().Be(12);
         result.Cards.Where(x => x is Joker).Count().Should().Be(2);
     }
 }

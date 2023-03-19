@@ -9,17 +9,9 @@ public class DeckFactory
     {
         var deck = new Deck() with
         {
-            Cards = args
-                .SpotCardRanks
-                .Union(args.FaceCardRanks)
-                .SelectMany(x => args.Suits,
-                    (r, s) => new SpotCard()
-                    {
-                        Rank = r,
-                        Suit = s,
-                        CardOrientation = CardOrientations.Facedown
-                    }
-                ).ToList<ICard>()
+            Cards = GenerateCombos<SpotCard>(args.SpotCardRanks, args.Suits)
+                .Union(GenerateCombos<FaceCard>(args.FaceCardRanks, args.Suits))
+                .ToList()
         };
 
         for (uint j = 0; j < args.NumberOfJokers; j++)
@@ -27,6 +19,17 @@ public class DeckFactory
 
         return deck;
     }
+
+    private static IEnumerable<ICard> GenerateCombos<T>(List<Rank> ranks, List<Suit> suits) where T : StandardCard, new() =>
+        ranks
+            .SelectMany(x => suits,
+                (r, s) => new T()
+                {
+                    Rank = r,
+                    Suit = s,
+                    CardOrientation = CardOrientations.Facedown
+                }
+            );
 }
 
 public record DeckFactoryArgs
