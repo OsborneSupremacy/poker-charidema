@@ -1,6 +1,4 @@
-﻿
-
-namespace Poker.Interface;
+﻿namespace Poker.Interface;
 
 public interface IGameService
 {

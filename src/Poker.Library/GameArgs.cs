@@ -11,4 +11,6 @@ public record GameArgs
     public Variant Variant { get; init; }
 
     public Deck Deck { get; init; }
+
+    public Player Button { get; init; }
 }

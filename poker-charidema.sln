@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Library.Interface", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Test.Utility", "src\Poker.Test.Utility\Poker.Test.Utility.csproj", "{A5855EBD-767C-4390-B7D6-2CC54D0073E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Utility", "src\Poker.Utility\Poker.Utility.csproj", "{3EEE4FF3-3022-4B97-8DDA-0655B2762788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Utility.Tests", "src\Poker.Utility.Tests\Poker.Utility.Tests.csproj", "{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EEE4FF3-3022-4B97-8DDA-0655B2762788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EEE4FF3-3022-4B97-8DDA-0655B2762788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EEE4FF3-3022-4B97-8DDA-0655B2762788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EEE4FF3-3022-4B97-8DDA-0655B2762788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

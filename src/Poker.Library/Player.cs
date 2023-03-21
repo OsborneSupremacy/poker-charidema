@@ -2,6 +2,8 @@
 
 public record Player
 {
+    public Guid Id { get; init; }
+
     public string Name { get; init; }
 
     public double Stack { get; init; }

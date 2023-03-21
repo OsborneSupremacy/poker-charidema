@@ -19,17 +19,4 @@ public record Game
     public List<Player> Players { get; init; }
 
     public List<Round> Rounds { get; init; }
-
-    public enum Phases
-    {
-        NotStarted,
-        Shuffle,
-        PromptForAnte,
-        InitialDeal,
-        Rounds,
-        DetermineWinner,
-        Completed
-    }
-
-    public Phases Phase { get; init; }
 }
