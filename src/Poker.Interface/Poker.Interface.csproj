@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Poker.Library.Interface\Poker.Library.Interface.csproj" />
     <ProjectReference Include="..\Poker.Library\Poker.Library.csproj" />
   </ItemGroup>
 
