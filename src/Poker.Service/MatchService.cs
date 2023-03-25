@@ -25,13 +25,8 @@ public class MatchService
         return;
     }
 
-    public async Task<MatchResult> PlayAsync()
+    public async Task<MatchResult> PlayAsync(Match match)
     {
-        Match match = new()
-        {
-
-        };
-
         await (match.FixedNumberOfGames.HasValue switch
         {
             true => PlayFixedNumberOfGames(match),
@@ -43,13 +38,17 @@ public class MatchService
 
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
+        Player button = matchIn.Players[0]; // TODO: make random
+
+        var variant = matchIn.FixedVariant ??  (await _uiService.PromptForVariant(button));
+
         var game = await _gameService.PlayAsync(
             new GameArgs()
             {
                 Players = matchIn.Players,
-                MatchType = matchIn.MatchType,
-                Variant = null,
-                Deck = null
+                Variant = variant,
+                Deck = null,
+                Button = matchIn.Players[0] 
             }
         );
 
@@ -64,9 +63,14 @@ public class MatchService
         return matchOut;
     }
 
-    protected Task<MatchResult> EvaluateResult(Match match)
+    protected Task<MatchResult> EvaluateResult(Match matchIn)
     {
-        return Task.FromResult(new MatchResult());
+        return Task.FromResult(
+            new MatchResult() {
+                Match = matchIn,
+                Winners = new()
+            }
+        );
     }
 
 }

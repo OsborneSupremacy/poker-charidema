@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.RoundActions;
 
-public record class BettingInterval : RoundAction
+public record class BettingInterval : IRoundAction
 {
-    public override bool GameCanEndAfter => true;
+    public bool GameCanEndAfter => true;
 }

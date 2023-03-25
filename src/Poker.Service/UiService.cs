@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Library.Variants;
+
+namespace Poker.Service;
 
 public class ConsoleUiService : IUiService
 {
@@ -16,4 +18,8 @@ public class ConsoleUiService : IUiService
         return Task.FromResult(true);
     }
 
+    public Task<IVariant> PromptForVariant(Player button)
+    {
+        return Task.FromResult(new FiveCardDraw() as IVariant);
+    }
 }

@@ -2,6 +2,6 @@
 
 public record Deck
 {
-    public List<ICard> Cards { get; init; }
+    public required List<ICard> Cards { get; init; }
 }
 

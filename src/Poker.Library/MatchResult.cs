@@ -1,6 +1,8 @@
 ﻿namespace Poker.Library;
 
-public record MatchResult : Match
+public record MatchResult
 {
-    public List<Player> Winners { get; init; }
+    public required Match Match { get; init; }
+
+    public required List<Player> Winners { get; init; }
 }

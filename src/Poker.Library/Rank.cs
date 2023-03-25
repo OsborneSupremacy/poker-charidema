@@ -1,11 +1,14 @@
-﻿namespace Poker.Library;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Poker.Library;
 
 public record Rank
 {
-    public string Name { get; init; }
+    public required string Name { get; init; }
 
-    public uint Value { get; init; }
+    public required uint Value { get; init; }
 
+    [SetsRequiredMembers]
     public Rank(string name, uint value)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));

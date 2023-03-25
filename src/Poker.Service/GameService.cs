@@ -11,7 +11,11 @@ public class GameService : IGameService
 
     public async Task<Game> PlayAsync(GameArgs args)
     {
-        Game game = new();
+        Game game = new() {
+            Variant = args.Variant,
+            Players = args.Players,
+            Deck = args.Deck
+        };
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);
 

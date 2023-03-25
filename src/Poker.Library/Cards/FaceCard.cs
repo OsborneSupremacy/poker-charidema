@@ -4,7 +4,7 @@ public record FaceCard : StandardCard, ICard
 {
     public FaceDirections FaceDirection { get; init; }
 
-    public List<HoldingObject> HoldingObjects { get; init; }
+    public List<HoldingObject>? HoldingObjects { get; init; }
 
 }
 

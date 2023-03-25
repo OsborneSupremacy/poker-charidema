@@ -2,7 +2,7 @@
 
 public record Bet
 {
-    public double Amount { get; init; }
+    public required double Amount { get; init; }
 
-    public Player Player { get; init; }
+    public required Player Player { get; init; }
 }

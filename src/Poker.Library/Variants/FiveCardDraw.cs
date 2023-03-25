@@ -3,11 +3,11 @@ using Poker.Library.RoundActions;
 
 namespace Poker.Library.Variants;
 
-public record FiveCardDraw : Variant
+public record FiveCardDraw : IVariant
 {
-    public override string Name => "Five Card Draw";
+    public string Name => "Five Card Draw";
 
-    public override List<RoundAction> RoundActions =>
+    public List<IRoundAction> RoundActions =>
         new()
         {
             new DealCards()

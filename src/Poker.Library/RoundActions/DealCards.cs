@@ -2,7 +2,7 @@
 
 namespace Poker.Library.RoundActions;
 
-public record DealCards : RoundAction
+public record DealCards : IRoundAction
 {
     public string? Name { get; set; }
 
@@ -12,5 +12,5 @@ public record DealCards : RoundAction
 
     public CardDestinations CardDestination { get; init; }
 
-    public override bool GameCanEndAfter => false;
+    public bool GameCanEndAfter => false;
 }

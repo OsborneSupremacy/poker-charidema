@@ -1,12 +1,12 @@
 ﻿namespace Poker.Library.RoundActions;
 
-public record DrawCards : RoundAction
+public record DrawCards : IRoundAction
 {
     public uint Maximums { get; init; }
 
     public List<DrawCardsMaximums> Overrides { get; init; }
 
-    public override bool GameCanEndAfter => false;
+    public bool GameCanEndAfter => false;
 }
 
 public record DrawCardsMaximums

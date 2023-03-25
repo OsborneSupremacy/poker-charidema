@@ -7,4 +7,6 @@ public interface IUiService
     Task<bool> PromptToPlayAgainAsync(int countOfGamesPlayed);
 
     Task<double> PromptForAnteAmount(Player button);
+
+    Task<IVariant> PromptForVariant(Player button);
 }

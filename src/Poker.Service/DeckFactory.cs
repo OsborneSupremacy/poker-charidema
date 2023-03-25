@@ -7,7 +7,7 @@ public class DeckFactory
 {
     public Deck Create(DeckFactoryArgs args)
     {
-        var deck = new Deck() with
+        var deck = new Deck()
         {
             Cards = GenerateCombos<SpotCard>(args.SpotCardRanks, args.Suits)
                 .Union(GenerateCombos<FaceCard>(args.FaceCardRanks, args.Suits))

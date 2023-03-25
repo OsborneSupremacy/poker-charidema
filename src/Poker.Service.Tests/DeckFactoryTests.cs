@@ -17,7 +17,7 @@ public class DeckFactoryTests
         List<Rank> faceCardRanks = new();
         List<Suit> suit = new() { spades, hearts };
 
-        Deck expectedResult = new Deck() with
+        Deck expectedResult = new()
         {
             Cards = new List<ICard>()
             {

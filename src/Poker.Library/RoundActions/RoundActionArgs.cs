@@ -3,9 +3,9 @@ namespace Poker.Library.RoundActions;
 
 public record RoundActionArgs
 {
-    public RoundAction RoundAction { get; init; }
+    public required IRoundAction RoundAction { get; init; }
 
-    public Deck Deck { get; init; }
+    public required Deck Deck { get; init; }
 
-    public List<Player> Players { get; init; }
+    public required List<Player> Players { get; init; }
 }
