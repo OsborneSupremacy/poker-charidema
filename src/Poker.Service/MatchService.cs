@@ -2,11 +2,22 @@
 
 public class MatchService
 {
+    private readonly IMatchPreferencesService _matchPreferencesService;
 
-    private readonly IUiService _uiService;
+    private readonly IGamePreferencesService _gamePreferencesService;
 
     private readonly IGameService _gameService;
 
+    public MatchService(
+        IMatchPreferencesService matchPreferencesService,
+        IGamePreferencesService gamePreferencesService,
+        IGameService gameService
+        )
+    {
+        _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
+        _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
+        _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
+    }
 
     private async Task PlayFixedNumberOfGames(Match match)
     {
@@ -17,11 +28,12 @@ public class MatchService
 
     private async Task PlayIndefinitely(Match match)
     {
-        while (
-            match.Games.Count == 0 // don't prompt to play again if it's the first game
-            || await _uiService.PromptToPlayAgainAsync(match.Games.Count)
-            )
+        var keepPlaying = true;
+        while(keepPlaying)
+        {
             match = await PlayGameAsync(match);
+            keepPlaying  = await _matchPreferencesService.GetKeepPlaying();
+        }
         return;
     }
 
@@ -38,26 +50,25 @@ public class MatchService
 
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
-        Player button = matchIn.Players[0]; // TODO: make random
-
-        var variant = matchIn.FixedVariant ??  (await _uiService.PromptForVariant(button));
+        // pass button to next player if it's not the first game
+        Player button = matchIn.Games.Any()
+            ? matchIn.Players.NextPlayer(matchIn.Button)
+            : matchIn.Button;
 
         var game = await _gameService.PlayAsync(
             new GameArgs()
             {
                 Players = matchIn.Players,
-                Variant = variant,
-                Deck = null,
-                Button = matchIn.Players[0] 
+                Variant = matchIn.FixedVariant ?? (await _gamePreferencesService.GetVariant(button)),
+                Deck = matchIn.FixedDeck ?? (await _gamePreferencesService.GetDeck(button)),
+                Button = button
             }
         );
 
-        List<Game> gamesOut = matchIn.Games;
-        gamesOut.Add(game);
-
         Match matchOut = matchIn with
         {
-            Games = gamesOut
+            Games = matchIn.Games.Append(game).ToList(),
+            Button = button
         };
 
         return matchOut;
@@ -72,5 +83,4 @@ public class MatchService
             }
         );
     }
-
 }

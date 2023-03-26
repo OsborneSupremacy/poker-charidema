@@ -1,25 +1,18 @@
-﻿using Poker.Library.Variants;
+﻿namespace Poker.Service;
 
-namespace Poker.Service;
-
-public class ConsoleUiService : IUiService
+public class ConsolePreferencesService : IMatchPreferencesService, IGamePreferencesService
 {
-    public Task<Player> PromptForInitialButton(List<Player> players)
-    {
-        return Task.FromResult(players[0]);
-    }
+    public Task<double> GetAnte(Player button) => throw new NotImplementedException();
 
-    public Task<double> PromptForAnteAmount(Player button) => throw new NotImplementedException();
+    public Task<Deck> GetDeck(Player button) => throw new NotImplementedException();
 
-    public Task<bool> PromptToPlayAgainAsync(int countOfGamesPlayed)
-    {
-        if(countOfGamesPlayed == 0)
-            return Task.FromResult(true);
-        return Task.FromResult(true);
-    }
+    public Task<Deck?> GetFixedDeck(Player button) => throw new NotImplementedException();
 
-    public Task<IVariant> PromptForVariant(Player button)
-    {
-        return Task.FromResult(new FiveCardDraw() as IVariant);
-    }
+    public Task<IVariant?> GetFixedVariant(Player button) => throw new NotImplementedException();
+
+    public Task<Player> GetInitialButton(List<Player> players) => throw new NotImplementedException();
+
+    public Task<bool> GetKeepPlaying() => throw new NotImplementedException();
+
+    public Task<IVariant> GetVariant(Player button) => throw new NotImplementedException();
 }

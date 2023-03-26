@@ -14,7 +14,10 @@ public class GameService : IGameService
         Game game = new() {
             Variant = args.Variant,
             Players = args.Players,
-            Deck = args.Deck
+            Deck = args.Deck,
+            CommunityCards = new(),
+            Discards = new(),
+            Rounds = null
         };
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);

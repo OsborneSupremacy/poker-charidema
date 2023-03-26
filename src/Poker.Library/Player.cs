@@ -13,5 +13,5 @@ public record Player
 
     public bool HasFolded { get; init; }
 
-    public Hand Hand { get; init; }
+    public Hand? Hand { get; init; }
 }
