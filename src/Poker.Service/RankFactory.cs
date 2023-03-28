@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Service;
 
 public class RankFactory
 {

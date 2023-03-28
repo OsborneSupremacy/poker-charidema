@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Cards;
 
-public abstract record StandardCard : Card, ICard
+public abstract record Standard : Card, ICard
 {
     public Rank Rank { get; init; }
 

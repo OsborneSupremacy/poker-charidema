@@ -1,5 +1,4 @@
 ﻿using Poker.Library.Cards;
-using Poker.Library.Interface;
 
 namespace Poker.Service;
 
@@ -7,20 +6,28 @@ public class DeckFactory
 {
     public Deck Create(DeckFactoryArgs args)
     {
-        var deck = new Deck()
-        {
-            Cards = GenerateCombos<SpotCard>(args.SpotCardRanks, args.Suits)
-                .Union(GenerateCombos<FaceCard>(args.FaceCardRanks, args.Suits))
-                .ToList()
-        };
+        var standardCards = GenerateCombos<Spot>(args.SpotCardRanks, args.Suits)
+            .Union(GenerateCombos<Face>(args.FaceCardRanks, args.Suits))
+            .ToList();
+
+        List<ICard> cards = standardCards.ToList<ICard>();
 
         for (uint j = 0; j < args.NumberOfJokers; j++)
-            deck.Cards.Add(new Joker());
+            cards.Add(new Joker());
 
-        return deck;
+        return new Deck()
+        {
+            Cards = cards,
+            NumberOfJokers = args.NumberOfJokers,
+            CardRankValues = standardCards
+                .Select(x => x.Rank.Value)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList()
+        };
     }
 
-    private static IEnumerable<ICard> GenerateCombos<T>(List<Rank> ranks, List<Suit> suits) where T : StandardCard, new() =>
+    private static IEnumerable<Standard> GenerateCombos<T>(List<Rank> ranks, List<Suit> suits) where T : Standard, new() =>
         ranks
             .SelectMany(x => suits,
                 (r, s) => new T()

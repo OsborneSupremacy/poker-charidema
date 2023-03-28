@@ -2,4 +2,5 @@
 
 public interface ICard
 {
+    Guid Id { get; }
 }

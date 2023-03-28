@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Cards;
 
-public record FaceCard : StandardCard, ICard
+public record Face : Standard, ICard
 {
     public FaceDirections FaceDirection { get; init; }
 

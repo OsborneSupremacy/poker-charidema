@@ -1,6 +1,4 @@
-﻿using static Poker.Library.Match;
-
-namespace Poker.Library;
+﻿namespace Poker.Library;
 
 public record GameArgs
 {

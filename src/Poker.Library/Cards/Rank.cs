@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Poker.Library;
+namespace Poker.Library.Cards;
 
 public record Rank
 {

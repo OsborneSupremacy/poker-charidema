@@ -1,12 +1,14 @@
-﻿namespace Poker.Service;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Service;
 
 public class SuitFactory
 {
     public List<Suit> CreateStandard() =>
         new() {
-            new("Spades", 1),
-            new("Hearts", 2),
-            new("Diamonds", 3),
-            new("Clubs", 4)
+            new("Spades", 1, System.Drawing.Color.Black),
+            new("Hearts", 2, System.Drawing.Color.Red),
+            new("Diamonds", 3, System.Drawing.Color.Red),
+            new("Clubs", 4, System.Drawing.Color.Black)
         };
 }

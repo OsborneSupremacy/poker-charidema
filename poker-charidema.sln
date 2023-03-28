@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Interface", "src\Poke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Library.Interface", "src\Poker.Library.Interface\Poker.Library.Interface.csproj", "{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Test.Utility", "src\Poker.Test.Utility\Poker.Test.Utility.csproj", "{A5855EBD-767C-4390-B7D6-2CC54D0073E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Test.Utility", "src\Poker.Test.Utility\Poker.Test.Utility.csproj", "{A5855EBD-767C-4390-B7D6-2CC54D0073E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Utility", "src\Poker.Utility\Poker.Utility.csproj", "{3EEE4FF3-3022-4B97-8DDA-0655B2762788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility", "src\Poker.Utility\Poker.Utility.csproj", "{3EEE4FF3-3022-4B97-8DDA-0655B2762788}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Utility.Tests", "src\Poker.Utility.Tests\Poker.Utility.Tests.csproj", "{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility.Tests", "src\Poker.Utility.Tests\Poker.Utility.Tests.csproj", "{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Library.Tests", "src\Poker.Library.Tests\Poker.Library.Tests.csproj", "{1C8F89EB-40E2-47F8-A629-3CB8A8044498}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

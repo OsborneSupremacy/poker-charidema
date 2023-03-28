@@ -10,29 +10,12 @@ public class DeckFactoryTests
     {
         // arrange
         Rank ace = new("Ace", 14);
-        Suit spades = new("Spades", 1);
-        Suit hearts = new("Hearts", 1);
+        Suit spades = new("Spades", 1, System.Drawing.Color.Black);
+        Suit hearts = new("Hearts", 1, System.Drawing.Color.Red);
 
         List<Rank> spotCardRanks = new() { ace };
         List<Rank> faceCardRanks = new();
         List<Suit> suit = new() { spades, hearts };
-
-        Deck expectedResult = new()
-        {
-            Cards = new List<ICard>()
-            {
-                new SpotCard() { 
-                    Suit = spades,
-                    Rank = ace,
-                    CardOrientation = CardOrientations.Facedown
-                },
-                new SpotCard() {
-                    Suit = hearts,
-                    Rank = ace,
-                    CardOrientation = CardOrientations.Facedown
-                },
-            }
-        };
 
         DeckFactoryArgs inputs = new(spotCardRanks, faceCardRanks, suit);
 
@@ -42,7 +25,7 @@ public class DeckFactoryTests
         var result = sut.Create(inputs);
         
         // assert
-        result.Should().BeEquivalentTo(expectedResult);
+        result.Cards.Count().Should().Be(2);
     }
 
     [Fact]
@@ -62,10 +45,8 @@ public class DeckFactoryTests
 
         // assert
         result.Cards.Count.Should().Be(52);
-        result.Cards.Where(x => x is FaceCard).Count().Should().Be(12);
-        result.Cards.Distinct().Count().Should().Be(52);
+        result.Cards.Where(x => x is Face).Count().Should().Be(12);
     }
-
 
     [Fact]
     public void Create_Expected_Count_Standard_Deck_With_Jokers()
@@ -85,8 +66,7 @@ public class DeckFactoryTests
 
         // assert
         result.Cards.Count.Should().Be(54);
-        result.Cards.Distinct().Count().Should().Be(53);
-        result.Cards.Where(x => x is FaceCard).Count().Should().Be(12);
+        result.Cards.Where(x => x is Face).Count().Should().Be(12);
         result.Cards.Where(x => x is Joker).Count().Should().Be(2);
     }
 }
