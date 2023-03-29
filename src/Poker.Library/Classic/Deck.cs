@@ -114,7 +114,11 @@ public record Deck : IDeck
 
     public List<uint> CardRankValues { get; init; }
 
-    public Deck()
+    public List<Joker> Jokers { get; init; }
+
+    public Deck() : this(0) { }
+
+    public Deck(uint numberOfJokers)
     {
         var suits = new Suits();
         var ranks = new Ranks();
@@ -651,13 +655,21 @@ public record Deck : IDeck
             AceOfSpades
         };
 
-        NumberOfJokers = 0;
-
         CardRankValues = Cards
             .Where(x => x is Standard)
             .Select(x => (x as Standard)!.Rank.Value)
             .Distinct()
             .OrderByDescending(x => x)
             .ToList();
+
+        NumberOfJokers = numberOfJokers;
+        Jokers = new();
+
+        for (uint j = 0; j < numberOfJokers; j++)
+        {
+            Joker joker = new();
+            Cards.Add(joker);
+            Jokers.Add(joker);
+        }
     }
 }
