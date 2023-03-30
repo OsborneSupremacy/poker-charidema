@@ -1,6 +1,10 @@
 ﻿namespace Poker.Library.Cards;
 
-public record Joker : Card, ICard
+public record Joker : ICard
 {
-    public new static bool IsWild { get => true; }
+    public CardOrientations CardOrientation { get; set; }
+
+    public Guid Id => throw new NotImplementedException();
+
+    bool ICard.IsWild => true;
 }

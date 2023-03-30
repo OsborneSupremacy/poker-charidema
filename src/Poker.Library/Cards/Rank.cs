@@ -2,7 +2,7 @@
 
 namespace Poker.Library.Cards;
 
-public record Rank
+public record Rank : IRank
 {
     public required string Name { get; init; }
 

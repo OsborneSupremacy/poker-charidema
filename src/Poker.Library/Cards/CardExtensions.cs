@@ -1,12 +1,13 @@
 ﻿namespace Poker.Library.Cards;
+
 public static class CardExtensions
 {
     public static bool MatchesRank(this ICard input, uint rankValue) =>
-        input is Standard s
+        input is IStandardCard s
             && s.Rank.Value == rankValue;
 
     public static bool IsStandardWild(this ICard input) =>
-        input is Standard s
+        input is IStandardCard s
             && s.IsWild;
 
     public static bool IsWild(this ICard input) =>

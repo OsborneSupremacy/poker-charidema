@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Poker.Library.Cards;
 
-public record Suit
+public record Suit : ISuit
 {
     public required string Name { get; init; }
 

@@ -6,11 +6,12 @@ public class DeckFactory
 {
     public Deck Create(DeckFactoryArgs args)
     {
-        var standardCards = GenerateCombos<Spot>(args.SpotCardRanks, args.Suits)
-            .Union(GenerateCombos<Face>(args.FaceCardRanks, args.Suits))
-            .ToList();
+        List<IStandardCard> standardCards = new();
+        standardCards.AddRange(GenerateCombos<Spot>(args.SpotCardRanks, args.Suits));
+        standardCards.AddRange(GenerateCombos<Face>(args.FaceCardRanks, args.Suits));
 
-        List<ICard> cards = standardCards.ToList<ICard>();
+        List<ICard> cards = new();
+        cards.AddRange(standardCards);
 
         for (uint j = 0; j < args.NumberOfJokers; j++)
             cards.Add(new Joker());
@@ -23,11 +24,16 @@ public class DeckFactory
                 .Select(x => x.Rank.Value)
                 .Distinct()
                 .OrderBy(x => x)
+                .ToList(),
+            CardSuitPriorities = standardCards
+                .Select(x => x.Suit.Priority)
+                .Distinct()
+                .OrderBy(x => x)
                 .ToList()
         };
     }
 
-    private static IEnumerable<Standard> GenerateCombos<T>(List<Rank> ranks, List<Suit> suits) where T : Standard, new() =>
+    private static IEnumerable<T> GenerateCombos<T>(List<Rank> ranks, List<Suit> suits) where T : IStandardCard, new() =>
         ranks
             .SelectMany(x => suits,
                 (r, s) => new T()

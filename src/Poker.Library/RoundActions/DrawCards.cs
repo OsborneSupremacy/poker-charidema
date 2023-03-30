@@ -4,16 +4,16 @@ namespace Poker.Library.RoundActions;
 
 public record DrawCards : IRoundAction
 {
-    public uint Maximums { get; init; }
+    public required uint Maximum { get; init; }
 
-    public List<DrawCardsMaximums> Overrides { get; init; }
+    public required List<DrawCardsMaximums> Overrides { get; init; }
 
     public bool GameCanEndAfter => false;
 }
 
 public record DrawCardsMaximums
 {
-    public Rank Rank { get; set; }
+    public required Rank Rank { get; set; }
 
-    public uint Maximum { get; set; }
+    public required uint Maximum { get; set; }
 }

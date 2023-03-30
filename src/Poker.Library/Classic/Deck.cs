@@ -656,8 +656,8 @@ public record Deck : IDeck
         };
 
         CardRankValues = Cards
-            .Where(x => x is Standard)
-            .Select(x => (x as Standard)!.Rank.Value)
+            .Where(x => x is IStandardCard)
+            .Select(x => (x as IStandardCard)!.Rank.Value)
             .Distinct()
             .OrderByDescending(x => x)
             .ToList();

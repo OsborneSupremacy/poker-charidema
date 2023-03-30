@@ -23,9 +23,9 @@ public static class HandExtensions
             .Where(j => j is Joker).ToList();
 
         List<ICard> additionalCards = nonHandCards
-            .Where(c => c is Standard s)
-            .OrderByDescending(c => (c as Standard)!.Rank.Value)
-            .ThenByDescending(c => (c as Standard)!.Suit.Priority)
+            .Where(c => c is IStandardCard s)
+            .OrderByDescending(c => (c as IStandardCard)!.Rank.Value)
+            .ThenByDescending(c => (c as IStandardCard)!.Suit.Priority)
             .Take(handLimit - jokers.Count)
             .ToList();
 

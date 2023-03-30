@@ -1,11 +1,20 @@
 ﻿namespace Poker.Library.Cards;
 
-public record Face : Standard, ICard
+public record Face : IStandardCard, ICard
 {
+    public Guid Id { get; } = Guid.NewGuid();
+
     public FaceDirections FaceDirection { get; init; }
 
     public List<HoldingObject>? HoldingObjects { get; init; }
 
+    public IRank Rank { get; init; }
+
+    public ISuit Suit { get; init; }
+
+    public bool IsWild { get; set; }
+
+    public CardOrientations CardOrientation { get; set; }
 }
 
 public enum FaceDirections

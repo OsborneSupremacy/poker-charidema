@@ -7,5 +7,7 @@ public record Deck : IDeck
     public required uint NumberOfJokers { get; init; }
 
     public required List<uint> CardRankValues { get; init; }
+
+    public required List<uint> CardSuitPriorities { get; init; }
 }
 

@@ -18,7 +18,11 @@ public record FiveCardDraw : IVariant
                 CardDestination = CardDestinations.PlayerHand
             },
             new BettingInterval(),
-            new DrawCards(),
+            new DrawCards()
+            {
+                Maximum = 5,
+                Overrides = new()
+            },
             new BettingInterval()
         };
 }

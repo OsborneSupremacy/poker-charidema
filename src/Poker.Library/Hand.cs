@@ -4,5 +4,5 @@ namespace Poker.Library;
 
 public record Hand
 {
-    public required List<Card> Cards { get; init; }
+    public required List<ICard> Cards { get; init; }
 }

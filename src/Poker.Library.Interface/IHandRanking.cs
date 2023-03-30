@@ -1,4 +1,4 @@
-﻿using Poker.Library.Interface;
+﻿namespace Poker.Library.Interface;
 
 public interface IHandRanking
 {

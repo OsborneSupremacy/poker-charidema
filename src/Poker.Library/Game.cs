@@ -12,9 +12,9 @@ public record Game
 
     public required Deck Deck { get; init; }
 
-    public required List<Card> CommunityCards { get; init; }
+    public required List<ICard> CommunityCards { get; init; }
 
-    public required List<Card> Discards { get; init; }
+    public required List<ICard> Discards { get; init; }
 
     public required List<Player> Players { get; init; }
 
