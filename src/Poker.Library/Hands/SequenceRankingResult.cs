@@ -93,4 +93,43 @@ public abstract class SequenceRankingResult
         );
 
     protected abstract GetCardInSequenceDelegate GetCardInSequence { get; }
+
+    protected static CardInSequenceResult GetCardInSequenceByRank(
+        List<ICard> unusedCards,
+        CardInSequenceCriteria crit
+        )
+    {
+        var cardInSequence = unusedCards
+            .Where(x => x.MatchesRankOrIsWild(crit.RankValue))
+            .OrderBy(x => x.IsWild) // prefer non-wild
+            .FirstOrDefault();
+
+        return new CardInSequenceResult
+        {
+            Exists = cardInSequence is not null,
+            Card = cardInSequence
+        };
+    }
+
+    protected static GetCardInSequenceDelegate GetCardInSequenceByRandAndSuit =>
+    (
+        List<ICard> unusedCards,
+        CardInSequenceCriteria crit
+    ) =>
+    {
+        if (crit.Suit == null)
+            return GetCardInSequenceByRank(unusedCards, crit);
+
+        var cardInSequence = unusedCards
+            .Where(x => x.MatchesRankOrIsWild(crit.RankValue))
+            .Where(x => x.MatchesSuit(crit.Suit.Priority))
+            .OrderBy(x => x.IsWild) // prefer non-wild
+            .FirstOrDefault();
+
+        return new CardInSequenceResult
+        {
+            Exists = cardInSequence is not null,
+            Card = cardInSequence
+        };
+    };
 }
