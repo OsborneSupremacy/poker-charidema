@@ -10,10 +10,13 @@ public class Straight : SequenceRankingResult, IHandRanking
 
     protected override GetCardInSequenceDelegate GetCardInSequence => GetCardInSequenceByRank;
 
-    protected static CardInSequenceResult GetCardInSequenceByRank(List<ICard> unusedCards, uint r)
+    protected static CardInSequenceResult GetCardInSequenceByRank(
+        List<ICard> unusedCards,
+        CardInSequenceCriteria crit
+        )
     {
         var cardInSequence = unusedCards
-            .Where(x => x.MatchesRankOrIsWild(r))
+            .Where(x => x.MatchesRankOrIsWild(crit.RankValue))
             .OrderBy(x => x.IsWild) // prefer non-wild
             .FirstOrDefault();
 

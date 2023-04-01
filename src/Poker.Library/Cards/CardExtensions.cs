@@ -2,6 +2,13 @@
 
 public static class CardExtensions
 {
+    public static ISuit? GetNonWildSuit(this ICard input)
+    {
+        if (input.IsWild())
+            return null;
+        return input is IStandardCard s ? s.Suit : null;
+    }
+
     public static bool MatchesRank(this ICard input, uint rankValue) =>
         input is IStandardCard s
             && s.Rank.Value == rankValue;

@@ -1,4 +1,6 @@
-﻿namespace Poker.Library.Hands;
+﻿using Poker.Library.Cards;
+
+namespace Poker.Library.Hands;
 
 public abstract class SequenceRankingResult
 {
@@ -10,39 +12,9 @@ public abstract class SequenceRankingResult
     {
         for (uint r = deck.CardRankValues.Max(); r >= 5; r--)
         {
-            List<ICard> sequence = new();
-            List<ICard> unusedCards = new();
-            unusedCards.AddRange(playerCards);
-
-            CardInSequenceResult cardInSequence = new()
-            {
-                Exists = true
-            };
-
-            while (
-                sequence.Count < 5
-                && cardInSequence.Exists
-                )
-            {
-                cardInSequence =
-                    GetCardInSequence(unusedCards, r - (uint)sequence.Count);
-
-                if (cardInSequence.Exists)
-                {
-                    sequence.Add(cardInSequence.Card!);
-                    unusedCards.Remove(cardInSequence.Card!);
-                }
-            }
-
-            if (sequence.Count < 5) continue;
-
-            return new HandRankingResult
-            {
-                Qualifies = true,
-                HandCards = sequence,
-                Kickers = new(),
-                DeadCards = unusedCards
-            };
+            var result = GetSequenceStartingWithRank(playerCards, r);
+            if (result != null)
+                return result;
         }
 
         return new HandRankingResult
@@ -54,6 +26,60 @@ public abstract class SequenceRankingResult
         };
     }
 
+    protected HandRankingResult? GetSequenceStartingWithRank(List<ICard> playerCards, uint rankValue)
+    {
+        List<ICard> sequence = new();
+        List<ICard> unusedCards = new();
+        unusedCards.AddRange(playerCards);
+
+        ISuit? sequenceSuit = null;
+
+        CardInSequenceResult cardInSequence = new()
+        {
+            Exists = true
+        };
+
+        while (
+            sequence.Count < 5
+            && cardInSequence.Exists
+            )
+        {
+            cardInSequence =
+                GetCardInSequence(
+                    unusedCards,
+                    new CardInSequenceCriteria
+                    {
+                        RankValue = rankValue - (uint)sequence.Count,
+                        Suit = sequenceSuit
+                    }
+                );
+
+            if (cardInSequence.Exists)
+            {
+                sequence.Add(cardInSequence.Card!);
+                unusedCards.Remove(cardInSequence.Card!);
+                sequenceSuit ??= cardInSequence.Card!.GetNonWildSuit();
+            }
+        }
+
+        if (sequence.Count < 5) return null;
+
+        return new HandRankingResult
+        {
+            Qualifies = true,
+            HandCards = sequence,
+            Kickers = new(),
+            DeadCards = unusedCards
+        };
+    }
+
+    protected record CardInSequenceCriteria
+    {
+        public required uint RankValue { get; init; }
+
+        public required ISuit? Suit { get; init; }
+    }
+
     protected record CardInSequenceResult
     {
         public required bool Exists { get; init; }
@@ -61,7 +87,10 @@ public abstract class SequenceRankingResult
         public ICard? Card { get; init; }
     }
 
-    protected delegate CardInSequenceResult GetCardInSequenceDelegate(List<ICard> unusedCards, uint r);
+    protected delegate CardInSequenceResult GetCardInSequenceDelegate(
+        List<ICard> unusedCards,
+        CardInSequenceCriteria criteria
+        );
 
     protected abstract GetCardInSequenceDelegate GetCardInSequence { get; }
 }

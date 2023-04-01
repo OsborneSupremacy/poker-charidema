@@ -6,7 +6,7 @@ namespace Poker.Library.Tests.Hands;
 public class StraightTests
 {
     [Fact]
-    public void Qualify_True_When_Straight_Exist()
+    public void Qualify_True_When_Straight_Exists()
     {
         // arrange
         Classic.Deck deck = new();
