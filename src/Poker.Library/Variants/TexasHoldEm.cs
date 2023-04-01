@@ -1,5 +1,4 @@
-﻿using Poker.Library.Cards;
-using Poker.Library.RoundActions;
+﻿using Poker.Library.RoundActions;
 
 namespace Poker.Library.Variants;
 

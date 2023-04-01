@@ -1,6 +1,4 @@
-﻿using Poker.Library.Cards;
-
-namespace Poker.Library;
+﻿namespace Poker.Library;
 
 public record Game
 {

@@ -1,6 +1,4 @@
-﻿using Poker.Library.Cards;
-
-namespace Poker.Library.RoundActions;
+﻿namespace Poker.Library.RoundActions;
 
 public record Street : DealCards
 {
