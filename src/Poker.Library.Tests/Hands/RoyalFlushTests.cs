@@ -3,23 +3,24 @@
 namespace Poker.Library.Tests.Hands;
 
 [ExcludeFromCodeCoverage]
-public class StraightFlushTests
+
+public class RoyalFlushTests
 {
     [Fact]
-    public void Qualify_True_When_StraightFlush_Exists()
+    public void Qualify_True_When_RoyalFlus_Exists()
     {
         // arrange
         Classic.Deck deck = new();
 
         List<ICard> playerCards = new() {
+            deck.AceOfSpades,
             deck.KingOfSpades,
             deck.QueenOfSpades,
             deck.JackOfSpades,
-            deck.TenOfSpades,
-            deck.NineOfSpades
+            deck.TenOfSpades
         };
 
-        var sut = new StraightFlush();
+        var sut = new RoyalFlush();
 
         // act
         var result = sut.Qualify(deck, playerCards);
@@ -32,7 +33,7 @@ public class StraightFlushTests
     }
 
     [Fact]
-    public void Qualify_False_When_Straight_But_No_Flush_Exists()
+    public void Qualify_False_When_StraightFlush_But_No_RoyalFlush_Exists()
     {
         // arrange
         Classic.Deck deck = new();
@@ -42,33 +43,10 @@ public class StraightFlushTests
             deck.QueenOfSpades,
             deck.JackOfSpades,
             deck.TenOfSpades,
-            deck.NineOfClubs
+            deck.NineOfSpades
         };
 
-        var sut = new StraightFlush();
-
-        // act
-        var result = sut.Qualify(deck, playerCards);
-
-        // assert
-        result.Qualifies.Should().BeFalse();
-    }
-
-    [Fact]
-    public void Qualify_False_When_Flush_But_No_Straight_Exists()
-    {
-        // arrange
-        Classic.Deck deck = new();
-
-        List<ICard> playerCards = new() {
-            deck.KingOfSpades,
-            deck.QueenOfSpades,
-            deck.JackOfSpades,
-            deck.TenOfSpades,
-            deck.EightOfSpades
-        };
-
-        var sut = new StraightFlush();
+        var sut = new RoyalFlush();
 
         // act
         var result = sut.Qualify(deck, playerCards);

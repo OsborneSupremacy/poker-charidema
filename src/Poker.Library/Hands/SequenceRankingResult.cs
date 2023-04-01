@@ -8,7 +8,7 @@ public abstract class SequenceRankingResult
 
     public abstract uint Value { get; }
 
-    public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public virtual IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
     {
         for (uint r = deck.CardRankValues.Max(); r >= 5; r--)
         {
