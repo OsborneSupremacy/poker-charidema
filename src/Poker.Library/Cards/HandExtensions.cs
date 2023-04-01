@@ -43,4 +43,21 @@ public static class HandExtensions
             .Except(handCards)
             .Except(kickers)
             .ToList();
+
+    public static IEnumerable<ICard> OrderByRankDescending(this IEnumerable<ICard> cards)
+    {
+        return cards.OrderByDescending(card =>
+        {
+            if (card is IStandardCard standardCard)
+            {
+                return standardCard.Rank.Value;
+            }
+            else
+            {
+                return uint.MinValue;
+            }
+        });
+    }
+
+    // TODO: Create ToList Extensions (RankFirst, SuitFirst) -- include count
 }

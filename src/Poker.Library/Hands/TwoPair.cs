@@ -2,7 +2,7 @@
 
 namespace Poker.Library.Hands;
 
-public class TwoPair : IHandRanking
+public class TwoPair : IHandRanking, IPossibleHandRanking
 {
     public string Name => "Two Pair";
 
@@ -10,12 +10,12 @@ public class TwoPair : IHandRanking
 
     public int RequiredMatches => 2;
 
-    public IPartialHandRankingResult QualifyPartial(IDeck deck, List<ICard> playerCards)
+    public IPossibleHandrankingResult QualifyPossible(IDeck deck, List<ICard> playerCards)
     {
         var (qualifies, firstPair, secondPair) = GetQualifyingRank(deck, playerCards);
 
         if (!qualifies)
-            return new PartialHandRankingResult
+            return new PossibleRankHandingResult
             {
                 Qualifies = false,
                 HandCards = new(),
@@ -24,7 +24,7 @@ public class TwoPair : IHandRanking
 
         var handCards = firstPair.Union(secondPair).ToList();
 
-        return new PartialHandRankingResult
+        return new PossibleRankHandingResult
         {
             Qualifies = true,
             HandCards = firstPair.Union(secondPair).ToList(),
@@ -62,13 +62,13 @@ public class TwoPair : IHandRanking
 
     private (bool qualifies, List<ICard> firstPair, List<ICard> secondPair) GetQualifyingRank(IDeck deck, List<ICard> playerCards)
     {
-        var firstPairResult = new Pair().QualifyPartial(deck, playerCards);
+        var firstPairResult = new Pair().QualifyPossible(deck, playerCards);
 
         if (!firstPairResult.Qualifies)
             return (false, new(), new());
 
         var remainingCards = firstPairResult.NonHandCards;
-        var secondPairResult = new Pair().QualifyPartial(deck, remainingCards);
+        var secondPairResult = new Pair().QualifyPossible(deck, remainingCards);
 
         if (!secondPairResult.Qualifies)
             return (false, new(), new());

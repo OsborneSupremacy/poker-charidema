@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Hands;
 
-public record PartialHandRankingResult : IPartialHandRankingResult
+public record PossibleRankHandingResult : IPossibleHandrankingResult
 {
     public required bool Qualifies { get; init; }
 

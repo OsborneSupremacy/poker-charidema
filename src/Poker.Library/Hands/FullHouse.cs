@@ -10,7 +10,7 @@ public class FullHouse : IHandRanking
 
     public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
     {
-        var threeOfAKind = new ThreeOfAKind().QualifyPartial(deck, playerCards);
+        var threeOfAKind = new ThreeOfAKind().QualifyPossible(deck, playerCards);
 
         if (!threeOfAKind.Qualifies)
             return new HandRankingResult
@@ -23,7 +23,7 @@ public class FullHouse : IHandRanking
 
         var remainingCards = threeOfAKind.NonHandCards;
 
-        var pair = new Pair().QualifyPartial(deck, remainingCards);
+        var pair = new Pair().QualifyPossible(deck, remainingCards);
 
         if (!pair.Qualifies)
             return new HandRankingResult
@@ -48,6 +48,4 @@ public class FullHouse : IHandRanking
             DeadCards = playerCards.GetDeadCards(handCards, kickers)
         };
     }
-
-    public IPartialHandRankingResult QualifyPartial(IDeck deck, List<ICard> playerCards) => throw new NotImplementedException();
 }

@@ -10,11 +10,11 @@ public abstract class MatchingRankHandRankingResult
 
     public abstract int RequiredMatches { get; }
 
-    public IPartialHandRankingResult QualifyPartial(IDeck deck, List<ICard> playerCards)
+    public IPossibleHandrankingResult QualifyPossible(IDeck deck, List<ICard> playerCards)
     {
         var (qualifies, qualifyingRank) = GetQualifyingRank(deck, playerCards);
 
-        if (!qualifies) return new PartialHandRankingResult()
+        if (!qualifies) return new PossibleRankHandingResult()
         {
             Qualifies = false,
             HandCards = new(),
@@ -23,7 +23,7 @@ public abstract class MatchingRankHandRankingResult
 
         var handCards = playerCards.GetMatchingRankOrWild(qualifyingRank);
 
-        return new PartialHandRankingResult()
+        return new PossibleRankHandingResult()
         {
             Qualifies = true,
             HandCards = handCards,

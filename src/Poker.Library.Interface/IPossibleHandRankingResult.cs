@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Interface;
 
-public interface IPartialHandRankingResult
+public interface IPossibleHandrankingResult
 {
     bool Qualifies { get; }
 

@@ -3,52 +3,46 @@
 namespace Poker.Library.Tests.Hands;
 
 [ExcludeFromCodeCoverage]
-public class FourOfAKindTests
+public class FlushTests
 {
     [Fact]
-    public void Qualify_Returns_True_When_Hand_Contains_Four_Of_A_Kind()
+    public void Qualify_Returns_True_When_Hand_Contains_Flush()
     {
         // arrange
         Classic.Deck deck = new();
 
         List<ICard> playerCards = new() {
             deck.AceOfHearts,
-            deck.AceOfDiamonds,
-            deck.AceOfClubs,
-            deck.AceOfSpades,
-            deck.NineOfHearts
+            deck.TenOfHearts,
+            deck.FiveOfHearts,
+            deck.ThreeOfHearts,
+            deck.TwoOfHearts
         };
 
-        var sut = new FourOfAKind();
+        var sut = new Flush();
 
         // act
         var result = sut.Qualify(deck, playerCards);
 
         // assert
         result.Qualifies.Should().BeTrue();
-        result.HandCards.Should().BeEquivalentTo(new List<ICard>()
-        {
-            deck.AceOfHearts,
-            deck.AceOfDiamonds,
-            deck.AceOfClubs,
-            deck.AceOfSpades
-        });
-        result.Kickers.Should().BeEquivalentTo(new List<ICard>() { deck.NineOfHearts });
+        result.HandCards.Should().BeEquivalentTo(playerCards);
+        result.Kickers.Should().BeEmpty();
         result.DeadCards.Should().BeEmpty();
     }
 
     [Fact]
-    public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Four_Of_A_Kind()
+    public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Flushd()
     {
         // arrange
         Classic.Deck deck = new();
 
         List<ICard> playerCards = new() {
             deck.AceOfHearts,
-            deck.AceOfDiamonds,
-            deck.AceOfClubs,
-            deck.KingOfSpades,
-            deck.NineOfHearts
+            deck.TenOfHearts,
+            deck.FiveOfHearts,
+            deck.ThreeOfHearts,
+            deck.TwoOfDiamonds
         };
 
         var sut = new FourOfAKind();
@@ -63,4 +57,3 @@ public class FourOfAKindTests
         result.DeadCards.Should().BeEmpty();
     }
 }
-

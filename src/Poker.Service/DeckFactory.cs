@@ -23,12 +23,12 @@ public class DeckFactory
             CardRankValues = standardCards
                 .Select(x => x.Rank.Value)
                 .Distinct()
-                .OrderBy(x => x)
+                .OrderByDescending(x => x)
                 .ToList(),
             CardSuitPriorities = standardCards
                 .Select(x => x.Suit.Priority)
                 .Distinct()
-                .OrderBy(x => x)
+                .OrderByDescending(x => x)
                 .ToList()
         };
     }

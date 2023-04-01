@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Hands;
 
-public class FourOfAKind : MatchingRankHandRankingResult, IHandRanking
+public class FourOfAKind : MatchingRankHandRankingResult, IHandRanking, IPossibleHandRanking
 {
     public override string Name => "Four of a Kind";
 

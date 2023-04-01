@@ -116,6 +116,8 @@ public record Deck : IDeck
 
     public List<Joker> Jokers { get; init; }
 
+    public List<uint> CardSuitPriorities { get; init; }
+
     public Deck() : this(0) { }
 
     public Deck(uint numberOfJokers)
@@ -658,6 +660,13 @@ public record Deck : IDeck
         CardRankValues = Cards
             .Where(x => x is IStandardCard)
             .Select(x => (x as IStandardCard)!.Rank.Value)
+            .Distinct()
+            .OrderByDescending(x => x)
+            .ToList();
+
+        CardSuitPriorities = Cards
+            .Where(x => x is IStandardCard)
+            .Select(x => (x as IStandardCard)!.Suit.Priority)
             .Distinct()
             .OrderByDescending(x => x)
             .ToList();

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Hands;
 
-public class Pair : MatchingRankHandRankingResult, IHandRanking
+public class Pair : MatchingRankHandRankingResult, IHandRanking, IPossibleHandRanking
 {
     public override string Name => "Pair";
 
