@@ -37,5 +37,5 @@ public class Flush : IHandRanking
             Kickers = new(),
             DeadCards = new()
         };
-    }    
+    }
 }
