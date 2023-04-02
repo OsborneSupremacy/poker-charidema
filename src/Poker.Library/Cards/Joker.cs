@@ -7,4 +7,9 @@ public record Joker : ICard
     public Guid Id => throw new NotImplementedException();
 
     bool ICard.IsWild => true;
+
+    /// <summary>
+    /// The card that the Joker is acting as
+    /// </summary>
+    public ICard? ReplacementFor { get; init; }
 }

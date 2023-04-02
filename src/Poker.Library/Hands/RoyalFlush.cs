@@ -9,12 +9,11 @@ public class RoyalFlush : StraightFlush
     public override IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
     {
         var straightFlush = base.Qualify(deck, playerCards);
-        if (!straightFlush.Qualifies) return straightFlush;
+        if (!straightFlush.Qualifies) return NoHand;
 
         var maxRank = deck.CardRankValues.Max();
 
         return
-
             straightFlush.HandCards.All
             (
                 x => x.IsWild
@@ -22,13 +21,14 @@ public class RoyalFlush : StraightFlush
             )
 
             ? straightFlush
-
-            : new HandRankingResult
-            {
-                Qualifies = false,
-                HandCards = new(),
-                Kickers = new(),
-                DeadCards = new()
-            };
+            : NoHand;
     }
+
+    private static HandRankingResult NoHand => new HandRankingResult
+    {
+        Qualifies = false,
+        HandCards = new(),
+        Kickers = new(),
+        DeadCards = new()
+    };
 }
