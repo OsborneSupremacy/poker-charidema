@@ -8,10 +8,19 @@ public class GameService : IGameService
 
     private readonly IRoundActionService _roundActionService;
 
+    public GameService(
+        IDealerService dealerService,
+        IRoundActionService roundActionService
+        )
+    {
+        _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
+        _roundActionService = roundActionService ?? throw new ArgumentNullException(nameof(roundActionService));
+    }
 
     public async Task<Game> PlayAsync(GameArgs args)
     {
-        Game game = new() {
+        Game game = new()
+        {
             Variant = args.Variant,
             Players = args.Players,
             Deck = args.Deck,
@@ -22,10 +31,11 @@ public class GameService : IGameService
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);
 
-        foreach(var action in args.Variant.RoundActions)
+        foreach (var action in args.Variant.RoundActions)
         {
             var result = await _roundActionService
-                .ExecuteAsync(new RoundActionArgs() { 
+                .ExecuteAsync(new RoundActionArgs()
+                {
                     RoundAction = action,
                     Deck = deck,
                     Players = args.Players

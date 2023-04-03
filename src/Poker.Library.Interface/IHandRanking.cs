@@ -6,5 +6,12 @@ public interface IHandRanking
 
     uint Value { get; }
 
-    IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards);
+    IHandRankingResult Qualify(IHandRankingArgs args);
+}
+
+public interface IHandRankingArgs
+{
+    IDeck Deck { get; }
+
+    List<ICard> PlayerCards { get; }
 }

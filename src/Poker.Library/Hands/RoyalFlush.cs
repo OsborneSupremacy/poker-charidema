@@ -1,15 +1,19 @@
 ﻿namespace Poker.Library.Hands;
 
-public class RoyalFlush : StraightFlush
+public class RoyalFlush : StraightFlush, IHandRanking
 {
     public override string Name => "Royal Flush";
 
     public override uint Value => 90;
 
-    public override IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public override IHandRankingResult Qualify(IHandRankingArgs args)
     {
-        var straightFlush = base.Qualify(deck, playerCards);
-        if (!straightFlush.Qualifies) return NoHand;
+        var deck = args.Deck;
+        var playerCards = args.PlayerCards;
+
+        var straightFlush = base.Qualify(args);
+        if (!straightFlush.Qualifies)
+            return new NoHand().Qualify(args);
 
         var maxRank = deck.CardRankValues.Max();
 
@@ -21,14 +25,6 @@ public class RoyalFlush : StraightFlush
             )
 
             ? straightFlush
-            : NoHand;
+            : new NoHand().Qualify(args);
     }
-
-    private static HandRankingResult NoHand => new HandRankingResult
-    {
-        Qualifies = false,
-        HandCards = new(),
-        Kickers = new(),
-        DeadCards = new()
-    };
 }

@@ -8,8 +8,11 @@ public abstract class SequenceRankingResult
 
     public abstract uint Value { get; }
 
-    public virtual IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public virtual IHandRankingResult Qualify(IHandRankingArgs args)
     {
+        var deck = args.Deck;
+        var playerCards = args.PlayerCards;
+
         for (uint r = deck.CardRankValues.Max(); r >= 5; r--)
         {
             var result = GetSequenceStartingWithRank(playerCards, r);
@@ -17,13 +20,7 @@ public abstract class SequenceRankingResult
                 return result;
         }
 
-        return new HandRankingResult
-        {
-            Qualifies = false,
-            HandCards = new(),
-            Kickers = new(),
-            DeadCards = new()
-        };
+        return new NoHand().Qualify(args);
     }
 
     protected HandRankingResult? GetSequenceStartingWithRank(List<ICard> playerCards, uint rankValue)

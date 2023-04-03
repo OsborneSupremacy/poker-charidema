@@ -5,5 +5,5 @@
 /// </summary>
 public interface IPossibleHandRanking
 {
-    IPossibleHandrankingResult QualifyPossible(IDeck deck, List<ICard> playerCards);
+    IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args);
 }

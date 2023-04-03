@@ -33,7 +33,7 @@ public class PairTests
         var sut = new Pair();
 
         // act
-        var result = sut.Qualify(deck, playerCards);
+        var result = sut.Qualify(new HandRankingArgs { Deck = deck, PlayerCards = playerCards });
 
         // assert
         result.Qualifies.Should().BeTrue();
@@ -59,7 +59,7 @@ public class PairTests
         var sut = new Pair();
 
         // act
-        var result = sut.Qualify(deck, playerCards);
+        var result = sut.Qualify(new HandRankingArgs { Deck = deck, PlayerCards = playerCards });
 
         // assert
         result.Qualifies.Should().BeFalse();

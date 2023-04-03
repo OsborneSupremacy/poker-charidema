@@ -8,9 +8,12 @@ public class Flush : IHandRanking
 
     public uint Value => 60;
 
-    public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public IHandRankingResult Qualify(IHandRankingArgs args)
     {
-        foreach(var p in deck.CardSuitPriorities)
+        var deck = args.Deck;
+        var playerCards = args.PlayerCards;
+
+        foreach (var p in deck.CardSuitPriorities)
         {
             if (playerCards.Where(c => c.MatchesSuitOrIsWild(p)).Count() < 5) continue;
 
@@ -30,12 +33,6 @@ public class Flush : IHandRanking
             };
         }
 
-        return new HandRankingResult
-        {
-            Qualifies = false,
-            HandCards = new(),
-            Kickers = new(),
-            DeadCards = new()
-        };
+        return new NoHand().Qualify(args);
     }
 }

@@ -15,7 +15,7 @@ public record Match
     public required Player Button { get; init; }
 }
 
-public class  MatchValidator : AbstractValidator<Match>
+public class MatchValidator : AbstractValidator<Match>
 {
     public MatchValidator()
     {

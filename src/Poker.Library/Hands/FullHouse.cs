@@ -8,31 +8,27 @@ public class FullHouse : IHandRanking
 
     public uint Value => 70;
 
-    public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public IHandRankingResult Qualify(IHandRankingArgs args)
     {
-        var threeOfAKind = new ThreeOfAKind().QualifyPossible(deck, playerCards);
+        var playerCards = args.PlayerCards;
+
+        var threeOfAKind = new ThreeOfAKind().QualifyPossible(args);
 
         if (!threeOfAKind.Qualifies)
-            return new HandRankingResult
-            {
-                Qualifies = false,
-                HandCards = new(),
-                Kickers = new(),
-                DeadCards = new()
-            };
+            return new NoHand().Qualify(args);
 
         var remainingCards = threeOfAKind.NonHandCards;
 
-        var pair = new Pair().QualifyPossible(deck, remainingCards);
+        var pair = new Pair().QualifyPossible(
+            new HandRankingArgs
+            {
+                Deck = args.Deck,
+                PlayerCards = remainingCards
+            }
+        );
 
         if (!pair.Qualifies)
-            return new HandRankingResult
-            {
-                Qualifies = false,
-                HandCards = new(),
-                Kickers = new(),
-                DeadCards = new()
-            };
+            return new NoHand().Qualify(args);
 
         var handCards = threeOfAKind.HandCards
             .Union(pair.HandCards)

@@ -19,10 +19,10 @@ public class ThreeOfAKindTests
             deck.NineOfHearts
         };
 
-       var sut = new ThreeOfAKind();
+        var sut = new ThreeOfAKind();
 
         // act
-        var result = sut.Qualify(deck, playerCards);
+        var result = sut.Qualify(new HandRankingArgs { Deck = deck, PlayerCards = playerCards });
 
         // assert
         result.Qualifies.Should().BeTrue();
@@ -53,7 +53,7 @@ public class ThreeOfAKindTests
         var sut = new ThreeOfAKind();
 
         // act
-        var result = sut.Qualify(deck, playerCards);
+        var result = sut.Qualify(new HandRankingArgs { Deck = deck, PlayerCards = playerCards });
 
         // assert
         result.Qualifies.Should().BeFalse();

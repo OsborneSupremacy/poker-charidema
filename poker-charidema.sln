@@ -21,7 +21,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility", "src\Poker.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility.Tests", "src\Poker.Utility.Tests\Poker.Utility.Tests.csproj", "{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Library.Tests", "src\Poker.Library.Tests\Poker.Library.Tests.csproj", "{1C8F89EB-40E2-47F8-A629-3CB8A8044498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Library.Tests", "src\Poker.Library.Tests\Poker.Library.Tests.csproj", "{1C8F89EB-40E2-47F8-A629-3CB8A8044498}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal", "src\Poker.Terminal\Poker.Terminal.csproj", "{CE4FF02E-F83C-49AE-9574-99C6024A52D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal.Service", "src\Poker.Terminal.Service\Poker.Terminal.Service.csproj", "{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3B53AA8-BDF6-444E-B5E3-FA1AFB0223AC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +78,14 @@ Global
 		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

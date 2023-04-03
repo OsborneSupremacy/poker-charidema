@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class MatchService
+public class MatchService : IMatchService
 {
     private readonly IMatchPreferencesService _matchPreferencesService;
 
@@ -29,10 +29,10 @@ public class MatchService
     private async Task PlayIndefinitely(Match match)
     {
         var keepPlaying = true;
-        while(keepPlaying)
+        while (keepPlaying)
         {
             match = await PlayGameAsync(match);
-            keepPlaying  = await _matchPreferencesService.GetKeepPlaying();
+            keepPlaying = await _matchPreferencesService.GetKeepPlaying();
         }
         return;
     }
@@ -77,7 +77,8 @@ public class MatchService
     protected Task<MatchResult> EvaluateResult(Match matchIn)
     {
         return Task.FromResult(
-            new MatchResult() {
+            new MatchResult()
+            {
                 Match = matchIn,
                 Winners = new()
             }

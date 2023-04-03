@@ -10,8 +10,11 @@ public abstract class MatchingRankHandRankingResult
 
     public abstract int RequiredMatches { get; }
 
-    public IPossibleHandrankingResult QualifyPossible(IDeck deck, List<ICard> playerCards)
+    public IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args)
     {
+        var deck = args.Deck;
+        var playerCards = args.PlayerCards;
+
         var (qualifies, qualifyingRank) = GetQualifyingRank(deck, playerCards);
 
         if (!qualifies) return new PossibleRankHandingResult()
@@ -31,17 +34,14 @@ public abstract class MatchingRankHandRankingResult
         };
     }
 
-    public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public IHandRankingResult Qualify(IHandRankingArgs args)
     {
+        var deck = args.Deck;
+        var playerCards = args.PlayerCards;
+
         var (qualifies, qualifyingRank) = GetQualifyingRank(deck, playerCards);
 
-        if (!qualifies) return new HandRankingResult
-        {
-            Qualifies = false,
-            HandCards = new(),
-            Kickers = new(),
-            DeadCards = new()
-        };
+        if (!qualifies) return new NoHand().Qualify(args);
 
         var handCards = playerCards.GetMatchingRankOrWild(qualifyingRank);
         var kickers = playerCards.GetKickers(handCards, 5);

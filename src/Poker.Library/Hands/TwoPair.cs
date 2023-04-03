@@ -10,9 +10,9 @@ public class TwoPair : IHandRanking, IPossibleHandRanking
 
     public int RequiredMatches => 2;
 
-    public IPossibleHandrankingResult QualifyPossible(IDeck deck, List<ICard> playerCards)
+    public IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args)
     {
-        var (qualifies, firstPair, secondPair) = GetQualifyingRank(deck, playerCards);
+        var (qualifies, firstPair, secondPair) = GetQualifyingRank(args);
 
         if (!qualifies)
             return new PossibleRankHandingResult
@@ -28,13 +28,15 @@ public class TwoPair : IHandRanking, IPossibleHandRanking
         {
             Qualifies = true,
             HandCards = firstPair.Union(secondPair).ToList(),
-            NonHandCards = playerCards.Except(handCards).ToList()
+            NonHandCards = args.PlayerCards.Except(handCards).ToList()
         };
     }
 
-    public IHandRankingResult Qualify(IDeck deck, List<ICard> playerCards)
+    public IHandRankingResult Qualify(IHandRankingArgs args)
     {
-        var (qualifies, firstPair, secondPair) = GetQualifyingRank(deck, playerCards);
+        var playerCards = args.PlayerCards;
+
+        var (qualifies, firstPair, secondPair) = GetQualifyingRank(args);
 
         if (!qualifies)
             return new HandRankingResult
@@ -60,15 +62,17 @@ public class TwoPair : IHandRanking, IPossibleHandRanking
         };
     }
 
-    private (bool qualifies, List<ICard> firstPair, List<ICard> secondPair) GetQualifyingRank(IDeck deck, List<ICard> playerCards)
+    private (bool qualifies, List<ICard> firstPair, List<ICard> secondPair) GetQualifyingRank(IHandRankingArgs args)
     {
-        var firstPairResult = new Pair().QualifyPossible(deck, playerCards);
+        var firstPairResult = new Pair().QualifyPossible(args);
 
         if (!firstPairResult.Qualifies)
             return (false, new(), new());
 
         var remainingCards = firstPairResult.NonHandCards;
-        var secondPairResult = new Pair().QualifyPossible(deck, remainingCards);
+        var secondPairResult = new Pair().QualifyPossible(
+            new HandRankingArgs { Deck = args.Deck, PlayerCards = remainingCards }
+        );
 
         if (!secondPairResult.Qualifies)
             return (false, new(), new());

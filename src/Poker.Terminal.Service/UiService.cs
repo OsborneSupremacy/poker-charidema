@@ -1,6 +1,10 @@
-﻿namespace Poker.Service;
+﻿using Poker.Interface;
+using Poker.Library;
+using Poker.Library.Interface;
 
-public class ConsolePreferencesService : IMatchPreferencesService, IGamePreferencesService
+namespace Poker.Terminal.Service;
+
+public class UiService : IGamePreferencesService, IMatchPreferencesService
 {
     public Task<double> GetAnte(Player button) => throw new NotImplementedException();
 

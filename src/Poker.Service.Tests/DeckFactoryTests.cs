@@ -1,4 +1,4 @@
-using Poker.Library.Cards;
+﻿using Poker.Library.Cards;
 
 namespace Poker.Service.Tests;
 
@@ -20,10 +20,10 @@ public class DeckFactoryTests
         DeckFactoryArgs inputs = new(spotCardRanks, faceCardRanks, suit);
 
         DeckFactory sut = new();
-        
+
         // act
         var result = sut.Create(inputs);
-        
+
         // assert
         result.Cards.Count().Should().Be(2);
     }
