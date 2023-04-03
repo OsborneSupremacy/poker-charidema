@@ -19,15 +19,25 @@ public class HandRankingService
         yield return new HighCard();
     }
 
-    public IHandRankingResult GetBest(IHandRankingArgs args)
+    public IBestHandRankingResult GetBest(IHandRankingArgs args)
     {
         foreach(var handRanking in _getHandRankings())
         {
             var result = handRanking.Qualify(args);
             if (result.Qualifies)
-                return result;
+                return new BestHandRankingResult
+                {
+                    HandRanking = handRanking,
+                    HandRankingResult = result
+                };
         }
 
-        return new NoHand().Qualify(args);
+        NoHand noHand = new();
+
+        return new BestHandRankingResult
+        {
+            HandRanking = noHand,
+            HandRankingResult = noHand.Qualify(args)
+        };
     }
 }
