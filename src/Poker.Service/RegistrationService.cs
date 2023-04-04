@@ -17,6 +17,8 @@ public static class RegistrationService
         serviceCollection.AddScoped<IGameService, GameService>();
         serviceCollection.AddScoped<IMatchService, MatchService>();
 
+        serviceCollection.AddScoped<PlayerFactory>();
+
         return serviceCollection;
     }
 }

@@ -1,14 +1,17 @@
 ﻿using Poker.Interface;
 using Poker.Library;
 using Poker.Library.Interface;
+using Poker.Service;
 
 namespace Poker.Terminal.Service;
 
 public class UiService : IGamePreferencesService, IMatchPreferencesService
 {
-    public UiService()
+    private readonly PlayerFactory _playerFactory;
+
+    public UiService(PlayerFactory playerFactory)
     {
-        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
     }
 
     public Task<double> GetAnte(Player button)
@@ -21,11 +24,55 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         throw new NotImplementedException();
     }
 
-    public Task<MatchArgs> GetMatchArgs()
+    public async Task<MatchArgs> GetMatchArgs()
     {
         Console.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
+        Console.WriteLine(new string('*', 50));
+        Console.WriteLine();
+
+        var userName = PromptForString("What should we call you?", 1);
+        Console.WriteLine();
+
+        Console.WriteLine($"Nice to meet you, {userName}!");
+        Console.WriteLine();
+
+        var playerCount = PromptForInt("How many other players would you like to be part of this match?", 1, 10);
+        Console.WriteLine();
+
+        var startingStack = PromptForMoney("How much money should players start with?", 10, 1000000);
+        Console.WriteLine();
+
+        List<Player> players = new();
+
+        var user = new Player
+        {
+            Id = Guid.NewGuid(),
+            Name = userName,
+            Stack = startingStack,
+            BeginningStack = startingStack
+        };
+
+        players.Add(user);
+
+        for (int p = 0; p < playerCount; p++)
+            players.Add(
+                await _playerFactory
+                    .CreateAsync(
+                        new PlayerCreateArgs
+                        {
+                            BeginningStack = startingStack,
+                            Id = Guid.NewGuid()
+                        }
+                    )
+            );
+
+        Console.WriteLine($"The other players are:");
+        foreach (var player in players)
+            Console.WriteLine($"* {player.Name}");
+
         Console.ReadKey();
-        return Task.FromResult(new MatchArgs { 
+
+        return new MatchArgs { 
             InitialButton = new Player {
                 Id = Guid.NewGuid(),
                 Name = "Ben",
@@ -35,7 +82,7 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
             FixedNumberOfGames = null,
             FixedDeck = new Library.Classic.Deck(),
             FixedVariant = null
-        });
+        };
     }
 
     public Task<bool> GetPlayAgain()
@@ -46,5 +93,39 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
     public Task<IVariant> GetVariant(Player button)
     {
         throw new NotImplementedException();
+    }
+
+
+    private string PromptForString(string prompt, uint minLength)
+    {
+        var result = string.Empty;
+        while ((result?.Length ?? 0) < minLength)
+        {
+            Console.Write($"{prompt}: ");
+            result = Console.ReadLine()?.Trim() ?? string.Empty;
+        }
+        return result!;
+    }
+
+    private uint PromptForInt(string prompt, uint minVal, uint maxVal)
+    {
+        var result = minVal - 1;
+        while(result < minVal || result > maxVal)
+        {
+            Console.Write($"{prompt} {minVal}-{maxVal}: ");
+            _ = uint.TryParse(Console.ReadLine(), out result);
+        }
+        return result;
+    }
+
+    private uint PromptForMoney(string prompt, uint minVal, uint maxVal)
+    {
+        var result = minVal - 1;
+        while (result < minVal || result > maxVal)
+        {
+            Console.Write($"{prompt} {minVal:C} - {maxVal:C}: ");
+            _ = uint.TryParse(Console.ReadLine(), out result);
+        }
+        return result;
     }
 }

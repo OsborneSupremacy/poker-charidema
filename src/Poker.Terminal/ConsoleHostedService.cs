@@ -20,6 +20,10 @@ public class ConsoleHostedService : IHostedService
         _matchService = matchService ?? throw new ArgumentNullException(nameof(matchService));
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _applicationLifetime = applicationLifetime ?? throw new ArgumentNullException(nameof(applicationLifetime));
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        Console.Clear();
     }
 
     public Task StartAsync(CancellationToken cancellationToken)

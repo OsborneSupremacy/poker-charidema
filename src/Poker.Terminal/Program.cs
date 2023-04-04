@@ -11,13 +11,11 @@ var builder = new ConfigurationBuilder()
 
 var configuration = builder.Build();
 
-var uiService = new UiService();
-
 await Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
-        services.AddSingleton<IGamePreferencesService>(uiService);
-        services.AddSingleton<IMatchPreferencesService>(uiService);
+        services.AddSingleton<IGamePreferencesService, UiService>();
+        services.AddSingleton<IMatchPreferencesService, UiService>();
         services.RegisterStandard();
         services.AddHostedService<ConsoleHostedService>();
     })
