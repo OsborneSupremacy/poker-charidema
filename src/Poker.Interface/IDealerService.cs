@@ -1,4 +1,4 @@
-﻿namespace Poker.Interface;
+﻿namespace Poker.Service.Interface;
 
 public interface IDealerService
 {

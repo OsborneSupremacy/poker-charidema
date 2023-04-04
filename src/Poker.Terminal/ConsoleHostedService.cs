@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Poker.Interface;
+using Poker.Service.Interface;
 
 namespace Poker.Terminal;
 

@@ -1,4 +1,4 @@
-﻿using Poker.Interface;
+﻿using Poker.Service.Interface;
 using Poker.Library;
 using Poker.Library.Interface;
 using Poker.Service;
@@ -14,12 +14,12 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
     }
 
-    public Task<double> GetAnte(Player button)
+    public Task<double> GetAnte(IPlayer button)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IDeck> GetDeck(Player button)
+    public Task<IDeck> GetDeck(IPlayer button)
     {
         throw new NotImplementedException();
     }
@@ -27,7 +27,7 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
     public async Task<MatchArgs> GetMatchArgs()
     {
         Console.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
-        Console.WriteLine(new string('*', 50));
+        Console.WriteLine(new string('*', 100));
         Console.WriteLine();
 
         var userName = PromptForString("What should we call you?", 1);
@@ -42,14 +42,15 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         var startingStack = PromptForMoney("How much money should players start with?", 10, 1000000);
         Console.WriteLine();
 
-        List<Player> players = new();
+        List<IPlayer> players = new();
 
         var user = new Player
         {
             Id = Guid.NewGuid(),
             Name = userName,
             Stack = startingStack,
-            BeginningStack = startingStack
+            BeginningStack = startingStack,
+            Automaton = false
         };
 
         players.Add(user);
@@ -61,24 +62,20 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
                         new PlayerCreateArgs
                         {
                             BeginningStack = startingStack,
-                            Id = Guid.NewGuid()
+                            Id = Guid.NewGuid(),
+                            Automaton = true
                         }
                     )
             );
 
         Console.WriteLine($"The other players are:");
-        foreach (var player in players)
+        foreach (var player in players.Where(x => x.Id != user.Id))
             Console.WriteLine($"* {player.Name}");
 
         Console.ReadKey();
 
         return new MatchArgs { 
-            InitialButton = new Player {
-                Id = Guid.NewGuid(),
-                Name = "Ben",
-                BeginningStack = 100,
-                Stack = 100
-            },
+            InitialButton = user,
             FixedNumberOfGames = null,
             FixedDeck = new Library.Classic.Deck(),
             FixedVariant = null
@@ -90,11 +87,10 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         throw new NotImplementedException();
     }
 
-    public Task<IVariant> GetVariant(Player button)
+    public Task<IVariant> GetVariant(IPlayer button)
     {
         throw new NotImplementedException();
     }
-
 
     private string PromptForString(string prompt, uint minLength)
     {

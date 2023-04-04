@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Poker.Library.Interface;
 
 namespace Poker.Utility.Tests;
 
@@ -8,11 +9,11 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnFirstPlayer_WhenCurrentPlayerIsLastInList()
     {
         // arrange
-        List<Player> players = new()
+        List<IPlayer> players = new()
         {
-            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100 },
-            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100 },
-            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100 }
+            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true },
+            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true },
+            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true }
         };
 
         var currentPlayer = players[2];
@@ -28,11 +29,11 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnNextPlayer_WhenCurrentPlayerIsNotLastInList()
     {
         // arrange
-        List<Player> players = new()
+        List<IPlayer> players = new()
         {
-            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100 },
-            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100 },
-            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100 }
+            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true },
+            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true },
+            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true }
         };
 
         var currentPlayer = players[1];

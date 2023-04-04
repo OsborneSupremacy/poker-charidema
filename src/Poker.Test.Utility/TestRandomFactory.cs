@@ -9,8 +9,7 @@ public class TestRandomFactory : IRandomFactory
         _seed = seed;
     }
 
-    public Random Create()
-    {
-        return new Random(_seed);
-    }
+    public Random Create() => new(_seed);
+
+    public int GetSeed() => _seed;
 }

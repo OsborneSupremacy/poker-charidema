@@ -1,6 +1,6 @@
 ﻿using Poker.Library.RoundActions;
 
-namespace Poker.Interface;
+namespace Poker.Service.Interface;
 
 public interface IRoundActionService
 {

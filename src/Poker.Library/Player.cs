@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library;
 
-public record Player
+public record Player : IPlayer
 {
     public required Guid Id { get; init; }
 
@@ -9,4 +9,6 @@ public record Player
     public required double BeginningStack { get; init; }
 
     public required double Stack { get; init; }
+
+    public required bool Automaton { get; set; }
 }

@@ -61,7 +61,7 @@ public class MatchService : IMatchService
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
         // pass button to next player if it's not the first game
-        Player button = matchIn.Games.Any()
+        IPlayer button = matchIn.Games.Any()
             ? matchIn.Players.NextPlayer(matchIn.Button)
             : matchIn.Button;
 

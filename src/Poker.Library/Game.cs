@@ -14,7 +14,7 @@ public record Game
 
     public required List<ICard> Discards { get; init; }
 
-    public required List<Player> Players { get; init; }
+    public required List<IPlayer> Players { get; init; }
 
     public required List<Round> Rounds { get; init; }
 }

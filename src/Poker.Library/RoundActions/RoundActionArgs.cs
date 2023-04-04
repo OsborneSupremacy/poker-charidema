@@ -7,5 +7,5 @@ public record RoundActionArgs
 
     public required IDeck Deck { get; init; }
 
-    public required List<Player> Players { get; init; }
+    public required List<IPlayer> Players { get; init; }
 }

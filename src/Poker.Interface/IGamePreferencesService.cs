@@ -1,10 +1,9 @@
-﻿namespace Poker.Interface;
-
+﻿namespace Poker.Service.Interface;
 public interface IGamePreferencesService
 {
-    Task<double> GetAnte(Player button);
+    Task<double> GetAnte(IPlayer button);
 
-    Task<IVariant> GetVariant(Player button);
+    Task<IVariant> GetVariant(IPlayer button);
 
-    Task<IDeck> GetDeck(Player button);
+    Task<IDeck> GetDeck(IPlayer button);
 }

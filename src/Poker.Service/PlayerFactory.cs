@@ -11,7 +11,7 @@ public class PlayerFactory
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<Player> CreateAsync(PlayerCreateArgs args)
+    public Task<IPlayer> CreateAsync(PlayerCreateArgs args)
     {
         Faker faker = new() 
         {
@@ -23,7 +23,8 @@ public class PlayerFactory
             Id = Guid.NewGuid(),
             BeginningStack = args.BeginningStack,
             Stack = args.BeginningStack,
-            Name = faker.Person.FirstName
-        });
+            Name = faker.Person.FirstName,
+            Automaton = args.Automaton
+        } as IPlayer);
     }
 }

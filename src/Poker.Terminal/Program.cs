@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Poker.Interface;
+using Poker.Service.Interface;
 using Poker.Service;
 using Poker.Terminal;
 using Poker.Terminal.Service;
