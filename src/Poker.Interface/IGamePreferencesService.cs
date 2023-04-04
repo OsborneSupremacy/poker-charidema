@@ -1,5 +1,4 @@
-﻿
-namespace Poker.Interface;
+﻿namespace Poker.Interface;
 
 public interface IGamePreferencesService
 {
@@ -7,5 +6,5 @@ public interface IGamePreferencesService
 
     Task<IVariant> GetVariant(Player button);
 
-    Task<Deck> GetDeck(Player button);
+    Task<IDeck> GetDeck(Player button);
 }

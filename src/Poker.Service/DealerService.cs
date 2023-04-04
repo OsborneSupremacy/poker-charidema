@@ -9,7 +9,7 @@ public class DealerService : IDealerService
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<Deck> ShuffleAsync(Deck deck)
+    public Task<IDeck> ShuffleAsync(IDeck deck)
     {
         var random = _randomFactory.Create();
 

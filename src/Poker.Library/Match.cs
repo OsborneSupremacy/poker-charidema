@@ -6,7 +6,7 @@ public record Match
 
     public IVariant? FixedVariant { get; init; }
 
-    public Deck? FixedDeck { get; init; }
+    public IDeck? FixedDeck { get; init; }
 
     public required List<Player> Players { get; init; }
 

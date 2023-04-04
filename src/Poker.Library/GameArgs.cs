@@ -6,7 +6,7 @@ public record GameArgs
 
     public required IVariant Variant { get; init; }
 
-    public required Deck Deck { get; init; }
+    public required IDeck Deck { get; init; }
 
     public required Player Button { get; init; }
 }

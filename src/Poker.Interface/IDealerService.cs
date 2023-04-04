@@ -1,7 +1,6 @@
-﻿
-namespace Poker.Interface;
+﻿namespace Poker.Interface;
 
 public interface IDealerService
 {
-    Task<Deck> ShuffleAsync(Deck deck);
+    Task<IDeck> ShuffleAsync(IDeck deck);
 }

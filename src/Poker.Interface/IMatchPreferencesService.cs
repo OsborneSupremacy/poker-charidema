@@ -2,11 +2,7 @@
 
 public interface IMatchPreferencesService
 {
-    Task<Player> GetInitialButton(List<Player> players);
+    Task<MatchArgs> GetMatchArgs();
 
-    Task<bool> GetKeepPlaying();
-
-    Task<Deck?> GetFixedDeck(Player button);
-
-    Task<IVariant?> GetFixedVariant(Player button);
+    Task<bool> GetPlayAgain();
 }

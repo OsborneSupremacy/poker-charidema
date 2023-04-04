@@ -6,17 +6,45 @@ namespace Poker.Terminal.Service;
 
 public class UiService : IGamePreferencesService, IMatchPreferencesService
 {
-    public Task<double> GetAnte(Player button) => throw new NotImplementedException();
+    public UiService()
+    {
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+    }
 
-    public Task<Deck> GetDeck(Player button) => throw new NotImplementedException();
+    public Task<double> GetAnte(Player button)
+    {
+        throw new NotImplementedException();
+    }
 
-    public Task<Deck?> GetFixedDeck(Player button) => throw new NotImplementedException();
+    public Task<IDeck> GetDeck(Player button)
+    {
+        throw new NotImplementedException();
+    }
 
-    public Task<IVariant?> GetFixedVariant(Player button) => throw new NotImplementedException();
+    public Task<MatchArgs> GetMatchArgs()
+    {
+        Console.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
+        Console.ReadKey();
+        return Task.FromResult(new MatchArgs { 
+            InitialButton = new Player {
+                Id = Guid.NewGuid(),
+                Name = "Ben",
+                BeginningStack = 100,
+                Stack = 100
+            },
+            FixedNumberOfGames = null,
+            FixedDeck = new Library.Classic.Deck(),
+            FixedVariant = null
+        });
+    }
 
-    public Task<Player> GetInitialButton(List<Player> players) => throw new NotImplementedException();
+    public Task<bool> GetPlayAgain()
+    {
+        throw new NotImplementedException();
+    }
 
-    public Task<bool> GetKeepPlaying() => throw new NotImplementedException();
-
-    public Task<IVariant> GetVariant(Player button) => throw new NotImplementedException();
+    public Task<IVariant> GetVariant(Player button)
+    {
+        throw new NotImplementedException();
+    }
 }

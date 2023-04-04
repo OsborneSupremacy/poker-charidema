@@ -1,12 +1,24 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Poker.Interface;
+using Poker.Service;
+using Poker.Terminal;
+using Poker.Terminal.Service;
 
-Console.WriteLine("Hello, World!");
+var builder = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json");
 
+var configuration = builder.Build();
 
+var uiService = new UiService();
 
-
-
-
-
-Console.WriteLine("Press any key to exit");
-Console.ReadKey();
+await Host.CreateDefaultBuilder(args)
+    .ConfigureServices((hostContext, services) =>
+    {
+        services.AddSingleton<IGamePreferencesService>(uiService);
+        services.AddSingleton<IMatchPreferencesService>(uiService);
+        services.RegisterStandard();
+        services.AddHostedService<ConsoleHostedService>();
+    })
+    .RunConsoleAsync();

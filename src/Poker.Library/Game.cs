@@ -8,7 +8,7 @@ public record Game
 
     public double Pot { get; init; }
 
-    public required Deck Deck { get; init; }
+    public required IDeck Deck { get; init; }
 
     public required List<ICard> CommunityCards { get; init; }
 

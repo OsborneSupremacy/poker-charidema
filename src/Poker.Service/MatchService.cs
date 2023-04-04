@@ -19,27 +19,37 @@ public class MatchService : IMatchService
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
     }
 
-    private async Task PlayFixedNumberOfGames(Match match)
+    private async Task<Match> PlayFixedNumberOfGames(Match match)
     {
         while (match.Games.Count < match.FixedNumberOfGames)
             match = await PlayGameAsync(match);
-        return;
+        return match;
     }
 
-    private async Task PlayIndefinitely(Match match)
+    private async Task<Match> PlayIndefinitely(Match match)
     {
         var keepPlaying = true;
         while (keepPlaying)
         {
             match = await PlayGameAsync(match);
-            keepPlaying = await _matchPreferencesService.GetKeepPlaying();
+            keepPlaying = await _matchPreferencesService.GetPlayAgain();
         }
-        return;
+        return match;
     }
 
-    public async Task<MatchResult> PlayAsync(Match match)
+    public async Task<MatchResult> PlayAsync(MatchArgs args)
     {
-        await (match.FixedNumberOfGames.HasValue switch
+        Match match = new()
+        {
+            FixedNumberOfGames = args.FixedNumberOfGames,
+            FixedVariant = args.FixedVariant,
+            FixedDeck = args.FixedDeck,
+            Players = new(),
+            Games = new(),
+            Button = args.InitialButton
+        };
+
+        await (args.FixedNumberOfGames.HasValue switch
         {
             true => PlayFixedNumberOfGames(match),
             _ => PlayIndefinitely(match)
@@ -74,14 +84,14 @@ public class MatchService : IMatchService
         return matchOut;
     }
 
-    protected Task<MatchResult> EvaluateResult(Match matchIn)
+    protected async Task<MatchResult> EvaluateResult(Match matchIn)
     {
-        return Task.FromResult(
+        return
             new MatchResult()
             {
                 Match = matchIn,
-                Winners = new()
-            }
-        );
+                Winners = new(),
+                PlayAgain = await _matchPreferencesService.GetPlayAgain()
+            };
     }
 }
