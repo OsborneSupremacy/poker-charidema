@@ -2,6 +2,8 @@
 using Poker.Library;
 using Poker.Library.Interface;
 using Poker.Service;
+using Bogus;
+using Poker.Library.Variants;
 
 namespace Poker.Terminal.Service;
 
@@ -9,9 +11,12 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 {
     private readonly PlayerFactory _playerFactory;
 
-    public UiService(PlayerFactory playerFactory)
+    private readonly IRandomFactory _randomFactory;
+
+    public UiService(PlayerFactory playerFactory, IRandomFactory randomFactory)
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
+        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
     public Task<double> GetAnte(IPlayer button)
@@ -72,13 +77,30 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         foreach (var player in players.Where(x => x.Id != user.Id))
             Console.WriteLine($"* {player.Name}");
 
+        Console.WriteLine();
+
+        uint? fixedNumberOfGames = PromptForOption("How do you want to play",
+            new() {
+                { 1, "Play indefinitely" },
+                { 2, "Play fixed number of rounds" },
+            }
+        ) switch
+        {
+            2 => (uint)PromptForInt("How many games?", 1, 100),
+            _ => null
+        };
+
         Console.ReadKey();
 
-        return new MatchArgs { 
-            InitialButton = user,
-            FixedNumberOfGames = null,
+        return new MatchArgs {
+
+            InitialButton = new Faker() {
+                Random = new Randomizer(_randomFactory.GetSeed())
+            }.PickRandom(players),
+
+            FixedNumberOfGames = fixedNumberOfGames,
             FixedDeck = new Library.Classic.Deck(),
-            FixedVariant = null
+            FixedVariant = new FiveCardDraw()
         };
     }
 
@@ -103,24 +125,38 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         return result!;
     }
 
-    private uint PromptForInt(string prompt, uint minVal, uint maxVal)
+    private int PromptForInt(string prompt, int minVal, int maxVal)
     {
         var result = minVal - 1;
         while(result < minVal || result > maxVal)
         {
             Console.Write($"{prompt} {minVal}-{maxVal}: ");
-            _ = uint.TryParse(Console.ReadLine(), out result);
+            _ = int.TryParse(Console.ReadLine(), out result);
         }
         return result;
     }
 
-    private uint PromptForMoney(string prompt, uint minVal, uint maxVal)
+    private int PromptForMoney(string prompt, int minVal, int maxVal)
     {
         var result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
             Console.Write($"{prompt} {minVal:C} - {maxVal:C}: ");
-            _ = uint.TryParse(Console.ReadLine(), out result);
+            _ = int.TryParse(Console.ReadLine(), out result);
+        }
+        return result;
+    }
+
+    private int PromptForOption(string prompt, Dictionary<int, string> options)
+    {
+        int result = -1;
+        while(!options.Keys.Contains(result))
+        {
+            Console.WriteLine($"{prompt}?");
+            foreach(var option in options)
+                Console.WriteLine($"[{option.Key}] {option.Value}");
+            _ = int.TryParse(Console.ReadKey().KeyChar.ToString(), out result);
+            Console.WriteLine();
         }
         return result;
     }
