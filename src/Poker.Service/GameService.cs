@@ -1,4 +1,5 @@
-﻿using Poker.Library.RoundActions;
+﻿using System.Text;
+using Poker.Library.RoundActions;
 
 namespace Poker.Service;
 
@@ -15,6 +16,17 @@ public class GameService : IGameService
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _roundActionService = roundActionService ?? throw new ArgumentNullException(nameof(roundActionService));
+    }
+
+    protected Task WriteGameInfoAsync(Game game)
+    {
+        StringBuilder s = new();
+        s.AppendLine("New game starting!");
+        s.AppendLine();
+        s.AppendLine($"The game type is ");
+
+
+        return Task.CompletedTask;
     }
 
     public async Task<Game> PlayAsync(GameArgs args)

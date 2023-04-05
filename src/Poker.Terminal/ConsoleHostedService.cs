@@ -30,6 +30,7 @@ public class ConsoleHostedService : IHostedService
         _applicationLifetime.ApplicationStarted.Register(async () => {
             while (true)
             {
+                Console.Clear();
                 var matchArgs = await _matchPreferencesService.GetMatchArgs();
                 var matchResult = await _matchService.PlayAsync(matchArgs);
                 if (!matchResult.PlayAgain)

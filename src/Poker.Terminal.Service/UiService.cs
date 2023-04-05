@@ -1,9 +1,4 @@
-﻿using Poker.Service.Interface;
-using Poker.Library;
-using Poker.Library.Interface;
-using Poker.Service;
-using Bogus;
-using Poker.Library.Variants;
+﻿using Bogus;
 
 namespace Poker.Terminal.Service;
 
@@ -73,10 +68,6 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
                     )
             );
 
-        Console.WriteLine($"The other players are:");
-        foreach (var player in players.Where(x => x.Id != user.Id))
-            Console.WriteLine($"* {player.Name}");
-
         Console.WriteLine();
 
         var fixedNumberOfGames = PromptForOption<uint?>
@@ -106,8 +97,6 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
         Console.WriteLine();
 
-        Console.ReadKey();
-
         return new MatchArgs {
 
             Players = players,
@@ -123,10 +112,8 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         };
     }
 
-    public Task<bool> GetPlayAgain()
-    {
-        throw new NotImplementedException();
-    }
+    public Task<bool> GetPlayAgain() =>
+        Task.FromResult(PromptForBool("Play Again?"));
 
     public Task<IVariant> GetVariant(IPlayer button)
     {
@@ -186,6 +173,32 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
         return selectedOption;
     }
+
+    private bool PromptForBool(string prompt)
+    {
+        bool? result = null;
+        while(!result.HasValue)
+        {
+            Console.Write($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
+            result = Console.ReadKey().Key switch
+            {
+                ConsoleKey.D1 or ConsoleKey.Y => true,
+                ConsoleKey.D0 or ConsoleKey.D2 or ConsoleKey.N => false,
+                _ => null
+            };
+            Console.WriteLine();
+        }
+        return result.Value;
+    }
+
+    public void Write(string message) => Console.Write(message);
+
+    public void WriteLine(string message) => Console.WriteLine(message);
+
+    public void WriteLine() => Console.WriteLine();
+
+    public Task<bool> ConfirmStartAsync() =>
+        Task.FromResult(PromptForBool("Ready to Begin?"));
 
     protected class InputOption<T>
     {

@@ -1,5 +1,4 @@
-﻿using Poker.Library;
-using Poker.Library.Interface;
+﻿using Poker.Library.Interface;
 
 namespace Poker.Utility;
 
