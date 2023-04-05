@@ -5,5 +5,5 @@
 /// </summary>
 public interface IPossibleHandRanking
 {
-    IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args);
+    IPossibleHandRankingResult QualifyPossible(IHandRankingArgs args);
 }

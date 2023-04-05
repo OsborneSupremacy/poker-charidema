@@ -104,7 +104,6 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
                 )
             ).GetValue();
 
-
         Console.WriteLine();
 
         Console.ReadKey();

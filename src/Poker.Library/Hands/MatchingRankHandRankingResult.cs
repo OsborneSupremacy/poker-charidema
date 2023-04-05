@@ -10,7 +10,7 @@ public abstract class MatchingRankHandRankingResult
 
     public abstract int RequiredMatches { get; }
 
-    public IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args)
+    public IPossibleHandRankingResult QualifyPossible(IHandRankingArgs args)
     {
         var deck = args.Deck;
         var playerCards = args.PlayerCards;

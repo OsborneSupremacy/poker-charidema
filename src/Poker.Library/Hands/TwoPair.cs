@@ -10,7 +10,7 @@ public class TwoPair : IHandRanking, IPossibleHandRanking
 
     public int RequiredMatches => 2;
 
-    public IPossibleHandrankingResult QualifyPossible(IHandRankingArgs args)
+    public IPossibleHandRankingResult QualifyPossible(IHandRankingArgs args)
     {
         var (qualifies, firstPair, secondPair) = GetQualifyingRank(args);
 
