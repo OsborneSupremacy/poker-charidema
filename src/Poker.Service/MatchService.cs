@@ -44,7 +44,7 @@ public class MatchService : IMatchService
             FixedNumberOfGames = args.FixedNumberOfGames,
             FixedVariant = args.FixedVariant,
             FixedDeck = args.FixedDeck,
-            Players = new(),
+            Players = args.Players,
             Games = new(),
             Button = args.InitialButton
         };

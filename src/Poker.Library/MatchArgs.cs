@@ -2,7 +2,11 @@
 
 public record class MatchArgs
 {
+    public required List<IPlayer> Players { get; init; }
+
     public required IPlayer InitialButton { get; init; }
+
+    public required double? FixedAnte { get; init; }
 
     public required uint? FixedNumberOfGames { get; init; }
 

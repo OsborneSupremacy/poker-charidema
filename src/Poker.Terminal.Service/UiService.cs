@@ -79,7 +79,7 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
         Console.WriteLine();
 
-        uint? fixedNumberOfGames = PromptForOption("How do you want to play",
+        uint? fixedNumberOfGames = PromptForOption("Do you want to play indefinitely, or a fixed number of games?",
             new() {
                 { 1, "Play indefinitely" },
                 { 2, "Play fixed number of rounds" },
@@ -90,15 +90,33 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
             _ => null
         };
 
+        Console.WriteLine();
+
+        uint? fixedAnte = PromptForOption("Should the ante amount be dealer's choice, or fixed?",
+            new() {
+                { 1, "Dealer's choice ante amount" },
+                { 2, "Fixed ante amount" }
+            }
+        ) switch
+        {
+            2 => (uint)PromptForMoney("Specify fixed ante amount", 1, startingStack),
+            _ => null
+        };
+
+        Console.WriteLine();
+
         Console.ReadKey();
 
         return new MatchArgs {
+
+            Players = players,
 
             InitialButton = new Faker() {
                 Random = new Randomizer(_randomFactory.GetSeed())
             }.PickRandom(players),
 
             FixedNumberOfGames = fixedNumberOfGames,
+            FixedAnte = fixedAnte,
             FixedDeck = new Library.Classic.Deck(),
             FixedVariant = new FiveCardDraw()
         };
@@ -152,7 +170,7 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         int result = -1;
         while(!options.Keys.Contains(result))
         {
-            Console.WriteLine($"{prompt}?");
+            Console.WriteLine($"{prompt}");
             foreach(var option in options)
                 Console.WriteLine($"[{option.Key}] {option.Value}");
             _ = int.TryParse(Console.ReadKey().KeyChar.ToString(), out result);
