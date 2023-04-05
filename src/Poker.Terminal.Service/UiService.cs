@@ -79,29 +79,31 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
         Console.WriteLine();
 
-        uint? fixedNumberOfGames = PromptForOption("Do you want to play indefinitely, or a fixed number of games?",
-            new() {
-                { 1, "Play indefinitely" },
-                { 2, "Play fixed number of rounds" },
-            }
-        ) switch
-        {
-            2 => (uint)PromptForInt("How many games?", 1, 100),
-            _ => null
-        };
+        var fixedNumberOfGames = PromptForOption<uint?>
+            (
+                "Do you want to play indefinitely, or a fixed number of games?",
+                new("Play indefinitely",
+                    () => { return null; }
+                ),
+                new("Play fixed number of rounds",
+                    () => { return (uint)PromptForInt("How many games?", 1, 100); }
+                )
+            )
+            .GetValue();
 
         Console.WriteLine();
 
-        uint? fixedAnte = PromptForOption("Should the ante amount be dealer's choice, or fixed?",
-            new() {
-                { 1, "Dealer's choice ante amount" },
-                { 2, "Fixed ante amount" }
-            }
-        ) switch
-        {
-            2 => (uint)PromptForMoney("Specify fixed ante amount", 1, startingStack),
-            _ => null
-        };
+        var fixedAnte = PromptForOption<uint?>
+            (
+                "Should the ante amount be dealer's choice, or fixed?",
+                new("Dealer's choice ante amount",
+                    () => { return null; }
+                ),
+                new("Fixed ante amount",
+                    () => { return (uint)PromptForMoney("Specify fixed ante amount", 1, startingStack); }
+                )
+            ).GetValue();
+
 
         Console.WriteLine();
 
@@ -165,17 +167,37 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         return result;
     }
 
-    private int PromptForOption(string prompt, Dictionary<int, string> options)
+    private InputOption<T> PromptForOption<T>(string prompt, params InputOption<T>[] options)
     {
-        int result = -1;
-        while(!options.Keys.Contains(result))
+        InputOption<T>? selectedOption = null;
+
+        while (selectedOption is null)
         {
             Console.WriteLine($"{prompt}");
-            foreach(var option in options)
-                Console.WriteLine($"[{option.Key}] {option.Value}");
-            _ = int.TryParse(Console.ReadKey().KeyChar.ToString(), out result);
+
+            uint i = 0;
+            foreach (var option in options)
+                Console.WriteLine($"[{++i}] {option.Name}");
+
+            if(uint.TryParse(Console.ReadKey().KeyChar.ToString(), out var optionId))
+                selectedOption = options[optionId - 1];
+
             Console.WriteLine();
         }
-        return result;
+
+        return selectedOption;
+    }
+
+    protected class InputOption<T>
+    {
+        public string Name { get; set; }
+
+        public Func<T> GetValue { get; set; }
+
+        public InputOption(string name, Func<T> getValue)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            GetValue = getValue ?? throw new ArgumentNullException(nameof(getValue));
+        }
     }
 }

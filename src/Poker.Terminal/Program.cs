@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Poker.Service.Interface;
-using Poker.Service;
-using Poker.Terminal;
-using Poker.Terminal.Service;
 
 var builder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json");
