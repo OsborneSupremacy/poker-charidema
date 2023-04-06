@@ -27,7 +27,10 @@ public class FluentConsole
         return this;
     }
 
-    public string PromptForString(string prompt, uint minLength)
+    public string PromptForString(
+        string prompt,
+        uint minLength
+        )
     {
         var result = string.Empty;
         while ((result?.Length ?? 0) < minLength)
@@ -38,7 +41,22 @@ public class FluentConsole
         return result!;
     }
 
-    public int PromptForInt(string prompt, int minVal, int maxVal)
+    public FluentConsole PromptForString(
+        string prompt,
+        uint minLength,
+        Action<string> onValidInput
+        )
+    {
+        var result = PromptForString(prompt, minLength);
+        onValidInput(result!);
+        return this;
+    }
+
+    public int PromptForInt(
+        string prompt,
+        int minVal,
+        int maxVal
+        )
     {
         var result = minVal - 1;
         while (result < minVal || result > maxVal)
@@ -49,7 +67,23 @@ public class FluentConsole
         return result;
     }
 
-    public int PromptForMoney(string prompt, int minVal, int maxVal)
+    public FluentConsole PromptForInt(
+        string prompt,
+        int minVal,
+        int maxVal,
+        Action<int> onValidInput
+        )
+    {
+        var result = PromptForInt(prompt, minVal, maxVal);
+        onValidInput(result!);
+        return this;
+    }
+
+    public int PromptForMoney(
+        string prompt,
+        int minVal,
+        int maxVal
+        )
     {
         var result = minVal - 1;
         while (result < minVal || result > maxVal)
@@ -58,6 +92,45 @@ public class FluentConsole
             _ = int.TryParse(Console.ReadLine(), out result);
         }
         return result;
+    }
+
+    public FluentConsole PromptForMoney(
+        string prompt,
+        int minVal,
+        int maxVal,
+        Action<int> onValidInput
+        )
+    {
+        var result = PromptForMoney(prompt, minVal, maxVal);
+        onValidInput(result!);
+        return this;
+    }
+
+    public bool PromptForBool(string prompt)
+    {
+        bool? result = null;
+        while (!result.HasValue)
+        {
+            Console.Write($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
+            result = Console.ReadKey().Key switch
+            {
+                ConsoleKey.D1 or ConsoleKey.Y => true,
+                ConsoleKey.D0 or ConsoleKey.D2 or ConsoleKey.N => false,
+                _ => null
+            };
+            Console.WriteLine();
+        }
+        return result.Value;
+    }
+
+    public FluentConsole PromptForBool(
+        string prompt,
+        Action<bool> onValidInput
+        )
+    {
+        var result = PromptForBool(prompt);
+        onValidInput(result!);
+        return this;
     }
 
     public InputOption<T> PromptForOption<T>(string prompt, params InputOption<T>[] options)
@@ -81,21 +154,14 @@ public class FluentConsole
         return selectedOption;
     }
 
-    public bool PromptForBool(string prompt)
+    public FluentConsole PromptForOption<T>(
+        string prompt,
+        Action<T> onValidInput,
+        params InputOption<T>[] options)
     {
-        bool? result = null;
-        while (!result.HasValue)
-        {
-            Console.Write($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
-            result = Console.ReadKey().Key switch
-            {
-                ConsoleKey.D1 or ConsoleKey.Y => true,
-                ConsoleKey.D0 or ConsoleKey.D2 or ConsoleKey.N => false,
-                _ => null
-            };
-            Console.WriteLine();
-        }
-        return result.Value;
+        var result = PromptForOption(prompt, options);
+        onValidInput(result.GetValue());
+        return this;
     }
 }
 

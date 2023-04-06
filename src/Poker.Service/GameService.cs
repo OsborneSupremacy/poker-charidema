@@ -46,7 +46,7 @@ public class GameService : IGameService
 
         await WriteGameStartInfoAsync(game);
 
-        System.Console.ReadKey();Ben
+        System.Console.ReadKey();
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);
 

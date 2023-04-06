@@ -1,4 +1,6 @@
-﻿using Bogus;
+﻿using System;
+using Bogus;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Poker.Terminal.Service;
 
@@ -33,50 +35,84 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     public async Task<MatchArgs> GetMatchArgs(Match? lastMatch)
     {
+        var userName = string.Empty;
+        int playerCount = 0;
+        int startingStack = 0;
+        uint? fixedNumberOfGames = null;
+        uint? fixedAnte = null;
+
         _c.WriteLines(
             "Welcome to OsborneSupremacy/poker-charidema!",
             new string('*', 100),
             string.Empty
-        );
+        )
 
-        var userName = _c.PromptForString("What should we call you?", 1);
-        _c.WriteLine();
+        .PromptForString(
+            "What should we call you?", 1, (string name) =>
+            {
+                userName = name;
+                _c.WriteLine($"Nice to meet you, {userName}!");
+            })
 
-        _c.WriteLines($"Nice to meet you, {userName}!")
-            .WriteLine();
+        .WriteLine()
 
-        var playerCount = _c.PromptForInt("How many other players would you like to be part of this match?", 1, 10);
-        _c.WriteLine();
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 10, (int c) =>
+        {
+            playerCount = c;
+        })
 
-        var startingStack = _c.PromptForMoney("How much money should players start with?", 10, 1000000);
-        _c.WriteLine();
+        .WriteLine()
 
-        var fixedNumberOfGames = _c.PromptForOption<uint?>
-            (
-                "Do you want to play indefinitely, or a fixed number of games?",
-                new("Play indefinitely",
-                    () => { return null; }
-                ),
-                new("Play fixed number of rounds",
-                    () => { return (uint)_c.PromptForInt("How many games?", 1, 100); }
-                )
+        .PromptForMoney("How much money should players start with?", 10, 1000000, (int m) =>
+        {
+            startingStack = m;
+        })
+
+        .WriteLine()
+
+        .PromptForOption(
+            "Do you want to play indefinitely, or a fixed number of games?",
+            gameCount =>
+            {
+                fixedNumberOfGames = gameCount;
+            },
+            new InputOption<uint?>(
+                "Play indefinitely", () => { return null; }
+            ),
+            new InputOption<uint?>(
+                "Play fixed number of games", () =>
+                {
+                    int gameCount = 0;
+                    _c.PromptForInt("How many games?", 1, 100, input =>
+                    {
+                        gameCount = input;
+                    });
+                    return (uint)gameCount;
+                }
             )
-            .GetValue();
+        )
 
-        _c.WriteLine();
+        .WriteLine()
 
-        var fixedAnte = _c.PromptForOption<uint?>
-            (
-                "Should the ante amount be dealer's choice, or fixed?",
-                new("Dealer's choice ante amount",
-                    () => { return null; }
-                ),
-                new("Fixed ante amount",
-                    () => { return (uint)_c.PromptForMoney("Specify fixed ante amount", 1, startingStack); }
-                )
-            ).GetValue();
-
-        _c.WriteLine();
+        .PromptForOption(
+            "Should the ante amount be dealer's choice, or fixed?",
+            anteAmount =>
+            {
+                fixedAnte = anteAmount;
+            },
+            new InputOption<uint?>(
+                "Dealer's choice ante amount", () => { return null; }
+            ),
+            new InputOption<uint?>("Fixed ante amount", () =>
+            {
+                int anteAmount = 0;
+                _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
+                {
+                    anteAmount = input;
+                });
+                return (uint)anteAmount;
+            })
+        );
 
         var players = await GeneratePlayers(userName, startingStack, playerCount)
             .ToListAsync();
