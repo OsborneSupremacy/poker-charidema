@@ -4,7 +4,7 @@ public interface IMatchPreferencesService
 {
     Task<bool> ConfirmStartAsync();
 
-    Task<MatchArgs> GetMatchArgs();
+    Task<MatchArgs> GetMatchArgs(Match? lastMatch);
 
     Task<bool> GetPlayAgain();
 

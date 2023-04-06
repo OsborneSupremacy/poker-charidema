@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Poker.Library.RoundActions;
+﻿using Poker.Library.RoundActions;
 
 namespace Poker.Service;
 
@@ -9,22 +8,25 @@ public class GameService : IGameService
 
     private readonly IRoundActionService _roundActionService;
 
+    private readonly IGamePreferencesService _gamePreferencesService;
+
     public GameService(
         IDealerService dealerService,
-        IRoundActionService roundActionService
+        IRoundActionService roundActionService,
+        IGamePreferencesService gamePreferencesService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _roundActionService = roundActionService ?? throw new ArgumentNullException(nameof(roundActionService));
+        _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
     }
 
-    protected Task WriteGameInfoAsync(Game game)
+    protected Task WriteGameStartInfoAsync(Game game)
     {
-        StringBuilder s = new();
-        s.AppendLine("New game starting!");
-        s.AppendLine();
-        s.AppendLine($"The game type is ");
-
+        _gamePreferencesService.WriteLines(
+            $"The game is {game.Variant.Name}",
+            $"{game.Button.Name} has the deal"
+        );
 
         return Task.CompletedTask;
     }
@@ -33,13 +35,18 @@ public class GameService : IGameService
     {
         Game game = new()
         {
+            Button = args.Button,
             Variant = args.Variant,
             Players = args.Players,
             Deck = args.Deck,
             CommunityCards = new(),
             Discards = new(),
-            Rounds = null
+            Rounds = new()
         };
+
+        await WriteGameStartInfoAsync(game);
+
+        System.Console.ReadKey();Ben
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);
 

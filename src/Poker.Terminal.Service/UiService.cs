@@ -31,7 +31,7 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         throw new NotImplementedException();
     }
 
-    public async Task<MatchArgs> GetMatchArgs()
+    public async Task<MatchArgs> GetMatchArgs(Match? lastMatch)
     {
         _c.WriteLines(
             "Welcome to OsborneSupremacy/poker-charidema!",

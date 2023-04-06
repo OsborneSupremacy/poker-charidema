@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Service.Interface;
+
+namespace Poker.Service;
 
 public class MatchService : IMatchService
 {
@@ -106,6 +108,11 @@ public class MatchService : IMatchService
 
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
+        _matchPreferencesService.WriteLines(
+            $"Stating game {matchIn.Games.Count + 1}",
+            string.Empty
+        );
+
         // pass button to next player if it's not the first game
         IPlayer button = matchIn.Games.Any()
             ? matchIn.Players.NextPlayer(matchIn.Button)

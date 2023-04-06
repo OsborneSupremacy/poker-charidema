@@ -17,4 +17,6 @@ public record Game
     public required List<IPlayer> Players { get; init; }
 
     public required List<Round> Rounds { get; init; }
+
+    public required IPlayer Button { get; init; }
 }

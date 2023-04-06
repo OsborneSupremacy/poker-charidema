@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Poker.Library;
 
 namespace Poker.Terminal;
 
@@ -28,11 +29,16 @@ public class ConsoleHostedService : IHostedService
     public Task StartAsync(CancellationToken cancellationToken)
     {
         _applicationLifetime.ApplicationStarted.Register(async () => {
+            MatchResult? matchResult = null;
             while (true)
             {
                 Console.Clear();
-                var matchArgs = await _matchPreferencesService.GetMatchArgs();
-                var matchResult = await _matchService.PlayAsync(matchArgs);
+
+                var matchArgs = await _matchPreferencesService
+                    .GetMatchArgs(matchResult?.Match);
+
+                matchResult = await _matchService.PlayAsync(matchArgs);
+
                 if (!matchResult.PlayAgain)
                     break;
             };
