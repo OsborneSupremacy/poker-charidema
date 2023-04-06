@@ -8,9 +8,11 @@ public interface IMatchPreferencesService
 
     Task<bool> GetPlayAgain();
 
-    void Write(string input);
+    IMatchPreferencesService Write(string input);
 
-    void WriteLine(string input);
+    IMatchPreferencesService WriteLine(string input);
 
-    void WriteLine();
+    IMatchPreferencesService WriteLines(params string[] lines);
+
+    IMatchPreferencesService WriteLine();
 }

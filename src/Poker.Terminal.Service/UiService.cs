@@ -8,12 +8,12 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     private readonly IRandomFactory _randomFactory;
 
-    private readonly Console2 _c;
+    private readonly FluentConsole _c;
 
     public UiService(
         PlayerFactory playerFactory,
         IRandomFactory randomFactory,
-        Console2 console
+        FluentConsole console
         )
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
@@ -33,15 +33,17 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     public async Task<MatchArgs> GetMatchArgs()
     {
-        _c.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
-        _c.WriteLine(new string('*', 100));
-        _c.WriteLine();
+        _c.WriteLines(
+            "Welcome to OsborneSupremacy/poker-charidema!",
+            new string('*', 100),
+            string.Empty
+        );
 
         var userName = _c.PromptForString("What should we call you?", 1);
         _c.WriteLine();
 
-        _c.WriteLine($"Nice to meet you, {userName}!");
-        _c.WriteLine();
+        _c.WriteLines($"Nice to meet you, {userName}!")
+            .WriteLine();
 
         var playerCount = _c.PromptForInt("How many other players would you like to be part of this match?", 1, 10);
         _c.WriteLine();
@@ -127,9 +129,27 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
     public Task<bool> ConfirmStartAsync() =>
         Task.FromResult(_c.PromptForBool("Ready to Begin?"));
 
-    public void Write(string input) => _c.Write(input);
+    public IMatchPreferencesService Write(string input)
+    {
+        _c.Write(input);
+        return this;
+    }
 
-    public void WriteLine(string input) => _c.WriteLine(input);
+    public IMatchPreferencesService WriteLine(string input)
+    {
+        _c.WriteLine(input);
+        return this;
+    }
 
-    public void WriteLine() => _c.WriteLine();
+    public IMatchPreferencesService WriteLine()
+    {
+        _c.WriteLine();
+        return this;
+    }
+
+    public IMatchPreferencesService WriteLines(params string[] lines)
+    {
+        _c.WriteLines(lines);
+        return this;
+    }
 }

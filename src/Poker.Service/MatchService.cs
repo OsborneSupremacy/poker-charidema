@@ -41,22 +41,30 @@ public class MatchService : IMatchService
     {
         var s = _matchPreferencesService;
         
-        s.WriteLine("Welcome to the new match!");
-        s.WriteLine();
+        s.WriteLines
+        (
+            "Welcome to the new match!",
+            string.Empty,
+            "The players are:",
+            string.Empty
+        );
 
-        s.WriteLine("The players are:");
-        s.WriteLine();
         foreach(var player in match.Players)
             s.WriteLine($"* {player.Name}");
-        s.WriteLine();
 
-        s.WriteLine($"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
-        s.WriteLine();
+        s.WriteLines
+        (
+            string.Empty,
+            $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}",
+            string.Empty
+        );
 
         if(match.FixedNumberOfGames.HasValue)
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
         else
             s.WriteLine($"The match has no fixed number of games.");
+
+        s.WriteLine();
 
         return Task.CompletedTask;
     }

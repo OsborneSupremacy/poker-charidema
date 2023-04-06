@@ -1,12 +1,31 @@
 ﻿namespace Poker.Terminal.Service;
 
-public class Console2
+public class FluentConsole
 {
-    public void Write(string message) => Console.Write(message);
+    public FluentConsole WriteLines(params string[] messages)
+    {
+        foreach(var message in messages)
+            Console.WriteLine(message);
+        return this;
+    }
 
-    public void WriteLine(string message) => Console.WriteLine(message);
+    public FluentConsole Write(string message)
+    {
+        Console.Write(message);
+        return this;
+    }
 
-    public void WriteLine() => Console.WriteLine();
+    public FluentConsole WriteLine(string message)
+    {
+        Console.WriteLine(message);
+        return this;
+    }
+
+    public FluentConsole WriteLine()
+    {
+        Console.WriteLine();
+        return this;
+    }
 
     public string PromptForString(string prompt, uint minLength)
     {
