@@ -42,34 +42,6 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         var startingStack = PromptForMoney("How much money should players start with?", 10, 1000000);
         Console.WriteLine();
 
-        List<IPlayer> players = new();
-
-        var user = new Player
-        {
-            Id = Guid.NewGuid(),
-            Name = userName,
-            Stack = startingStack,
-            BeginningStack = startingStack,
-            Automaton = false
-        };
-
-        players.Add(user);
-
-        for (int p = 0; p < playerCount; p++)
-            players.Add(
-                await _playerFactory
-                    .CreateAsync(
-                        new PlayerCreateArgs
-                        {
-                            BeginningStack = startingStack,
-                            Id = Guid.NewGuid(),
-                            Automaton = true
-                        }
-                    )
-            );
-
-        Console.WriteLine();
-
         var fixedNumberOfGames = PromptForOption<uint?>
             (
                 "Do you want to play indefinitely, or a fixed number of games?",
@@ -97,6 +69,9 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
         Console.WriteLine();
 
+        var players = await GeneratePlayers(userName, startingStack, playerCount)
+            .ToListAsync();
+
         return new MatchArgs {
 
             Players = players,
@@ -110,6 +85,28 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
             FixedDeck = new Library.Classic.Deck(),
             FixedVariant = new FiveCardDraw()
         };
+    }
+
+    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(string userName, double startingStack, int playerCount)
+    {
+        yield return new Player
+        {
+            Id = Guid.NewGuid(),
+            Name = userName,
+            Stack = startingStack,
+            BeginningStack = startingStack,
+            Automaton = false
+        };
+
+        for (int p = 0; p < playerCount; p++)
+            yield return await _playerFactory
+                .CreateAsync(
+                    new PlayerCreateArgs
+                    {
+                        BeginningStack = startingStack,
+                        Id = Guid.NewGuid(),
+                        Automaton = true
+                    });
     }
 
     public Task<bool> GetPlayAgain() =>
