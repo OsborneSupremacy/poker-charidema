@@ -8,10 +8,17 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     private readonly IRandomFactory _randomFactory;
 
-    public UiService(PlayerFactory playerFactory, IRandomFactory randomFactory)
+    private readonly Console2 _c;
+
+    public UiService(
+        PlayerFactory playerFactory,
+        IRandomFactory randomFactory,
+        Console2 console
+        )
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
+        _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
     public Task<double> GetAnte(IPlayer button)
@@ -26,48 +33,48 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     public async Task<MatchArgs> GetMatchArgs()
     {
-        Console.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
-        Console.WriteLine(new string('*', 100));
-        Console.WriteLine();
+        _c.WriteLine("Welcome to OsborneSupremacy/poker-charidema!");
+        _c.WriteLine(new string('*', 100));
+        _c.WriteLine();
 
-        var userName = PromptForString("What should we call you?", 1);
-        Console.WriteLine();
+        var userName = _c.PromptForString("What should we call you?", 1);
+        _c.WriteLine();
 
-        Console.WriteLine($"Nice to meet you, {userName}!");
-        Console.WriteLine();
+        _c.WriteLine($"Nice to meet you, {userName}!");
+        _c.WriteLine();
 
-        var playerCount = PromptForInt("How many other players would you like to be part of this match?", 1, 10);
-        Console.WriteLine();
+        var playerCount = _c.PromptForInt("How many other players would you like to be part of this match?", 1, 10);
+        _c.WriteLine();
 
-        var startingStack = PromptForMoney("How much money should players start with?", 10, 1000000);
-        Console.WriteLine();
+        var startingStack = _c.PromptForMoney("How much money should players start with?", 10, 1000000);
+        _c.WriteLine();
 
-        var fixedNumberOfGames = PromptForOption<uint?>
+        var fixedNumberOfGames = _c.PromptForOption<uint?>
             (
                 "Do you want to play indefinitely, or a fixed number of games?",
                 new("Play indefinitely",
                     () => { return null; }
                 ),
                 new("Play fixed number of rounds",
-                    () => { return (uint)PromptForInt("How many games?", 1, 100); }
+                    () => { return (uint)_c.PromptForInt("How many games?", 1, 100); }
                 )
             )
             .GetValue();
 
-        Console.WriteLine();
+        _c.WriteLine();
 
-        var fixedAnte = PromptForOption<uint?>
+        var fixedAnte = _c.PromptForOption<uint?>
             (
                 "Should the ante amount be dealer's choice, or fixed?",
                 new("Dealer's choice ante amount",
                     () => { return null; }
                 ),
                 new("Fixed ante amount",
-                    () => { return (uint)PromptForMoney("Specify fixed ante amount", 1, startingStack); }
+                    () => { return (uint)_c.PromptForMoney("Specify fixed ante amount", 1, startingStack); }
                 )
             ).GetValue();
 
-        Console.WriteLine();
+        _c.WriteLine();
 
         var players = await GeneratePlayers(userName, startingStack, playerCount)
             .ToListAsync();
@@ -110,103 +117,19 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
     }
 
     public Task<bool> GetPlayAgain() =>
-        Task.FromResult(PromptForBool("Play Again?"));
+        Task.FromResult(_c.PromptForBool("Play Again?"));
 
     public Task<IVariant> GetVariant(IPlayer button)
     {
         throw new NotImplementedException();
     }
 
-    private string PromptForString(string prompt, uint minLength)
-    {
-        var result = string.Empty;
-        while ((result?.Length ?? 0) < minLength)
-        {
-            Console.Write($"{prompt}: ");
-            result = Console.ReadLine()?.Trim() ?? string.Empty;
-        }
-        return result!;
-    }
-
-    private int PromptForInt(string prompt, int minVal, int maxVal)
-    {
-        var result = minVal - 1;
-        while(result < minVal || result > maxVal)
-        {
-            Console.Write($"{prompt} {minVal}-{maxVal}: ");
-            _ = int.TryParse(Console.ReadLine(), out result);
-        }
-        return result;
-    }
-
-    private int PromptForMoney(string prompt, int minVal, int maxVal)
-    {
-        var result = minVal - 1;
-        while (result < minVal || result > maxVal)
-        {
-            Console.Write($"{prompt} {minVal:C} - {maxVal:C}: ");
-            _ = int.TryParse(Console.ReadLine(), out result);
-        }
-        return result;
-    }
-
-    private InputOption<T> PromptForOption<T>(string prompt, params InputOption<T>[] options)
-    {
-        InputOption<T>? selectedOption = null;
-
-        while (selectedOption is null)
-        {
-            Console.WriteLine($"{prompt}");
-
-            uint i = 0;
-            foreach (var option in options)
-                Console.WriteLine($"[{++i}] {option.Name}");
-
-            if(uint.TryParse(Console.ReadKey().KeyChar.ToString(), out var optionId))
-                selectedOption = options[optionId - 1];
-
-            Console.WriteLine();
-        }
-
-        return selectedOption;
-    }
-
-    private bool PromptForBool(string prompt)
-    {
-        bool? result = null;
-        while(!result.HasValue)
-        {
-            Console.Write($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
-            result = Console.ReadKey().Key switch
-            {
-                ConsoleKey.D1 or ConsoleKey.Y => true,
-                ConsoleKey.D0 or ConsoleKey.D2 or ConsoleKey.N => false,
-                _ => null
-            };
-            Console.WriteLine();
-        }
-        return result.Value;
-    }
-
-    public void Write(string message) => Console.Write(message);
-
-    public void WriteLine(string message) => Console.WriteLine(message);
-
-    public void WriteLine() => Console.WriteLine();
-
     public Task<bool> ConfirmStartAsync() =>
-        Task.FromResult(PromptForBool("Ready to Begin?"));
+        Task.FromResult(_c.PromptForBool("Ready to Begin?"));
 
-    protected class InputOption<T>
-    {
-        public string Name { get; set; }
+    public void Write(string input) => _c.Write(input);
 
-        public Func<T> GetValue { get; set; }
+    public void WriteLine(string input) => _c.WriteLine(input);
 
-        public InputOption(string name, Func<T> getValue)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            GetValue = getValue ?? throw new ArgumentNullException(nameof(getValue));
-        }
-    }
+    public void WriteLine() => _c.WriteLine();
 }
