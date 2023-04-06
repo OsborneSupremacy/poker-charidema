@@ -10,7 +10,7 @@ var configuration = builder.Build();
 await Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
-        services.AddSingleton<FluentConsole>();
+        services.AddSingleton<FluentConsoleService>();
         services.AddSingleton<IGamePreferencesService, UiService>();
         services.AddSingleton<IMatchPreferencesService, UiService>();
         services.RegisterStandard();

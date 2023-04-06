@@ -10,12 +10,12 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
 
     private readonly IRandomFactory _randomFactory;
 
-    private readonly FluentConsole _c;
+    private readonly FluentConsoleService _c;
 
     public UiService(
         PlayerFactory playerFactory,
         IRandomFactory randomFactory,
-        FluentConsole console
+        FluentConsoleService console
         )
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));

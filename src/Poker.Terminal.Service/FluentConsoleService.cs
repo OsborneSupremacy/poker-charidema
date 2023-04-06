@@ -1,27 +1,27 @@
 ﻿namespace Poker.Terminal.Service;
 
-public class FluentConsole
+public class FluentConsoleService
 {
-    public FluentConsole WriteLines(params string[] messages)
+    public FluentConsoleService WriteLines(params string[] messages)
     {
         foreach(var message in messages)
             Console.WriteLine(message);
         return this;
     }
 
-    public FluentConsole Write(string message)
+    public FluentConsoleService Write(string message)
     {
         Console.Write(message);
         return this;
     }
 
-    public FluentConsole WriteLine(string message)
+    public FluentConsoleService WriteLine(string message)
     {
         Console.WriteLine(message);
         return this;
     }
 
-    public FluentConsole WriteLine()
+    public FluentConsoleService WriteLine()
     {
         Console.WriteLine();
         return this;
@@ -41,7 +41,7 @@ public class FluentConsole
         return result!;
     }
 
-    public FluentConsole PromptForString(
+    public FluentConsoleService PromptForString(
         string prompt,
         uint minLength,
         Action<string> onValidInput
@@ -67,7 +67,7 @@ public class FluentConsole
         return result;
     }
 
-    public FluentConsole PromptForInt(
+    public FluentConsoleService PromptForInt(
         string prompt,
         int minVal,
         int maxVal,
@@ -94,7 +94,7 @@ public class FluentConsole
         return result;
     }
 
-    public FluentConsole PromptForMoney(
+    public FluentConsoleService PromptForMoney(
         string prompt,
         int minVal,
         int maxVal,
@@ -123,7 +123,7 @@ public class FluentConsole
         return result.Value;
     }
 
-    public FluentConsole PromptForBool(
+    public FluentConsoleService PromptForBool(
         string prompt,
         Action<bool> onValidInput
         )
@@ -154,7 +154,7 @@ public class FluentConsole
         return selectedOption;
     }
 
-    public FluentConsole PromptForOption<T>(
+    public FluentConsoleService PromptForOption<T>(
         string prompt,
         Action<T> onValidInput,
         params InputOption<T>[] options)
