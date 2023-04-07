@@ -47,8 +47,7 @@ public class FluentConsoleService
         Action<string> onValidInput
         )
     {
-        var result = PromptForString(prompt, minLength);
-        onValidInput(result!);
+        onValidInput(PromptForString(prompt, minLength)!);
         return this;
     }
 
@@ -74,8 +73,7 @@ public class FluentConsoleService
         Action<int> onValidInput
         )
     {
-        var result = PromptForInt(prompt, minVal, maxVal);
-        onValidInput(result!);
+        onValidInput(PromptForInt(prompt, minVal, maxVal)!);
         return this;
     }
 
@@ -101,8 +99,7 @@ public class FluentConsoleService
         Action<int> onValidInput
         )
     {
-        var result = PromptForMoney(prompt, minVal, maxVal);
-        onValidInput(result!);
+        onValidInput(PromptForMoney(prompt, minVal, maxVal)!);
         return this;
     }
 
@@ -128,8 +125,7 @@ public class FluentConsoleService
         Action<bool> onValidInput
         )
     {
-        var result = PromptForBool(prompt);
-        onValidInput(result!);
+        onValidInput(PromptForBool(prompt)!);
         return this;
     }
 
@@ -159,8 +155,7 @@ public class FluentConsoleService
         Action<T> onValidInput,
         params InputOption<T>[] options)
     {
-        var result = PromptForOption(prompt, options);
-        onValidInput(result.GetValue());
+        onValidInput(PromptForOption(prompt, options).GetValue());
         return this;
     }
 }
