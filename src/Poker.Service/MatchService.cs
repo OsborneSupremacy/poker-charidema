@@ -42,7 +42,7 @@ public class MatchService : IMatchService
     protected Task WriteMatchStartInfoAsync(Match match)
     {
         var s = _matchPreferencesService;
-        
+
         s.WriteLines
         (
             "Welcome to the new match!",
@@ -51,7 +51,7 @@ public class MatchService : IMatchService
             string.Empty
         );
 
-        foreach(var player in match.Players)
+        foreach (var player in match.Players)
             s.WriteLine($"* {player.Name}");
 
         s.WriteLines
@@ -61,7 +61,7 @@ public class MatchService : IMatchService
             string.Empty
         );
 
-        if(match.FixedNumberOfGames.HasValue)
+        if (match.FixedNumberOfGames.HasValue)
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
         else
             s.WriteLine($"The match has no fixed number of games.");
@@ -91,7 +91,7 @@ public class MatchService : IMatchService
             return new MatchResult
             {
                 Cancelled = true,
-                Match  = match,
+                Match = match,
                 Winners = new(),
                 PlayAgain = await _matchPreferencesService.GetPlayAgain()
             };

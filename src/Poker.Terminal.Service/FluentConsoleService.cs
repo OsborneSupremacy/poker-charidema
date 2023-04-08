@@ -4,7 +4,7 @@ public class FluentConsoleService
 {
     public FluentConsoleService WriteLines(params string[] messages)
     {
-        foreach(var message in messages)
+        foreach (var message in messages)
             Console.WriteLine(message);
         return this;
     }

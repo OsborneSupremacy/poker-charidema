@@ -28,14 +28,14 @@ public class RoundActionService : IRoundActionService
         var playersOut = new List<Player>();
 
         var currentPlayer = args.StartingPlayer;
-        
+
         // TODO: if this is a betting round, start with player showing
         // best hand
 
-        for(var p = 0; p < args.Players.Count; p++)
+        for (var p = 0; p < args.Players.Count; p++)
         {
             _gamePreferencesService.WriteLines($"{playersIn[p].Player.Name}'s turn.");
-            
+
 
             currentPlayer = args.Players.NextPlayer(currentPlayer);
         }

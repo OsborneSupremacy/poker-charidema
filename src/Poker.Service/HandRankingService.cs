@@ -21,7 +21,7 @@ public class HandRankingService
 
     public IBestHandRankingResult GetBest(IHandRankingArgs args)
     {
-        foreach(var handRanking in _getHandRankings())
+        foreach (var handRanking in _getHandRankings())
         {
             var result = handRanking.Qualify(args);
             if (result.Qualifies)

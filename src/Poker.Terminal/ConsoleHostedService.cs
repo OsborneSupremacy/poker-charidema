@@ -28,7 +28,8 @@ public class ConsoleHostedService : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        _applicationLifetime.ApplicationStarted.Register(async () => {
+        _applicationLifetime.ApplicationStarted.Register(async () =>
+        {
             MatchResult? matchResult = null;
             while (true)
             {

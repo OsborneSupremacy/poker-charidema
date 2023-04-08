@@ -6,7 +6,7 @@ public class NoHand : IHandRanking
 
     public uint Value => 0;
 
-    public IHandRankingResult Qualify(IHandRankingArgs args) => 
+    public IHandRankingResult Qualify(IHandRankingArgs args) =>
         new HandRankingResult
         {
             Qualifies = false,

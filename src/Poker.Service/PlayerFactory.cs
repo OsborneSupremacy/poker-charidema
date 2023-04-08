@@ -13,7 +13,7 @@ public class PlayerFactory
 
     public Task<IPlayer> CreateAsync(PlayerCreateArgs args)
     {
-        Faker faker = new() 
+        Faker faker = new()
         {
             Random = new Randomizer(_randomFactory.GetSeed())
         };

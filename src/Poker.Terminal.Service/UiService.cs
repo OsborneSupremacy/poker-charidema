@@ -117,11 +117,13 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
         var players = await GeneratePlayers(userName, startingStack, playerCount)
             .ToListAsync();
 
-        return new MatchArgs {
+        return new MatchArgs
+        {
 
             Players = players,
 
-            InitialButton = new Faker() {
+            InitialButton = new Faker()
+            {
                 Random = new Randomizer(_randomFactory.GetSeed())
             }.PickRandom(players),
 
