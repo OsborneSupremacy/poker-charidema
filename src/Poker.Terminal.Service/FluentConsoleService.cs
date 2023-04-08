@@ -141,7 +141,10 @@ public class FluentConsoleService
             foreach (var option in options)
                 Console.WriteLine($"[{++i}] {option.Name}");
 
-            if (uint.TryParse(Console.ReadKey().KeyChar.ToString(), out var optionId))
+            if (
+                uint.TryParse(Console.ReadKey().KeyChar.ToString(), out var optionId)
+                && optionId <= i
+                )
                 selectedOption = options[optionId - 1];
 
             Console.WriteLine();

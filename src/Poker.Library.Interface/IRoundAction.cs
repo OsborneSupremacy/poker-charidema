@@ -2,5 +2,7 @@
 
 public interface IRoundAction
 {
+    public string Name { get; }
+
     bool GameCanEndAfter { get; }
 }

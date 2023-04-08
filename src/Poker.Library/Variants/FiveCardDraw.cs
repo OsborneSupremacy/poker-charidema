@@ -9,6 +9,7 @@ public record FiveCardDraw : IVariant
     public List<IRoundAction> RoundActions =>
         new()
         {
+            new Ante(),
             new DealCards()
             {
                 Count = 5,

@@ -4,6 +4,8 @@ namespace Poker.Library.RoundActions;
 
 public record DrawCards : IRoundAction
 {
+    public string Name => "Draw Cards";
+
     public required uint Maximum { get; init; }
 
     public required List<DrawCardsMaximums> Overrides { get; init; }

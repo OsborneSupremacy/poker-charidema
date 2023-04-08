@@ -1,8 +1,8 @@
 ﻿namespace Poker.Library.RoundActions;
 
-public record BettingInterval : IRoundAction
+public record Ante : IRoundAction
 {
-    public string Name => "Bet";
+    public string Name => "Ante";
 
     public bool GameCanEndAfter => true;
 }

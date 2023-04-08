@@ -21,11 +21,11 @@ public class GameService : IGameService
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
     }
 
-    protected Task WriteGameStartInfoAsync(Game game)
+    protected Task WriteStartInfoAsync(Game game)
     {
         _gamePreferencesService.WriteLines(
             $"The game is {game.Variant.Name}",
-            $"{game.Button.Name} has the deal"
+            $"{game.Button.Player.Name} has the deal"
         );
 
         return Task.CompletedTask;
@@ -33,23 +33,33 @@ public class GameService : IGameService
 
     public async Task<Game> PlayAsync(GameArgs args)
     {
+        var gamePlayers = args.Players
+            .Select(p => new InGamePlayer
+            {
+                Player = p,
+                Stack = p.Stack,
+                Folded = false
+            })
+            .ToList<IInGamePlayer>();
+
+        var gameButton = gamePlayers
+            .Single(x => x.Player.Id == args.Button.Id);
+
         Game game = new()
         {
-            Button = args.Button,
+            Button = gameButton,
             Variant = args.Variant,
-            Players = args.Players,
+            Players = gamePlayers,
             Deck = args.Deck,
             CommunityCards = new(),
-            Discards = new(),
-            Rounds = new()
+            Discards = new()
         };
 
-        await WriteGameStartInfoAsync(game);
-
-        System.Console.ReadKey();
+        await WriteStartInfoAsync(game);
 
         var deck = await _dealerService.ShuffleAsync(args.Deck);
 
+        uint r = 0;
         foreach (var action in args.Variant.RoundActions)
         {
             var result = await _roundActionService
@@ -57,7 +67,9 @@ public class GameService : IGameService
                 {
                     RoundAction = action,
                     Deck = deck,
-                    Players = args.Players
+                    Players = gamePlayers,
+                    StartingPlayer = gamePlayers.NextPlayer(gameButton),
+                    RoundNumber = ++r
                 });
             if (result.GameOver)
                 return game;

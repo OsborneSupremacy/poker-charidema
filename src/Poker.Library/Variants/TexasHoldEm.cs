@@ -9,6 +9,7 @@ public record class TexasHoldEm : IVariant
     public List<IRoundAction> RoundActions =>
         new()
         {
+            new Ante(),
             new DealCards()
             {
                 Count = 2,

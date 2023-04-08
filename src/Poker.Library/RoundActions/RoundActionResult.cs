@@ -2,5 +2,7 @@
 
 public record RoundActionResult
 {
-    public bool GameOver { get; init; }
+    public required List<Player> Players { get; init; }
+
+    public required bool GameOver { get; init; }
 }
