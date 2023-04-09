@@ -6,18 +6,18 @@ public class GameService : IGameService
 {
     private readonly IDealerService _dealerService;
 
-    private readonly IRoundService _roundActionService;
+    private readonly IRoundService _roundService;
 
     private readonly IGamePreferencesService _gamePreferencesService;
 
     public GameService(
         IDealerService dealerService,
-        IRoundService roundActionService,
+        IRoundService roundService,
         IGamePreferencesService gamePreferencesService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
-        _roundActionService = roundActionService ?? throw new ArgumentNullException(nameof(roundActionService));
+        _roundService = roundService ?? throw new ArgumentNullException(nameof(roundService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
     }
 
@@ -62,12 +62,12 @@ public class GameService : IGameService
             .ShuffleAsync(args.Deck);
 
         uint r = 0;
-        foreach (var action in args.Variant.RoundActions)
+        foreach (var action in args.Variant.Rounds)
         {
-            var result = await _roundActionService
+            var result = await _roundService
                 .ExecuteAsync(new RoundArgs()
                 {
-                    RoundAction = action,
+                    Round = action,
                     Deck = deck,
                     CommunityCards = new(),
                     Players = gamePlayers,

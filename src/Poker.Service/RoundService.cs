@@ -14,7 +14,7 @@ public class RoundService : IRoundService
     protected Task WriteStartInfoAsync(RoundArgs args)
     {
         _gamePreferencesService.WriteLines(
-            $"Round {args.RoundNumber} - {args.RoundAction.Name}"
+            $"Round {args.RoundNumber} - {args.Round.Name}"
         );
 
         return Task.CompletedTask;

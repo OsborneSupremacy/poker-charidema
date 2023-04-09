@@ -6,7 +6,7 @@ public record FiveCardDraw : IVariant
 {
     public string Name => "Five Card Draw";
 
-    public List<IRound> RoundActions =>
+    public List<IRound> Rounds =>
         new()
         {
             new Ante(),

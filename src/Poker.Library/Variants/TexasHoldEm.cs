@@ -6,7 +6,7 @@ public record class TexasHoldEm : IVariant
 {
     public string Name => "Texas Hold 'Em";
 
-    public List<IRound> RoundActions =>
+    public List<IRound> Rounds =>
         new()
         {
             new Ante(),

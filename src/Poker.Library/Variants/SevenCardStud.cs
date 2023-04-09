@@ -6,7 +6,7 @@ public record SevenCardStud : IVariant
 {
     public string Name => "Seven Card Stud";
 
-    public List<IRound> RoundActions =>
+    public List<IRound> Rounds =>
         new()
         {
             new Ante(),

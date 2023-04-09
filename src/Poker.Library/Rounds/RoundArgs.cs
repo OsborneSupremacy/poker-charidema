@@ -2,7 +2,7 @@
 
 public record RoundArgs
 {
-    public required IRound RoundAction { get; init; }
+    public required IRound Round { get; init; }
 
     public required IDeck Deck { get; init; }
 
