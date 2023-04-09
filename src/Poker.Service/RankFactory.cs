@@ -4,7 +4,7 @@ namespace Poker.Service;
 
 public class RankFactory
 {
-    public List<Rank> CreateStandardSpotCardRanks() =>
+    public List<Rank> CreateClassicSpotCardRanks() =>
         new()
         {
             new("Two", 2),
@@ -19,7 +19,7 @@ public class RankFactory
             new("Ace", 14)
         };
 
-    public List<Rank> CreateStandardFaceCardRanks() =>
+    public List<Rank> CreateClassFaceCardRanks() =>
         new()
         {
             new("Jack", 11),

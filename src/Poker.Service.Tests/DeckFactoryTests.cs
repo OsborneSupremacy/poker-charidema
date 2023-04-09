@@ -33,9 +33,9 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandardSpotCardRanks(),
-            new RankFactory().CreateStandardFaceCardRanks(),
-            new SuitFactory().CreateStandard()
+            new RankFactory().CreateClassicSpotCardRanks(),
+            new RankFactory().CreateClassFaceCardRanks(),
+            new SuitFactory().CreateClassic()
         );
 
         DeckFactory sut = new();
@@ -53,9 +53,9 @@ public class DeckFactoryTests
     {
         // arrange
         DeckFactoryArgs inputs = new(
-            new RankFactory().CreateStandardSpotCardRanks(),
-            new RankFactory().CreateStandardFaceCardRanks(),
-            new SuitFactory().CreateStandard(),
+            new RankFactory().CreateClassicSpotCardRanks(),
+            new RankFactory().CreateClassFaceCardRanks(),
+            new SuitFactory().CreateClassic(),
             2
         );
 
