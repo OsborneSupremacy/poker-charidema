@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Interface;
 
-public interface IRoundAction
+public interface IRound
 {
     public string Name { get; }
 

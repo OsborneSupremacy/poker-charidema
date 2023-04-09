@@ -1,4 +1,4 @@
-﻿using Poker.Library.RoundActions;
+﻿using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -6,13 +6,13 @@ public class GameService : IGameService
 {
     private readonly IDealerService _dealerService;
 
-    private readonly IRoundActionService _roundActionService;
+    private readonly IRoundService _roundActionService;
 
     private readonly IGamePreferencesService _gamePreferencesService;
 
     public GameService(
         IDealerService dealerService,
-        IRoundActionService roundActionService,
+        IRoundService roundActionService,
         IGamePreferencesService gamePreferencesService
         )
     {
@@ -37,6 +37,7 @@ public class GameService : IGameService
             .Select(p => new InGamePlayer
             {
                 Player = p,
+                Cards = new(),
                 Stack = p.Stack,
                 Folded = false
             })
@@ -57,19 +58,22 @@ public class GameService : IGameService
 
         await WriteStartInfoAsync(game);
 
-        var deck = await _dealerService.ShuffleAsync(args.Deck);
+        var deck = await _dealerService
+            .ShuffleAsync(args.Deck);
 
         uint r = 0;
         foreach (var action in args.Variant.RoundActions)
         {
             var result = await _roundActionService
-                .ExecuteAsync(new RoundActionArgs()
+                .ExecuteAsync(new RoundArgs()
                 {
                     RoundAction = action,
                     Deck = deck,
+                    CommunityCards = new(),
                     Players = gamePlayers,
                     StartingPlayer = gamePlayers.NextPlayer(gameButton),
-                    RoundNumber = ++r
+                    RoundNumber = ++r,
+                    Pot = 0
                 });
             if (result.GameOver)
                 return game;

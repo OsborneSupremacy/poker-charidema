@@ -1,4 +1,4 @@
-﻿namespace Poker.Library.RoundActions;
+﻿namespace Poker.Library.Rounds;
 
 public record Flop : DealCards
 {

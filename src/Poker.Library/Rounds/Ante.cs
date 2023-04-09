@@ -1,6 +1,6 @@
-﻿namespace Poker.Library.RoundActions;
+﻿namespace Poker.Library.Rounds;
 
-public record Ante : IRoundAction
+public record Ante : IRound
 {
     public string Name => "Ante";
 

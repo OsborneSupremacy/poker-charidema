@@ -1,8 +1,8 @@
 ﻿using Poker.Library.Cards;
 
-namespace Poker.Library.RoundActions;
+namespace Poker.Library.Rounds;
 
-public record DrawCards : IRoundAction
+public record DrawCards : IRound
 {
     public string Name => "Draw Cards";
 

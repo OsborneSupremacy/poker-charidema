@@ -1,6 +1,6 @@
-﻿namespace Poker.Library.RoundActions;
+﻿namespace Poker.Library.Rounds;
 
-public record DealCards : IRoundAction
+public record DealCards : IRound
 {
     public string? Name { get; set; }
 

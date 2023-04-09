@@ -1,4 +1,4 @@
-﻿using Poker.Library.RoundActions;
+﻿using Poker.Library.Rounds;
 
 namespace Poker.Library.Variants;
 
@@ -6,7 +6,7 @@ public record SevenCardStud : IVariant
 {
     public string Name => "Seven Card Stud";
 
-    public List<IRoundAction> RoundActions =>
+    public List<IRound> RoundActions =>
         new()
         {
             new Ante(),

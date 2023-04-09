@@ -1,11 +1,11 @@
-﻿namespace Poker.Library.RoundActions;
+﻿namespace Poker.Library.Rounds;
 
-public record River : DealCards
+public record Turn : DealCards
 {
-    public River()
+    public Turn()
     {
         Count = 1;
-        Name = "The River";
+        Name = "The Turn";
         CardOrientation = CardOrientations.Faceup;
         CardDestination = CardDestinations.Community;
     }
