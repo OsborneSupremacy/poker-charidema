@@ -1,6 +1,4 @@
-﻿using Poker.Service.Interface;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class MatchService : IMatchService
 {

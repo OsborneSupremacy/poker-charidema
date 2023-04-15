@@ -1,6 +1,4 @@
-﻿using System;
-using Bogus;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Bogus;
 
 namespace Poker.Terminal.Service;
 
