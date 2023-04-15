@@ -26,12 +26,10 @@ public class RoundService : IRoundService
 
         var playersOut = new List<IInGamePlayer>();
 
-        // might want to clone these.
         // I'd like to use Nondestructive mutation, but can't be used with interfaces
-
-        var ccOut = args.CommunityCards;
-        var deckOut = args.Deck;
-        var potOut = args.Pot;
+        var ccOut = args.CommunityCards.DeepClone();
+        var deckOut = args.Deck.DeepClone();
+        var potOut = args.Pot.DeepClone();
 
         // TODO: if this is a betting round, start with player showing
         // best hand

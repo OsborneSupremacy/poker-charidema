@@ -2,3 +2,4 @@
 global using Poker.Library.Interface;
 global using Poker.Service.Interface;
 global using Poker.Utility;
+global using Force.DeepCloner;
