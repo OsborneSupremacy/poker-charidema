@@ -1,4 +1,5 @@
 ﻿using Poker.Library.Rounds;
+using Poker.Presentation.Interface;
 
 namespace Poker.Service;
 
@@ -6,14 +7,19 @@ public class RoundService : IRoundService
 {
     private readonly IGamePreferencesService _gamePreferencesService;
 
-    public RoundService(IGamePreferencesService gamePreferencesService)
+    private readonly IUserInterfaceService _userInterfaceService;
+
+    public RoundService(
+        IGamePreferencesService gamePreferencesService,
+        IUserInterfaceService userInterfaceService)
     {
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
     protected Task WriteStartInfoAsync(RoundArgs args)
     {
-        _gamePreferencesService.WriteLines(
+        _userInterfaceService.WriteLines(
             $"Round {args.RoundNumber} - {args.Round.Name}"
         );
 
@@ -37,7 +43,7 @@ public class RoundService : IRoundService
         {
             var playerInTurn = args.Players[p];
 
-            _gamePreferencesService
+            _userInterfaceService
                 .WriteLines($"{playerInTurn.Player.Name}'s turn.");
 
             playersOut.Add(playerInTurn);

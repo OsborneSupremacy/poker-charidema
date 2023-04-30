@@ -1,19 +1,20 @@
 ﻿using Bogus;
+using Poker.Presentation.Interface;
 
 namespace Poker.Terminal.Service;
 
-public class UiService : IGamePreferencesService, IMatchPreferencesService
+public class PreferencesService : IGamePreferencesService, IMatchPreferencesService
 {
     private readonly PlayerFactory _playerFactory;
 
     private readonly IRandomFactory _randomFactory;
 
-    private readonly FluentConsoleService _c;
+    private readonly IUserInterfaceService _c;
 
-    public UiService(
+    public PreferencesService(
         PlayerFactory playerFactory,
         IRandomFactory randomFactory,
-        FluentConsoleService console
+        IUserInterfaceService console
         )
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
@@ -165,27 +166,9 @@ public class UiService : IGamePreferencesService, IMatchPreferencesService
     public Task<bool> ConfirmStartAsync() =>
         Task.FromResult(_c.PromptForBool("Ready to Begin?"));
 
-    public IMatchPreferencesService Write(string input)
-    {
-        _c.Write(input);
-        return this;
-    }
+    public IUserInterfaceService PromptForOption<T>(string prompt, Action<T> onValidInput, params IInputOption<T>[] options) =>
+        PromptForOption(prompt, onValidInput, options);
 
-    public IMatchPreferencesService WriteLine(string input)
-    {
-        _c.WriteLine(input);
-        return this;
-    }
-
-    public IMatchPreferencesService WriteLine()
-    {
-        _c.WriteLine();
-        return this;
-    }
-
-    public IMatchPreferencesService WriteLines(params string[] lines)
-    {
-        _c.WriteLines(lines);
-        return this;
-    }
+    public IInputOption<T> PromptForOption<T>(string prompt, params IInputOption<T>[] options) =>
+        PromptForOption(prompt, options); 
 }

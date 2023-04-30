@@ -18,13 +18,13 @@ public class PlayerFactory
             Random = new Randomizer(_randomFactory.GetSeed())
         };
 
-        return Task.FromResult(new Player
+        return Task.FromResult<IPlayer>(new Player
         {
             Id = Guid.NewGuid(),
             BeginningStack = args.BeginningStack,
             Stack = args.BeginningStack,
             Name = faker.Person.FirstName,
             Automaton = args.Automaton
-        } as IPlayer);
+        });
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Poker.Library.Rounds;
+using Poker.Presentation.Interface;
 
 namespace Poker.Service;
 
@@ -10,20 +11,24 @@ public class GameService : IGameService
 
     private readonly IGamePreferencesService _gamePreferencesService;
 
+    private readonly IUserInterfaceService _userInterfaceService;
+
     public GameService(
         IDealerService dealerService,
         IRoundService roundService,
-        IGamePreferencesService gamePreferencesService
+        IGamePreferencesService gamePreferencesService,
+        IUserInterfaceService userInterfaceService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _roundService = roundService ?? throw new ArgumentNullException(nameof(roundService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
     protected Task WriteStartInfoAsync(Game game)
     {
-        _gamePreferencesService.WriteLines(
+        _userInterfaceService.WriteLines(
             $"The game is {game.Variant.Name}",
             $"{game.Button.Player.Name} has the deal"
         );

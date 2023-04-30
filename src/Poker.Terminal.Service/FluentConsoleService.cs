@@ -1,47 +1,50 @@
-﻿namespace Poker.Terminal.Service;
+﻿using Poker.Presentation.Interface;
+using Spectre.Console;
 
-public class FluentConsoleService
+namespace Poker.Terminal.Service;
+
+public class FluentConsoleService : IUserInterfaceService
 {
-    public FluentConsoleService WriteLines(params string[] messages)
+    public IUserInterfaceService WriteLines(params string[] messages)
     {
         foreach (var message in messages)
-            Console.WriteLine(message);
+            AnsiConsole.WriteLine(message);
         return this;
     }
 
-    public FluentConsoleService Write(string message)
+    public IUserInterfaceService Write(string message)
     {
-        Console.Write(message);
+        AnsiConsole.Write(message);
         return this;
     }
 
-    public FluentConsoleService WriteLine(string message)
+    public IUserInterfaceService WriteLine(string message)
     {
-        Console.WriteLine(message);
+        AnsiConsole.WriteLine(message);
         return this;
     }
 
-    public FluentConsoleService WriteLine()
+    public IUserInterfaceService WriteLine()
     {
-        Console.WriteLine();
+        AnsiConsole.WriteLine();
         return this;
     }
 
-    public string PromptForString(
-        string prompt,
-        uint minLength
-        )
+    public string PromptForString(string prompt, uint minLength)
     {
         var result = string.Empty;
         while ((result?.Length ?? 0) < minLength)
         {
-            Console.Write($"{prompt}: ");
-            result = Console.ReadLine()?.Trim() ?? string.Empty;
+            result = AnsiConsole.Prompt(
+                new TextPrompt<string>($"{prompt}: ")
+                    .Validate(input => input.Length >= minLength,
+                        $"Input must be at least {minLength} characters long.")
+                );
         }
         return result!;
     }
 
-    public FluentConsoleService PromptForString(
+    public IUserInterfaceService PromptForString(
         string prompt,
         uint minLength,
         Action<string> onValidInput
@@ -51,22 +54,25 @@ public class FluentConsoleService
         return this;
     }
 
-    public int PromptForInt(
-        string prompt,
-        int minVal,
-        int maxVal
-        )
+    public int PromptForInt(string prompt, int minVal, int maxVal)
     {
-        var result = minVal - 1;
+        int result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
-            Console.Write($"{prompt} {minVal}-{maxVal}: ");
-            _ = int.TryParse(Console.ReadLine(), out result);
+            result = AnsiConsole.Prompt(
+                new TextPrompt<int>($"{prompt} {minVal}-{maxVal}: ")
+                    .Validate(input =>
+                    {
+                        if (input < minVal || input > maxVal)
+                            return ValidationResult.Error($"Input must be between {minVal} and {maxVal}.");
+                        return ValidationResult.Success();
+                    })
+                );
         }
         return result;
     }
 
-    public FluentConsoleService PromptForInt(
+    public IUserInterfaceService PromptForInt(
         string prompt,
         int minVal,
         int maxVal,
@@ -77,22 +83,25 @@ public class FluentConsoleService
         return this;
     }
 
-    public int PromptForMoney(
-        string prompt,
-        int minVal,
-        int maxVal
-        )
+    public int PromptForMoney(string prompt, int minVal, int maxVal)
     {
-        var result = minVal - 1;
+        int result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
-            Console.Write($"{prompt} {minVal:C} - {maxVal:C}: ");
-            _ = int.TryParse(Console.ReadLine(), out result);
+            result = AnsiConsole.Prompt(
+                new TextPrompt<int>($"{prompt} {minVal:C} - {maxVal:C}: ")
+                    .Validate(input =>
+                    {
+                        if (input < minVal || input > maxVal)
+                            return ValidationResult.Error($"Input must be between {minVal:C} and {maxVal:C}.");
+                        return ValidationResult.Success();
+                    })
+                );
         }
         return result;
     }
 
-    public FluentConsoleService PromptForMoney(
+    public IUserInterfaceService PromptForMoney(
         string prompt,
         int minVal,
         int maxVal,
@@ -108,19 +117,15 @@ public class FluentConsoleService
         bool? result = null;
         while (!result.HasValue)
         {
-            Console.Write($"{prompt} (1, Y = Yes, 0, 2, N = No): ");
-            result = Console.ReadKey().Key switch
-            {
-                ConsoleKey.D1 or ConsoleKey.Y => true,
-                ConsoleKey.D0 or ConsoleKey.D2 or ConsoleKey.N => false,
-                _ => null
-            };
-            Console.WriteLine();
+            result = AnsiConsole.Prompt(
+                new TextPrompt<bool?>($"{prompt}: ")
+                    .DefaultValue(null)
+                );
         }
         return result.Value;
     }
 
-    public FluentConsoleService PromptForBool(
+    public IUserInterfaceService PromptForBool(
         string prompt,
         Action<bool> onValidInput
         )
@@ -129,41 +134,48 @@ public class FluentConsoleService
         return this;
     }
 
-    public InputOption<T> PromptForOption<T>(string prompt, params InputOption<T>[] options)
+    public IInputOption<T> PromptForOption<T>(string prompt, params IInputOption<T>[] options)
     {
-        InputOption<T>? selectedOption = null;
+        var optionChoices = options.Select(option => option.Name).ToArray();
 
-        while (selectedOption is null)
+        while (true)
         {
-            Console.WriteLine($"{prompt}");
+            var selectedOption = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .AddChoices(optionChoices)
+                    .Title(prompt)
+            );
 
-            uint i = 0;
-            foreach (var option in options)
-                Console.WriteLine($"[{++i}] {option.Name}");
+            var index = Array.IndexOf(optionChoices, selectedOption);
+            var option = options[index];
 
-            if (
-                uint.TryParse(Console.ReadKey().KeyChar.ToString(), out var optionId)
-                && optionId <= i
-                )
-                selectedOption = options[optionId - 1];
-
-            Console.WriteLine();
+            if (AnsiConsole.Confirm($"Selected option: {option.Name}. Is this correct? (y/n)"))
+                return option;
         }
-
-        return selectedOption;
     }
 
-    public FluentConsoleService PromptForOption<T>(
+    public IUserInterfaceService PromptForOption<T>(
         string prompt,
         Action<T> onValidInput,
-        params InputOption<T>[] options)
+        params IInputOption<T>[] options
+        )
     {
         onValidInput(PromptForOption(prompt, options).GetValue());
         return this;
     }
+
+    public IUserInterfaceService WriteHeading(uint level, string input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IUserInterfaceService WriteList(string heading, params string[] items)
+    {
+        throw new NotImplementedException();
+    }
 }
 
-public class InputOption<T>
+public class InputOption<T> : IInputOption<T>
 {
     public string Name { get; set; }
 

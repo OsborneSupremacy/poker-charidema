@@ -7,12 +7,4 @@ public interface IMatchPreferencesService
     Task<MatchArgs> GetMatchArgs(Match? lastMatch);
 
     Task<bool> GetPlayAgain();
-
-    IMatchPreferencesService Write(string input);
-
-    IMatchPreferencesService WriteLine(string input);
-
-    IMatchPreferencesService WriteLines(params string[] lines);
-
-    IMatchPreferencesService WriteLine();
 }

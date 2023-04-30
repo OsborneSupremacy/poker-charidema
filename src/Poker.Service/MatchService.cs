@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Presentation.Interface;
+
+namespace Poker.Service;
 
 public class MatchService : IMatchService
 {
@@ -8,15 +10,19 @@ public class MatchService : IMatchService
 
     private readonly IGameService _gameService;
 
+    private readonly IUserInterfaceService _userInterfaceService;
+
     public MatchService(
         IMatchPreferencesService matchPreferencesService,
         IGamePreferencesService gamePreferencesService,
-        IGameService gameService
+        IGameService gameService,
+        IUserInterfaceService userInterfaceService
         )
     {
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
     private async Task<Match> PlayFixedNumberOfGames(Match match)
@@ -39,32 +45,18 @@ public class MatchService : IMatchService
 
     protected Task WriteMatchStartInfoAsync(Match match)
     {
-        var s = _matchPreferencesService;
+        var s = _userInterfaceService;
 
-        s.WriteLines
-        (
-            "Welcome to the new match!",
-            string.Empty,
-            "The players are:",
-            string.Empty
-        );
+        s.WriteHeading(1, "Welcome to the new match!");
 
-        foreach (var player in match.Players)
-            s.WriteLine($"* {player.Name}");
+        s.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
-        s.WriteLines
-        (
-            string.Empty,
-            $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}",
-            string.Empty
-        );
+        s.WriteHeading(2, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
 
         if (match.FixedNumberOfGames.HasValue)
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
         else
             s.WriteLine($"The match has no fixed number of games.");
-
-        s.WriteLine();
 
         return Task.CompletedTask;
     }
@@ -85,7 +77,7 @@ public class MatchService : IMatchService
 
         if (!await _matchPreferencesService.ConfirmStartAsync())
         {
-            _matchPreferencesService.WriteLine("Match was cancelled.");
+            _userInterfaceService.WriteLine("Match was cancelled.");
             return new MatchResult
             {
                 Cancelled = true,
@@ -106,10 +98,8 @@ public class MatchService : IMatchService
 
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
-        _matchPreferencesService.WriteLines(
-            $"Stating game {matchIn.Games.Count + 1}",
-            string.Empty
-        );
+        _userInterfaceService
+            .WriteHeading(2, $"Stating game {matchIn.Games.Count + 1}");
 
         // pass button to next player if it's not the first game
         IPlayer button = matchIn.Games.Any()
