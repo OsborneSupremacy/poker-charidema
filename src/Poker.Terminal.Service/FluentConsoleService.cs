@@ -166,7 +166,8 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService WriteHeading(uint level, string input)
     {
-        throw new NotImplementedException();
+        AnsiConsole.MarkupLine($"[bold white on darkgreen]{input}[/]");
+        return this;
     }
 
     public IUserInterfaceService WriteList(string heading, params string[] items)

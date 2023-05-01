@@ -1,5 +1,4 @@
 ﻿using Poker.Library.Rounds;
-using Poker.Presentation.Interface;
 
 namespace Poker.Service;
 

@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Poker.Library;
-using Spectre.Console;
 
 namespace Poker.Terminal;
 
@@ -22,8 +20,8 @@ public class ConsoleHostedService : IHostedService
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _applicationLifetime = applicationLifetime ?? throw new ArgumentNullException(nameof(applicationLifetime));
 
-        AnsiConsole.Background = Color.DarkGreen;
         AnsiConsole.Clear();
+        AnsiConsole.Background = Color.DarkGreen;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)

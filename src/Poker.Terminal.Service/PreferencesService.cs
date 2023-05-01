@@ -40,11 +40,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         uint? fixedNumberOfGames = null;
         uint? fixedAnte = null;
 
-        _c.WriteLines(
-            "Welcome to OsborneSupremacy/poker-charidema!",
-            new string('*', 100),
-            string.Empty
-        )
+        _c
+            .WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
             "What should we call you?", 1, (string name) =>
