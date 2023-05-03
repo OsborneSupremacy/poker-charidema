@@ -112,18 +112,7 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public bool PromptForBool(string prompt)
-    {
-        bool? result = null;
-        while (!result.HasValue)
-        {
-            result = AnsiConsole.Prompt(
-                new TextPrompt<bool?>($"{prompt}: ")
-                    .DefaultValue(null)
-                );
-        }
-        return result.Value;
-    }
+    public bool PromptForBool(string prompt) => AnsiConsole.Confirm(prompt);
 
     public IUserInterfaceService PromptForBool(
         string prompt,
@@ -172,7 +161,9 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService WriteList(string heading, params string[] items)
     {
-        throw new NotImplementedException();
+        foreach(var item in items)
+            AnsiConsole.MarkupLine($"[bold white on darkgreen]* {item}[/]");
+        return this;
     }
 }
 
