@@ -11,5 +11,5 @@ public record Joker : ICard
     /// <summary>
     /// The card that the Joker is acting as
     /// </summary>
-    public ICard? ReplacementFor { get; init; }
+    public ICard? ImpersonatingCard { get; init; }
 }

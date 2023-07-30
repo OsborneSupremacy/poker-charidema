@@ -19,7 +19,7 @@ public class RankFactory
             new("Ace", 14)
         };
 
-    public List<Rank> CreateClassFaceCardRanks() =>
+    public List<Rank> CreateClassicFaceCardRanks() =>
         new()
         {
             new("Jack", 11),
