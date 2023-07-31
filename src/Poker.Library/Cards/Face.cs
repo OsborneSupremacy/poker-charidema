@@ -8,9 +8,9 @@ public record Face : IStandardCard, ICard
 
     public List<HoldingObject>? HoldingObjects { get; init; }
 
-    public IRank Rank { get; init; }
+    public required IRank Rank { get; init; }
 
-    public ISuit Suit { get; init; }
+    public required ISuit Suit { get; init; }
 
     public bool IsWild { get; set; }
 

@@ -1,7 +1,10 @@
-﻿namespace Poker.Library.Rounds;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Poker.Library.Rounds;
 
 public record Street : DealCards
 {
+    [SetsRequiredMembers]
     public Street()
     {
         Count = 1;

@@ -8,7 +8,6 @@ public static class RegistrationService
     {
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
 
-        serviceCollection.AddScoped<DeckFactory>();
         serviceCollection.AddScoped<RankFactory>();
         serviceCollection.AddScoped<SuitFactory>();
 

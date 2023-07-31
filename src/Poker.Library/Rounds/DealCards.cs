@@ -2,7 +2,7 @@
 
 public record DealCards : IRound
 {
-    public string? Name { get; set; }
+    public required string Name { get; set; }
 
     public uint Count { get; init; }
 

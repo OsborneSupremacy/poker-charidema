@@ -12,12 +12,14 @@ public record SevenCardStud : IVariant
             new Ante(),
             new DealCards()
             {
+                Name = "Deal",
                 Count = 2,
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
             },
             new DealCards()
             {
+                Name = "Deal",
                 Count = 1,
                 CardOrientation = CardOrientations.Faceup,
                 CardDestination = CardDestinations.PlayerHand
@@ -25,12 +27,14 @@ public record SevenCardStud : IVariant
             new BettingInterval(),
             new DealCards()
             {
+                Name = "Deal",
                 Count = 3,
                 CardOrientation = CardOrientations.Faceup,
                 CardDestination = CardDestinations.PlayerHand
             },
             new DealCards()
             {
+                Name = "Deal",
                 Count = 1,
                 CardOrientation = CardOrientations.Facedown,
                 CardDestination = CardDestinations.PlayerHand
