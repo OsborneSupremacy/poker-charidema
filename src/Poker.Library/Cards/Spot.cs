@@ -10,6 +10,5 @@ public record Spot : IStandardCard, ICard
 
     public bool IsWild { get; set; }
 
-    public CardOrientations CardOrientation { get; set; }
-
+    public required CardOrientations CardOrientation { get; set; }
 }

@@ -4,9 +4,9 @@ public record Face : IStandardCard, ICard
 {
     public Guid Id { get; } = Guid.NewGuid();
 
-    public FaceDirections FaceDirection { get; init; }
+    public required FaceDirections FaceDirection { get; init; }
 
-    public List<HoldingObject>? HoldingObjects { get; init; }
+    public required List<Holding> Holdings { get; init; }
 
     public required IRank Rank { get; init; }
 
@@ -14,7 +14,7 @@ public record Face : IStandardCard, ICard
 
     public bool IsWild { get; set; }
 
-    public CardOrientations CardOrientation { get; set; }
+    public required CardOrientations CardOrientation { get; set; }
 }
 
 public enum FaceDirections
@@ -23,11 +23,13 @@ public enum FaceDirections
     Right
 }
 
-public enum HoldingObject
+public enum Holding
 {
     None,
     Sword,
     Scepter,
     Flower,
+    Fan,
+    Lute,
     Shield
 }

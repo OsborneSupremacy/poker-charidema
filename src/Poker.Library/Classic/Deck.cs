@@ -204,9 +204,9 @@ public record Deck : IDeck
             Rank = ranks.Jack,
             Suit = suits.Hearts,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -217,9 +217,9 @@ public record Deck : IDeck
             Rank = ranks.Queen,
             Suit = suits.Hearts,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -230,9 +230,9 @@ public record Deck : IDeck
             Rank = ranks.King,
             Suit = suits.Hearts,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Sword
+                Holding.Sword
             }
         };
 
@@ -323,9 +323,9 @@ public record Deck : IDeck
             Rank = ranks.Jack,
             Suit = suits.Diamonds,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -336,9 +336,9 @@ public record Deck : IDeck
             Rank = ranks.Queen,
             Suit = suits.Diamonds,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -349,9 +349,9 @@ public record Deck : IDeck
             Rank = ranks.King,
             Suit = suits.Diamonds,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Sword
+                Holding.Sword
             }
         };
 
@@ -442,9 +442,9 @@ public record Deck : IDeck
             Rank = ranks.Jack,
             Suit = suits.Clubs,
             FaceDirection = FaceDirections.Right,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -455,9 +455,9 @@ public record Deck : IDeck
             Rank = ranks.Queen,
             Suit = suits.Clubs,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -468,9 +468,9 @@ public record Deck : IDeck
             Rank = ranks.King,
             Suit = suits.Clubs,
             FaceDirection = FaceDirections.Left,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Sword
+                Holding.Sword
             }
         };
 
@@ -561,9 +561,9 @@ public record Deck : IDeck
             Rank = ranks.Jack,
             Suit = suits.Spades,
             FaceDirection = FaceDirections.Right,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Scepter
+                Holding.Scepter
             }
         };
 
@@ -574,9 +574,9 @@ public record Deck : IDeck
             Rank = ranks.Queen,
             Suit = suits.Spades,
             FaceDirection = FaceDirections.Right,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Flower
+                Holding.Flower
             }
         };
 
@@ -587,9 +587,9 @@ public record Deck : IDeck
             Rank = ranks.King,
             Suit = suits.Spades,
             FaceDirection = FaceDirections.Right,
-            HoldingObjects = new()
+            Holdings = new()
             {
-                HoldingObject.Sword
+                Holding.Sword
             }
         };
 
@@ -676,7 +676,7 @@ public record Deck : IDeck
 
         for (uint j = 0; j < numberOfJokers; j++)
         {
-            Joker joker = new();
+            Joker joker = new() { CardOrientation = CardOrientations.Facedown };
             Cards.Add(joker);
             Jokers.Add(joker);
         }

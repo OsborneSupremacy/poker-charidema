@@ -2,7 +2,7 @@
 
 public record Joker : ICard
 {
-    public CardOrientations CardOrientation { get; set; }
+    public required CardOrientations CardOrientation { get; set; }
 
     public Guid Id => throw new NotImplementedException();
 
