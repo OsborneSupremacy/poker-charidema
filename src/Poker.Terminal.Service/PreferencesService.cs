@@ -40,8 +40,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         uint? fixedNumberOfGames = null;
         uint? fixedAnte = null;
 
-        _c
-            .WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
+        _c.WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
             "What should we call you?", 1, (string name) =>
@@ -115,7 +114,6 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         return new MatchArgs
         {
-
             Players = players,
 
             InitialButton = new Faker()
