@@ -150,8 +150,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                     });
     }
 
-    public Task<bool> GetPlayAgain() =>
-        Task.FromResult(_c.PromptForBool("Play Again?"));
+    public Task<bool> GetPlayAgain(Match? lastMatch) =>
+        Task.FromResult(_c.PromptForBool("Would you like to play another match?"));
 
     public Task<IVariant> GetVariant(IPlayer button)
     {
@@ -165,5 +165,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         PromptForOption(prompt, onValidInput, options);
 
     public IInputOption<T> PromptForOption<T>(string prompt, params IInputOption<T>[] options) =>
-        PromptForOption(prompt, options); 
+        PromptForOption(prompt, options);
+
+    public Task<bool> GetPlayAgain(Game game) =>
+        Task.FromResult(_c.PromptForBool($"Would you like to play another game of {game.Variant.Name}?"));
 }

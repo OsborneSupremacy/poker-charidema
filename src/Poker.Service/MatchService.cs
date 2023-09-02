@@ -36,7 +36,8 @@ public class MatchService : IMatchService
         while (keepPlaying)
         {
             match = await PlayGameAsync(match);
-            keepPlaying = await _matchPreferencesService.GetPlayAgain();
+            keepPlaying =
+                await _gamePreferencesService.GetPlayAgain(match.Games.Last());
         }
         return match;
     }
@@ -81,7 +82,7 @@ public class MatchService : IMatchService
                 Cancelled = true,
                 Match = match,
                 Winners = new(),
-                PlayAgain = await _matchPreferencesService.GetPlayAgain()
+                PlayAgain = await _matchPreferencesService.GetPlayAgain(match)
             };
         }
 
@@ -123,15 +124,12 @@ public class MatchService : IMatchService
         return matchOut;
     }
 
-    protected async Task<MatchResult> EvaluateResult(Match matchIn)
-    {
-        return
-            new MatchResult()
-            {
-                Cancelled = false,
-                Match = matchIn,
-                Winners = new(),
-                PlayAgain = await _matchPreferencesService.GetPlayAgain()
-            };
-    }
+    protected async Task<MatchResult> EvaluateResult(Match matchIn) => 
+        new MatchResult()
+        {
+            Cancelled = false,
+            Match = matchIn,
+            Winners = new(),
+            PlayAgain = await _matchPreferencesService.GetPlayAgain(matchIn)
+        };
 }

@@ -6,5 +6,5 @@ public interface IMatchPreferencesService
 
     Task<MatchArgs> GetMatchArgs(Match? lastMatch);
 
-    Task<bool> GetPlayAgain();
+    Task<bool> GetPlayAgain(Match lastMatch);
 }

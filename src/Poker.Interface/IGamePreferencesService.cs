@@ -7,4 +7,6 @@ public interface IGamePreferencesService
     Task<IVariant> GetVariant(IPlayer button);
 
     Task<IDeck> GetDeck(IPlayer button);
+
+    Task<bool> GetPlayAgain(Game game);
 }
