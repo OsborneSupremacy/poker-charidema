@@ -21,7 +21,6 @@ public class ConsoleHostedService : IHostedService
         _applicationLifetime = applicationLifetime ?? throw new ArgumentNullException(nameof(applicationLifetime));
 
         AnsiConsole.Clear();
-        AnsiConsole.Background = Color.DarkGreen;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)

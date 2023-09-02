@@ -1,4 +1,5 @@
 ﻿using Poker.Presentation.Interface;
+using Poker.Utility;
 using Spectre.Console;
 
 namespace Poker.Terminal.Service;
@@ -155,14 +156,17 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService WriteHeading(uint level, string input)
     {
-        AnsiConsole.MarkupLine($"[bold white on darkgreen]{input}[/]");
+        AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]");
+        AnsiConsole.MarkupLine($"[bold]{input}[/]");
+        AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]");
+        AnsiConsole.WriteLine();
         return this;
     }
 
     public IUserInterfaceService WriteList(string heading, params string[] items)
     {
         foreach(var item in items)
-            AnsiConsole.MarkupLine($"[bold white on darkgreen]* {item}[/]");
+            AnsiConsole.MarkupLine($"[bold]* {item}[/]");
         return this;
     }
 }

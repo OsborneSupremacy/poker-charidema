@@ -43,10 +43,10 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c.WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
-            "What should we call you?", 1, (string name) =>
+            "Please enter your name", 1, (string name) =>
             {
                 userName = name;
-                _c.WriteLine($"Nice to meet you, {userName}!");
+                _c.WriteLine($"Welcome, {userName}!");
             })
 
         .WriteLine()
