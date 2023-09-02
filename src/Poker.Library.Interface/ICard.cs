@@ -9,8 +9,9 @@ public interface ICard
     bool IsWild { get; }
 }
 
-public enum CardDestinations
+public enum CardLocations
 {
+    Deck,
     PlayerHand,
     Community
 }

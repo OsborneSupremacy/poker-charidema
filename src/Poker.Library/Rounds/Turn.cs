@@ -10,6 +10,6 @@ public record Turn : DealCards
         Count = 1;
         Name = "The Turn";
         CardOrientation = CardOrientations.Faceup;
-        CardDestination = CardDestinations.Community;
+        CardDestination = CardLocations.Community;
     }
 }

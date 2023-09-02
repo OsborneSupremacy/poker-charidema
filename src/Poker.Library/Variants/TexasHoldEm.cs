@@ -15,7 +15,7 @@ public record class TexasHoldEm : IVariant
                 Count = 2,
                 Name = "Deal",
                 CardOrientation = CardOrientations.Facedown,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new BettingInterval(),
             new Flop(),

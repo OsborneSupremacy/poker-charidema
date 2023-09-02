@@ -8,7 +8,7 @@ public record DealCards : IRound
 
     public CardOrientations CardOrientation { get; init; }
 
-    public CardDestinations CardDestination { get; init; }
+    public CardLocations CardDestination { get; init; }
 
     public bool GameCanEndAfter => false;
 }

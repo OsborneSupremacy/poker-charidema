@@ -15,7 +15,7 @@ public record FiveCardDraw : IVariant
                 Count = 5,
                 Name = "Deal",
                 CardOrientation = CardOrientations.Facedown,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new BettingInterval(),
             new DrawCards()

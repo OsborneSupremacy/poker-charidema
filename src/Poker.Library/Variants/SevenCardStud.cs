@@ -15,14 +15,14 @@ public record SevenCardStud : IVariant
                 Name = "Deal",
                 Count = 2,
                 CardOrientation = CardOrientations.Facedown,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new DealCards()
             {
                 Name = "Deal",
                 Count = 1,
                 CardOrientation = CardOrientations.Faceup,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new BettingInterval(),
             new DealCards()
@@ -30,14 +30,14 @@ public record SevenCardStud : IVariant
                 Name = "Deal",
                 Count = 3,
                 CardOrientation = CardOrientations.Faceup,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new DealCards()
             {
                 Name = "Deal",
                 Count = 1,
                 CardOrientation = CardOrientations.Facedown,
-                CardDestination = CardDestinations.PlayerHand
+                CardDestination = CardLocations.PlayerHand
             },
             new BettingInterval()
         };

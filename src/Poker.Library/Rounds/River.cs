@@ -7,6 +7,6 @@ public record River : DealCards
         Count = 1;
         Name = "The River";
         CardOrientation = CardOrientations.Faceup;
-        CardDestination = CardDestinations.Community;
+        CardDestination = CardLocations.Community;
     }
 }

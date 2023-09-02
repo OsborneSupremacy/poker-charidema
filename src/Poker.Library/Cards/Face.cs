@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Cards;
 
-public record Face : IStandardCard, ICard
+public record Face : IStandardCard
 {
     public Guid Id { get; } = Guid.NewGuid();
 

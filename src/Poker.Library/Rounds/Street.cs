@@ -10,6 +10,6 @@ public record Street : DealCards
         Count = 1;
         Name = "The Street";
         CardOrientation = CardOrientations.Faceup;
-        CardDestination = CardDestinations.Community;
+        CardDestination = CardLocations.Community;
     }
 }

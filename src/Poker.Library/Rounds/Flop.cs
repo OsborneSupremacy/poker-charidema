@@ -10,6 +10,6 @@ public record Flop : DealCards
         Count = 3;
         Name = "The Flop";
         CardOrientation = CardOrientations.Faceup;
-        CardDestination = CardDestinations.Community;
+        CardDestination = CardLocations.Community;
     }
 }
