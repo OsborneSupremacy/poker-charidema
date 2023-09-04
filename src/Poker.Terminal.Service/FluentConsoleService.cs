@@ -137,10 +137,7 @@ public class FluentConsoleService : IUserInterfaceService
             );
 
             var index = Array.IndexOf(optionChoices, selectedOption);
-            var option = options[index];
-
-            if (AnsiConsole.Confirm($"Selected option: {option.Name}. Is this correct? (y/n)"))
-                return option;
+            return options[index];
         }
     }
 
@@ -156,9 +153,18 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService WriteHeading(uint level, string input)
     {
-        AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]");
+        Action writeDelimiter = level switch
+        {
+            1 => () => AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]"),
+            2 => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(75)}[/]"),
+            3 => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(50)}[/]"),
+            _ => () => { }
+        };
+
+        writeDelimiter();
         AnsiConsole.MarkupLine($"[bold]{input}[/]");
-        AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]");
+        writeDelimiter();
+
         AnsiConsole.WriteLine();
         return this;
     }
@@ -167,6 +173,7 @@ public class FluentConsoleService : IUserInterfaceService
     {
         foreach(var item in items)
             AnsiConsole.MarkupLine($"[bold]* {item}[/]");
+        AnsiConsole.WriteLine();
         return this;
     }
 }
