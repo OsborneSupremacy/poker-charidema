@@ -8,12 +8,17 @@ public class RoundService : IRoundService
 
     private readonly IUserInterfaceService _userInterfaceService;
 
+    private readonly IMoveService _moveService;
+
     public RoundService(
         IGamePreferencesService gamePreferencesService,
-        IUserInterfaceService userInterfaceService)
+        IUserInterfaceService userInterfaceService,
+        IMoveService moveService
+        )
     {
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _moveService = moveService ?? throw new ArgumentNullException(nameof(moveService));
     }
 
     protected Task WriteStartInfoAsync(RoundArgs args)

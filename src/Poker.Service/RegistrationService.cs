@@ -12,6 +12,7 @@ public static class RegistrationService
         serviceCollection.AddScoped<SuitFactory>();
 
         serviceCollection.AddScoped<IDealerService, DealerService>();
+        serviceCollection.AddScoped<IMoveService, MoveService>();
         serviceCollection.AddScoped<IRoundService, RoundService>();
         serviceCollection.AddScoped<IGameService, GameService>();
         serviceCollection.AddScoped<IMatchService, MatchService>();
