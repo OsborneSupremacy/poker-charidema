@@ -4,9 +4,9 @@ public record Game
 {
     public required IVariant Variant { get; init; }
 
-    public double Ante { get; init; }
+    public required double Ante { get; init; }
 
-    public double Pot { get; init; }
+    public required double Pot { get; init; }
 
     public required IDeck Deck { get; init; }
 

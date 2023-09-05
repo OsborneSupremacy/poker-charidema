@@ -36,7 +36,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     {
         var userName = string.Empty;
         int playerCount = 0;
-        int startingStack = 0;
+        uint startingStack = 0;
         uint? fixedNumberOfGames = null;
         uint? fixedAnte = null;
 
@@ -60,7 +60,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .PromptForMoney("How much money should players start with?", 10, 1000000, (int m) =>
         {
-            startingStack = m;
+            startingStack = (uint)m;
         })
 
         .WriteLine()
@@ -101,7 +101,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<uint?>("Fixed ante amount", () =>
             {
                 int anteAmount = 0;
-                _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
+                _c.PromptForMoney("Specify fixed ante amount", 1, (int)startingStack, input =>
                 {
                     anteAmount = input;
                 });
@@ -124,7 +124,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             FixedNumberOfGames = fixedNumberOfGames,
             FixedAnte = fixedAnte,
             FixedDeck = new Library.Classic.Deck(),
-            FixedVariant = new FiveCardDraw()
+            FixedVariant = new FiveCardDraw(),
+            StartingStack = startingStack
         };
     }
 

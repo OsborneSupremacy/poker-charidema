@@ -2,6 +2,8 @@
 
 public record RoundArgs
 {
+    public required Game Game { get; init; }
+
     public required IRound Round { get; init; }
 
     public required IDeck Deck { get; init; }

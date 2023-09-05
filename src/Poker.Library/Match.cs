@@ -13,6 +13,8 @@ public record Match
     public required List<Game> Games { get; init; }
 
     public required IPlayer Button { get; init; }
+
+    public required uint StartingStack { get; init; }
 }
 
 public class MatchValidator : AbstractValidator<Match>

@@ -46,11 +46,11 @@ public class MatchService : IMatchService
     {
         var s = _userInterfaceService;
 
-        s.WriteHeading(1, "Welcome to the new match!");
+        s.WriteHeading(2, "Welcome to the new match!");
 
         s.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
-        s.WriteHeading(2, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
+        s.WriteHeading(3, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
 
         if (match.FixedNumberOfGames.HasValue)
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
@@ -69,7 +69,8 @@ public class MatchService : IMatchService
             FixedDeck = args.FixedDeck,
             Players = args.Players,
             Games = new(),
-            Button = args.InitialButton
+            Button = args.InitialButton,
+            StartingStack = args.StartingStack,
         };
 
         await WriteMatchStartInfoAsync(match);
@@ -98,7 +99,7 @@ public class MatchService : IMatchService
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
         _userInterfaceService
-            .WriteHeading(2, $"Stating game {matchIn.Games.Count + 1}");
+            .WriteHeading(4, $"Starting game {matchIn.Games.Count + 1}");
 
         // pass button to next player if it's not the first game
         IPlayer button = matchIn.Games.Any()
@@ -108,6 +109,7 @@ public class MatchService : IMatchService
         var game = await _gameService.PlayAsync(
             new GameArgs()
             {
+                Match = matchIn,
                 Players = matchIn.Players,
                 Variant = matchIn.FixedVariant ?? (await _gamePreferencesService.GetVariant(button)),
                 Deck = matchIn.FixedDeck ?? (await _gamePreferencesService.GetDeck(button)),
@@ -120,6 +122,9 @@ public class MatchService : IMatchService
             Games = matchIn.Games.Append(game).ToList(),
             Button = button
         };
+
+        _userInterfaceService
+            .WriteHeading(4, $"Game over! TBD wins.");
 
         return matchOut;
     }

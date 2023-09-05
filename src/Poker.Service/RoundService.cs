@@ -4,26 +4,22 @@ namespace Poker.Service;
 
 public class RoundService : IRoundService
 {
-    private readonly IGamePreferencesService _gamePreferencesService;
-
     private readonly IUserInterfaceService _userInterfaceService;
 
     private readonly IMoveService _moveService;
 
     public RoundService(
-        IGamePreferencesService gamePreferencesService,
         IUserInterfaceService userInterfaceService,
         IMoveService moveService
         )
     {
-        _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _moveService = moveService ?? throw new ArgumentNullException(nameof(moveService));
     }
 
     protected Task WriteStartInfoAsync(RoundArgs args)
     {
-        _userInterfaceService.WriteLines(
+        _userInterfaceService.WriteHeading(5,
             $"Round {args.RoundNumber} - {args.Round.Name}"
         );
 
@@ -47,8 +43,13 @@ public class RoundService : IRoundService
         {
             var playerInTurn = args.Players[p];
 
-            _userInterfaceService
-                .WriteLines($"{playerInTurn.Player.Name}'s turn.");
+            var moveResult = await _moveService.ExecuteAsync(
+                new MoveArgs {
+                    PlayerInTurn = args.Players[p],
+                    RoundArgs = args
+                }
+            );
+
 
             playersOut.Add(playerInTurn);
         }

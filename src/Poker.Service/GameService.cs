@@ -8,28 +8,29 @@ public class GameService : IGameService
 
     private readonly IRoundService _roundService;
 
-    private readonly IGamePreferencesService _gamePreferencesService;
+    private readonly IAnteSetService _anteSetService;
 
     private readonly IUserInterfaceService _userInterfaceService;
 
     public GameService(
         IDealerService dealerService,
         IRoundService roundService,
-        IGamePreferencesService gamePreferencesService,
+        IAnteSetService anteSetService,
         IUserInterfaceService userInterfaceService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _roundService = roundService ?? throw new ArgumentNullException(nameof(roundService));
-        _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
+        _anteSetService = anteSetService ?? throw new ArgumentNullException(nameof(anteSetService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
     protected Task WriteStartInfoAsync(Game game)
     {
         _userInterfaceService.WriteLines(
-            $"The game is {game.Variant.Name}",
-            $"{game.Button.Player.Name} has the deal"
+            $"The game is {game.Variant.Name}.",
+            $"{game.Button.Player.Name} has the deal.",
+            $"Ante is set at {game.Ante:C}"
         );
 
         return Task.CompletedTask;
@@ -57,7 +58,9 @@ public class GameService : IGameService
             Players = gamePlayers,
             Deck = args.Deck,
             CommunityCards = new(),
-            Discards = new()
+            Discards = new(),
+            Ante = await _anteSetService.GetAsync(args, gameButton),
+            Pot = 0
         };
 
         await WriteStartInfoAsync(game);
@@ -71,6 +74,7 @@ public class GameService : IGameService
             var result = await _roundService
                 .ExecuteAsync(new RoundArgs()
                 {
+                    Game = game,
                     Round = action,
                     Deck = deck,
                     CommunityCards = new(),
@@ -85,7 +89,4 @@ public class GameService : IGameService
 
         return game;
     }
-
-
-
 }

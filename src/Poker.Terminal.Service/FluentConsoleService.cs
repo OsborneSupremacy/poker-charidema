@@ -156,11 +156,14 @@ public class FluentConsoleService : IUserInterfaceService
         Action writeDelimiter = level switch
         {
             1 => () => AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]"),
-            2 => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(75)}[/]"),
-            3 => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(50)}[/]"),
+            2 => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(90)}[/]"),
+            3 => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(80)}[/]"),
+            4 => () => AnsiConsole.MarkupLine($"[bold]{'~'.Repeat(70)}[/]"),
+            5 => () => AnsiConsole.MarkupLine($"[bold]{'^'.Repeat(60)}[/]"),
             _ => () => { }
         };
 
+        AnsiConsole.WriteLine();
         writeDelimiter();
         AnsiConsole.MarkupLine($"[bold]{input}[/]");
         writeDelimiter();
@@ -173,7 +176,6 @@ public class FluentConsoleService : IUserInterfaceService
     {
         foreach(var item in items)
             AnsiConsole.MarkupLine($"[bold]* {item}[/]");
-        AnsiConsole.WriteLine();
         return this;
     }
 }

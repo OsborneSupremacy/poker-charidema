@@ -2,5 +2,5 @@
 
 public interface IMoveService
 {
-    public MoveResult Execute(MoveArgs args);
+    public Task<MoveResult> ExecuteAsync(MoveArgs args);
 }

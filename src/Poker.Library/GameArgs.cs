@@ -2,6 +2,8 @@
 
 public record GameArgs
 {
+    public required Match Match { get; init; }
+
     public required List<IPlayer> Players { get; init; }
 
     public required IVariant Variant { get; init; }

@@ -15,6 +15,7 @@ public static class RegistrationService
         serviceCollection.AddScoped<IMoveService, MoveService>();
         serviceCollection.AddScoped<IRoundService, RoundService>();
         serviceCollection.AddScoped<IGameService, GameService>();
+        serviceCollection.AddScoped<IAnteSetService, AnteSetService>();
         serviceCollection.AddScoped<IMatchService, MatchService>();
 
         serviceCollection.AddScoped<PlayerFactory>();
