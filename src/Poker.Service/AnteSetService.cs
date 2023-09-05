@@ -17,6 +17,9 @@ public class AnteSetService : IAnteSetService
 
     public Task<uint> GetAsync(GameArgs gameArgs, IInGamePlayer button)
     {
+        if (gameArgs.Match.FixAnte.HasValue)
+            return Task.FromResult(gameArgs.Match.FixAnte.Value);
+
         uint anteAmount = 0;
         _userInterfaceService
             .PromptForMoney("Specify ante amount", 1, (int)gameArgs.Match.StartingStack, input =>

@@ -17,7 +17,7 @@ public class Flush : IHandRanking
         {
             if (playerCards.Where(c => c.MatchesSuitOrIsWild(p)).Count() < 5) continue;
 
-            List<ICard> handCards = playerCards
+            var handCards = playerCards
                 .Where(c => c.MatchesSuitOrIsWild(p))
                 .OrderBy(c => c.IsWild)
                 .ThenByDescending(c => c is IStandardCard s ? s.Rank.Value : 0)

@@ -1,4 +1,6 @@
-﻿namespace Poker.Library;
+﻿using System.Formats.Asn1;
+
+namespace Poker.Library;
 
 public record Match
 {
@@ -13,6 +15,8 @@ public record Match
     public required List<Game> Games { get; init; }
 
     public required IPlayer Button { get; init; }
+
+    public required uint? FixAnte {  get; init; }
 
     public required uint StartingStack { get; init; }
 }

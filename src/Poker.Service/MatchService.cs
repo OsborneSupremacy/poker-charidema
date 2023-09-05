@@ -70,7 +70,8 @@ public class MatchService : IMatchService
             Players = args.Players,
             Games = new(),
             Button = args.InitialButton,
-            StartingStack = args.StartingStack,
+            FixAnte = args.FixedAnte,
+            StartingStack = args.StartingStack
         };
 
         await WriteMatchStartInfoAsync(match);
@@ -102,7 +103,7 @@ public class MatchService : IMatchService
             .WriteHeading(4, $"Starting game {matchIn.Games.Count + 1}");
 
         // pass button to next player if it's not the first game
-        IPlayer button = matchIn.Games.Any()
+        var button = matchIn.Games.Any()
             ? matchIn.Players.NextPlayer(matchIn.Button)
             : matchIn.Button;
 
