@@ -17,8 +17,8 @@ public class AnteSetService : IAnteSetService
 
     public Task<uint> GetAsync(GameArgs gameArgs, IInGamePlayer button)
     {
-        if (gameArgs.Match.FixAnte.HasValue)
-            return Task.FromResult(gameArgs.Match.FixAnte.Value);
+        if (gameArgs.Match.FixedAnte.HasValue)
+            return Task.FromResult(gameArgs.Match.FixedAnte.Value);
 
         uint anteAmount = 0;
         _userInterfaceService

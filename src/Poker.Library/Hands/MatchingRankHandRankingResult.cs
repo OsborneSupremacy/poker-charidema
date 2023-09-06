@@ -2,6 +2,10 @@
 
 namespace Poker.Library.Hands;
 
+/// <summary>
+/// This is the base for any any hand that requires 2+ cards of the same
+/// rank. i.e. pair, three-of-a-kind, four-of-a-kind, and five-of-a-kind.
+/// </summary>
 public abstract class MatchingRankHandRankingResult
 {
     public abstract string Name { get; }

@@ -70,7 +70,7 @@ public class MatchService : IMatchService
             Players = args.Players,
             Games = new(),
             Button = args.InitialButton,
-            FixAnte = args.FixedAnte,
+            FixedAnte = args.FixedAnte,
             StartingStack = args.StartingStack
         };
 

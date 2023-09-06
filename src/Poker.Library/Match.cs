@@ -16,7 +16,7 @@ public record Match
 
     public required IPlayer Button { get; init; }
 
-    public required uint? FixAnte {  get; init; }
+    public required uint? FixedAnte {  get; init; }
 
     public required uint StartingStack { get; init; }
 }
