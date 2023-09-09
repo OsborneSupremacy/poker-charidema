@@ -16,5 +16,5 @@ public record RoundArgs
 
     public required uint RoundNumber { get; init; }
 
-    public required double Pot { get; init; }
+    public required uint Pot { get; init; }
 }

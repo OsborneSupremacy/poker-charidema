@@ -1,6 +1,4 @@
-﻿using System.Formats.Asn1;
-
-namespace Poker.Library;
+﻿namespace Poker.Library;
 
 public record Match
 {
@@ -16,7 +14,7 @@ public record Match
 
     public required IPlayer Button { get; init; }
 
-    public required uint? FixedAnte {  get; init; }
+    public required IAntePreferences AntePreferences { get; init; }
 
     public required uint StartingStack { get; init; }
 }

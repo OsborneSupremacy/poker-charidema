@@ -1,4 +1,7 @@
-﻿namespace Poker.Service;
+﻿using Poker.Library;
+using Poker.Library.AntePreferences;
+
+namespace Poker.Service;
 
 public class AnteSetService : IAnteSetService
 {
@@ -17,15 +20,41 @@ public class AnteSetService : IAnteSetService
 
     public Task<uint> GetAsync(GameArgs gameArgs, IInGamePlayer button)
     {
-        if (gameArgs.Match.FixedAnte.HasValue)
-            return Task.FromResult(gameArgs.Match.FixedAnte.Value);
+        if (gameArgs.Match.AntePreferences is Fixed fixedAnte)
+            return Task.FromResult(fixedAnte.Amount);
 
+        //var maxAnte = gameArgs.Players.Min(p => p.Stack);
+
+        uint anteAmount = 0;
+
+        switch(button.Player.Automaton)
+        {
+            case true:
+                anteAmount = 0;
+                break;
+
+            case false:
+                _userInterfaceService
+                    .PromptForMoney("Specify ante amount", 1, (int)gameArgs.Match.StartingStack, input =>
+                    {
+                        anteAmount = (uint)input;
+                    });
+                break;
+        }
+
+        return Task.FromResult(anteAmount);
+    }
+
+
+
+    private uint GetAnteFromUser(GameArgs gameArgs)
+    {
         uint anteAmount = 0;
         _userInterfaceService
             .PromptForMoney("Specify ante amount", 1, (int)gameArgs.Match.StartingStack, input =>
             {
                 anteAmount = (uint)input;
             });
-        return Task.FromResult(anteAmount);
+        return anteAmount;
     }
 }

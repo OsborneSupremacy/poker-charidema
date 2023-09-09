@@ -2,7 +2,7 @@
 
 public interface IGamePreferencesService
 {
-    Task<double> GetAnte(IPlayer button);
+    Task<uint> GetAnte(IPlayer button);
 
     Task<IVariant> GetVariant(IPlayer button);
 

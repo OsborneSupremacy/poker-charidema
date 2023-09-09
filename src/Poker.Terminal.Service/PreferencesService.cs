@@ -1,4 +1,6 @@
 ﻿using Bogus;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Poker.Library.AntePreferences;
 using Poker.Presentation.Interface;
 
 namespace Poker.Terminal.Service;
@@ -22,7 +24,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
-    public Task<double> GetAnte(IPlayer button)
+    public Task<uint> GetAnte(IPlayer button)
     {
         throw new NotImplementedException();
     }
@@ -87,27 +89,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             )
         )
 
-        .WriteLine()
+        .WriteLine();
 
-        .PromptForOption(
-            "Should the ante amount be dealer's choice, or fixed?",
-            anteAmount =>
-            {
-                fixedAnte = anteAmount;
-            },
-            new InputOption<uint?>(
-                "Dealer's choice ante amount", () => { return null; }
-            ),
-            new InputOption<uint?>("Fixed ante amount", () =>
-            {
-                int anteAmount = 0;
-                _c.PromptForMoney("Specify fixed ante amount", 1, (int)startingStack, input =>
-                {
-                    anteAmount = input;
-                });
-                return (uint)anteAmount;
-            })
-        );
+        var antePreferences = GetAntePreferences(startingStack);
 
         var players = await GeneratePlayers(userName, startingStack, playerCount)
             .ToListAsync();
@@ -122,14 +106,66 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             }.PickRandom(players),
 
             FixedNumberOfGames = fixedNumberOfGames,
-            FixedAnte = fixedAnte,
+            AntePreferences = antePreferences,
             FixedDeck = new Library.Classic.Deck(),
             FixedVariant = new FiveCardDraw(),
             StartingStack = startingStack
         };
     }
 
-    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(string userName, double startingStack, int playerCount)
+    private IAntePreferences GetAntePreferences(uint startingStack)
+    {
+        IAntePreferences? antePreferences = null;
+
+        _c.PromptForOption(
+            "Should the ante amount be dealer's choice, or fixed?",
+            pref =>
+            {
+                antePreferences = pref;
+            },
+            new InputOption<IAntePreferences>(
+                "Dealer's choice ante amount", () => {
+
+                    int min = 0;
+
+                    // subtracting 1 because we can't make the minimum ante equal to the 
+                    // starting stack -- otherwise it will be impossible for there to be a 
+                    // range. And if there's not a range, dealer's choice doesn't make sense.
+                    _c.PromptForMoney("Mininum ante", 0, (int)startingStack - 1, input =>
+                    {
+                        min = input;
+                    });
+
+                    int max = 0;
+                    _c.PromptForMoney("Maximum ante", min + 1, (int)startingStack, input =>
+                    {
+                        max = input;
+                    });
+
+                    return new DealersChoice
+                    {
+                        MinAnte = (uint)min,
+                        MaxAnte = (uint)max
+                    };
+                }
+            ),
+            new InputOption<IAntePreferences>("Fixed ante amount", () =>
+            {
+                int anteAmount = 0;
+                _c.PromptForMoney("Specify fixed ante amount", 1, (int)startingStack, input =>
+                {
+                    anteAmount = input;
+                });
+                return new Fixed { 
+                    Amount = (uint)anteAmount
+                };
+            })
+        );
+
+        return antePreferences!;
+    }
+
+    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(string userName, uint startingStack, int playerCount)
     {
         yield return new Player
         {

@@ -6,7 +6,7 @@ public record class MatchArgs
 
     public required IPlayer InitialButton { get; init; }
 
-    public required uint? FixedAnte { get; init; }
+    public required IAntePreferences AntePreferences { get; init; }
 
     public required uint? FixedNumberOfGames { get; init; }
 

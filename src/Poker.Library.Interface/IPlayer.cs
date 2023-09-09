@@ -6,9 +6,9 @@ public interface IPlayer
 
     string Name { get; }
 
-    double BeginningStack { get; }
+    uint BeginningStack { get; }
 
-    double Stack { get; }
+    uint Stack { get; }
 
     public bool Automaton { get; set; }
 }

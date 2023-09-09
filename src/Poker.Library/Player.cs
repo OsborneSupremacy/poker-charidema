@@ -6,9 +6,9 @@ public record Player : IPlayer
 
     public required string Name { get; init; }
 
-    public required double BeginningStack { get; init; }
+    public required uint BeginningStack { get; init; }
 
-    public required double Stack { get; init; }
+    public required uint Stack { get; init; }
 
     public required bool Automaton { get; set; }
 }

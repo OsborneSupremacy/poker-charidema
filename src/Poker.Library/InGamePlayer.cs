@@ -6,7 +6,7 @@ public record InGamePlayer : IInGamePlayer
 
     public required List<ICard> Cards { get; init; }
 
-    public required double Stack { get; init; }
+    public required uint Stack { get; init; }
 
     public required bool Folded { get; init; }
 }

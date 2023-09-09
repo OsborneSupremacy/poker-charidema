@@ -10,5 +10,5 @@ public record RoundResult
 
     public required bool GameOver { get; init; }
 
-    public required double Pot { get; init; }
+    public required uint Pot { get; init; }
 }

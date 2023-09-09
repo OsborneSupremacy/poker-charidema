@@ -2,7 +2,7 @@
 
 public record Bet
 {
-    public required double Amount { get; init; }
+    public required uint Amount { get; init; }
 
     public required IPlayer Player { get; init; }
 }
