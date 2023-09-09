@@ -37,10 +37,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public async Task<MatchArgs> GetMatchArgs(Match? lastMatch)
     {
         var userName = string.Empty;
-        int playerCount = 0;
+        uint playerCount = 0;
         uint startingStack = 0;
         uint? fixedNumberOfGames = null;
-        uint? fixedAnte = null;
 
         _c.WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
 
@@ -53,16 +52,16 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .WriteLine()
 
-        .PromptForInt("How many other players would you like to be part of this match?", 1, 10, (int c) =>
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 10, (uint c) =>
         {
             playerCount = c;
         })
 
         .WriteLine()
 
-        .PromptForMoney("How much money should players start with?", 10, 1000000, (int m) =>
+        .PromptForMoney("How much money should players start with?", 10, 1000000, (uint m) =>
         {
-            startingStack = (uint)m;
+            startingStack = m;
         })
 
         .WriteLine()
@@ -79,12 +78,12 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<uint?>(
                 "Play fixed number of games", () =>
                 {
-                    int gameCount = 0;
+                    uint gameCount = 0;
                     _c.PromptForInt("How many games?", 1, 100, input =>
                     {
                         gameCount = input;
                     });
-                    return (uint)gameCount;
+                    return gameCount;
                 }
             )
         )
@@ -126,38 +125,38 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<IAntePreferences>(
                 "Dealer's choice ante amount", () => {
 
-                    int min = 0;
+                    uint min = 0;
 
                     // subtracting 1 because we can't make the minimum ante equal to the 
                     // starting stack -- otherwise it will be impossible for there to be a 
                     // range. And if there's not a range, dealer's choice doesn't make sense.
-                    _c.PromptForMoney("Mininum ante", 0, (int)startingStack - 1, input =>
+                    _c.PromptForMoney("Mininum ante", 0, startingStack - 1, input =>
                     {
                         min = input;
                     });
 
-                    int max = 0;
-                    _c.PromptForMoney("Maximum ante", min + 1, (int)startingStack, input =>
+                    uint max = 0;
+                    _c.PromptForMoney("Maximum ante", min + 1, startingStack, input =>
                     {
                         max = input;
                     });
 
-                    return new DealersChoice
+                    return new DealersChoiceAnte
                     {
-                        MinAnte = (uint)min,
-                        MaxAnte = (uint)max
+                        MinAnte = min,
+                        MaxAnte = max
                     };
                 }
             ),
             new InputOption<IAntePreferences>("Fixed ante amount", () =>
             {
-                int anteAmount = 0;
-                _c.PromptForMoney("Specify fixed ante amount", 1, (int)startingStack, input =>
+                uint anteAmount = 0;
+                _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
                 {
                     anteAmount = input;
                 });
-                return new Fixed { 
-                    Amount = (uint)anteAmount
+                return new FixedAnte { 
+                    Amount = anteAmount
                 };
             })
         );
@@ -165,7 +164,11 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         return antePreferences!;
     }
 
-    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(string userName, uint startingStack, int playerCount)
+    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(
+        string userName,
+        uint startingStack,
+        uint playerCount
+        )
     {
         yield return new Player
         {
@@ -173,7 +176,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             Name = userName,
             Stack = startingStack,
             BeginningStack = startingStack,
-            Automaton = false
+            Automaton = false,
+            Busted = false
         };
 
         for (int p = 0; p < playerCount; p++)

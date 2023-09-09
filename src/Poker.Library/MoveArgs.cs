@@ -7,4 +7,6 @@ public record MoveArgs
     public required IInGamePlayer PlayerInTurn { get; init; }
 
     public required RoundArgs RoundArgs { get; init; }
+
+    public required uint Pot { get; init; }
 }

@@ -1,4 +1,4 @@
-﻿using Poker.Library;
+﻿using Bogus;
 using Poker.Library.AntePreferences;
 
 namespace Poker.Service;
@@ -20,40 +20,47 @@ public class AnteSetService : IAnteSetService
 
     public Task<uint> GetAsync(GameArgs gameArgs, IInGamePlayer button)
     {
-        if (gameArgs.Match.AntePreferences is Fixed fixedAnte)
+        if (gameArgs.Match.AntePreferences is FixedAnte fixedAnte)
             return Task.FromResult(fixedAnte.Amount);
 
-        //var maxAnte = gameArgs.Players.Min(p => p.Stack);
+        var antePrefs = GetAntePrefs(gameArgs);
 
-        uint anteAmount = 0;
-
-        switch(button.Player.Automaton)
+        uint anteAmount = button.Player.Automaton switch
         {
-            case true:
-                anteAmount = 0;
-                break;
-
-            case false:
-                _userInterfaceService
-                    .PromptForMoney("Specify ante amount", 1, (int)gameArgs.Match.StartingStack, input =>
-                    {
-                        anteAmount = (uint)input;
-                    });
-                break;
-        }
+            true => new Randomizer(_randomFactory.GetSeed())
+                .UInt(antePrefs.MinAnte, antePrefs.MaxAnte),
+            false => GetAnteFromUser(antePrefs)
+        };
 
         return Task.FromResult(anteAmount);
     }
 
+    private DealersChoiceAnte GetAntePrefs(GameArgs gameArgs)
+    {
+        var minPlayerStack = gameArgs.Players.Min(p => p.Stack);
 
+        var antePrefs = (DealersChoiceAnte)gameArgs.Match.AntePreferences;
 
-    private uint GetAnteFromUser(GameArgs gameArgs)
+        // all players have enough for max ante
+        if (minPlayerStack >= antePrefs.MaxAnte)
+            return antePrefs;
+
+        DealersChoiceAnte effectivePrefs = new()
+        {
+            MinAnte = (minPlayerStack < antePrefs.MinAnte) ? minPlayerStack : antePrefs.MinAnte,
+            MaxAnte = minPlayerStack
+        };
+
+        return effectivePrefs;
+    }
+
+    private uint GetAnteFromUser(DealersChoiceAnte antePrefs)
     {
         uint anteAmount = 0;
         _userInterfaceService
-            .PromptForMoney("Specify ante amount", 1, (int)gameArgs.Match.StartingStack, input =>
+            .PromptForMoney("Specify ante amount", antePrefs.MinAnte, antePrefs.MaxAnte, input =>
             {
-                anteAmount = (uint)input;
+                anteAmount = input;
             });
         return anteAmount;
     }

@@ -20,16 +20,16 @@ public interface IUserInterfaceService
 
     IUserInterfaceService PromptForInt(
         string prompt,
-        int minVal,
-        int maxVal,
-        Action<int> onValidInput
+        uint minVal,
+        uint maxVal,
+        Action<uint> onValidInput
         );
 
     IUserInterfaceService PromptForMoney(
         string prompt,
-        int minVal,
-        int maxVal,
-        Action<int> onValidInput
+        uint minVal,
+        uint maxVal,
+        Action<uint> onValidInput
         );
 
     IUserInterfaceService PromptForBool(

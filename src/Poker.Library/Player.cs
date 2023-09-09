@@ -1,4 +1,6 @@
-﻿namespace Poker.Library;
+﻿using System.Runtime.CompilerServices;
+
+namespace Poker.Library;
 
 public record Player : IPlayer
 {
@@ -10,5 +12,7 @@ public record Player : IPlayer
 
     public required uint Stack { get; init; }
 
-    public required bool Automaton { get; set; }
+    public required bool Automaton { get; init; }
+
+    public required bool Busted { get; init; }
 }

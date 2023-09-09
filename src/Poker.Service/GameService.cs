@@ -69,6 +69,7 @@ public class GameService : IGameService
             .ShuffleAsync(args.Deck);
 
         uint r = 0;
+
         foreach (var action in args.Variant.Rounds)
         {
             var result = await _roundService
@@ -81,8 +82,20 @@ public class GameService : IGameService
                     Players = gamePlayers,
                     StartingPlayer = gamePlayers.NextPlayer(gameButton),
                     RoundNumber = ++r,
-                    Pot = 0
+                    Pot = game.Pot
                 });
+
+            game = game with
+            {
+                Deck = result.Deck,
+                CommunityCards = result.CommunityCards,
+                Players = result.Players,
+                Pot = result.Pot
+            };
+
+            _userInterfaceService.WriteLine();
+            _userInterfaceService.WriteLine($"Pot: {game.Pot:C}");
+
             if (result.GameOver)
                 return game;
         }

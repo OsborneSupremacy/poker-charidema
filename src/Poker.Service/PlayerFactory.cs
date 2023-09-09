@@ -24,7 +24,8 @@ public class PlayerFactory
             BeginningStack = args.BeginningStack,
             Stack = args.BeginningStack,
             Name = faker.Person.FirstName,
-            Automaton = args.Automaton
+            Automaton = args.Automaton,
+            Busted = false
         });
     }
 }

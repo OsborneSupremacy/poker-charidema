@@ -10,5 +10,7 @@ public interface IPlayer
 
     uint Stack { get; }
 
-    public bool Automaton { get; set; }
+    bool Automaton { get; }
+
+    bool Busted { get; }
 }

@@ -6,7 +6,7 @@ public interface IInGamePlayer
 
     List<ICard> Cards { get; init; }
 
-    uint Stack { get; init; }
+    uint Stack { get; set; }
 
-    bool Folded { get; init; }
+    bool Folded { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.AntePreferences;
 
-public record DealersChoice : IAntePreferences
+public record DealersChoiceAnte : IAntePreferences
 {
     public required uint MinAnte { get; init; }
 

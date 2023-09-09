@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.AntePreferences;
 
-public record Fixed : IAntePreferences
+public record FixedAnte : IAntePreferences
 {
     public required uint Amount { get; init; }
 }

@@ -13,10 +13,18 @@ public class MoveService : IMoveService
 
     public Task<MoveResult> ExecuteAsync(MoveArgs args)
     {
-        if(args.RoundArgs.Round is Ante)
+        var playerOut = args.PlayerInTurn.DeepClone();
+        uint potOut = args.Pot;
+
+        if (args.RoundArgs.Round is Ante)
         {
+            var ante = args.RoundArgs.Game.Ante;
+
             _userInterfaceService
-                .WriteLines($"{args.PlayerInTurn.Player.Name} antes.");
+                .WriteLines($"{playerOut.Player.Name} antes.");
+
+            playerOut.Stack = args.PlayerInTurn.Stack - ante;
+            potOut += ante; 
         }
         else
         {
@@ -24,6 +32,11 @@ public class MoveService : IMoveService
                 .WriteLines($"{args.PlayerInTurn.Player.Name}'s turn.");
         }
 
-        return Task.FromResult(new MoveResult { });
+        return Task.FromResult(
+            new MoveResult {
+                PlayerInTurn = playerOut,
+                Pot = potOut
+            }
+        );
     }
 }

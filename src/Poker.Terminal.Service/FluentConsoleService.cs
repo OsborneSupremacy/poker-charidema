@@ -55,13 +55,13 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public int PromptForInt(string prompt, int minVal, int maxVal)
+    public uint PromptForInt(string prompt, uint minVal, uint maxVal)
     {
-        int result = minVal - 1;
+        uint result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
             result = AnsiConsole.Prompt(
-                new TextPrompt<int>($"{prompt} {minVal}-{maxVal}: ")
+                new TextPrompt<uint>($"{prompt} {minVal}-{maxVal}: ")
                     .Validate(input =>
                     {
                         if (input < minVal || input > maxVal)
@@ -75,22 +75,22 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService PromptForInt(
         string prompt,
-        int minVal,
-        int maxVal,
-        Action<int> onValidInput
+        uint minVal,
+        uint maxVal,
+        Action<uint> onValidInput
         )
     {
         onValidInput(PromptForInt(prompt, minVal, maxVal)!);
         return this;
     }
 
-    public int PromptForMoney(string prompt, int minVal, int maxVal)
+    public uint PromptForMoney(string prompt, uint minVal, uint maxVal)
     {
-        int result = minVal - 1;
+        uint result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
             result = AnsiConsole.Prompt(
-                new TextPrompt<int>($"{prompt} {minVal:C} - {maxVal:C}: ")
+                new TextPrompt<uint>($"{prompt} {minVal:C} - {maxVal:C}: ")
                     .Validate(input =>
                     {
                         if (input < minVal || input > maxVal)
@@ -104,9 +104,9 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService PromptForMoney(
         string prompt,
-        int minVal,
-        int maxVal,
-        Action<int> onValidInput
+        uint minVal,
+        uint maxVal,
+        Action<uint> onValidInput
         )
     {
         onValidInput(PromptForMoney(prompt, minVal, maxVal)!);

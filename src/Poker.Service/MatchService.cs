@@ -36,6 +36,11 @@ public class MatchService : IMatchService
         while (keepPlaying)
         {
             match = await PlayGameAsync(match);
+
+            _userInterfaceService.WriteHeading(5, "Standings");
+            foreach (var player in match.Players.OrderByDescending(p => p.Stack))
+                _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
+
             keepPlaying =
                 await _gamePreferencesService.GetPlayAgain(match.Games.Last());
         }

@@ -32,26 +32,25 @@ public class RoundService : IRoundService
 
         var playersOut = new List<IInGamePlayer>();
 
-        // I'd like to use Nondestructive mutation, but can't be used with interfaces
         var ccOut = args.CommunityCards.DeepClone();
         var deckOut = args.Deck.DeepClone();
-        var potOut = args.Pot.DeepClone();
+        var potOut = args.Pot;
 
         // TODO: if this is a betting round, start with player showing
         // best hand
         for (var p = 0; p < args.Players.Count; p++)
         {
-            var playerInTurn = args.Players[p];
-
             var moveResult = await _moveService.ExecuteAsync(
                 new MoveArgs {
                     PlayerInTurn = args.Players[p],
-                    RoundArgs = args
+                    RoundArgs = args,
+                    Pot = potOut
                 }
             );
 
+            potOut = moveResult.Pot;
 
-            playersOut.Add(playerInTurn);
+            playersOut.Add(moveResult.PlayerInTurn);
         }
 
         var result = new RoundResult
