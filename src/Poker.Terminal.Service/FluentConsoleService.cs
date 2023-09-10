@@ -88,7 +88,6 @@ public class FluentConsoleService : IUserInterfaceService
     {
         uint result = minVal - 1;
         while (result < minVal || result > maxVal)
-        {
             result = AnsiConsole.Prompt(
                 new TextPrompt<uint>($"{prompt} {minVal:C} - {maxVal:C}: ")
                     .Validate(input =>
@@ -98,7 +97,6 @@ public class FluentConsoleService : IUserInterfaceService
                         return ValidationResult.Success();
                     })
                 );
-        }
         return result;
     }
 
@@ -151,15 +149,15 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public IUserInterfaceService WriteHeading(uint level, string input)
+    public IUserInterfaceService WriteHeading(HeadingLevel level, string input)
     {
         Action writeDelimiter = level switch
         {
-            1 => () => AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]"),
-            2 => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(90)}[/]"),
-            3 => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(80)}[/]"),
-            4 => () => AnsiConsole.MarkupLine($"[bold]{'~'.Repeat(70)}[/]"),
-            5 => () => AnsiConsole.MarkupLine($"[bold]{'^'.Repeat(60)}[/]"),
+            HeadingLevel.One => () => AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]"),
+            HeadingLevel.Two => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(90)}[/]"),
+            HeadingLevel.Three => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(80)}[/]"),
+            HeadingLevel.Four => () => AnsiConsole.MarkupLine($"[bold]{'~'.Repeat(70)}[/]"),
+            HeadingLevel.Five => () => AnsiConsole.MarkupLine($"[bold]{'^'.Repeat(60)}[/]"),
             _ => () => { }
         };
 

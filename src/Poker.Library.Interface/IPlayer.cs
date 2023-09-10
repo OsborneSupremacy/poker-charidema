@@ -8,7 +8,7 @@ public interface IPlayer
 
     uint BeginningStack { get; }
 
-    uint Stack { get; }
+    uint Stack { get; set; }
 
     bool Automaton { get; }
 

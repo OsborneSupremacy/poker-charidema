@@ -6,20 +6,21 @@ public class RoundService : IRoundService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
-    private readonly IMoveService _moveService;
+    private readonly IMoveServiceFactory _moveServiceFactory;
 
     public RoundService(
         IUserInterfaceService userInterfaceService,
-        IMoveService moveService
+        IMoveServiceFactory moveServiceFactory
         )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _moveService = moveService ?? throw new ArgumentNullException(nameof(moveService));
+        _moveServiceFactory = moveServiceFactory ?? throw new ArgumentNullException(nameof(moveServiceFactory));
     }
 
     protected Task WriteStartInfoAsync(RoundArgs args)
     {
-        _userInterfaceService.WriteHeading(5,
+        _userInterfaceService.WriteHeading(
+            HeadingLevel.Five,
             $"Round {args.RoundNumber} - {args.Round.Name}"
         );
 
@@ -36,24 +37,25 @@ public class RoundService : IRoundService
         var deckOut = args.Deck.DeepClone();
         var potOut = args.Pot;
 
-        // TODO: if this is a betting round, start with player showing
-        // best hand
-        for (var p = 0; p < args.Players.Count; p++)
+        // TODO: if this is a betting round and any non-community cards are face-up, start with player showing
+        // best hand. Otherwise, start with player to the left of dealer
+        for (var p = 0; p < args.Game.Players.Count; p++)
         {
-            var moveResult = await _moveService.ExecuteAsync(
-                new MoveArgs {
-                    PlayerInTurn = args.Players[p],
-                    RoundArgs = args,
-                    Pot = potOut
-                }
-            );
+            MoveArgs moveArgs = new()
+            {
+                PlayerInTurn = args.Game.Players[p],
+                RoundArgs = args,
+                Pot = potOut
+            };
+
+            var moveResult = await _moveServiceFactory.Get(moveArgs)
+                .ExecuteAsync(moveArgs);
 
             potOut = moveResult.Pot;
-
             playersOut.Add(moveResult.PlayerInTurn);
         }
 
-        var result = new RoundResult
+        return new RoundResult
         {
             Deck = deckOut,
             CommunityCards = ccOut,
@@ -61,7 +63,5 @@ public class RoundService : IRoundService
             GameOver = false,
             Pot = potOut
         };
-
-        return result;
     }
 }

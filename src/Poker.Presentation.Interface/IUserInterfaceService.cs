@@ -1,5 +1,14 @@
 ﻿namespace Poker.Presentation.Interface;
 
+public enum HeadingLevel
+{
+    One,
+    Two,
+    Three,
+    Four,
+    Five
+}
+
 public interface IUserInterfaceService
 {
     IUserInterfaceService PromptForOption<T>(
@@ -39,7 +48,7 @@ public interface IUserInterfaceService
 
     bool PromptForBool(string prompt);
 
-    IUserInterfaceService WriteHeading(uint level, string input);
+    IUserInterfaceService WriteHeading(HeadingLevel level, string input);
 
     IUserInterfaceService WriteList(string heading, params string[] items);
 

@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Poker.Library.AntePreferences;
 using Poker.Presentation.Interface;
 
@@ -41,7 +40,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         uint startingStack = 0;
         uint? fixedNumberOfGames = null;
 
-        _c.WriteHeading(1, "Welcome to OsborneSupremacy/poker-charidema!")
+        _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
             "Please enter your name", 1, (string name) =>
@@ -52,7 +51,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .WriteLine()
 
-        .PromptForInt("How many other players would you like to be part of this match?", 1, 10, (uint c) =>
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, (uint c) =>
         {
             playerCount = c;
         })

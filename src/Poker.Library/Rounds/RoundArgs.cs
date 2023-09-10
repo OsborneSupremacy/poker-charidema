@@ -10,8 +10,6 @@ public record RoundArgs
 
     public required List<ICard> CommunityCards { get; init; }
 
-    public required List<IInGamePlayer> Players { get; init; }
-
     public required IInGamePlayer StartingPlayer { get; init; }
 
     public required uint RoundNumber { get; init; }

@@ -35,14 +35,16 @@ public class MatchService : IMatchService
         var keepPlaying = true;
         while (keepPlaying)
         {
-            match = await PlayGameAsync(match);
+            var matchOut = await PlayGameAsync(match);
 
-            _userInterfaceService.WriteHeading(5, "Standings");
-            foreach (var player in match.Players.OrderByDescending(p => p.Stack))
+            _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
+            foreach (var player in matchOut.Players.OrderByDescending(p => p.Stack))
                 _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
 
             keepPlaying =
-                await _gamePreferencesService.GetPlayAgain(match.Games.Last());
+                await _gamePreferencesService.GetPlayAgain(matchOut.Games.Last());
+
+            match = matchOut;
         }
         return match;
     }
@@ -51,11 +53,11 @@ public class MatchService : IMatchService
     {
         var s = _userInterfaceService;
 
-        s.WriteHeading(2, "Welcome to the new match!");
+        s.WriteHeading(HeadingLevel.Two, "Welcome to the new match!");
 
         s.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
-        s.WriteHeading(3, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
+        s.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
 
         if (match.FixedNumberOfGames.HasValue)
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
@@ -105,14 +107,14 @@ public class MatchService : IMatchService
     protected async Task<Match> PlayGameAsync(Match matchIn)
     {
         _userInterfaceService
-            .WriteHeading(4, $"Starting game {matchIn.Games.Count + 1}");
+            .WriteHeading(HeadingLevel.Four, $"Starting game {matchIn.Games.Count + 1}");
 
         // pass button to next player if it's not the first game
         var button = matchIn.Games.Any()
             ? matchIn.Players.NextPlayer(matchIn.Button)
             : matchIn.Button;
 
-        var game = await _gameService.PlayAsync(
+        var gameOut = await _gameService.PlayAsync(
             new GameArgs()
             {
                 Match = matchIn,
@@ -123,14 +125,17 @@ public class MatchService : IMatchService
             }
         );
 
+        var updatedPlayers = gameOut.Players.Select(x => x.Player).ToList();
+
         Match matchOut = matchIn with
         {
-            Games = matchIn.Games.Append(game).ToList(),
+            Games = matchIn.Games.Append(gameOut).ToList(),
+            Players = updatedPlayers,
             Button = button
         };
 
         _userInterfaceService
-            .WriteHeading(4, $"Game over! TBD wins.");
+            .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
 
         return matchOut;
     }

@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Poker.Library;
+﻿namespace Poker.Library;
 
 public record Player : IPlayer
 {
@@ -10,7 +8,7 @@ public record Player : IPlayer
 
     public required uint BeginningStack { get; init; }
 
-    public required uint Stack { get; init; }
+    public required uint Stack { get; set; }
 
     public required bool Automaton { get; init; }
 

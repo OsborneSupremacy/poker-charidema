@@ -1,4 +1,5 @@
-﻿using Poker.Library.Rounds;
+﻿using System;
+using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -79,7 +80,6 @@ public class GameService : IGameService
                     Round = action,
                     Deck = deck,
                     CommunityCards = new(),
-                    Players = gamePlayers,
                     StartingPlayer = gamePlayers.NextPlayer(gameButton),
                     RoundNumber = ++r,
                     Pot = game.Pot
