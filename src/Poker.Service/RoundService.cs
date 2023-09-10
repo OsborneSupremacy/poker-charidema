@@ -39,11 +39,13 @@ public class RoundService : IRoundService
 
         // TODO: if this is a betting round and any non-community cards are face-up, start with player showing
         // best hand. Otherwise, start with player to the left of dealer
-        for (var p = 0; p < args.Game.Players.Count; p++)
+        var playerInTurn = args.StartingPlayer;
+
+        while (playersOut.Count < args.Game.Players.Count)
         {
             MoveArgs moveArgs = new()
             {
-                PlayerInTurn = args.Game.Players[p],
+                PlayerInTurn = playerInTurn,
                 RoundArgs = args,
                 Pot = potOut
             };
@@ -53,6 +55,8 @@ public class RoundService : IRoundService
 
             potOut = moveResult.Pot;
             playersOut.Add(moveResult.PlayerInTurn);
+
+            playerInTurn = args.Game.Players.NextPlayer(playerInTurn);
         }
 
         return new RoundResult

@@ -40,7 +40,7 @@ public class AutomatonMoveService : IAutomatonMoveService
         _userInterfaceService
             .WriteLines($"{playerOut.Player.Name} antes.");
 
-        playerOut.Player.Stack = args.PlayerInTurn.Player.Stack - ante;
+        playerOut.Player.Stack -= ante;
 
         return Task.FromResult(
             new MoveResult

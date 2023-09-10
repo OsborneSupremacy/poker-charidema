@@ -26,8 +26,18 @@ public class MatchService : IMatchService
     private async Task<Match> PlayFixedNumberOfGames(Match match)
     {
         while (match.Games.Count < match.FixedNumberOfGames)
+        {
             match = await PlayGameAsync(match);
+            WriteStandings(match);
+        }
         return match;
+    }
+
+    private void WriteStandings(Match match)
+    {
+        _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
+        foreach (var player in match.Players.OrderByDescending(p => p.Stack))
+            _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
     }
 
     private async Task<Match> PlayIndefinitely(Match match)
@@ -37,9 +47,7 @@ public class MatchService : IMatchService
         {
             var matchOut = await PlayGameAsync(match);
 
-            _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
-            foreach (var player in matchOut.Players.OrderByDescending(p => p.Stack))
-                _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
+            WriteStandings(matchOut);
 
             keepPlaying =
                 await _gamePreferencesService.GetPlayAgain(matchOut.Games.Last());
@@ -83,25 +91,33 @@ public class MatchService : IMatchService
 
         await WriteMatchStartInfoAsync(match);
 
-        if (!await _matchPreferencesService.ConfirmStartAsync())
-        {
-            _userInterfaceService.WriteLine("Match was cancelled.");
-            return new MatchResult
+        Task<MatchResult> resultTask = 
+            await _matchPreferencesService.ConfirmStartAsync() switch
             {
-                Cancelled = true,
-                Match = match,
-                Winners = new(),
-                PlayAgain = await _matchPreferencesService.GetPlayAgain(match)
+                false => CancelMatchAsync(match),
+                true =>
+                    EvaluateResult(
+                        await (args.FixedNumberOfGames.HasValue switch
+                        {
+                            true => PlayFixedNumberOfGames(match),
+                            false => PlayIndefinitely(match)
+                        })
+                    )
             };
-        }
 
-        await (args.FixedNumberOfGames.HasValue switch
+        return await resultTask;
+    }
+
+    private async Task<MatchResult> CancelMatchAsync(Match match)
+    {
+        _userInterfaceService.WriteLine("Match was cancelled.");
+        return new MatchResult
         {
-            true => PlayFixedNumberOfGames(match),
-            _ => PlayIndefinitely(match)
-        });
-
-        return await EvaluateResult(match);
+            Cancelled = true,
+            Match = match,
+            Winners = new(),
+            PlayAgain = await _matchPreferencesService.GetPlayAgain(match)
+        };
     }
 
     protected async Task<Match> PlayGameAsync(Match matchIn)
@@ -125,12 +141,10 @@ public class MatchService : IMatchService
             }
         );
 
-        var updatedPlayers = gameOut.Players.Select(x => x.Player).ToList();
-
         Match matchOut = matchIn with
         {
             Games = matchIn.Games.Append(gameOut).ToList(),
-            Players = updatedPlayers,
+            Players = gameOut.Players.Select(x => x.Player).ToList(),
             Button = button
         };
 
