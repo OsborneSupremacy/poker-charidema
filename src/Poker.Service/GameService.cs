@@ -1,5 +1,4 @@
-﻿using System;
-using Poker.Library.Rounds;
+﻿using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -39,6 +38,47 @@ public class GameService : IGameService
 
     public async Task<Game> PlayAsync(GameArgs args)
     {
+        var game = await CreateGameAsync(args);
+        await WriteStartInfoAsync(game);
+
+        var deck = await _dealerService
+            .ShuffleAsync(args.Deck);
+
+        uint r = 0;
+        foreach (var action in args.Variant.Rounds)
+        {
+            var result = await _roundService
+                .ExecuteAsync(new RoundArgs()
+                {
+                    Game = game,
+                    Round = action,
+                    Deck = deck,
+                    CommunityCards = new(),
+                    StartingPlayer = game.Players.NextPlayer(game.Button),
+                    RoundNumber = ++r,
+                    Pot = game.Pot
+                });
+
+            game = game with
+            {
+                Deck = result.Deck,
+                CommunityCards = result.CommunityCards,
+                Players = result.Players,
+                Pot = result.Pot
+            };
+
+            _userInterfaceService.WriteLine();
+            _userInterfaceService.WriteLine($"Pot: {game.Pot:C}");
+
+            if (result.GameOver)
+                return game;
+        }
+
+        return game;
+    }
+
+    private async Task<Game> CreateGameAsync(GameArgs args)
+    {
         var gamePlayers = args.Players
             .Select(p => new InGamePlayer
             {
@@ -64,42 +104,7 @@ public class GameService : IGameService
             Pot = 0
         };
 
-        await WriteStartInfoAsync(game);
-
-        var deck = await _dealerService
-            .ShuffleAsync(args.Deck);
-
-        uint r = 0;
-
-        foreach (var action in args.Variant.Rounds)
-        {
-            var result = await _roundService
-                .ExecuteAsync(new RoundArgs()
-                {
-                    Game = game,
-                    Round = action,
-                    Deck = deck,
-                    CommunityCards = new(),
-                    StartingPlayer = gamePlayers.NextPlayer(gameButton),
-                    RoundNumber = ++r,
-                    Pot = game.Pot
-                });
-
-            game = game with
-            {
-                Deck = result.Deck,
-                CommunityCards = result.CommunityCards,
-                Players = result.Players,
-                Pot = result.Pot
-            };
-
-            _userInterfaceService.WriteLine();
-            _userInterfaceService.WriteLine($"Pot: {game.Pot:C}");
-
-            if (result.GameOver)
-                return game;
-        }
-
         return game;
     }
+
 }
