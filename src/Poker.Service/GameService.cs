@@ -84,7 +84,6 @@ public class GameService : IGameService
             {
                 Player = p,
                 Cards = new(),
-                Stack = p.Stack,
                 Folded = false
             })
             .ToList<IInGamePlayer>();
@@ -106,5 +105,4 @@ public class GameService : IGameService
 
         return game;
     }
-
 }

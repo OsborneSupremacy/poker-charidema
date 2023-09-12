@@ -38,6 +38,7 @@ public class MatchService : IMatchService
         _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
         foreach (var player in match.Players.OrderByDescending(p => p.Stack))
             _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
+        _userInterfaceService.WriteLine();
     }
 
     private async Task<Match> PlayIndefinitely(Match match)
