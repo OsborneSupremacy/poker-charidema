@@ -4,5 +4,5 @@ public interface IVariant
 {
     string Name { get; }
 
-    List<IRound> Rounds { get; }
+    List<IPhase> Phases { get; }
 }

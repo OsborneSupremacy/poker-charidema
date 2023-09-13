@@ -3,9 +3,9 @@ using Poker.Library.Rounds;
 
 namespace Poker.Utility;
 
-public static class RoundExtensions
+public static class PhaseExtensions
 {
-    public static int GetCountOfCardsToDeal(this IRound input)
+    public static int GetCountOfCardsToDeal(this IPhase input)
     {
         if (input is not DealCards dealCards)
             return 0;

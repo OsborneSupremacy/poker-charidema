@@ -1,6 +1,6 @@
-﻿namespace Poker.Library.Rounds;
+﻿namespace Poker.Library.Phases;
 
-public record BettingInterval : IRound
+public record BettingInterval : IPhase
 {
     public string Name => "Bet";
 

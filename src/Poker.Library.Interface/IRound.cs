@@ -1,8 +1,5 @@
 ﻿namespace Poker.Library.Interface;
 
-public interface IRound
+public interface IRound : IPhase
 {
-    public string Name { get; }
-
-    bool GameCanEndAfter { get; }
 }

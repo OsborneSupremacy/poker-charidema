@@ -1,14 +1,14 @@
-﻿using Poker.Library.Rounds;
+﻿using Poker.Library.Phases;
 
 namespace Poker.Service;
 
-public class RoundService : IRoundService
+public class PhaseService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
     private readonly IMoveServiceFactory _moveServiceFactory;
 
-    public RoundService(
+    public PhaseService(
         IUserInterfaceService userInterfaceService,
         IMoveServiceFactory moveServiceFactory
         )
@@ -17,21 +17,21 @@ public class RoundService : IRoundService
         _moveServiceFactory = moveServiceFactory ?? throw new ArgumentNullException(nameof(moveServiceFactory));
     }
 
-    protected Task WriteStartInfoAsync(RoundArgs args)
+    protected Task WriteStartInfoAsync(PhaseArgs args)
     {
         _userInterfaceService.WriteHeading(
             HeadingLevel.Five,
-            $"Round {args.RoundNumber} - {args.Round.Name}"
+            $"{args.Phase.Name}"
         );
 
         return Task.CompletedTask;
     }
 
-    public async Task<RoundResult> ExecuteAsync(RoundArgs args)
+    public async Task<PhaseResult> ExecuteAsync(PhaseArgs args)
     {
         await WriteStartInfoAsync(args);
 
-        // TODO: handle rounds that do not involve iterating across players.
+        // TODO: do not iterate over players when phase is a board action
 
         var playersOut = new List<IInGamePlayer>();
 
@@ -62,7 +62,7 @@ public class RoundService : IRoundService
             playerInTurn = args.Game.Players.NextPlayer(playerInTurn);
         }
 
-        return new RoundResult
+        return new PhaseResult
         {
             Deck = deckOut,
             CommunityCards = ccOut,

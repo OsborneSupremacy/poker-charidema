@@ -15,7 +15,7 @@ public static class RegistrationService
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
         serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
-        serviceCollection.AddScoped<IRoundService, RoundService>();
+        serviceCollection.AddScoped<IPhaseService, PhaseService>();
         serviceCollection.AddScoped<IGameService, GameService>();
         serviceCollection.AddScoped<IAnteSetService, AnteSetService>();
         serviceCollection.AddScoped<IMatchService, MatchService>();

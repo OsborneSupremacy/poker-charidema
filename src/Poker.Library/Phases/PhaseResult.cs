@@ -1,6 +1,6 @@
-﻿namespace Poker.Library.Rounds;
+﻿namespace Poker.Library.Phases;
 
-public record RoundResult
+public record PhaseResult
 {
     public required IDeck Deck { get; init; }
 

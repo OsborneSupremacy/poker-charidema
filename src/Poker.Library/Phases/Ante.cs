@@ -1,6 +1,6 @@
-﻿namespace Poker.Library.Rounds;
+﻿namespace Poker.Library.Phases;
 
-public record Ante : IRound
+public record Ante : IPhase
 {
     public string Name => "Ante";
 

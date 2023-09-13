@@ -24,10 +24,10 @@ public class MoveServiceFactory : IMoveServiceFactory
             false => _automatonMoveService
         };
 
-    readonly static Func<MoveArgs, bool> _requiresUserInput = (MoveArgs args) =>
+    static readonly Func<MoveArgs, bool> _requiresUserInput = (MoveArgs args) =>
     {
         return
-            args.PlayerInTurn.Player.Automaton
-            || (args.RoundArgs.Round is DealCards);
+            !args.PlayerInTurn.Player.Automaton
+            && args.RoundArgs.Phase is not DealCards;
     };
 }

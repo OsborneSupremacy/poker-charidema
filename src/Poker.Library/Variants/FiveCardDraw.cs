@@ -1,4 +1,5 @@
-﻿using Poker.Library.Rounds;
+﻿using Poker.Library.Phases;
+using Poker.Library.Rounds;
 
 namespace Poker.Library.Variants;
 
@@ -6,7 +7,7 @@ public record FiveCardDraw : IVariant
 {
     public string Name => "Five Card Draw";
 
-    public List<IRound> Rounds =>
+    public List<IPhase> Phases =>
         new()
         {
             new Ante(),

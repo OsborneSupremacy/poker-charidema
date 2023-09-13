@@ -1,4 +1,4 @@
-﻿using Poker.Library.Rounds;
+﻿using Poker.Library.Phases;
 
 namespace Poker.Service;
 
@@ -12,7 +12,7 @@ public class AutomatonMoveService : IAutomatonMoveService
     }
 
     public Task<MoveResult> ExecuteAsync(MoveArgs args) =>
-        args.RoundArgs.Round switch
+        args.RoundArgs.Phase switch
         {
             Ante => AnteAsync(args),
             _ => DefaultMoveAsync(args)

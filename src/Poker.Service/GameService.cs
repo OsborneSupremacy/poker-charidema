@@ -1,4 +1,5 @@
-﻿using Poker.Library.Rounds;
+﻿using Poker.Library.Phases;
+using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -6,7 +7,7 @@ public class GameService : IGameService
 {
     private readonly IDealerService _dealerService;
 
-    private readonly IRoundService _roundService;
+    private readonly IPhaseService _phaseService;
 
     private readonly IAnteSetService _anteSetService;
 
@@ -14,13 +15,13 @@ public class GameService : IGameService
 
     public GameService(
         IDealerService dealerService,
-        IRoundService roundService,
+        IPhaseService phaseService,
         IAnteSetService anteSetService,
         IUserInterfaceService userInterfaceService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
-        _roundService = roundService ?? throw new ArgumentNullException(nameof(roundService));
+        _phaseService = phaseService ?? throw new ArgumentNullException(nameof(phaseService));
         _anteSetService = anteSetService ?? throw new ArgumentNullException(nameof(anteSetService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
@@ -44,18 +45,16 @@ public class GameService : IGameService
         var deck = await _dealerService
             .ShuffleAsync(args.Deck);
 
-        uint r = 0;
-        foreach (var action in args.Variant.Rounds)
+        foreach (var action in args.Variant.Phases)
         {
-            var result = await _roundService
-                .ExecuteAsync(new RoundArgs()
+            var result = await _phaseService
+                .ExecuteAsync(new PhaseArgs
                 {
                     Game = game,
-                    Round = action,
+                    Phase = action,
                     Deck = deck,
                     CommunityCards = new(),
                     StartingPlayer = game.Players.NextPlayer(game.Button),
-                    RoundNumber = ++r,
                     Pot = game.Pot
                 });
 

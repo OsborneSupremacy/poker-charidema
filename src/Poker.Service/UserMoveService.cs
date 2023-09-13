@@ -1,4 +1,5 @@
-﻿using Poker.Library.Rounds;
+﻿using Poker.Library.Phases;
+using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -6,19 +7,15 @@ public class UserMoveService : IUserMoveService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
-    private readonly IRandomFactory _randomFactory;
-
     public UserMoveService(
-        IUserInterfaceService userInterfaceService,
-        IRandomFactory randomFactory
+        IUserInterfaceService userInterfaceService
         )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
     public Task<MoveResult> ExecuteAsync(MoveArgs args) =>
-        args.RoundArgs.Round switch
+        args.RoundArgs.Phase switch
         {
             Ante => AntePromptAsync(args),
             DealCards => DealAsync(args),
@@ -91,7 +88,7 @@ public class UserMoveService : IUserMoveService
 
         var dealtCards = deckOut
             .Cards
-            .Take(args.RoundArgs.Round.GetCountOfCardsToDeal());
+            .Take(args.RoundArgs.Phase.GetCountOfCardsToDeal());
 
         playerOut.Cards.AddRange(dealtCards);
         deckOut.Cards.RemoveAll(
