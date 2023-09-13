@@ -1,4 +1,6 @@
-﻿namespace Poker.Test.Utility;
+﻿using Bogus;
+
+namespace Poker.Test.Utility;
 
 public class TestRandomFactory : IRandomFactory
 {
@@ -12,4 +14,9 @@ public class TestRandomFactory : IRandomFactory
     public Random Create() => new(_seed);
 
     public int GetSeed() => _seed;
+
+    public Faker CreateFaker() =>
+        new() {
+            Random = new Randomizer(GetSeed())
+        };
 }

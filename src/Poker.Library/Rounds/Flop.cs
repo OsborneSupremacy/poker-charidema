@@ -2,7 +2,7 @@
 
 namespace Poker.Library.Rounds;
 
-public record Flop : DealCards
+public record Flop : DealCards, IBoardAction
 {
     [SetsRequiredMembers]
     public Flop()

@@ -6,15 +6,22 @@ public class UserMoveService : IUserMoveService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
-    public UserMoveService(IUserInterfaceService userInterfaceService)
+    private readonly IRandomFactory _randomFactory;
+
+    public UserMoveService(
+        IUserInterfaceService userInterfaceService,
+        IRandomFactory randomFactory
+        )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
     public Task<MoveResult> ExecuteAsync(MoveArgs args) =>
         args.RoundArgs.Round switch
         {
             Ante => AntePromptAsync(args),
+            DealCards => DealAsync(args),
             _ => DefaultMoveAsync(args)
         };
 
@@ -27,6 +34,7 @@ public class UserMoveService : IUserMoveService
             new MoveResult
             {
                 PlayerInTurn = playerOut,
+                Deck = args.RoundArgs.Game.Deck,
                 Pot = potOut
             }
         );
@@ -52,6 +60,7 @@ public class UserMoveService : IUserMoveService
             new MoveResult
             {
                 PlayerInTurn = playerOut,
+                Deck = args.RoundArgs.Game.Deck,
                 Pot = args.Pot + ante
             }
         );
@@ -69,6 +78,33 @@ public class UserMoveService : IUserMoveService
             new MoveResult
             {
                 PlayerInTurn = playerOut,
+                Deck = args.RoundArgs.Game.Deck,
+                Pot = args.Pot
+            }
+        );
+    }
+
+    private Task<MoveResult> DealAsync(MoveArgs args)
+    {
+        var playerOut = args.PlayerInTurn.DeepClone();
+        var deckOut = args.RoundArgs.Game.Deck.DeepClone();
+
+        var dealtCards = deckOut
+            .Cards
+            .Take(args.RoundArgs.Round.GetCountOfCardsToDeal());
+
+        playerOut.Cards.AddRange(dealtCards);
+        deckOut.Cards.RemoveAll(
+            c => dealtCards
+                .Select(x => x.Id)
+                .Contains(c.Id)
+        );
+
+        return Task.FromResult(
+            new MoveResult
+            {
+                PlayerInTurn = playerOut,
+                Deck = deckOut,
                 Pot = args.Pot
             }
         );

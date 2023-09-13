@@ -92,7 +92,7 @@ public class MatchService : IMatchService
 
         await WriteMatchStartInfoAsync(match);
 
-        Task<MatchResult> resultTask = 
+        var resultTask =
             await _matchPreferencesService.ConfirmStartAsync() switch
             {
                 false => CancelMatchAsync(match),
@@ -142,17 +142,15 @@ public class MatchService : IMatchService
             }
         );
 
-        Match matchOut = matchIn with
+        _userInterfaceService
+            .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
+
+        return matchIn with
         {
             Games = matchIn.Games.Append(gameOut).ToList(),
             Players = gameOut.Players.Select(x => x.Player).ToList(),
             Button = button
         };
-
-        _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
-
-        return matchOut;
     }
 
     protected async Task<MatchResult> EvaluateResult(Match matchIn) => 

@@ -31,6 +31,8 @@ public class RoundService : IRoundService
     {
         await WriteStartInfoAsync(args);
 
+        // TODO: handle rounds that do not involve iterating across players.
+
         var playersOut = new List<IInGamePlayer>();
 
         var ccOut = args.CommunityCards.DeepClone();
@@ -50,7 +52,8 @@ public class RoundService : IRoundService
                 Pot = potOut
             };
 
-            var moveResult = await _moveServiceFactory.Get(moveArgs)
+            var moveResult = await _moveServiceFactory
+                .Get(moveArgs)
                 .ExecuteAsync(moveArgs);
 
             potOut = moveResult.Pot;

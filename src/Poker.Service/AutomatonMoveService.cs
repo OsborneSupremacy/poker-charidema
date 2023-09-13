@@ -27,6 +27,7 @@ public class AutomatonMoveService : IAutomatonMoveService
             new MoveResult
             {
                 PlayerInTurn = playerOut,
+                Deck = args.RoundArgs.Game.Deck,
                 Pot = potOut
             }
         );
@@ -46,6 +47,7 @@ public class AutomatonMoveService : IAutomatonMoveService
             new MoveResult
             {
                 PlayerInTurn = playerOut,
+                Deck = args.RoundArgs.Game.Deck,
                 Pot = args.Pot + ante
             }
         );

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library.Rounds;
 
-public record River : DealCards
+public record River : DealCards, IBoardAction
 {
     public River()
     {

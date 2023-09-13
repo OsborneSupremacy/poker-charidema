@@ -2,7 +2,7 @@
 
 namespace Poker.Library.Rounds;
 
-public record Turn : DealCards
+public record Turn : DealCards, IBoardAction
 {
     [SetsRequiredMembers]
     public Turn()
