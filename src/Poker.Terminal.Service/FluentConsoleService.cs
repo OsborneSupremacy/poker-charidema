@@ -1,4 +1,6 @@
-﻿using Poker.Presentation.Interface;
+﻿using System.Text;
+using Poker.Library.Cards;
+using Poker.Presentation.Interface;
 using Poker.Utility;
 using Spectre.Console;
 
@@ -174,6 +176,19 @@ public class FluentConsoleService : IUserInterfaceService
     {
         foreach(var item in items)
             AnsiConsole.MarkupLine($"[bold]* {item}[/]");
+        return this;
+    }
+
+    public IUserInterfaceService RenderCards(List<ICard> cards)
+    {
+        foreach(var card in cards
+            .OrderByDescending(x => x.IsWild)
+            .ThenByDescending(x => x is IStandardCard standard ? standard.Rank.Value : 0)
+            .ThenByDescending(x => x is IStandardCard standard ? standard.Suit.Priority : 0)
+            )
+        {
+            AnsiConsole.WriteLine(card.ToStandardNotation());
+        }
         return this;
     }
 }

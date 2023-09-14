@@ -2,6 +2,24 @@
 
 public static class CardExtensions
 {
+    public static string ToStandardNotation(this ICard input) =>
+        $"{input.GetRankId()}{input.GetSymbol()}";
+
+    public static string GetRankId(this ICard input) =>
+        input switch
+        {
+            Joker => "*",
+            Face => ((Face)input).Rank.Name[..1],
+            IStandardCard => ((IStandardCard)input).Rank.Value.ToString(),
+            _ => "?"
+        };
+
+    public static string GetSymbol(this ICard input)
+    {
+        if(input is not IStandardCard standardCard) return string.Empty;
+        return standardCard.Suit.Name[..1].ToString().ToLowerInvariant();
+    }
+
     public static ISuit? GetNonWildSuit(this ICard input)
     {
         if (input.IsWild())

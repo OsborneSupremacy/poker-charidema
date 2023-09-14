@@ -9,4 +9,6 @@ public interface ISuit
     Color Color { get; init; }
 
     uint Priority { get; init; }
+
+    char Symbol { get; init; }
 }

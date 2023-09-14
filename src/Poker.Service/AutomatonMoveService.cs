@@ -1,4 +1,5 @@
 ﻿using Poker.Library.Phases;
+using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -15,6 +16,7 @@ public class AutomatonMoveService : IAutomatonMoveService
         args.RoundArgs.Phase switch
         {
             Ante => AnteAsync(args),
+            DealCards => DealAsync(args),
             _ => DefaultMoveAsync(args)
         };
 
@@ -49,6 +51,32 @@ public class AutomatonMoveService : IAutomatonMoveService
                 PlayerInTurn = playerOut,
                 Deck = args.RoundArgs.Game.Deck,
                 Pot = args.Pot + ante
+            }
+        );
+    }
+
+    private Task<MoveResult> DealAsync(MoveArgs args)
+    {
+        var playerOut = args.PlayerInTurn.DeepClone();
+        var deckOut = args.RoundArgs.Game.Deck.DeepClone();
+
+        var dealtCards = deckOut
+            .Cards
+            .Take(args.RoundArgs.Phase.GetCountOfCardsToDeal());
+
+        playerOut.Cards.AddRange(dealtCards);
+        deckOut.Cards.RemoveAll(
+            c => dealtCards
+                .Select(x => x.Id)
+                .Contains(c.Id)
+        );
+
+        return Task.FromResult(
+            new MoveResult
+            {
+                PlayerInTurn = playerOut,
+                Deck = deckOut,
+                Pot = args.Pot
             }
         );
     }

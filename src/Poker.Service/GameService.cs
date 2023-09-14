@@ -1,5 +1,4 @@
 ﻿using Poker.Library.Phases;
-using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -66,8 +65,14 @@ public class GameService : IGameService
                 Pot = result.Pot
             };
 
-            _userInterfaceService.WriteLine();
-            _userInterfaceService.WriteLine($"Pot: {game.Pot:C}");
+            var user = result.Players.Single(x => !x.Player.Automaton);
+
+            _userInterfaceService
+                .WriteLine()
+                .WriteLine($"Pot: {game.Pot:C}")
+                .WriteLine()
+                .WriteLine("Your Cards")
+                .RenderCards(user.Cards);
 
             if (result.GameOver)
                 return game;

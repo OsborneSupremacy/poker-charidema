@@ -14,9 +14,9 @@ public class Suits
 
     public Suits()
     {
-        Clubs = new Suit(nameof(Clubs), 1, System.Drawing.Color.Black);
-        Diamonds = new Suit(nameof(Diamonds), 2, System.Drawing.Color.Red);
-        Hearts = new Suit(nameof(Hearts), 3, System.Drawing.Color.Red);
-        Spades = new Suit(nameof(Spades), 4, System.Drawing.Color.Black);
+        Clubs = new Suit(nameof(Clubs), 1, System.Drawing.Color.Black, '♣');
+        Diamonds = new Suit(nameof(Diamonds), 2, System.Drawing.Color.Red, '♦');
+        Hearts = new Suit(nameof(Hearts), 3, System.Drawing.Color.Red, '♥');
+        Spades = new Suit(nameof(Spades), 4, System.Drawing.Color.Black, '♠');
     }
 }

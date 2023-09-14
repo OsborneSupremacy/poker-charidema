@@ -18,7 +18,6 @@ public class UserMoveService : IUserMoveService
         args.RoundArgs.Phase switch
         {
             Ante => AntePromptAsync(args),
-            DealCards => DealAsync(args),
             _ => DefaultMoveAsync(args)
         };
 
@@ -76,32 +75,6 @@ public class UserMoveService : IUserMoveService
             {
                 PlayerInTurn = playerOut,
                 Deck = args.RoundArgs.Game.Deck,
-                Pot = args.Pot
-            }
-        );
-    }
-
-    private Task<MoveResult> DealAsync(MoveArgs args)
-    {
-        var playerOut = args.PlayerInTurn.DeepClone();
-        var deckOut = args.RoundArgs.Game.Deck.DeepClone();
-
-        var dealtCards = deckOut
-            .Cards
-            .Take(args.RoundArgs.Phase.GetCountOfCardsToDeal());
-
-        playerOut.Cards.AddRange(dealtCards);
-        deckOut.Cards.RemoveAll(
-            c => dealtCards
-                .Select(x => x.Id)
-                .Contains(c.Id)
-        );
-
-        return Task.FromResult(
-            new MoveResult
-            {
-                PlayerInTurn = playerOut,
-                Deck = deckOut,
                 Pot = args.Pot
             }
         );
