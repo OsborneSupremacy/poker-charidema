@@ -25,7 +25,7 @@ public class AnteSetService : IAnteSetService
 
         var antePrefs = GetAntePrefs(gameArgs);
 
-        uint anteAmount = button.Player.Automaton switch
+        uint anteAmount = button.Participant.Automaton switch
         {
             true => new Randomizer(_randomFactory.GetSeed())
                 .UInt(antePrefs.MinAnte, antePrefs.MaxAnte),

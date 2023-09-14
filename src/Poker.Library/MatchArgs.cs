@@ -2,9 +2,9 @@
 
 public record class MatchArgs
 {
-    public required List<Player> Players { get; init; }
+    public required List<Participant> Players { get; init; }
 
-    public required Player InitialButton { get; init; }
+    public required Participant InitialButton { get; init; }
 
     public required IAntePreferences AntePreferences { get; init; }
 

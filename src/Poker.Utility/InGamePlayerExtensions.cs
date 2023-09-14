@@ -7,7 +7,7 @@ public static class InGamePlayerExtensions
     public static InGamePlayer NextPlayer(this List<InGamePlayer> players, InGamePlayer currentPlayer)
     {
         var index = players
-            .FindIndex(x => x.Player.Id == currentPlayer.Player.Id);
+            .FindIndex(x => x.Participant.Id == currentPlayer.Participant.Id);
 
         if (index == players.Count - 1)
             return players.First();

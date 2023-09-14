@@ -41,9 +41,9 @@ public class AutomatonMoveService : IAutomatonMoveService
         var ante = args.RoundArgs.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{playerOut.Player.Name} antes.");
+            .WriteLines($"{playerOut.Participant.Name} antes.");
 
-        playerOut.Player.Stack -= ante;
+        playerOut.Participant.Stack -= ante;
 
         return Task.FromResult(
             new MoveResult

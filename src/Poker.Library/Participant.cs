@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library;
 
-public record Player
+public record Participant
 {
     public required Guid Id { get; init; }
 

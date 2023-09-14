@@ -49,8 +49,8 @@ public class UserMoveService : IUserMoveService
         var ante = args.RoundArgs.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{playerOut.Player.Name} antes.");
-        playerOut.Player.Stack -= ante;
+            .WriteLines($"{playerOut.Participant.Name} antes.");
+        playerOut.Participant.Stack -= ante;
 
         return Task.FromResult(
             new MoveResult
@@ -67,7 +67,8 @@ public class UserMoveService : IUserMoveService
         var playerOut = args.PlayerInTurn.DeepClone();
 
         _userInterfaceService
-            .WriteLines($"{playerOut.Player.Name} sits out.");
+            .WriteLines($"{playerOut.Participant.Name} sits out.");
+
         playerOut.Folded = true;
 
         return Task.FromResult(

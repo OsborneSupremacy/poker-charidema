@@ -29,7 +29,7 @@ public class GameService : IGameService
     {
         _userInterfaceService.WriteLines(
             $"The game is {game.Variant.Name}.",
-            $"{game.Button.Player.Name} has the deal.",
+            $"{game.Button.Participant.Name} has the deal.",
             $"Ante is set at {game.Ante:C}"
         );
 
@@ -67,7 +67,7 @@ public class GameService : IGameService
                 Pot = result.Pot
             };
 
-            var user = result.Players.Single(x => !x.Player.Automaton);
+            var user = result.Players.Single(x => !x.Participant.Automaton);
 
             _userInterfaceService
                 .WriteLine()
@@ -88,14 +88,14 @@ public class GameService : IGameService
         var gamePlayers = args.Players
             .Select(p => new InGamePlayer
             {
-                Player = p,
+                Participant = p,
                 Cards = new(),
                 Folded = false
             })
             .ToList();
 
         var gameButton = gamePlayers
-            .Single(x => x.Player.Id == args.Button.Id);
+            .Single(x => x.Participant.Id == args.Button.Id);
 
         Game game = new()
         {

@@ -2,7 +2,7 @@
 
 public record InGamePlayer
 {
-    public required Player Player { get; init; }
+    public required Participant Participant { get; init; }
 
     public required List<ICard> Cards { get; init; }
 

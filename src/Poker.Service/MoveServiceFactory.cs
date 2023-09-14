@@ -27,7 +27,7 @@ public class MoveServiceFactory : IMoveServiceFactory
     static readonly Func<MoveArgs, bool> _requiresUserInput = (MoveArgs args) =>
     {
         return
-            !args.PlayerInTurn.Player.Automaton
+            !args.PlayerInTurn.Participant.Automaton
             && args.RoundArgs.Phase is not DealCards;
     };
 }

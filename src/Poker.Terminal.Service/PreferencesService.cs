@@ -23,12 +23,12 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
-    public Task<uint> GetAnte(Player button)
+    public Task<uint> GetAnte(Participant button)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IDeck> GetDeck(Player button)
+    public Task<IDeck> GetDeck(Participant button)
     {
         throw new NotImplementedException();
     }
@@ -163,13 +163,13 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         return antePreferences!;
     }
 
-    protected async IAsyncEnumerable<Player> GeneratePlayers(
+    protected async IAsyncEnumerable<Participant> GeneratePlayers(
         string userName,
         uint startingStack,
         uint playerCount
         )
     {
-        yield return new Player
+        yield return new Participant
         {
             Id = Guid.NewGuid(),
             Name = userName,
@@ -193,7 +193,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public Task<bool> GetPlayAgain(Match? lastMatch) =>
         Task.FromResult(_c.PromptForBool("Would you like to play another match?"));
 
-    public Task<IVariant> GetVariant(Player button)
+    public Task<IVariant> GetVariant(Participant button)
     {
         throw new NotImplementedException();
     }

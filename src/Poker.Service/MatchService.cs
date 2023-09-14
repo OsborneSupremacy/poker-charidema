@@ -148,7 +148,7 @@ public class MatchService : IMatchService
         return matchIn with
         {
             Games = matchIn.Games.Append(gameOut).ToList(),
-            Players = gameOut.Players.Select(x => x.Player).ToList(),
+            Players = gameOut.Players.Select(x => x.Participant).ToList(),
             Button = button
         };
     }

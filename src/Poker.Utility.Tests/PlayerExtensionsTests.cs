@@ -9,11 +9,11 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnFirstPlayer_WhenCurrentPlayerIsLastInList()
     {
         // arrange
-        List<Player> players = new()
+        List<Participant> players = new()
         {
-            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
-            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },
-            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true, Busted = false }
+            new Participant { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
+            new Participant { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },
+            new Participant { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true, Busted = false }
         };
 
         var currentPlayer = players[2];
@@ -29,11 +29,11 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnNextPlayer_WhenCurrentPlayerIsNotLastInList()
     {
         // arrange
-        List<Player> players = new()
+        List<Participant> players = new()
         {
-            new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
-            new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },
-            new Player { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true, Busted = false }
+            new Participant { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
+            new Participant { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },
+            new Participant { Id = Guid.NewGuid(), Name = "Charlie", Stack = 25, BeginningStack = 100, Automaton = true, Busted = false }
         };
 
         var currentPlayer = players[1];
