@@ -13,7 +13,7 @@ public class RoundRobinMoveService : IPhaseService
 
     public async Task<PhaseResult> ExecuteAsync(PhaseArgs args)
     {
-        var playersOut = new List<InGamePlayer>();
+        var playersOut = new List<Player>();
 
         var ccOut = args.CommunityCards.DeepClone();
         var deckOut = args.Deck.DeepClone();

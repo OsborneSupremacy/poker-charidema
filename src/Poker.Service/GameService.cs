@@ -86,7 +86,7 @@ public class GameService : IGameService
     private async Task<Game> CreateGameAsync(GameArgs args)
     {
         var gamePlayers = args.Players
-            .Select(p => new InGamePlayer
+            .Select(p => new Player
             {
                 Participant = p,
                 Cards = new(),

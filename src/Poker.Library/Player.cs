@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library;
 
-public record InGamePlayer
+public record Player
 {
     public required Participant Participant { get; init; }
 

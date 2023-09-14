@@ -2,9 +2,9 @@
 
 namespace Poker.Utility;
 
-public static class InGamePlayerExtensions
+public static class PlayerExtensions
 {
-    public static InGamePlayer NextPlayer(this List<InGamePlayer> players, InGamePlayer currentPlayer)
+    public static Player NextPlayer(this List<Player> players, Player currentPlayer)
     {
         var index = players
             .FindIndex(x => x.Participant.Id == currentPlayer.Participant.Id);

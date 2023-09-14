@@ -2,5 +2,5 @@
 
 public interface IAnteSetService
 {
-    Task<uint> GetAsync(GameArgs gameArgs, InGamePlayer button);
+    Task<uint> GetAsync(GameArgs gameArgs, Player button);
 }
