@@ -57,9 +57,11 @@ public class GameService : IGameService
                     Pot = game.Pot
                 });
 
+            deck = result.Deck;
+
             game = game with
             {
-                Deck = result.Deck,
+                Deck = deck,
                 CommunityCards = result.CommunityCards,
                 Players = result.Players,
                 Pot = result.Pot

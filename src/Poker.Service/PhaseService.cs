@@ -1,4 +1,5 @@
 ﻿using Poker.Library.Phases;
+using Poker.Library.Rounds;
 
 namespace Poker.Service;
 
@@ -6,15 +7,19 @@ public class PhaseService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
-    private readonly IMoveServiceFactory _moveServiceFactory;
+    private readonly IPhaseService _roundRobinMoveService;
+
+    private readonly IPhaseService _dealerService;
 
     public PhaseService(
         IUserInterfaceService userInterfaceService,
-        IMoveServiceFactory moveServiceFactory
+        RoundRobinMoveService roundRobinMoveService,
+        IDealerService dealerService
         )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _moveServiceFactory = moveServiceFactory ?? throw new ArgumentNullException(nameof(moveServiceFactory));
+        _roundRobinMoveService = roundRobinMoveService ?? throw new ArgumentNullException(nameof(roundRobinMoveService));
+        _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 
     protected Task WriteStartInfoAsync(PhaseArgs args)
@@ -31,44 +36,12 @@ public class PhaseService : IPhaseService
     {
         await WriteStartInfoAsync(args);
 
-        // TODO: do not iterate over players when phase is a board action
-
-        var playersOut = new List<IInGamePlayer>();
-
-        var ccOut = args.CommunityCards.DeepClone();
-        var deckOut = args.Deck.DeepClone();
-        var potOut = args.Pot;
-
-        // TODO: if this is a betting round and any non-community cards are face-up, start with player showing
-        // best hand. Otherwise, start with player to the left of dealer
-        var playerInTurn = args.StartingPlayer;
-
-        while (playersOut.Count < args.Game.Players.Count)
+        var phaseService = args.Phase switch
         {
-            MoveArgs moveArgs = new()
-            {
-                PlayerInTurn = playerInTurn,
-                RoundArgs = args,
-                Pot = potOut
-            };
-
-            var moveResult = await _moveServiceFactory
-                .Get(moveArgs)
-                .ExecuteAsync(moveArgs);
-
-            potOut = moveResult.Pot;
-            playersOut.Add(moveResult.PlayerInTurn);
-
-            playerInTurn = args.Game.Players.NextPlayer(playerInTurn);
-        }
-
-        return new PhaseResult
-        {
-            Deck = deckOut,
-            CommunityCards = ccOut,
-            Players = playersOut,
-            GameOver = false,
-            Pot = potOut
+            DealCards => _dealerService,
+            _ => _roundRobinMoveService
         };
+
+        return await phaseService.ExecuteAsync(args);
     }
 }

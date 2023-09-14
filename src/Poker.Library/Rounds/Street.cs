@@ -2,7 +2,7 @@
 
 namespace Poker.Library.Rounds;
 
-public record Street : DealCards, IBoardAction
+public record Street : DealCards
 {
     [SetsRequiredMembers]
     public Street()
