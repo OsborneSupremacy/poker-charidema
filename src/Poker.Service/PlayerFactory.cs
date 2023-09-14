@@ -11,14 +11,14 @@ public class PlayerFactory
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<IPlayer> CreateAsync(PlayerCreateArgs args)
+    public Task<Player> CreateAsync(PlayerCreateArgs args)
     {
         Faker faker = new()
         {
             Random = new Randomizer(_randomFactory.GetSeed())
         };
 
-        return Task.FromResult<IPlayer>(new Player
+        return Task.FromResult<Player>(new Player
         {
             Id = Guid.NewGuid(),
             BeginningStack = args.BeginningStack,

@@ -92,7 +92,7 @@ public class GameService : IGameService
                 Cards = new(),
                 Folded = false
             })
-            .ToList<IInGamePlayer>();
+            .ToList();
 
         var gameButton = gamePlayers
             .Single(x => x.Player.Id == args.Button.Id);

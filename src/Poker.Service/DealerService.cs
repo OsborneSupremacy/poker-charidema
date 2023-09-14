@@ -16,7 +16,7 @@ public class DealerService : IDealerService, IPhaseService
     {
         var dealPhase = (args.Phase as DealCards)!;
 
-        var playersOut = new List<IInGamePlayer>();
+        var playersOut = new List<InGamePlayer>();
 
         var ccOut = args.CommunityCards.DeepClone();
         var deckOut = args.Deck.DeepClone();
@@ -48,7 +48,7 @@ public class DealerService : IDealerService, IPhaseService
         });
     }
 
-    private void DealCard(IDeck deckOut, IInGamePlayer playerInTurn, DealCards dealPhase)
+    private void DealCard(IDeck deckOut, InGamePlayer playerInTurn, DealCards dealPhase)
     {
         var cardToDeal = deckOut.Cards.First();
         cardToDeal.CardOrientation = dealPhase.CardOrientation;

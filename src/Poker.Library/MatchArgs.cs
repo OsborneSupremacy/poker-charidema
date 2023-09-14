@@ -2,9 +2,9 @@
 
 public record class MatchArgs
 {
-    public required List<IPlayer> Players { get; init; }
+    public required List<Player> Players { get; init; }
 
-    public required IPlayer InitialButton { get; init; }
+    public required Player InitialButton { get; init; }
 
     public required IAntePreferences AntePreferences { get; init; }
 

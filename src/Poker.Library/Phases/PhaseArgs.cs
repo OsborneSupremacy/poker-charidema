@@ -10,7 +10,7 @@ public record PhaseArgs
 
     public required List<ICard> CommunityCards { get; init; }
 
-    public required IInGamePlayer StartingPlayer { get; init; }
+    public required InGamePlayer StartingPlayer { get; init; }
 
     public required uint Pot { get; init; }
 }

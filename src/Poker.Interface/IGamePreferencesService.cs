@@ -2,11 +2,11 @@
 
 public interface IGamePreferencesService
 {
-    Task<uint> GetAnte(IPlayer button);
+    Task<uint> GetAnte(Player button);
 
-    Task<IVariant> GetVariant(IPlayer button);
+    Task<IVariant> GetVariant(Player button);
 
-    Task<IDeck> GetDeck(IPlayer button);
+    Task<IDeck> GetDeck(Player button);
 
     Task<bool> GetPlayAgain(Game game);
 }

@@ -4,7 +4,7 @@ namespace Poker.Library;
 
 public record MoveArgs
 {
-    public required IInGamePlayer PlayerInTurn { get; init; }
+    public required InGamePlayer PlayerInTurn { get; init; }
 
     public required PhaseArgs RoundArgs { get; init; }
 

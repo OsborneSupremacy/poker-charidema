@@ -8,11 +8,11 @@ public record Match
 
     public IDeck? FixedDeck { get; init; }
 
-    public required List<IPlayer> Players { get; init; }
+    public required List<Player> Players { get; init; }
 
     public required List<Game> Games { get; init; }
 
-    public required IPlayer Button { get; init; }
+    public required Player Button { get; init; }
 
     public required IAntePreferences AntePreferences { get; init; }
 

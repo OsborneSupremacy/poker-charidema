@@ -9,7 +9,7 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnFirstPlayer_WhenCurrentPlayerIsLastInList()
     {
         // arrange
-        List<IPlayer> players = new()
+        List<Player> players = new()
         {
             new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
             new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },
@@ -29,7 +29,7 @@ public class PlayerExtensionsTests
     public void NextPlayer_ShouldReturnNextPlayer_WhenCurrentPlayerIsNotLastInList()
     {
         // arrange
-        List<IPlayer> players = new()
+        List<Player> players = new()
         {
             new Player { Id = Guid.NewGuid(), Name = "Alice", Stack = 100, BeginningStack = 100, Automaton = true, Busted = false },
             new Player { Id = Guid.NewGuid(), Name = "Bob", Stack = 50, BeginningStack = 100, Automaton = true, Busted = false },

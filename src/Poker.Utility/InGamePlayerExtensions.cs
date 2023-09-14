@@ -1,10 +1,10 @@
-﻿using Poker.Library.Interface;
+﻿using Poker.Library;
 
 namespace Poker.Utility;
 
 public static class InGamePlayerExtensions
 {
-    public static IInGamePlayer NextPlayer(this List<IInGamePlayer> players, IInGamePlayer currentPlayer)
+    public static InGamePlayer NextPlayer(this List<InGamePlayer> players, InGamePlayer currentPlayer)
     {
         var index = players
             .FindIndex(x => x.Player.Id == currentPlayer.Player.Id);

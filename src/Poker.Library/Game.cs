@@ -14,7 +14,7 @@ public record Game
 
     public required List<ICard> Discards { get; init; }
 
-    public required List<IInGamePlayer> Players { get; init; }
+    public required List<InGamePlayer> Players { get; init; }
 
-    public required IInGamePlayer Button { get; init; }
+    public required InGamePlayer Button { get; init; }
 }

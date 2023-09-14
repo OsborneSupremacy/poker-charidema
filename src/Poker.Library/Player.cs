@@ -1,6 +1,6 @@
 ﻿namespace Poker.Library;
 
-public record Player : IPlayer
+public record Player
 {
     public required Guid Id { get; init; }
 

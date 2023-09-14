@@ -18,7 +18,7 @@ public class AnteSetService : IAnteSetService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    public Task<uint> GetAsync(GameArgs gameArgs, IInGamePlayer button)
+    public Task<uint> GetAsync(GameArgs gameArgs, InGamePlayer button)
     {
         if (gameArgs.Match.AntePreferences is FixedAnte fixedAnte)
             return Task.FromResult(fixedAnte.Amount);

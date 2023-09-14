@@ -23,12 +23,12 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
-    public Task<uint> GetAnte(IPlayer button)
+    public Task<uint> GetAnte(Player button)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IDeck> GetDeck(IPlayer button)
+    public Task<IDeck> GetDeck(Player button)
     {
         throw new NotImplementedException();
     }
@@ -163,7 +163,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         return antePreferences!;
     }
 
-    protected async IAsyncEnumerable<IPlayer> GeneratePlayers(
+    protected async IAsyncEnumerable<Player> GeneratePlayers(
         string userName,
         uint startingStack,
         uint playerCount
@@ -193,7 +193,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public Task<bool> GetPlayAgain(Match? lastMatch) =>
         Task.FromResult(_c.PromptForBool("Would you like to play another match?"));
 
-    public Task<IVariant> GetVariant(IPlayer button)
+    public Task<IVariant> GetVariant(Player button)
     {
         throw new NotImplementedException();
     }

@@ -2,7 +2,7 @@
 
 public record MoveResult
 {
-    public required IInGamePlayer PlayerInTurn { get; init; }
+    public required InGamePlayer PlayerInTurn { get; init; }
 
     // TODO: Change this to DeckCardsOut. We're not changing the whole deck.
     public required IDeck Deck { get; init; }

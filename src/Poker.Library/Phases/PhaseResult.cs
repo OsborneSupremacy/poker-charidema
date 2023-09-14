@@ -6,7 +6,7 @@ public record PhaseResult
 
     public required List<ICard> CommunityCards { get; init; }
 
-    public required List<IInGamePlayer> Players { get; init; }
+    public required List<InGamePlayer> Players { get; init; }
 
     public required bool GameOver { get; init; }
 
