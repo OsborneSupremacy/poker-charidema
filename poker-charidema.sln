@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Tests", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Interface", "src\Poker.Interface\Poker.Service.Interface.csproj", "{AC737E80-3F46-4B7C-BF75-F3E80701C150}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Library.Interface", "src\Poker.Library.Interface\Poker.Library.Interface.csproj", "{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Test.Utility", "src\Poker.Test.Utility\Poker.Test.Utility.csproj", "{A5855EBD-767C-4390-B7D6-2CC54D0073E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility", "src\Poker.Utility\Poker.Utility.csproj", "{3EEE4FF3-3022-4B97-8DDA-0655B2762788}"
@@ -37,7 +35,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Presentation.Interfac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Presentation.Library", "src\Poker.Presentation.Library\Poker.Presentation.Library.csproj", "{84C55B03-533F-47EB-B681-B062DD9AD18B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Presentation.Utility", "src\Poker.Presentation.Utility\Poker.Presentation.Utility.csproj", "{5B5E086B-767F-45A0-BA19-43A0A2494525}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Presentation.Utility", "src\Poker.Presentation.Utility\Poker.Presentation.Utility.csproj", "{5B5E086B-767F-45A0-BA19-43A0A2494525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain", "src\Poker.Domain\Poker.Domain.csproj", "{35AA86A5-9093-4837-8A4B-6E5CD53B685B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Extensions", "src\Poker.Domain.Extensions\Poker.Domain.Extensions.csproj", "{94B6F057-AC1E-44D8-A92D-C885B0DE33DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Abstractions", "src\Poker.Domain.Abstractions\Poker.Domain.Abstractions.csproj", "{5ED1E9F3-DEB4-48D8-972B-F3F1D0184110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Messaging", "src\Poker.Domain.Messaging\Poker.Domain.Messaging.csproj", "{801E05B0-53E0-473E-875D-50C861280A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Implementations", "src\Poker.Domain.Implementations\Poker.Domain.Implementations.csproj", "{C7314395-1FF1-4D0E-B294-D2D53372E17B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +73,6 @@ Global
 		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D85306EC-A87E-47F6-AE40-1F6EE1EF9ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,6 +109,26 @@ Global
 		{5B5E086B-767F-45A0-BA19-43A0A2494525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B5E086B-767F-45A0-BA19-43A0A2494525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B5E086B-767F-45A0-BA19-43A0A2494525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B6F057-AC1E-44D8-A92D-C885B0DE33DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B6F057-AC1E-44D8-A92D-C885B0DE33DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B6F057-AC1E-44D8-A92D-C885B0DE33DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B6F057-AC1E-44D8-A92D-C885B0DE33DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED1E9F3-DEB4-48D8-972B-F3F1D0184110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED1E9F3-DEB4-48D8-972B-F3F1D0184110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED1E9F3-DEB4-48D8-972B-F3F1D0184110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED1E9F3-DEB4-48D8-972B-F3F1D0184110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801E05B0-53E0-473E-875D-50C861280A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801E05B0-53E0-473E-875D-50C861280A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801E05B0-53E0-473E-875D-50C861280A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801E05B0-53E0-473E-875D-50C861280A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7314395-1FF1-4D0E-B294-D2D53372E17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7314395-1FF1-4D0E-B294-D2D53372E17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7314395-1FF1-4D0E-B294-D2D53372E17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7314395-1FF1-4D0E-B294-D2D53372E17B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

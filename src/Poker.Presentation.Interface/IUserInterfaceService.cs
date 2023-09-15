@@ -1,6 +1,4 @@
-﻿using Poker.Library.Interface;
-
-namespace Poker.Presentation.Interface;
+﻿namespace Poker.Presentation.Interface;
 
 public enum HeadingLevel
 {

@@ -1,7 +1,4 @@
-﻿using Poker.Library.Phases;
-using Poker.Library.Rounds;
-
-namespace Poker.Library.Variants;
+﻿namespace Poker.Library.Variants;
 
 public record FiveCardDraw : IVariant
 {

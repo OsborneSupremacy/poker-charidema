@@ -1,6 +1,4 @@
-﻿using Poker.Library.Cards;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class SuitFactory
 {

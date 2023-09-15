@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Poker.Library.Interface;
 
 namespace Poker.Utility.Tests;
 

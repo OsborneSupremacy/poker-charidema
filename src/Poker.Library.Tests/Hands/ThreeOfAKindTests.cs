@@ -1,6 +1,4 @@
-﻿using Poker.Library.Hands;
-
-namespace Poker.Library.Tests.Hands;
+﻿namespace Poker.Library.Tests.Hands;
 
 [ExcludeFromCodeCoverage]
 public class ThreeOfAKindTests

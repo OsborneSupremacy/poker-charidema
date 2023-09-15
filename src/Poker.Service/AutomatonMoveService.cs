@@ -1,7 +1,4 @@
-﻿using Poker.Library.Phases;
-using Poker.Library.Rounds;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class AutomatonMoveService : IAutomatonMoveService
 {

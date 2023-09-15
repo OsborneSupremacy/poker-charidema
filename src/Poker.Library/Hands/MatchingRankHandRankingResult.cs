@@ -1,6 +1,4 @@
-﻿using Poker.Library.Cards;
-
-namespace Poker.Library.Hands;
+﻿namespace Poker.Library.Hands;
 
 /// <summary>
 /// This is the base for any any hand that requires 2+ cards of the same

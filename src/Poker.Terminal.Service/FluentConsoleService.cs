@@ -1,6 +1,4 @@
-﻿using System.Text;
-using Poker.Library.Cards;
-using Poker.Presentation.Interface;
+﻿using Poker.Presentation.Interface;
 using Poker.Utility;
 using Spectre.Console;
 

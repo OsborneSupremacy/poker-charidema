@@ -1,6 +1,4 @@
-﻿using Poker.Library.Phases;
-
-namespace Poker.Service.Interface;
+﻿namespace Poker.Service.Interface;
 
 public interface IPhaseService
 {

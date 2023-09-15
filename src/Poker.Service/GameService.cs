@@ -1,6 +1,4 @@
-﻿using Poker.Library.Phases;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class GameService : IGameService
 {

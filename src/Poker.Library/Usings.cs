@@ -1,2 +1,2 @@
 ﻿global using FluentValidation;
-global using Poker.Library.Interface;
+global using Poker.Domain;

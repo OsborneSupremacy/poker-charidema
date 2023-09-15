@@ -1,6 +1,4 @@
-﻿using Poker.Library.Cards;
-
-namespace Poker.Library.Hands;
+﻿namespace Poker.Library.Hands;
 
 public class FullHouse : IHandRanking
 {
