@@ -2,7 +2,7 @@
 
 public enum HandQualifications
 {
-    DoesNotQualify,
+    Eliminated,
     Possible,
     Qualifies
 }

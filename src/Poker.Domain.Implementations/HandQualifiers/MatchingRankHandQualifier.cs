@@ -15,8 +15,8 @@ public static partial class HandQualifierDelegates
             _ =>
                 cards
                     .ToQualifiedHand(
-                        cards.GetMatchingRankHand(bestRank, hand.PrimaryMatchesCount.ToInt()),
-                        hand
+                        hand,
+                        cards.GetMatchingRankHand(bestRank, hand.PrimaryMatchesCount.ToInt())
                     )
         };
     };

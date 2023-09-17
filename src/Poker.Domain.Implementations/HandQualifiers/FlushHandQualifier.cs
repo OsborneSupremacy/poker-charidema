@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FlushHandQualifier { get; } =
         (Hand hand, List<Card> cards, uint remainingCardCount) =>
     {
-        var maxCardsWithSameSuit = 0;
+        HashSet<int> potentialFlushCount = new();
 
         foreach(var suit in Suits.All.OrderByDescending(s => s.Priority))
         {
@@ -15,21 +15,19 @@ public static partial class HandQualifierDelegates
                 .ThenByDescending(c => c.Rank)
                 .ToList();
 
-            if(cardsWithSuit.Count > maxCardsWithSameSuit)
-                maxCardsWithSameSuit = cardsWithSuit.Count;
+            potentialFlushCount.Add(cardsWithSuit.Count);
 
             if (cardsWithSuit.Count < GlobalConstants.HandSize)
                 continue;
 
             return cards.ToQualifiedHand(
-                cardsWithSuit.Take(5).ToList(),
-                hand
-            );
+                hand,
+                cardsWithSuit.Take(5).ToList());
         }
 
         return cards.ToUnqualifiedHand(
             hand,
-            maxCardsWithSameSuit + remainingCardCount >= GlobalConstants.HandSize
+            potentialFlushCount.Max() + remainingCardCount >= GlobalConstants.HandSize
         );
     };
 }

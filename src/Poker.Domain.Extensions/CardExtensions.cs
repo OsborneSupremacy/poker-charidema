@@ -91,9 +91,8 @@ public static class CardExtensions
 
     public static QualifiedHand ToQualifiedHand(
         this List<Card> cards,
-        List<Card> handCards,
-        Hand hand
-        )
+        Hand hand,
+        List<Card> handCards)
     {
         var kickers = cards.GetKickers(handCards);
 
@@ -121,6 +120,6 @@ public static class CardExtensions
                 HandQualification =
                     possible
                     ? HandQualifications.Possible
-                    : HandQualifications.DoesNotQualify
+                    : HandQualifications.Eliminated
             };
 }
