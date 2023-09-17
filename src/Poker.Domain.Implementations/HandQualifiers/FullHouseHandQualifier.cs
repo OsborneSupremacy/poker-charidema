@@ -11,12 +11,12 @@ public static partial class HandQualifierDelegates
         return threeOfAKind.HandQualification switch
         {
             HandQualifications.Eliminated => cards.ToUnqualifiedHand(hand, false),
-            HandQualifications.Possible => QualifyFullHouse(cards, remainingCardCount),
-            _ => QualifyFullHouse(cards, threeOfAKind, remainingCardCount)
+            HandQualifications.Possible => QualifyWithoutThreeOfAKind(cards, remainingCardCount),
+            _ => QualifyWithTheeOfAKind(cards, threeOfAKind, remainingCardCount)
         };
     };
 
-    private static QualifiedHand QualifyFullHouse(
+    private static QualifiedHand QualifyWithoutThreeOfAKind(
         List<Card> cards,
         uint remainingCardCount
         )
@@ -32,7 +32,7 @@ public static partial class HandQualifierDelegates
         return cards.ToUnqualifiedHand(Hands.FullHouse, remainingCardCount >= requiredAdditionalCards);
     }
 
-    private static QualifiedHand QualifyFullHouse(
+    private static QualifiedHand QualifyWithTheeOfAKind(
         List<Card> cards,
         QualifiedHand threeOfAKind,
         uint remainingCardCount

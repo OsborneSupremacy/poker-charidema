@@ -22,7 +22,7 @@ public static partial class HandQualifierDelegates
 
             return cards.ToQualifiedHand(
                 hand,
-                cardsWithSuit.Take(5).ToList()
+                cardsWithSuit.Take(GlobalConstants.HandSize).ToList()
             );
         }
 
