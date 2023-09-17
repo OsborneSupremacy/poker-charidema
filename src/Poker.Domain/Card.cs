@@ -2,6 +2,7 @@
 
 public enum CardLocations
 {
+    Empty,
     Deck,
     PlayerHand,
     Community
@@ -9,6 +10,7 @@ public enum CardLocations
 
 public enum CardOrientations
 {
+    Empty,
     Faceup,
     Facedown
 }
@@ -21,6 +23,7 @@ public enum FaceDirections
 }
 public enum CardTypes
 {
+    Empty,
     Spot,
     Face,
     Ace,
@@ -58,11 +61,11 @@ public record Card
     /// <summary>
     /// The card that the wild card is impersonating.
     /// </summary>
-    public Card? Impersonating { get; set; }
+    public required Card Impersonating { get; init; }
 
-    public required Rank? Rank { get; init; }
+    public required Rank Rank { get; init; }
 
-    public required Suit? Suit { get; init; }
+    public required Suit Suit { get; init; }
 
     public required FaceDirections FaceDirection { get; init; }
 

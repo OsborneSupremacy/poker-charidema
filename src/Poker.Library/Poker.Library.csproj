@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Poker.Domain.Extensions\Poker.Domain.Extensions.csproj" />
     <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
   </ItemGroup>
 

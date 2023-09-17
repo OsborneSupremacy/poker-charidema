@@ -2,19 +2,20 @@
 
 public class Suits
 {
-    public Suit Hearts { get; }
+    public static Suit Empty { get; } = new Suit(nameof(Empty), 0, System.Drawing.Color.Empty, char.MinValue);
 
-    public Suit Diamonds { get; }
+    public static Suit Hearts { get; } = new Suit(nameof(Hearts), 3, System.Drawing.Color.Red, '♥');
 
-    public Suit Clubs { get; }
+    public static Suit Diamonds { get; } = new Suit(nameof(Diamonds), 2, System.Drawing.Color.Red, '♦');
 
-    public Suit Spades { get; }
+    public static Suit Clubs { get; } = new Suit(nameof(Clubs), 1, System.Drawing.Color.Black, '♣');
 
-    public Suits()
-    {
-        Clubs = new Suit(nameof(Clubs), 1, System.Drawing.Color.Black, '♣');
-        Diamonds = new Suit(nameof(Diamonds), 2, System.Drawing.Color.Red, '♦');
-        Hearts = new Suit(nameof(Hearts), 3, System.Drawing.Color.Red, '♥');
-        Spades = new Suit(nameof(Spades), 4, System.Drawing.Color.Black, '♠');
-    }
+    public static Suit Spades { get; } = new Suit(nameof(Spades), 4, System.Drawing.Color.Black, '♠');
+
+    public static List<Suit> AllSuits { get; } = new() { 
+        Hearts,
+        Diamonds,
+        Clubs,
+        Spades
+    };
 }

@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Poker.Domain.Abstractions\Poker.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\Poker.Domain.Extensions\Poker.Domain.Extensions.csproj" />
+    <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
   </ItemGroup>
 
 </Project>

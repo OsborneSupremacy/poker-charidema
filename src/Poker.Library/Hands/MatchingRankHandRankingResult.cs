@@ -57,18 +57,5 @@ public abstract class MatchingRankHandRankingResult
         };
     }
 
-    private (bool qualifies, uint qualifyingRank) GetQualifyingRank(IDeck deck, List<ICard> playerCards)
-    {
-        foreach (var v in deck
-            .CardRankValues
-            .OrderByDescending(x => x)
-            )
-        {
-            if (!playerCards.HasCountOfMatchingRankOrWild(v, RequiredMatches))
-                continue;
 
-            return (true, v);
-        }
-        return (false, 0);
-    }
 }

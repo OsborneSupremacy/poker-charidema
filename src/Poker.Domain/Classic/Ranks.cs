@@ -2,46 +2,47 @@
 
 public record Ranks
 {
-    public Rank Two { get; }
+    public static Rank Empty { get; } = new Rank(nameof(Empty), 0);
 
-    public Rank Three { get; }
+    public static Rank Two { get; } = new Rank(nameof(Two), 2);
 
-    public Rank Four { get; }
+    public static Rank Three { get; } = new Rank(nameof(Three), 3);
 
-    public Rank Five { get; }
+    public static Rank Four { get; } = new Rank(nameof(Four), 4);
 
-    public Rank Six { get; }
+    public static Rank Five { get; } = new Rank(nameof(Five), 5);
 
-    public Rank Seven { get; }
+    public static Rank Six { get; } = new Rank(nameof(Six), 6);
 
-    public Rank Eight { get; }
+    public static Rank Seven { get; } = new Rank(nameof(Seven), 7);
 
-    public Rank Nine { get; }
+    public static Rank Eight { get; } = new Rank(nameof(Eight), 8);
 
-    public Rank Ten { get; }
+    public static Rank Nine { get; } = new Rank(nameof(Nine), 9);
 
-    public Rank Jack { get; }
+    public static Rank Ten { get; } = new Rank(nameof(Ten), 10);
 
-    public Rank Queen { get; }
+    public static Rank Jack { get; } = new Rank(nameof(Jack), 11);
 
-    public Rank King { get; }
+    public static Rank Queen { get; } = new Rank(nameof(Queen), 12);
 
-    public Rank Ace { get; }
+    public static Rank King { get; } = new Rank(nameof(King), 13);
 
-    public Ranks()
-    {
-        Two = new Rank(nameof(Two), 2);
-        Three = new Rank(nameof(Three), 3);
-        Four = new Rank(nameof(Four), 4);
-        Five = new Rank(nameof(Five), 5);
-        Six = new Rank(nameof(Six), 6);
-        Seven = new Rank(nameof(Seven), 7);
-        Eight = new Rank(nameof(Eight), 8);
-        Nine = new Rank(nameof(Nine), 9);
-        Ten = new Rank(nameof(Ten), 10);
-        Jack = new Rank(nameof(Jack), 11);
-        Queen = new Rank(nameof(Queen), 12);
-        King = new Rank(nameof(King), 13);
-        Ace = new Rank(nameof(Ace), 14);
-    }
+    public static Rank Ace { get; } = new Rank(nameof(Ace), 14);
+
+    public static List<Rank> All { get; } = new() {
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King,
+        Ace
+    };
 }
