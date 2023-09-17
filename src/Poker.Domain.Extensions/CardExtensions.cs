@@ -63,7 +63,7 @@ public static class CardExtensions
         int count
         ) => input
             .Where(c => c.MatchesRankOrIsWild(rank))
-            .OrderByDescending(c => c.IsWild)
+            .OrderBy(c => c.IsWild)
             .ThenByDescending(c => c.Suit.Priority)
             .Take(count)
             .ToList();
@@ -76,7 +76,7 @@ public static class CardExtensions
                 .OrderByDescending(c => c.IsWild)
                 .ThenByDescending(c => c.Rank.Value)
                 .ThenByDescending(c => c.Suit.Priority)
-                .Take(GlobalConstants.HandLimit - handCards.Count)
+                .Take(GlobalConstants.HandSize - handCards.Count)
                 .ToList();
 
     public static List<Card> GetDeadCards(
@@ -112,7 +112,7 @@ public static class CardExtensions
         Hand hand,
         bool possible
         ) =>
-            new QualifiedHand
+            new()
             {
                 Hand = hand,
                 HandCards = new(),

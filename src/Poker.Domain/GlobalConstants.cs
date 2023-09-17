@@ -2,5 +2,5 @@
 
 public static class GlobalConstants
 {
-    public const int HandLimit = 5;
+    public const int HandSize = 5;
 }

@@ -12,7 +12,7 @@ public class Suits
 
     public static Suit Spades { get; } = new Suit(nameof(Spades), 4, System.Drawing.Color.Black, '♠');
 
-    public static List<Suit> AllSuits { get; } = new() { 
+    public static List<Suit> All { get; } = new() { 
         Hearts,
         Diamonds,
         Clubs,

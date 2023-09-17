@@ -1,7 +1,4 @@
-﻿using Poker.Domain.Classic;
-using Poker.Domain.Extensions;
-
-namespace Poker.Domain.Implementations.HandQualifiers;
+﻿namespace Poker.Domain.Implementations.HandQualifiers;
 
 public static partial class HandQualifierDelegates
 {
@@ -23,7 +20,6 @@ public static partial class HandQualifierDelegates
                     )
         };
     };
-
 }
 
 
