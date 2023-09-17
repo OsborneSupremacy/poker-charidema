@@ -22,7 +22,8 @@ public static partial class HandQualifierDelegates
 
             return cards.ToQualifiedHand(
                 hand,
-                cardsWithSuit.Take(5).ToList());
+                cardsWithSuit.Take(5).ToList()
+            );
         }
 
         return cards.ToUnqualifiedHand(

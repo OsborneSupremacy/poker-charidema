@@ -8,24 +8,36 @@ public static partial class HandQualifierDelegates
         var threeOfAKind = 
             MatchingRankHandQualifier(Hands.ThreeOfAKind, cards, remainingCardCount);
 
-        switch (threeOfAKind.HandQualification) {
+        return threeOfAKind.HandQualification switch
+        {
+            HandQualifications.Eliminated => cards.ToUnqualifiedHand(hand, false),
+            HandQualifications.Possible => QualifyFullHouse(cards, remainingCardCount),
+            _ => QualifyFullHouse(cards, threeOfAKind, remainingCardCount)
+        };
+    };
 
-            case HandQualifications.Eliminated:
-                return cards.ToUnqualifiedHand(hand, false);
+    private static QualifiedHand QualifyFullHouse(
+        List<Card> cards,
+        uint remainingCardCount
+        )
+    {
+        if (remainingCardCount >= 4)
+            return cards.ToUnqualifiedHand(Hands.FullHouse, true);
 
-            case HandQualifications.Possible:
+        var hasPair = MatchingRankHandQualifier(Hands.Pair, cards, remainingCardCount)
+            .HandQualification == HandQualifications.Qualifies;
 
-                if (remainingCardCount >= 4)
-                    return cards.ToUnqualifiedHand(hand, true);
+        var requiredAdditionalCards = hasPair ? 3 : 2;
 
-                var hasPair = MatchingRankHandQualifier(Hands.Pair, cards, remainingCardCount)
-                    .HandQualification == HandQualifications.Qualifies;
+        return cards.ToUnqualifiedHand(Hands.FullHouse, remainingCardCount >= requiredAdditionalCards);
+    }
 
-                var requiredAdditionalCards = hasPair ? 3 : 2;
-
-                return cards.ToUnqualifiedHand(hand, remainingCardCount >= requiredAdditionalCards);
-        }
-
+    private static QualifiedHand QualifyFullHouse(
+        List<Card> cards,
+        QualifiedHand threeOfAKind,
+        uint remainingCardCount
+        )
+    {
         var additionalPair = MatchingRankHandQualifier(
             Hands.Pair,
             cards.Except(threeOfAKind.HandCards).ToList(),
@@ -35,14 +47,15 @@ public static partial class HandQualifierDelegates
         return additionalPair.Qualifies() switch
         {
             true => cards.ToQualifiedHand(
-                hand,
-                threeOfAKind.HandCards.Concat(additionalPair.HandCards).ToList()),
+                Hands.FullHouse,
+                threeOfAKind.HandCards.Concat(additionalPair.HandCards).ToList()
+            ),
             false => cards.ToUnqualifiedHand(
-                hand,
-                !additionalPair.Eliminated() // if a additiona pair is possible, full house is possible
+                Hands.FullHouse,
+                !additionalPair.Eliminated() // if an additional pair is possible, full house is possible
             )
         };
-    };
+    }
 }
 
 
