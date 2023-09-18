@@ -7,6 +7,13 @@ public enum HandQualifications
     Qualifies
 }
 
+/// <summary>
+/// A thorough result of a hand "qualification", which determines
+/// whether the player's cards satisfy the hand's requirements 
+/// (and if they don't, whether it's possible to meet those requirements),
+/// which cards comprised the hand, which cards are the kickers, and which
+/// cards are dead.
+/// </summary>
 public record QualifiedHand
 {
     public required Hand Hand { get; set; }

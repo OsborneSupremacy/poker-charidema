@@ -12,97 +12,76 @@ public static partial class HandQualifierDelegates
             return cards.ToUnqualifiedHand(
                 hand,
                 remainingCardCount >= (
-                    GlobalConstants.HandSize - all.Select(x => x.Cards.Count).Max()
+                    GlobalConstants.HandSize - all.Max(x => x.Cards.Count)
                 )
             );
 
-        return complete.Count switch
-        {
-            1 => cards.ToQualifiedHand(hand, complete.Single().Cards),
-            _ => cards.ToQualifiedHand(hand, GetBestStraightResult(complete).Cards)
-        };
+        return cards.ToQualifiedHand(
+            hand,
+            GetBestStraight(complete).Cards
+        );
     };
 
-    private static StraightResult GetBestStraightResult(
-        List<StraightResult> straightResults
-        )
-    {
-        foreach (var rank in Ranks.All.OrderByDescending(x => x.Value))
-        {
-            var straight = GetStraightResultWithRank(straightResults, rank);
-            if (straight.Complete)
-                return straight;
-        }
-        return new()
-        {
-            Complete = false,
-            Cards = new()
-        };
-    }
+    private static EvalulatedStraight GetBestStraight(
+        List<EvalulatedStraight> evalulated
+        ) =>
+        evalulated
+            .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
+            .OrderByDescending(x => x.Cards.First().Suit.Priority)
+            .First();
 
-    private static StraightResult GetStraightResultWithRank(
-        List<StraightResult> straights,
-        Rank rank
-        )
-    {
-        foreach (var straight in straights)
-        {
-            if (straight.Cards.Any(x => x.MatchesRankOrIsWild(rank)))
-                return straight;
-        }
-        return new StraightResult
-        {
-            Complete = false,
-            Cards = new()
-        };
-    }
-
-    private static List<StraightResult> EvaluateStraights(List<Card> cards) =>
+    private static List<EvalulatedStraight> EvaluateStraights(List<Card> cards) =>
         Ranks
             .All
             .Where(r => r.Value <= 10)
             .OrderBy(x => x.Value)
-            .Select(x => EvalulateStraightStartingWith(x, cards))
+            .Select(x => EvalulateStraight(x, cards))
             .ToList();
 
-    private static StraightResult EvalulateStraightStartingWith(
+    private static EvalulatedStraight EvalulateStraight(
         Rank startingRank,
         List<Card> cards
         )
     {
+        Rank highRank = Ranks.Empty;
         List<Card> sequence = new();
         List<Card> unusedCards = new();
         unusedCards.AddRange(cards);
 
         for (int r = 0; r < GlobalConstants.HandSize; r++)
         {
+            var rank = Ranks.All[startingRank.Value.ToInt() + r];
+
             var cardInSeqeuence = unusedCards
-                .Where(c => c.MatchesRankOrIsWild(
-                    Ranks.All[startingRank.Value.ToInt() + r])
-                )
+                .Where(c => c.MatchesRankOrIsWild(rank))
                 .OrderBy(c => c.IsWild) // prefer non-wild
                 .ThenByDescending(c => c.Suit.Priority)
                 .FirstOrDefault() ?? Cards.Empty;
 
             if (cardInSeqeuence == Cards.Empty)
-                return new StraightResult
+                return new EvalulatedStraight
                 {
+                    HighRank = highRank,
                     Complete = false,
                     Cards = sequence
                 };
 
+            highRank = rank;
             sequence.Add(cardInSeqeuence);
             unusedCards.Remove(cardInSeqeuence);
         }
 
-        return new StraightResult {
+        return new EvalulatedStraight {
+            HighRank = highRank,
             Complete = true,
             Cards = sequence
         };
     }
 
-    private record StraightResult
+    private record EvalulatedStraight
     {
+        public required Rank HighRank { get; init; }
+
         public required bool Complete { get; init; }
 
         public required List<Card> Cards { get; init; }
