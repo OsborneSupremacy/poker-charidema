@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic;
 
-public record Deck
+public record Cards
 {
     public static Card Empty { get; } = new Card
     {
