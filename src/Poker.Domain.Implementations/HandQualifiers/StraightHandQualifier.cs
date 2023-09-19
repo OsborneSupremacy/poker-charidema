@@ -31,8 +31,7 @@ public static partial class HandQualifierDelegates
             .First();
 
     private static List<EvalulatedStraight> EvaluateStraights(List<Card> cards) =>
-        Ranks
-            .All
+        Ranks.All
             .Where(r => r.Value <= 10)
             .OrderBy(x => x.Value)
             .Select(x => EvalulateStraight(x, cards))

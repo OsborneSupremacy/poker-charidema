@@ -32,13 +32,12 @@ public static partial class HandQualifierDelegates
             .First();
 
     private static List<EvalulatedFlush> EvaluateFlushes(List<Card> cards) =>
-        Suits
-            .All
+        Suits.All
             .OrderByDescending(s => s.Priority)
-            .Select(s => EvalulateFlushWithSuit(s, cards))
+            .Select(s => EvalulateFlush(s, cards))
             .ToList();
 
-    private static EvalulatedFlush EvalulateFlushWithSuit(
+    private static EvalulatedFlush EvalulateFlush(
         Suit suit,
         List<Card> cards
         )
