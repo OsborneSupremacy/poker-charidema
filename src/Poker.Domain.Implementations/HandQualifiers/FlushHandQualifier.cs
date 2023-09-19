@@ -11,9 +11,7 @@ public static partial class HandQualifierDelegates
         if (!complete.Any())
             return cards.ToUnqualifiedHand(
                 hand,
-                remainingCardCount >= (
-                    GlobalConstants.HandSize - all.Max(x => x.Cards.Count)
-                )
+                all.EnoughRemainingCardsForHand(remainingCardCount)
             );
 
         return cards.ToQualifiedHand(
@@ -22,8 +20,8 @@ public static partial class HandQualifierDelegates
         );
     };
 
-    private static EvalulatedFlush GetBestFlush(
-        List<EvalulatedFlush> evalulated
+    private static PotentialHand GetBestFlush(
+        List<PotentialHand> evalulated
         ) =>
         evalulated
             .Where(x => x.Suit.Priority == evalulated.Max(x => x.Suit.Priority))
@@ -31,13 +29,13 @@ public static partial class HandQualifierDelegates
             .ThenByDescending(x => x.Cards.Max(c => c.Rank.Value))
             .First();
 
-    private static List<EvalulatedFlush> EvaluateFlushes(List<Card> cards) =>
+    private static List<PotentialHand> EvaluateFlushes(List<Card> cards) =>
         Suits.All
             .OrderByDescending(s => s.Priority)
             .Select(s => EvalulateFlush(s, cards))
             .ToList();
 
-    private static EvalulatedFlush EvalulateFlush(
+    private static PotentialHand EvalulateFlush(
         Suit suit,
         List<Card> cards
         )
@@ -49,20 +47,12 @@ public static partial class HandQualifierDelegates
             .Take(GlobalConstants.HandSize)
             .ToList();
 
-        return new EvalulatedFlush
+        return new PotentialHand
         {
+            HighRank = Ranks.Empty,
             Suit = suit,
             Complete = cardsWithSuit.Count >= GlobalConstants.HandSize,
             Cards = cardsWithSuit
         };
-    }
-
-    private record EvalulatedFlush
-    {
-        public required Suit Suit { get; init; }
-
-        public required bool Complete { get; init; }
-
-        public required List<Card> Cards { get; init; }
     }
 }

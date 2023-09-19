@@ -11,9 +11,7 @@ public static partial class HandQualifierDelegates
         if (!complete.Any())
             return cards.ToUnqualifiedHand(
                 hand,
-                remainingCardCount >= (
-                    GlobalConstants.HandSize - all.Max(x => x.Cards.Count)
-                )
+                all.EnoughRemainingCardsForHand(remainingCardCount)
             );
 
         return cards.ToQualifiedHand(
@@ -22,22 +20,22 @@ public static partial class HandQualifierDelegates
         );
     };
 
-    private static EvalulatedStraight GetBestStraight(
-        List<EvalulatedStraight> evalulated
+    private static PotentialHand GetBestStraight(
+        List<PotentialHand> evalulated
         ) =>
         evalulated
             .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
             .OrderByDescending(x => x.Cards.First().Suit.Priority)
             .First();
 
-    private static List<EvalulatedStraight> EvaluateStraights(List<Card> cards) =>
+    private static List<PotentialHand> EvaluateStraights(List<Card> cards) =>
         Ranks.All
             .Where(r => r.Value <= 10)
             .OrderBy(x => x.Value)
             .Select(x => EvalulateStraight(x, cards))
             .ToList();
 
-    private static EvalulatedStraight EvalulateStraight(
+    private static PotentialHand EvalulateStraight(
         Rank startingRank,
         List<Card> cards
         )
@@ -58,8 +56,9 @@ public static partial class HandQualifierDelegates
                 .FirstOrDefault() ?? Cards.Empty;
 
             if (cardInSeqeuence == Cards.Empty)
-                return new EvalulatedStraight
+                return new PotentialHand
                 {
+                    Suit = Suits.Empty,
                     HighRank = highRank,
                     Complete = false,
                     Cards = sequence
@@ -70,19 +69,11 @@ public static partial class HandQualifierDelegates
             unusedCards.Remove(cardInSeqeuence);
         }
 
-        return new EvalulatedStraight {
+        return new PotentialHand {
+            Suit = Suits.Empty,
             HighRank = highRank,
             Complete = true,
             Cards = sequence
         };
-    }
-
-    private record EvalulatedStraight
-    {
-        public required Rank HighRank { get; init; }
-
-        public required bool Complete { get; init; }
-
-        public required List<Card> Cards { get; init; }
     }
 }
