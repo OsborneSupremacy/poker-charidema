@@ -1,28 +1,144 @@
-﻿using Poker.Library.Rounds;
+﻿namespace Poker.Library.Variants;
 
-namespace Poker.Library.Variants;
-
-public record class TexasHoldEm : IVariant
+public static class TexasHoldEm
 {
-    public string Name => "Texas Hold 'Em";
-
-    public List<IPhase> Phases =>
+    public static Variant GetVariant() =>
         new()
         {
-            new Ante(),
-            new DealCards()
+            Name = "Texas Hold 'Em",
+            Phases = new()
             {
-                Count = 2,
-                Name = "Deal",
-                CardOrientation = CardOrientations.Facedown,
-                CardDestination = CardLocations.PlayerHand
-            },
-            new BettingInterval(),
-            new Flop(),
-            new BettingInterval(),
-            new Turn(),
-            new BettingInterval(),
-            new Street(),
-            new BettingInterval()
+                new() {
+                    Name = "Ante",
+                    PhaseType = PhaseType.Ante,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Deal",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 2,
+                    CardDestination = CardLocations.PlayerHand,
+                    CardOrientation = CardOrientations.Facedown,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "The Flop",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 2,
+                    CardDestination = CardLocations.Community,
+                    CardOrientation = CardOrientations.Faceup,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "The Turn",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 1,
+                    CardDestination = CardLocations.Community,
+                    CardOrientation = CardOrientations.Faceup,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "The Street",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 1,
+                    CardDestination = CardLocations.Community,
+                    CardOrientation = CardOrientations.Faceup,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "The River",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 1,
+                    CardDestination = CardLocations.Community,
+                    CardOrientation = CardOrientations.Faceup,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                },
+                new()
+                {
+                    Name = "Evaluation",
+                    PhaseType = PhaseType.Evaluation,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocations.Empty,
+                    CardOrientation = CardOrientations.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = new()
+                }
+            }
         };
 }

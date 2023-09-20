@@ -21,6 +21,8 @@ public record Phase
 
     public required CardLocations CardDestination { get; init; }
 
+    public required CardOrientations CardOrientation { get; init; }
+
     public required uint CardsToDrawMaximum { get; init; }
 
     public required List<DrawCardsMaximums> CardsToDrawMaximumOverrides { get; init; }
