@@ -1,4 +1,6 @@
-﻿namespace Poker.Presentation.Interface;
+﻿using Poker.Domain;
+
+namespace Poker.Presentation.Interface;
 
 public enum HeadingLevel
 {
@@ -60,5 +62,5 @@ public interface IUserInterfaceService
 
     IUserInterfaceService WriteLines(params string[] lines);
 
-    IUserInterfaceService RenderCards(List<ICard> cards);
+    IUserInterfaceService RenderCards(List<Card> cards);
 }

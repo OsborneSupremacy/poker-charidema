@@ -14,13 +14,7 @@ public static partial class HandQualifierDelegates
                     // Determining whether a straight flush is possible for a player is tricky.
                     // If there are 4+ cards yet to be dealt, then it's always possible possible.
                     remainingCardCount >= GlobalConstants.HandSize - 1
-                    ||
-                    (
-                        // if the player has a potential straight flush, a complete straight flush is possible...
-                        potentials.Any()
-                        // ... if there are enough remaining cards
-                        && potentials.EnoughRemainingCardsForHand(remainingCardCount)
-                    )
+                    || potentials.EnoughRemainingCards(remainingCardCount)
                 );
 
             return cards.ToQualifiedHand(

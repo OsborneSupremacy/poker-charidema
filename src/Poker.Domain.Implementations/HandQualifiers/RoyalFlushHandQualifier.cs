@@ -10,16 +10,22 @@ public static partial class HandQualifierDelegates
 
             return
                 (straightFlush.Qualifies()
-                && (straightFlush.GetHighRank() == Ranks.Ace)) switch {
+                && (straightFlush.GetHighRank() == Ranks.Ace)) switch
+                {
                     true => straightFlush with { Hand = hand },
                     false => cards.ToUnqualifiedHand
                     (
                         hand,
-                        // this isn't completely accurate. There are scenarios where a player
-                        // is eliminated for a royal flush, but not a straight flush.
-                        // figure it out later.
-                        straightFlush.HandQualification != HandQualifications.Eliminated
+                        FindPotentialStraightFlushes(cards)
+                            .Select(x => x with
+                            {
+                                Cards = x.Cards
+                                    .Where(x => x.SatisfiesRankOrIsWild(Ranks.Ten))
+                                    .ToList()
+                            })
+                            .ToList()
+                            .EnoughRemainingCards(remainingCardCount)
                     )
-                };
+                }; ;
         };
 }

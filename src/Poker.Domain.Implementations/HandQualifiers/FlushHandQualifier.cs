@@ -11,7 +11,7 @@ public static partial class HandQualifierDelegates
         if (!complete.Any())
             return cards.ToUnqualifiedHand(
                 hand,
-                all.EnoughRemainingCardsForHand(remainingCardCount)
+                all.EnoughRemainingCards(remainingCardCount)
             );
 
         return cards.ToQualifiedHand(

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
