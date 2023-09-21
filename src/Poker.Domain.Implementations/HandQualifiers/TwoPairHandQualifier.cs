@@ -3,32 +3,35 @@
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier TwoPairHandQualifier { get; } =
-        (Hand hand, List<Card> cards, uint remainingCardCount) =>
+        (QualifiedHandRequest request) =>
     {
         var firstPair = 
-            MatchingRankHandQualifier(Hands.Pair, cards, remainingCardCount);
+            MatchingRankHandQualifier!(request with { Hand = Hands.Pair });
 
         return firstPair.HandQualification switch
         {
-            HandQualifications.Eliminated => cards.ToUnqualifiedHand(hand, false),
-            HandQualifications.Possible => cards.ToUnqualifiedHand(
+            HandQualifications.Eliminated => request.Cards.ToUnqualifiedHand(request.Hand, false),
+            HandQualifications.Possible => request.Cards.ToUnqualifiedHand(
                 Hands.TwoPair,
-                remainingCardCount >= 2
+                request.RemainingCardCount >= 2
             ),
-            _ => QualifyWithFirstPair(cards, firstPair, remainingCardCount)
+            _ => QualifyWithFirstPair(request.Cards, firstPair, request.RemainingCardCount)
         };
     };
 
-    private static QualifiedHand QualifyWithFirstPair(
+    private static QualifiedHandResponse QualifyWithFirstPair(
         List<Card> cards,
-        QualifiedHand firstPair,
+        QualifiedHandResponse firstPair,
         uint remainingCardCount
     )
     {
         var secondPair = MatchingRankHandQualifier(
-            Hands.Pair,
-            cards.Except(firstPair.HandCards).ToList(),
-            remainingCardCount
+            new QualifiedHandRequest
+            {
+                Hand = Hands.Pair,
+                Cards = cards.Except(firstPair.HandCards).ToList(),
+                RemainingCardCount = remainingCardCount
+            }
         );
 
         return secondPair.Qualifies() switch

@@ -1,10 +1,10 @@
-﻿namespace Poker.Domain;
+﻿namespace Poker.Domain.Messaging;
 
 /// <summary>
-/// Similar to the concept of <see cref="QualifiedHand"/>, but
+/// Similar to the concept of <see cref="QualifiedHandResponse"/>, but
 /// for in-progress hands, analysis, and comparision.
 /// </summary>
-public record PotentialHand
+public record PotentialHandMessage
 {
     public required Rank HighRank { get; init; }
 

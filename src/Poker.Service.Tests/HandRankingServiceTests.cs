@@ -1,6 +1,4 @@
-﻿using Poker.Library.Hands;
-
-namespace Poker.Service.Tests;
+﻿namespace Poker.Service.Tests;
 
 [ExcludeFromCodeCoverage]
 public class HandRankingServiceTests

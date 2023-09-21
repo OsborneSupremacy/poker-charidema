@@ -2,5 +2,5 @@
 
 public interface IGameService
 {
-    public Task<Game> PlayAsync(GameArgs args);
+    public Task<GameResponse> PlayAsync(GameRequest request);
 }

@@ -3,20 +3,20 @@
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier MatchingRankHandQualifier { get; } = 
-        (Hand hand, List<Card> cards, uint remainingCardCount) =>
+        (QualifiedHandRequest request) =>
     {
-        var bestRank = cards
-            .GetBestMatchingRank(hand.PrimaryMatchesCount);
+        var bestRank = request.Cards
+            .GetBestMatchingRank(request.Hand.PrimaryMatchesCount);
 
         return bestRank switch
         {
             { Value: var val } when val == Ranks.Empty.Value =>
-                cards.ToUnqualifiedHand(hand, remainingCardCount > 0),
+                request.Cards.ToUnqualifiedHand(request.Hand, request.RemainingCardCount > 0),
             _ =>
-                cards
+                request.Cards
                     .ToQualifiedHand(
-                        hand,
-                        cards.GetMatchingRankHand(bestRank, hand.PrimaryMatchesCount.ToInt())
+                        request.Hand,
+                        request.Cards.GetMatchingRankHand(bestRank, request.Hand.PrimaryMatchesCount.ToInt())
                     )
         };
     };

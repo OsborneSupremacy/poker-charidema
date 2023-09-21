@@ -2,5 +2,5 @@
 
 public interface IMoveServiceFactory
 {
-    IMoveService Get(MoveArgs args);
+    IMoveService Get(MoveRequest request);
 }

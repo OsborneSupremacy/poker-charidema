@@ -1,4 +1,6 @@
 ﻿global using Poker.Service.Interface;
-global using Poker.Utility;
 global using Poker.Presentation.Interface;
-global using Force.DeepCloner;
+global using Poker.Domain;
+global using Poker.Domain.Extensions;
+global using Poker.Domain.Messaging;
+global using Poker.Domain.Messaging.Extensions;

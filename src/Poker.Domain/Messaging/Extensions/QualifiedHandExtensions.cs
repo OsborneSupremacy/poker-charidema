@@ -1,20 +1,18 @@
-﻿using Poker.Domain.Classic;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Messaging.Extensions;
 
 public static class QualifiedHandExtensions
 {
-    public static bool Eliminated(this QualifiedHand input) =>
+    public static bool Eliminated(this QualifiedHandResponse input) =>
         input.HandQualification == HandQualifications.Eliminated;
 
-    public static bool DoesNotCurrentlyQualify(this QualifiedHand input) =>
+    public static bool DoesNotCurrentlyQualify(this QualifiedHandResponse input) =>
         new[] { HandQualifications.Eliminated, HandQualifications.Possible }
             .Contains(input.HandQualification);
 
-    public static bool Qualifies(this QualifiedHand input) =>
+    public static bool Qualifies(this QualifiedHandResponse input) =>
         input.HandQualification == HandQualifications.Qualifies;
 
-    public static Rank GetHighRank(this QualifiedHand input)
+    public static Rank GetHighRank(this QualifiedHandResponse input)
     {
         var regRank = input.HandCards
             .Where(c => !c.IsWild)

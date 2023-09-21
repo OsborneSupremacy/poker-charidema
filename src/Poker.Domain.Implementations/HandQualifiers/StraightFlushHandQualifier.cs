@@ -3,28 +3,28 @@
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier StraightFlushHandQualifier { get; } =
-        (Hand hand, List<Card> cards, uint remainingCardCount) =>
+        (QualifiedHandRequest request) =>
         {
-            var potentials = FindPotentialStraightFlushes(cards);
+            var potentials = FindPotentialStraightFlushes(request.Cards);
             var complete = potentials.Where(x => x.Complete).ToList();
 
             if (!complete.Any())
-                return cards.ToUnqualifiedHand(
-                    hand,
+                return request.Cards.ToUnqualifiedHand(
+                    request.Hand,
                     // Determining whether a straight flush is possible for a player is tricky.
                     // If there are 4+ cards yet to be dealt, then it's always possible possible.
-                    remainingCardCount >= GlobalConstants.HandSize - 1
-                    || potentials.EnoughRemainingCards(remainingCardCount)
+                    request.RemainingCardCount >= GlobalConstants.HandSize - 1
+                    || potentials.EnoughRemainingCards(request.RemainingCardCount)
                 );
 
-            return cards.ToQualifiedHand(
-                hand,
+            return request.Cards.ToQualifiedHand(
+                request.Hand,
                 GetBestStraightFlush(complete).Cards
             );
         };
 
-    private static PotentialHand GetBestStraightFlush(
-        List<PotentialHand> potential
+    private static PotentialHandMessage GetBestStraightFlush(
+        List<PotentialHandMessage> potential
     ) =>
         potential
             .Where(x => x.HighRank.Value == potential.Max(x => x.HighRank.Value))
@@ -39,13 +39,13 @@ public static partial class HandQualifierDelegates
     /// </summary>
     /// <param name="cards"></param>
     /// <returns></returns>
-    private static List<PotentialHand> FindPotentialStraightFlushes(List<Card> cards) =>
+    private static List<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards) =>
         EvaluateFlushes(cards)
             .Join
             (
                 EvaluateStraights(cards),
-                f => f.Cards, s => s.Cards,
-                (f, s) => new PotentialHand
+                f => f.Cards, s => s.Cards, // TODO: this isn't going to work. Create a key
+                (f, s) => new PotentialHandMessage
                 {
                     HighRank = s.HighRank,
                     Suit = f.Suit,

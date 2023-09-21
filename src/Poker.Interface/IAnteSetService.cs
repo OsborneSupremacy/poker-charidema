@@ -1,6 +1,8 @@
-﻿namespace Poker.Service.Interface;
+﻿using Poker.Domain.Messaging;
+
+namespace Poker.Service.Interface;
 
 public interface IAnteSetService
 {
-    Task<uint> GetAsync(GameArgs gameArgs, Player button);
+    Task<uint> GetAsync(GameRequest gameRequest, Player button);
 }

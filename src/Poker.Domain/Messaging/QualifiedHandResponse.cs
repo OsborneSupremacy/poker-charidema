@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain;
+﻿namespace Poker.Domain.Messaging;
 
 public enum HandQualifications
 {
@@ -14,11 +14,11 @@ public enum HandQualifications
 /// which cards comprised the hand, which cards are the kickers, and which
 /// cards are dead.
 /// </summary>
-public record QualifiedHand
+public record QualifiedHandResponse
 {
     public required Hand Hand { get; set; }
 
-    public HandQualifications HandQualification { get; init; }
+    public required HandQualifications HandQualification { get; init; }
 
     public required List<Card> HandCards { get; init; }
 

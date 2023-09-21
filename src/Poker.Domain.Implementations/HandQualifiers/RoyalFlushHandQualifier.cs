@@ -3,20 +3,18 @@
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier RoyalFlushHandQualifier { get; } =
-        (Hand hand, List<Card> cards, uint remainingCardCount) =>
+        (QualifiedHandRequest request) =>
         {
             var straightFlush =
-                StraightFlushHandQualifier(hand, cards, remainingCardCount);
+                StraightFlushHandQualifier!(request with { Hand = Hands.StraightFlush })!;
 
-            return
-                (straightFlush.Qualifies()
-                && (straightFlush.GetHighRank() == Ranks.Ace)) switch
-                {
-                    true => straightFlush with { Hand = hand },
-                    false => cards.ToUnqualifiedHand
+            return straightFlush.IsRoyalFlush() switch
+            {
+                true => straightFlush with { Hand = Hands.RoyalFlush },
+                false => request.Cards.ToUnqualifiedHand
                     (
-                        hand,
-                        FindPotentialStraightFlushes(cards)
+                        request.Hand,
+                        FindPotentialStraightFlushes(request.Cards)
                             .Select(x => x with
                             {
                                 Cards = x.Cards
@@ -24,8 +22,16 @@ public static partial class HandQualifierDelegates
                                     .ToList()
                             })
                             .ToList()
-                            .EnoughRemainingCards(remainingCardCount)
+                            .EnoughRemainingCards(request.RemainingCardCount)
                     )
-                }; ;
+            };
         };
+
+    private static bool IsRoyalFlush(this QualifiedHandResponse straightFlush) =>
+        straightFlush.Qualifies() switch
+        {
+            true => straightFlush.GetHighRank() == Ranks.Ace,
+            false => false
+        };
+
 }

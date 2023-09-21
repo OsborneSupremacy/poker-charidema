@@ -34,18 +34,18 @@ public class GameService : IGameService
         return Task.CompletedTask;
     }
 
-    public async Task<Game> PlayAsync(GameArgs args)
+    public async Task<GameResponse> PlayAsync(GameRequest request)
     {
-        var game = await CreateGameAsync(args);
+        var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
 
         var deck = await _dealerService
-            .ShuffleAsync(args.Deck);
+            .ShuffleAsync(request.Deck);
 
-        foreach (var action in args.Variant.Phases)
+        foreach (var action in request.Variant.Phases)
         {
             var result = await _phaseService
-                .ExecuteAsync(new PhaseArgs
+                .ExecuteAsync(new PhaseRequest
                 {
                     Game = game,
                     Phase = action,
@@ -75,15 +75,26 @@ public class GameService : IGameService
                 .RenderCards(user.Cards);
 
             if (result.GameOver)
-                return game;
+                return new GameResponse {
+                    Match = request.Match,
+                    Players = request.Players,
+                    Variant = request.Variant,
+                    Button = request.Button
+                };
         }
 
-        return game;
+        return new GameResponse
+        {
+            Match = request.Match,
+            Players = request.Players,
+            Variant = request.Variant,
+            Button = request.Button
+        };
     }
 
-    private async Task<Game> CreateGameAsync(GameArgs args)
+    private async Task<Game> CreateGameAsync(GameRequest request)
     {
-        var gamePlayers = args.Players
+        var gamePlayers = request.Players
             .Select(p => new Player
             {
                 Participant = p,
@@ -93,17 +104,17 @@ public class GameService : IGameService
             .ToList();
 
         var gameButton = gamePlayers
-            .Single(x => x.Participant.Id == args.Button.Id);
+            .Single(x => x.Participant.Id == request.Button.Id);
 
         Game game = new()
         {
             Button = gameButton,
-            Variant = args.Variant,
+            Variant = request.Variant,
             Players = gamePlayers,
-            Deck = args.Deck,
+            Deck = request.Deck,
             CommunityCards = new(),
             Discards = new(),
-            Ante = await _anteSetService.GetAsync(args, gameButton),
+            Ante = await _anteSetService.GetAsync(request, gameButton),
             Pot = 0
         };
 

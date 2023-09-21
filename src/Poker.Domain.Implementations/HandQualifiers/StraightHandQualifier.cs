@@ -3,39 +3,39 @@
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier StraightHandQualifier { get; } =
-        (Hand hand, List<Card> cards, uint remainingCardCount) =>
+        (QualifiedHandRequest request) =>
     {
-        var all = EvaluateStraights(cards);
+        var all = EvaluateStraights(request.Cards);
         var complete = all.Where(x => x.Complete).ToList();
 
         if (!complete.Any())
-            return cards.ToUnqualifiedHand(
-                hand,
-                all.EnoughRemainingCards(remainingCardCount)
+            return request.Cards.ToUnqualifiedHand(
+                request.Hand,
+                all.EnoughRemainingCards(request.RemainingCardCount)
             );
 
-        return cards.ToQualifiedHand(
-            hand,
+        return request.Cards.ToQualifiedHand(
+            request.Hand,
             GetBestStraight(complete).Cards
         );
     };
 
-    private static PotentialHand GetBestStraight(
-        List<PotentialHand> evalulated
+    private static PotentialHandMessage GetBestStraight(
+        List<PotentialHandMessage> evalulated
         ) =>
         evalulated
             .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
             .OrderByDescending(x => x.Cards.First().Suit.Priority)
             .First();
 
-    private static List<PotentialHand> EvaluateStraights(List<Card> cards) =>
+    private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards) =>
         Ranks.All
             .Where(r => r.Value <= 10)
             .OrderBy(x => x.Value)
             .Select(x => EvalulateStraight(x, cards))
             .ToList();
 
-    private static PotentialHand EvalulateStraight(
+    private static PotentialHandMessage EvalulateStraight(
         Rank startingRank,
         List<Card> cards
         )
@@ -56,7 +56,7 @@ public static partial class HandQualifierDelegates
                 .FirstOrDefault() ?? Cards.Empty;
 
             if (cardInSeqeuence == Cards.Empty)
-                return new PotentialHand
+                return new PotentialHandMessage
                 {
                     Suit = Suits.Empty,
                     HighRank = highRank,
@@ -69,7 +69,8 @@ public static partial class HandQualifierDelegates
             unusedCards.Remove(cardInSeqeuence);
         }
 
-        return new PotentialHand {
+        return new PotentialHandMessage
+        {
             Suit = Suits.Empty,
             HighRank = highRank,
             Complete = true,

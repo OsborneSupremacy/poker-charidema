@@ -2,5 +2,5 @@
 
 public interface IMatchService
 {
-    Task<MatchResult> PlayAsync(MatchArgs args);
+    Task<MatchResponse> PlayAsync(MatchRequest request);
 }

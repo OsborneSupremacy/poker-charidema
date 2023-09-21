@@ -2,5 +2,5 @@
 
 public interface IDealerService
 {
-    Task<IDeck> ShuffleAsync(IDeck deck);
+    Task<Deck> ShuffleAsync(Deck deck);
 }

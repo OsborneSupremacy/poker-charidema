@@ -9,51 +9,74 @@ public class DealerService : IDealerService, IPhaseService
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<PhaseResult> ExecuteAsync(PhaseArgs args)
+    public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        var dealPhase = (args.Phase as DealCards)!;
-
         var playersOut = new List<Player>();
 
-        var ccOut = args.CommunityCards.DeepClone();
-        var deckOut = args.Deck.DeepClone();
+        var ccOut = request.CommunityCards;
+        var deckOut = request.Deck;
 
-        var playerInTurn = args.StartingPlayer;
+        var playerInTurn = request.StartingPlayer;
 
-        for(var c = 0; c < dealPhase.Count; c++)
+        for(var c = 0; c < request.Phase.CardsToDealCount; c++)
         {
-            while(playersOut.Count < args.Game.Players.Count)
+            while(playersOut.Count < request.Game.Players.Count)
             {
                 if(playerInTurn.Folded)
                 {
                     playersOut.Add(playerInTurn);
                     continue;
                 }
-                DealCard(deckOut, playerInTurn, dealPhase);
+
+                var dealResponse = DealCard(
+                    new() {
+                        Deck = deckOut,
+                        Phase = request.Phase,
+                        Player = playerInTurn
+                    }
+                );
+
+                deckOut = dealResponse.Deck;
+                playerInTurn = dealResponse.Player;
                 playersOut.Add(playerInTurn);
-                playerInTurn = args.Game.Players.NextPlayer(playerInTurn);
+
+                playerInTurn = request.Game.Players.NextPlayer(playerInTurn);
             }
         }
 
-        return Task.FromResult(new PhaseResult
+        return Task.FromResult(new PhaseResponse
         {
             Deck = deckOut,
             CommunityCards = ccOut,
             Players = playersOut,
             GameOver = false,
-            Pot = args.Pot
+            Pot = request.Pot
         });
     }
 
-    private void DealCard(IDeck deckOut, Player playerInTurn, DealCards dealPhase)
+    private DealCardResponse DealCard(DealCardRequest request)
     {
-        var cardToDeal = deckOut.Cards.First();
-        cardToDeal.CardOrientation = dealPhase.CardOrientation;
-        playerInTurn.Cards.Add(cardToDeal);
-        deckOut.Cards.Remove(cardToDeal);
+        var cardToDeal = request.Deck.Cards.First();
+        cardToDeal = cardToDeal with
+        {
+            CardOrientation = request.Phase.CardOrientation
+        };
+
+        var playerCardsOut = request.Player.Cards;
+        playerCardsOut.Add(cardToDeal);
+
+        var deckCardsOut = request.Deck.Cards;
+        deckCardsOut.Remove(cardToDeal);
+
+        return new DealCardResponse
+        {
+            Card = cardToDeal,
+            Player = request.Player with { Cards = playerCardsOut },
+            Deck = request.Deck with { Cards = deckCardsOut }
+        };
     }
 
-    public Task<IDeck> ShuffleAsync(IDeck deck)
+    public Task<Deck> ShuffleAsync(Deck deck)
     {
         var random = _randomFactory.Create();
 

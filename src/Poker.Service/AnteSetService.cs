@@ -17,50 +17,54 @@ public class AnteSetService : IAnteSetService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    public Task<uint> GetAsync(GameArgs gameArgs, Player button)
+    public Task<uint> GetAsync(GameRequest request, Player button)
     {
-        if (gameArgs.Match.AntePreferences is FixedAnte fixedAnte)
-            return Task.FromResult(fixedAnte.Amount);
+        if (request.Match.AntePreferences.Fixed.HasValue)
+            return Task.FromResult(request.Match.AntePreferences.Fixed.Value);
 
-        var antePrefs = GetAntePrefs(gameArgs);
+        var antePrefs = GetAntePrefs(request);
 
         uint anteAmount = button.Participant.Automaton switch
         {
             true => new Randomizer(_randomFactory.GetSeed())
-                .UInt(antePrefs.MinAnte, antePrefs.MaxAnte),
+                .UInt(antePrefs.Min.ValueOrZero(), antePrefs.Max.ValueOrMax()),
             false => GetAnteFromUser(antePrefs)
         };
 
         return Task.FromResult(anteAmount);
     }
 
-    private DealersChoiceAnte GetAntePrefs(GameArgs gameArgs)
+    private AntePreferences GetAntePrefs(GameRequest request)
     {
-        var minPlayerStack = gameArgs.Players.Min(p => p.Stack);
+        var minPlayerStack = request.Players.Min(p => p.Stack);
 
-        var antePrefs = (DealersChoiceAnte)gameArgs.Match.AntePreferences;
+        var antePrefs = request.Match.AntePreferences;
 
         // all players have enough for max ante
-        if (minPlayerStack >= antePrefs.MaxAnte)
+        if (minPlayerStack >= antePrefs.Max)
             return antePrefs;
 
-        DealersChoiceAnte effectivePrefs = new()
+        var effectivePrefs = antePrefs with
         {
-            MinAnte = (minPlayerStack < antePrefs.MinAnte) ? minPlayerStack : antePrefs.MinAnte,
-            MaxAnte = minPlayerStack
+            Min = (minPlayerStack < antePrefs.Min) ? minPlayerStack : antePrefs.Min,
+            Max = minPlayerStack
         };
 
         return effectivePrefs;
     }
 
-    private uint GetAnteFromUser(DealersChoiceAnte antePrefs)
+    private uint GetAnteFromUser(AntePreferences antePrefs)
     {
         uint anteAmount = 0;
         _userInterfaceService
-            .PromptForMoney("Specify ante amount", antePrefs.MinAnte, antePrefs.MaxAnte, input =>
-            {
-                anteAmount = input;
-            });
+            .PromptForMoney(
+                "Specify ante amount",
+                antePrefs.Min.ValueOrZero(),
+                antePrefs.Min.ValueOrMax(),
+                input =>
+                {
+                    anteAmount = input;
+                });
         return anteAmount;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record MoveRequeset
+public record MoveRequest
 {
     public required Player PlayerInTurn { get; init; }
 

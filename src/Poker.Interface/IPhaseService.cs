@@ -2,5 +2,5 @@
 
 public interface IPhaseService
 {
-    public Task<PhaseResult> ExecuteAsync(PhaseArgs args);
+    public Task<PhaseResponse> ExecuteAsync(PhaseRequest request);
 }

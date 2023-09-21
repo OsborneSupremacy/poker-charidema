@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record MatchResult
+public record MatchResponse
 {
     public required bool Cancelled { get; init; }
 

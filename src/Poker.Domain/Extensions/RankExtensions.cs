@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Classic;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 public static class RankExtensions
 {

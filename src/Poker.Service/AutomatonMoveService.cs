@@ -9,78 +9,76 @@ public class AutomatonMoveService : IAutomatonMoveService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    public Task<MoveResult> ExecuteAsync(MoveArgs args) =>
-        args.RoundArgs.Phase switch
+    public Task<MoveResponse> ExecuteAsync(MoveRequest request) =>
+        request.PhaseRequest.Phase.PhaseType switch
         {
-            Ante => AnteAsync(args),
-            DealCards => DealAsync(args),
-            _ => DefaultMoveAsync(args)
+            PhaseType.Ante => AnteAsync(request),
+            PhaseType.Deal => DealAsync(request),
+            _ => DefaultMoveAsync(request)
         };
 
-    private Task<MoveResult> DefaultMoveAsync(MoveArgs args)
+    private Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
     {
-        uint potOut = args.Pot;
+        uint potOut = request.Pot;
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = args.PlayerInTurn,
-                Deck = args.RoundArgs.Game.Deck,
+                PlayerInTurn = request.PlayerInTurn,
+                Deck = request.PhaseRequest.Game.Deck,
                 Pot = potOut
             }
         );
     }
 
-    private Task<MoveResult> AnteAsync(MoveArgs args)
+    private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var stackOut = args.PlayerInTurn.Participant.Stack;
+        var stackOut = request.PlayerInTurn.Participant.Stack;
 
-        var ante = args.RoundArgs.Game.Ante;
+        var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{args.PlayerInTurn.Participant.Name} antes.");
+            .WriteLines($"{request.PlayerInTurn.Participant.Name} antes.");
 
         stackOut -= ante;
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = args.PlayerInTurn with
+                PlayerInTurn = request.PlayerInTurn with
                 {
-                    Participant = args.PlayerInTurn.Participant with {
+                    Participant = request.PlayerInTurn.Participant with {
                         Stack = stackOut
                     }
                 },
-                Deck = args.RoundArgs.Game.Deck,
-                Pot = args.Pot + ante
+                Deck = request.PhaseRequest.Game.Deck,
+                Pot = request.Pot + ante
             }
         );
     }
 
-    private Task<MoveResult> DealAsync(MoveArgs args)
+    private Task<MoveResponse> DealAsync(MoveRequest request)
     {
-        var playerCardsOut = args.PlayerInTurn.Cards;
+        var playerCardsOut = request.PlayerInTurn.Cards;
+        var deckCardsOut = request.PhaseRequest.Game.Deck.Cards;
 
-        var deckOut = args.RoundArgs.Game.Deck.DeepClone();
-
-        var dealtCards = deckOut
-            .Cards
-            .Take(args.RoundArgs.Phase.GetCountOfCardsToDeal());
+        var dealtCards = deckCardsOut
+            .Take(request.PhaseRequest.Phase.CardsToDealCount.ToInt());
 
         playerCardsOut.AddRange(dealtCards);
 
-        deckOut.Cards.RemoveAll(
+        deckCardsOut.RemoveAll(
             c => dealtCards
                 .Select(x => x.Id)
                 .Contains(c.Id)
         );
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = args.PlayerInTurn with { Cards = playerCardsOut },
-                Deck = deckOut,
-                Pot = args.Pot
+                PlayerInTurn = request.PlayerInTurn with { Cards = playerCardsOut },
+                Deck = request.PhaseRequest.Game.Deck with { Cards = deckCardsOut },
+                Pot = request.Pot
             }
         );
     }

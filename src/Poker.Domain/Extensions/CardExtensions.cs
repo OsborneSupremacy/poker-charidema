@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Classic;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 public static class CardExtensions
 {
@@ -92,38 +90,4 @@ public static class CardExtensions
             .Except(handCards)
             .Except(kickers)
             .ToList();
-
-    public static QualifiedHand ToQualifiedHand(
-        this List<Card> cards,
-        Hand hand,
-        List<Card> handCards)
-    {
-        var kickers = cards.GetKickers(handCards);
-
-        return new QualifiedHand
-        {
-            Hand = hand,
-            HandCards = handCards,
-            Kickers = kickers,
-            DeadCards = cards.GetDeadCards(handCards, kickers),
-            HandQualification = HandQualifications.Qualifies
-        };
-    }
-
-    public static QualifiedHand ToUnqualifiedHand(
-        this List<Card> cards,
-        Hand hand,
-        bool possible
-        ) =>
-            new()
-            {
-                Hand = hand,
-                HandCards = new(),
-                DeadCards = cards,
-                Kickers = new(),
-                HandQualification =
-                    possible
-                    ? HandQualifications.Possible
-                    : HandQualifications.Eliminated
-            };
 }

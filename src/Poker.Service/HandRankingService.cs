@@ -1,6 +1,4 @@
-﻿using Poker.Library.Hands;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class HandRankingService
 {
