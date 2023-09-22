@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Poker.Domain.Messaging;
 
 namespace Poker.Terminal;
 
@@ -27,17 +28,17 @@ public class ConsoleHostedService : IHostedService
     {
         _applicationLifetime.ApplicationStarted.Register(async () =>
         {
-            MatchResult? matchResult = null;
+            MatchResponse? matchResponse = null;
             while (true)
             {
                 AnsiConsole.Clear();
 
-                var matchArgs = await _matchPreferencesService
-                    .GetMatchArgs(matchResult?.Match);
+                var matchRequest = await _matchPreferencesService
+                    .GetMatchRequest(matchResponse);
 
-                matchResult = await _matchService.PlayAsync(matchArgs);
+                matchResponse = await _matchService.PlayAsync(matchRequest);
 
-                if (!matchResult.PlayAgain)
+                if (!matchResponse.PlayAgain)
                     break;
             };
             _applicationLifetime.StopApplication();

@@ -8,5 +8,5 @@ public interface IGamePreferencesService
 
     Task<Deck> GetDeck(Participant button);
 
-    Task<bool> GetPlayAgain(Game game);
+    Task<bool> GetPlayAgain(GameResponse game);
 }

@@ -6,9 +6,11 @@ public record Match
 
     public Variant? FixedVariant { get; init; }
 
+    public Deck? FixedDeck {  get; init; }
+
     public required List<Participant> Players { get; init; }
 
-    public required List<Game> Games { get; init; }
+    public required List<GameResponse> Games { get; init; }
 
     public required Participant Button { get; init; }
 

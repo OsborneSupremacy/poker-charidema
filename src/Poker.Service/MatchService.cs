@@ -23,39 +23,77 @@ public class MatchService : IMatchService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    private async Task<Match> PlayFixedNumberOfGames(Match match)
+    private async Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request)
     {
-        while (match.Games.Count < match.FixedNumberOfGames)
+        var gamesOut = request.Match.Games;
+        var playersOut = request.Match.Players;
+
+        while (request.Match.Games.Count < request.Match.FixedNumberOfGames!.Value)
         {
-            match = await PlayGameAsync(match);
-            WriteStandings(match);
+            var gameResponse = await FacilitateGameAsync(
+                new GameRequest
+                {
+                    Match = request.Match,
+                    Players = playersOut,
+                    Variant = request.Match.FixedVariant!,
+                    Deck = request.Match.FixedDeck!,
+                    Button = request.InitialButton
+                }
+            );
+            WriteStandings(gameResponse);
+            gamesOut.Add(gameResponse);
+            playersOut = gameResponse.Players;
         }
-        return match;
+
+        return new MatchResponse
+        {
+            Cancelled = false,
+            Match = request.Match with { Players = playersOut },
+            Winners = playersOut.GetRichest(),
+            PlayAgain = gamesOut.Count < request.Match.FixedNumberOfGames!.Value
+        };
     }
 
-    private void WriteStandings(Match match)
+    private void WriteStandings(GameResponse request)
     {
         _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
-        foreach (var player in match.Players.OrderByDescending(p => p.Stack))
+        foreach (var player in request.Match.Players.OrderByDescending(p => p.Stack))
             _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
         _userInterfaceService.WriteLine();
     }
 
-    private async Task<Match> PlayIndefinitely(Match match)
+    private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
     {
+        var gamesOut = request.Match.Games;
+        var playersOut = request.Match.Players;
+
         var keepPlaying = true;
         while (keepPlaying)
         {
-            var matchOut = await PlayGameAsync(match);
+            var gameResponse = await FacilitateGameAsync(new GameRequest { 
+                Match = request.Match,
+                Players = request.Match.Players,
+                Variant = request.Match.FixedVariant!,
+                Deck = request.Match.FixedDeck!,
+                Button = request.Match.Button
+            });
 
-            WriteStandings(matchOut);
+            WriteStandings(gameResponse);
 
             keepPlaying =
-                await _gamePreferencesService.GetPlayAgain(matchOut.Games.Last());
+                await _gamePreferencesService.GetPlayAgain(gameResponse);
 
-            match = matchOut;
+            gamesOut.Add(gameResponse);
+            playersOut = gameResponse.Players;
         }
-        return match;
+
+        return new MatchResponse
+        {
+            Cancelled = false,
+            Match = request.Match with { Players = playersOut },
+            Winners = playersOut.GetRichest(),
+            PlayAgain = gamesOut.Count < request.Match.FixedNumberOfGames!.Value
+        };
     }
 
     protected Task WriteMatchStartInfoAsync(Match match)
@@ -76,32 +114,20 @@ public class MatchService : IMatchService
         return Task.CompletedTask;
     }
 
-    public async Task<MatchResult> PlayAsync(MatchArgs args)
+    public async Task<MatchResponse> PlayAsync(MatchRequest request)
     {
-        Match match = new()
-        {
-            FixedNumberOfGames = args.FixedNumberOfGames,
-            FixedVariant = args.FixedVariant,
-            FixedDeck = args.FixedDeck,
-            Players = args.Players,
-            Games = new(),
-            Button = args.InitialButton,
-            AntePreferences = args.AntePreferences,
-            StartingStack = args.StartingStack
-        };
-
-        await WriteMatchStartInfoAsync(match);
+        await WriteMatchStartInfoAsync(request.Match);
 
         var resultTask =
             await _matchPreferencesService.ConfirmStartAsync() switch
             {
-                false => CancelMatchAsync(match),
+                false => CancelMatchAsync(request.Match),
                 true =>
                     EvaluateResult(
-                        await (args.FixedNumberOfGames.HasValue switch
+                        await (request.Match.FixedNumberOfGames.HasValue switch
                         {
-                            true => PlayFixedNumberOfGames(match),
-                            false => PlayIndefinitely(match)
+                            true => PlayFixedNumberOfGames(request),
+                            false => PlayIndefinitely(request)
                         })
                     )
             };
@@ -109,10 +135,10 @@ public class MatchService : IMatchService
         return await resultTask;
     }
 
-    private async Task<MatchResult> CancelMatchAsync(Match match)
+    private async Task<MatchResponse> CancelMatchAsync(Match match)
     {
         _userInterfaceService.WriteLine("Match was cancelled.");
-        return new MatchResult
+        return new MatchResponse
         {
             Cancelled = true,
             Match = match,
@@ -121,44 +147,60 @@ public class MatchService : IMatchService
         };
     }
 
-    protected async Task<Match> PlayGameAsync(Match matchIn)
+    /// <summary>
+    /// IS THIS METHOD DOING ANYTHING THAT SHOULDN'T BE DONE BY GAMESERVICE ?
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    protected async Task<GameResponse> FacilitateGameAsync(GameRequest request)
     {
+        var matchOut = request.Match;
+        var gamesOut = matchOut.Games;
+        var playersOut = matchOut.Players;
+
         _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Starting game {matchIn.Games.Count + 1}");
+            .WriteHeading(HeadingLevel.Four, $"Starting game {matchOut.Games.Count + 1}");
 
         // pass button to next player if it's not the first game
-        var button = matchIn.Games.Any()
-            ? matchIn.Players.NextPlayer(matchIn.Button)
-            : matchIn.Button;
+        var button = gamesOut.Any()
+            ? matchOut.Players.NextPlayer(matchOut.Button)
+            : matchOut.Button;
 
-        var gameOut = await _gameService.PlayAsync(
-            new GameArgs()
+        var gameResponse = await _gameService.PlayAsync(
+            new GameRequest()
             {
-                Match = matchIn,
-                Players = matchIn.Players,
-                Variant = matchIn.FixedVariant ?? (await _gamePreferencesService.GetVariant(button)),
-                Deck = matchIn.FixedDeck ?? (await _gamePreferencesService.GetDeck(button)),
+                Match = matchOut,
+                Players = playersOut,
+                Variant = matchOut.FixedVariant ?? (await _gamePreferencesService.GetVariant(button)),
+                Deck = matchOut.FixedDeck ?? (await _gamePreferencesService.GetDeck(button)),
                 Button = button
             }
         );
 
+        playersOut = gameResponse.Players;
+        gamesOut.Add(gameResponse);
+
         _userInterfaceService
             .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
 
-        return matchIn with
-        {
-            Games = matchIn.Games.Append(gameOut).ToList(),
-            Players = gameOut.Players.Select(x => x.Participant).ToList(),
-            Button = button
+        return new MatchMessage {
+            Match = matchOut with
+            {
+
+                Games = gamesOut,
+                Players = playersOut,
+                Button = button
+            },
+            LastButton = button
         };
     }
 
-    protected async Task<MatchResult> EvaluateResult(Match matchIn) => 
-        new MatchResult()
+    protected async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) => 
+        new MatchResponse()
         {
             Cancelled = false,
-            Match = matchIn,
+            Match = responseIn.Match,
             Winners = new(),
-            PlayAgain = await _matchPreferencesService.GetPlayAgain(matchIn)
+            PlayAgain = await _matchPreferencesService.GetPlayAgain(responseIn.Match)
         };
 }
