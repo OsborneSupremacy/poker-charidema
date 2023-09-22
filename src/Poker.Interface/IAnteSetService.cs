@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Messaging;
-
-namespace Poker.Service.Interface;
+﻿namespace Poker.Service.Interface;
 
 public interface IAnteSetService
 {

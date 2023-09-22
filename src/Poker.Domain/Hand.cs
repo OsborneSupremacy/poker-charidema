@@ -33,4 +33,9 @@ public record Hand
     /// Whether the hand requires cards of the same suite
     /// </summary>
     public required bool Uniform { get; init; }
+
+    /// <summary>
+    /// The function used to qualify a player's cards satisfy this hand.
+    /// </summary>
+    public required HandQualifier HandQualifier { get; init; }
 }

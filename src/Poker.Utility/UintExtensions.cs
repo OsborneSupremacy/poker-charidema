@@ -4,8 +4,8 @@
         (int)value;
 
     public static uint ValueOrZero(this uint? input) =>
-        input.HasValue ? input.Value : 0;
+        input ?? 0;
 
     public static uint ValueOrMax(this uint? input) =>
-        input.HasValue ? input.Value : uint.MaxValue;
+        input ?? uint.MaxValue;
 }

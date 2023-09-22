@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain.Implementations.HandQualifiers;
+﻿namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {

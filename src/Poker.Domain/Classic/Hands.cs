@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Classic;
+﻿using Poker.Domain.Implementations;
+
+namespace Poker.Domain.Classic;
 
 public record Hands
 {
@@ -10,7 +12,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.NoHandQualifier
     };
 
     public static Hand HighCard { get; } = new Hand
@@ -21,7 +24,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
     public static Hand Pair { get; } = new Hand
@@ -32,7 +36,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
     public static Hand TwoPair { get; } = new Hand
@@ -43,7 +48,8 @@ public record Hands
         SecondaryMatchesCount = 2,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.TwoPairHandQualifier
     };
 
     public static Hand ThreeOfAKind { get; } = new Hand
@@ -54,7 +60,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
     public static Hand Straight { get; } = new Hand
@@ -65,7 +72,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = true,
         Uniform = false,
-        SequenceMinRank = Ranks.Two
+        SequenceMinRank = Ranks.Two,
+        HandQualifier = HandQualifierDelegates.StraightHandQualifier
     };
 
     public static Hand Flush { get; } = new Hand
@@ -76,7 +84,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = true,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.FlushHandQualifier
     };
 
     public static Hand FullHouse { get; } = new Hand
@@ -87,7 +96,8 @@ public record Hands
         SecondaryMatchesCount = 2,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.FullHouseHandQualifier
     };
 
     public static Hand FourOfAKind { get; } = new Hand
@@ -98,7 +108,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
     public static Hand StraightFlush { get; } = new Hand
@@ -109,7 +120,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = true,
         Uniform = true,
-        SequenceMinRank = Ranks.Two
+        SequenceMinRank = Ranks.Two,
+        HandQualifier = HandQualifierDelegates.StraightHandQualifier
     };
 
     public static Hand RoyalFlush { get; } = new Hand
@@ -120,7 +132,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = true,
         Uniform = true,
-        SequenceMinRank = Ranks.Ten
+        SequenceMinRank = Ranks.Ten,
+        HandQualifier = HandQualifierDelegates.RoyalFlushHandQualifier
     };
 
     public static Hand FiveOfAKind { get; } = new Hand
@@ -131,7 +144,8 @@ public record Hands
         SecondaryMatchesCount = 0,
         Sequence = false,
         Uniform = false,
-        SequenceMinRank = Ranks.Empty
+        SequenceMinRank = Ranks.Empty,
+        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
     public static List<Hand> All { get; } = new(){
