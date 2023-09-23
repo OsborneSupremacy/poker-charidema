@@ -1,3 +1,3 @@
-﻿global using Poker.Library.Variants;
+﻿global using Poker.Domain.Implementations;
 global using Poker.Service;
 global using Poker.Service.Interface;

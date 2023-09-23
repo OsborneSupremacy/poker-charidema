@@ -1,4 +1,4 @@
-﻿namespace Poker.Library.Moves;
+﻿namespace Poker.Domain.Implementations;
 
 public record Raise : IWageringMove
 {

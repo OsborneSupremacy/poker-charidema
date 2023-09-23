@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
-    <ProjectReference Include="..\Poker.Library\Poker.Library.csproj" />
   </ItemGroup>
 
 </Project>

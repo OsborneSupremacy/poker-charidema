@@ -1,4 +1,4 @@
-﻿namespace Poker.Library.Variants;
+﻿namespace Poker.Domain.Implementations;
 
 public static class FiveCardDraw
 {
