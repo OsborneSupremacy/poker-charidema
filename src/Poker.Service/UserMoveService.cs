@@ -11,69 +11,71 @@ public class UserMoveService : IUserMoveService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    public Task<MoveResult> ExecuteAsync(MoveArgs args) =>
-        args.RoundArgs.Phase switch
+    public Task<MoveResponse> ExecuteAsync(MoveRequest request) =>
+        request.PhaseRequest.Phase.PhaseType switch
         {
-            Ante => AntePromptAsync(args),
-            _ => DefaultMoveAsync(args)
+            PhaseType.Ante => AntePromptAsync(request),
+            _ => DefaultMoveAsync(request)
         };
 
-    private Task<MoveResult> DefaultMoveAsync(MoveArgs args)
+    private Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
     {
-        var playerOut = args.PlayerInTurn.DeepClone();
-        uint potOut = args.Pot;
+        uint potOut = request.Pot;
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = playerOut,
-                Deck = args.RoundArgs.Game.Deck,
+                PlayerInTurn = request.PlayerInTurn,
+                Deck = request.PhaseRequest.Deck,
                 Pot = potOut
             }
         );
     }
 
-    private Task<MoveResult> AntePromptAsync(MoveArgs args) =>
-        _userInterfaceService.PromptForBool($"Ante {args.RoundArgs.Game.Ante:C}?") switch
+    private Task<MoveResponse> AntePromptAsync(MoveRequest request) =>
+        _userInterfaceService.PromptForBool($"Ante {request.PhaseRequest.Game.Ante:C}?") switch
         {
-            true => AnteAsync(args),
-            false => SitOutAsync(args)
+            true => AnteAsync(request),
+            false => SitOutAsync(request)
         };
 
-    private Task<MoveResult> AnteAsync(MoveArgs args)
+    private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var playerOut = args.PlayerInTurn.DeepClone();
-        var ante = args.RoundArgs.Game.Ante;
+        var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{playerOut.Participant.Name} antes.");
-        playerOut.Participant.Stack -= ante;
+            .WriteLines($"{request.PlayerInTurn.Participant.Name} antes.");
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = playerOut,
-                Deck = args.RoundArgs.Game.Deck,
-                Pot = args.Pot + ante
+                PlayerInTurn = request.PlayerInTurn with
+                {
+                    Participant = request.PlayerInTurn.Participant with
+                    {
+                        Stack = request.PlayerInTurn.Participant.Stack - ante
+                    }
+                },
+                Deck = request.PhaseRequest.Game.Deck,
+                Pot = request.PhaseRequest.Pot + ante
             }
-        );
+        ); ;
     }
 
-    private Task<MoveResult> SitOutAsync(MoveArgs args)
+    private Task<MoveResponse> SitOutAsync(MoveRequest request)
     {
-        var playerOut = args.PlayerInTurn.DeepClone();
-
         _userInterfaceService
-            .WriteLines($"{playerOut.Participant.Name} sits out.");
-
-        playerOut.Folded = true;
+            .WriteLines($"{request.PlayerInTurn.Participant.Name} sits out.");
 
         return Task.FromResult(
-            new MoveResult
+            new MoveResponse
             {
-                PlayerInTurn = playerOut,
-                Deck = args.RoundArgs.Game.Deck,
-                Pot = args.Pot
+                PlayerInTurn = request.PlayerInTurn with
+                {
+                    Folded = true
+                },
+                Deck = request.PhaseRequest.Game.Deck,
+                Pot = request.Pot
             }
         );
     }

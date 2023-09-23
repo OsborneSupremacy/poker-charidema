@@ -15,17 +15,17 @@ public class MoveServiceFactory : IMoveServiceFactory
         _automatonMoveService = automatonMoveService ?? throw new ArgumentNullException(nameof(automatonMoveService));
     }
 
-    public IMoveService Get(MoveArgs args) =>
-        _requiresUserInput(args) switch
+    public IMoveService Get(MoveRequest request) =>
+        _requiresUserInput(request) switch
         {
             true => _userMoveService,
             false => _automatonMoveService
         };
 
-    static readonly Func<MoveArgs, bool> _requiresUserInput = (MoveArgs args) =>
+    static readonly Func<MoveRequest, bool> _requiresUserInput = (MoveRequest request) =>
     {
         return
-            !args.PlayerInTurn.Participant.Automaton
-            && args.RoundArgs.Phase is not DealCards;
+            !request.PlayerInTurn.Participant.Automaton
+            && request.PhaseRequest.Phase.PhaseType != PhaseType.Deal;
     };
 }

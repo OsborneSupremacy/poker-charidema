@@ -9,38 +9,38 @@ public class RoundRobinMoveService : IPhaseService
         _moveServiceFactory = moveServiceFactory ?? throw new ArgumentNullException(nameof(moveServiceFactory));
     }
 
-    public async Task<PhaseResult> ExecuteAsync(PhaseArgs args)
+    public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
         var playersOut = new List<Player>();
 
-        var ccOut = args.CommunityCards.DeepClone();
-        var deckOut = args.Deck.DeepClone();
-        var potOut = args.Pot;
+        var ccOut = request.CommunityCards;
+        var deckOut = request.Deck;
+        var potOut = request.Pot;
 
         // TODO: if this is a betting round and any non-community cards are face-up, start with player showing
         // best hand. Otherwise, start with player to the left of dealer
-        var playerInTurn = args.StartingPlayer;
+        var playerInTurn = request.StartingPlayer;
 
-        while (playersOut.Count < args.Game.Players.Count)
+        while (playersOut.Count < request.Game.Players.Count)
         {
-            MoveArgs moveArgs = new()
+            MoveRequest moveRequest = new()
             {
                 PlayerInTurn = playerInTurn,
-                RoundArgs = args,
+                PhaseRequest = request,
                 Pot = potOut
             };
 
-            var moveResult = await _moveServiceFactory
-                .Get(moveArgs)
-                .ExecuteAsync(moveArgs);
+            var MoveResponse = await _moveServiceFactory
+                .Get(moveRequest)
+                .ExecuteAsync(moveRequest);
 
-            potOut = moveResult.Pot;
-            playersOut.Add(moveResult.PlayerInTurn);
+            potOut = MoveResponse.Pot;
+            playersOut.Add(MoveResponse.PlayerInTurn);
 
-            playerInTurn = args.Game.Players.NextPlayer(playerInTurn);
+            playerInTurn = request.Game.Players.NextPlayer(playerInTurn);
         }
 
-        return new PhaseResult
+        return new PhaseResponse
         {
             Deck = deckOut,
             CommunityCards = ccOut,

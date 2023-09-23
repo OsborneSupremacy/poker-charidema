@@ -70,4 +70,9 @@ public record Card
     public required FaceDirections FaceDirection { get; init; }
 
     public required List<Holding> Holdings { get; init; }
+
+    public string ToStandardNotation()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -19,26 +19,26 @@ public class PhaseService : IPhaseService
         _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 
-    protected Task WriteStartInfoAsync(PhaseArgs args)
+    protected Task WriteStartInfoAsync(PhaseRequest request)
     {
         _userInterfaceService.WriteHeading(
             HeadingLevel.Five,
-            $"{args.Phase.Name}"
+            $"{request.Phase.Name}"
         );
 
         return Task.CompletedTask;
     }
 
-    public async Task<PhaseResult> ExecuteAsync(PhaseArgs args)
+    public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        await WriteStartInfoAsync(args);
+        await WriteStartInfoAsync(request);
 
-        var phaseService = args.Phase switch
+        var phaseService = request.Phase.PhaseType switch
         {
-            DealCards => _dealerService,
+            PhaseType.Deal => _dealerService,
             _ => _roundRobinMoveService
         };
 
-        return await phaseService.ExecuteAsync(args);
+        return await phaseService.ExecuteAsync(request);
     }
 }

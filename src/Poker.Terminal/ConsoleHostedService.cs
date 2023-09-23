@@ -34,7 +34,7 @@ public class ConsoleHostedService : IHostedService
                 AnsiConsole.Clear();
 
                 var matchRequest = await _matchPreferencesService
-                    .GetMatchRequest(matchResponse);
+                    .CreateMatchRequest(matchResponse);
 
                 matchResponse = await _matchService.PlayAsync(matchRequest);
 

@@ -2,7 +2,7 @@
 
 public class GameResponse
 {
-    public required Match Match { get; init; }
+    public required Game Game { get; init; }
 
     public required List<Participant> Players { get; init; }
 

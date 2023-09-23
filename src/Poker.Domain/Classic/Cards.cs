@@ -727,7 +727,7 @@ public record Cards
         Holdings = new()
     };
 
-    public List<Card> All { get; } = new() {
+    public static List<Card> All { get; } = new() {
         TwoOfHearts,
         ThreeOfHearts,
         FourOfHearts,

@@ -12,8 +12,6 @@ public record Match
 
     public required List<GameResponse> Games { get; init; }
 
-    public required Participant Button { get; init; }
-
     public required AntePreferences AntePreferences { get; init; }
 
     public required uint StartingStack { get; init; }
@@ -21,9 +19,17 @@ public record Match
 
 public record AntePreferences
 {
-    public required uint? Min { get; init; }
+    public required uint Min { get; init; }
 
-    public required uint? Max { get; init; }
+    public required uint Max { get; init; }
 
-    public required uint? Fixed { get; init; }
+    public required uint Fixed { get; init; }
+
+    public required AnteTypes AnteType { get; init; }
+}
+
+public enum AnteTypes
+{
+    Fixed,
+    DealersChoice
 }

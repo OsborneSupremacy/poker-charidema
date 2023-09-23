@@ -16,9 +16,8 @@ public static class ParticipantExtensions
         return participant[index + 1];
     }
 
-    public static List<Participant> GetRichest(this IList<Participant> input)
-    {
-        var maxStack = input.Max(x => x.Participant.Stack);
-        return input.Where(x => x.Participant.Stack == maxStack).ToList();
-    }
+    public static List<Participant> GetRichest(this IList<Participant> input) =>
+        input
+            .Where(x => x.Stack == input.Max(x => x.Stack))
+            .ToList();
 }

@@ -42,6 +42,8 @@ public class GameService : IGameService
         var deck = await _dealerService
             .ShuffleAsync(request.Deck);
 
+        var playersOut = request.Match.Players;
+
         foreach (var action in request.Variant.Phases)
         {
             var result = await _phaseService
@@ -76,7 +78,7 @@ public class GameService : IGameService
 
             if (result.GameOver)
                 return new GameResponse {
-                    Match = request.Match,
+                    Game = game,
                     Players = request.Players,
                     Variant = request.Variant,
                     Button = request.Button
@@ -85,8 +87,8 @@ public class GameService : IGameService
 
         return new GameResponse
         {
-            Match = request.Match,
-            Players = request.Players,
+            Game = game,
+            Players = request.Players, // TODO: this needs to be updated!
             Variant = request.Variant,
             Button = request.Button
         };

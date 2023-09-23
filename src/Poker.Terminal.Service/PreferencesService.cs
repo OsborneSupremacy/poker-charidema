@@ -1,4 +1,7 @@
 ﻿using Bogus;
+using Poker.Domain;
+using Poker.Domain.Classic;
+using Poker.Domain.Messaging;
 using Poker.Presentation.Interface;
 
 namespace Poker.Terminal.Service;
@@ -27,12 +30,12 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         throw new NotImplementedException();
     }
 
-    public Task<IDeck> GetDeck(Participant button)
+    public Task<Deck> GetDeck(Participant button)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<MatchArgs> GetMatchArgs(Match? lastMatch)
+    public async Task<MatchRequest> CreateMatchRequest(MatchResponse? lastMatch)
     {
         var userName = string.Empty;
         uint playerCount = 0;
@@ -93,26 +96,32 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         var players = await GeneratePlayers(userName, startingStack, playerCount)
             .ToListAsync();
 
-        return new MatchArgs
+        return new MatchRequest
         {
-            Players = players,
+            Match = new Match
+            {
+                Players = players,
+                FixedNumberOfGames = fixedNumberOfGames,
+                AntePreferences = antePreferences,
+                FixedDeck = new Deck {
+                    Cards = Cards.All,
+                    NumberOfJokers = 0
+                },
+                FixedVariant = FiveCardDraw.GetVariant(),
+                StartingStack = startingStack,
+                Games = new()
+            },
 
             InitialButton = new Faker()
             {
                 Random = new Randomizer(_randomFactory.GetSeed())
             }.PickRandom(players),
-
-            FixedNumberOfGames = fixedNumberOfGames,
-            AntePreferences = antePreferences,
-            FixedDeck = new Library.Classic.Deck(),
-            FixedVariant = new FiveCardDraw(),
-            StartingStack = startingStack
         };
     }
 
-    private IAntePreferences GetAntePreferences(uint startingStack)
+    private AntePreferences GetAntePreferences(uint startingStack)
     {
-        IAntePreferences? antePreferences = null;
+        AntePreferences? antePreferences = null;
 
         _c.PromptForOption(
             "Should the ante amount be dealer's choice, or fixed?",
@@ -120,7 +129,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             {
                 antePreferences = pref;
             },
-            new InputOption<IAntePreferences>(
+            new InputOption<AntePreferences>(
                 "Dealer's choice ante amount", () => {
 
                     uint min = 0;
@@ -139,22 +148,27 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                         max = input;
                     });
 
-                    return new DealersChoiceAnte
+                    return new AntePreferences
                     {
-                        MinAnte = min,
-                        MaxAnte = max
+                        Min = min,
+                        Max = max,
+                        Fixed = 0,
+                        AnteType = AnteTypes.DealersChoice
                     };
                 }
             ),
-            new InputOption<IAntePreferences>("Fixed ante amount", () =>
+            new InputOption<AntePreferences>("Fixed ante amount", () =>
             {
                 uint anteAmount = 0;
                 _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
                 {
                     anteAmount = input;
                 });
-                return new FixedAnte { 
-                    Amount = anteAmount
+                return new AntePreferences {
+                    Fixed = anteAmount,
+                    Min = 0,
+                    Max = 0,
+                    AnteType = AnteTypes.Fixed
                 };
             })
         );
@@ -192,7 +206,10 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public Task<bool> GetPlayAgain(Match? lastMatch) =>
         Task.FromResult(_c.PromptForBool("Would you like to play another match?"));
 
-    public Task<IVariant> GetVariant(Participant button)
+    public Task<bool> GetPlayAgain(GameResponse lastGame) =>
+        Task.FromResult(_c.PromptForBool($"Would you like to play another game of {lastGame.Variant.Name}?"));
+
+    public Task<Variant> GetVariant(Participant button)
     {
         throw new NotImplementedException();
     }

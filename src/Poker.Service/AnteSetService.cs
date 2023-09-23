@@ -19,15 +19,15 @@ public class AnteSetService : IAnteSetService
 
     public Task<uint> GetAsync(GameRequest request, Player button)
     {
-        if (request.Match.AntePreferences.Fixed.HasValue)
-            return Task.FromResult(request.Match.AntePreferences.Fixed.Value);
+        if (request.Match.AntePreferences.AnteType == AnteTypes.Fixed)
+            return Task.FromResult(request.Match.AntePreferences.Fixed);
 
         var antePrefs = GetAntePrefs(request);
 
         uint anteAmount = button.Participant.Automaton switch
         {
             true => new Randomizer(_randomFactory.GetSeed())
-                .UInt(antePrefs.Min.ValueOrZero(), antePrefs.Max.ValueOrMax()),
+                .UInt(antePrefs.Min, antePrefs.Max),
             false => GetAnteFromUser(antePrefs)
         };
 
@@ -59,8 +59,8 @@ public class AnteSetService : IAnteSetService
         _userInterfaceService
             .PromptForMoney(
                 "Specify ante amount",
-                antePrefs.Min.ValueOrZero(),
-                antePrefs.Min.ValueOrMax(),
+                antePrefs.Min,
+                antePrefs.Max,
                 input =>
                 {
                     anteAmount = input;
