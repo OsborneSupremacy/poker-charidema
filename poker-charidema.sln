@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Docs", "src\Poker.Doc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Tests", "src\Poker.Service.Tests\Poker.Service.Tests.csproj", "{87186586-148B-4D8E-93D7-8C4119A33DF8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Interface", "src\Poker.Interface\Poker.Service.Interface.csproj", "{AC737E80-3F46-4B7C-BF75-F3E80701C150}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Test.Utility", "src\Poker.Test.Utility\Poker.Test.Utility.csproj", "{A5855EBD-767C-4390-B7D6-2CC54D0073E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility", "src\Poker.Utility\Poker.Utility.csproj", "{3EEE4FF3-3022-4B97-8DDA-0655B2762788}"
@@ -37,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Presentation.Utility"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Domain", "src\Poker.Domain\Poker.Domain.csproj", "{35AA86A5-9093-4837-8A4B-6E5CD53B685B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Interface", "src\Poker.Service.Interface\Poker.Service.Interface.csproj", "{BD31383C-0330-47EB-85EF-7E66595190E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +55,6 @@ Global
 		{87186586-148B-4D8E-93D7-8C4119A33DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87186586-148B-4D8E-93D7-8C4119A33DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87186586-148B-4D8E-93D7-8C4119A33DF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC737E80-3F46-4B7C-BF75-F3E80701C150}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5855EBD-767C-4390-B7D6-2CC54D0073E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,6 +95,10 @@ Global
 		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35AA86A5-9093-4837-8A4B-6E5CD53B685B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD31383C-0330-47EB-85EF-7E66595190E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD31383C-0330-47EB-85EF-7E66595190E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD31383C-0330-47EB-85EF-7E66595190E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD31383C-0330-47EB-85EF-7E66595190E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
