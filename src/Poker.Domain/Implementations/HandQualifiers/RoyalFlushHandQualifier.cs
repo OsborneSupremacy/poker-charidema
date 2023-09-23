@@ -6,7 +6,7 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
         {
             var straightFlush =
-                StraightFlushHandQualifier!(request with { Hand = Hands.StraightFlush })!;
+                StraightFlushHandQualifier(request with { Hand = Hands.StraightFlush })!;
 
             return straightFlush.IsRoyalFlush() switch
             {

@@ -44,7 +44,7 @@ public static partial class HandQualifierDelegates
             .Join
             (
                 EvaluateStraights(cards),
-                f => f.Cards, s => s.Cards, // TODO: this isn't going to work. Create a key
+                f => f.Cards.AggregateId(), s => s.Cards.AggregateId(),
                 (f, s) => new PotentialHandMessage
                 {
                     HighRank = s.HighRank,

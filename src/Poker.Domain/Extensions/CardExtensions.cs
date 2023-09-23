@@ -90,4 +90,9 @@ public static class CardExtensions
             .Except(handCards)
             .Except(kickers)
             .ToList();
+
+    public static string AggregateId(this List<Card> input) =>
+        string.Join('|',
+            input.OrderBy(x => x.Id).Select(x => x.Id.ToString())
+        );
 }

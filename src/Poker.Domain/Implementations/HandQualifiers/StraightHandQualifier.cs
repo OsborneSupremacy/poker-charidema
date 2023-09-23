@@ -45,9 +45,18 @@ public static partial class HandQualifierDelegates
         List<Card> unusedCards = new();
         unusedCards.AddRange(cards);
 
-        for (int r = 0; r < GlobalConstants.HandSize; r++)
+        for (uint r = 0; r < GlobalConstants.HandSize; r++)
         {
-            var rank = Ranks.All[startingRank.Value.ToInt() + r];
+            // for some reason the compiler doesn't like this when used
+            // in an inline expression. 🤷
+            uint nextRankValue = startingRank.Value + r;
+
+            var rank = Ranks.All
+                .Where(r => r.Value.Equals(nextRankValue))
+                .FirstOrDefault();
+
+            if (rank is null)
+                break;
 
             var cardInSeqeuence = unusedCards
                 .Where(c => c.MatchesRankOrIsWild(rank))
