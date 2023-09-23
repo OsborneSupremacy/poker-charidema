@@ -54,7 +54,7 @@ public record Cards
         Holdings = new()
     };
 
-    public static Card FiveOfHearts { get; } =  new Card
+    public static Card FiveOfHearts { get; } = new Card
     {
         Id = Guid.NewGuid(),
         CardOrientation = CardOrientations.Facedown,
@@ -64,7 +64,7 @@ public record Cards
         Impersonating = Empty,
         Rank = Ranks.Five,
         Suit = Suits.Hearts,
-        Holdings = new ()
+        Holdings = new()
     };
 
     public static Card SixOfHearts { get; } = new Card
@@ -723,6 +723,19 @@ public record Cards
         CardType = CardTypes.Ace,
         Rank = Ranks.Ace,
         Suit = Suits.Spades,
+        FaceDirection = FaceDirections.NotApplicable,
+        Holdings = new()
+    };
+
+    public static Card CreateJoker() => new()
+    {
+        Id = Guid.NewGuid(),
+        CardOrientation = CardOrientations.Facedown,
+        IsWild = true,
+        Impersonating = Empty,
+        CardType = CardTypes.Joker,
+        Rank = Ranks.Empty,
+        Suit = Suits.Empty,
         FaceDirection = FaceDirections.NotApplicable,
         Holdings = new()
     };

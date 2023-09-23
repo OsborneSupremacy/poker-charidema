@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility", "src\Poker.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility.Tests", "src\Poker.Utility.Tests\Poker.Utility.Tests.csproj", "{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Library.Tests", "src\Poker.Library.Tests\Poker.Library.Tests.csproj", "{1C8F89EB-40E2-47F8-A629-3CB8A8044498}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal", "src\Poker.Terminal\Poker.Terminal.csproj", "{CE4FF02E-F83C-49AE-9574-99C6024A52D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal.Service", "src\Poker.Terminal.Service\Poker.Terminal.Service.csproj", "{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}"
@@ -36,6 +34,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Domain", "src\Poker.Domain\Poker.Domain.csproj", "{35AA86A5-9093-4837-8A4B-6E5CD53B685B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Interface", "src\Poker.Service.Interface\Poker.Service.Interface.csproj", "{BD31383C-0330-47EB-85EF-7E66595190E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Tests", "src\Poker.Domain.Tests\Poker.Domain.Tests.csproj", "{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,6 @@ Global
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1A1E9D8-41AB-41FA-8E15-45A2DD93EDC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C8F89EB-40E2-47F8-A629-3CB8A8044498}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,6 +95,10 @@ Global
 		{BD31383C-0330-47EB-85EF-7E66595190E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD31383C-0330-47EB-85EF-7E66595190E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD31383C-0330-47EB-85EF-7E66595190E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
