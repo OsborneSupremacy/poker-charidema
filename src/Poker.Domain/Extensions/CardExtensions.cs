@@ -91,6 +91,19 @@ public static class CardExtensions
             .Except(kickers)
             .ToList();
 
+    public static Rank GetMaxRank(this IEnumerable<Card> input)
+    {
+        var cards = input.ToList();
+        return cards.Any() switch
+        {
+            true => cards
+                .Where(c => c.Rank.Value == cards.Max(c => c.Rank.Value))
+                .Select(c => c.Rank)
+                .First(),
+            false => Ranks.Empty
+        };
+    }
+
     public static string AggregateId(this List<Card> input) =>
         string.Join('|',
             input.OrderBy(x => x.Id).Select(x => x.Id.ToString())

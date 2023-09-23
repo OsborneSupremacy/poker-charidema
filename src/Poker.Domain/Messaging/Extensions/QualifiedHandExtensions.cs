@@ -16,12 +16,12 @@ public static class QualifiedHandExtensions
     {
         var regRank = input.HandCards
             .Where(c => !c.IsWild)
-            .Max(c => c.Rank.Value);
+            .GetMaxRank().Value;
 
         var wildRank = input.HandCards
             .Where(c => c.IsWild)
             .Where(c => c.Impersonating != Cards.Empty)
-            .Max(c => c.Impersonating.Rank.Value);
+            .GetMaxRank().Value;
 
         var maxRank = regRank > wildRank ? regRank : wildRank;
 
