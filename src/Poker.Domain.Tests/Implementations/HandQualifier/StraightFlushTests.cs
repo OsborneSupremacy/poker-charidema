@@ -23,7 +23,7 @@ public class StraightFlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.StraightFlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -52,7 +52,7 @@ public class StraightFlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.StraightFlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);
@@ -78,7 +78,7 @@ public class StraightFlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.StraightFlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);

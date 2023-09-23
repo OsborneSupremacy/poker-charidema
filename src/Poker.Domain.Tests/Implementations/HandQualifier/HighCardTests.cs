@@ -72,7 +72,7 @@ public class HighCardTests
         {
             Cards = playerCards,
             RemainingCardCount = 0,
-            Hand = Hands.TwoPair
+            Hand = Hands.HighCard
         };
 
         // act

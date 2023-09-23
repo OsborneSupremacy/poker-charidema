@@ -9,7 +9,7 @@ public record Cards
         CardType = CardTypes.Empty,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
-        Impersonating = Empty ?? throw new NotImplementedException(),
+        Impersonating = default!,
         Rank = Ranks.Empty,
         Suit = Suits.Empty,
         Holdings = new()

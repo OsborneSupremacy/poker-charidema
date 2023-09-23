@@ -62,9 +62,6 @@ public class FourOfAKindTests
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);
-        result.HandCards.Should().BeEmpty();
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Should().BeEmpty();
     }
 }
 

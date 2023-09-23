@@ -24,7 +24,7 @@ public class RoyalFlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.RoyalFlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -53,7 +53,7 @@ public class RoyalFlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.RoyalFlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);

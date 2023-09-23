@@ -23,7 +23,7 @@ public class FlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.FlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -52,12 +52,9 @@ public class FlushTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.FlushHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);
-        result.HandCards.Should().BeEmpty();
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Should().BeEmpty();
     }
 }

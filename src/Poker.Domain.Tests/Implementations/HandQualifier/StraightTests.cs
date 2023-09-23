@@ -23,7 +23,7 @@ public class StraightTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.StraightHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -52,7 +52,7 @@ public class StraightTests
         };
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = HandQualifierDelegates.StraightHandQualifier(request);
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Eliminated);
