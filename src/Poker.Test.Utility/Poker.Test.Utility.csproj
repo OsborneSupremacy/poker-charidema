@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poker.Service.Interface\Poker.Service.Interface.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <PackageReference Include="Bogus" Version="34.0.2" />
-      <PackageReference Include="DeepCloner" Version="0.10.4" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
       <PackageReference Include="OsborneSupremacy.Extensions.AspNet" Version="3.1.0" />
     </ItemGroup>
@@ -16,6 +15,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
         <ProjectReference Include="..\Poker.Presentation.Interface\Poker.Presentation.Interface.csproj" />
+        <ProjectReference Include="..\Poker.Service.Interface\Poker.Service.Interface.csproj" />
         <ProjectReference Include="..\Poker.Utility\Poker.Utility.csproj" />
     </ItemGroup>
 </Project>
