@@ -43,7 +43,7 @@ public static partial class HandQualifierDelegates
         var cardsWithSuit = cards
             .Where(c => c.MatchesSuitOrIsWild(suit))
             .OrderBy(c => c.IsWild)
-            .ThenByDescending(c => c.Rank)
+            .ThenByDescending(c => c.Rank.Value)
             .Take(GlobalConstants.HandSize)
             .ToList();
 
