@@ -32,7 +32,7 @@ public class MatchService : IMatchService
             GameResponse = null
         };
 
-        while (request.Match.Games.Count < request.Match.FixedNumberOfGames!.Value)
+        while (request.Match.Games.Count < request.Match.FixedNumberOfGames)
         {
             message = await CoordinateGameAsync(
                 new GameRequest
@@ -51,7 +51,7 @@ public class MatchService : IMatchService
             Cancelled = false,
             Match = message!.Match,
             Winners = message.Match.Players.GetRichest(),
-            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames!.Value
+            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
     }
 
@@ -86,7 +86,7 @@ public class MatchService : IMatchService
             Cancelled = false,
             Match = message.Match,
             Winners = message.Match.Players.GetRichest(),
-            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames!.Value
+            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
     }
 
@@ -108,7 +108,7 @@ public class MatchService : IMatchService
 
         s.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
 
-        if (match.FixedNumberOfGames.HasValue)
+        if (match.FixedNumberOfGames.HasValue())
             s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
         else
             s.WriteLine($"The match has no fixed number of games.");
@@ -126,11 +126,14 @@ public class MatchService : IMatchService
                 false => CancelMatchAsync(request.Match),
                 true =>
                     EvaluateResult(
-                        await (request.Match.FixedNumberOfGames.HasValue switch
-                        {
-                            true => PlayFixedNumberOfGames(request),
-                            false => PlayIndefinitely(request)
-                        })
+                        await
+                        (
+                            request.Match.FixedNumberOfGames switch
+                            {
+                                > 0 => PlayFixedNumberOfGames(request),
+                                _ => PlayIndefinitely(request)
+                            }
+                        )
                     )
             };
 

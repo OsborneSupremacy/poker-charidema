@@ -40,7 +40,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         var userName = string.Empty;
         uint playerCount = 0;
         uint startingStack = 0;
-        uint? fixedNumberOfGames = null;
+        uint fixedNumberOfGames = 0;
 
         _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
@@ -73,10 +73,10 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             {
                 fixedNumberOfGames = gameCount;
             },
-            new InputOption<uint?>(
-                "Play indefinitely", () => { return null; }
+            new InputOption<uint>(
+                "Play indefinitely", () => { return 0; }
             ),
-            new InputOption<uint?>(
+            new InputOption<uint>(
                 "Play fixed number of games", () =>
                 {
                     uint gameCount = 0;

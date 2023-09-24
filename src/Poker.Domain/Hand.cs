@@ -30,7 +30,7 @@ public record Hand
     public required Rank SequenceMinRank { get; init; }
 
     /// <summary>
-    /// Whether the hand requires cards of the same suite
+    /// Whether the hand requires cards of the same suit
     /// </summary>
     public required bool Uniform { get; init; }
 

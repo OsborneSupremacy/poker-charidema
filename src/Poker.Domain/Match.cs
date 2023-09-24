@@ -2,9 +2,9 @@
 
 public record Match
 {
-    public required uint? FixedNumberOfGames { get; init; }
+    public required uint FixedNumberOfGames { get; init; }
 
-    public Variant? FixedVariant { get; init; }
+    public required Variant FixedVariant { get; init; }
 
     public Deck? FixedDeck {  get; init; }
 
