@@ -7,28 +7,18 @@ public class PairTests
     public void Qualify_True_When_Pair_Exists()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.FourOfHearts,
-            Cards.EightOfHearts,
-            Cards.NineOfHearts
-        };
-
-        List<Card> expectedHand = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds
-        };
-
-        List<Card> expectedKicker = new() {
-            Cards.FourOfHearts,
-            Cards.EightOfHearts,
-            Cards.NineOfHearts
-        };
+        var builder = new HandBuilder()
+            .ExpectedInHand()
+            .With(Cards.TwoOfHearts)
+            .With(Cards.TwoOfDiamonds)
+            .ExpectedInKicker()
+            .With(Cards.FourOfHearts)
+            .With(Cards.EightOfHearts)
+            .With(Cards.NineOfHearts);
 
         var request = new QualifiedHandRequest
         {
-            Cards = playerCards,
+            Cards = builder.GetPlayerCards(),
             RemainingCardCount = 0,
             Hand = Hands.Pair
         };
@@ -38,8 +28,8 @@ public class PairTests
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(expectedHand);
-        result.Kickers.Should().BeEquivalentTo(expectedKicker);
+        result.HandCards.Should().BeEquivalentTo(builder.GetExpectedHandCards());
+        result.Kickers.Should().BeEquivalentTo(builder.GetExpectedKickers());
         result.DeadCards.Should().BeEmpty();
     }
 
