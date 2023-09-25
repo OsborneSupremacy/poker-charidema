@@ -2,10 +2,14 @@
 
 public static class QualifiedHandResponseExtensions
 {
-    public static void ShouldBeAsExpected(this QualifiedHandResponse result, HandBuilder builder)
+    public static void ShouldBeAsExpected(
+        this QualifiedHandResponse result,
+        HandQualifierTestFixture fixture
+        )
     {
-        result.HandCards.Should().BeEquivalentTo(builder.GetExpectedHandCards());
-        result.Kickers.Should().BeEquivalentTo(builder.GetExpectedKickers());
-        result.DeadCards.Should().BeEmpty();
+        result.HandQualification.Should().Be(fixture.ExpectedHandQualification);
+        result.HandCards.Should().BeEquivalentTo(fixture.ExpectedHandCards);
+        result.Kickers.Should().BeEquivalentTo(fixture.ExpectedKickers);
+        result.DeadCards.Should().BeEquivalentTo(fixture.ExpectedDeadCards);
     }
 }

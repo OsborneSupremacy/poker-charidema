@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Tests.Extensions;
-
-namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class PairTests
@@ -9,7 +7,11 @@ public class PairTests
     public void Qualify_True_When_Pair_Exists()
     {
         // arrange
-        var builder = new HandBuilder()
+        var fixture = new HandQualifierTestFixture(
+            new() {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                Hand = Hands.Pair
+            })
             .ExpectedInHand(x =>
             {
                 x.With(Cards.TwoOfHearts);
@@ -22,19 +24,11 @@ public class PairTests
                 x.With(Cards.NineOfHearts);
             });
 
-        var request = new QualifiedHandRequest
-        {
-            Cards = builder.GetPlayerCards(),
-            RemainingCardCount = 0,
-            Hand = Hands.Pair
-        };
-
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.ShouldBeAsExpected(builder);
+        result.ShouldBeAsExpected(fixture);
     }
 
     [Fact]
