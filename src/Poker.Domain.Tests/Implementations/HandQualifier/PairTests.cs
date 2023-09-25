@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Tests.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class PairTests
@@ -8,13 +10,17 @@ public class PairTests
     {
         // arrange
         var builder = new HandBuilder()
-            .ExpectedInHand()
-            .With(Cards.TwoOfHearts)
-            .With(Cards.TwoOfDiamonds)
-            .ExpectedInKicker()
-            .With(Cards.FourOfHearts)
-            .With(Cards.EightOfHearts)
-            .With(Cards.NineOfHearts);
+            .ExpectedInHand(x =>
+            {
+                x.With(Cards.TwoOfHearts);
+                x.With(Cards.TwoOfDiamonds);
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(Cards.FourOfHearts);
+                x.With(Cards.EightOfHearts);
+                x.With(Cards.NineOfHearts);
+            });
 
         var request = new QualifiedHandRequest
         {
@@ -28,9 +34,7 @@ public class PairTests
 
         // assert
         result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(builder.GetExpectedHandCards());
-        result.Kickers.Should().BeEquivalentTo(builder.GetExpectedKickers());
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected(builder);
     }
 
     [Fact]

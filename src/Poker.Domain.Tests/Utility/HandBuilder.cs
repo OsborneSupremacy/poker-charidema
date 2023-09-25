@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Tests.Utility;
 
-internal class HandBuilder
+public class HandBuilder
 {
     private enum ExpectedAssessment
     {
@@ -25,21 +25,24 @@ internal class HandBuilder
         _cards = new List<TestCard>();
     }
 
-    public HandBuilder ExpectedInHand()
+    public HandBuilder ExpectedInHand(Action<HandBuilder> configureHand)
     {
         _expectedAssessment = ExpectedAssessment.HandCard;
+        configureHand(this);
         return this;
     }
 
-    public HandBuilder ExpectedInKicker()
+    public HandBuilder ExpectedInKicker(Action<HandBuilder> configureHand)
     {
         _expectedAssessment = ExpectedAssessment.Kicker;
+        configureHand(this);
         return this;
     }
 
-    public HandBuilder ExpectedInDeadCards()
+    public HandBuilder ExpectedInDeadCards(Action<HandBuilder> configureHand)
     {
-        _expectedAssessment = ExpectedAssessment.Kicker;
+        _expectedAssessment = ExpectedAssessment.DeadCard;
+        configureHand(this);
         return this;
     }
 
