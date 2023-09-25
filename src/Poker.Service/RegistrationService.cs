@@ -8,9 +8,6 @@ public static class RegistrationService
     {
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
 
-        serviceCollection.AddScoped<RankFactory>();
-        serviceCollection.AddScoped<SuitFactory>();
-
         serviceCollection.AddScoped<IDealerService, DealerService>();
         serviceCollection.AddScoped<RoundRobinMoveService>();
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
