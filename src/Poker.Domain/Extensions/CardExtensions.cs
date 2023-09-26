@@ -63,7 +63,11 @@ public static class CardExtensions
         this List<Card> input,
         Rank rank,
         int count
-        ) => input
+    )
+
+    {
+        if (!input.Where(x => x.IsWild).Any())
+            return input
             .Where(c => c.MatchesRankOrIsWild(rank))
             .OrderBy(c => c.IsWild)
             .ThenByDescending(c => c.Suit.Priority)
