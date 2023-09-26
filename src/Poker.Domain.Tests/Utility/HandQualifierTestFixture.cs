@@ -4,6 +4,8 @@ public record HandQualifierTestFixtureRequest
 {
     public required Hand Hand { get; init; }
 
+    public required uint RemainingCards { get; init; }
+
     public required HandQualifications ExpectedHandQualification { get; init; }
 }
 
@@ -132,7 +134,7 @@ public class HandQualifierTestFixture
             new QualifiedHandRequest
             {
                 Cards = _cards.Select(x => x.Card).ToList(),
-                RemainingCardCount = 0,
+                RemainingCardCount = _request.RemainingCards,
                 Hand = Hands.Pair
             }
         );

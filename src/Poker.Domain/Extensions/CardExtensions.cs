@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Extensions;
+﻿using Poker.Domain.Classic;
+
+namespace Poker.Domain.Extensions;
 
 public static class CardExtensions
 {
@@ -45,6 +47,12 @@ public static class CardExtensions
     public static bool HasCountOfMatchingRankOrWild(this List<Card> input, Rank rank, uint count) =>
         input.Count(x => x.MatchesRankOrIsWild(rank)) >= count;
 
+    public static bool AnyWild(this List<Card> input) =>
+        input.Where(x => x.IsWild).Any();
+
+    public static int WildCount(this List<Card> input) =>
+        input.Where(x => x.IsWild).Count();
+
     public static Rank GetBestMatchingRank(this List<Card> cards, uint count)
     {
         foreach(var rank in Ranks.All.OrderByDescending(r => r.Value))
@@ -56,23 +64,73 @@ public static class CardExtensions
     public static List<Card> GetMatchingRank(this List<Card> input, Rank rank) =>
         input.Where(x => x.MatchesRank(rank)).ToList();
 
+    public static List<Card> GetWild(this List<Card> input) =>
+        input.Where(x => x.IsWild).ToList();
+
     public static List<Card> GetMatchingRankOrWild(this List<Card> input, Rank rank) =>
         input.Where(x => x.MatchesRankOrIsWild(rank)).ToList();
 
     public static List<Card> GetMatchingRankHand(
         this List<Card> input,
         Rank rank,
-        int count
+        int requiredCount
     )
-
     {
-        if (!input.Where(x => x.IsWild).Any())
+        if (!input.AnyWild())
             return input
+                .Where(c => c.MatchesRank(rank))
+                .OrderByDescending(c => c.Suit.Priority)
+                .Take(requiredCount)
+                .ToList();
+
+        Queue<Card> wildCards = new();
+        input.GetWild()
+            .ForEach(wildCards.Enqueue);
+
+        foreach(var r in Ranks.All.OrderByDescending(x => x.Value))
+        {
+            var cardsWithRank = input.GetMatchingRank(r);
+            var neededCards = requiredCount - cardsWithRank.Count;
+
+            if (neededCards > requiredCount)
+                continue;
+
+            List<Card> cardsOut = cardsWithRank
+                .OrderByDescending(c => c.Suit.Priority)
+                .Take(neededCards)
+                .ToList();
+
+            Queue<Card> targets = new();
+
+            Cards
+                .All
+                .Where(c => c.MatchesRank(r))
+                .Except(cardsWithRank)
+                .OrderByDescending(c => c.Suit.Priority)
+                .Take(neededCards)
+                .ToList()
+                .ForEach(targets.Enqueue);
+
+            while(
+                targets.Any()
+                && wildCards.Any()
+                && cardsOut.Count < requiredCount
+                )
+                cardsOut.Add(
+                    wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
+                );
+
+            if(cardsOut.Count > requiredCount)
+                return cardsOut;
+        }
+
+        return input
             .Where(c => c.MatchesRankOrIsWild(rank))
             .OrderBy(c => c.IsWild)
             .ThenByDescending(c => c.Suit.Priority)
-            .Take(count)
+            .Take(requiredCount)
             .ToList();
+    }
 
     public static List<Card> GetKickers(
         this List<Card> input,
