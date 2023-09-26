@@ -13,7 +13,7 @@ public static partial class HandQualifierDelegates
             HandQualifications.Eliminated => request.Cards.ToUnqualifiedHand(request.Hand, false),
             HandQualifications.Possible => request.Cards.ToUnqualifiedHand(
                 Hands.TwoPair,
-                request.RemainingCardCount >= 2
+                request.RemainingCardCount >= request.Hand.SecondaryMatchesCount
             ),
             _ => QualifyWithFirstPair(request.Cards, firstPair, request.RemainingCardCount)
         };

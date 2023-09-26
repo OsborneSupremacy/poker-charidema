@@ -42,6 +42,7 @@ public static partial class HandQualifierDelegates
     {
         Rank highRank = Ranks.Empty;
         List<Card> sequence = new();
+
         List<Card> unusedCards = new();
         unusedCards.AddRange(cards);
 

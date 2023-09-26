@@ -18,7 +18,7 @@ public static partial class HandQualifierDelegates
                             .Select(x => x with
                             {
                                 Cards = x.Cards
-                                    .Where(x => x.SatisfiesRankOrIsWild(Ranks.Ten))
+                                    .WhereRanksOrIsWild(Ranks.Ten)
                                     .ToList()
                             })
                             .ToList()

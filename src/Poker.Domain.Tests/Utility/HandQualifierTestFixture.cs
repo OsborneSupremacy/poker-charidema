@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Utility;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Utility;
 
 public record HandQualifierTestFixtureRequest
 {
@@ -104,10 +106,10 @@ public class HandQualifierTestFixture
         _cards.AddRange
             (
                 Cards.All
-                .Where(x => x.Suit.Priority == suit.Priority)
+                .WhereSuit(suit)
+                .WhereNotWild()
                 .Where(x => x.Rank.Value >= startRank.Value)
                 .Where(x => x.Rank.Value <= endRank.Value)
-                .Where(x => !x.IsWild)
                 .Select(x => new TestCard { Card = x, ExpectedAssessment = _expectedAssessment })
             );
         return this;
