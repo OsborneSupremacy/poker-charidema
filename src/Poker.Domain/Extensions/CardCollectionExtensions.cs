@@ -29,46 +29,36 @@ public static class CardCollectionExtensions
         int requiredCount
         )
     {
-        foreach (var r in RankFunctions.GetOrderedRanks())
-        {
-            Queue<Card> wildCards = input.WhereWild().ToQueue();
+        Queue<Card> wildCards = input.WhereWild().ToQueue();
 
-            var cardsWithRank = input.WhereRank(r).ToList();
-            var neededCards = requiredCount - cardsWithRank.Count;
+        var cardsWithRank = input.WhereRank(rank).ToList();
+        var neededCards = requiredCount - cardsWithRank.Count;
 
-            if (neededCards > requiredCount)
-                continue;
+        // add non-wildcards matching rank
+        var cardsOut = cardsWithRank
+            .OrderBySuit()
+            .Take(neededCards)
+            .ToList();
 
-            // add non-wildcards matching rank
-            var cardsOut = cardsWithRank
-                .OrderBySuit()
-                .Take(neededCards)
-                .ToList();
+        // cards that can be impersonated, with rank in question
+        var targets = Cards
+            .All
+            .WhereRank(rank)
+            .Except(cardsWithRank)
+            .OrderBySuit()
+            .Take(neededCards)
+            .ToQueue();
 
-            // cards that can be impersonated, with rank in question
-            var targets = Cards
-                .All
-                .WhereRank(r)
-                .Except(cardsWithRank)
-                .OrderBySuit()
-                .Take(neededCards)
-                .ToQueue();
+        while (
+            targets.Any()
+            && wildCards.Any()
+            && cardsOut.Count < requiredCount
+            )
+            cardsOut.Add(
+                wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
+            );
 
-            while (
-                targets.Any()
-                && wildCards.Any()
-                && cardsOut.Count < requiredCount
-                )
-                cardsOut.Add(
-                    wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
-                );
-
-            if (cardsOut.Count >= requiredCount)
-                return cardsOut;
-        }
-
-        // shouldn't ever get this far
-        return GetMatchingRankHandWithNoWildCards(input, rank, requiredCount);
+        return cardsOut;
     }
 
     public static List<Card> GetKickers(
@@ -104,7 +94,7 @@ public static class CardCollectionExtensions
 
     public static Rank GetBestMatchingRank(this List<Card> cards, uint count)
     {
-        foreach (var rank in RankFunctions.GetOrderedRanks())
+        foreach (var rank in Ranks.All.OrderByPokerStandard())
             if (cards.HasCountOfMatchingRankOrWild(rank, count))
                 return rank;
         return Ranks.Empty;

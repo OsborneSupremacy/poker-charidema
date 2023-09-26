@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Extensions;
 
-public static class CardCollectionLinqExtensions
+public static class CardLinqExtensions
 {
     public static IEnumerable<Card> WhereSuit(
         this IEnumerable<Card> cards, Suit suit
