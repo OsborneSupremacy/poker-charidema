@@ -47,7 +47,7 @@ public class HighCardTests
     public void Qualify_Get_Joker_When_Joker_Is_Highest()
     {
         // arrange
-        var joker = Cards.CreateJoker();
+        var joker = Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades };
 
         List<Card> playerCards = new() {
             joker,

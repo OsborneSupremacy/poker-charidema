@@ -76,42 +76,56 @@ public static class CardExtensions
         int requiredCount
     )
     {
-        if (!input.AnyWild())
-            return input
-                .Where(c => c.MatchesRank(rank))
-                .OrderByDescending(c => c.Suit.Priority)
-                .Take(requiredCount)
-                .ToList();
-
-        Queue<Card> wildCards = new();
-        input.GetWild()
-            .ForEach(wildCards.Enqueue);
-
-        foreach(var r in Ranks.All.OrderByDescending(x => x.Value))
+        return input.AnyWild() switch
         {
+            true => input.GetMatchingRankHandWithSomeWildCards(rank, requiredCount),
+            false => input.GetMatchingRankHandWithNoWildCards(rank, requiredCount),
+        };
+    }
+
+    public static List<Card> GetMatchingRankHandWithNoWildCards(
+        this List<Card> input,
+        Rank rank,
+        int requiredCount
+        ) => input
+            .Where(c => c.MatchesRank(rank))
+            .OrderByDescending(c => c.Suit.Priority)
+            .Take(requiredCount)
+            .ToList();
+
+    public static List<Card> GetMatchingRankHandWithSomeWildCards
+        (
+        this List<Card> input,
+        Rank rank,
+        int requiredCount
+        )
+    {
+        foreach (var r in Ranks.All.OrderByDescending(x => x.Value))
+        {
+            Queue<Card> wildCards = input.GetWild().ToQueue();
+
             var cardsWithRank = input.GetMatchingRank(r);
             var neededCards = requiredCount - cardsWithRank.Count;
 
             if (neededCards > requiredCount)
                 continue;
 
+            // add non-wildcards matching rank
             List<Card> cardsOut = cardsWithRank
                 .OrderByDescending(c => c.Suit.Priority)
                 .Take(neededCards)
                 .ToList();
 
-            Queue<Card> targets = new();
-
-            Cards
+            // cards that can be impersonated, with rank in question
+            var targets = Cards
                 .All
                 .Where(c => c.MatchesRank(r))
                 .Except(cardsWithRank)
                 .OrderByDescending(c => c.Suit.Priority)
                 .Take(neededCards)
-                .ToList()
-                .ForEach(targets.Enqueue);
+                .ToQueue();
 
-            while(
+            while (
                 targets.Any()
                 && wildCards.Any()
                 && cardsOut.Count < requiredCount
@@ -120,16 +134,12 @@ public static class CardExtensions
                     wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
                 );
 
-            if(cardsOut.Count > requiredCount)
+            if (cardsOut.Count >= requiredCount)
                 return cardsOut;
         }
 
-        return input
-            .Where(c => c.MatchesRankOrIsWild(rank))
-            .OrderBy(c => c.IsWild)
-            .ThenByDescending(c => c.Suit.Priority)
-            .Take(requiredCount)
-            .ToList();
+        // shouldn't ever get this far
+        return GetMatchingRankHandWithNoWildCards(input, rank, requiredCount);
     }
 
     public static List<Card> GetKickers(
