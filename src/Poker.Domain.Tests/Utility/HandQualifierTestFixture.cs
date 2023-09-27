@@ -135,7 +135,9 @@ public class HandQualifierTestFixture
         return _request.Hand.HandQualifier(
             new QualifiedHandRequest
             {
-                Cards = _cards.Select(x => x.Card).ToList(),
+                Cards = _cards
+                    .Select(x => x.Card with { Impersonating = Cards.Empty })
+                    .ToList(),
                 RemainingCardCount = _request.RemainingCards,
                 Hand = Hands.Pair
             }

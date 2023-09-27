@@ -1,7 +1,12 @@
-﻿namespace Poker.Domain.Extensions;
+﻿using System.Net.NetworkInformation;
+
+namespace Poker.Domain.Extensions;
 
 public static class CardLinqExtensions
 {
+    public static IEnumerable<Card> WithoutImpersonation(this IEnumerable<Card> cards) =>
+        cards.Select(c => c with { Impersonating = Cards.Empty });
+
     public static IEnumerable<Card> WhereSuit(
         this IEnumerable<Card> cards, Suit suit
         ) => cards.Where(x => x.MatchesSuit(suit));

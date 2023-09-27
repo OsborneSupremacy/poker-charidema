@@ -65,7 +65,8 @@ public static class CardCollectionExtensions
         this List<Card> input,
         List<Card> handCards) =>
             input
-                .Except(handCards)
+                .WithoutImpersonation()
+                .Except(handCards.WithoutImpersonation())
                 .OrderByPokerStandard()
                 .Take(GlobalConstants.HandSize - handCards.Count)
                 .ToList();
@@ -75,9 +76,9 @@ public static class CardCollectionExtensions
         List<Card> handCards,
         List<Card> kickers
         ) =>
-        input
-            .Except(handCards)
-            .Except(kickers)
+        input.WithoutImpersonation()
+            .Except(handCards.WithoutImpersonation())
+            .Except(kickers.WithoutImpersonation())
             .ToList();
 
     public static bool HasCountOfMatchingRank(this List<Card> input, Rank rank, uint count) =>

@@ -46,7 +46,7 @@ public class PairTests
             .ExpectedInHand(x =>
             {
                 x.With(Cards.NineOfClubs);
-                x.With(Cards.CreateJoker());
+                x.With(Cards.CreateJoker() with { Impersonating = Cards.NineOfSpades } );
             })
             .ExpectedInKicker(x =>
             {
@@ -75,8 +75,8 @@ public class PairTests
             })
             .ExpectedInHand(x =>
             {
-                x.With(Cards.CreateJoker());
-                x.With(Cards.CreateJoker());
+                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
+                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfHearts });
             })
             .ExpectedInKicker(x =>
             {
@@ -90,19 +90,6 @@ public class PairTests
 
         // assert
         result.ShouldBeAsExpected(fixture);
-        result
-            .HandCards
-            .Where(x => x.Impersonating == Cards.AceOfSpades)
-            .SingleOrDefault()
-            .Should()
-            .NotBeNull();
-
-        result
-            .HandCards
-            .Where(x => x.Impersonating == Cards.AceOfHearts)
-            .SingleOrDefault()
-            .Should()
-            .NotBeNull();
     }
 
     [Fact]
@@ -118,8 +105,8 @@ public class PairTests
             })
             .ExpectedInHand(x =>
             {
-                x.With(Cards.CreateJoker());
-                x.With(Cards.CreateJoker());
+                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
+                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfHearts });
             })
             .ExpectedInKicker(x =>
             {
