@@ -28,7 +28,7 @@ public class HandQualifierTestFixture
         public required Card Card { get; init; }
     }
 
-    private readonly List<TestCard> _cards;
+    private readonly List<TestCard> _testCards;
 
     private readonly HandQualifierTestFixtureRequest _request;
 
@@ -44,7 +44,7 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture(HandQualifierTestFixtureRequest request)
     {
-        _cards = new List<TestCard>();
+        _testCards = new List<TestCard>();
         _request = request;
         ExpectedHandQualification = request.ExpectedHandQualification;
     }
@@ -72,7 +72,7 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture With(Card card)
     {
-        _cards.Add
+        _testCards.Add
             (
                 new()
                 {
@@ -85,7 +85,7 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture With(IEnumerable<Card> cards)
     {
-        _cards.AddRange
+        _testCards.AddRange
             (
                 cards
                     .Select(x => new TestCard
@@ -103,7 +103,7 @@ public class HandQualifierTestFixture
         Rank endRank
         )
     {
-        _cards.AddRange
+        _testCards.AddRange
             (
                 Cards.All
                 .WhereSuit(suit)
@@ -117,17 +117,17 @@ public class HandQualifierTestFixture
 
     public QualifiedHandResponse Execute()
     {
-        ExpectedHandCards = _cards
+        ExpectedHandCards = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
             .Select(x => x.Card)
             .ToList();
 
-        ExpectedKickers = _cards
+        ExpectedKickers = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
             .Select(x => x.Card)
             .ToList();
 
-        ExpectedDeadCards = _cards
+        ExpectedDeadCards = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
             .Select(x => x.Card)
             .ToList();
@@ -135,8 +135,9 @@ public class HandQualifierTestFixture
         return _request.Hand.HandQualifier(
             new QualifiedHandRequest
             {
-                Cards = _cards
-                    .Select(x => x.Card with { Impersonating = Cards.Empty })
+                Cards = _testCards
+                    .Select(x => x.Card)
+                    .WithoutImpersonation()
                     .ToList(),
                 RemainingCardCount = _request.RemainingCards,
                 Hand = Hands.Pair
