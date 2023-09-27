@@ -7,29 +7,31 @@ public class FiveOfAKindTests
     public void Qualify_Returns_True_When_Hand_Contains_Five_Of_A_Kind()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.AceOfSpades,
-            Cards.CreateJoker()
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FiveOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.FiveOfAKind
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfDiamonds,
+                        Cards.AceOfClubs,
+                        Cards.AceOfSpades,
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades }
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(playerCards);
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Any().Should().BeFalse();
+        result.ShouldBeAsExpected(fixture);
     }
 
     [Fact]

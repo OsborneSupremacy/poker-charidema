@@ -140,7 +140,7 @@ public class HandQualifierTestFixture
                     .WithoutImpersonation()
                     .ToList(),
                 RemainingCardCount = _request.RemainingCards,
-                Hand = Hands.Pair
+                Hand = _request.Hand
             }
         );
     }
