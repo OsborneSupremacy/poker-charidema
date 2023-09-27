@@ -2,22 +2,6 @@
 
 public static class CardExtensions
 {
-    public static string ToStandardNotation(this Card input) =>
-        $"{input.GetRankId()}{input.GetSymbol()}";
-
-    public static string GetRankId(this Card input) =>
-        input.CardType switch
-        {
-            CardTypes.Joker => "*",
-            CardTypes.Ace => input.Rank!.Name[..1],
-            CardTypes.Face => input.Rank!.Name[..1],
-            CardTypes.Spot => input.Rank!.Value.ToString(),
-           _ => throw new NotSupportedException(),
-        };
-
-    public static string GetSymbol(this Card input) =>
-        input.Suit?.Name[..1].ToString().ToLowerInvariant() ?? string.Empty;
-
     public static bool MatchesRank(this Card input, Rank rank) =>
         input.Rank.Value == rank.Value;
 

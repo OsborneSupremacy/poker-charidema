@@ -31,11 +31,11 @@ public static class CardCollectionExtensions
     {
         Queue<Card> wildCards = input.WhereWild().ToQueue();
 
-        var cardsWithRank = input.WhereRank(rank).ToList();
-        var neededCount = requiredCount - cardsWithRank.Count;
+        var playerCardsWithRank = input.WhereRank(rank).ToList();
+        var neededCount = requiredCount - playerCardsWithRank.Count;
 
         // add non-wildcards matching rank
-        var cardsOut = cardsWithRank
+        var cardsOut = playerCardsWithRank
             .OrderBySuit()
             .Take(requiredCount)
             .ToList();
@@ -44,20 +44,14 @@ public static class CardCollectionExtensions
         var targets = Cards
             .All
             .WhereRank(rank)
-            .Except(cardsWithRank)
             .OrderBySuit()
+            // if a card that the player is holding a the real version
+            // of has to be impersonated, it should only be impersonated
+            // after all other cards have been impersonated. This is mainly
+            // an issue for 5-of-a-kind.
+            .OrderBy(playerCardsWithRank.Contains)
             .Take(neededCount)
             .ToQueue();
-
-        // exception for 5-of-a-kind only. Allow cards in the player's
-        // hand to be impersonated. Otherwise, there's no way to get 5-of-a-kind
-        if (targets.Count < neededCount)
-            targets = Cards
-                .All
-                .WhereRank(rank)
-                .OrderBySuit()
-                .Take(neededCount)
-                .ToQueue();
 
         while (
             targets.Any()

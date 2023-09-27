@@ -4,7 +4,7 @@
 public class FiveOfAKindTests
 {
     [Fact]
-    public void Qualify_Returns_True_When_Hand_Contains_Five_Of_A_Kind()
+    public void Qualify_True_When_Hand_Contains_Five_Of_A_Kind_With_One_Joker()
     {
         // arrange
         var fixture = new HandQualifierTestFixture(
@@ -35,29 +35,65 @@ public class FiveOfAKindTests
     }
 
     [Fact]
-    public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Five_Of_A_Kind()
+    public void Qualify_True_When_Hand_Contains_Five_Of_A_Kind_With_Two_Jokers()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.AceOfSpades,
-            Cards.KingOfSpades
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FiveOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.FiveOfAKind
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfDiamonds,
+                        Cards.AceOfSpades,
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades },
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfClubs }
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected(fixture);
+    }
+
+    [Fact]
+    public void Qualify_False_When_Hand_Does_Not_Contain_Five_Of_A_Kind()
+    {
+        // arrange
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.FiveOfAKind
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfDiamonds,
+                        Cards.AceOfClubs,
+                        Cards.AceOfSpades,
+                        Cards.KingOfSpades
+                    }
+                );
+            });
+
+        // act
+        var result = fixture.Execute();
+
+        // assert
+        result.ShouldBeAsExpected(fixture);
     }
 }
 

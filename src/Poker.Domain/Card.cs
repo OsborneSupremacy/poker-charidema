@@ -50,7 +50,7 @@ public enum Holding
 /// </summary>
 public record Card
 {
-    public required Guid Id { get; init; }
+    public required string Id { get; init; }
 
     public required CardOrientations CardOrientation { get; init; }
 

@@ -120,16 +120,19 @@ public class HandQualifierTestFixture
         ExpectedHandCards = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
             .Select(x => x.Card)
+            .OrderByPokerStandard()
             .ToList();
 
         ExpectedKickers = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
             .Select(x => x.Card)
+            .OrderByPokerStandard()
             .ToList();
 
         ExpectedDeadCards = _testCards
             .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
             .Select(x => x.Card)
+            .OrderByPokerStandard()
             .ToList();
 
         return _request.Hand.HandQualifier(
