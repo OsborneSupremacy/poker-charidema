@@ -7,61 +7,69 @@ public class FourOfAKindTests
     public void Qualify_Returns_True_When_Hand_Contains_Four_Of_A_Kind()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.AceOfSpades,
-            Cards.NineOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FourOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.FourOfAKind
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfDiamonds,
+                        Cards.AceOfClubs,
+                        Cards.AceOfSpades
+                    }
+                );
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.NineOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(new List<Card>()
-        {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.AceOfSpades
-        });
-        result.Kickers.Should().BeEquivalentTo(new List<Card>() { Cards.NineOfHearts });
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Four_Of_A_Kind()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.KingOfSpades,
-            Cards.NineOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FourOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.FourOfAKind
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfDiamonds,
+                        Cards.AceOfClubs,
+                        Cards.KingOfSpades,
+                        Cards.NineOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }
 
