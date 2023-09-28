@@ -7,54 +7,61 @@ public class FullHouseTests
     public void Qualify_True_When_FullHouse_Exist()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.TwoOfSpades,
-            Cards.FourOfDiamonds,
-            Cards.FourOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FullHouse
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.FullHouse
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.TwoOfHearts,
+                        Cards.TwoOfDiamonds,
+                        Cards.TwoOfSpades,
+                        Cards.FourOfDiamonds,
+                        Cards.FourOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.FullHouseHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(playerCards);
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_False_When_No_FullHouse_Exists()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.TwoOfSpades,
-            Cards.FourOfDiamonds,
-            Cards.FiveOfDiamonds
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FullHouse
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.FullHouse
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.TwoOfHearts,
+                        Cards.TwoOfDiamonds,
+                        Cards.TwoOfSpades,
+                        Cards.FourOfDiamonds,
+                        Cards.FiveOfDiamonds
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.FullHouseHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }

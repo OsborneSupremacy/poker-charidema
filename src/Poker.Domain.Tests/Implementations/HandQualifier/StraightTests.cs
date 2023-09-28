@@ -7,54 +7,61 @@ public class StraightTests
     public void Qualify_True_When_Straight_Exists()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.KingOfSpades,
-            Cards.QueenOfHearts,
-            Cards.JackOfClubs,
-            Cards.TenOfDiamonds,
-            Cards.NineOfSpades
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.Straight
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.Straight
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.KingOfSpades,
+                        Cards.QueenOfHearts,
+                        Cards.JackOfClubs,
+                        Cards.TenOfDiamonds,
+                        Cards.NineOfSpades
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.StraightHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(playerCards);
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_False_When_No_Straight_Exists()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.KingOfSpades,
-            Cards.QueenOfHearts,
-            Cards.JackOfClubs,
-            Cards.TenOfDiamonds,
-            Cards.EightOfSpades
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.Straight
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.Straight
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.KingOfSpades,
+                        Cards.QueenOfHearts,
+                        Cards.JackOfClubs,
+                        Cards.TenOfDiamonds,
+                        Cards.EightOfSpades
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.StraightHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }

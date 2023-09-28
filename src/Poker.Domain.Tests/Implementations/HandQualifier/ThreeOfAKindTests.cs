@@ -7,68 +7,69 @@ public class ThreeOfAKindTests
     public void Qualify_Returns_True_When_Hand_Contains_Three_Of_A_Kind()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs,
-            Cards.FourOfHearts,
-            Cards.NineOfHearts
-        };
-
-        var expectedHand = new List<Card>()
-        {
-            Cards.AceOfHearts,
-            Cards.AceOfDiamonds,
-            Cards.AceOfClubs
-        };
-
-        var expectedKickers = new List<Card>()
-        {
-            Cards.NineOfHearts,
-            Cards.FourOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.ThreeOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.ThreeOfAKind
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                    Cards.AceOfHearts,
+                    Cards.AceOfDiamonds,
+                    Cards.AceOfClubs
+                    }
+                );
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.NineOfHearts,
+                        Cards.FourOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(expectedHand);
-        result.Kickers.Should().BeEquivalentTo(expectedKickers);
-        result.DeadCards.Any().Should().BeFalse();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Three_Of_A_Kind()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.ThreeOfClubs,
-            Cards.FourOfHearts,
-            Cards.FiveOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.ThreeOfAKind
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.ThreeOfAKind
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.AceOfSpades,
+                        Cards.ThreeOfClubs,
+                        Cards.FourOfHearts,
+                        Cards.FiveOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }
 

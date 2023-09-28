@@ -7,65 +7,67 @@ public class TwoPairTests
     public void Qualify_True_When_Two_Pairs_Exist()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.FourOfHearts,
-            Cards.FourOfDiamonds,
-            Cards.NineOfHearts
-        };
-
-        List<Card> expectedHand = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.FourOfHearts,
-            Cards.FourOfDiamonds,
-        };
-
-        List<Card> expectedKicker = new() {
-            Cards.NineOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.TwoPair
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.TwoPair
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.TwoOfHearts,
+                        Cards.TwoOfDiamonds,
+                        Cards.FourOfHearts,
+                        Cards.FourOfDiamonds
+                    }
+                );
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.NineOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.TwoPairHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(expectedHand);
-        result.Kickers.Should().BeEquivalentTo(expectedKicker);
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
-    public void Qualify_False_When_No_Pair_Exists()
+    public void Qualify_False_When_Only_One_Pair_Exists()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.TwoOfHearts,
-            Cards.TwoOfDiamonds,
-            Cards.FourOfHearts,
-            Cards.FiveOfHearts,
-            Cards.NineOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.TwoPair
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.TwoPair
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.TwoOfHearts,
+                        Cards.TwoOfDiamonds,
+                        Cards.FiveOfHearts,
+                        Cards.FourOfDiamonds
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.TwoPairHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }

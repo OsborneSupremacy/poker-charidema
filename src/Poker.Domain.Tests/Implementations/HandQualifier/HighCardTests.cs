@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using System.Collections.Generic;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class HighCardTests
@@ -7,81 +9,71 @@ public class HighCardTests
     public void Qualify_Get_Highest_Ranking_Card()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfSpades,
-            Cards.KingOfSpades,
-            Cards.QueenOfSpades,
-            Cards.JackOfSpades,
-            Cards.TenOfSpades
-        };
-
-        List<Card> expectedHand = new() {
-            Cards.AceOfSpades
-        };
-
-        List<Card> expectedKicker = new() {
-            Cards.KingOfSpades,
-            Cards.QueenOfSpades,
-            Cards.JackOfSpades,
-            Cards.TenOfSpades
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.HighCard
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.HighCard
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfSpades
+                    }
+                );
+            })
+            .ExpectedInKicker(x => {
+                x.With(
+                    new List<Card>() {
+                        Cards.KingOfSpades,
+                        Cards.QueenOfSpades,
+                        Cards.JackOfSpades,
+                        Cards.TenOfSpades
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(expectedHand);
-        result.Kickers.Should().BeEquivalentTo(expectedKicker);
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_Get_Joker_When_Joker_Is_Highest()
     {
         // arrange
-        var joker = Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades };
-
-        List<Card> playerCards = new() {
-            joker,
-            Cards.KingOfSpades,
-            Cards.QueenOfSpades,
-            Cards.JackOfSpades,
-            Cards.TenOfSpades
-        };
-
-        List<Card> expectedHand = new() {
-            joker
-        };
-
-        List<Card> expectedKicker = new() {
-            Cards.KingOfSpades,
-            Cards.QueenOfSpades,
-            Cards.JackOfSpades,
-            Cards.TenOfSpades
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.HighCard
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.HighCard
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                     Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades }
+                );
+            })
+            .ExpectedInKicker(x => {
+                x.With(
+                    new List<Card>() {
+                        Cards.KingOfSpades,
+                        Cards.QueenOfSpades,
+                        Cards.JackOfSpades,
+                        Cards.TenOfSpades
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.MatchingRankHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(expectedHand);
-        result.Kickers.Should().BeEquivalentTo(expectedKicker);
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 }
