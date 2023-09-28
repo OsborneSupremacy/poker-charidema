@@ -15,13 +15,4 @@ public record Suit
     /// this gives us a way of consistently sorting and selecting cards.
     /// </summary>
     public required uint Priority { get; init; }
-
-    [SetsRequiredMembers]
-    public Suit(string name, uint priority, Color color, char symbol)
-    {
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Priority = priority;
-        Color = color;
-        Symbol = symbol;
-    }
 }

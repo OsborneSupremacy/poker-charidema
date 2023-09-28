@@ -29,7 +29,7 @@ public class PairTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -59,7 +59,7 @@ public class PairTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public class PairTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -119,7 +119,7 @@ public class PairTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -148,6 +148,6 @@ public class PairTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 }

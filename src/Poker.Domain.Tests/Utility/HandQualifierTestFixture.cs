@@ -11,6 +11,32 @@ public record HandQualifierTestFixtureRequest
     public required HandQualifications ExpectedHandQualification { get; init; }
 }
 
+public record HandQualifierTestFixtureResponse
+{
+    public required HandQualifications ExpectedHandQualification { get; init; }
+
+    public required List<Card> ExpectedHandCards { get; init; }
+
+    public required List<Card> ExpectedKickers { get; init; }
+
+    public required List<Card> ExpectedDeadCards { get; init; }
+
+    public required QualifiedHandResponse QualifiedHandResponse { get; init; }
+}
+
+public static class HandQualifierTestFixtureExtensions
+{
+    public static void ShouldBeAsExpected(
+        this HandQualifierTestFixtureResponse response
+        )
+    {
+        response.QualifiedHandResponse.HandQualification.Should().Be(response.ExpectedHandQualification);
+        response.QualifiedHandResponse.HandCards.Should().BeEquivalentTo(response.ExpectedHandCards);
+        response.QualifiedHandResponse.Kickers.Should().BeEquivalentTo(response.ExpectedKickers);
+        response.QualifiedHandResponse.DeadCards.Should().BeEquivalentTo(response.ExpectedDeadCards);
+    }
+}
+
 [ExcludeFromCodeCoverage]
 public class HandQualifierTestFixture
 {
@@ -35,12 +61,6 @@ public class HandQualifierTestFixture
     private ExpectedAssessment _expectedAssessment = ExpectedAssessment.HandCard;
 
     public HandQualifications ExpectedHandQualification = HandQualifications.Qualifies;
-
-    public List<Card> ExpectedHandCards = new();
-
-    public List<Card> ExpectedKickers = new();
-
-    public List<Card> ExpectedDeadCards = new();
 
     public HandQualifierTestFixture(HandQualifierTestFixtureRequest request)
     {
@@ -115,37 +135,40 @@ public class HandQualifierTestFixture
         return this;
     }
 
-    public QualifiedHandResponse Execute()
-    {
-        ExpectedHandCards = _testCards
-            .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
-            .Select(x => x.Card)
-            .OrderByPokerStandard()
-            .ToList();
+    public HandQualifierTestFixtureResponse Execute() =>
+        new()
+        {
+            ExpectedHandQualification = _request.ExpectedHandQualification,
 
-        ExpectedKickers = _testCards
-            .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
-            .Select(x => x.Card)
-            .OrderByPokerStandard()
-            .ToList();
+            ExpectedHandCards = _testCards
+                .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
+                .Select(x => x.Card)
+                .OrderByPokerStandard()
+                .ToList(),
 
-        ExpectedDeadCards = _testCards
-            .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
-            .Select(x => x.Card)
-            .OrderByPokerStandard()
-            .ToList();
+            ExpectedKickers = _testCards
+                .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
+                .Select(x => x.Card)
+                .OrderByPokerStandard()
+                .ToList(),
 
-        return _request.Hand.HandQualifier(
-            new QualifiedHandRequest
-            {
-                Cards = _testCards
-                    .Select(x => x.Card)
-                    .WithoutImpersonation()
-                    .ToList(),
-                RemainingCardCount = _request.RemainingCards,
-                Hand = _request.Hand
-            }
-        );
-    }
+            ExpectedDeadCards = _testCards
+                .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
+                .Select(x => x.Card)
+                .OrderByPokerStandard()
+                .ToList(),
+
+            QualifiedHandResponse = _request.Hand.HandQualifier(
+                new QualifiedHandRequest
+                {
+                    Cards = _testCards
+                        .Select(x => x.Card)
+                        .WithoutImpersonation()
+                        .ToList(),
+                    RemainingCardCount = _request.RemainingCards,
+                    Hand = _request.Hand
+                }
+            )
+        };
 }
 

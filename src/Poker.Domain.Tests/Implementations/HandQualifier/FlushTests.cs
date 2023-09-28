@@ -7,54 +7,61 @@ public class FlushTests
     public void Qualify_Returns_True_When_Hand_Contains_Flush()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.TenOfHearts,
-            Cards.FiveOfHearts,
-            Cards.ThreeOfHearts,
-            Cards.TwoOfHearts
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.Flush
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Qualifies,
+                RemainingCards = 0,
+                Hand = Hands.Flush
+            })
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.TenOfHearts,
+                        Cards.FiveOfHearts,
+                        Cards.ThreeOfHearts,
+                        Cards.TwoOfHearts
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.FlushHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Qualifies);
-        result.HandCards.Should().BeEquivalentTo(playerCards);
-        result.Kickers.Should().BeEmpty();
-        result.DeadCards.Should().BeEmpty();
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Flushd()
     {
         // arrange
-        List<Card> playerCards = new() {
-            Cards.AceOfHearts,
-            Cards.TenOfHearts,
-            Cards.FiveOfHearts,
-            Cards.ThreeOfHearts,
-            Cards.TwoOfDiamonds
-        };
-
-        var request = new QualifiedHandRequest
-        {
-            Cards = playerCards,
-            RemainingCardCount = 0,
-            Hand = Hands.FullHouse
-        };
+        var fixture = new HandQualifierTestFixture(
+            new()
+            {
+                ExpectedHandQualification = HandQualifications.Eliminated,
+                RemainingCards = 0,
+                Hand = Hands.Flush
+            })
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.TenOfHearts,
+                        Cards.FiveOfHearts,
+                        Cards.ThreeOfHearts,
+                        Cards.TwoOfDiamonds
+                    }
+                );
+            });
 
         // act
-        var result = HandQualifierDelegates.FlushHandQualifier(request);
+        var result = fixture.Execute();
 
         // assert
-        result.HandQualification.Should().Be(HandQualifications.Eliminated);
+        result.ShouldBeAsExpected();
     }
 }

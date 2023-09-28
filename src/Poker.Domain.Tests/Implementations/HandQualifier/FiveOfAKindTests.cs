@@ -31,7 +31,7 @@ public class FiveOfAKindTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -62,7 +62,7 @@ public class FiveOfAKindTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 
     [Fact]
@@ -93,7 +93,7 @@ public class FiveOfAKindTests
         var result = fixture.Execute();
 
         // assert
-        result.ShouldBeAsExpected(fixture);
+        result.ShouldBeAsExpected();
     }
 }
 
