@@ -33,6 +33,64 @@ public class FourOfAKindTests
     }
 
     [Fact]
+    public void Qualify_Returns_True_When_Hand_Contains_Four_Of_A_Kind_With_Joker()
+    {
+        // arrange
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FourOfAKind)
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfDiamonds },
+                        Cards.AceOfClubs,
+                        Cards.AceOfSpades
+                    }
+                );
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(Cards.NineOfHearts);
+            });
+
+        // act
+        var result = fixture.Execute();
+
+        // assert
+        result.ShouldBeAsExpected();
+    }
+
+    [Fact]
+    public void Qualify_Returns_True_When_Hand_Contains_Four_Of_A_Kind_With_Two_Jokers()
+    {
+        // arrange
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FourOfAKind)
+            .ExpectedInHand(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.AceOfHearts,
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfDiamonds },
+                        Cards.CreateJoker() with { Impersonating = Cards.AceOfClubs },
+                        Cards.AceOfSpades
+                    }
+                );
+            })
+            .ExpectedInKicker(x =>
+            {
+                x.With(Cards.NineOfHearts);
+            });
+
+        // act
+        var result = fixture.Execute();
+
+        // assert
+        result.ShouldBeAsExpected();
+    }
+
+    [Fact]
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Four_Of_A_Kind()
     {
         // arrange
