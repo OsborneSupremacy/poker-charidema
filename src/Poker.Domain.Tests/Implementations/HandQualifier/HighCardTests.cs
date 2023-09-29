@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class HighCardTests

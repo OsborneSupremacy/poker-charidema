@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Classic;
-
-namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {

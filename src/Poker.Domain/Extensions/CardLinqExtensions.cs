@@ -1,6 +1,4 @@
-﻿using System.Net.NetworkInformation;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 public static class CardLinqExtensions
 {
