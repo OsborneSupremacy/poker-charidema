@@ -7,12 +7,8 @@ public class PairTests
     public void Qualify_True_When_Pair_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new() {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Pair
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Pair)
             .ExpectedInHand(x =>
             {
                 x.With(Cards.TwoOfHearts);
@@ -36,13 +32,8 @@ public class PairTests
     public void Qualify_True_When_Pair_Exists_Because_Of_Joker()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Pair
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Pair)
             .ExpectedInHand(x =>
             {
                 x.With(Cards.NineOfClubs);
@@ -66,13 +57,8 @@ public class PairTests
     public void Jokers_In_HandCards_When_Two_Jokers()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Pair
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Pair)
             .ExpectedInHand(x =>
             {
                 x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
@@ -96,13 +82,8 @@ public class PairTests
     public void Jokers_In_HandCards_When_All_Jokers()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Pair
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Pair)
             .ExpectedInHand(x =>
             {
                 x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
@@ -126,13 +107,8 @@ public class PairTests
     public void Qualify_False_When_No_Pair_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.Pair
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Pair)
             .ExpectedInDeadCards(x =>
             {
                 x.With(new List<Card> {

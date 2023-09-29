@@ -7,13 +7,8 @@ public class FullHouseTests
     public void Qualify_True_When_FullHouse_Exist()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.FullHouse
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FullHouse)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -38,13 +33,8 @@ public class FullHouseTests
     public void Qualify_False_When_No_FullHouse_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.FullHouse
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FullHouse)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

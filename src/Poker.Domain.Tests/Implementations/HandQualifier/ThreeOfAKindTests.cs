@@ -7,13 +7,8 @@ public class ThreeOfAKindTests
     public void Qualify_Returns_True_When_Hand_Contains_Three_Of_A_Kind()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.ThreeOfAKind
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.ThreeOfAKind)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -45,13 +40,8 @@ public class ThreeOfAKindTests
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Three_Of_A_Kind()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.ThreeOfAKind
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.ThreeOfAKind)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

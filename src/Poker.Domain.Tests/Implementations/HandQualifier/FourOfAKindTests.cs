@@ -7,13 +7,8 @@ public class FourOfAKindTests
     public void Qualify_Returns_True_When_Hand_Contains_Four_Of_A_Kind()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.FourOfAKind
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FourOfAKind)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -27,11 +22,7 @@ public class FourOfAKindTests
             })
             .ExpectedInKicker(x =>
             {
-                x.With(
-                    new List<Card>() {
-                        Cards.NineOfHearts
-                    }
-                );
+                x.With(Cards.NineOfHearts);
             });
 
         // act
@@ -45,13 +36,8 @@ public class FourOfAKindTests
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Four_Of_A_Kind()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.FourOfAKind
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.FourOfAKind)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

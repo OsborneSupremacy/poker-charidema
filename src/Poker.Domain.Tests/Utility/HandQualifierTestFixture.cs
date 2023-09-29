@@ -2,18 +2,9 @@
 
 namespace Poker.Domain.Tests.Utility;
 
-public record HandQualifierTestFixtureRequest
-{
-    public required Hand Hand { get; init; }
-
-    public required uint RemainingCards { get; init; }
-
-    public required HandQualifications ExpectedHandQualification { get; init; }
-}
-
 public record HandQualifierTestFixtureResponse
 {
-    public required HandQualifications ExpectedHandQualification { get; init; }
+    public required HandQualifications ExpectedHandQualification { get; init; } 
 
     public required List<Card> ExpectedHandCards { get; init; }
 
@@ -56,21 +47,36 @@ public class HandQualifierTestFixture
 
     private readonly List<TestCard> _testCards;
 
-    private readonly HandQualifierTestFixtureRequest _request;
+    private Hand _hand;
+
+    private uint _remainingCards = 0;
 
     private ExpectedAssessment _expectedAssessment = ExpectedAssessment.HandCard;
 
     public HandQualifications ExpectedHandQualification = HandQualifications.Qualifies;
 
-    public HandQualifierTestFixture(HandQualifierTestFixtureRequest request)
+    public HandQualifierTestFixture()
     {
         _testCards = new List<TestCard>();
-        _request = request;
-        ExpectedHandQualification = request.ExpectedHandQualification;
+        _hand = Hands.NoHand;
+    }
+
+    public HandQualifierTestFixture For(Hand hand)
+    {
+        _hand = hand;
+        return this;
+    }
+
+    public HandQualifierTestFixture WithCardsRemaining(uint remainingCards)
+    {
+
+        _remainingCards = remainingCards;
+        return this;
     }
 
     public HandQualifierTestFixture ExpectedInHand(Action<HandQualifierTestFixture> configureHand)
     {
+        ExpectedHandQualification = HandQualifications.Qualifies;
         _expectedAssessment = ExpectedAssessment.HandCard;
         configureHand(this);
         return this;
@@ -78,6 +84,7 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture ExpectedInKicker(Action<HandQualifierTestFixture> configureHand)
     {
+        ExpectedHandQualification = HandQualifications.Qualifies;
         _expectedAssessment = ExpectedAssessment.Kicker;
         configureHand(this);
         return this;
@@ -135,40 +142,50 @@ public class HandQualifierTestFixture
         return this;
     }
 
-    public HandQualifierTestFixtureResponse Execute() =>
-        new()
+    public HandQualifierTestFixtureResponse Execute()
+    {
+        var expectedHandCards = _testCards
+            .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
+            .Select(x => x.Card)
+            .OrderByPokerStandard()
+            .ToList();
+
+        var expectedKickers = _testCards
+            .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
+            .Select(x => x.Card)
+            .OrderByPokerStandard()
+            .ToList();
+
+        var expectedDeadCards = _testCards
+            .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
+            .Select(x => x.Card)
+            .OrderByPokerStandard()
+            .ToList();
+
+        return new()
         {
-            ExpectedHandQualification = _request.ExpectedHandQualification,
+            ExpectedHandQualification =
+                expectedHandCards.Any()
+                || expectedKickers.Any() ? HandQualifications.Qualifies : HandQualifications.Eliminated,
 
-            ExpectedHandCards = _testCards
-                .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
-                .Select(x => x.Card)
-                .OrderByPokerStandard()
-                .ToList(),
+            ExpectedHandCards = expectedHandCards,
 
-            ExpectedKickers = _testCards
-                .Where(x => x.ExpectedAssessment == ExpectedAssessment.Kicker)
-                .Select(x => x.Card)
-                .OrderByPokerStandard()
-                .ToList(),
+            ExpectedKickers = expectedKickers,
 
-            ExpectedDeadCards = _testCards
-                .Where(x => x.ExpectedAssessment == ExpectedAssessment.DeadCard)
-                .Select(x => x.Card)
-                .OrderByPokerStandard()
-                .ToList(),
+            ExpectedDeadCards = expectedDeadCards,
 
-            QualifiedHandResponse = _request.Hand.HandQualifier(
+            QualifiedHandResponse = _hand.HandQualifier(
                 new QualifiedHandRequest
                 {
                     Cards = _testCards
                         .Select(x => x.Card)
                         .WithoutImpersonation()
                         .ToList(),
-                    RemainingCardCount = _request.RemainingCards,
-                    Hand = _request.Hand
+                    RemainingCardCount = _remainingCards,
+                    Hand = _hand
                 }
             )
         };
+    }
 }
 

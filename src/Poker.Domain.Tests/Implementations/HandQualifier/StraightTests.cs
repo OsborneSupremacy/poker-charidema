@@ -7,13 +7,8 @@ public class StraightTests
     public void Qualify_True_When_Straight_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Straight
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Straight)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -38,13 +33,8 @@ public class StraightTests
     public void Qualify_False_When_No_Straight_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.Straight
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Straight)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

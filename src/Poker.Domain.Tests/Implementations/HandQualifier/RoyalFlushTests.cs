@@ -7,13 +7,8 @@ public class RoyalFlushTests
     public void Qualify_True_When_RoyalFlus_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.RoyalFlush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.RoyalFlush)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -38,13 +33,8 @@ public class RoyalFlushTests
     public void Qualify_False_When_StraightFlush_But_No_RoyalFlush_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.RoyalFlush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.RoyalFlush)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

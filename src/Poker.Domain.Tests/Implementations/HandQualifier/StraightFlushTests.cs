@@ -7,13 +7,8 @@ public class StraightFlushTests
     public void Qualify_True_When_StraightFlush_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.StraightFlush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.StraightFlush)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -38,13 +33,8 @@ public class StraightFlushTests
     public void Qualify_False_When_Straight_But_No_Flush_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.StraightFlush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.StraightFlush)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -69,13 +59,8 @@ public class StraightFlushTests
     public void Qualify_False_When_Flush_But_No_Straight_Exists()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.StraightFlush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.StraightFlush)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

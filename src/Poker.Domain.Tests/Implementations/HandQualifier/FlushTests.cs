@@ -7,13 +7,8 @@ public class FlushTests
     public void Qualify_Returns_True_When_Hand_Contains_Flush()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Flush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Flush)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -38,13 +33,8 @@ public class FlushTests
     public void Qualify_Returns_True_When_Hand_Contains_Flush_With_Joker()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Flush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Flush)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -69,13 +59,8 @@ public class FlushTests
     public void Qualify_Returns_True_When_Hand_Contains_Flush_With_Two_Jokers()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.Flush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Flush)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -100,13 +85,8 @@ public class FlushTests
     public void Qualify_Returns_False_When_Hand_Does_Not_Contain_Flush()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Eliminated,
-                RemainingCards = 0,
-                Hand = Hands.Flush
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.Flush)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

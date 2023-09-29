@@ -7,13 +7,8 @@ public class HighCardTests
     public void Qualify_Get_Highest_Ranking_Card()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.HighCard
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.HighCard)
             .ExpectedInHand(x =>
             {
                 x.With(
@@ -44,13 +39,8 @@ public class HighCardTests
     public void Qualify_Get_Joker_When_Joker_Is_Highest()
     {
         // arrange
-        var fixture = new HandQualifierTestFixture(
-            new()
-            {
-                ExpectedHandQualification = HandQualifications.Qualifies,
-                RemainingCards = 0,
-                Hand = Hands.HighCard
-            })
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.HighCard)
             .ExpectedInHand(x =>
             {
                 x.With(
