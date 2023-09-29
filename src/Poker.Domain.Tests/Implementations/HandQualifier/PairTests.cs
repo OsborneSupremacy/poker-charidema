@@ -106,7 +106,7 @@ public class PairTests
             .ExpectedInHand(x =>
             {
                 x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
-                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfHearts });
+                x.With(Cards.CreateJoker()  with { Impersonating = Cards.AceOfHearts });
             })
             .ExpectedInKicker(x =>
             {

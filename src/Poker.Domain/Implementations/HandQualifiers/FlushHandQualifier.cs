@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Implementations;
+﻿using Poker.Domain.Classic;
+
+namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {
@@ -40,18 +42,41 @@ public static partial class HandQualifierDelegates
         List<Card> cards
         )
     {
-        var cardsWithSuit = cards
-            .WhereSuitOrIsWild(suit)
-            .OrderByRank()
+        Queue<Card> wildCards = cards.WhereWild().ToQueue();
+
+        var playerCardsWithSuit = cards.WhereSuit(suit).ToList();
+        var neededCount = GlobalConstants.HandSize - playerCardsWithSuit.Count;
+
+        // add non-wildcards matching suit
+        var cardsOut = playerCardsWithSuit
+            .OrderBySuit()
             .Take(GlobalConstants.HandSize)
             .ToList();
 
+        // cards that can be impersonated, with rank in question
+        var targets = Cards
+            .All
+            .WhereSuit(suit)
+            .Except(playerCardsWithSuit)
+            .OrderByRank()
+            .Take(neededCount)
+            .ToQueue();
+
+        while (
+            targets.Any()
+            && wildCards.Any()
+            && cardsOut.Count < GlobalConstants.HandSize
+            )
+            cardsOut.Add(
+                wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
+            );
+
         return new PotentialHandMessage
         {
-            HighRank = Ranks.Empty,
+            HighRank = cards.GetMaxRank(),
             Suit = suit,
-            Complete = cardsWithSuit.Count >= GlobalConstants.HandSize,
-            Cards = cardsWithSuit
+            Complete = cardsOut.Count >= GlobalConstants.HandSize,
+            Cards = cardsOut
         };
     }
 }
