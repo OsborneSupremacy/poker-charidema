@@ -29,6 +29,11 @@ public static class CardLinqExtensions
     public static IEnumerable<Card> WhereNotWild(this IEnumerable<Card> cards) =>
         cards.Where(x => x.IsWild);
 
+    public static IEnumerable<Card> SelectImpersonationTargets(this IEnumerable<Card> cards) =>
+        cards
+            .Where(x => x.Impersonating != Cards.Empty)
+            .Select(x => x.Impersonating);
+
     public static IOrderedEnumerable<Card> OrderByPokerStandard(this IEnumerable<Card> cards) =>
         cards
             .OrderByDescending(c => c.IsWild)

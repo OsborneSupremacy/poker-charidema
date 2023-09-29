@@ -107,7 +107,12 @@ public static class CardCollectionExtensions
 
     public static Rank GetMaxRank(this IEnumerable<Card> input)
     {
-        var cards = input.ToList();
+        var cards = input
+            .Concat(
+                input.SelectImpersonationTargets()
+            )
+            .ToList();
+
         return cards.Any() switch
         {
             true => cards
