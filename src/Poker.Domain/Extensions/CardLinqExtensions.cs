@@ -34,17 +34,18 @@ public static class CardLinqExtensions
 
     public static IOrderedEnumerable<Card> OrderByPokerStandard(this IEnumerable<Card> cards) =>
         cards
-            .OrderByDescending(c => c.IsWild)
-            .ThenByDescending(c => c.Rank.Value)
-            .ThenByDescending(c => c.Suit.Priority);
+            .OrderByRank()
+            .OrderBySuit();
 
     public static IOrderedEnumerable<Card> OrderBySuit(this IEnumerable<Card> cards) =>
         cards
-            .OrderByDescending(c => c.IsWild)
-            .ThenByDescending(c => c.Suit.Priority);
+            .OrderByDescending(
+                c => c.IsWild ? c.Impersonating.Suit.Priority : c.Suit.Priority
+            );
 
     public static IOrderedEnumerable<Card> OrderByRank(this IEnumerable<Card> cards) =>
         cards
-            .OrderByDescending(c => c.IsWild)
-            .ThenByDescending(c => c.Rank.Value);
+            .OrderByDescending(
+                c => c.IsWild ? c.Impersonating.Rank.Value : c.Rank.Value
+            );
 }

@@ -60,14 +60,8 @@ public static partial class HandQualifierDelegates
             .Take(neededCount)
             .ToQueue();
 
-        while (
-            targets.Any()
-            && wildCards.Any()
-            && cardsOut.Count < GlobalConstants.HandSize
-            )
-            cardsOut.Add(
-                wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
-            );
+        cardsOut = cardsOut
+            .AssignWildCards(wildCards, targets, GlobalConstants.HandSize);
 
         return new PotentialHandMessage
         {

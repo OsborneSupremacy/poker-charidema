@@ -121,7 +121,7 @@ public record Hands
         Sequence = true,
         Uniform = true,
         SequenceMinRank = Ranks.Two,
-        HandQualifier = HandQualifierDelegates.StraightHandQualifier
+        HandQualifier = HandQualifierDelegates.StraightFlushHandQualifier
     };
 
     public static Hand RoyalFlush { get; } = new Hand

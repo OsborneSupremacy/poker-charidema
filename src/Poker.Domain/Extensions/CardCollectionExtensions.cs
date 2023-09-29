@@ -53,10 +53,23 @@ public static class CardCollectionExtensions
             .Take(neededCount)
             .ToQueue();
 
+        return cardsOut
+            .AssignWildCards(wildCards, targets, requiredCount);
+    }
+
+    public static List<Card> AssignWildCards(
+        this List<Card> cardsIn,
+        Queue<Card> wildCards,
+        Queue<Card> targets,
+        int max
+        )
+    {
+        var cardsOut = cardsIn;
+
         while (
             targets.Any()
             && wildCards.Any()
-            && cardsOut.Count < requiredCount
+            && cardsOut.Count < max
             )
             cardsOut.Add(
                 wildCards.Dequeue() with { Impersonating = targets.Dequeue() }

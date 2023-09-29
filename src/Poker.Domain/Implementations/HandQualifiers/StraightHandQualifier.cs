@@ -30,7 +30,7 @@ public static partial class HandQualifierDelegates
 
     private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards) =>
         Ranks.All
-            .Where(r => r.Value <= 10)
+            .Where(r => r.Value <= Ranks.Ten.Value)
             .OrderBy(x => x.Value)
             .Select(x => EvalulateStraight(x, cards))
             .ToList();
@@ -62,7 +62,7 @@ public static partial class HandQualifierDelegates
             var cardInSeqeuence = unusedCards
                 .Where(c => c.MatchesRankOrIsWild(rank))
                 .OrderBy(c => c.IsWild) // prefer non-wild
-                .ThenByDescending(c => c.Suit.Priority)
+                .OrderBySuit()
                 .FirstOrDefault() ?? Cards.Empty;
 
             if (cardInSeqeuence == Cards.Empty)
@@ -72,6 +72,17 @@ public static partial class HandQualifierDelegates
                     HighRank = highRank,
                     Complete = false,
                     Cards = sequence
+                };
+
+            if (cardInSeqeuence.IsWild)
+                cardInSeqeuence = cardInSeqeuence with
+                {
+                    Impersonating = Cards
+                        .All
+                        .WhereRank(rank)
+                        .OrderBy(cards.Contains)
+                        .OrderBySuit()
+                        .First()
                 };
 
             highRank = rank;
