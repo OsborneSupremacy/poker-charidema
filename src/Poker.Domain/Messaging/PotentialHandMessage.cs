@@ -16,5 +16,7 @@ public record PotentialHandMessage
     /// Cards that fully or partially meet the requirements
     /// of the hand.
     /// </summary>
-    public required List<Card> Cards { get; init; }
+    public required List<Card> Contributing { get; init; }
+
+    public required List<Card> NonContributing { get; init; }
 }

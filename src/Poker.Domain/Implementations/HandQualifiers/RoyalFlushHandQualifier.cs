@@ -17,7 +17,7 @@ public static partial class HandQualifierDelegates
                         FindPotentialStraightFlushes(request.Cards)
                             .Select(x => x with
                             {
-                                Cards = x.Cards
+                                Contributing = x.Contributing
                                     .WhereRanksOrIsWild(Ranks.Ten)
                                     .ToList()
                             })

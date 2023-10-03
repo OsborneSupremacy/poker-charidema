@@ -138,6 +138,9 @@ public static class CardCollectionExtensions
 
     public static string AggregateId(this List<Card> input) =>
         string.Join('|',
-            input.OrderBy(x => x.Id).Select(x => x.Id.ToString())
+            input
+                .OrderBy(x => x.Id)
+                .ThenBy(x => x.Impersonating.Id)
+                .Select(x => $"{x.Id}-{x.Impersonating.Id}")
         );
 }

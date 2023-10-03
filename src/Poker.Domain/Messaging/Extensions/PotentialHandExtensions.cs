@@ -13,5 +13,5 @@ public static class PotentialHandExtensions
             remainingCardCount >= input.CardsNeededToComplete();
 
     public static int CardsNeededToComplete(this PotentialHandMessage input) =>
-        GlobalConstants.HandSize - input.Cards.Count;
+        GlobalConstants.HandSize - input.Contributing.Count;
 }

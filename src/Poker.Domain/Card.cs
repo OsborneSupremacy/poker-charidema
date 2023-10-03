@@ -71,8 +71,15 @@ public record Card
 
     public required List<Holding> Holdings { get; init; }
 
-    public string ToStandardNotation()
+    public static IEqualityComparer<Card> Comparer { get; } = new CardEqualityComparer();
+
+    private sealed class CardEqualityComparer : IEqualityComparer<Card>
     {
-        throw new NotImplementedException();
+        public bool Equals(Card? x, Card? y) =>
+            (x?.Id ?? string.Empty) == (y?.Id ?? string.Empty)
+                && (x?.Impersonating?.Id ?? string.Empty) == (y?.Impersonating?.Id ?? string.Empty);
+
+        public int GetHashCode([DisallowNull] Card obj) =>
+            HashCode.Combine(obj.Id, obj.Impersonating.Id);
     }
 }

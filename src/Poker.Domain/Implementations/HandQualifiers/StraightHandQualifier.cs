@@ -16,7 +16,7 @@ public static partial class HandQualifierDelegates
 
         return request.Cards.ToQualifiedHand(
             request.Hand,
-            GetBestStraight(complete).Cards
+            GetBestStraight(complete).Contributing
         );
     };
 
@@ -25,7 +25,7 @@ public static partial class HandQualifierDelegates
         ) =>
         evalulated
             .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
-            .OrderByDescending(x => x.Cards.First().Suit.Priority)
+            .OrderByDescending(x => x.Contributing.First().Suit.Priority)
             .First();
 
     private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards) =>
@@ -71,7 +71,8 @@ public static partial class HandQualifierDelegates
                     Suit = Suits.Empty,
                     HighRank = highRank,
                     Complete = false,
-                    Cards = sequence
+                    Contributing = sequence,
+                    NonContributing = cards.Except(sequence, Card.Comparer).ToList()
                 };
 
             if (cardInSeqeuence.IsWild)
@@ -95,7 +96,8 @@ public static partial class HandQualifierDelegates
             Suit = Suits.Empty,
             HighRank = highRank,
             Complete = true,
-            Cards = sequence
+            Contributing = sequence,
+            NonContributing = cards.Except(sequence, Card.Comparer).ToList()
         };
     }
 }

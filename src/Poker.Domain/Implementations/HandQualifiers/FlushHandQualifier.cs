@@ -16,7 +16,7 @@ public static partial class HandQualifierDelegates
 
         return request.Cards.ToQualifiedHand(
             request.Hand,
-            GetBestFlush(complete).Cards
+            GetBestFlush(complete).Contributing
         );
     };
 
@@ -25,8 +25,8 @@ public static partial class HandQualifierDelegates
         ) =>
         evalulated
             .Where(x => x.Suit.Priority == evalulated.Max(x => x.Suit.Priority))
-            .OrderByDescending(x => x.Cards.Max(c => c.IsWild))
-            .ThenByDescending(x => x.Cards.Max(c => c.Rank.Value))
+            .OrderByDescending(x => x.Contributing.Max(c => c.IsWild))
+            .ThenByDescending(x => x.Contributing.Max(c => c.Rank.Value))
             .First();
 
     private static List<PotentialHandMessage> EvaluateFlushes(List<Card> cards) =>
@@ -68,7 +68,8 @@ public static partial class HandQualifierDelegates
             HighRank = cards.GetMaxRank(),
             Suit = suit,
             Complete = cardsOut.Count >= GlobalConstants.HandSize,
-            Cards = cardsOut
+            Contributing = cardsOut,
+            NonContributing = cards.Except(cardsOut, Card.Comparer).ToList()
         };
     }
 }

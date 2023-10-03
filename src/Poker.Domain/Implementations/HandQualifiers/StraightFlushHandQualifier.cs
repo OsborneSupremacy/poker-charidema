@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightFlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
         {
-            var potentials = FindPotentialStraightFlushes(request.Cards);
+            var potentials = FindPotentialStraightFlushes(request.Cards).ToList();
             var complete = potentials.Where(x => x.Complete).ToList();
 
             if (!complete.Any())
@@ -19,7 +19,7 @@ public static partial class HandQualifierDelegates
 
             return request.Cards.ToQualifiedHand(
                 request.Hand,
-                GetBestStraightFlush(complete).Cards
+                GetBestStraightFlush(complete).Contributing
             );
         };
 
@@ -28,7 +28,7 @@ public static partial class HandQualifierDelegates
     ) =>
         potential
             .Where(x => x.HighRank.Value == potential.Max(x => x.HighRank.Value))
-            .OrderByDescending(x => x.Cards.First().Suit.Priority)
+            .OrderByDescending(x => x.Contributing.First().Suit.Priority)
             .First();
 
     /// <summary>
@@ -39,20 +39,26 @@ public static partial class HandQualifierDelegates
     /// </summary>
     /// <param name="cards"></param>
     /// <returns></returns>
-    private static List<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards) =>
-        EvaluateFlushes(cards)
-            .Join
-            (
-                EvaluateStraights(cards),
-                f => f.Cards.AggregateId(), s => s.Cards.AggregateId(),
-                (f, s) => new PotentialHandMessage
+    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards)
+    {
+        var straights = EvaluateStraights(cards);
+
+        foreach(var flush in EvaluateFlushes(cards))
+            foreach(
+                var straight in straights
+                    .Where(
+                        x => x.Contributing.AggregateId() == flush.Contributing.AggregateId()
+                    )
+                )
+                yield return new PotentialHandMessage
                 {
-                    HighRank = s.HighRank,
-                    Suit = f.Suit,
-                    Cards = f.Cards,
-                    Complete = f.Complete && s.Complete
-                }
-            ).ToList();
+                    HighRank = flush.HighRank,
+                    Suit = flush.Suit,
+                    Contributing = flush.Contributing,
+                    NonContributing = cards.Except(flush.Contributing, Card.Comparer).ToList(),
+                    Complete = flush.Complete && straight.Complete,
+                };
+    }
 }
 
 

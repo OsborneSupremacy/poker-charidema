@@ -9,7 +9,17 @@ public record Cards
         CardType = CardTypes.Empty,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
-        Impersonating = default!,
+        Impersonating = new Card { 
+            Id = string.Empty,
+            CardOrientation = CardOrientations.Empty,
+            CardType = CardTypes.Empty,
+            FaceDirection = FaceDirections.NotApplicable,
+            IsWild = false,
+            Impersonating = default!,
+            Rank = Ranks.Empty,
+            Suit = Suits.Empty,
+            Holdings = new()
+        },
         Rank = Ranks.Empty,
         Suit = Suits.Empty,
         Holdings = new()
