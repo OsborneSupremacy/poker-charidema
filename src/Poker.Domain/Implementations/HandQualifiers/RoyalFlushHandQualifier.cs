@@ -14,7 +14,7 @@ public static partial class HandQualifierDelegates
                 false => request.Cards.ToUnqualifiedHand
                     (
                         request.Hand,
-                        FindPotentialStraightFlushes(request.Cards)
+                        FindPotentialStraightFlushes(request.Cards, request.RemainingCardCount)
                             .Select(x => x with
                             {
                                 ContributingStandardCards = x.ContributingStandardCards

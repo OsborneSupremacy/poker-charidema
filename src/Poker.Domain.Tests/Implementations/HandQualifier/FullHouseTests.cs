@@ -9,7 +9,7 @@ public class FullHouseTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FullHouse)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {

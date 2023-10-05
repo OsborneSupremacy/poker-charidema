@@ -6,6 +6,6 @@ public static class AssignedWildCardCollectionExtensions
         this List<AssignedWildCard> assignedWildCards
     ) =>
         assignedWildCards
-            .Select(assignedWildCard => assignedWildCard.Impersonating)
+            .Select(assignedWildCard => assignedWildCard.StandardCard)
             .ToList();
 }

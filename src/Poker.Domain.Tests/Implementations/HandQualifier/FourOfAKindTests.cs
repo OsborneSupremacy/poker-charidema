@@ -9,7 +9,7 @@ public class FourOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FourOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
@@ -38,16 +38,16 @@ public class FourOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FourOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfDiamonds },
                         Cards.AceOfClubs,
                         Cards.AceOfSpades
                     }
                 );
+                x.WithJoker(Cards.AceOfDiamonds);
             })
             .ExpectedInKicker(x =>
             {
@@ -67,16 +67,16 @@ public class FourOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FourOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfDiamonds },
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfClubs },
                         Cards.AceOfSpades
                     }
                 );
+                x.WithJoker(Cards.AceOfDiamonds);
+                x.WithJoker(Cards.AceOfClubs);
             })
             .ExpectedInKicker(x =>
             {

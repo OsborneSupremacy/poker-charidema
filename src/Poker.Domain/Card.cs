@@ -60,11 +60,6 @@ public record Card
 
     public required bool IsWild { get; init; }
 
-    /// <summary>
-    /// The card that the wild card is impersonating.
-    /// </summary>
-    public required Card Impersonating { get; init; }
-
     public required Rank Rank { get; init; }
 
     public required Suit Suit { get; init; }
@@ -72,27 +67,4 @@ public record Card
     public required FaceDirections FaceDirection { get; init; }
 
     public required List<Holding> Holdings { get; init; }
-
-    public static IEqualityComparer<Card> IdComparer { get; } = new CardIdEqualityComparer();
-
-    private sealed class CardIdEqualityComparer : IEqualityComparer<Card>
-    {
-        public bool Equals(Card? x, Card? y) =>
-            (x?.Id ?? Guid.Empty) == (y?.Id ?? Guid.Empty);
-
-        public int GetHashCode([DisallowNull] Card obj) =>
-            HashCode.Combine(obj.Id);
-    }
-
-    public static IEqualityComparer<Card> ValueComparer { get; } = new CardValueEqualityComparer();
-
-    private sealed class CardValueEqualityComparer : IEqualityComparer<Card>
-    {
-        public bool Equals(Card? x, Card? y) =>
-            (x?.Value ?? string.Empty) == (y?.Value ?? string.Empty)
-                && (x?.Impersonating?.Value ?? string.Empty) == (y?.Impersonating?.Value ?? string.Empty);
-
-        public int GetHashCode([DisallowNull] Card obj) =>
-            HashCode.Combine(obj.Value, obj.Impersonating.Value);
-    }
 }

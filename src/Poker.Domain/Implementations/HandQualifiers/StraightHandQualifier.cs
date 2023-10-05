@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allStraights = EvaluateStraights(request.Cards);
+        var allStraights = EvaluateStraights(request.Cards, request.RemainingCardCount);
         var completeStraights = allStraights.Where(x => x.Complete).ToList();
 
         if (!completeStraights.Any())
@@ -16,11 +16,7 @@ public static partial class HandQualifierDelegates
 
         var bestStraight = GetBestStraight(completeStraights);
 
-        return request.Hand.ToQualifiedHand(
-            bestStraight.ContributingStandardCards,
-            bestStraight.ContributingWildCards,
-            bestStraight.NonContributing
-        );
+        return request.Hand.ToQualifiedHand(bestStraight);
     };
 
     private static PotentialHandMessage GetBestStraight(
@@ -31,16 +27,17 @@ public static partial class HandQualifierDelegates
             .OrderByDescending(x => x.Suit.Priority)
             .First();
 
-    private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards) =>
+    private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards, uint remainingCardCount) =>
         Ranks.All
             .Where(r => r.Value <= Ranks.Ten.Value)
             .OrderBy(x => x.Value)
-            .Select(x => EvalulateStraight(x, cards))
+            .Select(x => EvalulateStraight(x, cards, remainingCardCount))
             .ToList();
 
     private static PotentialHandMessage EvalulateStraight(
         Rank startingRank,
-        List<Card> cards
+        List<Card> cards,
+        uint remainingCardCount
         )
     {
         Rank highRank = Ranks.Empty;
@@ -88,8 +85,9 @@ public static partial class HandQualifierDelegates
                     ContributingWildCards = contributingWild,
                     NonContributing = cards
                         .Except(contributingStandard)
-                        .Except(contributingWild.Select(w => w.Card))
-                        .ToList()
+                        .Except(contributingWild.Select(w => w.WildCard))
+                        .ToList(),
+                    RemainingCardCount = remainingCardCount
                 };
 
             var wildCardInSequence = wildCards.Dequeue();
@@ -104,8 +102,8 @@ public static partial class HandQualifierDelegates
             highRank = rank;
 
             contributingWild.Add(new AssignedWildCard {
-                Card = wildCardInSequence,
-                Impersonating = target
+                WildCard = wildCardInSequence,
+                StandardCard = target
             });
 
             unusedCards.Remove(wildCardInSequence);
@@ -120,8 +118,9 @@ public static partial class HandQualifierDelegates
             ContributingWildCards = contributingWild,
             NonContributing = cards
                 .Except(contributingStandard)
-                .Except(contributingWild.Select(w => w.Card))
-                .ToList()
+                .Except(contributingWild.Select(w => w.WildCard))
+                .ToList(),
+            RemainingCardCount = remainingCardCount
         };
     }
 }

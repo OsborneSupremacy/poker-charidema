@@ -6,7 +6,7 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
     {
         var firstPair =
-            GetPotentialMatchingRankHand(request.Cards, 2);
+            GetPotentialMatchingRankHand(request.Cards, 2, request.RemainingCardCount);
 
         if (!firstPair.Complete)
             return request.Cards.ToUnqualifiedHand(
@@ -15,7 +15,7 @@ public static partial class HandQualifierDelegates
             );
 
         var secondPair = 
-            GetPotentialMatchingRankHand(firstPair.NonContributing, 2);
+            GetPotentialMatchingRankHand(firstPair.NonContributing, 2, request.RemainingCardCount);
 
         if (!secondPair.Complete)
             return request.Cards.ToUnqualifiedHand(
@@ -24,15 +24,7 @@ public static partial class HandQualifierDelegates
             );
 
         return request.Hand.ToQualifiedHand(
-            firstPair
-                .ContributingStandardCards
-                .Concat(secondPair.ContributingStandardCards)
-                .ToList(),
-            firstPair
-                .ContributingWildCards
-                .Concat(secondPair.ContributingWildCards)
-                .ToList(),
-            secondPair.NonContributing
+            firstPair.CombineWith(secondPair)
         );
     };
 }

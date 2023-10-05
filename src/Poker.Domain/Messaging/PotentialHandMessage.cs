@@ -17,4 +17,6 @@ public record PotentialHandMessage
     public required List<AssignedWildCard> ContributingWildCards { get; init; }
 
     public required List<Card> NonContributing { get; init; }
+
+    public required uint RemainingCardCount { get; init; }
 }

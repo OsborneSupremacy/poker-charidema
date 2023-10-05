@@ -1,5 +1,4 @@
-﻿
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 public static class CardCollectionExtensions
 {
@@ -15,8 +14,8 @@ public static class CardCollectionExtensions
             yield return
                 new AssignedWildCard()
                 {
-                    Card = wildCards.Dequeue(),
-                    Impersonating = targets.Dequeue()
+                    WildCard = wildCards.Dequeue(),
+                    StandardCard = targets.Dequeue()
                 };
     }
 
@@ -30,7 +29,7 @@ public static class CardCollectionExtensions
     {
         var cards = contributingStandardCards
             .Concat(
-                contributingWildCards.Select(w => w.Impersonating)
+                contributingWildCards.Select(w => w.StandardCard)
             )
             .ToList();
 
@@ -43,12 +42,4 @@ public static class CardCollectionExtensions
             false => Ranks.Empty
         };
     }
-
-    public static string AggregateId(this List<Card> input) =>
-        string.Join('|',
-            input
-                .OrderBy(x => x.Value)
-                .ThenBy(x => x.Impersonating.Value)
-                .Select(x => $"{x.Value}-{x.Impersonating.Value}")
-        );
 }

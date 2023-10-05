@@ -2,9 +2,6 @@
 
 public static class CardLinqExtensions
 {
-    public static IEnumerable<Card> WithoutImpersonation(this IEnumerable<Card> cards) =>
-        cards.Select(c => c with { Impersonating = Cards.Empty });
-
     public static IEnumerable<Card> WhereSuit(
         this IEnumerable<Card> cards, Suit suit
         ) => cards.Where(x => x.MatchesSuit(suit));
@@ -27,11 +24,6 @@ public static class CardLinqExtensions
     public static IEnumerable<Card> WhereNotWild(this IEnumerable<Card> cards) =>
         cards.Where(x => x.IsWild);
 
-    public static IEnumerable<Card> SelectImpersonationTargets(this IEnumerable<Card> cards) =>
-        cards
-            .Where(x => x.Impersonating != Cards.Empty)
-            .Select(x => x.Impersonating);
-
     public static IOrderedEnumerable<Card> OrderByPokerStandard(this IEnumerable<Card> cards) =>
         cards
             .OrderByRank()
@@ -40,12 +32,12 @@ public static class CardLinqExtensions
     public static IOrderedEnumerable<Card> OrderBySuit(this IEnumerable<Card> cards) =>
         cards
             .OrderByDescending(
-                c => c.IsWild ? c.Impersonating.Suit.Priority : c.Suit.Priority
+                c => c.Suit.Priority
             );
 
     public static IOrderedEnumerable<Card> OrderByRank(this IEnumerable<Card> cards) =>
         cards
             .OrderByDescending(
-                c => c.IsWild ? c.Impersonating.Rank.Value : c.Rank.Value
+                c => c.Rank.Value
             );
 }

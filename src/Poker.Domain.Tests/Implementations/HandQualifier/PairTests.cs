@@ -9,7 +9,7 @@ public class PairTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Pair)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(Cards.TwoOfHearts);
                 x.With(Cards.TwoOfDiamonds);
@@ -34,10 +34,10 @@ public class PairTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Pair)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(Cards.NineOfClubs);
-                x.With(Cards.CreateJoker() with { Impersonating = Cards.NineOfSpades } );
+                x.WithJoker(Cards.NineOfSpades);
             })
             .ExpectedInKicker(x =>
             {
@@ -59,10 +59,10 @@ public class PairTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Pair)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
-                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
-                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfHearts });
+                x.WithJoker(Cards.AceOfSpades);
+                x.WithJoker(Cards.AceOfHearts);
             })
             .ExpectedInKicker(x =>
             {
@@ -84,10 +84,10 @@ public class PairTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Pair)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
-                x.With(Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades });
-                x.With(Cards.CreateJoker()  with { Impersonating = Cards.AceOfHearts });
+                x.WithJoker(Cards.AceOfSpades);
+                x.WithJoker(Cards.AceOfHearts);
             })
             .ExpectedInKicker(x =>
             {

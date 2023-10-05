@@ -1,4 +1,5 @@
-﻿using Poker.Domain.Extensions;
+﻿using System.Runtime.CompilerServices;
+using Poker.Domain.Extensions;
 
 namespace Poker.Domain.Tests.Utility;
 
@@ -6,7 +7,9 @@ public record HandQualifierTestFixtureResponse
 {
     public required HandQualifications ExpectedHandQualification { get; init; } 
 
-    public required List<Card> ExpectedHandCards { get; init; }
+    public required List<Card> ExpectedContributingStandardCards { get; init; }
+
+    public required List<Card> ExpectedContributingWildCards { get; init; }
 
     public required List<Card> ExpectedKickers { get; init; }
 
@@ -22,7 +25,7 @@ public static class HandQualifierTestFixtureExtensions
         )
     {
         response.QualifiedHandResponse.HandQualification.Should().Be(response.ExpectedHandQualification);
-        response.QualifiedHandResponse.ContributingStandardCards.Should().BeEquivalentTo(response.ExpectedHandCards);
+        response.QualifiedHandResponse.ContributingStandardCards.Should().BeEquivalentTo(response.ExpectedContributingStandardCards);
         response.QualifiedHandResponse.Kickers.Should().BeEquivalentTo(response.ExpectedKickers);
         response.QualifiedHandResponse.DeadCards.Should().BeEquivalentTo(response.ExpectedDeadCards);
     }
@@ -33,7 +36,7 @@ public class HandQualifierTestFixture
 {
     private enum ExpectedAssessment
     {
-        HandCard,
+        Contributing,
         Kicker,
         DeadCard
     }
@@ -45,19 +48,29 @@ public class HandQualifierTestFixture
         public required Card Card { get; init; }
     }
 
+    private record TestWildCard
+    {
+        public required ExpectedAssessment ExpectedAssessment { get; init; }
+
+        public required AssignedWildCard Card { get; init; }
+    }
+
     private readonly List<TestCard> _testCards;
+
+    private readonly List<TestWildCard> _testWildCards;
 
     private Hand _hand;
 
     private uint _remainingCards = 0;
 
-    private ExpectedAssessment _expectedAssessment = ExpectedAssessment.HandCard;
+    private ExpectedAssessment _expectedAssessment = ExpectedAssessment.Contributing;
 
     public HandQualifications ExpectedHandQualification = HandQualifications.Qualifies;
 
     public HandQualifierTestFixture()
     {
         _testCards = new List<TestCard>();
+        _testWildCards = new List<TestWildCard>();
         _hand = Hands.NoHand;
     }
 
@@ -69,15 +82,14 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture WithCardsRemaining(uint remainingCards)
     {
-
         _remainingCards = remainingCards;
         return this;
     }
 
-    public HandQualifierTestFixture ExpectedInHand(Action<HandQualifierTestFixture> configureHand)
+    public HandQualifierTestFixture ExpectedContributing(Action<HandQualifierTestFixture> configureHand)
     {
         ExpectedHandQualification = HandQualifications.Qualifies;
-        _expectedAssessment = ExpectedAssessment.HandCard;
+        _expectedAssessment = ExpectedAssessment.Contributing;
         configureHand(this);
         return this;
     }
@@ -124,6 +136,40 @@ public class HandQualifierTestFixture
         return this;
     }
 
+    public HandQualifierTestFixture WithWild(Card card, Card expectedToImpersonate)
+    {
+        _testWildCards.Add
+            (
+                new()
+                {
+                    ExpectedAssessment = _expectedAssessment,
+                    Card = new AssignedWildCard
+                    {
+                        WildCard = card,
+                        StandardCard = expectedToImpersonate
+                    }
+                }
+            );
+        return this;
+    }
+
+    public HandQualifierTestFixture WithJoker(Card expectedToImpersonate)
+    {
+        _testWildCards.Add
+            (
+                new()
+                {
+                    ExpectedAssessment = _expectedAssessment,
+                    Card = new AssignedWildCard
+                    {
+                        WildCard = Cards.CreateJoker(),
+                        StandardCard = expectedToImpersonate
+                    }
+                }
+            );
+        return this;
+    }
+
     public HandQualifierTestFixture WithRange(
         Suit suit,
         Rank startRank,
@@ -144,9 +190,15 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixtureResponse Execute()
     {
-        var expectedHandCards = _testCards
-            .Where(x => x.ExpectedAssessment == ExpectedAssessment.HandCard)
+        var expectedContributingStandard = _testCards
+            .Where(x => x.ExpectedAssessment == ExpectedAssessment.Contributing)
             .Select(x => x.Card)
+            .OrderByPokerStandard()
+            .ToList();
+
+        var expectedContributingWild = _testWildCards
+            .Where(x => x.ExpectedAssessment == ExpectedAssessment.Contributing)
+            .Select(x => x.Card.StandardCard)
             .OrderByPokerStandard()
             .ToList();
 
@@ -165,10 +217,13 @@ public class HandQualifierTestFixture
         return new()
         {
             ExpectedHandQualification =
-                expectedHandCards.Any()
-                || expectedKickers.Any() ? HandQualifications.Qualifies : HandQualifications.Eliminated,
+                expectedContributingStandard.Any()
+                || expectedContributingStandard.Any()
+                ? HandQualifications.Qualifies : HandQualifications.Eliminated,
 
-            ExpectedHandCards = expectedHandCards,
+            ExpectedContributingStandardCards = expectedContributingStandard,
+
+            ExpectedContributingWildCards = expectedContributingWild,
 
             ExpectedKickers = expectedKickers,
 
@@ -179,7 +234,11 @@ public class HandQualifierTestFixture
                 {
                     Cards = _testCards
                         .Select(x => x.Card)
-                        .WithoutImpersonation()
+                        .Concat(
+                            _testWildCards
+                                .Select(w => w.Card.WildCard)
+                                .ToList()
+                        )
                         .ToList(),
                     RemainingCardCount = _remainingCards,
                     Hand = _hand

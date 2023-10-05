@@ -9,7 +9,7 @@ public class TwoPairTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.TwoPair)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {

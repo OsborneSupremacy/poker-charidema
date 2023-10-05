@@ -9,7 +9,7 @@ public class RoyalFlushTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.RoyalFlush)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {

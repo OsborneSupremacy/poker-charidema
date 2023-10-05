@@ -9,7 +9,7 @@ public class StraightTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Straight)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
@@ -35,17 +35,17 @@ public class StraightTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Straight)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.KingOfSpades,
                         Cards.QueenOfHearts,
                         Cards.JackOfClubs,
-                        Cards.TenOfDiamonds,
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades }
+                        Cards.TenOfDiamonds
                     }
                 );
+                x.WithJoker(Cards.AceOfSpades);
             });
 
         // act
@@ -61,17 +61,17 @@ public class StraightTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Straight)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.KingOfSpades,
                         Cards.QueenOfHearts,
-                        Cards.JackOfClubs,
-                        Cards.CreateJoker() with { Impersonating = Cards.TenOfSpades },
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades }
+                        Cards.JackOfClubs
                     }
                 );
+                x.WithJoker(Cards.TenOfHearts);
+                x.WithJoker(Cards.AceOfSpades);
             });
 
         // act

@@ -13,5 +13,22 @@ public static class PotentialHandExtensions
             remainingCardCount >= input.CardsNeededToComplete();
 
     public static int CardsNeededToComplete(this PotentialHandMessage input) =>
-        GlobalConstants.HandSize - input.ContributingStandardCards.Count;
+        GlobalConstants.HandSize - input.AllContributingCards().Count;
+
+    public static string AggregateId(this PotentialHandMessage input)
+    {
+        var cardValues = input
+            .AllContributingCards()
+            .Select(x => x.Value);
+
+        return string.Join('|', cardValues.OrderBy(v => v));
+    }
+
+    public static List<Card> AllContributingCards(this PotentialHandMessage input) =>
+        input
+            .ContributingStandardCards
+            .Concat(
+                input.ContributingWildCards.Select(x => x.StandardCard)
+            )
+            .ToList();
 }

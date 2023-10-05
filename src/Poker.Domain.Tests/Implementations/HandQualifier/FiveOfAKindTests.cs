@@ -9,17 +9,17 @@ public class FiveOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FiveOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
                         Cards.AceOfDiamonds,
                         Cards.AceOfClubs,
-                        Cards.AceOfSpades,
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades }
+                        Cards.AceOfSpades
                     }
                 );
+                x.WithJoker(Cards.AceOfSpades);
             });
 
         // act
@@ -35,17 +35,17 @@ public class FiveOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.FiveOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
                         Cards.AceOfDiamonds,
-                        Cards.AceOfSpades,
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfSpades },
-                        Cards.CreateJoker() with { Impersonating = Cards.AceOfClubs }
+                        Cards.AceOfSpades
                     }
                 );
+                x.WithJoker(Cards.AceOfSpades);
+                x.WithJoker(Cards.AceOfClubs);
             });
 
         // act

@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightFlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
         {
-            var potentials = FindPotentialStraightFlushes(request.Cards).ToList();
+            var potentials = FindPotentialStraightFlushes(request.Cards, request.RemainingCardCount).ToList();
             var complete = potentials.Where(x => x.Complete).ToList();
 
             if (!complete.Any())
@@ -17,13 +17,7 @@ public static partial class HandQualifierDelegates
                     || potentials.EnoughRemainingCards(request.RemainingCardCount)
                 );
 
-            var bestStraightFlush = GetBestStraightFlush(complete);
-
-            return request.Hand.ToQualifiedHand(
-                bestStraightFlush.ContributingStandardCards,
-                bestStraightFlush.ContributingWildCards,
-                bestStraightFlush.NonContributing
-            );
+            return request.Hand.ToQualifiedHand(GetBestStraightFlush(complete));
         };
 
     private static PotentialHandMessage GetBestStraightFlush(
@@ -42,17 +36,15 @@ public static partial class HandQualifierDelegates
     /// </summary>
     /// <param name="cards"></param>
     /// <returns></returns>
-    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards)
+    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards, uint remainingCardCount)
     {
-        var straights = EvaluateStraights(cards);
+        var straights = EvaluateStraights(cards, remainingCardCount);
 
-        foreach(var flush in EvaluateFlushes(cards))
+        foreach(var flush in EvaluateFlushes(cards, remainingCardCount))
             foreach(
                 var straight in straights
                     .Where(
-                        x => 
-                            x.ContributingStandardCards.AggregateId()
-                            == flush.ContributingStandardCards.AggregateId() // TODO: Need to take into account wildcards
+                        x => x.AggregateId() == flush.AggregateId()
                     )
                 )
                 yield return new PotentialHandMessage
@@ -63,9 +55,10 @@ public static partial class HandQualifierDelegates
                     ContributingWildCards = flush.ContributingWildCards,
                     NonContributing = cards
                         .Except(flush.ContributingStandardCards)
-                        .Except(flush.ContributingWildCards.Select(w => w.Card))
+                        .Except(flush.ContributingWildCards.Select(w => w.WildCard))
                         .ToList(),
                     Complete = flush.Complete && straight.Complete,
+                    RemainingCardCount = remainingCardCount
                 };
     }
 }

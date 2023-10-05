@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allFlushes = EvaluateFlushes(request.Cards);
+        var allFlushes = EvaluateFlushes(request.Cards, request.RemainingCardCount);
         var completeFlushes = allFlushes.Where(x => x.Complete).ToList();
 
         if (!completeFlushes.Any())
@@ -16,11 +16,7 @@ public static partial class HandQualifierDelegates
 
         var bestFlush = GetBestFlush(completeFlushes);
 
-        return request.Hand.ToQualifiedHand(
-            bestFlush.ContributingStandardCards,
-            bestFlush.ContributingWildCards,
-            bestFlush.NonContributing
-        );
+        return request.Hand.ToQualifiedHand(bestFlush);
     };
 
     private static PotentialHandMessage GetBestFlush(
@@ -31,15 +27,16 @@ public static partial class HandQualifierDelegates
             .ThenByDescending(x => x.Suit.Priority)
             .First();
 
-    private static List<PotentialHandMessage> EvaluateFlushes(List<Card> cards) =>
+    private static List<PotentialHandMessage> EvaluateFlushes(List<Card> cards, uint remainingCardCount) =>
         Suits.All
             .OrderByDescending(s => s.Priority)
-            .Select(s => EvalulateFlush(s, cards))
+            .Select(s => EvalulateFlush(s, cards, remainingCardCount))
             .ToList();
 
     private static PotentialHandMessage EvalulateFlush(
         Suit suit,
-        List<Card> cards
+        List<Card> cards,
+        uint remainingCardCount
         )
     {
         var playerCardsWithSuit = cards.WhereSuit(suit).ToList();
@@ -77,8 +74,9 @@ public static partial class HandQualifierDelegates
             ContributingWildCards = contributingWild,
             NonContributing = cards
                 .Except(contributingStandard.ToList())
-                .Except(contributingWild.Select(w => w.Card))
-                .ToList()
+                .Except(contributingWild.Select(w => w.WildCard))
+                .ToList(),
+            RemainingCardCount = remainingCardCount
         };
     }
 }

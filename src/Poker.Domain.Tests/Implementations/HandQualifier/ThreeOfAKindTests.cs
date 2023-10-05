@@ -9,7 +9,7 @@ public class ThreeOfAKindTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.ThreeOfAKind)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {

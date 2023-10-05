@@ -9,7 +9,7 @@ public class FlushTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Flush)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
@@ -35,17 +35,17 @@ public class FlushTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Flush)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
                         Cards.TenOfHearts,
                         Cards.FiveOfHearts,
-                        Cards.ThreeOfHearts,
-                        Cards.CreateJoker() with { Impersonating = Cards.KingOfHearts }
+                        Cards.ThreeOfHearts
                     }
-                );
+                )
+                .WithJoker(Cards.KingOfHearts);
             });
 
         // act
@@ -61,17 +61,17 @@ public class FlushTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.Flush)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {
                         Cards.AceOfHearts,
-                        Cards.CreateJoker() with { Impersonating = Cards.QueenOfHearts },
                         Cards.FiveOfHearts,
-                        Cards.ThreeOfHearts,
-                        Cards.CreateJoker() with { Impersonating = Cards.KingOfHearts }
+                        Cards.ThreeOfHearts
                     }
                 );
+                x.WithJoker(Cards.QueenOfHearts);
+                x.WithJoker(Cards.KingOfHearts);
             });
 
         // act

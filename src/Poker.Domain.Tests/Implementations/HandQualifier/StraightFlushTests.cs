@@ -9,7 +9,7 @@ public class StraightFlushTests
         // arrange
         var fixture = new HandQualifierTestFixture()
             .For(Hands.StraightFlush)
-            .ExpectedInHand(x =>
+            .ExpectedContributing(x =>
             {
                 x.With(
                     new List<Card>() {

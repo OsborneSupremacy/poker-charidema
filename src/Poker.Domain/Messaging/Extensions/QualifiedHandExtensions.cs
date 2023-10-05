@@ -15,4 +15,14 @@ public static class QualifiedHandExtensions
     public static Rank GetHighRank(this QualifiedHandResponse input) =>
         input.ContributingStandardCards
             .GetMaxRank(input.ContributingWildCards);
+
+    public static PotentialHandMessage CombineWith(this PotentialHandMessage input, PotentialHandMessage other) =>
+        input with
+        {
+            ContributingStandardCards = 
+                input.ContributingStandardCards.Concat(other.ContributingStandardCards).ToList(),
+            ContributingWildCards =
+                input.ContributingWildCards.Concat(other.ContributingWildCards).ToList(),
+            NonContributing = other.NonContributing.ToList()
+        };
 }

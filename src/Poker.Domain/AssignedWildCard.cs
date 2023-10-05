@@ -2,7 +2,7 @@
 
 public record AssignedWildCard
 {
-    public required Card Card { get; init; }
+    public required Card WildCard { get; init; }
 
-    public required Card Impersonating { get; init; }
+    public required Card StandardCard { get; init; }
 }
