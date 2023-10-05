@@ -20,7 +20,9 @@ public record QualifiedHandResponse
 
     public required HandQualifications HandQualification { get; init; }
 
-    public required List<Card> HandCards { get; init; }
+    public required List<Card> ContributingStandardCards { get; init; }
+
+    public required List<AssignedWildCard> ContributingWildCards { get; init; }
 
     public required List<Card> Kickers { get; init; }
 

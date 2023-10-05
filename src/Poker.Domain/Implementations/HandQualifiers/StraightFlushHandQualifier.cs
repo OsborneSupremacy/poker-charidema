@@ -12,14 +12,17 @@ public static partial class HandQualifierDelegates
                 return request.Cards.ToUnqualifiedHand(
                     request.Hand,
                     // Determining whether a straight flush is possible for a player is tricky.
-                    // If there are 4+ cards yet to be dealt, then it's always possible possible.
+                    // If there are 4+ cards yet to be dealt, then it's always possible.
                     request.RemainingCardCount >= GlobalConstants.HandSize - 1
                     || potentials.EnoughRemainingCards(request.RemainingCardCount)
                 );
 
-            return request.Cards.ToQualifiedHand(
-                request.Hand,
-                GetBestStraightFlush(complete).Contributing
+            var bestStraightFlush = GetBestStraightFlush(complete);
+
+            return request.Hand.ToQualifiedHand(
+                bestStraightFlush.ContributingStandardCards,
+                bestStraightFlush.ContributingWildCards,
+                bestStraightFlush.NonContributing
             );
         };
 
@@ -28,7 +31,7 @@ public static partial class HandQualifierDelegates
     ) =>
         potential
             .Where(x => x.HighRank.Value == potential.Max(x => x.HighRank.Value))
-            .OrderByDescending(x => x.Contributing.First().Suit.Priority)
+            .OrderByDescending(x => x.Suit.Priority)
             .First();
 
     /// <summary>
@@ -47,15 +50,21 @@ public static partial class HandQualifierDelegates
             foreach(
                 var straight in straights
                     .Where(
-                        x => x.Contributing.AggregateId() == flush.Contributing.AggregateId()
+                        x => 
+                            x.ContributingStandardCards.AggregateId()
+                            == flush.ContributingStandardCards.AggregateId() // TODO: Need to take into account wildcards
                     )
                 )
                 yield return new PotentialHandMessage
                 {
                     HighRank = flush.HighRank,
                     Suit = flush.Suit,
-                    Contributing = flush.Contributing,
-                    NonContributing = cards.Except(flush.Contributing, Card.Comparer).ToList(),
+                    ContributingStandardCards = flush.ContributingStandardCards,
+                    ContributingWildCards = flush.ContributingWildCards,
+                    NonContributing = cards
+                        .Except(flush.ContributingStandardCards)
+                        .Except(flush.ContributingWildCards.Select(w => w.Card))
+                        .ToList(),
                     Complete = flush.Complete && straight.Complete,
                 };
     }

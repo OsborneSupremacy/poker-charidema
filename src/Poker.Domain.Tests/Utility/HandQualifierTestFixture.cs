@@ -22,7 +22,7 @@ public static class HandQualifierTestFixtureExtensions
         )
     {
         response.QualifiedHandResponse.HandQualification.Should().Be(response.ExpectedHandQualification);
-        response.QualifiedHandResponse.HandCards.Should().BeEquivalentTo(response.ExpectedHandCards);
+        response.QualifiedHandResponse.ContributingStandardCards.Should().BeEquivalentTo(response.ExpectedHandCards);
         response.QualifiedHandResponse.Kickers.Should().BeEquivalentTo(response.ExpectedKickers);
         response.QualifiedHandResponse.DeadCards.Should().BeEquivalentTo(response.ExpectedDeadCards);
     }

@@ -1,128 +1,36 @@
-﻿namespace Poker.Domain.Extensions;
+﻿
+namespace Poker.Domain.Extensions;
 
 public static class CardCollectionExtensions
 {
-    public static List<Card> GetMatchingRankHand(
-        this List<Card> input,
-        Rank rank,
-        int requiredCount
-    ) =>
-        input.AnyWild() switch
-        {
-            true => input.GetMatchingRankHandWithSomeWildCards(rank, requiredCount),
-            false => input.GetMatchingRankHandWithNoWildCards(rank, requiredCount),
-        };
-
-    public static List<Card> GetMatchingRankHandWithNoWildCards(
-        this List<Card> input,
-        Rank rank,
-        int requiredCount
-        ) => input
-            .WhereRank(rank)
-            .OrderBySuit()
-            .Take(requiredCount)
-            .ToList();
-
-    public static List<Card> GetMatchingRankHandWithSomeWildCards(
-        this List<Card> input,
-        Rank rank,
-        int requiredCount
+    public static IEnumerable<AssignedWildCard> AssignWildCards(
+        this Queue<Card> wildCards,
+        Queue<Card> targets
         )
     {
-        Queue<Card> wildCards = input.WhereWild().ToQueue();
-
-        var playerCardsWithRank = input.WhereRank(rank).ToList();
-        var neededCount = requiredCount - playerCardsWithRank.Count;
-
-        // add non-wildcards matching rank
-        var cardsOut = playerCardsWithRank
-            .OrderBySuit()
-            .Take(requiredCount)
-            .ToList();
-
-        // cards that can be impersonated, with rank in question
-        var targets = Cards
-            .All
-            .WhereRank(rank)
-            .OrderBySuit()
-            // if a card that the player is holding a the real version
-            // of has to be impersonated, it should only be impersonated
-            // after all other cards have been impersonated. This is mainly
-            // an issue for 5-of-a-kind.
-            .OrderBy(playerCardsWithRank.Contains)
-            .Take(neededCount)
-            .ToQueue();
-
-        return cardsOut
-            .AssignWildCards(wildCards, targets, requiredCount);
-    }
-
-    public static List<Card> AssignWildCards(
-        this List<Card> cardsIn,
-        Queue<Card> wildCards,
-        Queue<Card> targets,
-        int max
-        )
-    {
-        var cardsOut = cardsIn;
-
         while (
             targets.Any()
             && wildCards.Any()
-            && cardsOut.Count < max
             )
-            cardsOut.Add(
-                wildCards.Dequeue() with { Impersonating = targets.Dequeue() }
-            );
-
-        return cardsOut;
+            yield return
+                new AssignedWildCard()
+                {
+                    Card = wildCards.Dequeue(),
+                    Impersonating = targets.Dequeue()
+                };
     }
-
-    public static List<Card> GetKickers(
-        this List<Card> input,
-        List<Card> handCards) =>
-            input
-                .WithoutImpersonation()
-                .Except(handCards.WithoutImpersonation())
-                .OrderByPokerStandard()
-                .Take(GlobalConstants.HandSize - handCards.Count)
-                .ToList();
-
-    public static List<Card> GetDeadCards(
-        this List<Card> input,
-        List<Card> handCards,
-        List<Card> kickers
-        ) =>
-        input.WithoutImpersonation()
-            .Except(handCards.WithoutImpersonation())
-            .Except(kickers.WithoutImpersonation())
-            .ToList();
-
-    public static bool HasCountOfMatchingRank(this List<Card> input, Rank rank, uint count) =>
-        input.WhereRank(rank).Count() >= count;
 
     public static bool HasCountOfMatchingRankOrWild(this List<Card> input, Rank rank, uint count) =>
         input.WhereRanksOrIsWild(rank).Count() >= count;
 
-    public static bool AnyWild(this List<Card> input) =>
-        input.WhereWild().Any();
-
-    public static int WildCount(this List<Card> input) =>
-        input.WhereWild().Count();
-
-    public static Rank GetBestMatchingRank(this List<Card> cards, uint count)
+    public static Rank GetMaxRank(
+        this IEnumerable<Card> contributingStandardCards,
+        IEnumerable<AssignedWildCard> contributingWildCards
+        )
     {
-        foreach (var rank in Ranks.All.OrderByPokerStandard())
-            if (cards.HasCountOfMatchingRankOrWild(rank, count))
-                return rank;
-        return Ranks.Empty;
-    }
-
-    public static Rank GetMaxRank(this IEnumerable<Card> input)
-    {
-        var cards = input
+        var cards = contributingStandardCards
             .Concat(
-                input.SelectImpersonationTargets()
+                contributingWildCards.Select(w => w.Impersonating)
             )
             .ToList();
 
@@ -139,8 +47,8 @@ public static class CardCollectionExtensions
     public static string AggregateId(this List<Card> input) =>
         string.Join('|',
             input
-                .OrderBy(x => x.Id)
-                .ThenBy(x => x.Impersonating.Id)
-                .Select(x => $"{x.Id}-{x.Impersonating.Id}")
+                .OrderBy(x => x.Value)
+                .ThenBy(x => x.Impersonating.Value)
+                .Select(x => $"{x.Value}-{x.Impersonating.Value}")
         );
 }

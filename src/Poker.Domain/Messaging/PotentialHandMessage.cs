@@ -12,11 +12,9 @@ public record PotentialHandMessage
 
     public required bool Complete { get; init; }
 
-    /// <summary>
-    /// Cards that fully or partially meet the requirements
-    /// of the hand.
-    /// </summary>
-    public required List<Card> Contributing { get; init; }
+    public required List<Card> ContributingStandardCards { get; init; }
+
+    public required List<AssignedWildCard> ContributingWildCards { get; init; }
 
     public required List<Card> NonContributing { get; init; }
 }

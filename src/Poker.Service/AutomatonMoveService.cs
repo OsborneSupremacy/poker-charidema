@@ -69,8 +69,8 @@ public class AutomatonMoveService : IAutomatonMoveService
 
         deckCardsOut.RemoveAll(
             c => dealtCards
-                .Select(x => x.Id)
-                .Contains(c.Id)
+                .Select(x => x.Value)
+                .Contains(c.Value)
         );
 
         return Task.FromResult(

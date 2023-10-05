@@ -50,7 +50,9 @@ public enum Holding
 /// </summary>
 public record Card
 {
-    public required string Id { get; init; }
+    public required Guid Id { get; init; }
+
+    public required string Value { get; init; }
 
     public required CardOrientations CardOrientation { get; init; }
 
@@ -71,15 +73,26 @@ public record Card
 
     public required List<Holding> Holdings { get; init; }
 
-    public static IEqualityComparer<Card> Comparer { get; } = new CardEqualityComparer();
+    public static IEqualityComparer<Card> IdComparer { get; } = new CardIdEqualityComparer();
 
-    private sealed class CardEqualityComparer : IEqualityComparer<Card>
+    private sealed class CardIdEqualityComparer : IEqualityComparer<Card>
     {
         public bool Equals(Card? x, Card? y) =>
-            (x?.Id ?? string.Empty) == (y?.Id ?? string.Empty)
-                && (x?.Impersonating?.Id ?? string.Empty) == (y?.Impersonating?.Id ?? string.Empty);
+            (x?.Id ?? Guid.Empty) == (y?.Id ?? Guid.Empty);
 
         public int GetHashCode([DisallowNull] Card obj) =>
-            HashCode.Combine(obj.Id, obj.Impersonating.Id);
+            HashCode.Combine(obj.Id);
+    }
+
+    public static IEqualityComparer<Card> ValueComparer { get; } = new CardValueEqualityComparer();
+
+    private sealed class CardValueEqualityComparer : IEqualityComparer<Card>
+    {
+        public bool Equals(Card? x, Card? y) =>
+            (x?.Value ?? string.Empty) == (y?.Value ?? string.Empty)
+                && (x?.Impersonating?.Value ?? string.Empty) == (y?.Impersonating?.Value ?? string.Empty);
+
+        public int GetHashCode([DisallowNull] Card obj) =>
+            HashCode.Combine(obj.Value, obj.Impersonating.Value);
     }
 }

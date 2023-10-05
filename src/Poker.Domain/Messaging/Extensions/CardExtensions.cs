@@ -3,18 +3,27 @@
 public static class CardExtensions
 {
     public static QualifiedHandResponse ToQualifiedHand(
-        this List<Card> cards,
-        Hand hand,
-        List<Card> handCards)
+        this Hand hand,
+        List<Card> contributingStandardCards,
+        List<AssignedWildCard> contributingWildCards,
+        List<Card> nonContributingCards
+        )
     {
-        var kickers = cards.GetKickers(handCards);
+        var kickerCount = GlobalConstants.HandSize - contributingStandardCards.Count;
 
         return new QualifiedHandResponse
         {
             Hand = hand,
-            HandCards = handCards,
-            Kickers = kickers,
-            DeadCards = cards.GetDeadCards(handCards, kickers),
+            ContributingStandardCards = contributingStandardCards,
+            ContributingWildCards = contributingWildCards,
+            Kickers = nonContributingCards
+                .OrderByPokerStandard()
+                .Take(kickerCount)
+                .ToList(),
+            DeadCards = nonContributingCards
+                .OrderByPokerStandard()
+                .Skip(kickerCount)
+                .ToList(),
             HandQualification = HandQualifications.Qualifies
         };
     }
@@ -27,7 +36,8 @@ public static class CardExtensions
             new()
             {
                 Hand = hand,
-                HandCards = new(),
+                ContributingStandardCards = new(),
+                ContributingWildCards = new(),
                 DeadCards = cards,
                 Kickers = new(),
                 HandQualification =

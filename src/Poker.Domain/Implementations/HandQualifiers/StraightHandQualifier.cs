@@ -5,18 +5,21 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var all = EvaluateStraights(request.Cards);
-        var complete = all.Where(x => x.Complete).ToList();
+        var allStraights = EvaluateStraights(request.Cards);
+        var completeStraights = allStraights.Where(x => x.Complete).ToList();
 
-        if (!complete.Any())
+        if (!completeStraights.Any())
             return request.Cards.ToUnqualifiedHand(
                 request.Hand,
-                all.EnoughRemainingCards(request.RemainingCardCount)
+                allStraights.EnoughRemainingCards(request.RemainingCardCount)
             );
 
-        return request.Cards.ToQualifiedHand(
-            request.Hand,
-            GetBestStraight(complete).Contributing
+        var bestStraight = GetBestStraight(completeStraights);
+
+        return request.Hand.ToQualifiedHand(
+            bestStraight.ContributingStandardCards,
+            bestStraight.ContributingWildCards,
+            bestStraight.NonContributing
         );
     };
 
@@ -25,7 +28,7 @@ public static partial class HandQualifierDelegates
         ) =>
         evalulated
             .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
-            .OrderByDescending(x => x.Contributing.First().Suit.Priority)
+            .OrderByDescending(x => x.Suit.Priority)
             .First();
 
     private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards) =>
@@ -41,10 +44,13 @@ public static partial class HandQualifierDelegates
         )
     {
         Rank highRank = Ranks.Empty;
-        List<Card> sequence = new();
+        List<Card> contributingStandard = new();
+        List<AssignedWildCard> contributingWild = new();
 
         List<Card> unusedCards = new();
         unusedCards.AddRange(cards);
+
+        Queue<Card> wildCards = cards.WhereWild().ToQueue();
 
         for (uint r = 0; r < GlobalConstants.HandSize; r++)
         {
@@ -56,39 +62,53 @@ public static partial class HandQualifierDelegates
                 .Where(r => r.Value.Equals(nextRankValue))
                 .FirstOrDefault();
 
-            if (rank is null)
+            if (rank is null) // have gone past Ace. Can this actually happen? TODO: test
                 break;
 
-            var cardInSeqeuence = unusedCards
-                .Where(c => c.MatchesRankOrIsWild(rank))
-                .OrderBy(c => c.IsWild) // prefer non-wild
+            var standardCardInSequence = unusedCards
+                .Where(c => c.MatchesRank(rank))
                 .OrderBySuit()
                 .FirstOrDefault() ?? Cards.Empty;
 
-            if (cardInSeqeuence == Cards.Empty)
+            if(standardCardInSequence != Cards.Empty)
+            {
+                highRank = rank;
+                contributingStandard.Add(standardCardInSequence);
+                unusedCards.Remove(standardCardInSequence);
+                continue;
+            }
+
+            if(!wildCards.Any())
                 return new PotentialHandMessage
                 {
                     Suit = Suits.Empty,
                     HighRank = highRank,
                     Complete = false,
-                    Contributing = sequence,
-                    NonContributing = cards.Except(sequence, Card.Comparer).ToList()
+                    ContributingStandardCards = contributingStandard,
+                    ContributingWildCards = contributingWild,
+                    NonContributing = cards
+                        .Except(contributingStandard)
+                        .Except(contributingWild.Select(w => w.Card))
+                        .ToList()
                 };
 
-            if (cardInSeqeuence.IsWild)
-                cardInSeqeuence = cardInSeqeuence with
-                {
-                    Impersonating = Cards
-                        .All
-                        .WhereRank(rank)
-                        .OrderBy(cards.Contains)
-                        .OrderBySuit()
-                        .First()
-                };
+            var wildCardInSequence = wildCards.Dequeue();
+
+            // cards that can be impersonated, with rank in question
+            var target = Cards.All
+                .WhereRank(rank)
+                .Except(cards)
+                .OrderBySuit()
+                .First();
 
             highRank = rank;
-            sequence.Add(cardInSeqeuence);
-            unusedCards.Remove(cardInSeqeuence);
+
+            contributingWild.Add(new AssignedWildCard {
+                Card = wildCardInSequence,
+                Impersonating = target
+            });
+
+            unusedCards.Remove(wildCardInSequence);
         }
 
         return new PotentialHandMessage
@@ -96,8 +116,12 @@ public static partial class HandQualifierDelegates
             Suit = Suits.Empty,
             HighRank = highRank,
             Complete = true,
-            Contributing = sequence,
-            NonContributing = cards.Except(sequence, Card.Comparer).ToList()
+            ContributingStandardCards = contributingStandard,
+            ContributingWildCards = contributingWild,
+            NonContributing = cards
+                .Except(contributingStandard)
+                .Except(contributingWild.Select(w => w.Card))
+                .ToList()
         };
     }
 }

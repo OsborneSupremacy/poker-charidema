@@ -4,13 +4,15 @@ public record Cards
 {
     public static Card Empty { get; } = new Card
     {
-        Id = string.Empty,
+        Id = Guid.Empty,
+        Value = string.Empty,
         CardOrientation = CardOrientations.Empty,
         CardType = CardTypes.Empty,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
         Impersonating = new Card { 
-            Id = string.Empty,
+            Id = Guid.Empty,
+            Value = string.Empty,
             CardOrientation = CardOrientations.Empty,
             CardType = CardTypes.Empty,
             FaceDirection = FaceDirections.NotApplicable,
@@ -27,7 +29,8 @@ public record Cards
 
     public static Card TwoOfHearts { get; } = new Card
     {
-        Id = "2H",
+        Id = Guid.NewGuid(),
+        Value = "2H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -40,7 +43,8 @@ public record Cards
 
     public static Card ThreeOfHearts { get; } = new Card
     {
-        Id = "3H",
+        Id = Guid.NewGuid(),
+        Value = "3H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -53,7 +57,8 @@ public record Cards
 
     public static Card FourOfHearts { get; } = new Card
     {
-        Id = "4H",
+        Id = Guid.NewGuid(),
+        Value = "4H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -66,7 +71,8 @@ public record Cards
 
     public static Card FiveOfHearts { get; } = new Card
     {
-        Id = "5H",
+        Id = Guid.NewGuid(),
+        Value = "5H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -79,7 +85,8 @@ public record Cards
 
     public static Card SixOfHearts { get; } = new Card
     {
-        Id = "6H",
+        Id = Guid.NewGuid(),
+        Value = "6H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -92,7 +99,8 @@ public record Cards
 
     public static Card SevenOfHearts { get; } = new Card
     {
-        Id = "7H",
+        Id = Guid.NewGuid(),
+        Value = "7H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -105,7 +113,8 @@ public record Cards
 
     public static Card EightOfHearts { get; } = new Card
     {
-        Id = "8H",
+        Id = Guid.NewGuid(),
+        Value = "8H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -118,7 +127,8 @@ public record Cards
 
     public static Card NineOfHearts { get; } = new Card
     {
-        Id = "9H",
+        Id = Guid.NewGuid(),
+        Value = "9H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -131,7 +141,8 @@ public record Cards
 
     public static Card TenOfHearts { get; } = new Card
     {
-        Id = "10H",
+        Id = Guid.NewGuid(),
+        Value = "10H",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -144,7 +155,8 @@ public record Cards
 
     public static Card JackOfHearts { get; } = new Card
     {
-        Id = "JH",
+        Id = Guid.NewGuid(),
+        Value = "JH",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
@@ -160,7 +172,8 @@ public record Cards
 
     public static Card QueenOfHearts { get; } = new Card
     {
-        Id = "QH",
+        Id = Guid.NewGuid(),
+        Value = "QH",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
@@ -176,7 +189,8 @@ public record Cards
 
     public static Card KingOfHearts { get; } = new Card
     {
-        Id = "KH",
+        Id = Guid.NewGuid(),
+        Value = "KH",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
@@ -192,7 +206,8 @@ public record Cards
 
     public static Card AceOfHearts { get; } = new Card
     {
-        Id = "AH",
+        Id = Guid.NewGuid(),
+        Value = "AH",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -205,7 +220,8 @@ public record Cards
 
     public static Card TwoOfDiamonds { get; } = new Card
     {
-        Id = "2D",
+        Id = Guid.NewGuid(),
+        Value = "2D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -218,7 +234,8 @@ public record Cards
 
     public static Card ThreeOfDiamonds { get; } = new Card
     {
-        Id = "3D",
+        Id = Guid.NewGuid(),
+        Value = "3D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -231,7 +248,8 @@ public record Cards
 
     public static Card FourOfDiamonds { get; } = new Card
     {
-        Id = "4D",
+        Id = Guid.NewGuid(),
+        Value = "4D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -244,7 +262,8 @@ public record Cards
 
     public static Card FiveOfDiamonds { get; } = new Card
     {
-        Id = "5D",
+        Id = Guid.NewGuid(),
+        Value = "5D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -257,7 +276,8 @@ public record Cards
 
     public static Card SixOfDiamonds { get; } = new Card
     {
-        Id = "6D",
+        Id = Guid.NewGuid(),
+        Value = "6D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -270,7 +290,8 @@ public record Cards
 
     public static Card SevenOfDiamonds { get; } = new Card
     {
-        Id = "7D",
+        Id = Guid.NewGuid(),
+        Value = "7D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -283,7 +304,8 @@ public record Cards
 
     public static Card EightOfDiamonds { get; } = new Card
     {
-        Id = "8D",
+        Id = Guid.NewGuid(),
+        Value = "8D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -296,7 +318,8 @@ public record Cards
 
     public static Card NineOfDiamonds { get; } = new Card
     {
-        Id = "9D",
+        Id = Guid.NewGuid(),
+        Value = "9D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -309,7 +332,8 @@ public record Cards
 
     public static Card TenOfDiamonds { get; } = new Card
     {
-        Id = "10D",
+        Id = Guid.NewGuid(),
+        Value = "10D",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -322,7 +346,8 @@ public record Cards
 
     public static Card JackOfDiamonds { get; } = new Card
     {
-        Id = "JD",
+        Id = Guid.NewGuid(),
+        Value = "JD",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -338,7 +363,8 @@ public record Cards
 
     public static Card QueenOfDiamonds { get; } = new Card
     {
-        Id = "QD",
+        Id = Guid.NewGuid(),
+        Value = "QD",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -354,7 +380,8 @@ public record Cards
 
     public static Card KingOfDiamonds { get; } = new Card
     {
-        Id = "KD",
+        Id = Guid.NewGuid(),
+        Value = "KD",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -370,7 +397,8 @@ public record Cards
 
     public static Card AceOfDiamonds { get; } = new Card
     {
-        Id = "AD",
+        Id = Guid.NewGuid(),
+        Value = "AD",
         CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Ace,
         IsWild = false,
@@ -383,7 +411,8 @@ public record Cards
 
     public static Card TwoOfClubs { get; } = new Card
     {
-        Id = "2C",
+        Id = Guid.NewGuid(),
+        Value = "2C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -396,7 +425,8 @@ public record Cards
 
     public static Card ThreeOfClubs { get; } = new Card
     {
-        Id = "3C",
+        Id = Guid.NewGuid(),
+        Value = "3C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -409,7 +439,8 @@ public record Cards
 
     public static Card FourOfClubs { get; } = new Card
     {
-        Id = "4C",
+        Id = Guid.NewGuid(),
+        Value = "4C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -422,7 +453,8 @@ public record Cards
 
     public static Card FiveOfClubs { get; } = new Card
     {
-        Id = "5C",
+        Id = Guid.NewGuid(),
+        Value = "5C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -435,7 +467,8 @@ public record Cards
 
     public static Card SixOfClubs { get; } = new Card
     {
-        Id = "6C",
+        Id = Guid.NewGuid(),
+        Value = "6C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -448,7 +481,8 @@ public record Cards
 
     public static Card SevenOfClubs { get; } = new Card
     {
-        Id = "7C",
+        Id = Guid.NewGuid(),
+        Value = "7C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -461,7 +495,8 @@ public record Cards
 
     public static Card EightOfClubs { get; } = new Card
     {
-        Id = "8C",
+        Id = Guid.NewGuid(),
+        Value = "8C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -474,7 +509,8 @@ public record Cards
 
     public static Card NineOfClubs { get; } = new Card
     {
-        Id = "9C",
+        Id = Guid.NewGuid(),
+        Value = "9C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -487,7 +523,8 @@ public record Cards
 
     public static Card TenOfClubs { get; } = new Card
     {
-        Id = "10C",
+        Id = Guid.NewGuid(),
+        Value = "10C",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -500,7 +537,8 @@ public record Cards
 
     public static Card JackOfClubs { get; } = new Card
     {
-        Id = "JC",
+        Id = Guid.NewGuid(),
+        Value = "JC",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -516,7 +554,8 @@ public record Cards
 
     public static Card QueenOfClubs { get; } = new Card
     {
-        Id = "QC",
+        Id = Guid.NewGuid(),
+        Value = "QC",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -532,7 +571,8 @@ public record Cards
 
     public static Card KingOfClubs { get; } = new Card
     {
-        Id = "KC",
+        Id = Guid.NewGuid(),
+        Value = "KC",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -548,7 +588,8 @@ public record Cards
 
     public static Card AceOfClubs { get; } = new Card
     {
-        Id = "AC",
+        Id = Guid.NewGuid(),
+        Value = "AC",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -561,7 +602,8 @@ public record Cards
 
     public static Card TwoOfSpades { get; } = new Card
     {
-        Id = "2S",
+        Id = Guid.NewGuid(),
+        Value = "2S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -574,7 +616,8 @@ public record Cards
 
     public static Card ThreeOfSpades { get; } = new Card
     {
-        Id = "3S",
+        Id = Guid.NewGuid(),
+        Value = "3S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -587,7 +630,8 @@ public record Cards
 
     public static Card FourOfSpades { get; } = new Card
     {
-        Id = "4S",
+        Id = Guid.NewGuid(),
+        Value = "4S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -600,7 +644,8 @@ public record Cards
 
     public static Card FiveOfSpades { get; } = new Card
     {
-        Id = "5S",
+        Id = Guid.NewGuid(),
+        Value = "5S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -613,7 +658,8 @@ public record Cards
 
     public static Card SixOfSpades { get; } = new Card
     {
-        Id = "6S",
+        Id = Guid.NewGuid(),
+        Value = "6S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -626,7 +672,8 @@ public record Cards
 
     public static Card SevenOfSpades { get; } = new Card
     {
-        Id = "7S",
+        Id = Guid.NewGuid(),
+        Value = "7S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -639,7 +686,8 @@ public record Cards
 
     public static Card EightOfSpades { get; } = new Card
     {
-        Id = "8S",
+        Id = Guid.NewGuid(),
+        Value = "8S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -652,7 +700,8 @@ public record Cards
 
     public static Card NineOfSpades { get; } = new Card
     {
-        Id = "9S",
+        Id = Guid.NewGuid(),
+        Value = "9S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -665,7 +714,8 @@ public record Cards
 
     public static Card TenOfSpades { get; } = new Card
     {
-        Id = "10S",
+        Id = Guid.NewGuid(),
+        Value = "10S",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -678,7 +728,8 @@ public record Cards
 
     public static Card JackOfSpades { get; } = new Card
     {
-        Id = "JS",
+        Id = Guid.NewGuid(),
+        Value = "JS",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -694,7 +745,8 @@ public record Cards
 
     public static Card QueenOfSpades { get; } = new Card
     {
-        Id = "QS",
+        Id = Guid.NewGuid(),
+        Value = "QS",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -710,7 +762,8 @@ public record Cards
 
     public static Card KingOfSpades { get; } = new Card
     {
-        Id = "KS",
+        Id = Guid.NewGuid(),
+        Value = "KS",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -726,7 +779,8 @@ public record Cards
 
     public static Card AceOfSpades { get; } = new Card
     {
-        Id = "AS",
+        Id = Guid.NewGuid(),
+        Value = "AS",
         CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Impersonating = Empty,
@@ -739,7 +793,8 @@ public record Cards
 
     public static Card CreateJoker() => new()
     {
-        Id = "J",
+        Id = Guid.NewGuid(),
+        Value = "J",
         CardOrientation = CardOrientations.Facedown,
         IsWild = true,
         Impersonating = Empty,

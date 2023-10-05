@@ -5,18 +5,21 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var all = EvaluateFlushes(request.Cards);
-        var complete = all.Where(x => x.Complete).ToList();
+        var allFlushes = EvaluateFlushes(request.Cards);
+        var completeFlushes = allFlushes.Where(x => x.Complete).ToList();
 
-        if (!complete.Any())
+        if (!completeFlushes.Any())
             return request.Cards.ToUnqualifiedHand(
                 request.Hand,
-                all.EnoughRemainingCards(request.RemainingCardCount)
+                allFlushes.EnoughRemainingCards(request.RemainingCardCount)
             );
 
-        return request.Cards.ToQualifiedHand(
-            request.Hand,
-            GetBestFlush(complete).Contributing
+        var bestFlush = GetBestFlush(completeFlushes);
+
+        return request.Hand.ToQualifiedHand(
+            bestFlush.ContributingStandardCards,
+            bestFlush.ContributingWildCards,
+            bestFlush.NonContributing
         );
     };
 
@@ -24,9 +27,8 @@ public static partial class HandQualifierDelegates
         List<PotentialHandMessage> evalulated
         ) =>
         evalulated
-            .Where(x => x.Suit.Priority == evalulated.Max(x => x.Suit.Priority))
-            .OrderByDescending(x => x.Contributing.Max(c => c.IsWild))
-            .ThenByDescending(x => x.Contributing.Max(c => c.Rank.Value))
+            .OrderByDescending(x => x.HighRank.Value)
+            .ThenByDescending(x => x.Suit.Priority)
             .First();
 
     private static List<PotentialHandMessage> EvaluateFlushes(List<Card> cards) =>
@@ -40,36 +42,43 @@ public static partial class HandQualifierDelegates
         List<Card> cards
         )
     {
-        Queue<Card> wildCards = cards.WhereWild().ToQueue();
-
         var playerCardsWithSuit = cards.WhereSuit(suit).ToList();
         var neededCount = GlobalConstants.HandSize - playerCardsWithSuit.Count;
 
         // add non-wildcards matching suit
-        var cardsOut = playerCardsWithSuit
+        var contributingStandard = playerCardsWithSuit
             .OrderBySuit()
             .Take(GlobalConstants.HandSize)
             .ToList();
 
-        // cards that can be impersonated, with rank in question
-        var targets = Cards
-            .All
+        // cards that can be impersonated, with suit in question
+        var targets = Cards.All
             .WhereSuit(suit)
             .Except(playerCardsWithSuit)
             .OrderByRank()
             .Take(neededCount)
             .ToQueue();
 
-        cardsOut = cardsOut
-            .AssignWildCards(wildCards, targets, GlobalConstants.HandSize);
+        Queue<Card> wildCards = cards
+            .WhereWild()
+            .Take(GlobalConstants.HandSize - contributingStandard.Count)
+            .ToQueue();
+
+        var contributingWild = wildCards
+            .AssignWildCards(targets)
+            .ToList();
 
         return new PotentialHandMessage
         {
-            HighRank = cards.GetMaxRank(),
+            HighRank = cards.GetMaxRank(contributingWild),
             Suit = suit,
-            Complete = cardsOut.Count >= GlobalConstants.HandSize,
-            Contributing = cardsOut,
-            NonContributing = cards.Except(cardsOut, Card.Comparer).ToList()
+            Complete = contributingStandard.Count + contributingWild.Count >= GlobalConstants.HandSize,
+            ContributingStandardCards = contributingStandard,
+            ContributingWildCards = contributingWild,
+            NonContributing = cards
+                .Except(contributingStandard.ToList())
+                .Except(contributingWild.Select(w => w.Card))
+                .ToList()
         };
     }
 }

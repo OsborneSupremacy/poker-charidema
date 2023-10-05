@@ -6,7 +6,7 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
         {
             var straightFlush =
-                StraightFlushHandQualifier(request with { Hand = Hands.StraightFlush })!;
+                StraightFlushHandQualifier!(request with { Hand = Hands.StraightFlush })!;
 
             return straightFlush.IsRoyalFlush() switch
             {
@@ -17,7 +17,7 @@ public static partial class HandQualifierDelegates
                         FindPotentialStraightFlushes(request.Cards)
                             .Select(x => x with
                             {
-                                Contributing = x.Contributing
+                                ContributingStandardCards = x.ContributingStandardCards
                                     .WhereRanksOrIsWild(Ranks.Ten)
                                     .ToList()
                             })

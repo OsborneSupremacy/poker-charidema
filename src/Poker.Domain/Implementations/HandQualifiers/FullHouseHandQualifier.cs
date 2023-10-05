@@ -5,59 +5,41 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FullHouseHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var threeOfAKind = 
-            MatchingRankHandQualifier!(request with { Hand = Hands.ThreeOfAKind });
+        var threeOfAKind = GetPotentialMatchingRankHand(request.Cards, 3);
 
-        return threeOfAKind.HandQualification switch
-        {
-            HandQualifications.Eliminated => request.Cards.ToUnqualifiedHand(request.Hand, false),
-            HandQualifications.Possible => QualifyWithoutThreeOfAKind(request),
-            _ => QualifyWithTheeOfAKind(request.Cards, threeOfAKind, request.RemainingCardCount)
-        };
+        if(!threeOfAKind.Complete)
+            return request.Cards.ToUnqualifiedHand(
+                Hands.FullHouse,
+                request.RemainingCardCount >= RequiredAdditionalCards(request.Cards)
+            );
+
+        var additionalPair = 
+            GetPotentialMatchingRankHand(threeOfAKind.NonContributing, 2);
+
+        if (!additionalPair.Complete)
+            return request.Cards.ToUnqualifiedHand(
+                Hands.FullHouse,
+                request.RemainingCardCount > 0
+            );
+
+        return request.Hand.ToQualifiedHand(
+            threeOfAKind
+                .ContributingStandardCards
+                .Concat(additionalPair.ContributingStandardCards)
+                .ToList(),
+            threeOfAKind
+                .ContributingWildCards
+                .Concat(additionalPair.ContributingWildCards)
+                .ToList(),
+            additionalPair.NonContributing
+        );
     };
 
-    private static QualifiedHandResponse QualifyWithoutThreeOfAKind(QualifiedHandRequest request)
-    {
-        if (request.RemainingCardCount >= 4)
-            return request.Cards.ToUnqualifiedHand(Hands.FullHouse, true);
+    private static int RequiredAdditionalCards(List<Card> cards) =>
+        HasPair(cards) ? 3 : 2;
 
-        var hasPair = MatchingRankHandQualifier(new QualifiedHandRequest
-        {
-            Hand = request.Hand,
-            Cards = request.Cards,
-            RemainingCardCount = request.RemainingCardCount
-        }).HandQualification == HandQualifications.Qualifies;
-
-        var requiredAdditionalCards = hasPair ? 3 : 2;
-
-        return request.Cards.ToUnqualifiedHand(Hands.FullHouse, request.RemainingCardCount >= requiredAdditionalCards);
-    }
-
-    private static QualifiedHandResponse QualifyWithTheeOfAKind(
-        List<Card> cards,
-        QualifiedHandResponse threeOfAKind,
-        uint remainingCardCount
-        )
-    {
-        var additionalPair = MatchingRankHandQualifier(new QualifiedHandRequest
-        {
-            Hand = Hands.Pair,
-            Cards = cards.Except(threeOfAKind.HandCards).ToList(),
-            RemainingCardCount = remainingCardCount
-        });
-
-        return additionalPair.Qualifies() switch
-        {
-            true => cards.ToQualifiedHand(
-                Hands.FullHouse,
-                threeOfAKind.HandCards.Concat(additionalPair.HandCards).ToList()
-            ),
-            false => cards.ToUnqualifiedHand(
-                Hands.FullHouse,
-                !additionalPair.Eliminated() // if an additional pair is possible, full house is possible
-            )
-        };
-    }
+    private static bool HasPair(List<Card> cards) =>
+        GetPotentialMatchingRankHand(cards, 2).Complete;
 }
 
 

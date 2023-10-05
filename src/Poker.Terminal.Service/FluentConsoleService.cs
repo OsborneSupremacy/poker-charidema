@@ -186,7 +186,7 @@ public class FluentConsoleService : IUserInterfaceService
             .ThenByDescending(x => x.Suit.Priority)
             )
         {
-            AnsiConsole.WriteLine(card.Id);
+            AnsiConsole.WriteLine(card.Value);
         }
         return this;
     }

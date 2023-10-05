@@ -9,7 +9,8 @@ public static partial class HandQualifierDelegates
             {
                 Hand = request.Hand,
                 HandQualification = HandQualifications.Qualifies,
-                HandCards = new(),
+                ContributingStandardCards = new(),
+                ContributingWildCards = new(),
                 Kickers = new(),
                 DeadCards = request.Cards
             };
