@@ -243,7 +243,7 @@ public class HandQualifierTestFixture
         {
             ExpectedHandQualification =
                 expectedContributingStandard.Any()
-                || expectedContributingStandard.Any()
+                || expectedContributingWild.Any()
                 ? HandQualifications.Qualifies : HandQualifications.Eliminated,
 
             ExpectedContributingStandardCards = expectedContributingStandard,
