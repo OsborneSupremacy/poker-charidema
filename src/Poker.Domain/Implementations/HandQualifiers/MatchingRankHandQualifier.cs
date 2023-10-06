@@ -113,9 +113,8 @@ public static partial class HandQualifierDelegates
         var targets = Cards
             .All
                 .WhereRank(rank)
-                .Except(contributingStandard)
                 .OrderBySuit()
-                .Take(neededCount)
+                .OrderBy(contributingStandard.Contains)
                 .ToQueue();
 
         return wildCards.AssignWildCards(targets).ToList();

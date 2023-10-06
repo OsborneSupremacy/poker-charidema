@@ -24,10 +24,35 @@ public static class HandQualifierTestFixtureExtensions
         this HandQualifierTestFixtureResponse response
         )
     {
-        response.QualifiedHandResponse.HandQualification.Should().Be(response.ExpectedHandQualification);
-        response.QualifiedHandResponse.ContributingStandardCards.Should().BeEquivalentTo(response.ExpectedContributingStandardCards);
-        response.QualifiedHandResponse.Kickers.Should().BeEquivalentTo(response.ExpectedKickers);
-        response.QualifiedHandResponse.DeadCards.Should().BeEquivalentTo(response.ExpectedDeadCards);
+        response
+            .QualifiedHandResponse
+            .HandQualification
+            .Should()
+            .Be(response.ExpectedHandQualification);
+
+        response
+            .QualifiedHandResponse
+            .ContributingStandardCards
+            .Should()
+            .BeEquivalentTo(response.ExpectedContributingStandardCards);
+
+        response
+            .QualifiedHandResponse
+            .ContributingWildCards.Select(w => w.StandardCard)
+            .Should()
+            .BeEquivalentTo(response.ExpectedContributingWildCards);
+
+        response
+            .QualifiedHandResponse
+            .Kickers
+            .Should()
+            .BeEquivalentTo(response.ExpectedKickers);
+
+        response
+            .QualifiedHandResponse
+            .DeadCards
+            .Should()
+            .BeEquivalentTo(response.ExpectedDeadCards);
     }
 }
 
