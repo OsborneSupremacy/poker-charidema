@@ -15,7 +15,7 @@ public static class PotentialHandExtensions
     public static int CardsNeededToComplete(this PotentialHandMessage input) =>
         GlobalConstants.HandSize - input.AllContributingCards().Count;
 
-    public static string AggregateId(this PotentialHandMessage input)
+    public static string AggregateValue(this PotentialHandMessage input)
     {
         var cardValues = input
             .AllContributingCards()

@@ -19,7 +19,7 @@ public class FiveOfAKindTests
                         Cards.AceOfSpades
                     }
                 );
-                x.WithJoker(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfSpades);
             });
 
         // act
@@ -44,8 +44,8 @@ public class FiveOfAKindTests
                         Cards.AceOfSpades
                     }
                 );
-                x.WithJoker(Cards.AceOfSpades);
-                x.WithJoker(Cards.AceOfClubs);
+                x.WithJokerFor(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfClubs);
             });
 
         // act

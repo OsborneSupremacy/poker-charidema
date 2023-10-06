@@ -47,7 +47,7 @@ public class FourOfAKindTests
                         Cards.AceOfSpades
                     }
                 );
-                x.WithJoker(Cards.AceOfDiamonds);
+                x.WithJokerFor(Cards.AceOfDiamonds);
             })
             .ExpectedInKicker(x =>
             {
@@ -75,8 +75,8 @@ public class FourOfAKindTests
                         Cards.AceOfSpades
                     }
                 );
-                x.WithJoker(Cards.AceOfDiamonds);
-                x.WithJoker(Cards.AceOfClubs);
+                x.WithJokerFor(Cards.AceOfDiamonds);
+                x.WithJokerFor(Cards.AceOfClubs);
             })
             .ExpectedInKicker(x =>
             {

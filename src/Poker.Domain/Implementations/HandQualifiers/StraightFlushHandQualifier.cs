@@ -44,7 +44,7 @@ public static partial class HandQualifierDelegates
             foreach(
                 var straight in straights
                     .Where(
-                        x => x.AggregateId() == flush.AggregateId()
+                        x => x.AggregateValue() == flush.AggregateValue()
                     )
                 )
                 yield return new PotentialHandMessage

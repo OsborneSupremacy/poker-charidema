@@ -43,7 +43,7 @@ public class HighCardTests
             .For(Hands.HighCard)
             .ExpectedContributing(x =>
             {
-                x.WithJoker(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfSpades);
             })
             .ExpectedInKicker(x => {
                 x.With(

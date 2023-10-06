@@ -45,7 +45,7 @@ public class FlushTests
                         Cards.ThreeOfHearts
                     }
                 )
-                .WithJoker(Cards.KingOfHearts);
+                .WithJokerFor(Cards.KingOfHearts);
             });
 
         // act
@@ -70,8 +70,8 @@ public class FlushTests
                         Cards.ThreeOfHearts
                     }
                 );
-                x.WithJoker(Cards.QueenOfHearts);
-                x.WithJoker(Cards.KingOfHearts);
+                x.WithJokerFor(Cards.QueenOfHearts);
+                x.WithJokerFor(Cards.KingOfHearts);
             });
 
         // act

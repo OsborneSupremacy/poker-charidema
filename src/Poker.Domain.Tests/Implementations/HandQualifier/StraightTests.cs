@@ -45,7 +45,7 @@ public class StraightTests
                         Cards.TenOfDiamonds
                     }
                 );
-                x.WithJoker(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfSpades);
             });
 
         // act
@@ -70,8 +70,8 @@ public class StraightTests
                         Cards.JackOfClubs
                     }
                 );
-                x.WithJoker(Cards.TenOfHearts);
-                x.WithJoker(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.TenOfSpades);
+                x.WithJokerFor(Cards.AceOfSpades);
             });
 
         // act

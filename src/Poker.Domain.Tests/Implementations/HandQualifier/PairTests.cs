@@ -37,7 +37,7 @@ public class PairTests
             .ExpectedContributing(x =>
             {
                 x.With(Cards.NineOfClubs);
-                x.WithJoker(Cards.NineOfSpades);
+                x.WithJokerFor(Cards.NineOfSpades);
             })
             .ExpectedInKicker(x =>
             {
@@ -61,8 +61,8 @@ public class PairTests
             .For(Hands.Pair)
             .ExpectedContributing(x =>
             {
-                x.WithJoker(Cards.AceOfSpades);
-                x.WithJoker(Cards.AceOfHearts);
+                x.WithJokerFor(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfHearts);
             })
             .ExpectedInKicker(x =>
             {
@@ -86,8 +86,8 @@ public class PairTests
             .For(Hands.Pair)
             .ExpectedContributing(x =>
             {
-                x.WithJoker(Cards.AceOfSpades);
-                x.WithJoker(Cards.AceOfHearts);
+                x.WithJokerFor(Cards.AceOfSpades);
+                x.WithJokerFor(Cards.AceOfHearts);
             })
             .ExpectedInKicker(x =>
             {

@@ -19,8 +19,8 @@ public static class CardCollectionExtensions
                 };
     }
 
-    public static bool HasCountOfMatchingRankOrWild(this List<Card> input, Rank rank, uint count) =>
-        input.WhereRanksOrIsWild(rank).Count() >= count;
+    public static string AggregateValue(this IEnumerable<Card> cards) =>
+        string.Join('|', cards.Select(c => c.Value).OrderBy(v => v));
 
     public static Rank GetMaxRank(
         this IEnumerable<Card> contributingStandardCards,

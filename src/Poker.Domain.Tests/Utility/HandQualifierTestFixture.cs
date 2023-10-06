@@ -1,8 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using Poker.Domain.Extensions;
+﻿using Poker.Domain.Extensions;
 
 namespace Poker.Domain.Tests.Utility;
 
+[ExcludeFromCodeCoverage]
 public record HandQualifierTestFixtureResponse
 {
     public required HandQualifications ExpectedHandQualification { get; init; } 
@@ -18,6 +18,7 @@ public record HandQualifierTestFixtureResponse
     public required QualifiedHandResponse QualifiedHandResponse { get; init; }
 }
 
+[ExcludeFromCodeCoverage]
 public static class HandQualifierTestFixtureExtensions
 {
     public static void ShouldBeAsExpected(
@@ -44,15 +45,15 @@ public static class HandQualifierTestFixtureExtensions
 
         response
             .QualifiedHandResponse
-            .Kickers
+            .Kickers.AggregateValue()
             .Should()
-            .BeEquivalentTo(response.ExpectedKickers);
+            .Be(response.ExpectedKickers.AggregateValue());
 
         response
             .QualifiedHandResponse
-            .DeadCards
+            .DeadCards.AggregateValue()
             .Should()
-            .BeEquivalentTo(response.ExpectedDeadCards);
+            .BeEquivalentTo(response.ExpectedDeadCards.AggregateValue());
     }
 }
 
@@ -178,40 +179,8 @@ public class HandQualifierTestFixture
         return this;
     }
 
-    public HandQualifierTestFixture WithJoker(Card expectedToImpersonate)
-    {
-        _testWildCards.Add
-            (
-                new()
-                {
-                    ExpectedAssessment = _expectedAssessment,
-                    Card = new AssignedWildCard
-                    {
-                        WildCard = Cards.CreateJoker(),
-                        StandardCard = expectedToImpersonate
-                    }
-                }
-            );
-        return this;
-    }
-
-    public HandQualifierTestFixture WithRange(
-        Suit suit,
-        Rank startRank,
-        Rank endRank
-        )
-    {
-        _testCards.AddRange
-            (
-                Cards.All
-                .WhereSuit(suit)
-                .WhereNotWild()
-                .Where(x => x.Rank.Value >= startRank.Value)
-                .Where(x => x.Rank.Value <= endRank.Value)
-                .Select(x => new TestCard { Card = x, ExpectedAssessment = _expectedAssessment })
-            );
-        return this;
-    }
+    public HandQualifierTestFixture WithJokerFor(Card expectedToImpersonate) =>
+        WithWild(Cards.CreateJoker(), expectedToImpersonate);
 
     public HandQualifierTestFixtureResponse Execute()
     {
