@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging.Extensions;
 
-public static class HandExtensions
+internal static class HandExtensions
 {
     public static QualifiedHandResponse ToQualifiedHand(
         this Hand hand,
@@ -13,6 +13,8 @@ public static class HandExtensions
 
         return new QualifiedHandResponse
         {
+            HighRank = potentialHand.HighRank,
+            Suit = potentialHand.Suit,
             Hand = hand,
             ContributingStandardCards = potentialHand.ContributingStandardCards,
             ContributingWildCards = potentialHand.ContributingWildCards,

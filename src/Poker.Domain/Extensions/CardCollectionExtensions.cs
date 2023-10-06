@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Extensions;
 
-public static class CardCollectionExtensions
+internal static class CardCollectionExtensions
 {
     public static IEnumerable<AssignedWildCard> AssignWildCards(
         this Queue<Card> wildCards,

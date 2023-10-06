@@ -7,6 +7,8 @@ public static partial class HandQualifierDelegates
         {
             return new QualifiedHandResponse
             {
+                HighRank = Ranks.Empty,
+                Suit = Suits.Empty,
                 Hand = request.Hand,
                 HandQualification = HandQualifications.Qualifies,
                 ContributingStandardCards = new(),

@@ -30,7 +30,7 @@ public static partial class HandQualifierDelegates
     private static bool IsRoyalFlush(this QualifiedHandResponse straightFlush) =>
         straightFlush.Qualifies() switch
         {
-            true => straightFlush.GetHighRank() == Ranks.Ace,
+            true => straightFlush.HighRank == Ranks.Ace,
             false => false
         };
 

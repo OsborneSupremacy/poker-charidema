@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging.Extensions;
 
-public static class PotentialHandExtensions
+internal static class PotentialHandExtensions
 {
     public static bool EnoughRemainingCards(
         this List<PotentialHandMessage> potentials, uint remainingCardCount

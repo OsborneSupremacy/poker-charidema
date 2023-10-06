@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging.Extensions;
 
-public static class CardExtensions
+internal static class CardExtensions
 {
     public static QualifiedHandResponse ToUnqualifiedHand(
         this List<Card> cards,
@@ -9,6 +9,8 @@ public static class CardExtensions
         ) =>
             new()
             {
+                HighRank = Ranks.Empty,
+                Suit = Suits.Empty,
                 Hand = hand,
                 ContributingStandardCards = new(),
                 ContributingWildCards = new(),

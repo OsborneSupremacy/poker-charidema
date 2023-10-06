@@ -16,6 +16,10 @@ public enum HandQualifications
 /// </summary>
 public record QualifiedHandResponse
 {
+    public required Rank HighRank { get; init; }
+
+    public required Suit Suit { get; init; }
+
     public required Hand Hand { get; set; }
 
     public required HandQualifications HandQualification { get; init; }

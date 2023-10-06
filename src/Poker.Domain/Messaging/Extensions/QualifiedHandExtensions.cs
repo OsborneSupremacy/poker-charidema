@@ -12,10 +12,6 @@ public static class QualifiedHandExtensions
     public static bool Qualifies(this QualifiedHandResponse input) =>
         input.HandQualification == HandQualifications.Qualifies;
 
-    public static Rank GetHighRank(this QualifiedHandResponse input) =>
-        input.ContributingStandardCards
-            .GetMaxRank(input.ContributingWildCards);
-
     public static PotentialHandMessage CombineWith(this PotentialHandMessage input, PotentialHandMessage other) =>
         input with
         {

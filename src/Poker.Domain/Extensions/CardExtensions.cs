@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Extensions;
 
-public static class CardExtensions
+internal static class CardExtensions
 {
     public static bool MatchesRank(this Card input, Rank rank) =>
         input.Rank.Value == rank.Value;
