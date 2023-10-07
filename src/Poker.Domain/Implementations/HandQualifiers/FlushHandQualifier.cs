@@ -73,14 +73,13 @@ public static partial class HandQualifierDelegates
 
         if (stillNeededCount > 0)
             neededCardMessageBuilder
-                .WithGroup(stillNeededCount)
-                    .WithCard(Ranks.Empty, suit);
+                .WithCard(Ranks.Empty, suit);
 
         return new PotentialHandMessage
         {
             HighRank = cards.GetMaxRank(contributingWild),
             Suit = suit,
-            Complete = stillNeededCount > 0,
+            Complete = stillNeededCount == 0,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
             NonContributing = cards

@@ -2,57 +2,33 @@
 
 internal class NeededCardMessageBuilder
 {
-    private readonly NeededCardMessage _neededCardMessage;
+    private readonly NeededCardMessage _message;
 
-    private readonly List<NeededCardGroup> _neededCardGroups;
-
-    private NeededCardGroup _currentGroup;
-
-    private List<NeededCard> _currentGroupCards;
+    private readonly List<NeededCard> _cards;
 
     public NeededCardMessageBuilder()
     {
-        _currentGroupCards = new();
-        _currentGroup = new NeededCardGroup
+        _cards = new();
+        _message = new()
         {
-            Count = 0,
-            Cards = _currentGroupCards
+            Cards = _cards
         };
-        _neededCardGroups = new();
-        _neededCardMessage = new()
-        {
-            NeededCardGroups = _neededCardGroups
-        };
-    }
-
-    public NeededCardMessageBuilder WithGroup(int count)
-    {
-        _currentGroupCards = new List<NeededCard>();
-
-        _currentGroup = new()
-        {
-            Count = count.ToUint(),
-            Cards = _currentGroupCards
-        };
-
-        _neededCardGroups.Add(_currentGroup);
-        return this;
     }
 
     public NeededCardMessageBuilder WithCard(Rank rank, Suit suit)
     {
-        _currentGroupCards.Add(
+        _cards.Add(
             new () { Rank = rank, Suit = suit }
         );
         return this;
     }
 
-    public NeededCardMessage Build() => _neededCardMessage;
+    public NeededCardMessage Build() => _message;
 
     public static NeededCardMessage Empty() =>
         new()
         {
-            NeededCardGroups = Enumerable.Empty<NeededCardGroup>().ToList()
+            Cards = Enumerable.Empty<NeededCard>().ToList()
         };
 
     internal NeededCardMessageBuilder WithCards(List<NeededCard> neededCards)

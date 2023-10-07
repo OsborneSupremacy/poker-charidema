@@ -40,11 +40,10 @@ public static partial class HandQualifierDelegates
                 return potential;
 
             // we don't have a match, but we might have a better needed card message
-            var potentialNeededCards = potential.NeededCardMessage.TotalNeededCards();
-            if(potentialNeededCards < bestNeededCardCount)
+            if(potential.NeededCardMessage.Cards.Count < bestNeededCardCount)
             {
                 bestNeededCardMessage = potential.NeededCardMessage;
-                bestNeededCardCount = potentialNeededCards;
+                bestNeededCardCount = potential.NeededCardMessage.Cards.Count;
             }
         }
 
@@ -82,8 +81,7 @@ public static partial class HandQualifierDelegates
                 NonContributing = cards,
                 RemainingCardCount = remainingCardCount,
                 NeededCardMessage = new NeededCardMessageBuilder()
-                    .WithGroup(neededCardCount)
-                        .WithCard(rank, Suits.Empty)
+                    .WithCard(rank, Suits.Empty)
                     .Build()
             };
         }

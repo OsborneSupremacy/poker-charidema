@@ -2,5 +2,5 @@
 
 public record NeededCardMessage
 {
-    public required List<NeededCardGroup> NeededCardGroups { get; init; }
+    public required List<NeededCard> Cards { get; init; }
 }

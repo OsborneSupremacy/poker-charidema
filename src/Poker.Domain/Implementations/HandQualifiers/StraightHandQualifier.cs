@@ -49,7 +49,6 @@ public static partial class HandQualifierDelegates
 
         Queue<Card> wildCards = cards.WhereWild().ToQueue();
 
-        NeededCardMessageBuilder neededCardMessageBuilder = new();
         List<NeededCard> neededCards = new();
 
         foreach (var rank in Ranks.All
@@ -109,8 +108,7 @@ public static partial class HandQualifierDelegates
         NeededCardMessage neededCardMessage = isComplete switch
         {
             true => NeededCardMessageBuilder.Empty(),
-            false => neededCardMessageBuilder
-                .WithGroup(neededCards.Count)
+            false => new NeededCardMessageBuilder()
                 .WithCards(neededCards)
                 .Build()
         };
