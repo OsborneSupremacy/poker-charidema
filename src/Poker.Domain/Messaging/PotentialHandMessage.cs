@@ -19,4 +19,6 @@ public record PotentialHandMessage
     public required List<Card> NonContributing { get; init; }
 
     public required uint RemainingCardCount { get; init; }
+
+    public required NeededCardMessage NeededCardMessage { get; init; }
 }

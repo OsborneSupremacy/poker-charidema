@@ -49,19 +49,15 @@ public static partial class HandQualifierDelegates
 
         Queue<Card> wildCards = cards.WhereWild().ToQueue();
 
-        for (uint r = 0; r < GlobalConstants.HandSize; r++)
+        NeededCardMessageBuilder neededCardMessageBuilder = new();
+        List<NeededCard> neededCards = new();
+
+        foreach (var rank in Ranks.All
+            .Where(r => r.Value > startingRank.Value)
+            .Take(GlobalConstants.HandSize)
+            .OrderBy(r => r.Value)
+            )
         {
-            // for some reason the compiler doesn't like this when used
-            // in an inline expression. 🤷
-            uint nextRankValue = startingRank.Value + r;
-
-            var rank = Ranks.All
-                .Where(r => r.Value.Equals(nextRankValue))
-                .FirstOrDefault();
-
-            if (rank is null) // have gone past Ace. Can this actually happen? TODO: test
-                break;
-
             var standardCardInSequence = unusedCards
                 .Where(c => c.MatchesRank(rank))
                 .OrderBySuit()
@@ -75,52 +71,63 @@ public static partial class HandQualifierDelegates
                 continue;
             }
 
-            if(!wildCards.Any())
-                return new PotentialHandMessage
+            if(wildCards.Any())
+            {
+                var wildCardInSequence = wildCards.Dequeue();
+
+                // cards that can be impersonated, with rank in question
+                var target = Cards.All
+                    .WhereRank(rank)
+                    .Except(cards)
+                    .OrderBySuit()
+                    .First();
+
+                highRank = rank;
+
+                contributingWild.Add(new AssignedWildCard
                 {
-                    Suit = Suits.Empty,
-                    HighRank = highRank,
-                    Complete = false,
-                    ContributingStandardCards = contributingStandard,
-                    ContributingWildCards = contributingWild,
-                    NonContributing = cards
-                        .Except(contributingStandard)
-                        .Except(contributingWild.Select(w => w.WildCard))
-                        .ToList(),
-                    RemainingCardCount = remainingCardCount
-                };
+                    WildCard = wildCardInSequence,
+                    StandardCard = target
+                });
 
-            var wildCardInSequence = wildCards.Dequeue();
+                unusedCards.Remove(wildCardInSequence);
+                continue;
+            }
 
-            // cards that can be impersonated, with rank in question
-            var target = Cards.All
-                .WhereRank(rank)
-                .Except(cards)
-                .OrderBySuit()
-                .First();
-
-            highRank = rank;
-
-            contributingWild.Add(new AssignedWildCard {
-                WildCard = wildCardInSequence,
-                StandardCard = target
+            // no matching standard card and no wild cards left, so we need a card
+            // with these properties
+            neededCards.Add(new NeededCard
+            {
+                Rank = rank,
+                Suit = Suits.Empty
             });
-
-            unusedCards.Remove(wildCardInSequence);
         }
+
+        var isComplete =
+            contributingStandard.Count + contributingWild.Count >= GlobalConstants.HandSize;
+
+        NeededCardMessage neededCardMessage = isComplete switch
+        {
+            true => NeededCardMessageBuilder.Empty(),
+            false => neededCardMessageBuilder
+                .WithGroup(neededCards.Count)
+                .WithCards(neededCards)
+                .Build()
+        };
 
         return new PotentialHandMessage
         {
             Suit = Suits.Empty,
             HighRank = highRank,
-            Complete = true,
+            Complete = isComplete,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
             NonContributing = cards
                 .Except(contributingStandard)
                 .Except(contributingWild.Select(w => w.WildCard))
                 .ToList(),
-            RemainingCardCount = remainingCardCount
+            RemainingCardCount = remainingCardCount,
+            NeededCardMessage = neededCardMessage
         };
     }
 }

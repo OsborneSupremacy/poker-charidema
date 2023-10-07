@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Implementations;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {
@@ -26,6 +28,9 @@ public static partial class HandQualifierDelegates
         uint remainingCardCount
         )
     {
+        NeededCardMessage bestNeededCardMessage = NeededCardMessageBuilder.Empty();
+        var bestNeededCardCount = GlobalConstants.HandSize + 1;
+
         foreach(var rank in Ranks.All.OrderByPokerStandard())
         {
             var potential =
@@ -33,6 +38,14 @@ public static partial class HandQualifierDelegates
 
             if (potential.Complete)
                 return potential;
+
+            // we don't have a match, but we might have a better needed card message
+            var potentialNeededCards = potential.NeededCardMessage.TotalNeededCards();
+            if(potentialNeededCards < bestNeededCardCount)
+            {
+                bestNeededCardMessage = potential.NeededCardMessage;
+                bestNeededCardCount = potentialNeededCards;
+            }
         }
 
         return new PotentialHandMessage
@@ -43,7 +56,8 @@ public static partial class HandQualifierDelegates
             ContributingStandardCards = new(),
             ContributingWildCards = new(),
             NonContributing = cards,
-            RemainingCardCount = remainingCardCount
+            RemainingCardCount = remainingCardCount,
+            NeededCardMessage = bestNeededCardMessage
         };
     }
 
@@ -54,7 +68,10 @@ public static partial class HandQualifierDelegates
         Rank rank
         )
     {
-        if (cards.WhereRanksOrIsWild(rank).Count() < requiredMatches)
+        var neededCardCount = requiredMatches - cards.WhereRanksOrIsWild(rank).Count();
+
+        if (neededCardCount > 0)
+        {
             return new PotentialHandMessage
             {
                 HighRank = Ranks.Empty,
@@ -63,8 +80,13 @@ public static partial class HandQualifierDelegates
                 ContributingStandardCards = new(),
                 ContributingWildCards = new(),
                 NonContributing = cards,
-                RemainingCardCount = remainingCardCount
+                RemainingCardCount = remainingCardCount,
+                NeededCardMessage = new NeededCardMessageBuilder()
+                    .WithGroup(neededCardCount)
+                        .WithCard(rank, Suits.Empty)
+                    .Build()
             };
+        }
 
         var contributingStandard = cards
             .WhereRank(rank)
@@ -90,7 +112,8 @@ public static partial class HandQualifierDelegates
                 .Except(contributingStandard)
                 .Except(contributingWild.Select(w => w.WildCard))
                 .ToList(),
-            RemainingCardCount = remainingCardCount
+            RemainingCardCount = remainingCardCount,
+            NeededCardMessage = NeededCardMessageBuilder.Empty()
         };
     }
 

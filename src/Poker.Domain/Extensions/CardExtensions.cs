@@ -11,8 +11,4 @@ internal static class CardExtensions
 
     public static bool MatchesSuit(this Card input, Suit suit) =>
         input.Suit.Priority == suit.Priority;
-
-    public static bool MatchesSuitOrIsWild(this Card input, Suit suit) =>
-        input.MatchesSuit(suit)
-        || input.IsWild;
 }

@@ -40,8 +40,8 @@ public static partial class HandQualifierDelegates
     {
         var straights = EvaluateStraights(cards, remainingCardCount);
 
-        foreach(var flush in EvaluateFlushes(cards, remainingCardCount))
-            foreach(
+        foreach (var flush in EvaluateFlushes(cards, remainingCardCount))
+            foreach (
                 var straight in straights
                     .Where(
                         x => x.AggregateValue() == flush.AggregateValue()
@@ -53,12 +53,10 @@ public static partial class HandQualifierDelegates
                     Suit = flush.Suit,
                     ContributingStandardCards = flush.ContributingStandardCards,
                     ContributingWildCards = flush.ContributingWildCards,
-                    NonContributing = cards
-                        .Except(flush.ContributingStandardCards)
-                        .Except(flush.ContributingWildCards.Select(w => w.WildCard))
-                        .ToList(),
+                    NonContributing = flush.NonContributing,
                     Complete = flush.Complete && straight.Complete,
-                    RemainingCardCount = remainingCardCount
+                    RemainingCardCount = remainingCardCount,
+                    NeededCardMessage = flush.NeededCardMessage
                 };
     }
 }

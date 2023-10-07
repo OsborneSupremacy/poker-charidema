@@ -65,18 +65,30 @@ public static partial class HandQualifierDelegates
             .AssignWildCards(targets)
             .ToList();
 
+        NeededCardMessageBuilder neededCardMessageBuilder = new();
+
+        var stillNeededCount = GlobalConstants.HandSize
+            - contributingStandard.Count
+            - contributingWild.Count;
+
+        if (stillNeededCount > 0)
+            neededCardMessageBuilder
+                .WithGroup(stillNeededCount)
+                    .WithCard(Ranks.Empty, suit);
+
         return new PotentialHandMessage
         {
             HighRank = cards.GetMaxRank(contributingWild),
             Suit = suit,
-            Complete = contributingStandard.Count + contributingWild.Count >= GlobalConstants.HandSize,
+            Complete = stillNeededCount > 0,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
             NonContributing = cards
                 .Except(contributingStandard.ToList())
                 .Except(contributingWild.Select(w => w.WildCard))
                 .ToList(),
-            RemainingCardCount = remainingCardCount
+            RemainingCardCount = remainingCardCount,
+            NeededCardMessage = neededCardMessageBuilder.Build()
         };
     }
 }
