@@ -2,18 +2,15 @@
 
 internal static class PotentialHandExtensions
 {
-    public static bool EnoughRemainingCards(
-        this List<PotentialHandMessage> potentials, uint remainingCardCount
+    public static bool AnyWithEnoughRemainingCards(
+        this List<PotentialHandMessage> potentials
         ) =>
-            potentials.Any(x => x.EnoughRemainingCards(remainingCardCount));
+            potentials.Any(x => x.EnoughRemainingCards());
 
     public static bool EnoughRemainingCards(
-        this PotentialHandMessage input,
-        uint remainingCardCount) =>
-            remainingCardCount >= input.CardsNeededToComplete();
-
-    public static int CardsNeededToComplete(this PotentialHandMessage input) =>
-        GlobalConstants.HandSize - input.AllContributingCards().Count;
+        this PotentialHandMessage input
+        ) =>
+            input.RemainingCardCount >= input.NeededCardMessage.Cards.Count;
 
     public static string AggregateValue(this PotentialHandMessage input)
     {

@@ -5,7 +5,7 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightFlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
         {
-            var potentials = FindPotentialStraightFlushes(request.Cards, request.RemainingCardCount).ToList();
+            var potentials = FindPotentialStraightFlushes(request).ToList();
             var complete = potentials.Where(x => x.Complete).ToList();
 
             if (!complete.Any())
@@ -14,7 +14,7 @@ public static partial class HandQualifierDelegates
                     // Determining whether a straight flush is possible for a player is tricky.
                     // If there are 4+ cards yet to be dealt, then it's always possible.
                     request.RemainingCardCount >= GlobalConstants.HandSize - 1
-                    || potentials.EnoughRemainingCards(request.RemainingCardCount)
+                    || potentials.AnyWithEnoughRemainingCards()
                 );
 
             return request.Hand.ToQualifiedHand(GetBestStraightFlush(complete));
@@ -36,11 +36,11 @@ public static partial class HandQualifierDelegates
     /// </summary>
     /// <param name="cards"></param>
     /// <returns></returns>
-    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(List<Card> cards, uint remainingCardCount)
+    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(QualifiedHandRequest request)
     {
-        var straights = EvaluateStraights(cards, remainingCardCount);
+        var straights = EvaluateStraights(request);
 
-        foreach (var flush in EvaluateFlushes(cards, remainingCardCount))
+        foreach (var flush in EvaluateFlushes(request))
             foreach (
                 var straight in straights
                     .Where(
@@ -55,7 +55,7 @@ public static partial class HandQualifierDelegates
                     ContributingWildCards = flush.ContributingWildCards,
                     NonContributing = flush.NonContributing,
                     Complete = flush.Complete && straight.Complete,
-                    RemainingCardCount = remainingCardCount,
+                    RemainingCardCount = request.RemainingCardCount,
                     NeededCardMessage = flush.NeededCardMessage
                 };
     }

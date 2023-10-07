@@ -5,13 +5,13 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allFlushes = EvaluateFlushes(request.Cards, request.RemainingCardCount);
+        var allFlushes = EvaluateFlushes(request);
         var completeFlushes = allFlushes.Where(x => x.Complete).ToList();
 
         if (!completeFlushes.Any())
             return request.Cards.ToUnqualifiedHand(
                 request.Hand,
-                allFlushes.EnoughRemainingCards(request.RemainingCardCount)
+                allFlushes.AnyWithEnoughRemainingCards()
             );
 
         var bestFlush = GetBestFlush(completeFlushes);
@@ -27,19 +27,22 @@ public static partial class HandQualifierDelegates
             .ThenByDescending(x => x.Suit.Priority)
             .First();
 
-    private static List<PotentialHandMessage> EvaluateFlushes(List<Card> cards, uint remainingCardCount) =>
+    private static List<PotentialHandMessage> EvaluateFlushes(QualifiedHandRequest request) =>
         Suits.All
             .OrderByDescending(s => s.Priority)
-            .Select(s => EvalulateFlush(s, cards, remainingCardCount))
+            .Select(suit => EvalulateFlush(request, suit))
             .ToList();
 
     private static PotentialHandMessage EvalulateFlush(
-        Suit suit,
-        List<Card> cards,
-        uint remainingCardCount
+        QualifiedHandRequest request,
+        Suit suit
         )
     {
-        var playerCardsWithSuit = cards.WhereSuit(suit).ToList();
+        var playerCardsWithSuit = request
+            .Cards
+            .WhereSuit(suit)
+            .ToList();
+
         var neededCount = GlobalConstants.HandSize - playerCardsWithSuit.Count;
 
         // add non-wildcards matching suit
@@ -56,7 +59,7 @@ public static partial class HandQualifierDelegates
             .Take(neededCount)
             .ToQueue();
 
-        Queue<Card> wildCards = cards
+        Queue<Card> wildCards = request.Cards
             .WhereWild()
             .Take(GlobalConstants.HandSize - contributingStandard.Count)
             .ToQueue();
@@ -77,16 +80,17 @@ public static partial class HandQualifierDelegates
 
         return new PotentialHandMessage
         {
-            HighRank = cards.GetMaxRank(contributingWild),
+            HighRank = CardFunctions
+                .GetMaxRank(contributingStandard, contributingWild),
             Suit = suit,
             Complete = stillNeededCount == 0,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
-            NonContributing = cards
+            NonContributing = request.Cards
                 .Except(contributingStandard.ToList())
                 .Except(contributingWild.Select(w => w.WildCard))
                 .ToList(),
-            RemainingCardCount = remainingCardCount,
+            RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = neededCardMessageBuilder.Build()
         };
     }

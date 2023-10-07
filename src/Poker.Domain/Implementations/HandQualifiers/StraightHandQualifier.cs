@@ -5,13 +5,13 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allStraights = EvaluateStraights(request.Cards, request.RemainingCardCount);
+        var allStraights = EvaluateStraights(request);
         var completeStraights = allStraights.Where(x => x.Complete).ToList();
 
         if (!completeStraights.Any())
             return request.Cards.ToUnqualifiedHand(
                 request.Hand,
-                allStraights.EnoughRemainingCards(request.RemainingCardCount)
+                allStraights.AnyWithEnoughRemainingCards()
             );
 
         var bestStraight = GetBestStraight(completeStraights);
@@ -27,17 +27,16 @@ public static partial class HandQualifierDelegates
             .OrderByDescending(x => x.Suit.Priority)
             .First();
 
-    private static List<PotentialHandMessage> EvaluateStraights(List<Card> cards, uint remainingCardCount) =>
+    private static List<PotentialHandMessage> EvaluateStraights(QualifiedHandRequest request) =>
         Ranks.All
             .Where(r => r.Value <= Ranks.Ten.Value)
             .OrderBy(x => x.Value)
-            .Select(x => EvalulateStraight(x, cards, remainingCardCount))
+            .Select(x => EvalulateStraight(request, x))
             .ToList();
 
     private static PotentialHandMessage EvalulateStraight(
-        Rank startingRank,
-        List<Card> cards,
-        uint remainingCardCount
+        QualifiedHandRequest request,
+        Rank startingRank
         )
     {
         Rank highRank = Ranks.Empty;
@@ -45,9 +44,9 @@ public static partial class HandQualifierDelegates
         List<AssignedWildCard> contributingWild = new();
 
         List<Card> unusedCards = new();
-        unusedCards.AddRange(cards);
+        unusedCards.AddRange(request.Cards);
 
-        Queue<Card> wildCards = cards.WhereWild().ToQueue();
+        Queue<Card> wildCards = request.Cards.WhereWild().ToQueue();
 
         List<NeededCard> neededCards = new();
 
@@ -77,7 +76,7 @@ public static partial class HandQualifierDelegates
                 // cards that can be impersonated, with rank in question
                 var target = Cards.All
                     .WhereRank(rank)
-                    .Except(cards)
+                    .Except(request.Cards)
                     .OrderBySuit()
                     .First();
 
@@ -120,11 +119,11 @@ public static partial class HandQualifierDelegates
             Complete = isComplete,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
-            NonContributing = cards
+            NonContributing = request.Cards
                 .Except(contributingStandard)
                 .Except(contributingWild.Select(w => w.WildCard))
                 .ToList(),
-            RemainingCardCount = remainingCardCount,
+            RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = neededCardMessage
         };
     }
