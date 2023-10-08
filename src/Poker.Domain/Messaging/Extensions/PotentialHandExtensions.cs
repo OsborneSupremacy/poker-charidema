@@ -2,6 +2,22 @@
 
 internal static class PotentialHandExtensions
 {
+    /// <summary>
+    /// What is the highest rank will be if the hand is completed.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static Rank TheoreticalHighRank(this PotentialHandMessage input)
+    {
+        var neededHighRank = input
+            .NeededCardMessage.Cards.Select(x => x.Rank)
+            .High();
+
+        return input.HighRank.Value >= neededHighRank.Value
+            ? input.HighRank
+            : neededHighRank;
+    }
+
     public static bool AnyWithEnoughRemainingCards(
         this List<PotentialHandMessage> potentials
         ) =>

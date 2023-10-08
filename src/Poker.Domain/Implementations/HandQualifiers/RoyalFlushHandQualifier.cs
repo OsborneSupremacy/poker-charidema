@@ -15,12 +15,7 @@ public static partial class HandQualifierDelegates
                     (
                         request.Hand,
                         FindPotentialStraightFlushes(request)
-                            .Select(x => x with
-                            {
-                                ContributingStandardCards = x.ContributingStandardCards
-                                    .WhereRanksOrIsWild(Ranks.Ten)
-                                    .ToList()
-                            })
+                            .Where(sf => sf.TheoreticalHighRank() == Ranks.Ace)
                             .ToList()
                             .AnyWithEnoughRemainingCards()
                     )
