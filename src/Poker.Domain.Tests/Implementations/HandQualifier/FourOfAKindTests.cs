@@ -8,7 +8,7 @@ public class FourOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FourOfAKind)
+            .For(Hands.FourOfAKind, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -37,7 +37,7 @@ public class FourOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FourOfAKind)
+            .For(Hands.FourOfAKind, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -66,7 +66,7 @@ public class FourOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FourOfAKind)
+            .For(Hands.FourOfAKind, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -95,7 +95,7 @@ public class FourOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FourOfAKind)
+            .For(Hands.FourOfAKind, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -107,7 +107,8 @@ public class FourOfAKindTests
                         Cards.NineOfHearts
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Ace, Suit = Suits.Empty });
 
         // act
         var result = fixture.Execute();

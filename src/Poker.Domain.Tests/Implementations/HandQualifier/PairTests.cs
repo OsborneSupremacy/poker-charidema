@@ -8,7 +8,7 @@ public class PairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Pair)
+            .For(Hands.Pair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(Cards.TwoOfHearts);
@@ -33,7 +33,7 @@ public class PairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Pair)
+            .For(Hands.Pair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(Cards.NineOfClubs);
@@ -58,7 +58,7 @@ public class PairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Pair)
+            .For(Hands.Pair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.WithJokerFor(Cards.AceOfSpades);
@@ -83,7 +83,7 @@ public class PairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Pair)
+            .For(Hands.Pair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.WithJokerFor(Cards.AceOfSpades);
@@ -108,7 +108,7 @@ public class PairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Pair)
+            .For(Hands.Pair, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(new List<Card> {
@@ -118,7 +118,8 @@ public class PairTests
                     Cards.EightOfHearts,
                     Cards.NineOfHearts
                 });
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Nine, Suit = Suits.Empty }); ;
 
         // act
         var result = fixture.Execute();

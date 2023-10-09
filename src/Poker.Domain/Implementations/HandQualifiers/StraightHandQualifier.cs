@@ -5,22 +5,28 @@ public static partial class HandQualifierDelegates
     public static HandQualifier StraightHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allStraights = EvaluateStraights(request);
-        var completeStraights = allStraights.Where(x => x.Complete).ToList();
+        var potential = EvaluateStraights(request);
+        var complete = potential.WhereComplete();
 
-        if (!completeStraights.Any())
-            return request.Cards.ToUnqualifiedHand(
-                request.Hand,
-                allStraights.AnyWithEnoughRemainingCards()
+        if (complete.Any())
+            return request.Hand
+                .ToQualifiedHand(
+                    GetBestFlush(complete)
+                );
+
+        var best = GetBestStraight(
+            potential
+                .WithFewestNeededCards()
             );
 
-        var bestStraight = GetBestStraight(completeStraights);
-
-        return request.Hand.ToQualifiedHand(bestStraight);
+        return request.Hand.ToUnqualifiedHand(
+            best,
+            best.EnoughRemainingCards()
+        );
     };
 
     private static PotentialHandMessage GetBestStraight(
-        List<PotentialHandMessage> evalulated
+        IEnumerable<PotentialHandMessage> evalulated
         ) =>
         evalulated
             .Where(x => x.HighRank.Value == evalulated.Max(x => x.HighRank.Value))
@@ -117,8 +123,8 @@ public static partial class HandQualifierDelegates
             Suit = Suits.Empty,
             HighRank = highRank,
             Complete = isComplete,
-            ContributingStandardCards = contributingStandard,
-            ContributingWildCards = contributingWild,
+            ContributingStandard = contributingStandard,
+            ContributingWild = contributingWild,
             NonContributing = request.Cards
                 .Except(contributingStandard)
                 .Except(contributingWild.Select(w => w.WildCard))

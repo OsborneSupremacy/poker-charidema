@@ -12,7 +12,7 @@ public static partial class HandQualifierDelegates
 
         return bestRank.Complete switch
         {
-            false => request.Cards.ToUnqualifiedHand(request.Hand, bestRank.EnoughRemainingCards()),
+            false => request.Hand.ToUnqualifiedHand(bestRank, bestRank.EnoughRemainingCards()),
             true => request.Hand.ToQualifiedHand(bestRank)
         };
     };
@@ -24,8 +24,8 @@ public static partial class HandQualifierDelegates
             HighRank = Ranks.Empty,
             Suit = Suits.Empty,
             Complete = false,
-            ContributingStandardCards = new(),
-            ContributingWildCards = new(),
+            ContributingStandard = new(),
+            ContributingWild = new(),
             NonContributing = new(),
             RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = new NeededCardMessageBuilder()
@@ -84,8 +84,8 @@ public static partial class HandQualifierDelegates
             HighRank = rank,
             Suit = Suits.Empty,
             Complete = neededCardCount == 0,
-            ContributingStandardCards = contributingStandard,
-            ContributingWildCards = contributingWild,
+            ContributingStandard = contributingStandard,
+            ContributingWild = contributingWild,
             NonContributing = CardFunctions
                 .GetNonContributingCards(request.Cards, contributingStandard, contributingWild),
             RemainingCardCount = request.RemainingCardCount,

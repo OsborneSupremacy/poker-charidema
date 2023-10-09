@@ -8,7 +8,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight)
+            .For(Hands.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -34,7 +34,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight)
+            .For(Hands.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -60,7 +60,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight)
+            .For(Hands.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -86,7 +86,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight)
+            .For(Hands.Straight, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -98,7 +98,8 @@ public class StraightTests
                         Cards.EightOfSpades
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Nine, Suit = Suits.Empty });
 
         // act
         var result = fixture.Execute();

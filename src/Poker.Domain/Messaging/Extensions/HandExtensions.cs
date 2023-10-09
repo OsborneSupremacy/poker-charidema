@@ -9,15 +9,15 @@ internal static class HandExtensions
     {
         var kickerCount =
             GlobalConstants.HandSize
-            - (potentialHand.ContributingStandardCards.Count + potentialHand.ContributingWildCards.Count);
+            - (potentialHand.ContributingStandard.Count + potentialHand.ContributingWild.Count);
 
         return new QualifiedHandResponse
         {
             HighRank = potentialHand.HighRank,
             Suit = potentialHand.Suit,
             Hand = hand,
-            ContributingStandardCards = potentialHand.ContributingStandardCards,
-            ContributingWildCards = potentialHand.ContributingWildCards,
+            ContributingStandardCards = potentialHand.ContributingStandard,
+            ContributingWildCards = potentialHand.ContributingWild,
             Kickers = potentialHand.NonContributing
                 .OrderByPokerStandard()
                 .Take(kickerCount)
@@ -26,7 +26,34 @@ internal static class HandExtensions
                 .OrderByPokerStandard()
                 .Skip(kickerCount)
                 .ToList(),
-            HandQualification = HandQualifications.Qualifies
+            HandQualification = HandQualifications.Qualifies,
+            NeededCards = new()
         };
     }
+
+    public static QualifiedHandResponse ToUnqualifiedHand(
+        this Hand hand,
+        PotentialHandMessage potentialHand,
+        bool possible
+        ) =>
+            new()
+            {
+                HighRank = Ranks.Empty,
+                Suit = Suits.Empty,
+                Hand = hand,
+                ContributingStandardCards = new(),
+                ContributingWildCards = new(),
+                DeadCards = potentialHand
+                    .ContributingStandard
+                    .Concat(potentialHand.ContributingWild.Select(w => w.WildCard))
+                    .Concat(potentialHand.NonContributing)
+                    .OrderByPokerStandard()
+                    .ToList(),
+                Kickers = new(),
+                HandQualification =
+                    possible
+                    ? HandQualifications.Possible
+                    : HandQualifications.Eliminated,
+                NeededCards = potentialHand.NeededCardMessage.Cards
+            };
 }

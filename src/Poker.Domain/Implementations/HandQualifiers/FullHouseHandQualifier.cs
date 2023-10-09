@@ -20,24 +20,18 @@ public static partial class HandQualifierDelegates
                         - threeOfAKind.NeededCardMessage.Cards.Count.ToUint()
                 }
             );
+
+        var combinedHand = threeOfAKind.MergeWith(additionalPair);
  
-        return (threeOfAKind.Complete, additionalPair.Complete) switch
+        return (combinedHand.Complete) switch
         {
-            (true, true) =>
+            true =>
                 request.Hand
-                    .ToQualifiedHand(threeOfAKind.CombineWith(additionalPair)),
+                    .ToQualifiedHand(combinedHand),
 
-            (true, false) =>
-                request.Cards
-                    .ToUnqualifiedHand(request.Hand, additionalPair.EnoughRemainingCards()),
-
-            (false, true) =>
-                request.Cards
-                .ToUnqualifiedHand(request.Hand, threeOfAKind.EnoughRemainingCards()),
-
-            (false, false) =>
-                request.Cards
-                    .ToUnqualifiedHand(request.Hand, threeOfAKind.EnoughRemainingCards() && additionalPair.EnoughRemainingCards())
+            false =>
+                request.Hand
+                    .ToUnqualifiedHand(combinedHand, combinedHand.EnoughRemainingCards())
         };
     };
 

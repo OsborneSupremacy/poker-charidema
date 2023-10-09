@@ -15,6 +15,8 @@ public record HandQualifierTestFixtureResponse
 
     public required List<Card> ExpectedDeadCards { get; init; }
 
+    public required List<NeededCard> ExpectedNeededCards { get; init; }
+
     public required QualifiedHandResponse QualifiedHandResponse { get; init; }
 }
 
@@ -54,6 +56,10 @@ public static class HandQualifierTestFixtureExtensions
             .DeadCards.AggregateValue()
             .Should()
             .BeEquivalentTo(response.ExpectedDeadCards.AggregateValue());
+
+        response.QualifiedHandResponse.NeededCards
+            .Should()
+            .BeEquivalentTo(response.ExpectedNeededCards);
     }
 }
 
@@ -85,24 +91,28 @@ public class HandQualifierTestFixture
 
     private readonly List<TestWildCard> _testWildCards;
 
+    private readonly List<NeededCard> _expectedNeededCards;
+
     private Hand _hand;
 
     private uint _remainingCards = 0;
 
     private ExpectedAssessment _expectedAssessment = ExpectedAssessment.Contributing;
 
-    public HandQualifications ExpectedHandQualification = HandQualifications.Qualifies;
+    private HandQualifications _expectedHandQualification = HandQualifications.Qualifies;
 
     public HandQualifierTestFixture()
     {
         _testCards = new List<TestCard>();
         _testWildCards = new List<TestWildCard>();
+        _expectedNeededCards = new List<NeededCard>();
         _hand = Hands.NoHand;
     }
 
-    public HandQualifierTestFixture For(Hand hand)
+    public HandQualifierTestFixture For(Hand hand, HandQualifications expectedQualification)
     {
         _hand = hand;
+        _expectedHandQualification = expectedQualification;
         return this;
     }
 
@@ -114,7 +124,6 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture ExpectedContributing(Action<HandQualifierTestFixture> configureHand)
     {
-        ExpectedHandQualification = HandQualifications.Qualifies;
         _expectedAssessment = ExpectedAssessment.Contributing;
         configureHand(this);
         return this;
@@ -122,7 +131,6 @@ public class HandQualifierTestFixture
 
     public HandQualifierTestFixture ExpectedInKicker(Action<HandQualifierTestFixture> configureHand)
     {
-        ExpectedHandQualification = HandQualifications.Qualifies;
         _expectedAssessment = ExpectedAssessment.Kicker;
         configureHand(this);
         return this;
@@ -182,6 +190,18 @@ public class HandQualifierTestFixture
     public HandQualifierTestFixture WithJokerFor(Card expectedToImpersonate) =>
         WithWild(Cards.CreateJoker(), expectedToImpersonate);
 
+    public HandQualifierTestFixture ExpectedNeededCard(NeededCard card)
+    {
+        _expectedNeededCards.Add(card);
+        return this;
+    }
+
+    public HandQualifierTestFixture ExpectedNeededCards(IEnumerable<NeededCard> cards)
+    {
+        _expectedNeededCards.AddRange(cards);
+        return this;
+    }
+
     public HandQualifierTestFixtureResponse Execute()
     {
         var expectedContributingStandard = _testCards
@@ -210,10 +230,7 @@ public class HandQualifierTestFixture
 
         return new()
         {
-            ExpectedHandQualification =
-                expectedContributingStandard.Any()
-                || expectedContributingWild.Any()
-                ? HandQualifications.Qualifies : HandQualifications.Eliminated,
+            ExpectedHandQualification = _expectedHandQualification,
 
             ExpectedContributingStandardCards = expectedContributingStandard,
 
@@ -222,6 +239,8 @@ public class HandQualifierTestFixture
             ExpectedKickers = expectedKickers,
 
             ExpectedDeadCards = expectedDeadCards,
+
+            ExpectedNeededCards = _expectedNeededCards,
 
             QualifiedHandResponse = _hand.HandQualifier(
                 new QualifiedHandRequest

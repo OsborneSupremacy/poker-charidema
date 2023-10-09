@@ -8,7 +8,7 @@ public class HighCardTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.HighCard)
+            .For(Hands.HighCard, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -40,7 +40,7 @@ public class HighCardTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.HighCard)
+            .For(Hands.HighCard, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.WithJokerFor(Cards.AceOfSpades);

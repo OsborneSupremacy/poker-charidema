@@ -18,10 +18,20 @@ internal static class PotentialHandExtensions
             : neededHighRank;
     }
 
-    public static bool AnyWithEnoughRemainingCards(
-        this List<PotentialHandMessage> potentials
+    public static IEnumerable<PotentialHandMessage> WhereComplete(
+        this IEnumerable<PotentialHandMessage> potentials
+    ) =>
+        potentials.Where(x => x.Complete);
+
+    public static IEnumerable<PotentialHandMessage> WithEnoughRemainingCards(
+        this IEnumerable<PotentialHandMessage> potentials
         ) =>
-            potentials.Any(x => x.EnoughRemainingCards());
+            potentials.Where(x => x.EnoughRemainingCards());
+
+    public static bool AnyWithEnoughRemainingCards(
+        this IEnumerable<PotentialHandMessage> potentials
+        ) =>
+            potentials.WithEnoughRemainingCards().Any();
 
     public static bool EnoughRemainingCards(
         this PotentialHandMessage input
@@ -30,6 +40,17 @@ internal static class PotentialHandExtensions
 
     public static uint NeeededCardCount(this PotentialHandMessage input) =>
         input.NeededCardMessage.Cards.Count.ToUint();
+
+    public static IEnumerable<PotentialHandMessage> WithFewestNeededCards(
+        this IEnumerable<PotentialHandMessage> potentials
+    ) =>
+        potentials
+            .Where(x => x.NeeededCardCount() == potentials.FewestNeededCards());
+
+    public static uint FewestNeededCards(this IEnumerable<PotentialHandMessage> potentials) =>
+        potentials
+            .Select(x => x.NeeededCardCount())
+            .Min();
 
     public static string AggregateValue(this PotentialHandMessage input)
     {
@@ -42,9 +63,9 @@ internal static class PotentialHandExtensions
 
     public static List<Card> AllContributingCards(this PotentialHandMessage input) =>
         input
-            .ContributingStandardCards
+            .ContributingStandard
             .Concat(
-                input.ContributingWildCards.Select(x => x.StandardCard)
+                input.ContributingWild.Select(x => x.StandardCard)
             )
             .ToList();
 }

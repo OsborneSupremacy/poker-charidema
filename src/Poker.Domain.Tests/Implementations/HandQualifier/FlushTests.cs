@@ -8,7 +8,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush)
+            .For(Hands.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -34,7 +34,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush)
+            .For(Hands.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -60,7 +60,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush)
+            .For(Hands.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -86,7 +86,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush)
+            .For(Hands.Flush, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -98,7 +98,8 @@ public class FlushTests
                         Cards.TwoOfDiamonds
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Empty, Suit = Suits.Hearts });
 
         // act
         var result = fixture.Execute();

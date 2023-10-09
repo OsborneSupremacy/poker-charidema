@@ -8,7 +8,7 @@ public class StraightFlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.StraightFlush)
+            .For(Hands.StraightFlush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -30,11 +30,11 @@ public class StraightFlushTests
     }
 
     [Fact]
-    public void Qualify_False_When_Straight_But_No_Flush_Exists()
+    public void Qualify_False_When_Flush_But_No_Straight_Exists()
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.StraightFlush)
+            .For(Hands.StraightFlush, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -46,7 +46,8 @@ public class StraightFlushTests
                         Cards.TenOfSpades
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Ace, Suit = Suits.Spades });
 
         // act
         var result = fixture.Execute();
@@ -56,11 +57,11 @@ public class StraightFlushTests
     }
 
     [Fact]
-    public void Qualify_False_When_Flush_But_No_Straight_Exists()
+    public void Qualify_False_When_Straight_But_No_Flush_Exists()
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.StraightFlush)
+            .For(Hands.StraightFlush, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

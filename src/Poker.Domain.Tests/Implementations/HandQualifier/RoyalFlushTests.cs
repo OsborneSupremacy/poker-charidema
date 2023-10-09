@@ -8,7 +8,7 @@ public class RoyalFlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.RoyalFlush)
+            .For(Hands.RoyalFlush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -34,7 +34,7 @@ public class RoyalFlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.RoyalFlush)
+            .For(Hands.RoyalFlush, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

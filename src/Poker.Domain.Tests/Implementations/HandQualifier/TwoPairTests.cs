@@ -8,7 +8,7 @@ public class TwoPairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.TwoPair)
+            .For(Hands.TwoPair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -41,7 +41,7 @@ public class TwoPairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.TwoPair)
+            .For(Hands.TwoPair, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -52,7 +52,39 @@ public class TwoPairTests
                         Cards.FourOfDiamonds
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(
+                new() { Rank = Ranks.Five, Suit = Suits.Empty }
+            );
+
+        // act
+        var result = fixture.Execute();
+
+        // assert
+        result.ShouldBeAsExpected();
+    }
+
+    [Fact]
+    public void Qualify_Possible_When_Only_One_Pair_Exists()
+    {
+        // arrange
+        var fixture = new HandQualifierTestFixture()
+            .For(Hands.TwoPair, HandQualifications.Possible)
+            .WithCardsRemaining(1)
+            .ExpectedInDeadCards(x =>
+            {
+                x.With(
+                    new List<Card>() {
+                        Cards.TwoOfHearts,
+                        Cards.TwoOfDiamonds,
+                        Cards.FiveOfHearts,
+                        Cards.FourOfDiamonds
+                    }
+                );
+            })
+            .ExpectedNeededCard(
+                new() { Rank = Ranks.Five, Suit = Suits.Empty }
+            );
 
         // act
         var result = fixture.Execute();

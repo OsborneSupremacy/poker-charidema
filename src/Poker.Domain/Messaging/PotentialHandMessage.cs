@@ -12,9 +12,9 @@ public record PotentialHandMessage
 
     public required bool Complete { get; init; }
 
-    public required List<Card> ContributingStandardCards { get; init; }
+    public required List<Card> ContributingStandard { get; init; }
 
-    public required List<AssignedWildCard> ContributingWildCards { get; init; }
+    public required List<AssignedWildCard> ContributingWild { get; init; }
 
     public required List<Card> NonContributing { get; init; }
 

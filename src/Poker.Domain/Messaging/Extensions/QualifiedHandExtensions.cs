@@ -12,27 +12,38 @@ public static class QualifiedHandExtensions
     public static bool Qualifies(this QualifiedHandResponse input) =>
         input.HandQualification == HandQualifications.Qualifies;
 
-    public static PotentialHandMessage CombineWith(
+    public static PotentialHandMessage MergeWith(
         this PotentialHandMessage input,
         PotentialHandMessage other
         ) =>
         input with
         {
-            ContributingStandardCards = 
-                input.ContributingStandardCards.Concat(other.ContributingStandardCards).ToList(),
+            HighRank = input.HighRank == Ranks.Empty ? other.HighRank : input.HighRank,
+            Suit = input.Suit == Suits.Empty ? other.Suit : input.Suit,
 
-            ContributingWildCards =
-                input.ContributingWildCards.Concat(other.ContributingWildCards).ToList(),
+            Complete = input.Complete && other.Complete,
 
-            NonContributing = other.NonContributing.ToList(),
+            ContributingStandard = input
+                .ContributingStandard
+                .Concat(other.ContributingStandard)
+                .ToList(),
+
+            ContributingWild = input
+                .ContributingWild
+                .Concat(other.ContributingWild)
+                .ToList(),
+
+            NonContributing = input
+                .NonContributing
+                .Except(other.ContributingStandard)
+                .ToList(),
 
             NeededCardMessage = input.NeededCardMessage with
             {
                 Cards = input
                     .NeededCardMessage
                     .Cards
-                    .Concat(other.NeededCardMessage.Cards)
-                    .Distinct()
+                    .Union(other.NeededCardMessage.Cards)
                     .ToList()
             }
         };

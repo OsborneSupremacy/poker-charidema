@@ -5,22 +5,28 @@ public static partial class HandQualifierDelegates
     public static HandQualifier FlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
     {
-        var allFlushes = EvaluateFlushes(request);
-        var completeFlushes = allFlushes.Where(x => x.Complete).ToList();
+        var potential = EvaluateFlushes(request);
+        var complete = potential.WhereComplete();
 
-        if (!completeFlushes.Any())
-            return request.Cards.ToUnqualifiedHand(
-                request.Hand,
-                allFlushes.AnyWithEnoughRemainingCards()
-            );
+        if(complete.Any())
+            return request.Hand
+                .ToQualifiedHand(
+                    GetBestFlush(complete)
+                );
 
-        var bestFlush = GetBestFlush(completeFlushes);
+        var best = GetBestFlush(
+            potential
+                .WithFewestNeededCards()
+        );
 
-        return request.Hand.ToQualifiedHand(bestFlush);
+        return request.Hand.ToUnqualifiedHand(
+            best,
+            best.EnoughRemainingCards()
+        );
     };
 
     private static PotentialHandMessage GetBestFlush(
-        List<PotentialHandMessage> evalulated
+        IEnumerable<PotentialHandMessage> evalulated
         ) =>
         evalulated
             .OrderByDescending(x => x.HighRank.Value)
@@ -71,8 +77,7 @@ public static partial class HandQualifierDelegates
         NeededCardMessageBuilder neededCardMessageBuilder = new();
 
         var stillNeededCount = GlobalConstants.HandSize
-            - contributingStandard.Count
-            - contributingWild.Count;
+            - (contributingStandard.Count + contributingWild.Count);
 
         if (stillNeededCount > 0)
             neededCardMessageBuilder
@@ -84,8 +89,8 @@ public static partial class HandQualifierDelegates
                 .GetMaxRank(contributingStandard, contributingWild),
             Suit = suit,
             Complete = stillNeededCount == 0,
-            ContributingStandardCards = contributingStandard,
-            ContributingWildCards = contributingWild,
+            ContributingStandard = contributingStandard,
+            ContributingWild = contributingWild,
             NonContributing = CardFunctions
                 .GetNonContributingCards(request.Cards, contributingStandard, contributingWild),
             RemainingCardCount = request.RemainingCardCount,

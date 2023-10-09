@@ -8,17 +8,22 @@ public static partial class HandQualifierDelegates
             var straightFlush =
                 StraightFlushHandQualifier!(request with { Hand = Hands.StraightFlush })!;
 
-            return straightFlush.IsRoyalFlush() switch
+            if(straightFlush.IsRoyalFlush())
+                return straightFlush with { Hand = Hands.RoyalFlush };
+
+            var potentialRoyal = FindPotentialStraightFlushes(request)
+                .Where(sf => sf.TheoreticalHighRank() == Ranks.Ace)
+                .WithFewestNeededCards();
+
+            if(potentialRoyal.Any())
+                return request.Hand.ToUnqualifiedHand(
+                    potentialRoyal.First(),
+                    potentialRoyal.First().EnoughRemainingCards()
+                );
+
+            return straightFlush with
             {
-                true => straightFlush with { Hand = Hands.RoyalFlush },
-                false => request.Cards.ToUnqualifiedHand
-                    (
-                        request.Hand,
-                        FindPotentialStraightFlushes(request)
-                            .Where(sf => sf.TheoreticalHighRank() == Ranks.Ace)
-                            .ToList()
-                            .AnyWithEnoughRemainingCards()
-                    )
+                HandQualification = HandQualifications.Eliminated
             };
         };
 

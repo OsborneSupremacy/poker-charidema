@@ -22,26 +22,17 @@ public static partial class HandQualifierDelegates
                 }
             );
 
-        return (firstPair.Complete, secondPair.Complete) switch
+        var combinedHand = firstPair.MergeWith(secondPair);
+
+        return combinedHand.Complete switch
         {
-            (true, true) =>
+            true =>
                 request.Hand
-                    .ToQualifiedHand(firstPair.CombineWith(secondPair)),
+                    .ToQualifiedHand(combinedHand),
 
-            (true, false) =>
-                request.Cards
-                    .ToUnqualifiedHand(request.Hand, secondPair.EnoughRemainingCards()),
-
-            (false, true) =>
-            // this scenario shouldn't happen. If there's a second pair, there should be a first pair.
-            // I'm preferring to handle a scenario that should never happen over adding an
-            // ugly exception that will never be thrown.
-                request.Cards
-                    .ToUnqualifiedHand(request.Hand, firstPair.EnoughRemainingCards()),
-
-            (false, false) =>
-                request.Cards
-                    .ToUnqualifiedHand(request.Hand, firstPair.EnoughRemainingCards() && secondPair.EnoughRemainingCards())
+            false =>
+                request.Hand
+                    .ToUnqualifiedHand(combinedHand, combinedHand.EnoughRemainingCards())
         };
     };
 }

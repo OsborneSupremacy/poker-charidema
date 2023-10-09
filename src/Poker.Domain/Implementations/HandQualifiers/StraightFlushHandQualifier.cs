@@ -1,26 +1,32 @@
-﻿using System.Numerics;
-
-namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {
     public static HandQualifier StraightFlushHandQualifier { get; } =
         (QualifiedHandRequest request) =>
         {
-            var potentials = FindPotentialStraightFlushes(request).ToList();
-            var complete = potentials.Where(x => x.Complete).ToList();
+            var potential = FindPotentialStraightFlushes(request);
+            var complete = potential.WhereComplete();
 
-            if (!complete.Any())
-                return request.Cards.ToUnqualifiedHand(
-                    request.Hand,
-                    potentials.AnyWithEnoughRemainingCards()
-                );
+            if (complete.Any())
+                return request.Hand
+                    .ToQualifiedHand(
+                        GetBestStraightFlush(complete)
+                    );
 
-            return request.Hand.ToQualifiedHand(GetBestStraightFlush(complete));
+            var best = GetBestStraightFlush(
+                potential
+                    .WithFewestNeededCards()
+            );
+
+            return request.Hand.ToUnqualifiedHand(
+                best,
+                best.EnoughRemainingCards()
+            );
         };
 
     private static PotentialHandMessage GetBestStraightFlush(
-        List<PotentialHandMessage> potential
+        IEnumerable<PotentialHandMessage> potential
     ) =>
         potential
             .Where(x => x.HighRank.Value == potential.Max(x => x.HighRank.Value))
@@ -35,70 +41,14 @@ public static partial class HandQualifierDelegates
     /// </summary>
     /// <param name="cards"></param>
     /// <returns></returns>
-    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(QualifiedHandRequest request)
-    {
-        var straights = EvaluateStraights(request);
-
-        foreach (var flush in EvaluateFlushes(request))
-            foreach (
-                var straight in straights
-                    .Where(
-                        x => x.AggregateValue() == flush.AggregateValue()
-                    )
-                )
-                yield return (flush.Complete, straight.Complete) switch
-                {
-                    (true, true) => new PotentialHandMessage
-                    {
-                        HighRank = flush.HighRank,
-                        Suit = flush.Suit,
-                        ContributingStandardCards = flush.ContributingStandardCards,
-                        ContributingWildCards = flush.ContributingWildCards,
-                        NonContributing = flush.NonContributing,
-                        Complete = true,
-                        RemainingCardCount = request.RemainingCardCount,
-                        NeededCardMessage = NeededCardMessageBuilder.Empty()
-                    },
-
-                    (true, false) => new PotentialHandMessage
-                    {
-                        HighRank = flush.HighRank,
-                        Suit = flush.Suit,
-                        ContributingStandardCards = flush.ContributingStandardCards,
-                        ContributingWildCards = flush.ContributingWildCards,
-                        NonContributing = flush.NonContributing,
-                        Complete = false,
-                        RemainingCardCount = request.RemainingCardCount,
-                        NeededCardMessage = straight.NeededCardMessage
-                    },
-
-                    (false, true) => new PotentialHandMessage
-                    {
-                        HighRank = straight.HighRank,
-                        Suit = flush.Suit,
-                        ContributingStandardCards = straight.ContributingStandardCards,
-                        ContributingWildCards = straight.ContributingWildCards,
-                        NonContributing = straight.NonContributing,
-                        Complete = false,
-                        RemainingCardCount = request.RemainingCardCount,
-                        NeededCardMessage = flush.NeededCardMessage
-                    },
-
-                    (false, false) => new PotentialHandMessage
-                    {
-                        HighRank = flush.HighRank,
-                        Suit = flush.Suit,
-                        ContributingStandardCards = flush.ContributingStandardCards,
-                        ContributingWildCards = flush.ContributingWildCards,
-                        NonContributing = flush.NonContributing,
-                        Complete = false,
-                        RemainingCardCount = request.RemainingCardCount,
-                        NeededCardMessage = straight
-                            .CombineWith(flush)
-                            .NeededCardMessage
-                    }
-                };
-    }
+    private static IEnumerable<PotentialHandMessage> FindPotentialStraightFlushes(QualifiedHandRequest request) =>
+        EvaluateStraights(request)
+            .Join(
+                EvaluateFlushes(request),
+                    straight => straight.AggregateValue(),
+                    flush => flush.AggregateValue(),
+                    (straight, flush) => straight.MergeWith(flush)
+            );
 }
 
 

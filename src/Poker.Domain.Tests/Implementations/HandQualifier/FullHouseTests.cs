@@ -8,7 +8,7 @@ public class FullHouseTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FullHouse)
+            .For(Hands.FullHouse, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -34,7 +34,7 @@ public class FullHouseTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FullHouse)
+            .For(Hands.FullHouse, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -46,7 +46,8 @@ public class FullHouseTests
                         Cards.FiveOfDiamonds
                     }
                 );
-            });
+            })
+            .ExpectedNeededCard(new() { Rank = Ranks.Five, Suit = Suits.Empty });
 
         // act
         var result = fixture.Execute();
