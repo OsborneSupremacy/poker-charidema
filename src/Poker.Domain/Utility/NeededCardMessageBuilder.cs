@@ -23,6 +23,13 @@ internal class NeededCardMessageBuilder
         return this;
     }
 
+    public NeededCardMessageBuilder WithCards(Rank rank, Suit suit, int count)
+    {
+        for (var i = 0; i < count; i++)
+            WithCard(rank, suit);
+        return this;
+    }
+
     public NeededCardMessage Build() => _message;
 
     public static NeededCardMessage Empty() =>

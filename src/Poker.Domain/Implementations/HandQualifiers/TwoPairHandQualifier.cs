@@ -6,25 +6,42 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
     {
         var firstPair =
-            GetPotentialMatchingRankHand(request.Cards, 2, request.RemainingCardCount);
-
-        if (!firstPair.Complete)
-            return request.Cards.ToUnqualifiedHand(
-                Hands.TwoPair,
-                request.RemainingCardCount >= 2
+            GetPotentialMatchingRankHand(
+                request with { Hand = Hands.Pair }
             );
 
-        var secondPair = 
-            GetPotentialMatchingRankHand(firstPair.NonContributing, 2, request.RemainingCardCount);
-
-        if (!secondPair.Complete)
-            return request.Cards.ToUnqualifiedHand(
-                Hands.FullHouse,
-                request.RemainingCardCount > 0
+        var secondPair =
+            GetPotentialMatchingRankHand(
+                request with
+                {
+                    Cards = firstPair.NonContributing,
+                    Hand = Hands.Pair,
+                    RemainingCardCount =
+                        request.RemainingCardCount
+                        - firstPair.NeeededCardCount()
+                }
             );
 
-        return request.Hand.ToQualifiedHand(
-            firstPair.CombineWith(secondPair)
-        );
+        return (firstPair.Complete, secondPair.Complete) switch
+        {
+            (true, true) =>
+                request.Hand
+                    .ToQualifiedHand(firstPair.CombineWith(secondPair)),
+
+            (true, false) =>
+                request.Cards
+                    .ToUnqualifiedHand(request.Hand, secondPair.EnoughRemainingCards()),
+
+            (false, true) =>
+            // this scenario shouldn't happen. If there's a second pair, there should be a first pair.
+            // I'm preferring to handle a scenario that should never happen over adding an
+            // ugly exception that will never be thrown.
+                request.Cards
+                    .ToUnqualifiedHand(request.Hand, firstPair.EnoughRemainingCards()),
+
+            (false, false) =>
+                request.Cards
+                    .ToUnqualifiedHand(request.Hand, firstPair.EnoughRemainingCards() && secondPair.EnoughRemainingCards())
+        };
     };
 }

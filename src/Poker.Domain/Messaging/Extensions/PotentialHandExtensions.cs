@@ -3,7 +3,7 @@
 internal static class PotentialHandExtensions
 {
     /// <summary>
-    /// What is the highest rank will be if the hand is completed.
+    /// What the highest rank will be if the hand is completed.
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
@@ -26,7 +26,10 @@ internal static class PotentialHandExtensions
     public static bool EnoughRemainingCards(
         this PotentialHandMessage input
         ) =>
-            input.RemainingCardCount >= input.NeededCardMessage.Cards.Count;
+            input.RemainingCardCount >= input.NeeededCardCount();
+
+    public static uint NeeededCardCount(this PotentialHandMessage input) =>
+        input.NeededCardMessage.Cards.Count.ToUint();
 
     public static string AggregateValue(this PotentialHandMessage input)
     {

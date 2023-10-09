@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Poker.Domain.Classic;
 
 namespace Poker.Domain.Implementations;
 
@@ -7,111 +8,88 @@ public static partial class HandQualifierDelegates
     public static HandQualifier MatchingRankHandQualifier { get; } = 
         (QualifiedHandRequest request) =>
     {
-        var bestRank = GetPotentialMatchingRankHand(
-            request.Cards,
-            request.Hand.PrimaryMatchesCount.ToInt(),
-            request.RemainingCardCount
-        );
+        var bestRank = GetPotentialMatchingRankHand(request);
 
-        return bestRank switch
+        return bestRank.Complete switch
         {
-            { HighRank: var rank } when rank == Ranks.Empty =>
-                request.Cards.ToUnqualifiedHand(request.Hand, request.RemainingCardCount > 0),
-            _ =>
-                request.Hand.ToQualifiedHand(bestRank)
+            false => request.Cards.ToUnqualifiedHand(request.Hand, bestRank.EnoughRemainingCards()),
+            true => request.Hand.ToQualifiedHand(bestRank)
         };
     };
 
-    private static PotentialHandMessage GetPotentialMatchingRankHand(
-        List<Card> cards,
-        int requiredMatches,
-        uint remainingCardCount
-        )
+    private static PotentialHandMessage GetPotentialMatchingRankHand(QualifiedHandRequest request)
     {
-        NeededCardMessage bestNeededCardMessage = NeededCardMessageBuilder.Empty();
-        var bestNeededCardCount = GlobalConstants.HandSize + 1;
-
-        foreach(var rank in Ranks.All.OrderByPokerStandard())
-        {
-            var potential =
-                GetPotentialMatchingRankHand(cards, requiredMatches, remainingCardCount, rank);
-
-            if (potential.Complete)
-                return potential;
-
-            // we don't have a match, but we might have a better needed card message
-            if(potential.NeededCardMessage.Cards.Count < bestNeededCardCount)
-            {
-                bestNeededCardMessage = potential.NeededCardMessage;
-                bestNeededCardCount = potential.NeededCardMessage.Cards.Count;
-            }
-        }
-
-        return new PotentialHandMessage
+        PotentialHandMessage bestPotentialHand = new PotentialHandMessage
         {
             HighRank = Ranks.Empty,
             Suit = Suits.Empty,
             Complete = false,
             ContributingStandardCards = new(),
             ContributingWildCards = new(),
-            NonContributing = cards,
-            RemainingCardCount = remainingCardCount,
-            NeededCardMessage = bestNeededCardMessage
+            NonContributing = new(),
+            RemainingCardCount = request.RemainingCardCount,
+            NeededCardMessage = new NeededCardMessageBuilder()
+                .WithCards(Ranks.Empty, Suits.Empty, GlobalConstants.HandSize + 1)
+                .Build()
         };
+
+        foreach(var rank in Ranks.All.OrderByPokerStandard())
+        {
+            var potential =
+                GetPotentialMatchingRankHand(request, rank);
+
+            if (potential.Complete)
+                return potential;
+
+            // we don't have a match, but we might have a better needed card message
+            if(potential.NeededCardMessage.Cards.Count < bestPotentialHand.NeeededCardCount())
+                bestPotentialHand = potential;
+        }
+
+        return bestPotentialHand;
     }
 
     private static PotentialHandMessage GetPotentialMatchingRankHand(
-        List<Card> cards,
-        int requiredMatches,
-        uint remainingCardCount,
+        QualifiedHandRequest request,
         Rank rank
         )
     {
-        var neededCardCount = requiredMatches - cards.WhereRanksOrIsWild(rank).Count();
-
-        if (neededCardCount > 0)
-        {
-            return new PotentialHandMessage
-            {
-                HighRank = Ranks.Empty,
-                Suit = Suits.Empty,
-                Complete = false,
-                ContributingStandardCards = new(),
-                ContributingWildCards = new(),
-                NonContributing = cards,
-                RemainingCardCount = remainingCardCount,
-                NeededCardMessage = new NeededCardMessageBuilder()
-                    .WithCard(rank, Suits.Empty)
-                    .Build()
-            };
-        }
-
-        var contributingStandard = cards
+        var contributingStandard = request.Cards
             .WhereRank(rank)
             .OrderBySuit()
-            .Take(requiredMatches)
+            .Take(request.Hand.PrimaryMatchesCount.ToInt())
             .ToList();
 
         var contributingWild = GetContributingWildCards(
-            requiredMatches - contributingStandard.Count,
-            cards,
+            request.Hand.PrimaryMatchesCount.ToInt() - contributingStandard.Count,
+            request.Cards,
             contributingStandard,
             rank
         );
+
+        var neededCardCount =
+            request.Hand.PrimaryMatchesCount.ToInt()
+            - (contributingStandard.Count + contributingWild.Count);
+
+        NeededCardMessage neededCardMessage = (neededCardCount == 0) switch
+        {
+            true => NeededCardMessageBuilder.Empty(),
+            false => new NeededCardMessageBuilder()
+                .WithCards(rank, Suits.Empty, neededCardCount)
+                .Build()
+        };
 
         return new PotentialHandMessage
         {
             HighRank = rank,
             Suit = Suits.Empty,
-            Complete = true,
+            Complete = neededCardCount == 0,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
-            NonContributing = cards
-                .Except(contributingStandard)
-                .Except(contributingWild.Select(w => w.WildCard))
-                .ToList(),
-            RemainingCardCount = remainingCardCount,
-            NeededCardMessage = NeededCardMessageBuilder.Empty()
+            NonContributing = CardFunctions
+                .GetNonContributingCards(request.Cards, contributingStandard, contributingWild),
+            RemainingCardCount = request.RemainingCardCount,
+            NeededCardMessage = neededCardMessage
         };
     }
 

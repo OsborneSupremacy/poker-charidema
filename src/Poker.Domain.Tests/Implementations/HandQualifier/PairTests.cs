@@ -54,7 +54,7 @@ public class PairTests
     }
 
     [Fact]
-    public void Jokers_In_HandCards_When_Two_Jokers()
+    public void Jokers_In_Contributing_When_Two_Jokers()
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
@@ -79,7 +79,7 @@ public class PairTests
     }
 
     [Fact]
-    public void Jokers_In_HandCards_When_All_Jokers()
+    public void Jokers_In_Contributing_When_All_Jokers()
     {
         // arrange
         var fixture = new HandQualifierTestFixture()

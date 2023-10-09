@@ -22,4 +22,14 @@ public static class CardFunctions
             false => Ranks.Empty
         };
     }
+
+    public static List<Card> GetNonContributingCards(
+        IEnumerable<Card> allCards,
+        IEnumerable<Card> contributingStandard,
+        IEnumerable<AssignedWildCard> contributingWild
+        ) =>
+            allCards
+                .Except(contributingStandard.ToList())
+                .Except(contributingWild.Select(w => w.WildCard))
+                .ToList();
 }

@@ -86,10 +86,8 @@ public static partial class HandQualifierDelegates
             Complete = stillNeededCount == 0,
             ContributingStandardCards = contributingStandard,
             ContributingWildCards = contributingWild,
-            NonContributing = request.Cards
-                .Except(contributingStandard.ToList())
-                .Except(contributingWild.Select(w => w.WildCard))
-                .ToList(),
+            NonContributing = CardFunctions
+                .GetNonContributingCards(request.Cards, contributingStandard, contributingWild),
             RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = neededCardMessageBuilder.Build()
         };
