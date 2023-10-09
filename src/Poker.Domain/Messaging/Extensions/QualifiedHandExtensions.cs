@@ -12,13 +12,28 @@ public static class QualifiedHandExtensions
     public static bool Qualifies(this QualifiedHandResponse input) =>
         input.HandQualification == HandQualifications.Qualifies;
 
-    public static PotentialHandMessage CombineWith(this PotentialHandMessage input, PotentialHandMessage other) =>
+    public static PotentialHandMessage CombineWith(
+        this PotentialHandMessage input,
+        PotentialHandMessage other
+        ) =>
         input with
         {
             ContributingStandardCards = 
                 input.ContributingStandardCards.Concat(other.ContributingStandardCards).ToList(),
+
             ContributingWildCards =
                 input.ContributingWildCards.Concat(other.ContributingWildCards).ToList(),
-            NonContributing = other.NonContributing.ToList()
+
+            NonContributing = other.NonContributing.ToList(),
+
+            NeededCardMessage = input.NeededCardMessage with
+            {
+                Cards = input
+                    .NeededCardMessage
+                    .Cards
+                    .Concat(other.NeededCardMessage.Cards)
+                    .Distinct()
+                    .ToList()
+            }
         };
 }

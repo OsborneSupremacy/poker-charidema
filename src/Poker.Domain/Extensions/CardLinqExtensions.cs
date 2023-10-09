@@ -10,10 +10,6 @@ internal static class CardLinqExtensions
         this IEnumerable<Card> cards, Rank rank
         ) => cards.Where(x => x.MatchesRank(rank));
 
-    public static IEnumerable<Card> WhereRanksOrIsWild(
-        this IEnumerable<Card> cards, Rank rank
-        ) => cards.Where(x => x.MatchesRankOrIsWild(rank));
-
     public static IEnumerable<Card> WhereWild(this IEnumerable<Card> cards) =>
         cards.Where(x => x.IsWild);
 

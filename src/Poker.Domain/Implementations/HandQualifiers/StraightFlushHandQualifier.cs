@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Implementations;
+﻿using System.Numerics;
+
+namespace Poker.Domain.Implementations;
 
 public static partial class HandQualifierDelegates
 {
@@ -11,10 +13,7 @@ public static partial class HandQualifierDelegates
             if (!complete.Any())
                 return request.Cards.ToUnqualifiedHand(
                     request.Hand,
-                    // Determining whether a straight flush is possible for a player is tricky.
-                    // If there are 4+ cards yet to be dealt, then it's always possible.
-                    request.RemainingCardCount >= GlobalConstants.HandSize - 1
-                    || potentials.AnyWithEnoughRemainingCards()
+                    potentials.AnyWithEnoughRemainingCards()
                 );
 
             return request.Hand.ToQualifiedHand(GetBestStraightFlush(complete));
@@ -47,16 +46,57 @@ public static partial class HandQualifierDelegates
                         x => x.AggregateValue() == flush.AggregateValue()
                     )
                 )
-                yield return new PotentialHandMessage
+                yield return (flush.Complete, straight.Complete) switch
                 {
-                    HighRank = flush.HighRank,
-                    Suit = flush.Suit,
-                    ContributingStandardCards = flush.ContributingStandardCards,
-                    ContributingWildCards = flush.ContributingWildCards,
-                    NonContributing = flush.NonContributing,
-                    Complete = flush.Complete && straight.Complete,
-                    RemainingCardCount = request.RemainingCardCount,
-                    NeededCardMessage = flush.NeededCardMessage
+                    (true, true) => new PotentialHandMessage
+                    {
+                        HighRank = flush.HighRank,
+                        Suit = flush.Suit,
+                        ContributingStandardCards = flush.ContributingStandardCards,
+                        ContributingWildCards = flush.ContributingWildCards,
+                        NonContributing = flush.NonContributing,
+                        Complete = true,
+                        RemainingCardCount = request.RemainingCardCount,
+                        NeededCardMessage = NeededCardMessageBuilder.Empty()
+                    },
+
+                    (true, false) => new PotentialHandMessage
+                    {
+                        HighRank = flush.HighRank,
+                        Suit = flush.Suit,
+                        ContributingStandardCards = flush.ContributingStandardCards,
+                        ContributingWildCards = flush.ContributingWildCards,
+                        NonContributing = flush.NonContributing,
+                        Complete = false,
+                        RemainingCardCount = request.RemainingCardCount,
+                        NeededCardMessage = straight.NeededCardMessage
+                    },
+
+                    (false, true) => new PotentialHandMessage
+                    {
+                        HighRank = straight.HighRank,
+                        Suit = flush.Suit,
+                        ContributingStandardCards = straight.ContributingStandardCards,
+                        ContributingWildCards = straight.ContributingWildCards,
+                        NonContributing = straight.NonContributing,
+                        Complete = false,
+                        RemainingCardCount = request.RemainingCardCount,
+                        NeededCardMessage = flush.NeededCardMessage
+                    },
+
+                    (false, false) => new PotentialHandMessage
+                    {
+                        HighRank = flush.HighRank,
+                        Suit = flush.Suit,
+                        ContributingStandardCards = flush.ContributingStandardCards,
+                        ContributingWildCards = flush.ContributingWildCards,
+                        NonContributing = flush.NonContributing,
+                        Complete = false,
+                        RemainingCardCount = request.RemainingCardCount,
+                        NeededCardMessage = straight
+                            .CombineWith(flush)
+                            .NeededCardMessage
+                    }
                 };
     }
 }
