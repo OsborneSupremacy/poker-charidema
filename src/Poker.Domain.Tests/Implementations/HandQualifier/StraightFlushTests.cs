@@ -47,7 +47,7 @@ public class StraightFlushTests
                     }
                 );
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Ace, Suit = Suits.Spades });
+            .ExpectedNeededCard(new() { Ranks.Nine, Ranks.Ace }, Suits.Spades);
 
         // act
         var result = fixture.Execute();

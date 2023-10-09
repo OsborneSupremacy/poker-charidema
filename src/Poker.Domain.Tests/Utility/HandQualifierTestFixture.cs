@@ -190,6 +190,42 @@ public class HandQualifierTestFixture
     public HandQualifierTestFixture WithJokerFor(Card expectedToImpersonate) =>
         WithWild(Cards.CreateJoker(), expectedToImpersonate);
 
+    public HandQualifierTestFixture ExpectedNeededCard(Rank rank, List<Suit> suits)
+    {
+        _expectedNeededCards.Add(
+            new NeededCard
+            {
+                Ranks = new() { rank },
+                Suits = suits
+            }
+        );
+        return this;
+    }
+
+    public HandQualifierTestFixture ExpectedNeededCard(List<Rank> ranks, Suit suit)
+    {
+        _expectedNeededCards.Add(
+            new NeededCard
+            {
+                Ranks = ranks,
+                Suits = new() { suit }
+            }
+        );
+        return this;
+    }
+
+    public HandQualifierTestFixture ExpectedNeededCard(List<Rank> ranks, List<Suit> suits)
+    {
+        _expectedNeededCards.Add(
+            new NeededCard
+            {
+                Ranks = ranks,
+                Suits = suits
+            }
+        );
+        return this;
+    }
+
     public HandQualifierTestFixture ExpectedNeededCard(NeededCard card)
     {
         _expectedNeededCards.Add(card);

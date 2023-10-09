@@ -53,9 +53,7 @@ public class TwoPairTests
                     }
                 );
             })
-            .ExpectedNeededCard(
-                new() { Rank = Ranks.Five, Suit = Suits.Empty }
-            );
+            .ExpectedNeededCard(new List<Rank> { Ranks.Five, Ranks.Two }, Suits.All);
 
         // act
         var result = fixture.Execute();
@@ -82,9 +80,7 @@ public class TwoPairTests
                     }
                 );
             })
-            .ExpectedNeededCard(
-                new() { Rank = Ranks.Five, Suit = Suits.Empty }
-            );
+            .ExpectedNeededCard(new List<Rank> { Ranks.Five, Ranks.Two }, Suits.All);
 
         // act
         var result = fixture.Execute();

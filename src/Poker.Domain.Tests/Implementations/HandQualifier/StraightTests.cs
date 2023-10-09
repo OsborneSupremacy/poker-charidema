@@ -99,7 +99,7 @@ public class StraightTests
                     }
                 );
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Nine, Suit = Suits.Empty });
+            .ExpectedNeededCard(new List<Rank> { Ranks.Nine, Ranks.Ace }, Suits.All);
 
         // act
         var result = fixture.Execute();

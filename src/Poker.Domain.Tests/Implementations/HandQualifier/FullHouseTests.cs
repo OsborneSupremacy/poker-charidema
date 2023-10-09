@@ -47,7 +47,7 @@ public class FullHouseTests
                     }
                 );
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Five, Suit = Suits.Empty });
+            .ExpectedNeededCard(Ranks.Five, Suits.All);
 
         // act
         var result = fixture.Execute();

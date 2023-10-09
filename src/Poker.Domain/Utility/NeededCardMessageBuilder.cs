@@ -15,18 +15,34 @@ internal class NeededCardMessageBuilder
         };
     }
 
-    public NeededCardMessageBuilder WithCard(Rank rank, Suit suit)
+    public NeededCardMessageBuilder WithCard(Rank rank, List<Suit> suits)
     {
         _cards.Add(
-            new () { Rank = rank, Suit = suit }
+            new() { Ranks = new() { rank }, Suits = suits }
         );
         return this;
     }
 
-    public NeededCardMessageBuilder WithCards(Rank rank, Suit suit, int count)
+    public NeededCardMessageBuilder WithCard(List<Rank> ranks, Suit suit)
+    {
+        _cards.Add(
+            new() { Ranks = ranks, Suits = new() { suit } }
+        );
+        return this;
+    }
+
+    public NeededCardMessageBuilder WithCard(List<Rank> ranks, List<Suit> suits)
+    {
+        _cards.Add(
+            new () { Ranks = ranks, Suits = suits }
+        );
+        return this;
+    }
+
+    public NeededCardMessageBuilder WithCards(List<Rank> ranks, List<Suit> suits, int count)
     {
         for (var i = 0; i < count; i++)
-            WithCard(rank, suit);
+            WithCard(ranks, suits);
         return this;
     }
 
@@ -41,7 +57,7 @@ internal class NeededCardMessageBuilder
     internal NeededCardMessageBuilder WithCards(List<NeededCard> neededCards)
     {
         foreach (var neededCard in neededCards)
-            WithCard(neededCard.Rank, neededCard.Suit);
+            WithCard(neededCard.Ranks, neededCard.Suits);
         return this;
     }
 }

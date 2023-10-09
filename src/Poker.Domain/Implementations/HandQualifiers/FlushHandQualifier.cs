@@ -81,7 +81,7 @@ public static partial class HandQualifierDelegates
 
         if (stillNeededCount > 0)
             neededCardMessageBuilder
-                .WithCard(Ranks.Empty, suit);
+                .WithCard(Ranks.All, suit);
 
         return new PotentialHandMessage
         {

@@ -73,7 +73,7 @@ public class FiveOfAKindTests
                     }
                 );
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Ace, Suit = Suits.Empty });
+            .ExpectedNeededCard(Ranks.Ace, Suits.All);
 
         // act
         var result = fixture.Execute();

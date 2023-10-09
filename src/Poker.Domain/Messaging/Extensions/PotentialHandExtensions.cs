@@ -10,7 +10,7 @@ internal static class PotentialHandExtensions
     public static Rank TheoreticalHighRank(this PotentialHandMessage input)
     {
         var neededHighRank = input
-            .NeededCardMessage.Cards.Select(x => x.Rank)
+            .NeededCardMessage.Cards.SelectMany(x => x.Ranks)
             .High();
 
         return input.HighRank.Value >= neededHighRank.Value

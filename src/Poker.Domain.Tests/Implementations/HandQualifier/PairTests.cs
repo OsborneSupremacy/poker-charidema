@@ -119,7 +119,7 @@ public class PairTests
                     Cards.NineOfHearts
                 });
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Nine, Suit = Suits.Empty }); ;
+            .ExpectedNeededCard(Ranks.Nine, Suits.All);
 
         // act
         var result = fixture.Execute();

@@ -2,7 +2,7 @@
 
 public record NeededCard
 {
-    public required Rank Rank { get; init; }
+    public required List<Rank> Ranks { get; init; }
 
-    public required Suit Suit { get; init; }
+    public required List<Suit> Suits { get; init; }
 }

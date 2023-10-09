@@ -99,7 +99,7 @@ public class FlushTests
                     }
                 );
             })
-            .ExpectedNeededCard(new() { Rank = Ranks.Empty, Suit = Suits.Hearts });
+            .ExpectedNeededCard(Ranks.All, Suits.Hearts);
 
         // act
         var result = fixture.Execute();

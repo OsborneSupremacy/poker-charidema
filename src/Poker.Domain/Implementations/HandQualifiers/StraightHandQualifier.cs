@@ -102,8 +102,8 @@ public static partial class HandQualifierDelegates
             // with these properties
             neededCards.Add(new NeededCard
             {
-                Rank = rank,
-                Suit = Suits.Empty
+                Ranks = new() { rank },
+                Suits = Suits.All
             });
         }
 

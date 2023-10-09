@@ -29,7 +29,7 @@ public static partial class HandQualifierDelegates
             NonContributing = new(),
             RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = new NeededCardMessageBuilder()
-                .WithCards(Ranks.Empty, Suits.Empty, GlobalConstants.HandSize + 1)
+                .WithCards(Ranks.All, Suits.All, GlobalConstants.HandSize + 1)
                 .Build()
         };
 
@@ -75,7 +75,7 @@ public static partial class HandQualifierDelegates
         {
             true => NeededCardMessageBuilder.Empty(),
             false => new NeededCardMessageBuilder()
-                .WithCards(rank, Suits.Empty, neededCardCount)
+                .WithCards(new() { rank }, Suits.All, neededCardCount)
                 .Build()
         };
 
