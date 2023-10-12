@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class PairTests
@@ -119,7 +121,7 @@ public class PairTests
                     Cards.NineOfHearts
                 });
             })
-            .ExpectedNeededCard(Ranks.Nine, Suits.All);
+            .ExpectedNeededCards(Cards.All.WhereRank(Ranks.Nine));
 
         // act
         var result = fixture.Execute();

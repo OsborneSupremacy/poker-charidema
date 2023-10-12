@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class StraightTests
@@ -99,7 +101,14 @@ public class StraightTests
                     }
                 );
             })
-            .ExpectedNeededCard(new List<Rank> { Ranks.Nine, Ranks.Ace }, Suits.All);
+            .ExpectedNeededCards(
+                Cards.All
+                    .WhereRank(Ranks.Nine)
+                    .Concat(
+                        Cards.All.WhereRank(Ranks.Ace)
+                    )
+                .ToList()
+            );
 
         // act
         var result = fixture.Execute();

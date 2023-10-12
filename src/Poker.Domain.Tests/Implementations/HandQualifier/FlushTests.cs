@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class FlushTests
@@ -99,7 +101,7 @@ public class FlushTests
                     }
                 );
             })
-            .ExpectedNeededCard(Ranks.All, Suits.Hearts);
+            .ExpectedNeededCards(Cards.All.WhereSuit(Suits.Hearts));
 
         // act
         var result = fixture.Execute();

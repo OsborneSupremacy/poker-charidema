@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Poker.Domain.Classic;
+﻿using System.Linq;
 
 namespace Poker.Domain.Implementations;
 
@@ -29,7 +28,10 @@ public static partial class HandQualifierDelegates
             NonContributing = new(),
             RemainingCardCount = request.RemainingCardCount,
             NeededCardMessage = new NeededCardMessageBuilder()
-                .WithCards(Ranks.All, Suits.All, GlobalConstants.HandSize + 1)
+                .WithCards(
+                    GlobalConstants.HandSize + 1,
+                    Cards.All
+                )
                 .Build()
         };
 
@@ -42,7 +44,7 @@ public static partial class HandQualifierDelegates
                 return potential;
 
             // we don't have a match, but we might have a better needed card message
-            if(potential.NeededCardMessage.Cards.Count < bestPotentialHand.NeeededCardCount())
+            if(potential.NeeededCardCount() < bestPotentialHand.NeeededCardCount())
                 bestPotentialHand = potential;
         }
 
@@ -75,7 +77,13 @@ public static partial class HandQualifierDelegates
         {
             true => NeededCardMessageBuilder.Empty(),
             false => new NeededCardMessageBuilder()
-                .WithCards(new() { rank }, Suits.All, neededCardCount)
+                .WithCards(
+                    neededCardCount.ToUint(),
+                    Cards.All
+                        .WhereRank(rank)
+                        .Except(contributingStandard)
+                        .Except(contributingWild.AssignedCards())
+                )
                 .Build()
         };
 

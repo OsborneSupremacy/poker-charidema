@@ -4,45 +4,31 @@ internal class NeededCardMessageBuilder
 {
     private readonly NeededCardMessage _message;
 
-    private readonly List<NeededCard> _cards;
-
     public NeededCardMessageBuilder()
     {
-        _cards = new();
         _message = new()
         {
-            Cards = _cards
+            Groups = new()
         };
     }
 
-    public NeededCardMessageBuilder WithCard(Rank rank, List<Suit> suits)
+    public NeededCardMessageBuilder WithCard(uint count, Card card)
     {
-        _cards.Add(
-            new() { Ranks = new() { rank }, Suits = suits }
-        );
+        _message.Groups.Add(new()
+        {
+            Count = count,
+            Cards = new() { card }
+        });
         return this;
     }
 
-    public NeededCardMessageBuilder WithCard(List<Rank> ranks, Suit suit)
+    public NeededCardMessageBuilder WithCards(uint count, IEnumerable<Card> cards)
     {
-        _cards.Add(
-            new() { Ranks = ranks, Suits = new() { suit } }
-        );
-        return this;
-    }
-
-    public NeededCardMessageBuilder WithCard(List<Rank> ranks, List<Suit> suits)
-    {
-        _cards.Add(
-            new () { Ranks = ranks, Suits = suits }
-        );
-        return this;
-    }
-
-    public NeededCardMessageBuilder WithCards(List<Rank> ranks, List<Suit> suits, int count)
-    {
-        for (var i = 0; i < count; i++)
-            WithCard(ranks, suits);
+        _message.Groups.Add(new()
+        {
+            Count = count,
+            Cards = cards.ToList()
+        });
         return this;
     }
 
@@ -51,13 +37,6 @@ internal class NeededCardMessageBuilder
     public static NeededCardMessage Empty() =>
         new()
         {
-            Cards = Enumerable.Empty<NeededCard>().ToList()
+            Groups = Enumerable.Empty<NeededCardGroup>().ToList()
         };
-
-    internal NeededCardMessageBuilder WithCards(List<NeededCard> neededCards)
-    {
-        foreach (var neededCard in neededCards)
-            WithCard(neededCard.Ranks, neededCard.Suits);
-        return this;
     }
-}

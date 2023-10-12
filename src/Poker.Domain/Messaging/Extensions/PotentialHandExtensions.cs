@@ -10,7 +10,9 @@ internal static class PotentialHandExtensions
     public static Rank TheoreticalHighRank(this PotentialHandMessage input)
     {
         var neededHighRank = input
-            .NeededCardMessage.Cards.SelectMany(x => x.Ranks)
+            .NeededCardMessage
+                .Groups
+                .SelectMany(x => x.Cards.Select(x => x.Rank))
             .High();
 
         return input.HighRank.Value >= neededHighRank.Value
@@ -39,7 +41,10 @@ internal static class PotentialHandExtensions
             input.RemainingCardCount >= input.NeeededCardCount();
 
     public static uint NeeededCardCount(this PotentialHandMessage input) =>
-        input.NeededCardMessage.Cards.Count.ToUint();
+        input.NeededCardMessage.Groups
+            .Select(g => g.Count.ToInt())
+            .Sum()
+            .ToUint();
 
     public static IEnumerable<PotentialHandMessage> WithFewestNeededCards(
         this IEnumerable<PotentialHandMessage> potentials

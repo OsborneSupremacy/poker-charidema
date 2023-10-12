@@ -80,8 +80,10 @@ public static partial class HandQualifierDelegates
             - (contributingStandard.Count + contributingWild.Count);
 
         if (stillNeededCount > 0)
-            neededCardMessageBuilder
-                .WithCard(Ranks.All, suit);
+            neededCardMessageBuilder.WithCards(
+                stillNeededCount.ToUint(),
+                Cards.All.WhereSuit(suit)
+            );
 
         return new PotentialHandMessage
         {

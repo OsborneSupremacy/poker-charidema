@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class FullHouseTests
@@ -47,7 +49,7 @@ public class FullHouseTests
                     }
                 );
             })
-            .ExpectedNeededCard(Ranks.Five, Suits.All);
+            .ExpectedNeededCards(Cards.All.WhereRank(Ranks.Five));
 
         // act
         var result = fixture.Execute();

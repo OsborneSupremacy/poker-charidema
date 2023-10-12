@@ -17,7 +17,7 @@ public static partial class HandQualifierDelegates
                     Hand = Hands.Pair,
                     RemainingCardCount =
                         request.RemainingCardCount
-                        - threeOfAKind.NeededCardMessage.Cards.Count.ToUint()
+                        - threeOfAKind.NeededCardMessage.Groups.Count.ToUint()
                 }
             );
 

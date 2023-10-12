@@ -1,4 +1,7 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using System.Xml.Serialization;
+using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class ThreeOfAKindTests
@@ -54,7 +57,7 @@ public class ThreeOfAKindTests
                     }
                 );
             })
-            .ExpectedNeededCard(Ranks.Ace, Suits.All);
+            .ExpectedNeededCards(Cards.AceOfClubs, Cards.AceOfDiamonds);
 
         // act
         var result = fixture.Execute();

@@ -53,7 +53,13 @@ public class TwoPairTests
                     }
                 );
             })
-            .ExpectedNeededCard(new List<Rank> { Ranks.Five, Ranks.Two }, Suits.All);
+            .ExpectedNeededCards(
+                Cards.All.WhereRank(Ranks.Five)
+                .Concat(
+                    Cards.All.WhereRank(Ranks.Two))
+                .ToList()
+            );
+
 
         // act
         var result = fixture.Execute();
@@ -80,7 +86,14 @@ public class TwoPairTests
                     }
                 );
             })
-            .ExpectedNeededCard(new List<Rank> { Ranks.Five, Ranks.Two }, Suits.All);
+            .ExpectedNeededCards(
+                Cards.All
+                    .WhereRank(Ranks.Five)
+                    .Concat(
+                        Cards.All.WhereRank(Ranks.Two)
+                    )
+                .ToList()
+            );
 
         // act
         var result = fixture.Execute();

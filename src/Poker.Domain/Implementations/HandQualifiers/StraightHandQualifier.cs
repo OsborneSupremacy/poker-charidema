@@ -54,7 +54,7 @@ public static partial class HandQualifierDelegates
 
         Queue<Card> wildCards = request.Cards.WhereWild().ToQueue();
 
-        List<NeededCard> neededCards = new();
+        List<NeededCardGroup> neededCardGroups = new();
 
         foreach (var rank in Ranks.All
             .Where(r => r.Value > startingRank.Value)
@@ -100,11 +100,13 @@ public static partial class HandQualifierDelegates
 
             // no matching standard card and no wild cards left, so we need a card
             // with these properties
-            neededCards.Add(new NeededCard
-            {
-                Ranks = new() { rank },
-                Suits = Suits.All
-            });
+            neededCardGroups.Add(
+                new NeededCardGroup
+                {
+                    Cards = Cards.All.WhereRank(rank).ToList(),
+                    Count = 1
+                }
+            );
         }
 
         var isComplete =
@@ -113,9 +115,9 @@ public static partial class HandQualifierDelegates
         NeededCardMessage neededCardMessage = isComplete switch
         {
             true => NeededCardMessageBuilder.Empty(),
-            false => new NeededCardMessageBuilder()
-                .WithCards(neededCards)
-                .Build()
+            false => new NeededCardMessage {
+                Groups = neededCardGroups
+            }
         };
 
         return new PotentialHandMessage

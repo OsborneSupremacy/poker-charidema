@@ -40,10 +40,8 @@ public static class QualifiedHandExtensions
 
             NeededCardMessage = input.NeededCardMessage with
             {
-                Cards = input
-                    .NeededCardMessage
-                    .Cards
-                    .Union(other.NeededCardMessage.Cards)
+                Groups = input.NeededCardMessage.Groups
+                    .Concat(other.NeededCardMessage.Groups)
                     .ToList()
             }
         };

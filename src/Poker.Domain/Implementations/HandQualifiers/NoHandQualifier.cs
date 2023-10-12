@@ -15,7 +15,7 @@ public static partial class HandQualifierDelegates
                 ContributingWildCards = new(),
                 Kickers = new(),
                 DeadCards = request.Cards,
-                NeededCards = new()
+                NeededCardGroups = new()
             };
         };
 }

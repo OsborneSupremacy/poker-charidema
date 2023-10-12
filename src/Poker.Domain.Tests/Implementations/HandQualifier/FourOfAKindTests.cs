@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandQualifier;
+﻿using Poker.Domain.Extensions;
+
+namespace Poker.Domain.Tests.Implementations.HandQualifier;
 
 [ExcludeFromCodeCoverage]
 public class FourOfAKindTests
@@ -108,7 +110,7 @@ public class FourOfAKindTests
                     }
                 );
             })
-            .ExpectedNeededCard(Ranks.Ace, Suits.All);
+            .ExpectedNeededCards(Cards.All.WhereRank(Ranks.Ace));
 
         // act
         var result = fixture.Execute();

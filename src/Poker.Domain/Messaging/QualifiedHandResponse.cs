@@ -32,5 +32,5 @@ public record QualifiedHandResponse
 
     public required List<Card> DeadCards { get; init; }
 
-    public required List<NeededCard> NeededCards { get; init; }
+    public required List<NeededCardGroup> NeededCardGroups { get; init; }
 }

@@ -27,7 +27,7 @@ internal static class HandExtensions
                 .Skip(kickerCount)
                 .ToList(),
             HandQualification = HandQualifications.Qualifies,
-            NeededCards = new()
+            NeededCardGroups = new()
         };
     }
 
@@ -45,8 +45,8 @@ internal static class HandExtensions
                 ContributingWildCards = new(),
                 DeadCards = potentialHand
                     .ContributingStandard
-                    .Concat(potentialHand.ContributingWild.Select(w => w.WildCard))
-                    .Concat(potentialHand.NonContributing)
+                    .Union(potentialHand.ContributingWild.Select(w => w.WildCard))
+                    .Union(potentialHand.NonContributing)
                     .OrderByPokerStandard()
                     .ToList(),
                 Kickers = new(),
@@ -54,6 +54,6 @@ internal static class HandExtensions
                     possible
                     ? HandQualifications.Possible
                     : HandQualifications.Eliminated,
-                NeededCards = potentialHand.NeededCardMessage.Cards
+                NeededCardGroups = potentialHand.NeededCardMessage.Groups
             };
 }

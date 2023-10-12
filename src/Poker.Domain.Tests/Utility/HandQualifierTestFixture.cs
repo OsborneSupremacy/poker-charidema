@@ -15,7 +15,7 @@ public record HandQualifierTestFixtureResponse
 
     public required List<Card> ExpectedDeadCards { get; init; }
 
-    public required List<NeededCard> ExpectedNeededCards { get; init; }
+    public required List<Card> ExpectedNeededCards { get; init; }
 
     public required QualifiedHandResponse QualifiedHandResponse { get; init; }
 }
@@ -57,7 +57,10 @@ public static class HandQualifierTestFixtureExtensions
             .Should()
             .BeEquivalentTo(response.ExpectedDeadCards.AggregateValue());
 
-        response.QualifiedHandResponse.NeededCards
+        response.QualifiedHandResponse
+            .NeededCardGroups
+            .SelectMany(g => g.Cards)
+            .ToList()
             .Should()
             .BeEquivalentTo(response.ExpectedNeededCards);
     }
@@ -91,7 +94,7 @@ public class HandQualifierTestFixture
 
     private readonly List<TestWildCard> _testWildCards;
 
-    private readonly List<NeededCard> _expectedNeededCards;
+    private readonly List<Card> _expectedNeededCards;
 
     private Hand _hand;
 
@@ -105,7 +108,7 @@ public class HandQualifierTestFixture
     {
         _testCards = new List<TestCard>();
         _testWildCards = new List<TestWildCard>();
-        _expectedNeededCards = new List<NeededCard>();
+        _expectedNeededCards = new List<Card>();
         _hand = Hands.NoHand;
     }
 
@@ -190,51 +193,22 @@ public class HandQualifierTestFixture
     public HandQualifierTestFixture WithJokerFor(Card expectedToImpersonate) =>
         WithWild(Cards.CreateJoker(), expectedToImpersonate);
 
-    public HandQualifierTestFixture ExpectedNeededCard(Rank rank, List<Suit> suits)
-    {
-        _expectedNeededCards.Add(
-            new NeededCard
-            {
-                Ranks = new() { rank },
-                Suits = suits
-            }
-        );
-        return this;
-    }
-
-    public HandQualifierTestFixture ExpectedNeededCard(List<Rank> ranks, Suit suit)
-    {
-        _expectedNeededCards.Add(
-            new NeededCard
-            {
-                Ranks = ranks,
-                Suits = new() { suit }
-            }
-        );
-        return this;
-    }
-
-    public HandQualifierTestFixture ExpectedNeededCard(List<Rank> ranks, List<Suit> suits)
-    {
-        _expectedNeededCards.Add(
-            new NeededCard
-            {
-                Ranks = ranks,
-                Suits = suits
-            }
-        );
-        return this;
-    }
-
-    public HandQualifierTestFixture ExpectedNeededCard(NeededCard card)
+    public HandQualifierTestFixture ExpectedNeededCard(Card card)
     {
         _expectedNeededCards.Add(card);
         return this;
     }
 
-    public HandQualifierTestFixture ExpectedNeededCards(IEnumerable<NeededCard> cards)
+    public HandQualifierTestFixture ExpectedNeededCards(IEnumerable<Card> cards)
     {
         _expectedNeededCards.AddRange(cards);
+        return this;
+    }
+
+    public HandQualifierTestFixture ExpectedNeededCards(params Card[] cards)
+    {
+        foreach(var card in cards)
+            _expectedNeededCards.Add(card);
         return this;
     }
 
