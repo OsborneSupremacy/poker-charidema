@@ -35,7 +35,9 @@ public static partial class HandQualifierDelegates
                 .Build()
         };
 
-        foreach(var rank in Ranks.All.OrderByPokerStandard())
+        List<Card> neededCards = new();
+
+        foreach (var rank in Ranks.All.OrderByPokerStandard())
         {
             var potential =
                 GetPotentialMatchingRankHand(request, rank);
@@ -45,10 +47,28 @@ public static partial class HandQualifierDelegates
 
             // we don't have a match, but we might have a better needed card message
             if(potential.NeeededCardCount() < bestPotentialHand.NeeededCardCount())
+            {
                 bestPotentialHand = potential;
+                neededCards.Clear();
+            }
+
+            // any potential hand with the same needed card count is a candidate
+            if(potential.NeeededCardCount() <= bestPotentialHand.NeeededCardCount())
+                neededCards.AddRange(
+                    potential.NeededCardMessage.Groups.First().Cards
+                );
         }
 
-        return bestPotentialHand;
+        return bestPotentialHand with
+        {
+            NeededCardMessage =
+                new NeededCardMessageBuilder()
+                    .WithCards(
+                        bestPotentialHand.NeeededCardCount(),
+                        neededCards
+                    )
+                    .Build()
+        };
     }
 
     private static PotentialHandMessage GetPotentialMatchingRankHand(
@@ -58,7 +78,7 @@ public static partial class HandQualifierDelegates
     {
         var contributingStandard = request.Cards
             .WhereRank(rank)
-            .OrderBySuit()
+            .OrderByPokerStandard()
             .Take(request.Hand.PrimaryMatchesCount.ToInt())
             .ToList();
 
@@ -79,13 +99,25 @@ public static partial class HandQualifierDelegates
             false => new NeededCardMessageBuilder()
                 .WithCards(
                     neededCardCount.ToUint(),
-                    Cards.All
-                        .WhereRank(rank)
-                        .Except(contributingStandard)
-                        .Except(contributingWild.AssignedCards())
+                    getAcceptableCards(
+                        contributingStandard
+                        .Union(
+                            contributingWild.AssignedCards()
+                        )
+                    )
                 )
                 .Build()
         };
+
+        IEnumerable<Card> getAcceptableCards(
+            IEnumerable<Card> contributing
+            ) =>
+            request.Hand.ImpersonateContributing switch
+            {
+                true => Cards.All.WhereRank(rank),
+                false => Cards.All.WhereRank(rank)
+                    .Except(contributing)
+            };
 
         return new PotentialHandMessage
         {
@@ -120,7 +152,7 @@ public static partial class HandQualifierDelegates
         var targets = Cards
             .All
                 .WhereRank(rank)
-                .OrderBySuit()
+                .OrderByPokerStandard()
                 .OrderBy(contributingStandard.Contains)
                 .ToQueue();
 

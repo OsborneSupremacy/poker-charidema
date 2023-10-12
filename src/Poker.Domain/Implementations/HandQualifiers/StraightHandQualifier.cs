@@ -64,7 +64,7 @@ public static partial class HandQualifierDelegates
         {
             var standardCardInSequence = unusedCards
                 .Where(c => c.MatchesRank(rank))
-                .OrderBySuit()
+                .OrderByPokerStandard()
                 .FirstOrDefault() ?? Cards.Empty;
 
             if(standardCardInSequence != Cards.Empty)
@@ -83,7 +83,7 @@ public static partial class HandQualifierDelegates
                 var target = Cards.All
                     .WhereRank(rank)
                     .Except(request.Cards)
-                    .OrderBySuit()
+                    .OrderByPokerStandard()
                     .First();
 
                 highRank = rank;

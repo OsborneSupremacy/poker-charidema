@@ -9,10 +9,7 @@ public record Hands
         Name = "Empty",
         Value = 0,
         PrimaryMatchesCount = 0,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.NoHandQualifier
     };
 
@@ -21,10 +18,7 @@ public record Hands
         Name = "High Card",
         Value = 1,
         PrimaryMatchesCount = 1,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
@@ -33,10 +27,7 @@ public record Hands
         Name = "Pair",
         Value = 2,
         PrimaryMatchesCount = 2,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
@@ -45,10 +36,7 @@ public record Hands
         Name = "Two Pair",
         Value = 3,
         PrimaryMatchesCount = 2,
-        SecondaryMatchesCount = 2,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.TwoPairHandQualifier
     };
 
@@ -57,10 +45,7 @@ public record Hands
         Name = "Three of a Kind",
         Value = 4,
         PrimaryMatchesCount = 3,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
@@ -69,10 +54,7 @@ public record Hands
         Name = "Straight",
         Value = 5,
         PrimaryMatchesCount = 0,
-        SecondaryMatchesCount = 0,
-        Sequence = true,
-        Uniform = false,
-        SequenceMinRank = Ranks.Two,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.StraightHandQualifier
     };
 
@@ -81,10 +63,7 @@ public record Hands
         Name = "Flush",
         Value = 6,
         PrimaryMatchesCount = 0,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = true,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.FlushHandQualifier
     };
 
@@ -93,10 +72,7 @@ public record Hands
         Name = "Full House",
         Value = 7,
         PrimaryMatchesCount = 3,
-        SecondaryMatchesCount = 2,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.FullHouseHandQualifier
     };
 
@@ -105,10 +81,7 @@ public record Hands
         Name = "Four of a Kind",
         Value = 8,
         PrimaryMatchesCount = 4,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
@@ -117,10 +90,7 @@ public record Hands
         Name = "Straight Flush",
         Value = 9,
         PrimaryMatchesCount = 0,
-        SecondaryMatchesCount = 0,
-        Sequence = true,
-        Uniform = true,
-        SequenceMinRank = Ranks.Two,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.StraightFlushHandQualifier
     };
 
@@ -129,10 +99,7 @@ public record Hands
         Name = "Royal Flush",
         Value = 10,
         PrimaryMatchesCount = 0,
-        SecondaryMatchesCount = 0,
-        Sequence = true,
-        Uniform = true,
-        SequenceMinRank = Ranks.Ten,
+        ImpersonateContributing = false,
         HandQualifier = HandQualifierDelegates.RoyalFlushHandQualifier
     };
 
@@ -141,10 +108,7 @@ public record Hands
         Name = "Five of a Kind",
         Value = 11,
         PrimaryMatchesCount = 5,
-        SecondaryMatchesCount = 0,
-        Sequence = false,
-        Uniform = false,
-        SequenceMinRank = Ranks.Empty,
+        ImpersonateContributing = true,
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 

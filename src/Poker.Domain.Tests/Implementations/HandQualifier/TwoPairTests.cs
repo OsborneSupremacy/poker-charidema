@@ -54,12 +54,13 @@ public class TwoPairTests
                 );
             })
             .ExpectedNeededCards(
-                Cards.All.WhereRank(Ranks.Five)
-                .Concat(
-                    Cards.All.WhereRank(Ranks.Two))
-                .ToList()
+                Cards.FiveOfSpades,
+                Cards.FiveOfClubs,
+                Cards.FiveOfDiamonds,
+                Cards.FourOfSpades,
+                Cards.FourOfHearts,
+                Cards.FourOfClubs
             );
-
 
         // act
         var result = fixture.Execute();
@@ -87,12 +88,12 @@ public class TwoPairTests
                 );
             })
             .ExpectedNeededCards(
-                Cards.All
-                    .WhereRank(Ranks.Five)
-                    .Concat(
-                        Cards.All.WhereRank(Ranks.Two)
-                    )
-                .ToList()
+                Cards.FiveOfSpades,
+                Cards.FiveOfClubs,
+                Cards.FiveOfDiamonds,
+                Cards.FourOfSpades,
+                Cards.FourOfHearts,
+                Cards.FourOfClubs
             );
 
         // act

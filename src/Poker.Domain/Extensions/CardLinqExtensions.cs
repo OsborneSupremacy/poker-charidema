@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Extensions;
+﻿using System.Linq;
+
+namespace Poker.Domain.Extensions;
 
 internal static class CardLinqExtensions
 {
@@ -15,18 +17,7 @@ internal static class CardLinqExtensions
 
     public static IOrderedEnumerable<Card> OrderByPokerStandard(this IEnumerable<Card> cards) =>
         cards
-            .OrderByRank()
-            .OrderBySuit();
-
-    public static IOrderedEnumerable<Card> OrderBySuit(this IEnumerable<Card> cards) =>
-        cards
-            .OrderByDescending(
-                c => c.Suit.Priority
-            );
-
-    public static IOrderedEnumerable<Card> OrderByRank(this IEnumerable<Card> cards) =>
-        cards
-            .OrderByDescending(
-                c => c.Rank.Value
-            );
+            .OrderByDescending(c => c.Rank.Value)
+            .ThenByDescending(c => c.Suit.Priority);
 }
+

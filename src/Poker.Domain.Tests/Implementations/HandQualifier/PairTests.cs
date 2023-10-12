@@ -121,7 +121,11 @@ public class PairTests
                     Cards.NineOfHearts
                 });
             })
-            .ExpectedNeededCards(Cards.All.WhereRank(Ranks.Nine));
+            .ExpectedNeededCards(
+                Cards.NineOfSpades,
+                Cards.NineOfClubs,
+                Cards.NineOfDiamonds
+            );
 
         // act
         var result = fixture.Execute();

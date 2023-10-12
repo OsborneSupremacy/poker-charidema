@@ -24,15 +24,19 @@ public static partial class HandQualifierDelegates
 
         var combinedHand = firstPair.MergeWith(secondPair);
 
-        return combinedHand.Complete switch
-        {
-            true =>
-                request.Hand
-                    .ToQualifiedHand(combinedHand),
+        if(combinedHand.Complete)
+            return request.Hand
+                .ToQualifiedHand(combinedHand);
 
-            false =>
-                request.Hand
-                    .ToUnqualifiedHand(combinedHand, combinedHand.EnoughRemainingCards())
-        };
+        // if first pair is complete. needed cards should be from second hand only
+        if (firstPair.Complete && !secondPair.Complete)
+            combinedHand = combinedHand with
+            {
+                NeededCardMessage = secondPair.NeededCardMessage
+            };
+
+        return request.Hand
+            .ToUnqualifiedHand(combinedHand, combinedHand.EnoughRemainingCards());
     };
+
 }

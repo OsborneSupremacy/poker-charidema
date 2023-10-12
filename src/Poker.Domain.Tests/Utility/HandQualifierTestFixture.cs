@@ -57,12 +57,19 @@ public static class HandQualifierTestFixtureExtensions
             .Should()
             .BeEquivalentTo(response.ExpectedDeadCards.AggregateValue());
 
-        response.QualifiedHandResponse
+        var actualNeededCards = response.QualifiedHandResponse
             .NeededCardGroups
             .SelectMany(g => g.Cards)
-            .ToList()
+            .OrderByPokerStandard()
+            .ToList();
+
+        var expectedNeededCards = response.ExpectedNeededCards
+            .OrderByPokerStandard()
+            .ToList();
+
+        actualNeededCards
             .Should()
-            .BeEquivalentTo(response.ExpectedNeededCards);
+            .BeEquivalentTo(expectedNeededCards);
     }
 }
 

@@ -53,7 +53,7 @@ public static partial class HandQualifierDelegates
 
         // add non-wildcards matching suit
         var contributingStandard = playerCardsWithSuit
-            .OrderBySuit()
+            .OrderByPokerStandard()
             .Take(GlobalConstants.HandSize)
             .ToList();
 
@@ -61,7 +61,7 @@ public static partial class HandQualifierDelegates
         var targets = Cards.All
             .WhereSuit(suit)
             .Except(playerCardsWithSuit)
-            .OrderByRank()
+            .OrderByPokerStandard()
             .Take(neededCount)
             .ToQueue();
 
