@@ -124,7 +124,19 @@ public class PairTests
             .ExpectedNeededCards(
                 Cards.NineOfSpades,
                 Cards.NineOfClubs,
-                Cards.NineOfDiamonds
+                Cards.NineOfDiamonds,
+                Cards.EightOfSpades,
+                Cards.EightOfClubs,
+                Cards.EightOfDiamonds,
+                Cards.FourOfSpades,
+                Cards.FourOfClubs,
+                Cards.FourOfDiamonds,
+                Cards.ThreeOfSpades,
+                Cards.ThreeOfClubs,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfSpades,
+                Cards.TwoOfClubs,
+                Cards.TwoOfDiamonds
             );
 
         // act
