@@ -101,9 +101,7 @@ public static partial class HandQualifierDelegates
                     neededCardCount.ToUint(),
                     getAcceptableCards(
                         contributingStandard
-                        .Union(
-                            contributingWild.AssignedCards()
-                        )
+                            .Union(contributingWild.AssignedCards())
                     )
                 )
                 .Build()

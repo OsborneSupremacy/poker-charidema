@@ -62,6 +62,8 @@ public static partial class HandQualifierDelegates
             .OrderBy(r => r.Value)
             )
         {
+            highRank = rank;
+
             var standardCardInSequence = unusedCards
                 .Where(c => c.MatchesRank(rank))
                 .OrderByPokerStandard()
@@ -69,7 +71,6 @@ public static partial class HandQualifierDelegates
 
             if(standardCardInSequence != Cards.Empty)
             {
-                highRank = rank;
                 contributingStandard.Add(standardCardInSequence);
                 unusedCards.Remove(standardCardInSequence);
                 continue;
@@ -85,8 +86,6 @@ public static partial class HandQualifierDelegates
                     .Except(request.Cards)
                     .OrderByPokerStandard()
                     .First();
-
-                highRank = rank;
 
                 contributingWild.Add(new AssignedWildCard
                 {
