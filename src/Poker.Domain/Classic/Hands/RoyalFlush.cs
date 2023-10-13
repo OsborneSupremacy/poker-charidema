@@ -8,12 +8,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Spades,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = new()
+                RequiredCount = 5,
+                EligibleCards = new()
                 {
                     Cards.TenOfSpades,
                     Cards.JackOfSpades,
@@ -31,12 +31,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Hearts,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = new()
+                RequiredCount = 5,
+                EligibleCards = new()
                 {
                     Cards.TenOfHearts,
                     Cards.JackOfHearts,
@@ -54,12 +54,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Diamonds,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = new()
+                RequiredCount = 5,
+                EligibleCards = new()
                 {
                     Cards.TenOfDiamonds,
                     Cards.JackOfDiamonds,
@@ -77,12 +77,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Clubs,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = new()
+                RequiredCount = 5,
+                EligibleCards = new()
                 {
                     Cards.TenOfClubs,
                     Cards.JackOfClubs,

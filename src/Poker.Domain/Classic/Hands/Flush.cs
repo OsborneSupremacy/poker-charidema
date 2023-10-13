@@ -8,12 +8,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Spades,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereSuit(Suits.Spades).ToList()
             }
         }
     };
@@ -24,12 +24,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Hearts,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereSuit(Suits.Hearts).ToList()
             }
         }
     };
@@ -40,12 +40,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Diamonds,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereSuit(Suits.Diamonds).ToList()
             }
         }
     };
@@ -56,12 +56,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Clubs,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereSuit(Suits.Clubs).ToList()
             }
         }
     };

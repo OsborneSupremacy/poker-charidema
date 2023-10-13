@@ -8,12 +8,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Two,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Two).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
             }
         }
     };
@@ -24,12 +24,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Three).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
             }
         }
     };
@@ -40,12 +40,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Four).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
             }
         }
     };
@@ -56,12 +56,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Five).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
             }
         }
     };
@@ -72,12 +72,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Six).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
             }
         }
     };
@@ -88,12 +88,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
             }
         }
     };
@@ -104,12 +104,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
             }
         }
     };
@@ -120,12 +120,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
             }
         }
     };
@@ -136,12 +136,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
             }
         }
     };
@@ -152,12 +152,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
             }
         }
     };
@@ -168,12 +168,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
             }
         }
     };
@@ -184,12 +184,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.King).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
             }
         }
     };
@@ -200,12 +200,12 @@ public partial record Hands
         HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        CardGroups = new List<CardGroup>
+        HandSegments = new List<HandSegment>
         {
             new()
             {
-                Count = 5,
-                Cards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                RequiredCount = 5,
+                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
             }
         }
     };

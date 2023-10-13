@@ -8,6 +8,6 @@ public partial record Hands
         HandDefinition = HandDefinitions.NoHand,
         HighRank = Ranks.Empty,
         Suit = Suits.Empty,
-        CardGroups = new()
+        HandSegments = new()
     };
 }
