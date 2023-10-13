@@ -6,7 +6,7 @@ public record TwoPair
     {
         Name = "Threes Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -27,7 +27,7 @@ public record TwoPair
     {
         Name = "Fours Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -48,7 +48,7 @@ public record TwoPair
     {
         Name = "Fives Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -69,7 +69,7 @@ public record TwoPair
     {
         Name = "Sixes Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -90,7 +90,7 @@ public record TwoPair
     {
         Name = "Sevens Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -111,7 +111,7 @@ public record TwoPair
     {
         Name = "Eights Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -132,7 +132,7 @@ public record TwoPair
     {
         Name = "Nines Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -153,7 +153,7 @@ public record TwoPair
     {
         Name = "Tens Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -174,7 +174,7 @@ public record TwoPair
     {
         Name = "Jacks Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -195,7 +195,7 @@ public record TwoPair
     {
         Name = "Queens Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -216,7 +216,7 @@ public record TwoPair
     {
         Name = "Kings Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -237,7 +237,7 @@ public record TwoPair
     {
         Name = "Aces Over Twos",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -258,7 +258,7 @@ public record TwoPair
     {
         Name = "Fours Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -279,7 +279,7 @@ public record TwoPair
     {
         Name = "Fives Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -300,7 +300,7 @@ public record TwoPair
     {
         Name = "Sixes Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -321,7 +321,7 @@ public record TwoPair
     {
         Name = "Sevens Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -342,7 +342,7 @@ public record TwoPair
     {
         Name = "Eights Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -363,7 +363,7 @@ public record TwoPair
     {
         Name = "Nines Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -384,7 +384,7 @@ public record TwoPair
     {
         Name = "Tens Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -405,7 +405,7 @@ public record TwoPair
     {
         Name = "Jacks Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -426,7 +426,7 @@ public record TwoPair
     {
         Name = "Queens Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -447,7 +447,7 @@ public record TwoPair
     {
         Name = "Kings Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -468,7 +468,7 @@ public record TwoPair
     {
         Name = "Aces Over Threes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -489,7 +489,7 @@ public record TwoPair
     {
         Name = "Fives Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -510,7 +510,7 @@ public record TwoPair
     {
         Name = "Sixes Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -531,7 +531,7 @@ public record TwoPair
     {
         Name = "Sevens Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -552,7 +552,7 @@ public record TwoPair
     {
         Name = "Eights Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -573,7 +573,7 @@ public record TwoPair
     {
         Name = "Nines Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -594,7 +594,7 @@ public record TwoPair
     {
         Name = "Tens Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -615,7 +615,7 @@ public record TwoPair
     {
         Name = "Jacks Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -636,7 +636,7 @@ public record TwoPair
     {
         Name = "Queens Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -657,7 +657,7 @@ public record TwoPair
     {
         Name = "Kings Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -678,7 +678,7 @@ public record TwoPair
     {
         Name = "Aces Over Fours",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -699,7 +699,7 @@ public record TwoPair
     {
         Name = "Sixes Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -720,7 +720,7 @@ public record TwoPair
     {
         Name = "Sevens Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -741,7 +741,7 @@ public record TwoPair
     {
         Name = "Eights Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -764,7 +764,7 @@ public record TwoPair
     {
         Name = "Nines Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -787,7 +787,7 @@ public record TwoPair
     {
         Name = "Tens Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -810,7 +810,7 @@ public record TwoPair
     {
         Name = "Jacks Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -833,7 +833,7 @@ public record TwoPair
     {
         Name = "Queens Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -856,7 +856,7 @@ public record TwoPair
     {
         Name = "Kings Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -879,7 +879,7 @@ public record TwoPair
     {
         Name = "Aces Over Fives",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -902,7 +902,7 @@ public record TwoPair
     {
         Name = "Sevens Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -925,7 +925,7 @@ public record TwoPair
     {
         Name = "Eights Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -948,7 +948,7 @@ public record TwoPair
     {
         Name = "Nines Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -971,7 +971,7 @@ public record TwoPair
     {
         Name = "Tens Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -994,7 +994,7 @@ public record TwoPair
     {
         Name = "Jacks Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1017,7 +1017,7 @@ public record TwoPair
     {
         Name = "Queens Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1040,7 +1040,7 @@ public record TwoPair
     {
         Name = "Kings Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1063,7 +1063,7 @@ public record TwoPair
     {
         Name = "Aces Over Sixes",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1086,7 +1086,7 @@ public record TwoPair
     {
         Name = "Eights Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1111,7 +1111,7 @@ public record TwoPair
     {
         Name = "Nines Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1132,7 +1132,7 @@ public record TwoPair
     {
         Name = "Tens Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1153,7 +1153,7 @@ public record TwoPair
     {
         Name = "Jacks Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1174,7 +1174,7 @@ public record TwoPair
     {
         Name = "Queens Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1195,7 +1195,7 @@ public record TwoPair
     {
         Name = "Kings Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1216,7 +1216,7 @@ public record TwoPair
     {
         Name = "Aces Over Sevens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1237,7 +1237,7 @@ public record TwoPair
     {
         Name = "Nines Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1260,7 +1260,7 @@ public record TwoPair
     {
         Name = "Tens Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1283,7 +1283,7 @@ public record TwoPair
     {
         Name = "Jacks Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1306,7 +1306,7 @@ public record TwoPair
     {
         Name = "Queens Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1329,7 +1329,7 @@ public record TwoPair
     {
         Name = "Kings Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1352,7 +1352,7 @@ public record TwoPair
     {
         Name = "Aces Over Eights",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1375,7 +1375,7 @@ public record TwoPair
     {
         Name = "Tens Over Nines",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1398,7 +1398,7 @@ public record TwoPair
     {
         Name = "Jacks Over Nines",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1421,7 +1421,7 @@ public record TwoPair
     {
         Name = "Queens Over Nines",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1444,7 +1444,7 @@ public record TwoPair
     {
         Name = "Kings Over Nines",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1467,7 +1467,7 @@ public record TwoPair
     {
         Name = "Aces Over Nines",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1490,7 +1490,7 @@ public record TwoPair
     {
         Name = "Jacks Over Tens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1513,7 +1513,7 @@ public record TwoPair
     {
         Name = "Queens Over Tens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1536,7 +1536,7 @@ public record TwoPair
     {
         Name = "Kings Over Tens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1559,7 +1559,7 @@ public record TwoPair
     {
         Name = "Aces Over Tens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1582,7 +1582,7 @@ public record TwoPair
     {
         Name = "Queens Over Jacks",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1605,7 +1605,7 @@ public record TwoPair
     {
         Name = "Kings Over Jacks",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1628,7 +1628,7 @@ public record TwoPair
     {
         Name = "Aces Over Jacks",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1651,7 +1651,7 @@ public record TwoPair
     {
         Name = "Kings Over Queens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1674,7 +1674,7 @@ public record TwoPair
     {
         Name = "Aces Over Queens",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
@@ -1697,7 +1697,7 @@ public record TwoPair
     {
         Name = "Aces Over Kings",
         Hand = Hands.TwoPair,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
         {
