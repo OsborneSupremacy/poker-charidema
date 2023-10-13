@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic.HandRequirements;
 
-public record TwoPairs
+public record TwoPair
 {
     public static HandRequirement ThreesOverTwos { get; } = new HandRequirement
     {

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic.HandRequirements;
 
-public record class HighCards
+public record class HighCard
 {
     public static HandRequirement TwoHigh { get; } = new HandRequirement
     {

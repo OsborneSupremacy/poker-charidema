@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic.HandRequirements;
 
-public record class ThreeOfAKinds
+public record class ThreeOfAKind
 {
     public static HandRequirement Twos { get; } = new HandRequirement
     {
