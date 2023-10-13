@@ -12,28 +12,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.FiveOfSpades,
+                    Cards.FourOfSpades,
+                    Cards.ThreeOfSpades,
+                    Cards.TwoOfSpades
+                }
             }
         }
     };
@@ -48,28 +35,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SixOfSpades,
+                    Cards.FiveOfSpades,
+                    Cards.FourOfSpades,
+                    Cards.ThreeOfSpades
+                }
             }
         }
     };
@@ -84,28 +58,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.SevenOfSpades,
+                    Cards.SixOfSpades,
+                    Cards.FiveOfSpades,
+                    Cards.FourOfSpades
+                }
             }
         }
     };
@@ -120,28 +81,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.EightOfSpades,
+                    Cards.SevenOfSpades,
+                    Cards.SixOfSpades,
+                    Cards.FiveOfSpades
+                }
             }
         }
     };
@@ -156,28 +104,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.NineOfSpades,
+                    Cards.EightOfSpades,
+                    Cards.SevenOfSpades,
+                    Cards.SixOfSpades
+                }
             }
         }
     };
@@ -192,28 +127,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.TenOfSpades,
+                    Cards.NineOfSpades,
+                    Cards.EightOfSpades,
+                    Cards.SevenOfSpades
+                }
             }
         }
     };
@@ -228,28 +150,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.JackOfSpades,
+                    Cards.TenOfSpades,
+                    Cards.NineOfSpades,
+                    Cards.EightOfSpades
+                }
             }
         }
     };
@@ -264,28 +173,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Spades).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Spades).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.QueenOfSpades,
+                    Cards.JackOfSpades,
+                    Cards.TenOfSpades,
+                    Cards.NineOfSpades
+                }
             }
         }
     };
@@ -300,28 +196,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SixOfHearts,
+                    Cards.FiveOfHearts,
+                    Cards.FourOfHearts,
+                    Cards.ThreeOfHearts,
+                    Cards.TwoOfHearts
+                }
             }
         }
     };
@@ -336,28 +219,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SevenOfHearts,
+                    Cards.SixOfHearts,
+                    Cards.FiveOfHearts,
+                    Cards.FourOfHearts,
+                    Cards.ThreeOfHearts
+                }
             }
         }
     };
@@ -372,28 +242,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.EightOfHearts,
+                    Cards.SevenOfHearts,
+                    Cards.SixOfHearts,
+                    Cards.FiveOfHearts,
+                    Cards.FourOfHearts
+                }
             }
         }
     };
@@ -408,28 +265,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.NineOfHearts,
+                    Cards.EightOfHearts,
+                    Cards.SevenOfHearts,
+                    Cards.SixOfHearts,
+                    Cards.FiveOfHearts
+                }
             }
         }
     };
@@ -444,28 +288,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.TenOfHearts,
+                    Cards.NineOfHearts,
+                    Cards.EightOfHearts,
+                    Cards.SevenOfHearts,
+                    Cards.SixOfHearts
+                }
             }
         }
     };
@@ -480,28 +311,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.JackOfHearts,
+                    Cards.TenOfHearts,
+                    Cards.NineOfHearts,
+                    Cards.EightOfHearts,
+                    Cards.SevenOfHearts
+                }
             }
         }
     };
@@ -516,28 +334,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.QueenOfHearts,
+                    Cards.JackOfHearts,
+                    Cards.TenOfHearts,
+                    Cards.NineOfHearts,
+                    Cards.EightOfHearts
+                }
             }
         }
     };
@@ -552,28 +357,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Hearts).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Hearts).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.KingOfHearts,
+                    Cards.QueenOfHearts,
+                    Cards.JackOfHearts,
+                    Cards.TenOfHearts,
+                    Cards.NineOfHearts
+                }
             }
         }
     };
@@ -588,28 +380,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SixOfClubs,
+                    Cards.FiveOfClubs,
+                    Cards.FourOfClubs,
+                    Cards.ThreeOfClubs,
+                    Cards.TwoOfClubs
+                }
             }
         }
     };
@@ -624,28 +403,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SevenOfClubs,
+                    Cards.SixOfClubs,
+                    Cards.FiveOfClubs,
+                    Cards.FourOfClubs,
+                    Cards.ThreeOfClubs
+                }
             }
         }
     };
@@ -660,28 +426,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.EightOfClubs,
+                    Cards.SevenOfClubs,
+                    Cards.SixOfClubs,
+                    Cards.FiveOfClubs,
+                    Cards.FourOfClubs
+                }
             }
         }
     };
@@ -696,28 +449,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.NineOfClubs,
+                    Cards.EightOfClubs,
+                    Cards.SevenOfClubs,
+                    Cards.SixOfClubs,
+                    Cards.FiveOfClubs
+                }
             }
         }
     };
@@ -732,28 +472,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.TenOfClubs,
+                    Cards.NineOfClubs,
+                    Cards.EightOfClubs,
+                    Cards.SevenOfClubs,
+                    Cards.SixOfClubs
+                }
             }
         }
     };
@@ -768,28 +495,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.JackOfClubs,
+                    Cards.TenOfClubs,
+                    Cards.NineOfClubs,
+                    Cards.EightOfClubs,
+                    Cards.SevenOfClubs
+                }
             }
         }
     };
@@ -804,28 +518,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.QueenOfClubs,
+                    Cards.JackOfClubs,
+                    Cards.TenOfClubs,
+                    Cards.NineOfClubs,
+                    Cards.EightOfClubs
+                }
             }
         }
     };
@@ -840,28 +541,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Clubs).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Clubs).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.KingOfClubs,
+                    Cards.QueenOfClubs,
+                    Cards.JackOfClubs,
+                    Cards.TenOfClubs,
+                    Cards.NineOfClubs
+                }
             }
         }
     };
@@ -876,28 +564,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SixOfDiamonds,
+                    Cards.FiveOfDiamonds,
+                    Cards.FourOfDiamonds,
+                    Cards.ThreeOfDiamonds,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -912,28 +587,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.SevenOfDiamonds,
+                    Cards.SixOfDiamonds,
+                    Cards.FiveOfDiamonds,
+                    Cards.FourOfDiamonds,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -948,28 +610,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.EightOfDiamonds,
+                    Cards.SevenOfDiamonds,
+                    Cards.SixOfDiamonds,
+                    Cards.FiveOfDiamonds,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -984,28 +633,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.NineOfDiamonds,
+                    Cards.EightOfDiamonds,
+                    Cards.SevenOfDiamonds,
+                    Cards.SixOfDiamonds,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -1020,28 +656,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.TenOfDiamonds,
+                    Cards.NineOfDiamonds,
+                    Cards.EightOfDiamonds,
+                    Cards.SevenOfDiamonds,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1056,28 +679,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.JackOfDiamonds,
+                    Cards.TenOfDiamonds,
+                    Cards.NineOfDiamonds,
+                    Cards.EightOfDiamonds,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1092,28 +702,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.QueenOfDiamonds,
+                    Cards.JackOfDiamonds,
+                    Cards.TenOfDiamonds,
+                    Cards.NineOfDiamonds,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1128,28 +725,15 @@ public partial record Hands
         {
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).WhereSuit(Suits.Diamonds).ToList()
-            },
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).WhereSuit(Suits.Diamonds).ToList()
+                RequiredCount = 5,
+                EligibleCards = new()
+                {
+                    Cards.KingOfDiamonds,
+                    Cards.QueenOfDiamonds,
+                    Cards.JackOfDiamonds,
+                    Cards.TenOfDiamonds,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
