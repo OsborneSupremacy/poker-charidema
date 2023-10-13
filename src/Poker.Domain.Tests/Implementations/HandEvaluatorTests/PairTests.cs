@@ -2,17 +2,16 @@
 
 public class PairTests
 {
-    [Fact]
-    public void PairOfTwos_Qualifies_TwoTwosPresent()
+    [Theory]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    public void PairOfTwos_Qualifies_TwoPlusPresent(int twoCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = new()
-            {
-                Cards.TwoOfClubs,
-                Cards.TwoOfDiamonds
-            },
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
             HandsToEvaluate = new()
             {
                 Pairs.PairOfTwos
