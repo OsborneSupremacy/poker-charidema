@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 internal static class CardLinqExtensions
 {
@@ -11,6 +9,9 @@ internal static class CardLinqExtensions
     public static IEnumerable<Card> WhereRank(
         this IEnumerable<Card> cards, Rank rank
         ) => cards.Where(x => x.MatchesRank(rank));
+
+    public static IEnumerable<Card> WhereStandard(this IEnumerable<Card> cards) =>
+        cards.Where(x => !x.IsWild);
 
     public static IEnumerable<Card> WhereWild(this IEnumerable<Card> cards) =>
         cards.Where(x => x.IsWild);

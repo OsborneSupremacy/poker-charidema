@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain;
 
 public record Hand
 {
