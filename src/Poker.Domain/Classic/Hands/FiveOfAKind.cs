@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate FiveTwos { get; } = new HandTemplate
+    public static Hand FiveTwos { get; } = new Hand
     {
         Name = "Five Twos",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -18,7 +18,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveThrees { get; } = new HandTemplate
+    public static Hand FiveThrees { get; } = new Hand
     {
         Name = "Five Threes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -34,7 +34,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveFours { get; } = new HandTemplate
+    public static Hand FiveFours { get; } = new Hand
     {
         Name = "Five Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -50,7 +50,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveFives { get; } = new HandTemplate
+    public static Hand FiveFives { get; } = new Hand
     {
         Name = "Five Fives",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -66,7 +66,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveSixes { get; } = new HandTemplate
+    public static Hand FiveSixes { get; } = new Hand
     {
         Name = "Five Sixes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -82,7 +82,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveSevens { get; } = new HandTemplate
+    public static Hand FiveSevens { get; } = new Hand
     {
         Name = "Five Sevens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -98,7 +98,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveEights { get; } = new HandTemplate
+    public static Hand FiveEights { get; } = new Hand
     {
         Name = "Five Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -114,7 +114,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveNines { get; } = new HandTemplate
+    public static Hand FiveNines { get; } = new Hand
     {
         Name = "Five Nines",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -130,7 +130,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveTens { get; } = new HandTemplate
+    public static Hand FiveTens { get; } = new Hand
     {
         Name = "Five Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -146,7 +146,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveJacks { get; } = new HandTemplate
+    public static Hand FiveJacks { get; } = new Hand
     {
         Name = "Five Jacks",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -162,7 +162,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveQueens { get; } = new HandTemplate
+    public static Hand FiveQueens { get; } = new Hand
     {
         Name = "Five Queens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -178,7 +178,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveKings { get; } = new HandTemplate
+    public static Hand FiveKings { get; } = new Hand
     {
         Name = "Five Kings",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -194,7 +194,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FiveAces { get; } = new HandTemplate
+    public static Hand FiveAces { get; } = new Hand
     {
         Name = "Five Aces",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -210,7 +210,7 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllFiveOfAKind { get; } = new()
+    public static List<Hand> AllFiveOfAKind { get; } = new()
     {
         FiveTwos,
         FiveThrees,

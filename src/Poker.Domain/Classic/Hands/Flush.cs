@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate SpadesFlush { get; } = new HandTemplate
+    public static Hand SpadesFlush { get; } = new Hand
     {
         Name = "Spades Flush",
         HandDefinition = HandDefinitions.Flush,
@@ -18,7 +18,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate HeartsFlush { get; } = new HandTemplate
+    public static Hand HeartsFlush { get; } = new Hand
     {
         Name = "Hearts Flush",
         HandDefinition = HandDefinitions.Flush,
@@ -34,7 +34,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate DiamondsFlush { get; } = new HandTemplate
+    public static Hand DiamondsFlush { get; } = new Hand
     {
         Name = "Diamonds Flush",
         HandDefinition = HandDefinitions.Flush,
@@ -50,7 +50,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate ClubsFlush { get; } = new HandTemplate
+    public static Hand ClubsFlush { get; } = new Hand
     {
         Name = "Clubs Flush",
         HandDefinition = HandDefinitions.Flush,
@@ -66,7 +66,7 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllFlushes { get; } = new()
+    public static List<Hand> AllFlushes { get; } = new()
     {
         SpadesFlush,
         HeartsFlush,

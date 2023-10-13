@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate SixHighStraight { get; } = new HandTemplate
+    public static Hand SixHighStraight { get; } = new Hand
     {
         Name = "Six High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -38,7 +38,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SevenHighStraight { get; } = new HandTemplate
+    public static Hand SevenHighStraight { get; } = new Hand
     {
         Name = "Seven High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -74,7 +74,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate EightHighStraight { get; } = new HandTemplate
+    public static Hand EightHighStraight { get; } = new Hand
     {
         Name = "Eight High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -110,7 +110,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate NineHighStraight { get; } = new HandTemplate
+    public static Hand NineHighStraight { get; } = new Hand
     {
         Name = "Nine High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -146,7 +146,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TenHighStraight { get; } = new HandTemplate
+    public static Hand TenHighStraight { get; } = new Hand
     {
         Name = "Ten High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -182,7 +182,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate JackHighStraight { get; } = new HandTemplate
+    public static Hand JackHighStraight { get; } = new Hand
     {
         Name = "Jack High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -218,7 +218,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate QueenHighStraight { get; } = new HandTemplate
+    public static Hand QueenHighStraight { get; } = new Hand
     {
         Name = "Queen High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -254,7 +254,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate KingHighStraight { get; } = new HandTemplate
+    public static Hand KingHighStraight { get; } = new Hand
     {
         Name = "King High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -290,7 +290,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate AceHighStraight { get; } = new HandTemplate
+    public static Hand AceHighStraight { get; } = new Hand
     {
         Name = "Ace High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -326,7 +326,7 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllStraights { get; } = new()
+    public static List<Hand> AllStraights { get; } = new()
     {
         SixHighStraight,
         SevenHighStraight,

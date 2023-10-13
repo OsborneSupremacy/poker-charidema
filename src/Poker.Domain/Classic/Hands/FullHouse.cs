@@ -1,10 +1,10 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate TwoPairThreesOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseThreesOverTwos { get; } = new Hand
     {
-        Name = "Threes Over Twos",
+        Name = "Full House, Threes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
@@ -12,7 +12,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Three).ToList()
             },
             new()
@@ -23,9 +23,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairFoursOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseFoursOverTwos { get; } = new Hand
     {
-        Name = "Fours Over Twos",
+        Name = "Full House, Fours Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
@@ -33,7 +33,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Four).ToList()
             },
             new()
@@ -44,9 +44,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairFivesOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseFivesOverTwos { get; } = new Hand
     {
-        Name = "Fives Over Twos",
+        Name = "Full House, Fives Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
@@ -54,7 +54,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Five).ToList()
             },
             new()
@@ -65,9 +65,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSixesOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseSixesOverTwos { get; } = new Hand
     {
-        Name = "Sixes Over Twos",
+        Name = "Full House, Sixes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
@@ -75,7 +75,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Six).ToList()
             },
             new()
@@ -86,9 +86,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSevensOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseSevensOverTwos { get; } = new Hand
     {
-        Name = "Sevens Over Twos",
+        Name = "Full House, Sevens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
@@ -96,7 +96,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Seven).ToList()
             },
             new()
@@ -107,9 +107,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverTwos { get; } = new Hand
     {
-        Name = "Eights Over Twos",
+        Name = "Full House, Eights Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -117,7 +117,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Eight).ToList()
             },
             new()
@@ -128,9 +128,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverTwos { get; } = new Hand
     {
-        Name = "Nines Over Twos",
+        Name = "Full House, Nines Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -138,7 +138,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Nine).ToList()
             },
             new()
@@ -149,9 +149,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseTensOverTwos { get; } = new Hand
     {
-        Name = "Tens Over Twos",
+        Name = "Full House, Tens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -159,7 +159,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ten).ToList()
             },
             new()
@@ -170,9 +170,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverTwos { get; } = new Hand
     {
-        Name = "Jacks Over Twos",
+        Name = "Full House, Jacks Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -180,7 +180,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Jack).ToList()
             },
             new()
@@ -191,9 +191,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverTwos { get; } = new Hand
     {
-        Name = "Queens Over Twos",
+        Name = "Full House, Queens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -201,7 +201,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Queen).ToList()
             },
             new()
@@ -212,9 +212,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverTwos { get; } = new Hand
     {
-        Name = "Kings Over Twos",
+        Name = "Full House, Kings Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -222,7 +222,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.King).ToList()
             },
             new()
@@ -233,9 +233,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverTwos { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverTwos { get; } = new Hand
     {
-        Name = "Aces Over Twos",
+        Name = "Full House, Aces Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -243,7 +243,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ace).ToList()
             },
             new()
@@ -254,9 +254,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairFoursOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseFoursOverThrees { get; } = new Hand
     {
-        Name = "Fours Over Threes",
+        Name = "Full House, Fours Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
@@ -264,7 +264,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Four).ToList()
             },
             new()
@@ -275,9 +275,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairFivesOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseFivesOverThrees { get; } = new Hand
     {
-        Name = "Fives Over Threes",
+        Name = "Full House, Fives Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
@@ -285,7 +285,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Five).ToList()
             },
             new()
@@ -296,9 +296,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSixesOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseSixesOverThrees { get; } = new Hand
     {
-        Name = "Sixes Over Threes",
+        Name = "Full House, Sixes Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
@@ -306,7 +306,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Six).ToList()
             },
             new()
@@ -317,9 +317,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSevensOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseSevensOverThrees { get; } = new Hand
     {
-        Name = "Sevens Over Threes",
+        Name = "Full House, Sevens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
@@ -327,7 +327,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Seven).ToList()
             },
             new()
@@ -338,9 +338,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverThrees { get; } = new Hand
     {
-        Name = "Eights Over Threes",
+        Name = "Full House, Eights Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -359,9 +359,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverThrees { get; } = new Hand
     {
-        Name = "Nines Over Threes",
+        Name = "Full House, Nines Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -369,7 +369,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Nine).ToList()
             },
             new()
@@ -380,9 +380,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseTensOverThrees { get; } = new Hand
     {
-        Name = "Tens Over Threes",
+        Name = "Full House, Tens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -390,7 +390,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ten).ToList()
             },
             new()
@@ -401,9 +401,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverThrees { get; } = new Hand
     {
-        Name = "Jacks Over Threes",
+        Name = "Full House, Jacks Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -411,7 +411,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Jack).ToList()
             },
             new()
@@ -422,9 +422,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverThrees { get; } = new Hand
     {
-        Name = "Queens Over Threes",
+        Name = "Full House, Queens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -432,7 +432,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Queen).ToList()
             },
             new()
@@ -443,9 +443,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverThrees { get; } = new Hand
     {
-        Name = "Kings Over Threes",
+        Name = "Full House, Kings Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -453,7 +453,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.King).ToList()
             },
             new()
@@ -464,9 +464,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverThrees { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverThrees { get; } = new Hand
     {
-        Name = "Aces Over Threes",
+        Name = "Full House, Aces Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -474,7 +474,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ace).ToList()
             },
             new()
@@ -485,9 +485,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairFivesOverFours { get; } = new HandTemplate
+    public static Hand FullHouseFivesOverFours { get; } = new Hand
     {
-        Name = "Fives Over Fours",
+        Name = "Full House, Fives Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
@@ -506,9 +506,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSixesOverFours { get; } = new HandTemplate
+    public static Hand FullHouseSixesOverFours { get; } = new Hand
     {
-        Name = "Sixes Over Fours",
+        Name = "Full House, Sixes Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
@@ -516,7 +516,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Six).ToList()
             },
             new()
@@ -527,9 +527,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSevensOverFours { get; } = new HandTemplate
+    public static Hand FullHouseSevensOverFours { get; } = new Hand
     {
-        Name = "Sevens Over Fours",
+        Name = "Full House, Sevens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
@@ -537,7 +537,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Seven).ToList()
             },
             new()
@@ -548,9 +548,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverFours { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverFours { get; } = new Hand
     {
-        Name = "Eights Over Fours",
+        Name = "Full House, Eights Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -558,7 +558,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Eight).ToList()
             },
             new()
@@ -569,9 +569,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverFours { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverFours { get; } = new Hand
     {
-        Name = "Nines Over Fours",
+        Name = "Full House, Nines Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -579,7 +579,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Nine).ToList()
             },
             new()
@@ -590,9 +590,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverFours { get; } = new HandTemplate
+    public static Hand FullHouseTensOverFours { get; } = new Hand
     {
-        Name = "Tens Over Fours",
+        Name = "Full House, Tens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -600,7 +600,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ten).ToList()
             },
             new()
@@ -611,9 +611,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverFours { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverFours { get; } = new Hand
     {
-        Name = "Jacks Over Fours",
+        Name = "Full House, Jacks Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -621,7 +621,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Jack).ToList()
             },
             new()
@@ -632,9 +632,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverFours { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverFours { get; } = new Hand
     {
-        Name = "Queens Over Fours",
+        Name = "Full House, Queens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -642,7 +642,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Queen).ToList()
             },
             new()
@@ -653,9 +653,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverFours { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverFours { get; } = new Hand
     {
-        Name = "Kings Over Fours",
+        Name = "Full House, Kings Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -663,7 +663,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.King).ToList()
             },
             new()
@@ -674,9 +674,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverFours { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverFours { get; } = new Hand
     {
-        Name = "Aces Over Fours",
+        Name = "Full House, Aces Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -684,7 +684,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ace).ToList()
             },
             new()
@@ -695,9 +695,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSixesOverFives { get; } = new HandTemplate
+    public static Hand FullHouseSixesOverFives { get; } = new Hand
     {
-        Name = "Sixes Over Fives",
+        Name = "Full House, Sixes Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
@@ -716,9 +716,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSevensOverFives { get; } = new HandTemplate
+    public static Hand FullHouseSevensOverFives { get; } = new Hand
     {
-        Name = "Sevens Over Fives",
+        Name = "Full House, Sevens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
@@ -726,7 +726,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Seven).ToList()
             },
             new()
@@ -737,9 +737,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverFives { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverFives { get; } = new Hand
     {
-        Name = "Eights Over Fives",
+        Name = "Full House, Eights Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -747,7 +747,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Eight).ToList()
             },
@@ -760,9 +760,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverFives { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverFives { get; } = new Hand
     {
-        Name = "Nines Over Fives",
+        Name = "Full House, Nines Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -770,7 +770,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Nine).ToList()
             },
@@ -783,9 +783,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverFives { get; } = new HandTemplate
+    public static Hand FullHouseTensOverFives { get; } = new Hand
     {
-        Name = "Tens Over Fives",
+        Name = "Full House, Tens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -793,7 +793,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ten).ToList()
             },
@@ -806,9 +806,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverFives { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverFives { get; } = new Hand
     {
-        Name = "Jacks Over Fives",
+        Name = "Full House, Jacks Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -816,7 +816,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Jack).ToList()
             },
@@ -829,9 +829,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverFives { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverFives { get; } = new Hand
     {
-        Name = "Queens Over Fives",
+        Name = "Full House, Queens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -839,7 +839,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -852,9 +852,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverFives { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverFives { get; } = new Hand
     {
-        Name = "Kings Over Fives",
+        Name = "Full House, Kings Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -862,7 +862,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -875,9 +875,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverFives { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverFives { get; } = new Hand
     {
-        Name = "Aces Over Fives",
+        Name = "Full House, Aces Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -885,7 +885,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -898,9 +898,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairSevensOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseSevensOverSixes { get; } = new Hand
     {
-        Name = "Sevens Over Sixes",
+        Name = "Full House, Sevens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
@@ -908,7 +908,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Seven).ToList()
             },
@@ -921,9 +921,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverSixes { get; } = new Hand
     {
-        Name = "Eights Over Sixes",
+        Name = "Full House, Eights Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -931,7 +931,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Eight).ToList()
             },
@@ -944,9 +944,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverSixes { get; } = new Hand
     {
-        Name = "Nines Over Sixes",
+        Name = "Full House, Nines Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -954,7 +954,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Nine).ToList()
             },
@@ -967,9 +967,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseTensOverSixes { get; } = new Hand
     {
-        Name = "Tens Over Sixes",
+        Name = "Full House, Tens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -977,7 +977,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ten).ToList()
             },
@@ -990,9 +990,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverSixes { get; } = new Hand
     {
-        Name = "Jacks Over Sixes",
+        Name = "Full House, Jacks Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -1000,7 +1000,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Jack).ToList()
             },
@@ -1013,9 +1013,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverSixes { get; } = new Hand
     {
-        Name = "Queens Over Sixes",
+        Name = "Full House, Queens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1023,7 +1023,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -1036,9 +1036,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverSixes { get; } = new Hand
     {
-        Name = "Kings Over Sixes",
+        Name = "Full House, Kings Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1059,9 +1059,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverSixes { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverSixes { get; } = new Hand
     {
-        Name = "Aces Over Sixes",
+        Name = "Full House, Aces Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1069,7 +1069,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1082,9 +1082,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairEightsOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseEightsOverSevens { get; } = new Hand
     {
-        Name = "Eights Over Sevens",
+        Name = "Full House, Eights Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
@@ -1092,7 +1092,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards
                     .All
                     .WhereRank(Ranks.Eight).ToList()
@@ -1107,9 +1107,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverSevens { get; } = new Hand
     {
-        Name = "Nines Over Sevens",
+        Name = "Full House, Nines Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -1117,7 +1117,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Nine).ToList()
             },
             new()
@@ -1128,9 +1128,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseTensOverSevens { get; } = new Hand
     {
-        Name = "Tens Over Sevens",
+        Name = "Full House, Tens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -1138,7 +1138,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ten).ToList()
             },
             new()
@@ -1149,9 +1149,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverSevens { get; } = new Hand
     {
-        Name = "Jacks Over Sevens",
+        Name = "Full House, Jacks Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -1159,7 +1159,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Jack).ToList()
             },
             new()
@@ -1170,9 +1170,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverSevens { get; } = new Hand
     {
-        Name = "Queens Over Sevens",
+        Name = "Full House, Queens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1180,7 +1180,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Queen).ToList()
             },
             new()
@@ -1191,9 +1191,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverSevens { get; } = new Hand
     {
-        Name = "Kings Over Sevens",
+        Name = "Full House, Kings Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1201,7 +1201,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.King).ToList()
             },
             new()
@@ -1212,9 +1212,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverSevens { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverSevens { get; } = new Hand
     {
-        Name = "Aces Over Sevens",
+        Name = "Full House, Aces Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1222,7 +1222,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards = Cards.All.WhereRank(Ranks.Ace).ToList()
             },
             new()
@@ -1233,9 +1233,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairNinesOverEights { get; } = new HandTemplate
+    public static Hand FullHouseNinesOverEights { get; } = new Hand
     {
-        Name = "Nines Over Eights",
+        Name = "Full House, Nines Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
@@ -1243,7 +1243,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Nine).ToList()
             },
@@ -1256,9 +1256,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverEights { get; } = new HandTemplate
+    public static Hand FullHouseTensOverEights { get; } = new Hand
     {
-        Name = "Tens Over Eights",
+        Name = "Full House, Tens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -1266,7 +1266,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ten).ToList()
             },
@@ -1279,9 +1279,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverEights { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverEights { get; } = new Hand
     {
-        Name = "Jacks Over Eights",
+        Name = "Full House, Jacks Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -1289,7 +1289,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Jack).ToList()
             },
@@ -1302,9 +1302,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverEights { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverEights { get; } = new Hand
     {
-        Name = "Queens Over Eights",
+        Name = "Full House, Queens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1312,7 +1312,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -1325,9 +1325,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverEights { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverEights { get; } = new Hand
     {
-        Name = "Kings Over Eights",
+        Name = "Full House, Kings Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1335,7 +1335,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -1348,9 +1348,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverEights { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverEights { get; } = new Hand
     {
-        Name = "Aces Over Eights",
+        Name = "Full House, Aces Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1358,7 +1358,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                     Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1371,9 +1371,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairTensOverNines { get; } = new HandTemplate
+    public static Hand FullHouseTensOverNines { get; } = new Hand
     {
-        Name = "Tens Over Nines",
+        Name = "Full House, Tens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
@@ -1381,7 +1381,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                         Cards.All.WhereRank(Ranks.Ten).ToList()
             },
@@ -1394,9 +1394,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverNines { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverNines { get; } = new Hand
     {
-        Name = "Jacks Over Nines",
+        Name = "Full House, Jacks Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -1404,7 +1404,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                         Cards.All.WhereRank(Ranks.Jack).ToList()
             },
@@ -1417,9 +1417,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverNines { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverNines { get; } = new Hand
     {
-        Name = "Queens Over Nines",
+        Name = "Full House, Queens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1427,7 +1427,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                         Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -1440,9 +1440,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverNines { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverNines { get; } = new Hand
     {
-        Name = "Kings Over Nines",
+        Name = "Full House, Kings Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1450,7 +1450,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                 Cards =
                         Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -1463,9 +1463,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverNines { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverNines { get; } = new Hand
     {
-        Name = "Aces Over Nines",
+        Name = "Full House, Aces Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1473,7 +1473,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1486,9 +1486,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairJacksOverTens { get; } = new HandTemplate
+    public static Hand FullHouseJacksOverTens { get; } = new Hand
     {
-        Name = "Jacks Over Tens",
+        Name = "Full House, Jacks Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
@@ -1496,7 +1496,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Jack).ToList()
             },
@@ -1509,9 +1509,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverTens { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverTens { get; } = new Hand
     {
-        Name = "Queens Over Tens",
+        Name = "Full House, Queens Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1519,7 +1519,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -1532,9 +1532,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverTens { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverTens { get; } = new Hand
     {
-        Name = "Kings Over Tens",
+        Name = "Full House, Kings Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1542,7 +1542,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -1555,9 +1555,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverTens { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverTens { get; } = new Hand
     {
-        Name = "Aces Over Tens",
+        Name = "Full House, Aces Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1565,7 +1565,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1578,9 +1578,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairQueensOverJacks { get; } = new HandTemplate
+    public static Hand FullHouseQueensOverJacks { get; } = new Hand
     {
-        Name = "Queens Over Jacks",
+        Name = "Full House, Queens Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
@@ -1588,7 +1588,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Queen).ToList()
             },
@@ -1601,9 +1601,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverJacks { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverJacks { get; } = new Hand
     {
-        Name = "Kings Over Jacks",
+        Name = "Full House, Kings Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1611,7 +1611,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -1624,9 +1624,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverJacks { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverJacks { get; } = new Hand
     {
-        Name = "Aces Over Jacks",
+        Name = "Full House, Aces Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1634,7 +1634,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1647,9 +1647,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairKingsOverQueens { get; } = new HandTemplate
+    public static Hand FullHouseKingsOverQueens { get; } = new Hand
     {
-        Name = "Kings Over Queens",
+        Name = "Full House, Kings Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
@@ -1657,7 +1657,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.King).ToList()
             },
@@ -1670,9 +1670,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverQueens { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverQueens { get; } = new Hand
     {
-        Name = "Aces Over Queens",
+        Name = "Full House, Aces Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1680,7 +1680,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1693,9 +1693,9 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TwoPairAcesOverKings { get; } = new HandTemplate
+    public static Hand FullHouseAcesOverKings { get; } = new Hand
     {
-        Name = "Aces Over Kings",
+        Name = "Full House, Aces Over Kings",
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
@@ -1703,7 +1703,7 @@ public partial record HandTemplates
         {
             new()
             {
-                Count = 2,
+                Count = 3,
                     Cards =
                         Cards.All.WhereRank(Ranks.Ace).ToList()
             },
@@ -1716,86 +1716,86 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllTwoPair { get; } = new()
+    public static List<Hand> AllFullHouses { get; } = new()
     {
-        TwoPairThreesOverTwos,
-        TwoPairFoursOverTwos,
-        TwoPairFivesOverTwos,
-        TwoPairSixesOverTwos,
-        TwoPairSevensOverTwos,
-        TwoPairEightsOverTwos,
-        TwoPairNinesOverTwos,
-        TwoPairTensOverTwos,
-        TwoPairJacksOverTwos,
-        TwoPairQueensOverTwos,
-        TwoPairKingsOverTwos,
-        TwoPairAcesOverTwos,
-        TwoPairFoursOverThrees,
-        TwoPairFivesOverThrees,
-        TwoPairSixesOverThrees,
-        TwoPairSevensOverThrees,
-        TwoPairEightsOverThrees,
-        TwoPairNinesOverThrees,
-        TwoPairTensOverThrees,
-        TwoPairJacksOverThrees,
-        TwoPairQueensOverThrees,
-        TwoPairKingsOverThrees,
-        TwoPairAcesOverThrees,
-        TwoPairFivesOverFours,
-        TwoPairSixesOverFours,
-        TwoPairSevensOverFours,
-        TwoPairEightsOverFours,
-        TwoPairNinesOverFours,
-        TwoPairTensOverFours,
-        TwoPairJacksOverFours,
-        TwoPairQueensOverFours,
-        TwoPairKingsOverFours,
-        TwoPairAcesOverFours,
-        TwoPairSixesOverFives,
-        TwoPairSevensOverFives,
-        TwoPairEightsOverFives,
-        TwoPairNinesOverFives,
-        TwoPairTensOverFives,
-        TwoPairJacksOverFives,
-        TwoPairQueensOverFives,
-        TwoPairKingsOverFives,
-        TwoPairAcesOverFives,
-        TwoPairSevensOverSixes,
-        TwoPairEightsOverSixes,
-        TwoPairNinesOverSixes,
-        TwoPairTensOverSixes,
-        TwoPairJacksOverSixes,
-        TwoPairQueensOverSixes,
-        TwoPairKingsOverSixes,
-        TwoPairAcesOverSixes,
-        TwoPairEightsOverSevens,
-        TwoPairNinesOverSevens,
-        TwoPairTensOverSevens,
-        TwoPairJacksOverSevens,
-        TwoPairQueensOverSevens,
-        TwoPairKingsOverSevens,
-        TwoPairAcesOverSevens,
-        TwoPairNinesOverEights,
-        TwoPairTensOverEights,
-        TwoPairJacksOverEights,
-        TwoPairQueensOverEights,
-        TwoPairKingsOverEights,
-        TwoPairAcesOverEights,
-        TwoPairTensOverNines,
-        TwoPairJacksOverNines,
-        TwoPairQueensOverNines,
-        TwoPairKingsOverNines,
-        TwoPairAcesOverNines,
-        TwoPairJacksOverTens,
-        TwoPairQueensOverTens,
-        TwoPairKingsOverTens,
-        TwoPairAcesOverTens,
-        TwoPairQueensOverJacks,
-        TwoPairKingsOverJacks,
-        TwoPairAcesOverJacks,
-        TwoPairKingsOverQueens,
-        TwoPairAcesOverQueens,
-        TwoPairAcesOverKings
+        FullHouseThreesOverTwos,
+        FullHouseFoursOverTwos,
+        FullHouseFivesOverTwos,
+        FullHouseSixesOverTwos,
+        FullHouseSevensOverTwos,
+        FullHouseEightsOverTwos,
+        FullHouseNinesOverTwos,
+        FullHouseTensOverTwos,
+        FullHouseJacksOverTwos,
+        FullHouseQueensOverTwos,
+        FullHouseKingsOverTwos,
+        FullHouseAcesOverTwos,
+        FullHouseFoursOverThrees,
+        FullHouseFivesOverThrees,
+        FullHouseSixesOverThrees,
+        FullHouseSevensOverThrees,
+        FullHouseEightsOverThrees,
+        FullHouseNinesOverThrees,
+        FullHouseTensOverThrees,
+        FullHouseJacksOverThrees,
+        FullHouseQueensOverThrees,
+        FullHouseKingsOverThrees,
+        FullHouseAcesOverThrees,
+        FullHouseFivesOverFours,
+        FullHouseSixesOverFours,
+        FullHouseSevensOverFours,
+        FullHouseEightsOverFours,
+        FullHouseNinesOverFours,
+        FullHouseTensOverFours,
+        FullHouseJacksOverFours,
+        FullHouseQueensOverFours,
+        FullHouseKingsOverFours,
+        FullHouseAcesOverFours,
+        FullHouseSixesOverFives,
+        FullHouseSevensOverFives,
+        FullHouseEightsOverFives,
+        FullHouseNinesOverFives,
+        FullHouseTensOverFives,
+        FullHouseJacksOverFives,
+        FullHouseQueensOverFives,
+        FullHouseKingsOverFives,
+        FullHouseAcesOverFives,
+        FullHouseSevensOverSixes,
+        FullHouseEightsOverSixes,
+        FullHouseNinesOverSixes,
+        FullHouseTensOverSixes,
+        FullHouseJacksOverSixes,
+        FullHouseQueensOverSixes,
+        FullHouseKingsOverSixes,
+        FullHouseAcesOverSixes,
+        FullHouseEightsOverSevens,
+        FullHouseNinesOverSevens,
+        FullHouseTensOverSevens,
+        FullHouseJacksOverSevens,
+        FullHouseQueensOverSevens,
+        FullHouseKingsOverSevens,
+        FullHouseAcesOverSevens,
+        FullHouseNinesOverEights,
+        FullHouseTensOverEights,
+        FullHouseJacksOverEights,
+        FullHouseQueensOverEights,
+        FullHouseKingsOverEights,
+        FullHouseAcesOverEights,
+        FullHouseTensOverNines,
+        FullHouseJacksOverNines,
+        FullHouseQueensOverNines,
+        FullHouseKingsOverNines,
+        FullHouseAcesOverNines,
+        FullHouseJacksOverTens,
+        FullHouseQueensOverTens,
+        FullHouseKingsOverTens,
+        FullHouseAcesOverTens,
+        FullHouseQueensOverJacks,
+        FullHouseKingsOverJacks,
+        FullHouseAcesOverJacks,
+        FullHouseKingsOverQueens,
+        FullHouseAcesOverQueens,
+        FullHouseAcesOverKings
     };
- }
+}
 

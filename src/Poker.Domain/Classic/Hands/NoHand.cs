@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate NoHand { get; } = new HandTemplate
+    public static Hand NoHand { get; } = new Hand
     {
         Name = "No Hand",
         HandDefinition = HandDefinitions.NoHand,

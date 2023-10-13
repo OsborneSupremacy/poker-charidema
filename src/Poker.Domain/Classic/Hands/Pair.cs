@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate PairOfTwos { get; } = new HandTemplate
+    public static Hand PairOfTwos { get; } = new Hand
     {
         Name = "Pair of Twos",
         HandDefinition = HandDefinitions.Pair,
@@ -18,7 +18,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate PairOfThrees { get; } = new HandTemplate
+    public static Hand PairOfThrees { get; } = new Hand
     {
         Name = "Pair of Threes",
         HandDefinition = HandDefinitions.Pair,
@@ -34,7 +34,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate PairOfFours { get; } = new HandTemplate
+    public static Hand PairOfFours { get; } = new Hand
     {
         Name = "Pair of Fours",
         HandDefinition = HandDefinitions.Pair,
@@ -50,7 +50,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate PairOfFives { get; } = new HandTemplate
+    public static Hand PairOfFives { get; } = new Hand
     {
         Name = "Pair of Fives",
         HandDefinition = HandDefinitions.Pair,
@@ -59,7 +59,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Five).ToList() } }
     };
 
-    public static HandTemplate PairOfSixes { get; } = new HandTemplate
+    public static Hand PairOfSixes { get; } = new Hand
     {
         Name = "Pair of Sixes",
         HandDefinition = HandDefinitions.Pair,
@@ -68,7 +68,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Six).ToList() } }
     };
 
-    public static HandTemplate PairOfSevens { get; } = new HandTemplate
+    public static Hand PairOfSevens { get; } = new Hand
     {
         Name = "Pair of Sevens",
         HandDefinition = HandDefinitions.Pair,
@@ -77,7 +77,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Seven).ToList() } }
     };
 
-    public static HandTemplate PairOfEights { get; } = new HandTemplate
+    public static Hand PairOfEights { get; } = new Hand
     {
         Name = "Pair of Eights",
         HandDefinition = HandDefinitions.Pair,
@@ -86,7 +86,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Eight).ToList() } }
     };
 
-    public static HandTemplate PairOfNines { get; } = new HandTemplate
+    public static Hand PairOfNines { get; } = new Hand
     {
         Name = "Pair of Nines",
         HandDefinition = HandDefinitions.Pair,
@@ -95,7 +95,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Nine).ToList() } }
     };
 
-    public static HandTemplate PairOfTens { get; } = new HandTemplate
+    public static Hand PairOfTens { get; } = new Hand
     {
         Name = "Pair of Tens",
         HandDefinition = HandDefinitions.Pair,
@@ -104,7 +104,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Ten).ToList() } }
     };
 
-    public static HandTemplate PairOfJacks { get; } = new HandTemplate
+    public static Hand PairOfJacks { get; } = new Hand
     {
         Name = "Pair of Jacks",
         HandDefinition = HandDefinitions.Pair,
@@ -113,7 +113,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Jack).ToList() } }
     };
 
-    public static HandTemplate PairOfQueens { get; } = new HandTemplate
+    public static Hand PairOfQueens { get; } = new Hand
     {
         Name = "Pair of Queens",
         HandDefinition = HandDefinitions.Pair,
@@ -122,7 +122,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Queen).ToList() } }
     };
 
-    public static HandTemplate PairOfKings { get; } = new HandTemplate
+    public static Hand PairOfKings { get; } = new Hand
     {
         Name = "Pair of Kings",
         HandDefinition = HandDefinitions.Pair,
@@ -131,7 +131,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.King).ToList() } }
     };
 
-    public static HandTemplate PairOfAces { get; } = new HandTemplate
+    public static Hand PairOfAces { get; } = new Hand
     {
         Name = "Pair of Aces",
         HandDefinition = HandDefinitions.Pair,
@@ -140,7 +140,7 @@ public partial record HandTemplates
         CardGroups = new List<CardGroup> { new() { Count = 2, Cards = Cards.All.WhereRank(Ranks.Ace).ToList() } }
     };
 
-    public static List<HandTemplate> AllPairs { get; } = new()
+    public static List<Hand> AllPairs { get; } = new()
     {
         PairOfTwos,
         PairOfThrees,

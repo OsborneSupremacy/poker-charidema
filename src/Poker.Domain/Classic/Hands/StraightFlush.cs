@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate SixHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand SixHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Six High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -38,7 +38,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SevenHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand SevenHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Seven High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -74,7 +74,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate EightHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand EightHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Eight High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -110,7 +110,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate NineHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand NineHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Nine High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -146,7 +146,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TenHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand TenHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Ten High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -182,7 +182,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate JackHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand JackHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Jack High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -218,7 +218,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate QueenHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand QueenHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "Queen High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -254,7 +254,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate KingHighSpadesStraightFlush { get; } = new HandTemplate
+    public static Hand KingHighSpadesStraightFlush { get; } = new Hand
     {
         Name = "King High Spades Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -290,7 +290,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SixHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand SixHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Six High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -326,7 +326,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SevenHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand SevenHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Seven High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -362,7 +362,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate EightHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand EightHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Eight High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -398,7 +398,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate NineHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand NineHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Nine High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -434,7 +434,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TenHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand TenHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Ten High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -470,7 +470,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate JackHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand JackHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Jack High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -506,7 +506,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate QueenHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand QueenHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "Queen High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -542,7 +542,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate KingHighHeartsStraightFlush { get; } = new HandTemplate
+    public static Hand KingHighHeartsStraightFlush { get; } = new Hand
     {
         Name = "King High Hearts Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -578,7 +578,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SixHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand SixHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Six High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -614,7 +614,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SevenHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand SevenHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Seven High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -650,7 +650,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate EightHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand EightHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Eight High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -686,7 +686,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate NineHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand NineHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Nine High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -722,7 +722,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TenHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand TenHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Ten High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -758,7 +758,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate JackHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand JackHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Jack High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -794,7 +794,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate QueenHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand QueenHighClubsStraightFlush { get; } = new Hand
     {
         Name = "Queen High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -830,7 +830,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate KingHighClubsStraightFlush { get; } = new HandTemplate
+    public static Hand KingHighClubsStraightFlush { get; } = new Hand
     {
         Name = "King High Clubs Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -866,7 +866,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SixHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand SixHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Six High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -902,7 +902,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate SevenHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand SevenHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Seven High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -938,7 +938,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate EightHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand EightHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Eight High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -974,7 +974,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate NineHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand NineHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Nine High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -1010,7 +1010,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate TenHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand TenHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Ten High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -1046,7 +1046,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate JackHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand JackHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Jack High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -1082,7 +1082,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate QueenHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand QueenHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "Queen High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -1118,7 +1118,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate KingHighDiamondsStraightFlush { get; } = new HandTemplate
+    public static Hand KingHighDiamondsStraightFlush { get; } = new Hand
     {
         Name = "King High Diamonds Straight Flush",
         HandDefinition = HandDefinitions.Straight,
@@ -1154,7 +1154,7 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllStraightFlushes { get; } = new()
+    public static List<Hand> AllStraightFlushes { get; } = new()
     {
         SixHighSpadesStraightFlush,
         SevenHighSpadesStraightFlush,

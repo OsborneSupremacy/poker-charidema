@@ -1,8 +1,8 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record HandTemplates
+public partial record Hands
 {
-    public static HandTemplate FourTwos { get; } = new HandTemplate
+    public static Hand FourTwos { get; } = new Hand
     {
         Name = "Four Twos",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -18,7 +18,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourThrees { get; } = new HandTemplate
+    public static Hand FourThrees { get; } = new Hand
     {
         Name = "Four Threes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -34,7 +34,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourFours { get; } = new HandTemplate
+    public static Hand FourFours { get; } = new Hand
     {
         Name = "Four Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -50,7 +50,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourFives { get; } = new HandTemplate
+    public static Hand FourFives { get; } = new Hand
     {
         Name = "Four Fives",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -66,7 +66,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourSixes { get; } = new HandTemplate
+    public static Hand FourSixes { get; } = new Hand
     {
         Name = "Four Sixes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -82,7 +82,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourSevens { get; } = new HandTemplate
+    public static Hand FourSevens { get; } = new Hand
     {
         Name = "Four Sevens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -98,7 +98,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourEights { get; } = new HandTemplate
+    public static Hand FourEights { get; } = new Hand
     {
         Name = "Four Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -114,7 +114,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourNines { get; } = new HandTemplate
+    public static Hand FourNines { get; } = new Hand
     {
         Name = "Four Nines",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -130,7 +130,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourTens { get; } = new HandTemplate
+    public static Hand FourTens { get; } = new Hand
     {
         Name = "Four Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -146,7 +146,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourJacks { get; } = new HandTemplate
+    public static Hand FourJacks { get; } = new Hand
     {
         Name = "Four Jacks",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -162,7 +162,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourQueens { get; } = new HandTemplate
+    public static Hand FourQueens { get; } = new Hand
     {
         Name = "Four Queens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -178,7 +178,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourKings { get; } = new HandTemplate
+    public static Hand FourKings { get; } = new Hand
     {
         Name = "Four Kings",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -194,7 +194,7 @@ public partial record HandTemplates
         }
     };
 
-    public static HandTemplate FourAces { get; } = new HandTemplate
+    public static Hand FourAces { get; } = new Hand
     {
         Name = "Four Aces",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -210,7 +210,7 @@ public partial record HandTemplates
         }
     };
 
-    public static List<HandTemplate> AllFourOfAKind { get; } = new()
+    public static List<Hand> AllFourOfAKind { get; } = new()
     {
         FourTwos,
         FourThrees,
