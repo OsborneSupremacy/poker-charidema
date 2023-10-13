@@ -5,7 +5,7 @@ public partial record HandTemplates
     public static HandTemplate SpadesFlush { get; } = new HandTemplate
     {
         Name = "Spades Flush",
-        Hand = Hands.Flush,
+        HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Spades,
         CardGroups = new List<CardGroup>
@@ -21,7 +21,7 @@ public partial record HandTemplates
     public static HandTemplate HeartsFlush { get; } = new HandTemplate
     {
         Name = "Hearts Flush",
-        Hand = Hands.Flush,
+        HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Hearts,
         CardGroups = new List<CardGroup>
@@ -37,7 +37,7 @@ public partial record HandTemplates
     public static HandTemplate DiamondsFlush { get; } = new HandTemplate
     {
         Name = "Diamonds Flush",
-        Hand = Hands.Flush,
+        HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Diamonds,
         CardGroups = new List<CardGroup>
@@ -53,7 +53,7 @@ public partial record HandTemplates
     public static HandTemplate ClubsFlush { get; } = new HandTemplate
     {
         Name = "Clubs Flush",
-        Hand = Hands.Flush,
+        HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Clubs,
         CardGroups = new List<CardGroup>

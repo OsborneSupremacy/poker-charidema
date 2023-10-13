@@ -5,7 +5,7 @@ public record HandTemplate
 {
     public required string Name { get; init; }
 
-    public required Hand Hand { get; init; }
+    public required HandDefinition HandDefinition { get; init; }
 
     public required Rank HighRank { get; init; }
 

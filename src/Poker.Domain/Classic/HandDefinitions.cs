@@ -2,9 +2,9 @@
 
 namespace Poker.Domain.Classic;
 
-public record Hands
+public record HandDefinitions
 {
-    public static Hand NoHand { get; } = new Hand
+    public static HandDefinition NoHand { get; } = new HandDefinition
     {
         Name = "Empty",
         Value = 0,
@@ -13,7 +13,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.NoHandQualifier
     };
 
-    public static Hand HighCard { get; } = new Hand
+    public static HandDefinition HighCard { get; } = new HandDefinition
     {
         Name = "High Card",
         Value = 1,
@@ -22,7 +22,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
-    public static Hand Pair { get; } = new Hand
+    public static HandDefinition Pair { get; } = new HandDefinition
     {
         Name = "Pair",
         Value = 2,
@@ -31,7 +31,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
-    public static Hand TwoPair { get; } = new Hand
+    public static HandDefinition TwoPair { get; } = new HandDefinition
     {
         Name = "Two Pair",
         Value = 3,
@@ -40,7 +40,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.TwoPairHandQualifier
     };
 
-    public static Hand ThreeOfAKind { get; } = new Hand
+    public static HandDefinition ThreeOfAKind { get; } = new HandDefinition
     {
         Name = "Three of a Kind",
         Value = 4,
@@ -49,7 +49,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
-    public static Hand Straight { get; } = new Hand
+    public static HandDefinition Straight { get; } = new HandDefinition
     {
         Name = "Straight",
         Value = 5,
@@ -58,7 +58,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.StraightHandQualifier
     };
 
-    public static Hand Flush { get; } = new Hand
+    public static HandDefinition Flush { get; } = new HandDefinition
     {
         Name = "Flush",
         Value = 6,
@@ -67,7 +67,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.FlushHandQualifier
     };
 
-    public static Hand FullHouse { get; } = new Hand
+    public static HandDefinition FullHouse { get; } = new HandDefinition
     {
         Name = "Full House",
         Value = 7,
@@ -76,7 +76,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.FullHouseHandQualifier
     };
 
-    public static Hand FourOfAKind { get; } = new Hand
+    public static HandDefinition FourOfAKind { get; } = new HandDefinition
     {
         Name = "Four of a Kind",
         Value = 8,
@@ -85,7 +85,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
-    public static Hand StraightFlush { get; } = new Hand
+    public static HandDefinition StraightFlush { get; } = new HandDefinition
     {
         Name = "Straight Flush",
         Value = 9,
@@ -94,7 +94,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.StraightFlushHandQualifier
     };
 
-    public static Hand RoyalFlush { get; } = new Hand
+    public static HandDefinition RoyalFlush { get; } = new HandDefinition
     {
         Name = "Royal Flush",
         Value = 10,
@@ -103,7 +103,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.RoyalFlushHandQualifier
     };
 
-    public static Hand FiveOfAKind { get; } = new Hand
+    public static HandDefinition FiveOfAKind { get; } = new HandDefinition
     {
         Name = "Five of a Kind",
         Value = 11,
@@ -112,7 +112,7 @@ public record Hands
         HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
     };
 
-    public static List<Hand> All { get; } = new(){
+    public static List<HandDefinition> All { get; } = new(){
         HighCard,
         Pair,
         TwoPair,

@@ -2,7 +2,7 @@
 
 public record QualifiedHandRequest
 {
-    public required Hand Hand { get; init; }
+    public required HandDefinition Hand { get; init; }
 
     public required List<Card> Cards { get; init; }
 

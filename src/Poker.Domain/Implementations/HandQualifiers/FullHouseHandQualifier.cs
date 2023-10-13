@@ -6,7 +6,7 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
     {
         var threeOfAKind = GetPotentialMatchingRankHand(
-            request with { Hand = Hands.ThreeOfAKind }
+            request with { Hand = HandDefinitions.ThreeOfAKind }
         );
 
         var additionalPair =
@@ -14,7 +14,7 @@ public static partial class HandQualifierDelegates
                 request with
                 {
                     Cards = threeOfAKind.NonContributing,
-                    Hand = Hands.Pair,
+                    Hand = HandDefinitions.Pair,
                     RemainingCardCount =
                         request.RemainingCardCount
                         - threeOfAKind.NeededCardMessage.Groups.Count.ToUint()

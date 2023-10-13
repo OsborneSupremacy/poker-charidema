@@ -10,7 +10,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush, HandQualifications.Qualifies)
+            .For(HandDefinitions.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -36,7 +36,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush, HandQualifications.Qualifies)
+            .For(HandDefinitions.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -62,7 +62,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush, HandQualifications.Qualifies)
+            .For(HandDefinitions.Flush, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -88,7 +88,7 @@ public class FlushTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Flush, HandQualifications.Eliminated)
+            .For(HandDefinitions.Flush, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

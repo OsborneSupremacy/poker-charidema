@@ -6,10 +6,10 @@ public static partial class HandQualifierDelegates
         (QualifiedHandRequest request) =>
         {
             var straightFlush =
-                StraightFlushHandQualifier!(request with { Hand = Hands.StraightFlush })!;
+                StraightFlushHandQualifier!(request with { Hand = HandDefinitions.StraightFlush })!;
 
             if(straightFlush.IsRoyalFlush())
-                return straightFlush with { Hand = Hands.RoyalFlush };
+                return straightFlush with { Hand = HandDefinitions.RoyalFlush };
 
             var potentialRoyal = FindPotentialStraightFlushes(request)
                 .Where(sf => sf.TheoreticalHighRank() == Ranks.Ace)

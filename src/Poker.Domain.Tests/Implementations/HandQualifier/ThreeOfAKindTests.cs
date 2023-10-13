@@ -11,7 +11,7 @@ public class ThreeOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.ThreeOfAKind, HandQualifications.Qualifies)
+            .For(HandDefinitions.ThreeOfAKind, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -44,7 +44,7 @@ public class ThreeOfAKindTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.ThreeOfAKind, HandQualifications.Eliminated)
+            .For(HandDefinitions.ThreeOfAKind, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

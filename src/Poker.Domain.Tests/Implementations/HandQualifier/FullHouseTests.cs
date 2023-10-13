@@ -10,7 +10,7 @@ public class FullHouseTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FullHouse, HandQualifications.Qualifies)
+            .For(HandDefinitions.FullHouse, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -36,7 +36,7 @@ public class FullHouseTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FullHouse, HandQualifications.Eliminated)
+            .For(HandDefinitions.FullHouse, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -69,7 +69,7 @@ public class FullHouseTests
     public void Qualify_False_When_No_ThreeOfAKind_Or_Pair_Exists()
     {
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.FullHouse, HandQualifications.Eliminated)
+            .For(HandDefinitions.FullHouse, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

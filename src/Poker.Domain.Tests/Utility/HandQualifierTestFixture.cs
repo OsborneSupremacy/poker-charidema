@@ -103,7 +103,7 @@ public class HandQualifierTestFixture
 
     private readonly List<Card> _expectedNeededCards;
 
-    private Hand _hand;
+    private HandDefinition _hand;
 
     private uint _remainingCards = 0;
 
@@ -116,10 +116,10 @@ public class HandQualifierTestFixture
         _testCards = new List<TestCard>();
         _testWildCards = new List<TestWildCard>();
         _expectedNeededCards = new List<Card>();
-        _hand = Hands.NoHand;
+        _hand = HandDefinitions.NoHand;
     }
 
-    public HandQualifierTestFixture For(Hand hand, HandQualifications expectedQualification)
+    public HandQualifierTestFixture For(HandDefinition hand, HandQualifications expectedQualification)
     {
         _hand = hand;
         _expectedHandQualification = expectedQualification;

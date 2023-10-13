@@ -5,7 +5,7 @@ public partial record HandTemplates
     public static HandTemplate SixHighStraight { get; } = new HandTemplate
     {
         Name = "Six High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -41,7 +41,7 @@ public partial record HandTemplates
     public static HandTemplate SevenHighStraight { get; } = new HandTemplate
     {
         Name = "Seven High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -77,7 +77,7 @@ public partial record HandTemplates
     public static HandTemplate EightHighStraight { get; } = new HandTemplate
     {
         Name = "Eight High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -113,7 +113,7 @@ public partial record HandTemplates
     public static HandTemplate NineHighStraight { get; } = new HandTemplate
     {
         Name = "Nine High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -149,7 +149,7 @@ public partial record HandTemplates
     public static HandTemplate TenHighStraight { get; } = new HandTemplate
     {
         Name = "Ten High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -185,7 +185,7 @@ public partial record HandTemplates
     public static HandTemplate JackHighStraight { get; } = new HandTemplate
     {
         Name = "Jack High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -221,7 +221,7 @@ public partial record HandTemplates
     public static HandTemplate QueenHighStraight { get; } = new HandTemplate
     {
         Name = "Queen High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -257,7 +257,7 @@ public partial record HandTemplates
     public static HandTemplate KingHighStraight { get; } = new HandTemplate
     {
         Name = "King High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -293,7 +293,7 @@ public partial record HandTemplates
     public static HandTemplate AceHighStraight { get; } = new HandTemplate
     {
         Name = "Ace High Straight",
-        Hand = Hands.Straight,
+        HandDefinition = HandDefinitions.Straight,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>

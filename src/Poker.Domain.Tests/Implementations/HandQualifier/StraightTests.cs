@@ -10,7 +10,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight, HandQualifications.Qualifies)
+            .For(HandDefinitions.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -36,7 +36,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight, HandQualifications.Qualifies)
+            .For(HandDefinitions.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -62,7 +62,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight, HandQualifications.Qualifies)
+            .For(HandDefinitions.Straight, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -88,7 +88,7 @@ public class StraightTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.Straight, HandQualifications.Eliminated)
+            .For(HandDefinitions.Straight, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(

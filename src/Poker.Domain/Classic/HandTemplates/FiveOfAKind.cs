@@ -5,7 +5,7 @@ public partial record HandTemplates
     public static HandTemplate FiveTwos { get; } = new HandTemplate
     {
         Name = "Five Twos",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Two,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -21,7 +21,7 @@ public partial record HandTemplates
     public static HandTemplate FiveThrees { get; } = new HandTemplate
     {
         Name = "Five Threes",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -37,7 +37,7 @@ public partial record HandTemplates
     public static HandTemplate FiveFours { get; } = new HandTemplate
     {
         Name = "Five Fours",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -53,7 +53,7 @@ public partial record HandTemplates
     public static HandTemplate FiveFives { get; } = new HandTemplate
     {
         Name = "Five Fives",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -69,7 +69,7 @@ public partial record HandTemplates
     public static HandTemplate FiveSixes { get; } = new HandTemplate
     {
         Name = "Five Sixes",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -85,7 +85,7 @@ public partial record HandTemplates
     public static HandTemplate FiveSevens { get; } = new HandTemplate
     {
         Name = "Five Sevens",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -101,7 +101,7 @@ public partial record HandTemplates
     public static HandTemplate FiveEights { get; } = new HandTemplate
     {
         Name = "Five Eights",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -117,7 +117,7 @@ public partial record HandTemplates
     public static HandTemplate FiveNines { get; } = new HandTemplate
     {
         Name = "Five Nines",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -133,7 +133,7 @@ public partial record HandTemplates
     public static HandTemplate FiveTens { get; } = new HandTemplate
     {
         Name = "Five Tens",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -149,7 +149,7 @@ public partial record HandTemplates
     public static HandTemplate FiveJacks { get; } = new HandTemplate
     {
         Name = "Five Jacks",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -165,7 +165,7 @@ public partial record HandTemplates
     public static HandTemplate FiveQueens { get; } = new HandTemplate
     {
         Name = "Five Queens",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -181,7 +181,7 @@ public partial record HandTemplates
     public static HandTemplate FiveKings { get; } = new HandTemplate
     {
         Name = "Five Kings",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>
@@ -197,7 +197,7 @@ public partial record HandTemplates
     public static HandTemplate FiveAces { get; } = new HandTemplate
     {
         Name = "Five Aces",
-        Hand = Hands.ThreeOfAKind,
+        HandDefinition = HandDefinitions.ThreeOfAKind,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         CardGroups = new List<CardGroup>

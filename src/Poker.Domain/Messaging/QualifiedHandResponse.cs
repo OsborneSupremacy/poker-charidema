@@ -20,7 +20,7 @@ public record QualifiedHandResponse
 
     public required Suit Suit { get; init; }
 
-    public required Hand Hand { get; set; }
+    public required HandDefinition Hand { get; set; }
 
     public required HandQualifications HandQualification { get; init; }
 

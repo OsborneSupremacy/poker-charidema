@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain;
 
-public record Hand
+public record HandDefinition
 {
     public required string Name { get; init; }
 

@@ -7,7 +7,7 @@ public static partial class HandQualifierDelegates
     {
         var firstPair =
             GetPotentialMatchingRankHand(
-                request with { Hand = Hands.Pair }
+                request with { Hand = HandDefinitions.Pair }
             );
 
         var secondPair =
@@ -15,7 +15,7 @@ public static partial class HandQualifierDelegates
                 request with
                 {
                     Cards = firstPair.NonContributing,
-                    Hand = Hands.Pair,
+                    Hand = HandDefinitions.Pair,
                     RemainingCardCount =
                         request.RemainingCardCount
                         - firstPair.NeeededCardCount()

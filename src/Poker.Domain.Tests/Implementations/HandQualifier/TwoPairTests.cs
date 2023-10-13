@@ -8,7 +8,7 @@ public class TwoPairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.TwoPair, HandQualifications.Qualifies)
+            .For(HandDefinitions.TwoPair, HandQualifications.Qualifies)
             .ExpectedContributing(x =>
             {
                 x.With(
@@ -41,7 +41,7 @@ public class TwoPairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.TwoPair, HandQualifications.Eliminated)
+            .For(HandDefinitions.TwoPair, HandQualifications.Eliminated)
             .ExpectedInDeadCards(x =>
             {
                 x.With(
@@ -74,7 +74,7 @@ public class TwoPairTests
     {
         // arrange
         var fixture = new HandQualifierTestFixture()
-            .For(Hands.TwoPair, HandQualifications.Possible)
+            .For(HandDefinitions.TwoPair, HandQualifications.Possible)
             .WithCardsRemaining(1)
             .ExpectedInDeadCards(x =>
             {

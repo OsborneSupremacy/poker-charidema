@@ -3,7 +3,7 @@
 internal static class HandExtensions
 {
     public static QualifiedHandResponse ToQualifiedHand(
-        this Hand hand,
+        this HandDefinition hand,
         PotentialHandMessage potentialHand
         )
     {
@@ -32,7 +32,7 @@ internal static class HandExtensions
     }
 
     public static QualifiedHandResponse ToUnqualifiedHand(
-        this Hand hand,
+        this HandDefinition hand,
         PotentialHandMessage potentialHand,
         bool possible
         ) =>
