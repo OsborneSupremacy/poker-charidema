@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic;
 
-public partial record Hands
+public record Pairs
 {
     public static Hand PairOfTwos { get; } = new Hand
     {
@@ -140,7 +140,7 @@ public partial record Hands
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList() } }
     };
 
-    public static List<Hand> AllPairs { get; } = new()
+    public static List<Hand> All { get; } = new()
     {
         PairOfTwos,
         PairOfThrees,

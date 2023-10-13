@@ -9,7 +9,7 @@ public partial record Hands
     /// </summary>
     public static List<Hand> All { get; } =
         AllHighCards!
-        .Union(AllPairs!)
+        //.Union(AllPairs!)
         .Union(AllTwoPair!)
         .Union(AllThreeOfAKind!)
         .Union(AllStraights!)
