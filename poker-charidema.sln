@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3B53AA8-BDF6-444E-B5E3-FA1AFB0223AC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -35,7 +36,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Domain", "src\Poker.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Service.Interface", "src\Poker.Service.Interface\Poker.Service.Interface.csproj", "{BD31383C-0330-47EB-85EF-7E66595190E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Domain.Tests", "src\Poker.Domain.Tests\Poker.Domain.Tests.csproj", "{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Domain.Tests", "src\Poker.Domain.Tests\Poker.Domain.Tests.csproj", "{FBD240AE-69DF-439E-9FD2-A7FE1912EDC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

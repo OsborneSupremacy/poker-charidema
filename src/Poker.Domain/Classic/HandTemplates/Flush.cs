@@ -1,10 +1,10 @@
-﻿namespace Poker.Domain.Classic.HandRequirements;
+﻿namespace Poker.Domain.Classic;
 
-public class Flush
+public partial record HandTemplates
 {
-    public static HandRequirement Spades { get; } = new HandRequirement
+    public static HandTemplate SpadesFlush { get; } = new HandTemplate
     {
-        Name = nameof(Spades),
+        Name = "Spades Flush",
         Hand = Hands.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Spades,
@@ -18,9 +18,9 @@ public class Flush
         }
     };
 
-    public static HandRequirement Hearts { get; } = new HandRequirement
+    public static HandTemplate HeartsFlush { get; } = new HandTemplate
     {
-        Name = nameof(Hearts),
+        Name = "Hearts Flush",
         Hand = Hands.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Hearts,
@@ -34,9 +34,9 @@ public class Flush
         }
     };
 
-    public static HandRequirement Diamonds { get; } = new HandRequirement
+    public static HandTemplate DiamondsFlush { get; } = new HandTemplate
     {
-        Name = nameof(Diamonds),
+        Name = "Diamonds Flush",
         Hand = Hands.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Diamonds,
@@ -50,9 +50,9 @@ public class Flush
         }
     };
 
-    public static HandRequirement Clubs { get; } = new HandRequirement
+    public static HandTemplate ClubsFlush { get; } = new HandTemplate
     {
-        Name = nameof(Clubs),
+        Name = "Clubs Flush",
         Hand = Hands.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Clubs,
@@ -64,5 +64,13 @@ public class Flush
                 Cards = Cards.All.WhereSuit(Suits.Clubs).ToList()
             }
         }
+    };
+
+    public static List<HandTemplate> AllFlushes { get; } = new()
+    {
+        SpadesFlush,
+        HeartsFlush,
+        ClubsFlush,
+        DiamondsFlush
     };
 }

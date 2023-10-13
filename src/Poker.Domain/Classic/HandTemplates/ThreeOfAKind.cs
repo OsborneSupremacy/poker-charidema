@@ -1,8 +1,8 @@
-﻿namespace Poker.Domain.Classic.HandRequirements;
+﻿namespace Poker.Domain.Classic;
 
-public record class ThreeOfAKind
+public partial record HandTemplates
 {
-    public static HandRequirement Twos { get; } = new HandRequirement
+    public static HandTemplate ThreeTwos { get; } = new HandTemplate
     {
         Name = "Three Twos",
         Hand = Hands.ThreeOfAKind,
@@ -18,7 +18,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Threes { get; } = new HandRequirement
+    public static HandTemplate ThreeThrees { get; } = new HandTemplate
     {
         Name = "Three Threes",
         Hand = Hands.ThreeOfAKind,
@@ -34,7 +34,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Fours { get; } = new HandRequirement
+    public static HandTemplate ThreeFours { get; } = new HandTemplate
     {
         Name = "Three Fours",
         Hand = Hands.ThreeOfAKind,
@@ -50,7 +50,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Fives { get; } = new HandRequirement
+    public static HandTemplate ThreeFives { get; } = new HandTemplate
     {
         Name = "Three Fives",
         Hand = Hands.ThreeOfAKind,
@@ -66,7 +66,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Sixes { get; } = new HandRequirement
+    public static HandTemplate ThreeSixes { get; } = new HandTemplate
     {
         Name = "Three Sixes",
         Hand = Hands.ThreeOfAKind,
@@ -82,7 +82,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Sevens { get; } = new HandRequirement
+    public static HandTemplate ThreeSevens { get; } = new HandTemplate
     {
         Name = "Three Sevens",
         Hand = Hands.ThreeOfAKind,
@@ -98,7 +98,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Eights { get; } = new HandRequirement
+    public static HandTemplate ThreeEights { get; } = new HandTemplate
     {
         Name = "Three Eights",
         Hand = Hands.ThreeOfAKind,
@@ -114,7 +114,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Nines { get; } = new HandRequirement
+    public static HandTemplate ThreeNines { get; } = new HandTemplate
     {
         Name = "Three Nines",
         Hand = Hands.ThreeOfAKind,
@@ -130,7 +130,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Tens { get; } = new HandRequirement
+    public static HandTemplate ThreeTens { get; } = new HandTemplate
     {
         Name = "Three Tens",
         Hand = Hands.ThreeOfAKind,
@@ -146,7 +146,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Jacks { get; } = new HandRequirement
+    public static HandTemplate ThreeJacks { get; } = new HandTemplate
     {
         Name = "Three Jacks",
         Hand = Hands.ThreeOfAKind,
@@ -162,7 +162,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Queens { get; } = new HandRequirement
+    public static HandTemplate ThreeQueens { get; } = new HandTemplate
     {
         Name = "Three Queens",
         Hand = Hands.ThreeOfAKind,
@@ -178,7 +178,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Kings { get; } = new HandRequirement
+    public static HandTemplate ThreeKings { get; } = new HandTemplate
     {
         Name = "Three Kings",
         Hand = Hands.ThreeOfAKind,
@@ -194,7 +194,7 @@ public record class ThreeOfAKind
         }
     };
 
-    public static HandRequirement Aces { get; } = new HandRequirement
+    public static HandTemplate ThreeAces { get; } = new HandTemplate
     {
         Name = "Three Aces",
         Hand = Hands.ThreeOfAKind,
@@ -210,20 +210,20 @@ public record class ThreeOfAKind
         }
     };
 
-    public static List<HandRequirement> All { get; } = new()
+    public static List<HandTemplate> AllThreeOfAKind { get; } = new()
     {
-        Twos,
-        Threes,
-        Fours,
-        Fives,
-        Sixes,
-        Sevens,
-        Eights,
-        Nines,
-        Tens,
-        Jacks,
-        Queens,
-        Kings,
-        Aces
+        ThreeTwos,
+        ThreeThrees,
+        ThreeFours,
+        ThreeFives,
+        ThreeSixes,
+        ThreeSevens,
+        ThreeEights,
+        ThreeNines,
+        ThreeTens,
+        ThreeJacks,
+        ThreeQueens,
+        ThreeKings,
+        ThreeAces
     };
 }

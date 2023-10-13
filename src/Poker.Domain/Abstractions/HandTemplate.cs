@@ -1,6 +1,7 @@
 ﻿namespace Poker.Domain.Abstractions;
 
-public record HandRequirement
+
+public record HandTemplate
 {
     public required string Name { get; init; }
 

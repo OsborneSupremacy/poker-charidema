@@ -1,8 +1,8 @@
-﻿namespace Poker.Domain.Classic.HandRequirements;
+﻿namespace Poker.Domain.Classic;
 
-public record RoyalFlush
+public partial record HandTemplates
 {
-    public static HandRequirement Spades { get; } = new HandRequirement
+    public static HandTemplate SpadesRoyalFlush { get; } = new HandTemplate
     {
         Name = "Spades Royal Flush",
         Hand = Hands.RoyalFlush,
@@ -25,7 +25,7 @@ public record RoyalFlush
         }
     };
 
-    public static HandRequirement Hearts { get; } = new HandRequirement
+    public static HandTemplate HeartsRoyalFlush { get; } = new HandTemplate
     {
         Name = "Hearts Royal Flush",
         Hand = Hands.RoyalFlush,
@@ -48,7 +48,7 @@ public record RoyalFlush
         }
     };
 
-    public static HandRequirement Diamonds { get; } = new HandRequirement
+    public static HandTemplate DiamondsRoyalFlush { get; } = new HandTemplate
     {
         Name = "Diamonds Royal Flush",
         Hand = Hands.RoyalFlush,
@@ -71,7 +71,7 @@ public record RoyalFlush
         }
     };
 
-    public static HandRequirement Clubs { get; } = new HandRequirement
+    public static HandTemplate ClubsRoyalFlush { get; } = new HandTemplate
     {
         Name = "Clubs Royal Flush",
         Hand = Hands.RoyalFlush,
@@ -94,11 +94,11 @@ public record RoyalFlush
         }
     };
 
-    public static List<HandRequirement> All { get; } = new()
+    public static List<HandTemplate> AllRoyalFlushes { get; } = new()
     {
-        Spades,
-        Hearts,
-        Diamonds,
-        Clubs
+        SpadesRoyalFlush,
+        HeartsRoyalFlush,
+        DiamondsRoyalFlush,
+        ClubsRoyalFlush
     };
 }

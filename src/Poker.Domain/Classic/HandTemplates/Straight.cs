@@ -1,8 +1,8 @@
-﻿namespace Poker.Domain.Classic.HandRequirements;
+﻿namespace Poker.Domain.Classic;
 
-public record Straight
+public partial record HandTemplates
 {
-    public static HandRequirement SixHigh { get; } = new HandRequirement
+    public static HandTemplate SixHighStraight { get; } = new HandTemplate
     {
         Name = "Six High Straight",
         Hand = Hands.Straight,
@@ -38,7 +38,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement SevenHigh { get; } = new HandRequirement
+    public static HandTemplate SevenHighStraight { get; } = new HandTemplate
     {
         Name = "Seven High Straight",
         Hand = Hands.Straight,
@@ -74,7 +74,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement EightHigh { get; } = new HandRequirement
+    public static HandTemplate EightHighStraight { get; } = new HandTemplate
     {
         Name = "Eight High Straight",
         Hand = Hands.Straight,
@@ -110,7 +110,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement NineHigh { get; } = new HandRequirement
+    public static HandTemplate NineHighStraight { get; } = new HandTemplate
     {
         Name = "Nine High Straight",
         Hand = Hands.Straight,
@@ -146,7 +146,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement TenHigh { get; } = new HandRequirement
+    public static HandTemplate TenHighStraight { get; } = new HandTemplate
     {
         Name = "Ten High Straight",
         Hand = Hands.Straight,
@@ -182,7 +182,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement JackHigh { get; } = new HandRequirement
+    public static HandTemplate JackHighStraight { get; } = new HandTemplate
     {
         Name = "Jack High Straight",
         Hand = Hands.Straight,
@@ -218,7 +218,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement QueenHigh { get; } = new HandRequirement
+    public static HandTemplate QueenHighStraight { get; } = new HandTemplate
     {
         Name = "Queen High Straight",
         Hand = Hands.Straight,
@@ -254,7 +254,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement KingHigh { get; } = new HandRequirement
+    public static HandTemplate KingHighStraight { get; } = new HandTemplate
     {
         Name = "King High Straight",
         Hand = Hands.Straight,
@@ -290,7 +290,7 @@ public record Straight
         }
     };
 
-    public static HandRequirement AceHigh { get; } = new HandRequirement
+    public static HandTemplate AceHighStraight { get; } = new HandTemplate
     {
         Name = "Ace High Straight",
         Hand = Hands.Straight,
@@ -326,16 +326,16 @@ public record Straight
         }
     };
 
-    public static List<HandRequirement> All { get; } = new()
+    public static List<HandTemplate> AllStraights { get; } = new()
     {
-        SixHigh,
-        SevenHigh,
-        EightHigh,
-        NineHigh,
-        TenHigh,
-        JackHigh,
-        QueenHigh,
-        KingHigh,
-        AceHigh
+        SixHighStraight,
+        SevenHighStraight,
+        EightHighStraight,
+        NineHighStraight,
+        TenHighStraight,
+        JackHighStraight,
+        QueenHighStraight,
+        KingHighStraight,
+        AceHighStraight
     };
 }
