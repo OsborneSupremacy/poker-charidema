@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic.Hands;
 
 public record Pairs
 {

@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic.Hands;
 
-public partial record Hands
+public record FourOfAKind
 {
     public static Hand FourTwos { get; } = new Hand
     {
@@ -210,7 +210,7 @@ public partial record Hands
         }
     };
 
-    public static List<Hand> AllFourOfAKind { get; } = new()
+    public static List<Hand> All { get; } = new()
     {
         FourTwos,
         FourThrees,

@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic.Hands;
 
-public partial record Hands
+public record HighCards
 {
     public static Hand TwoHigh { get; } = new Hand
     {

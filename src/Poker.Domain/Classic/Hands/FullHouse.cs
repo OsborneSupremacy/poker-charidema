@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic.Hands;
 
-public partial record Hands
+public record FullHouses
 {
     public static Hand FullHouseThreesOverTwos { get; } = new Hand
     {
@@ -1716,7 +1716,7 @@ public partial record Hands
         }
     };
 
-    public static List<Hand> AllFullHouses { get; } = new()
+    public static List<Hand> All { get; } = new()
     {
         FullHouseThreesOverTwos,
         FullHouseFoursOverTwos,

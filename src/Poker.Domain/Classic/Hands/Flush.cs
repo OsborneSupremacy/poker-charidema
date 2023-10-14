@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic.Hands;
 
-public partial record Hands
+public record Flushes
 {
     public static Hand SpadesFlush { get; } = new Hand
     {
@@ -66,7 +66,7 @@ public partial record Hands
         }
     };
 
-    public static List<Hand> AllFlushes { get; } = new()
+    public static List<Hand> All { get; } = new()
     {
         SpadesFlush,
         HeartsFlush,

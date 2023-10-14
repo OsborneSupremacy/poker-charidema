@@ -1,5 +1,6 @@
 ﻿namespace Poker.Domain.Tests.Implementations;
 
+[ExcludeFromCodeCoverage]
 public class PairTests
 {
     [Theory]
