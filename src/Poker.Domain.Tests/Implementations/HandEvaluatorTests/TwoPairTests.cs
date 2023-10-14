@@ -39,6 +39,33 @@ public class TwoPairTests
     }
 
     [Fact]
+    public void ThreesOverTwos_Qualifies_TwoThreesOneTwoAndJokerPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.ThreeOfDiamonds,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs,
+                Cards.CreateJoker()
+            },
+            HandsToEvaluate = new()
+            {
+                TwoPair.ThreesOverTwos
+            },
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = HandEvaluator.Evaluate(request);
+
+        // Assert
+        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+    }
+
+    [Fact]
     public void ThreesOverTwos_Eliminated_OneThreePresent()
     {
         // Arrange

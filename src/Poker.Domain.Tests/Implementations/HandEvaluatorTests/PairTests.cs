@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using System.Runtime.InteropServices;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class PairTests
@@ -13,6 +15,31 @@ public class PairTests
         EvaluatedHandRequest request = new()
         {
             Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
+            HandsToEvaluate = new()
+            {
+                Pairs.Twos
+            },
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = HandEvaluator.Evaluate(request);
+
+        // Assert
+        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+    }
+
+    [Fact]
+    public void PairOfTwos_Qualifies_TwoAndJokerPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.TwoOfClubs,
+                Cards.CreateJoker()
+            },
             HandsToEvaluate = new()
             {
                 Pairs.Twos

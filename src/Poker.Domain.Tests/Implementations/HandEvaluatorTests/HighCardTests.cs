@@ -29,6 +29,31 @@ public class HighCardTests
     }
 
     [Fact]
+    public void AceHigh_Qualifies_JokerPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.AceOfClubs,
+                Cards.CreateJoker()
+            },
+            HandsToEvaluate = new()
+            {
+                HighCards.Ace
+            },
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = HandEvaluator.Evaluate(request);
+
+        // Assert
+        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+    }
+
+    [Fact]
     public void AceHigh_Eliminated_NonAcePresent()
     {
         // Arrange

@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using System.Runtime.InteropServices;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class ThreeOfAKindTests
@@ -15,6 +17,32 @@ public class ThreeOfAKindTests
             HandsToEvaluate = new()
             {
                 ThreeOfAKind.Twos
+            },
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = HandEvaluator.Evaluate(request);
+
+        // Assert
+        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+    }
+
+    [Fact]
+    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.ThreeOfClubs,
+                Cards.ThreeOfDiamonds,
+                Cards.CreateJoker()
+            },
+            HandsToEvaluate = new()
+            {
+                ThreeOfAKind.Threes
             },
             RemainingCardCount = 0
         };
