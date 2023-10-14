@@ -54,8 +54,6 @@ public record Card
 
     public required string Value { get; init; }
 
-    public required CardOrientations CardOrientation { get; init; }
-
     public required CardTypes CardType { get; init; }
 
     public required bool IsWild { get; init; }

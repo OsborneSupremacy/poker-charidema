@@ -57,10 +57,12 @@ public class DealerService : IDealerService, IPhaseService
     private DealCardResponse DealCard(DealCardRequest request)
     {
         var cardToDeal = request.Deck.Cards.First();
+        /*
         cardToDeal = cardToDeal with
         {
             CardOrientation = request.Phase.CardOrientation
         };
+        */
 
         var playerCardsOut = request.Player.Cards;
         playerCardsOut.Add(cardToDeal);

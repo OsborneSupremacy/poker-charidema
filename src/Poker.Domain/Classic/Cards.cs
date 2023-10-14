@@ -6,7 +6,6 @@ public record Cards
     {
         Id = Guid.Empty,
         Value = string.Empty,
-        CardOrientation = CardOrientations.Empty,
         CardType = CardTypes.Empty,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -19,7 +18,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "2H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -32,7 +30,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "3H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -45,7 +42,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "4H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -58,7 +54,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "5H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -71,7 +66,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "6H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -84,7 +78,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "7H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -97,7 +90,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "8H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -110,7 +102,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "9H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -123,7 +114,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "10H",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
         IsWild = false,
@@ -136,7 +126,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "JH",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
         Rank = Ranks.Jack,
@@ -152,7 +141,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "QH",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
         Rank = Ranks.Queen,
@@ -168,7 +156,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "KH",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Face,
         IsWild = false,
         Rank = Ranks.King,
@@ -184,7 +171,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "AH",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Ace,
         FaceDirection = FaceDirections.NotApplicable,
@@ -197,7 +183,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "2D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -210,7 +195,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "3D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -223,7 +207,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "4D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -236,7 +219,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "5D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -249,7 +231,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "6D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -262,7 +243,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "7D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -275,7 +255,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "8D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -288,7 +267,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "9D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -301,7 +279,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "10D",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Spot,
         FaceDirection = FaceDirections.NotApplicable,
@@ -314,7 +291,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "JD",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Jack,
@@ -330,7 +306,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "QD",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Queen,
@@ -346,7 +321,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "KD",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.King,
@@ -362,7 +336,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "AD",
-        CardOrientation = CardOrientations.Facedown,
         CardType = CardTypes.Ace,
         IsWild = false,
         Rank = Ranks.Ace,
@@ -375,7 +348,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "2C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Two,
         Suit = Suits.Clubs,
@@ -388,7 +360,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "3C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Three,
         Suit = Suits.Clubs,
@@ -401,7 +372,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "4C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Four,
         Suit = Suits.Clubs,
@@ -414,7 +384,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "5C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Five,
         Suit = Suits.Clubs,
@@ -427,7 +396,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "6C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Six,
         Suit = Suits.Clubs,
@@ -440,7 +408,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "7C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Seven,
         Suit = Suits.Clubs,
@@ -453,7 +420,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "8C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Eight,
         Suit = Suits.Clubs,
@@ -466,7 +432,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "9C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Nine,
         Suit = Suits.Clubs,
@@ -479,7 +444,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "10C",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Ten,
         Suit = Suits.Clubs,
@@ -492,7 +456,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "JC",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Jack,
@@ -508,7 +471,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "QC",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Queen,
@@ -524,7 +486,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "KC",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.King,
@@ -540,7 +501,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "AC",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Ace,
         Rank = Ranks.Ace,
@@ -553,7 +513,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "2S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Two,
         Suit = Suits.Spades,
@@ -566,7 +525,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "3S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Three,
         Suit = Suits.Spades,
@@ -579,7 +537,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "4S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Four,
         Suit = Suits.Spades,
@@ -592,7 +549,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "5S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Five,
         Suit = Suits.Spades,
@@ -605,7 +561,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "6S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Six,
         Suit = Suits.Spades,
@@ -618,7 +573,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "7S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Seven,
         Suit = Suits.Spades,
@@ -631,7 +585,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "8S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Eight,
         Suit = Suits.Spades,
@@ -644,7 +597,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "9S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Nine,
         Suit = Suits.Spades,
@@ -657,7 +609,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "10S",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         Rank = Ranks.Ten,
         Suit = Suits.Spades,
@@ -670,7 +621,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "JS",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Jack,
@@ -686,7 +636,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "QS",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.Queen,
@@ -702,7 +651,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "KS",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Face,
         Rank = Ranks.King,
@@ -718,7 +666,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "AS",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = false,
         CardType = CardTypes.Ace,
         Rank = Ranks.Ace,
@@ -731,7 +678,6 @@ public record Cards
     {
         Id = Guid.NewGuid(),
         Value = "J",
-        CardOrientation = CardOrientations.Facedown,
         IsWild = true,
         CardType = CardTypes.Joker,
         Rank = Ranks.Empty,
