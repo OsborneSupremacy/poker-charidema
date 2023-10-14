@@ -5,5 +5,4 @@ global using Poker.Domain.Classic.Hands;
 global using Poker.Domain.Implementations;
 global using Poker.Domain.Extensions;
 global using Poker.Domain.Messaging;
-global using Poker.Domain.Tests.Utility;
 global using FluentAssertions;

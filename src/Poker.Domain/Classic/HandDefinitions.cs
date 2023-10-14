@@ -8,108 +8,84 @@ public record HandDefinitions
     {
         Name = "Empty",
         Value = 0,
-        PrimaryMatchesCount = 0,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.NoHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition HighCard { get; } = new HandDefinition
     {
         Name = "High Card",
         Value = 1,
-        PrimaryMatchesCount = 1,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition Pair { get; } = new HandDefinition
     {
         Name = "Pair",
         Value = 2,
-        PrimaryMatchesCount = 2,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition TwoPair { get; } = new HandDefinition
     {
         Name = "Two Pair",
         Value = 3,
-        PrimaryMatchesCount = 2,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.TwoPairHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition ThreeOfAKind { get; } = new HandDefinition
     {
         Name = "Three of a Kind",
         Value = 4,
-        PrimaryMatchesCount = 3,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition Straight { get; } = new HandDefinition
     {
         Name = "Straight",
         Value = 5,
-        PrimaryMatchesCount = 0,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.StraightHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition Flush { get; } = new HandDefinition
     {
         Name = "Flush",
         Value = 6,
-        PrimaryMatchesCount = 0,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.FlushHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition FullHouse { get; } = new HandDefinition
     {
         Name = "Full House",
         Value = 7,
-        PrimaryMatchesCount = 3,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.FullHouseHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition FourOfAKind { get; } = new HandDefinition
     {
         Name = "Four of a Kind",
         Value = 8,
-        PrimaryMatchesCount = 4,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition StraightFlush { get; } = new HandDefinition
     {
         Name = "Straight Flush",
         Value = 9,
-        PrimaryMatchesCount = 0,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.StraightFlushHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition RoyalFlush { get; } = new HandDefinition
     {
         Name = "Royal Flush",
         Value = 10,
-        PrimaryMatchesCount = 0,
-        ImpersonateContributing = false,
-        HandQualifier = HandQualifierDelegates.RoyalFlushHandQualifier
+        ImpersonateContributing = false
     };
 
     public static HandDefinition FiveOfAKind { get; } = new HandDefinition
     {
         Name = "Five of a Kind",
         Value = 11,
-        PrimaryMatchesCount = 5,
-        ImpersonateContributing = true,
-        HandQualifier = HandQualifierDelegates.MatchingRankHandQualifier
+        ImpersonateContributing = true
     };
 
     public static List<HandDefinition> All { get; } = new(){

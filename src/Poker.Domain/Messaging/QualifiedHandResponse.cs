@@ -31,6 +31,4 @@ public record QualifiedHandResponse
     public required List<Card> Kickers { get; init; }
 
     public required List<Card> DeadCards { get; init; }
-
-    public required List<NeededCardGroup> NeededCardGroups { get; init; }
 }
