@@ -2,7 +2,7 @@
 
 public static class HandEvaluator
 {
-    public static IEnumerable<EvalulatedHandResponse> Evaluate(
+    public static IEnumerable<EvaluatedHandResponse> Evaluate(
         EvaluatedHandRequest request
         )
     {
@@ -14,7 +14,7 @@ public static class HandEvaluator
             yield return Evaluate(request, hand);
     }
 
-    public static EvalulatedHandResponse Evaluate(
+    public static EvaluatedHandResponse Evaluate(
         EvaluatedHandRequest request,
         Hand hand
         )
@@ -36,7 +36,7 @@ public static class HandEvaluator
             unusedCards = response.UnusedCards;
         }
 
-        return new EvalulatedHandResponse
+        return new EvaluatedHandResponse
         {
             Hand = hand,
             HandQualification =
@@ -49,7 +49,8 @@ public static class HandEvaluator
                         ? HandQualifications.Possible
                         : HandQualifications.Eliminated
                 },
-            EvalulatedHandSegments = evalulatedHandSegments
+            EvalulatedHandSegments = evalulatedHandSegments,
+            UnusedCards = unusedCards
         };
     }
 

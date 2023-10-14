@@ -7,7 +7,7 @@ public static class HandCardsExtensions
 
     public static List<Card> AllStandardized(this HandCards handCards) =>
         handCards.Standard
-            .Concat(handCards.Wild.Select(c => c.StandardCard))
+            .Concat(handCards.Wild.Select(c => c.DesignatedCard))
             .ToList();
 
     public static void Add(this HandCards handCards, Card card) =>
@@ -21,6 +21,6 @@ public static class HandCardsExtensions
             handCards.Wild.Add(new()
             {
                 WildCard = wildCard,
-                StandardCard = standardCard
+                DesignatedCard = standardCard
             });
 }

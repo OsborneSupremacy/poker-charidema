@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Implementations;
-
-namespace Poker.Domain.Classic;
+﻿namespace Poker.Domain.Classic;
 
 public record HandDefinitions
 {
