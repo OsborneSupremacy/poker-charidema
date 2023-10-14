@@ -71,12 +71,15 @@ public static class HandEvaluator
             var qualifyingCards = request.HandSegment.EligibleCards
                 .Except(contributingCards.AllStandardized());
 
+            // should only come into play with 5-of-a-kind. 
+            // Allow an eligible card to be reused when it's required for five matches.
+            if (!qualifyingCards.Any() && unusedCardsOut.UnusedWild.Any())
+                qualifyingCards = request.HandSegment.EligibleCards;
+
             var standard = unusedCardsOut.UnusedStandard
                 .Where(qualifyingCards.Contains)
                 .OrderByPokerStandard()
                 .FirstOrDefault() ?? Cards.Empty;
-
-            // TODO: add the 5-of-a-kind exception here.
 
             if (standard != Cards.Empty)
             {

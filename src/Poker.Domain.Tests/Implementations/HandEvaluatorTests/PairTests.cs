@@ -7,7 +7,7 @@ public class PairTests
     [InlineData(2)]
     [InlineData(3)]
     [InlineData(4)]
-    public void PairOfTwos_Qualifies_TwoPlusPresent(int twoCount)
+    public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
