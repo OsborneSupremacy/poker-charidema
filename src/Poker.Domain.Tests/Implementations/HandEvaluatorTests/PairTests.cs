@@ -44,11 +44,24 @@ public class PairTests
             RemainingCardCount = 0
         };
 
+        HandSegment expectedOutstanding = new()
+        {
+            RequiredCount = 1,
+            EligibleCards = new()
+            {
+                Cards.TwoOfSpades,
+                Cards.TwoOfHearts,
+                Cards.TwoOfDiamonds
+            }
+        };
+
         // Act
         var response = HandEvaluator.Evaluate(request);
+        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
     [Fact]
