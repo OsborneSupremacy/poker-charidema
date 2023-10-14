@@ -2,7 +2,7 @@
 
 public record FullHouses
 {
-    public static Hand FullHouseThreesOverTwos { get; } = new Hand
+    public static Hand ThreesOverTwos { get; } = new Hand
     {
         Name = "Full House, Threes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -23,7 +23,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseFoursOverTwos { get; } = new Hand
+    public static Hand FoursOverTwos { get; } = new Hand
     {
         Name = "Full House, Fours Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -44,7 +44,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseFivesOverTwos { get; } = new Hand
+    public static Hand FivesOverTwos { get; } = new Hand
     {
         Name = "Full House, Fives Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -65,7 +65,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSixesOverTwos { get; } = new Hand
+    public static Hand SixesOverTwos { get; } = new Hand
     {
         Name = "Full House, Sixes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -86,7 +86,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSevensOverTwos { get; } = new Hand
+    public static Hand SevensOverTwos { get; } = new Hand
     {
         Name = "Full House, Sevens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -107,7 +107,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverTwos { get; } = new Hand
+    public static Hand EightsOverTwos { get; } = new Hand
     {
         Name = "Full House, Eights Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -128,7 +128,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverTwos { get; } = new Hand
+    public static Hand NinesOverTwos { get; } = new Hand
     {
         Name = "Full House, Nines Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -149,7 +149,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverTwos { get; } = new Hand
+    public static Hand TensOverTwos { get; } = new Hand
     {
         Name = "Full House, Tens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -170,7 +170,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverTwos { get; } = new Hand
+    public static Hand JacksOverTwos { get; } = new Hand
     {
         Name = "Full House, Jacks Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -191,7 +191,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverTwos { get; } = new Hand
+    public static Hand QueensOverTwos { get; } = new Hand
     {
         Name = "Full House, Queens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -212,7 +212,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverTwos { get; } = new Hand
+    public static Hand KingsOverTwos { get; } = new Hand
     {
         Name = "Full House, Kings Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -233,7 +233,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverTwos { get; } = new Hand
+    public static Hand AcesOverTwos { get; } = new Hand
     {
         Name = "Full House, Aces Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -254,7 +254,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseFoursOverThrees { get; } = new Hand
+    public static Hand FoursOverThrees { get; } = new Hand
     {
         Name = "Full House, Fours Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -275,7 +275,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseFivesOverThrees { get; } = new Hand
+    public static Hand FivesOverThrees { get; } = new Hand
     {
         Name = "Full House, Fives Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -296,7 +296,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSixesOverThrees { get; } = new Hand
+    public static Hand SixesOverThrees { get; } = new Hand
     {
         Name = "Full House, Sixes Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -317,7 +317,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSevensOverThrees { get; } = new Hand
+    public static Hand SevensOverThrees { get; } = new Hand
     {
         Name = "Full House, Sevens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -338,7 +338,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverThrees { get; } = new Hand
+    public static Hand EightsOverThrees { get; } = new Hand
     {
         Name = "Full House, Eights Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -359,7 +359,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverThrees { get; } = new Hand
+    public static Hand NinesOverThrees { get; } = new Hand
     {
         Name = "Full House, Nines Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -380,7 +380,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverThrees { get; } = new Hand
+    public static Hand TensOverThrees { get; } = new Hand
     {
         Name = "Full House, Tens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -401,7 +401,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverThrees { get; } = new Hand
+    public static Hand JacksOverThrees { get; } = new Hand
     {
         Name = "Full House, Jacks Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -422,7 +422,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverThrees { get; } = new Hand
+    public static Hand QueensOverThrees { get; } = new Hand
     {
         Name = "Full House, Queens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -443,7 +443,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverThrees { get; } = new Hand
+    public static Hand KingsOverThrees { get; } = new Hand
     {
         Name = "Full House, Kings Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -464,7 +464,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverThrees { get; } = new Hand
+    public static Hand AcesOverThrees { get; } = new Hand
     {
         Name = "Full House, Aces Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -485,7 +485,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseFivesOverFours { get; } = new Hand
+    public static Hand FivesOverFours { get; } = new Hand
     {
         Name = "Full House, Fives Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -506,7 +506,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSixesOverFours { get; } = new Hand
+    public static Hand SixesOverFours { get; } = new Hand
     {
         Name = "Full House, Sixes Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -527,7 +527,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSevensOverFours { get; } = new Hand
+    public static Hand SevensOverFours { get; } = new Hand
     {
         Name = "Full House, Sevens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -548,7 +548,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverFours { get; } = new Hand
+    public static Hand EightsOverFours { get; } = new Hand
     {
         Name = "Full House, Eights Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -569,7 +569,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverFours { get; } = new Hand
+    public static Hand NinesOverFours { get; } = new Hand
     {
         Name = "Full House, Nines Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -590,7 +590,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverFours { get; } = new Hand
+    public static Hand TensOverFours { get; } = new Hand
     {
         Name = "Full House, Tens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -611,7 +611,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverFours { get; } = new Hand
+    public static Hand JacksOverFours { get; } = new Hand
     {
         Name = "Full House, Jacks Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -632,7 +632,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverFours { get; } = new Hand
+    public static Hand QueensOverFours { get; } = new Hand
     {
         Name = "Full House, Queens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -653,7 +653,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverFours { get; } = new Hand
+    public static Hand KingsOverFours { get; } = new Hand
     {
         Name = "Full House, Kings Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -674,7 +674,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverFours { get; } = new Hand
+    public static Hand AcesOverFours { get; } = new Hand
     {
         Name = "Full House, Aces Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -695,7 +695,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSixesOverFives { get; } = new Hand
+    public static Hand SixesOverFives { get; } = new Hand
     {
         Name = "Full House, Sixes Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -716,7 +716,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSevensOverFives { get; } = new Hand
+    public static Hand SevensOverFives { get; } = new Hand
     {
         Name = "Full House, Sevens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -737,7 +737,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverFives { get; } = new Hand
+    public static Hand EightsOverFives { get; } = new Hand
     {
         Name = "Full House, Eights Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -760,7 +760,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverFives { get; } = new Hand
+    public static Hand NinesOverFives { get; } = new Hand
     {
         Name = "Full House, Nines Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -783,7 +783,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverFives { get; } = new Hand
+    public static Hand TensOverFives { get; } = new Hand
     {
         Name = "Full House, Tens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -806,7 +806,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverFives { get; } = new Hand
+    public static Hand JacksOverFives { get; } = new Hand
     {
         Name = "Full House, Jacks Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -829,7 +829,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverFives { get; } = new Hand
+    public static Hand QueensOverFives { get; } = new Hand
     {
         Name = "Full House, Queens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -852,7 +852,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverFives { get; } = new Hand
+    public static Hand KingsOverFives { get; } = new Hand
     {
         Name = "Full House, Kings Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -875,7 +875,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverFives { get; } = new Hand
+    public static Hand AcesOverFives { get; } = new Hand
     {
         Name = "Full House, Aces Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -898,7 +898,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseSevensOverSixes { get; } = new Hand
+    public static Hand SevensOverSixes { get; } = new Hand
     {
         Name = "Full House, Sevens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -921,7 +921,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverSixes { get; } = new Hand
+    public static Hand EightsOverSixes { get; } = new Hand
     {
         Name = "Full House, Eights Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -944,7 +944,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverSixes { get; } = new Hand
+    public static Hand NinesOverSixes { get; } = new Hand
     {
         Name = "Full House, Nines Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -967,7 +967,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverSixes { get; } = new Hand
+    public static Hand TensOverSixes { get; } = new Hand
     {
         Name = "Full House, Tens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -990,7 +990,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverSixes { get; } = new Hand
+    public static Hand JacksOverSixes { get; } = new Hand
     {
         Name = "Full House, Jacks Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1013,7 +1013,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverSixes { get; } = new Hand
+    public static Hand QueensOverSixes { get; } = new Hand
     {
         Name = "Full House, Queens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1036,7 +1036,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverSixes { get; } = new Hand
+    public static Hand KingsOverSixes { get; } = new Hand
     {
         Name = "Full House, Kings Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1059,7 +1059,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverSixes { get; } = new Hand
+    public static Hand AcesOverSixes { get; } = new Hand
     {
         Name = "Full House, Aces Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1082,7 +1082,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseEightsOverSevens { get; } = new Hand
+    public static Hand EightsOverSevens { get; } = new Hand
     {
         Name = "Full House, Eights Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1107,7 +1107,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverSevens { get; } = new Hand
+    public static Hand NinesOverSevens { get; } = new Hand
     {
         Name = "Full House, Nines Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1128,7 +1128,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverSevens { get; } = new Hand
+    public static Hand TensOverSevens { get; } = new Hand
     {
         Name = "Full House, Tens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1149,7 +1149,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverSevens { get; } = new Hand
+    public static Hand JacksOverSevens { get; } = new Hand
     {
         Name = "Full House, Jacks Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1170,7 +1170,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverSevens { get; } = new Hand
+    public static Hand QueensOverSevens { get; } = new Hand
     {
         Name = "Full House, Queens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1191,7 +1191,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverSevens { get; } = new Hand
+    public static Hand KingsOverSevens { get; } = new Hand
     {
         Name = "Full House, Kings Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1212,7 +1212,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverSevens { get; } = new Hand
+    public static Hand AcesOverSevens { get; } = new Hand
     {
         Name = "Full House, Aces Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1233,7 +1233,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseNinesOverEights { get; } = new Hand
+    public static Hand NinesOverEights { get; } = new Hand
     {
         Name = "Full House, Nines Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1256,7 +1256,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverEights { get; } = new Hand
+    public static Hand TensOverEights { get; } = new Hand
     {
         Name = "Full House, Tens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1279,7 +1279,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverEights { get; } = new Hand
+    public static Hand JacksOverEights { get; } = new Hand
     {
         Name = "Full House, Jacks Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1302,7 +1302,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverEights { get; } = new Hand
+    public static Hand QueensOverEights { get; } = new Hand
     {
         Name = "Full House, Queens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1325,7 +1325,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverEights { get; } = new Hand
+    public static Hand KingsOverEights { get; } = new Hand
     {
         Name = "Full House, Kings Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1348,7 +1348,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverEights { get; } = new Hand
+    public static Hand AcesOverEights { get; } = new Hand
     {
         Name = "Full House, Aces Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1371,7 +1371,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseTensOverNines { get; } = new Hand
+    public static Hand TensOverNines { get; } = new Hand
     {
         Name = "Full House, Tens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1394,7 +1394,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverNines { get; } = new Hand
+    public static Hand JacksOverNines { get; } = new Hand
     {
         Name = "Full House, Jacks Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1417,7 +1417,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverNines { get; } = new Hand
+    public static Hand QueensOverNines { get; } = new Hand
     {
         Name = "Full House, Queens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1440,7 +1440,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverNines { get; } = new Hand
+    public static Hand KingsOverNines { get; } = new Hand
     {
         Name = "Full House, Kings Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1463,7 +1463,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverNines { get; } = new Hand
+    public static Hand AcesOverNines { get; } = new Hand
     {
         Name = "Full House, Aces Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1486,7 +1486,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseJacksOverTens { get; } = new Hand
+    public static Hand JacksOverTens { get; } = new Hand
     {
         Name = "Full House, Jacks Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1509,7 +1509,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverTens { get; } = new Hand
+    public static Hand QueensOverTens { get; } = new Hand
     {
         Name = "Full House, Queens Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1532,7 +1532,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverTens { get; } = new Hand
+    public static Hand KingsOverTens { get; } = new Hand
     {
         Name = "Full House, Kings Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1555,7 +1555,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverTens { get; } = new Hand
+    public static Hand AcesOverTens { get; } = new Hand
     {
         Name = "Full House, Aces Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1578,7 +1578,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseQueensOverJacks { get; } = new Hand
+    public static Hand QueensOverJacks { get; } = new Hand
     {
         Name = "Full House, Queens Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1601,7 +1601,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverJacks { get; } = new Hand
+    public static Hand KingsOverJacks { get; } = new Hand
     {
         Name = "Full House, Kings Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1624,7 +1624,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverJacks { get; } = new Hand
+    public static Hand AcesOverJacks { get; } = new Hand
     {
         Name = "Full House, Aces Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1647,7 +1647,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseKingsOverQueens { get; } = new Hand
+    public static Hand KingsOverQueens { get; } = new Hand
     {
         Name = "Full House, Kings Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1670,7 +1670,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverQueens { get; } = new Hand
+    public static Hand AcesOverQueens { get; } = new Hand
     {
         Name = "Full House, Aces Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1693,7 +1693,7 @@ public record FullHouses
         }
     };
 
-    public static Hand FullHouseAcesOverKings { get; } = new Hand
+    public static Hand AcesOverKings { get; } = new Hand
     {
         Name = "Full House, Aces Over Kings",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1718,84 +1718,84 @@ public record FullHouses
 
     public static List<Hand> All { get; } = new()
     {
-        FullHouseThreesOverTwos,
-        FullHouseFoursOverTwos,
-        FullHouseFivesOverTwos,
-        FullHouseSixesOverTwos,
-        FullHouseSevensOverTwos,
-        FullHouseEightsOverTwos,
-        FullHouseNinesOverTwos,
-        FullHouseTensOverTwos,
-        FullHouseJacksOverTwos,
-        FullHouseQueensOverTwos,
-        FullHouseKingsOverTwos,
-        FullHouseAcesOverTwos,
-        FullHouseFoursOverThrees,
-        FullHouseFivesOverThrees,
-        FullHouseSixesOverThrees,
-        FullHouseSevensOverThrees,
-        FullHouseEightsOverThrees,
-        FullHouseNinesOverThrees,
-        FullHouseTensOverThrees,
-        FullHouseJacksOverThrees,
-        FullHouseQueensOverThrees,
-        FullHouseKingsOverThrees,
-        FullHouseAcesOverThrees,
-        FullHouseFivesOverFours,
-        FullHouseSixesOverFours,
-        FullHouseSevensOverFours,
-        FullHouseEightsOverFours,
-        FullHouseNinesOverFours,
-        FullHouseTensOverFours,
-        FullHouseJacksOverFours,
-        FullHouseQueensOverFours,
-        FullHouseKingsOverFours,
-        FullHouseAcesOverFours,
-        FullHouseSixesOverFives,
-        FullHouseSevensOverFives,
-        FullHouseEightsOverFives,
-        FullHouseNinesOverFives,
-        FullHouseTensOverFives,
-        FullHouseJacksOverFives,
-        FullHouseQueensOverFives,
-        FullHouseKingsOverFives,
-        FullHouseAcesOverFives,
-        FullHouseSevensOverSixes,
-        FullHouseEightsOverSixes,
-        FullHouseNinesOverSixes,
-        FullHouseTensOverSixes,
-        FullHouseJacksOverSixes,
-        FullHouseQueensOverSixes,
-        FullHouseKingsOverSixes,
-        FullHouseAcesOverSixes,
-        FullHouseEightsOverSevens,
-        FullHouseNinesOverSevens,
-        FullHouseTensOverSevens,
-        FullHouseJacksOverSevens,
-        FullHouseQueensOverSevens,
-        FullHouseKingsOverSevens,
-        FullHouseAcesOverSevens,
-        FullHouseNinesOverEights,
-        FullHouseTensOverEights,
-        FullHouseJacksOverEights,
-        FullHouseQueensOverEights,
-        FullHouseKingsOverEights,
-        FullHouseAcesOverEights,
-        FullHouseTensOverNines,
-        FullHouseJacksOverNines,
-        FullHouseQueensOverNines,
-        FullHouseKingsOverNines,
-        FullHouseAcesOverNines,
-        FullHouseJacksOverTens,
-        FullHouseQueensOverTens,
-        FullHouseKingsOverTens,
-        FullHouseAcesOverTens,
-        FullHouseQueensOverJacks,
-        FullHouseKingsOverJacks,
-        FullHouseAcesOverJacks,
-        FullHouseKingsOverQueens,
-        FullHouseAcesOverQueens,
-        FullHouseAcesOverKings
+        ThreesOverTwos,
+        FoursOverTwos,
+        FivesOverTwos,
+        SixesOverTwos,
+        SevensOverTwos,
+        EightsOverTwos,
+        NinesOverTwos,
+        TensOverTwos,
+        JacksOverTwos,
+        QueensOverTwos,
+        KingsOverTwos,
+        AcesOverTwos,
+        FoursOverThrees,
+        FivesOverThrees,
+        SixesOverThrees,
+        SevensOverThrees,
+        EightsOverThrees,
+        NinesOverThrees,
+        TensOverThrees,
+        JacksOverThrees,
+        QueensOverThrees,
+        KingsOverThrees,
+        AcesOverThrees,
+        FivesOverFours,
+        SixesOverFours,
+        SevensOverFours,
+        EightsOverFours,
+        NinesOverFours,
+        TensOverFours,
+        JacksOverFours,
+        QueensOverFours,
+        KingsOverFours,
+        AcesOverFours,
+        SixesOverFives,
+        SevensOverFives,
+        EightsOverFives,
+        NinesOverFives,
+        TensOverFives,
+        JacksOverFives,
+        QueensOverFives,
+        KingsOverFives,
+        AcesOverFives,
+        SevensOverSixes,
+        EightsOverSixes,
+        NinesOverSixes,
+        TensOverSixes,
+        JacksOverSixes,
+        QueensOverSixes,
+        KingsOverSixes,
+        AcesOverSixes,
+        EightsOverSevens,
+        NinesOverSevens,
+        TensOverSevens,
+        JacksOverSevens,
+        QueensOverSevens,
+        KingsOverSevens,
+        AcesOverSevens,
+        NinesOverEights,
+        TensOverEights,
+        JacksOverEights,
+        QueensOverEights,
+        KingsOverEights,
+        AcesOverEights,
+        TensOverNines,
+        JacksOverNines,
+        QueensOverNines,
+        KingsOverNines,
+        AcesOverNines,
+        JacksOverTens,
+        QueensOverTens,
+        KingsOverTens,
+        AcesOverTens,
+        QueensOverJacks,
+        KingsOverJacks,
+        AcesOverJacks,
+        KingsOverQueens,
+        AcesOverQueens,
+        AcesOverKings
     };
 }
 

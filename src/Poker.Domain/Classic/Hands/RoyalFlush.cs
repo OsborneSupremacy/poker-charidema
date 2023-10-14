@@ -2,7 +2,7 @@
 
 public record RoyalFlushes
 {
-    public static Hand SpadesRoyalFlush { get; } = new Hand
+    public static Hand Spades { get; } = new Hand
     {
         Name = "Spades Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -25,7 +25,7 @@ public record RoyalFlushes
         }
     };
 
-    public static Hand HeartsRoyalFlush { get; } = new Hand
+    public static Hand Hearts { get; } = new Hand
     {
         Name = "Hearts Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -48,7 +48,7 @@ public record RoyalFlushes
         }
     };
 
-    public static Hand DiamondsRoyalFlush { get; } = new Hand
+    public static Hand Diamonds { get; } = new Hand
     {
         Name = "Diamonds Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -71,7 +71,7 @@ public record RoyalFlushes
         }
     };
 
-    public static Hand ClubsRoyalFlush { get; } = new Hand
+    public static Hand Clubs { get; } = new Hand
     {
         Name = "Clubs Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -96,9 +96,9 @@ public record RoyalFlushes
 
     public static List<Hand> All { get; } = new()
     {
-        SpadesRoyalFlush,
-        HeartsRoyalFlush,
-        DiamondsRoyalFlush,
-        ClubsRoyalFlush
+        Hearts,
+        Spades,
+        Diamonds,
+        Clubs
     };
 }

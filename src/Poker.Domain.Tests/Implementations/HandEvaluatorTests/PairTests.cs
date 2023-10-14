@@ -15,7 +15,7 @@ public class PairTests
             Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
             HandsToEvaluate = new()
             {
-                Pairs.PairOfTwos
+                Pairs.Twos
             },
             RemainingCardCount = 0
         };
@@ -40,7 +40,7 @@ public class PairTests
             },
             HandsToEvaluate = new()
             {
-                Pairs.PairOfTwos
+                Pairs.Twos
             },
             RemainingCardCount = 0
         };
@@ -78,7 +78,7 @@ public class PairTests
             },
             HandsToEvaluate = new()
             {
-                Pairs.PairOfTwos
+                Pairs.Twos
             },
             RemainingCardCount = 1
         };

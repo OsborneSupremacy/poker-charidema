@@ -2,7 +2,7 @@
 
 public record Pairs
 {
-    public static Hand PairOfTwos { get; } = new Hand
+    public static Hand Twos { get; } = new Hand
     {
         Name = "Pair of Twos",
         HandDefinition = HandDefinitions.Pair,
@@ -18,7 +18,7 @@ public record Pairs
         }
     };
 
-    public static Hand PairOfThrees { get; } = new Hand
+    public static Hand Threes { get; } = new Hand
     {
         Name = "Pair of Threes",
         HandDefinition = HandDefinitions.Pair,
@@ -34,7 +34,7 @@ public record Pairs
         }
     };
 
-    public static Hand PairOfFours { get; } = new Hand
+    public static Hand Fours { get; } = new Hand
     {
         Name = "Pair of Fours",
         HandDefinition = HandDefinitions.Pair,
@@ -50,7 +50,7 @@ public record Pairs
         }
     };
 
-    public static Hand PairOfFives { get; } = new Hand
+    public static Hand Fives { get; } = new Hand
     {
         Name = "Pair of Fives",
         HandDefinition = HandDefinitions.Pair,
@@ -59,7 +59,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList() } }
     };
 
-    public static Hand PairOfSixes { get; } = new Hand
+    public static Hand Sixes { get; } = new Hand
     {
         Name = "Pair of Sixes",
         HandDefinition = HandDefinitions.Pair,
@@ -68,7 +68,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList() } }
     };
 
-    public static Hand PairOfSevens { get; } = new Hand
+    public static Hand Sevens { get; } = new Hand
     {
         Name = "Pair of Sevens",
         HandDefinition = HandDefinitions.Pair,
@@ -77,7 +77,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList() } }
     };
 
-    public static Hand PairOfEights { get; } = new Hand
+    public static Hand Eights { get; } = new Hand
     {
         Name = "Pair of Eights",
         HandDefinition = HandDefinitions.Pair,
@@ -86,7 +86,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList() } }
     };
 
-    public static Hand PairOfNines { get; } = new Hand
+    public static Hand Nines { get; } = new Hand
     {
         Name = "Pair of Nines",
         HandDefinition = HandDefinitions.Pair,
@@ -95,7 +95,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList() } }
     };
 
-    public static Hand PairOfTens { get; } = new Hand
+    public static Hand Tens { get; } = new Hand
     {
         Name = "Pair of Tens",
         HandDefinition = HandDefinitions.Pair,
@@ -104,7 +104,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList() } }
     };
 
-    public static Hand PairOfJacks { get; } = new Hand
+    public static Hand Jacks { get; } = new Hand
     {
         Name = "Pair of Jacks",
         HandDefinition = HandDefinitions.Pair,
@@ -113,7 +113,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList() } }
     };
 
-    public static Hand PairOfQueens { get; } = new Hand
+    public static Hand Queens { get; } = new Hand
     {
         Name = "Pair of Queens",
         HandDefinition = HandDefinitions.Pair,
@@ -122,7 +122,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList() } }
     };
 
-    public static Hand PairOfKings { get; } = new Hand
+    public static Hand Kings { get; } = new Hand
     {
         Name = "Pair of Kings",
         HandDefinition = HandDefinitions.Pair,
@@ -131,7 +131,7 @@ public record Pairs
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.King).ToList() } }
     };
 
-    public static Hand PairOfAces { get; } = new Hand
+    public static Hand Aces { get; } = new Hand
     {
         Name = "Pair of Aces",
         HandDefinition = HandDefinitions.Pair,
@@ -142,18 +142,18 @@ public record Pairs
 
     public static List<Hand> All { get; } = new()
     {
-        PairOfTwos,
-        PairOfThrees,
-        PairOfFours,
-        PairOfFives,
-        PairOfSixes,
-        PairOfSevens,
-        PairOfEights,
-        PairOfNines,
-        PairOfTens,
-        PairOfJacks,
-        PairOfQueens,
-        PairOfKings,
-        PairOfAces
+        Twos,
+        Threes,
+        Fours,
+        Fives,
+        Sixes,
+        Sevens,
+        Eights,
+        Nines,
+        Tens,
+        Jacks,
+        Queens,
+        Kings,
+        Aces
     };
 }

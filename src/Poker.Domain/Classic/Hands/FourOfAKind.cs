@@ -2,7 +2,7 @@
 
 public record FourOfAKind
 {
-    public static Hand FourTwos { get; } = new Hand
+    public static Hand Twos { get; } = new Hand
     {
         Name = "Four Twos",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -18,7 +18,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourThrees { get; } = new Hand
+    public static Hand Threes { get; } = new Hand
     {
         Name = "Four Threes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -34,7 +34,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourFours { get; } = new Hand
+    public static Hand Fours { get; } = new Hand
     {
         Name = "Four Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -50,7 +50,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourFives { get; } = new Hand
+    public static Hand Fives { get; } = new Hand
     {
         Name = "Four Fives",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -66,7 +66,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourSixes { get; } = new Hand
+    public static Hand Sixes { get; } = new Hand
     {
         Name = "Four Sixes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -82,7 +82,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourSevens { get; } = new Hand
+    public static Hand Sevens { get; } = new Hand
     {
         Name = "Four Sevens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -98,7 +98,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourEights { get; } = new Hand
+    public static Hand Eights { get; } = new Hand
     {
         Name = "Four Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -114,7 +114,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourNines { get; } = new Hand
+    public static Hand Nines { get; } = new Hand
     {
         Name = "Four Nines",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -130,7 +130,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourTens { get; } = new Hand
+    public static Hand Tens { get; } = new Hand
     {
         Name = "Four Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -146,7 +146,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourJacks { get; } = new Hand
+    public static Hand Jacks { get; } = new Hand
     {
         Name = "Four Jacks",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -162,7 +162,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourQueens { get; } = new Hand
+    public static Hand Queens { get; } = new Hand
     {
         Name = "Four Queens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -178,7 +178,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourKings { get; } = new Hand
+    public static Hand Kings { get; } = new Hand
     {
         Name = "Four Kings",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -194,7 +194,7 @@ public record FourOfAKind
         }
     };
 
-    public static Hand FourAces { get; } = new Hand
+    public static Hand Aces { get; } = new Hand
     {
         Name = "Four Aces",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -212,18 +212,18 @@ public record FourOfAKind
 
     public static List<Hand> All { get; } = new()
     {
-        FourTwos,
-        FourThrees,
-        FourFours,
-        FourFives,
-        FourSixes,
-        FourSevens,
-        FourEights,
-        FourNines,
-        FourTens,
-        FourJacks,
-        FourQueens,
-        FourKings,
-        FourAces
+        Twos,
+        Threes,
+        Fours,
+        Fives,
+        Sixes,
+        Sevens,
+        Eights,
+        Nines,
+        Tens,
+        Jacks,
+        Queens,
+        Kings,
+        Aces
     };
 }
