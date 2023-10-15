@@ -101,8 +101,64 @@ public class TwoPairTests
             .Single()
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
-            .First()
+            .Single()
             .Outstanding;
+
+        // Assert
+        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
+    }
+
+    [Fact]
+    public void ThreesOverTwos_Eliminated_NeitherPairPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.ThreeOfClubs,
+                Cards.TwoOfDiamonds
+            },
+            HandsToEvaluate = new()
+            {
+                TwoPair.ThreesOverTwos
+            },
+            RemainingCardCount = 0
+        };
+
+        List<HandSegment> expectedOutstanding = new()
+        {
+            new()
+            {
+                RequiredCount = 1,
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 1,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs
+                }
+            }
+        };
+
+        // Act
+        var response = HandEvaluator.Evaluate(request);
+
+        var actualOutstanding = response
+            .Single()
+            .EvalulatedHandSegments
+            .Select(x => x.Outstanding)
+            .ToList();
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
