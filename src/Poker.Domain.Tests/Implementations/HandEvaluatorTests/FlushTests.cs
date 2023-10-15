@@ -1,25 +1,25 @@
 ﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class StraightTests
+public class FlushTests
 {
     [Fact]
-    public void SixHighStraight_Qualifies_AllCardsPresent()
+    public void ClubsFlush_Qualifies_FiveClubsPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfSpades,
-                Cards.FourOfClubs,
-                Cards.ThreeOfHearts,
-                Cards.TwoOfClubs
+                Cards.TwoOfClubs,
+                Cards.FiveOfClubs,
+                Cards.SevenOfClubs,
+                Cards.JackOfClubs,
+                Cards.AceOfClubs
             },
             HandsToEvaluate = new()
             {
-                Straights.SixHigh
+                Flushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -32,22 +32,22 @@ public class StraightTests
     }
 
     [Fact]
-    public void SixHighStraight_Qualifies_WithJoker()
+    public void ClubsFlush_Qualifies_FourClubsWithJoker()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfSpades,
-                Cards.FourOfClubs,
-                Cards.ThreeOfHearts,
-                Cards.CreateJoker()
+                Cards.TwoOfClubs,
+                Cards.FiveOfClubs,
+                Cards.SevenOfClubs,
+                Cards.CreateJoker(),
+                Cards.AceOfClubs
             },
             HandsToEvaluate = new()
             {
-                Straights.SixHigh
+                Flushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -60,22 +60,22 @@ public class StraightTests
     }
 
     [Fact]
-    public void SixHighStraight_Eliminated_OneCardMissing()
+    public void ClubsFlush_Eliminated_OneCardMissing()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfSpades,
-                Cards.AceOfHearts,
-                Cards.ThreeOfHearts,
-                Cards.TwoOfClubs
+                Cards.TwoOfClubs,
+                Cards.FiveOfClubs,
+                Cards.SevenOfClubs,
+                Cards.JackOfClubs,
+                Cards.AceOfDiamonds
             },
             HandsToEvaluate = new()
             {
-                Straights.SixHigh
+                Flushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -85,10 +85,15 @@ public class StraightTests
             RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.FourOfSpades,
-                Cards.FourOfHearts,
+                Cards.ThreeOfClubs,
                 Cards.FourOfClubs,
-                Cards.FourOfDiamonds
+                Cards.SixOfClubs,
+                Cards.EightOfClubs,
+                Cards.NineOfClubs,
+                Cards.TenOfClubs,
+                Cards.QueenOfClubs,
+                Cards.KingOfClubs,
+                Cards.AceOfClubs
             }
         };
 
@@ -107,21 +112,21 @@ public class StraightTests
     }
 
     [Fact]
-    public void SixHighStraight_Possible_OneCardRemaining()
+    public void ClubsFlush_Possible_OneCardRemaining()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfSpades,
-                Cards.ThreeOfHearts,
-                Cards.TwoOfClubs
+                Cards.TwoOfClubs,
+                Cards.FiveOfClubs,
+                Cards.SevenOfClubs,
+                Cards.JackOfClubs
             },
             HandsToEvaluate = new()
             {
-                Straights.SixHigh
+                Flushes.Clubs
             },
             RemainingCardCount = 1
         };
