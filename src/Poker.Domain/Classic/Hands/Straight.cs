@@ -13,27 +13,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfDiamonds,
+                    Cards.FiveOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfDiamonds,
+                    Cards.FourOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfDiamonds,
+                    Cards.ThreeOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfDiamonds,
+                    Cards.TwoOfClubs
+                }
             }
         }
     };
@@ -49,27 +79,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfDiamonds,
+                    Cards.FiveOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfDiamonds,
+                    Cards.FourOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfDiamonds,
+                    Cards.ThreeOfClubs
+                }
             }
         }
     };
@@ -85,27 +145,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfDiamonds,
+                    Cards.FiveOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfDiamonds,
+                    Cards.FourOfClubs
+                }
             }
         }
     };
@@ -121,27 +211,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfDiamonds,
+                    Cards.FiveOfClubs
+                }
             }
         }
     };
@@ -157,27 +277,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfClubs
+                }
             }
         }
     };
@@ -193,27 +343,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfDiamonds,
+                    Cards.JackOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfClubs
+                }
             }
         }
     };
@@ -229,27 +409,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfDiamonds,
+                    Cards.QueenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfDiamonds,
+                    Cards.JackOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfClubs
+                }
             }
         }
     };
@@ -265,27 +475,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfDiamonds,
+                    Cards.KingOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfDiamonds,
+                    Cards.QueenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfDiamonds,
+                    Cards.JackOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfClubs
+                }
             }
         }
     };
@@ -301,27 +541,57 @@ public record Straights
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = new List<Card> { Cards.All.Single(c => c.Rank == Ranks.Ace) }
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfDiamonds,
+                    Cards.AceOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfDiamonds,
+                    Cards.KingOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfDiamonds,
+                    Cards.QueenOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfDiamonds,
+                    Cards.JackOfClubs
+                }
             },
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfClubs
+                }
             }
         }
     };
