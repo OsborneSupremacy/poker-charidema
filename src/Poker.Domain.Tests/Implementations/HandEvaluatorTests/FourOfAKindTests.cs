@@ -1,20 +1,18 @@
 ﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class ThreeOfAKindTests
+public class FourOfAKindTests
 {
-    [Theory]
-    [InlineData(3)]
-    [InlineData(4)]
-    public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
+    [Fact]
+    public void FourTwos_Qualifies_FourPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(4).ToList(),
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Twos
+                FourOfAKind.Twos
             },
             RemainingCardCount = 0
         };
@@ -27,7 +25,7 @@ public class ThreeOfAKindTests
     }
 
     [Fact]
-    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
+    public void FourThrees_Qualifies_ThreeThreesAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
@@ -36,11 +34,12 @@ public class ThreeOfAKindTests
             {
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
+                Cards.ThreeOfSpades,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                FourOfAKind.Threes
             },
             RemainingCardCount = 0
         };
@@ -53,30 +52,30 @@ public class ThreeOfAKindTests
     }
 
     [Fact]
-    public void ThreeThrees_Eliminated_OneThreePresent()
+    public void FourThrees_Eliminated_TwoThreesPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs
+                Cards.ThreeOfClubs,
+                Cards.ThreeOfDiamonds,
+                Cards.ThreeOfSpades
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                FourOfAKind.Threes
             },
             RemainingCardCount = 0
         };
 
         HandSegment expectedOutstanding = new()
         {
-            RequiredCount = 2,
+            RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.ThreeOfHearts,
-                Cards.ThreeOfSpades,
-                Cards.ThreeOfDiamonds
+                Cards.ThreeOfHearts
             }
         };
 
@@ -98,7 +97,7 @@ public class ThreeOfAKindTests
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(3)]
-    public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
+    public void FourThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
     {
         // Arrange
         EvaluatedHandRequest request = new()
@@ -106,11 +105,12 @@ public class ThreeOfAKindTests
             Cards = new()
             {
                 Cards.ThreeOfClubs,
-                Cards.ThreeOfHearts
+                Cards.ThreeOfDiamonds,
+                Cards.ThreeOfSpades
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                FourOfAKind.Threes
             },
             RemainingCardCount = cardsRemaining
         };
