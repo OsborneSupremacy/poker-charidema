@@ -26,7 +26,7 @@ public static class HandEvaluator
         {
             Hand = hand,
             HandQualification =
-                evalulatedHandSegments.All(x => x.MeetsRequirements) switch
+                evalulatedHandSegments.AllMeetRequirements() switch
                 {
                     true => HandQualifications.Qualifies,
                     false =>
