@@ -20,7 +20,7 @@ public class UserMoveService : IUserMoveService
 
     private Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
     {
-        uint potOut = request.Pot;
+        int potOut = request.Pot;
 
         return Task.FromResult(
             new MoveResponse

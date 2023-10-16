@@ -4,7 +4,7 @@ public record HandDefinition
 {
     public required string Name { get; init; }
 
-    public required uint Value { get; init; }
+    public required int Value { get; init; }
 
     /// <summary>
     /// Whether a wildcard can impersonate a contributing card

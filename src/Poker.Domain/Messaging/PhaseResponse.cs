@@ -10,5 +10,5 @@ public record PhaseResponse
 
     public required bool GameOver { get; init; }
 
-    public required uint Pot { get; init; }
+    public required int Pot { get; init; }
 }

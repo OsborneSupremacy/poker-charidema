@@ -6,5 +6,5 @@ public record MoveResponse
 
     public required Deck Deck { get; init; }
 
-    public required uint Pot { get; set; }
+    public required int Pot { get; set; }
 }

@@ -2,9 +2,9 @@
 
 public record Game
 {
-    public required uint Ante { get; init; }
+    public required int Ante { get; init; }
 
-    public required uint Pot { get; init; }
+    public required int Pot { get; init; }
 
     public required Deck Deck { get; init; }
 

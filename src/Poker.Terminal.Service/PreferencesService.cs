@@ -25,7 +25,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
-    public Task<uint> GetAnte(Participant button)
+    public Task<int> GetAnte(Participant button)
     {
         throw new NotImplementedException();
     }
@@ -38,9 +38,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public async Task<MatchRequest> CreateMatchRequest(MatchResponse? lastMatch)
     {
         var userName = string.Empty;
-        uint playerCount = 0;
-        uint startingStack = 0;
-        uint fixedNumberOfGames = 0;
+        int playerCount = 0;
+        int startingStack = 0;
+        int fixedNumberOfGames = 0;
 
         _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
@@ -53,14 +53,14 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .WriteLine()
 
-        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, (uint c) =>
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, (int c) =>
         {
             playerCount = c;
         })
 
         .WriteLine()
 
-        .PromptForMoney("How much money should players start with?", 10, 1000000, (uint m) =>
+        .PromptForMoney("How much money should players start with?", 10, 1000000, (int m) =>
         {
             startingStack = m;
         })
@@ -73,13 +73,13 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             {
                 fixedNumberOfGames = gameCount;
             },
-            new InputOption<uint>(
+            new InputOption<int>(
                 "Play indefinitely", () => { return 0; }
             ),
-            new InputOption<uint>(
+            new InputOption<int>(
                 "Play fixed number of games", () =>
                 {
-                    uint gameCount = 0;
+                    int gameCount = 0;
                     _c.PromptForInt("How many games?", 1, 100, input =>
                     {
                         gameCount = input;
@@ -119,7 +119,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         };
     }
 
-    private AntePreferences GetAntePreferences(uint startingStack)
+    private AntePreferences GetAntePreferences(int startingStack)
     {
         AntePreferences? antePreferences = null;
 
@@ -132,7 +132,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<AntePreferences>(
                 "Dealer's choice ante amount", () => {
 
-                    uint min = 0;
+                    int min = 0;
 
                     // subtracting 1 because we can't make the minimum ante equal to the 
                     // starting stack -- otherwise it will be impossible for there to be a 
@@ -142,7 +142,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                         min = input;
                     });
 
-                    uint max = 0;
+                    int max = 0;
                     _c.PromptForMoney("Maximum ante", min + 1, startingStack, input =>
                     {
                         max = input;
@@ -159,7 +159,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             ),
             new InputOption<AntePreferences>("Fixed ante amount", () =>
             {
-                uint anteAmount = 0;
+                int anteAmount = 0;
                 _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
                 {
                     anteAmount = input;
@@ -178,8 +178,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
     protected async IAsyncEnumerable<Participant> GeneratePlayers(
         string userName,
-        uint startingStack,
-        uint playerCount
+        int startingStack,
+        int playerCount
         )
     {
         yield return new Participant

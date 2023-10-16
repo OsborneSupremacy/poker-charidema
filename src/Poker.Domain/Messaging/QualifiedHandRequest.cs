@@ -6,5 +6,5 @@ public record QualifiedHandRequest
 
     public required List<Card> Cards { get; init; }
 
-    public required uint RemainingCardCount { get; init; }
+    public required int RemainingCardCount { get; init; }
 }

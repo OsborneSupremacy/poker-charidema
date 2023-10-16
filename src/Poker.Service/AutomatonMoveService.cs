@@ -19,7 +19,7 @@ public class AutomatonMoveService : IAutomatonMoveService
 
     private Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
     {
-        uint potOut = request.Pot;
+        int potOut = request.Pot;
 
         return Task.FromResult(
             new MoveResponse
@@ -63,7 +63,7 @@ public class AutomatonMoveService : IAutomatonMoveService
         var deckCardsOut = request.PhaseRequest.Game.Deck.Cards;
 
         var dealtCards = deckCardsOut
-            .Take(request.PhaseRequest.Phase.CardsToDealCount.ToInt());
+            .Take(request.PhaseRequest.Phase.CardsToDealCount);
 
         playerCardsOut.AddRange(dealtCards);
 

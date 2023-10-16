@@ -2,7 +2,7 @@
 
 public record Match
 {
-    public required uint FixedNumberOfGames { get; init; }
+    public required int FixedNumberOfGames { get; init; }
 
     public required Variant FixedVariant { get; init; }
 
@@ -14,16 +14,16 @@ public record Match
 
     public required AntePreferences AntePreferences { get; init; }
 
-    public required uint StartingStack { get; init; }
+    public required int StartingStack { get; init; }
 }
 
 public record AntePreferences
 {
-    public required uint Min { get; init; }
+    public required int Min { get; init; }
 
-    public required uint Max { get; init; }
+    public required int Max { get; init; }
 
-    public required uint Fixed { get; init; }
+    public required int Fixed { get; init; }
 
     public required AnteTypes AnteType { get; init; }
 }

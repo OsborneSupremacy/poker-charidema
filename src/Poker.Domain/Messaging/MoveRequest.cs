@@ -6,5 +6,5 @@ public record MoveRequest
 
     public required PhaseRequest PhaseRequest { get; init; }
 
-    public required uint Pot { get; init; }
+    public required int Pot { get; init; }
 }

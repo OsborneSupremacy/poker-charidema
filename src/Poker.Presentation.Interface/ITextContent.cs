@@ -2,7 +2,7 @@
 
 public interface ITextContent
 {
-    uint Level { get; set; }
+    int Level { get; set; }
 
     string Content { get; set; }
 }

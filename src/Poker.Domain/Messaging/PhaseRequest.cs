@@ -12,5 +12,5 @@ public record PhaseRequest
 
     public required Player StartingPlayer { get; init; }
 
-    public required uint Pot { get; init; }
+    public required int Pot { get; init; }
 }

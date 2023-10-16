@@ -2,10 +2,17 @@
 
 public static class IntExtensions
 {
-    public static uint ToUint(this int input)
-    {
-        if (input < 0)
-            throw new ArgumentOutOfRangeException(nameof(input), input, "Must be greater than or equal to zero.");
-        return (uint)input;
-    }
+    public static int ValueOrZero(this int? input) =>
+        input ?? 0;
+
+    public static int ValueOrMax(this int? input) =>
+        input ?? int.MaxValue;
+
+    /// <summary>
+    /// Whether <paramref name="input"/> has a non-zero value.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static bool HasValue(this int input) =>
+        input != 0;
 }

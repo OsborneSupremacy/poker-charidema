@@ -6,9 +6,9 @@ public record Participant
 
     public required string Name { get; init; }
 
-    public required uint BeginningStack { get; init; }
+    public required int BeginningStack { get; init; }
 
-    public required uint Stack { get; set; }
+    public required int Stack { get; set; }
 
     public required bool Automaton { get; init; }
 

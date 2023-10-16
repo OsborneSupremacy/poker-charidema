@@ -2,7 +2,7 @@
 
 public interface IGamePreferencesService
 {
-    Task<uint> GetAnte(Participant button);
+    Task<int> GetAnte(Participant button);
 
     Task<Variant> GetVariant(Participant button);
 

@@ -17,13 +17,13 @@ public record Phase
 
     public required bool GameCanEndAfter { get; init; }
 
-    public required uint CardsToDealCount { get; init; }
+    public required int CardsToDealCount { get; init; }
 
     public required CardLocations CardDestination { get; init; }
 
     public required CardOrientations CardOrientation { get; init; }
 
-    public required uint CardsToDrawMaximum { get; init; }
+    public required int CardsToDrawMaximum { get; init; }
 
     public required List<DrawCardsMaximums> CardsToDrawMaximumOverrides { get; init; }
 }
@@ -32,6 +32,6 @@ public record DrawCardsMaximums
 {
     public required Rank Rank { get; set; }
 
-    public required uint Maximum { get; set; }
+    public required int Maximum { get; set; }
 }
 
