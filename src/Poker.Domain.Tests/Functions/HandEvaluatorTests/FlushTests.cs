@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class FlushTests
@@ -19,10 +17,7 @@ public class FlushTests
                 Cards.JackOfClubs,
                 Cards.AceOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Flushes.Clubs
-            },
+            HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -30,7 +25,7 @@ public class FlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -47,10 +42,7 @@ public class FlushTests
                 Cards.CreateJoker(),
                 Cards.AceOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Flushes.Clubs
-            },
+            HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -58,7 +50,7 @@ public class FlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -75,10 +67,7 @@ public class FlushTests
                 Cards.JackOfClubs,
                 Cards.AceOfDiamonds
             },
-            HandsToEvaluate = new()
-            {
-                Flushes.Clubs
-            },
+            HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -102,14 +91,13 @@ public class FlushTests
         // Act
         var response = HandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .Single()
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
             .Single()
             .Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -126,10 +114,7 @@ public class FlushTests
                 Cards.SevenOfClubs,
                 Cards.JackOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Flushes.Clubs
-            },
+            HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 1
         };
 
@@ -137,6 +122,6 @@ public class FlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

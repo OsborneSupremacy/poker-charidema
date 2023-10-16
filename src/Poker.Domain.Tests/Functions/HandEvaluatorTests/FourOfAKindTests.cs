@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class FourOfAKindTests
@@ -12,10 +10,7 @@ public class FourOfAKindTests
         EvaluatedHandRequest request = new()
         {
             Cards = Cards.All.WhereRank(Ranks.Two).Take(4).ToList(),
-            HandsToEvaluate = new()
-            {
-                FourOfAKind.Twos
-            },
+            HandToEvaluate = FourOfAKind.Twos,
             RemainingCardCount = 0
         };
 
@@ -23,7 +18,7 @@ public class FourOfAKindTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -39,10 +34,7 @@ public class FourOfAKindTests
                 Cards.ThreeOfSpades,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                FourOfAKind.Threes
-            },
+            HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = 0
         };
 
@@ -50,7 +42,7 @@ public class FourOfAKindTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -65,10 +57,7 @@ public class FourOfAKindTests
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades
             },
-            HandsToEvaluate = new()
-            {
-                FourOfAKind.Threes
-            },
+            HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = 0
         };
 
@@ -84,14 +73,13 @@ public class FourOfAKindTests
         // Act
         var response = HandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .Single()
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
             .First()
             .Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -110,16 +98,13 @@ public class FourOfAKindTests
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades
             },
-            HandsToEvaluate = new()
-            {
-                FourOfAKind.Threes
-            },
+            HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = cardsRemaining
         };
 
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

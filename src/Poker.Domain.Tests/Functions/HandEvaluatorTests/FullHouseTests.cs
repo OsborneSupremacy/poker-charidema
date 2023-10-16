@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class FullHouseTests
@@ -19,10 +17,7 @@ public class FullHouseTests
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
             },
-            HandsToEvaluate = new()
-            {
-                FullHouses.ThreesOverTwos
-            },
+            HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
 
@@ -30,7 +25,7 @@ public class FullHouseTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -47,10 +42,7 @@ public class FullHouseTests
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                FullHouses.ThreesOverTwos
-            },
+            HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
 
@@ -58,7 +50,7 @@ public class FullHouseTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -74,10 +66,7 @@ public class FullHouseTests
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
             },
-            HandsToEvaluate = new()
-            {
-                FullHouses.ThreesOverTwos
-            },
+            HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
 
@@ -97,14 +86,13 @@ public class FullHouseTests
         // Act
         var response = HandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .Single()
             .EvalulatedHandSegments
             .Where(x => x.MeetsRequirements == false)
             .Select(x => x.Outstanding)
             .ToList();
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -121,10 +109,7 @@ public class FullHouseTests
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
             },
-            HandsToEvaluate = new()
-            {
-                FullHouses.ThreesOverTwos
-            },
+            HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 1
         };
 
@@ -132,6 +117,6 @@ public class FullHouseTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

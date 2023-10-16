@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations.HandEvaluatorTests;
+﻿namespace Poker.Domain.Tests.Implementations.HandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class FiveOfAKindTests
@@ -19,10 +17,7 @@ public class FiveOfAKindTests
                 Cards.ThreeOfHearts,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                FiveOfAKind.Threes
-            },
+            HandToEvaluate = FiveOfAKind.Threes,
             RemainingCardCount = 0
         };
 
@@ -30,7 +25,7 @@ public class FiveOfAKindTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
 }

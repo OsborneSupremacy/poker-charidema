@@ -1,13 +1,9 @@
 ﻿namespace Poker.Domain.Functions;
 
-public delegate void HandEvaluatorDelegate(EvaluatedHandRequest request, Hand hand);
-
-
-
 internal static class HandEvaluator
 {
     public static IEnumerable<EvaluatedHandResponse> Evaluate(
-        EvaluatedHandRequest request
+        EvaluatedHandCollectionRequest request
         )
     {
         foreach (var hand in request.HandsToEvaluate
@@ -15,20 +11,22 @@ internal static class HandEvaluator
             .ThenByDescending(h => h.HighRank.Value)
             .ThenByDescending(h => h.Suit.Priority)
             )
-            yield return Evaluate(request, hand);
+            yield return Evaluate(new EvaluatedHandRequest
+            {
+                Cards = request.Cards,
+                HandToEvaluate = hand,
+                RemainingCardCount = request.RemainingCardCount
+            });
     }
 
-    public static EvaluatedHandResponse Evaluate(
-        EvaluatedHandRequest request,
-        Hand hand
-        )
+    public static EvaluatedHandResponse Evaluate(EvaluatedHandRequest request)
     {
         var evalulatedHandSegments =
-            EvaluateHandSegments(request, hand).ToList();
+            EvaluateHandSegments(request).ToList();
 
         return new EvaluatedHandResponse
         {
-            Hand = hand,
+            Hand = request.HandToEvaluate,
             HandQualification =
                 evalulatedHandSegments.AllMeetRequirements() switch
                 {
@@ -45,13 +43,12 @@ internal static class HandEvaluator
     }
 
     public static IEnumerable<EvaluatedHandSegmentResponse> EvaluateHandSegments(
-         EvaluatedHandRequest request,
-         Hand hand
+        EvaluatedHandRequest request
          )
     {
         UnusedCardsMessage unusedCards = new(request.Cards);
 
-        foreach (var segment in hand.HandSegments)
+        foreach (var segment in request.HandToEvaluate.HandSegments)
         {
             var response = EvalulateHandSegment(
                 new EvaluatedHandSegmentRequest

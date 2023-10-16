@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class HighCardTests
@@ -16,10 +14,7 @@ public class HighCardTests
                 Cards.AceOfClubs,
                 Cards.KingOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                HighCards.Ace
-            },
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
 
@@ -27,7 +22,7 @@ public class HighCardTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -41,10 +36,7 @@ public class HighCardTests
                 Cards.AceOfClubs,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                HighCards.Ace
-            },
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
 
@@ -52,7 +44,7 @@ public class HighCardTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -65,10 +57,7 @@ public class HighCardTests
             {
                 Cards.KingOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                HighCards.Ace
-            },
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
 
@@ -80,10 +69,10 @@ public class HighCardTests
 
         // Act
         var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
+        var actualOutstanding = response.EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -94,10 +83,7 @@ public class HighCardTests
         EvaluatedHandRequest request = new()
         {
             Cards = new(),
-            HandsToEvaluate = new()
-            {
-                HighCards.Ace
-            },
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 1
         };
 
@@ -105,6 +91,6 @@ public class HighCardTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

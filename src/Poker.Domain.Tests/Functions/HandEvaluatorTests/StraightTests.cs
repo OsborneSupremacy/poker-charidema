@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class StraightTests
@@ -19,10 +17,7 @@ public class StraightTests
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Straights.SixHigh
-            },
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
@@ -30,7 +25,7 @@ public class StraightTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -47,10 +42,7 @@ public class StraightTests
                 Cards.ThreeOfHearts,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                Straights.SixHigh
-            },
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
@@ -58,7 +50,7 @@ public class StraightTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -75,10 +67,7 @@ public class StraightTests
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Straights.SixHigh
-            },
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
@@ -97,14 +86,13 @@ public class StraightTests
         // Act
         var response = HandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .Single()
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
             .Single()
             .Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -121,10 +109,7 @@ public class StraightTests
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Straights.SixHigh
-            },
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 1
         };
 
@@ -132,6 +117,6 @@ public class StraightTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

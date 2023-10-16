@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class PairTests
@@ -16,10 +13,7 @@ public class PairTests
         EvaluatedHandRequest request = new()
         {
             Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
-            HandsToEvaluate = new()
-            {
-                Pairs.Twos
-            },
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
@@ -27,7 +21,7 @@ public class PairTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -41,10 +35,7 @@ public class PairTests
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                Pairs.Twos
-            },
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
@@ -52,7 +43,7 @@ public class PairTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -66,10 +57,7 @@ public class PairTests
                 Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Pairs.Twos
-            },
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
@@ -86,10 +74,10 @@ public class PairTests
 
         // Act
         var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
+        var actualOutstanding = response.EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -104,10 +92,7 @@ public class PairTests
                 Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                Pairs.Twos
-            },
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 1
         };
 
@@ -115,6 +100,6 @@ public class PairTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }

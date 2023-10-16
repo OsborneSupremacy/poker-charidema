@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions;
-
-namespace Poker.Domain.Tests.Implementations;
+﻿namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class RoyalFlushTests
@@ -19,10 +17,7 @@ public class RoyalFlushTests
                 Cards.JackOfClubs,
                 Cards.TenOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                RoyalFlushes.Clubs
-            },
+            HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -30,7 +25,7 @@ public class RoyalFlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -47,10 +42,7 @@ public class RoyalFlushTests
                 Cards.JackOfClubs,
                 Cards.CreateJoker()
             },
-            HandsToEvaluate = new()
-            {
-                RoyalFlushes.Clubs
-            },
+            HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -58,7 +50,7 @@ public class RoyalFlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Qualifies);
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
@@ -75,10 +67,7 @@ public class RoyalFlushTests
                 Cards.JackOfClubs,
                 Cards.NineOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                RoyalFlushes.Clubs
-            },
+            HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
 
@@ -94,13 +83,12 @@ public class RoyalFlushTests
         // Act
         var response = HandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .Single()
             .EvalulatedHandSegments
             .Single()
             .Outstanding;
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
+        response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
@@ -117,10 +105,7 @@ public class RoyalFlushTests
                 Cards.JackOfClubs,
                 Cards.TenOfClubs
             },
-            HandsToEvaluate = new()
-            {
-                RoyalFlushes.Clubs
-            },
+            HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 1
         };
 
@@ -128,6 +113,6 @@ public class RoyalFlushTests
         var response = HandEvaluator.Evaluate(request);
 
         // Assert
-        response.Single().HandQualification.Should().Be(HandQualifications.Possible);
+        response.HandQualification.Should().Be(HandQualifications.Possible);
     }
 }
