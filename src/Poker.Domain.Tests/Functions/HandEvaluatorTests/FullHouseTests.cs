@@ -1,23 +1,27 @@
-﻿using System.Runtime.InteropServices;
+﻿using Poker.Domain.Functions;
 
 namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class PairTests
+public class FullHouseTests
 {
-    [Theory]
-    [InlineData(2)]
-    [InlineData(3)]
-    [InlineData(4)]
-    public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
+    [Fact]
+    public void ThreesOverTwos_Qualifies_RequiredMatchesPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
+            Cards = new()
+            {
+                Cards.ThreeOfDiamonds,
+                Cards.ThreeOfHearts,
+                Cards.ThreeOfSpades,
+                Cards.TwoOfClubs,
+                Cards.TwoOfDiamonds
+            },
             HandsToEvaluate = new()
             {
-                Pairs.Twos
+                FullHouses.ThreesOverTwos
             },
             RemainingCardCount = 0
         };
@@ -30,19 +34,22 @@ public class PairTests
     }
 
     [Fact]
-    public void PairOfTwos_Qualifies_TwoAndJokerPresent()
+    public void ThreesOverTwos_Qualifies_ThreeThreesOneTwoAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.ThreeOfDiamonds,
+                Cards.ThreeOfHearts,
+                Cards.ThreeOfSpades,
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                Pairs.Twos
+                FullHouses.ThreesOverTwos
             },
             RemainingCardCount = 0
         };
@@ -55,37 +62,46 @@ public class PairTests
     }
 
     [Fact]
-    public void PairOfTwos_Eliminated_OneTwoPresent()
+    public void ThreesOverTwos_Eliminated_RequiredMatchesAbsent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.ThreeOfSpades,
+                Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
-                Cards.ThreeOfClubs
+                Cards.TwoOfDiamonds
             },
             HandsToEvaluate = new()
             {
-                Pairs.Twos
+                FullHouses.ThreesOverTwos
             },
             RemainingCardCount = 0
         };
 
-        HandSegment expectedOutstanding = new()
+        List<HandSegment> expectedOutstanding = new()
         {
-            RequiredCount = 1,
-            EligibleCards = new()
+            new()
             {
-                Cards.TwoOfSpades,
-                Cards.TwoOfHearts,
-                Cards.TwoOfDiamonds
+                RequiredCount = 1,
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfDiamonds
+                }
             }
         };
 
         // Act
         var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
+        var actualOutstanding = response
+            .Single()
+            .EvalulatedHandSegments
+            .Where(x => x.MeetsRequirements == false)
+            .Select(x => x.Outstanding)
+            .ToList();
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
@@ -93,19 +109,21 @@ public class PairTests
     }
 
     [Fact]
-    public void PairOfTwos_Possible_OneRemainingCard()
+    public void ThreesOverTwos_Possible_OneRemainingCard()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.ThreeOfSpades,
+                Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
-                Cards.ThreeOfClubs
+                Cards.TwoOfDiamonds
             },
             HandsToEvaluate = new()
             {
-                Pairs.Twos
+                FullHouses.ThreesOverTwos
             },
             RemainingCardCount = 1
         };

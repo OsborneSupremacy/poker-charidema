@@ -1,18 +1,27 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class FourOfAKindTests
+public class RoyalFlushTests
 {
     [Fact]
-    public void FourTwos_Qualifies_FourPresent()
+    public void RoyalFlush_Qualifies_AllCardsPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(4).ToList(),
+            Cards = new()
+            {
+                Cards.AceOfClubs,
+                Cards.KingOfClubs,
+                Cards.QueenOfClubs,
+                Cards.JackOfClubs,
+                Cards.TenOfClubs
+            },
             HandsToEvaluate = new()
             {
-                FourOfAKind.Twos
+                RoyalFlushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -25,21 +34,22 @@ public class FourOfAKindTests
     }
 
     [Fact]
-    public void FourThrees_Qualifies_ThreeThreesAndJokerPresent()
+    public void RoyalFlush_Qualifies_WithJoker()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfDiamonds,
-                Cards.ThreeOfSpades,
+                Cards.AceOfClubs,
+                Cards.KingOfClubs,
+                Cards.QueenOfClubs,
+                Cards.JackOfClubs,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                FourOfAKind.Threes
+                RoyalFlushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -52,20 +62,22 @@ public class FourOfAKindTests
     }
 
     [Fact]
-    public void FourThrees_Eliminated_TwoThreesPresent()
+    public void RoyalFlush_Eliminated_OneCardMissing()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfDiamonds,
-                Cards.ThreeOfSpades
+                Cards.TenOfClubs,
+                Cards.KingOfClubs,
+                Cards.QueenOfClubs,
+                Cards.JackOfClubs,
+                Cards.NineOfClubs
             },
             HandsToEvaluate = new()
             {
-                FourOfAKind.Threes
+                RoyalFlushes.Clubs
             },
             RemainingCardCount = 0
         };
@@ -75,7 +87,7 @@ public class FourOfAKindTests
             RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.ThreeOfHearts
+                Cards.AceOfClubs
             }
         };
 
@@ -84,8 +96,7 @@ public class FourOfAKindTests
         var actualOutstanding = response
             .Single()
             .EvalulatedHandSegments
-            .Where(x => x.Outstanding.RequiredCount > 0)
-            .First()
+            .Single()
             .Outstanding;
 
         // Assert
@@ -93,28 +104,27 @@ public class FourOfAKindTests
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    public void FourThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
+    [Fact]
+    public void RoyalFlush_Possible_OneCardRemaining()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfDiamonds,
-                Cards.ThreeOfSpades
+                Cards.KingOfClubs,
+                Cards.QueenOfClubs,
+                Cards.JackOfClubs,
+                Cards.TenOfClubs
             },
             HandsToEvaluate = new()
             {
-                FourOfAKind.Threes
+                RoyalFlushes.Clubs
             },
-            RemainingCardCount = cardsRemaining
+            RemainingCardCount = 1
         };
 
+        // Act
         var response = HandEvaluator.Evaluate(request);
 
         // Assert

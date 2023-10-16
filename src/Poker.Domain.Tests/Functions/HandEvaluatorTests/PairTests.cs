@@ -1,20 +1,24 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using System.Runtime.InteropServices;
+using Poker.Domain.Functions;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class ThreeOfAKindTests
+public class PairTests
 {
     [Theory]
+    [InlineData(2)]
     [InlineData(3)]
     [InlineData(4)]
-    public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
+    public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Twos
+                Pairs.Twos
             },
             RemainingCardCount = 0
         };
@@ -27,20 +31,19 @@ public class ThreeOfAKindTests
     }
 
     [Fact]
-    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
+    public void PairOfTwos_Qualifies_TwoAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfDiamonds,
+                Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                Pairs.Twos
             },
             RemainingCardCount = 0
         };
@@ -53,68 +56,62 @@ public class ThreeOfAKindTests
     }
 
     [Fact]
-    public void ThreeThrees_Eliminated_OneThreePresent()
+    public void PairOfTwos_Eliminated_OneTwoPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                Pairs.Twos
             },
             RemainingCardCount = 0
         };
 
         HandSegment expectedOutstanding = new()
         {
-            RequiredCount = 2,
+            RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.ThreeOfHearts,
-                Cards.ThreeOfSpades,
-                Cards.ThreeOfDiamonds
+                Cards.TwoOfSpades,
+                Cards.TwoOfHearts,
+                Cards.TwoOfDiamonds
             }
         };
 
         // Act
         var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response
-            .Single()
-            .EvalulatedHandSegments
-            .Where(x => x.Outstanding.RequiredCount > 0)
-            .First()
-            .Outstanding;
+        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
+    [Fact]
+    public void PairOfTwos_Possible_OneRemainingCard()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfHearts
+                Cards.TwoOfClubs,
+                Cards.ThreeOfClubs
             },
             HandsToEvaluate = new()
             {
-                ThreeOfAKind.Threes
+                Pairs.Twos
             },
-            RemainingCardCount = cardsRemaining
+            RemainingCardCount = 1
         };
 
+        // Act
         var response = HandEvaluator.Evaluate(request);
 
         // Assert

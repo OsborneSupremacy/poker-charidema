@@ -1,12 +1,16 @@
-﻿namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Functions;
 
-public static class HandEvaluator
+public delegate void HandEvaluatorDelegate(EvaluatedHandRequest request, Hand hand);
+
+
+
+internal static class HandEvaluator
 {
     public static IEnumerable<EvaluatedHandResponse> Evaluate(
         EvaluatedHandRequest request
         )
     {
-        foreach(var hand in request.HandsToEvaluate
+        foreach (var hand in request.HandsToEvaluate
             .OrderByDescending(h => h.HandDefinition.Value)
             .ThenByDescending(h => h.HighRank.Value)
             .ThenByDescending(h => h.Suit.Priority)
@@ -68,7 +72,7 @@ public static class HandEvaluator
         HandCards contributingCards = new();
         var unusedCardsOut = request.UnusedCards;
 
-        for(int x = 0; x < request.HandSegment.RequiredCount; x++)
+        for (var x = 0; x < request.HandSegment.RequiredCount; x++)
         {
             if (requirmentsMet()) // segment is satisfied -- exit
                 break;
@@ -78,11 +82,6 @@ public static class HandEvaluator
 
             var qualifyingCards = request.HandSegment.EligibleCards
                 .Except(contributingCards.AllStandardized());
-
-            // should only come into play with 5-of-a-kind. 
-            // Allow an eligible card to be reused when it's required for five matches.
-            if (!qualifyingCards.Any() && unusedCardsOut.UnusedWild.Any())
-                qualifyingCards = request.HandSegment.EligibleCards;
 
             var standard = unusedCardsOut.UnusedStandard
                 .Where(qualifyingCards.Contains)

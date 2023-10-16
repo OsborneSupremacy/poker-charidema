@@ -1,25 +1,27 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class FlushTests
+public class StraightTests
 {
     [Fact]
-    public void ClubsFlush_Qualifies_FiveClubsPresent()
+    public void SixHighStraight_Qualifies_AllCardsPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
-                Cards.FiveOfClubs,
-                Cards.SevenOfClubs,
-                Cards.JackOfClubs,
-                Cards.AceOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.FourOfClubs,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
             HandsToEvaluate = new()
             {
-                Flushes.Clubs
+                Straights.SixHigh
             },
             RemainingCardCount = 0
         };
@@ -32,22 +34,22 @@ public class FlushTests
     }
 
     [Fact]
-    public void ClubsFlush_Qualifies_FourClubsWithJoker()
+    public void SixHighStraight_Qualifies_WithJoker()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
-                Cards.FiveOfClubs,
-                Cards.SevenOfClubs,
-                Cards.CreateJoker(),
-                Cards.AceOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.FourOfClubs,
+                Cards.ThreeOfHearts,
+                Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                Flushes.Clubs
+                Straights.SixHigh
             },
             RemainingCardCount = 0
         };
@@ -60,22 +62,22 @@ public class FlushTests
     }
 
     [Fact]
-    public void ClubsFlush_Eliminated_OneCardMissing()
+    public void SixHighStraight_Eliminated_OneCardMissing()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
-                Cards.FiveOfClubs,
-                Cards.SevenOfClubs,
-                Cards.JackOfClubs,
-                Cards.AceOfDiamonds
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.AceOfHearts,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
             HandsToEvaluate = new()
             {
-                Flushes.Clubs
+                Straights.SixHigh
             },
             RemainingCardCount = 0
         };
@@ -85,15 +87,10 @@ public class FlushTests
             RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.ThreeOfClubs,
+                Cards.FourOfSpades,
+                Cards.FourOfHearts,
                 Cards.FourOfClubs,
-                Cards.SixOfClubs,
-                Cards.EightOfClubs,
-                Cards.NineOfClubs,
-                Cards.TenOfClubs,
-                Cards.QueenOfClubs,
-                Cards.KingOfClubs,
-                Cards.AceOfClubs
+                Cards.FourOfDiamonds
             }
         };
 
@@ -112,21 +109,21 @@ public class FlushTests
     }
 
     [Fact]
-    public void ClubsFlush_Possible_OneCardRemaining()
+    public void SixHighStraight_Possible_OneCardRemaining()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
-                Cards.FiveOfClubs,
-                Cards.SevenOfClubs,
-                Cards.JackOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
             HandsToEvaluate = new()
             {
-                Flushes.Clubs
+                Straights.SixHigh
             },
             RemainingCardCount = 1
         };

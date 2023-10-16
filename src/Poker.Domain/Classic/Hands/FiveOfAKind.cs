@@ -1,5 +1,24 @@
 ﻿namespace Poker.Domain.Classic.Hands;
 
+/// <summary>
+/// Five-of-a-Kind is not a classic Poker hand. It is not always allowed. It can only be
+/// met with a wild card, and when that happens the wild card has to impersonate another
+/// card that the player is holding (or a card being impersonated by another wild card).
+/// 
+/// Because of that, the typically strategy for determining if a player's card satisfy a 
+/// hand's requirement don't work, because it assumes that a player can only have one of the
+/// same card in their hard. We could change that assumption, but the assumption is useful
+/// in every other scenario, and working around it would required complexity to be added
+/// to <see cref="Functions.HandEvaluator"/>.
+/// 
+/// So we're getting around this by adding the same card to the list of
+/// <see cref="HandSegment.EligibleCards"/> for each possible Five-of-a-Kind, giving it
+/// a different Id so that it's not considered identical to the original card. We only
+/// need to add a second Spade, because we'll only ever need one "duplicate" standard card 
+/// (Spade being the highest <see cref="Suit.Priority"/> (not value) suit in this application.
+/// By doing that, a wild card can impersonate the second spade, and we can continue to 
+/// make the useful assumption described earlier.
+/// </summary>
 public record FiveOfAKind
 {
     public static Hand Twos { get; } = new Hand
@@ -13,7 +32,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds,
+                    Cards.TwoOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -29,7 +55,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds,
+                    Cards.ThreeOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -45,7 +78,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds,
+                    Cards.FourOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -61,7 +101,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds,
+                    Cards.FiveOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -77,7 +124,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds,
+                    Cards.SixOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -93,7 +147,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds,
+                    Cards.SevenOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -109,7 +170,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds,
+                    Cards.EightOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -125,7 +193,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds,
+                    Cards.NineOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -141,7 +216,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds,
+                    Cards.TenOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -157,7 +239,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds,
+                    Cards.JackOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -173,7 +262,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds,
+                    Cards.QueenOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -189,7 +285,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds,
+                    Cards.KingOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };
@@ -205,7 +308,14 @@ public record FiveOfAKind
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds,
+                    Cards.AceOfSpades with { Id = Guid.NewGuid() }
+                }
             }
         }
     };

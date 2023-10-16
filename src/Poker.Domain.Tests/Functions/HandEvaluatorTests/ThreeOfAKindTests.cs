@@ -1,25 +1,22 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class FullHouseTests
+public class ThreeOfAKindTests
 {
-    [Fact]
-    public void ThreesOverTwos_Qualifies_RequiredMatchesPresent()
+    [Theory]
+    [InlineData(3)]
+    [InlineData(4)]
+    public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = new()
-            {
-                Cards.ThreeOfDiamonds,
-                Cards.ThreeOfHearts,
-                Cards.ThreeOfSpades,
-                Cards.TwoOfClubs,
-                Cards.TwoOfDiamonds
-            },
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
             HandsToEvaluate = new()
             {
-                FullHouses.ThreesOverTwos
+                ThreeOfAKind.Twos
             },
             RemainingCardCount = 0
         };
@@ -32,22 +29,20 @@ public class FullHouseTests
     }
 
     [Fact]
-    public void ThreesOverTwos_Qualifies_ThreeThreesOneTwoAndJokerPresent()
+    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
-                Cards.ThreeOfHearts,
-                Cards.ThreeOfSpades,
-                Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                FullHouses.ThreesOverTwos
+                ThreeOfAKind.Threes
             },
             RemainingCardCount = 0
         };
@@ -60,35 +55,30 @@ public class FullHouseTests
     }
 
     [Fact]
-    public void ThreesOverTwos_Eliminated_RequiredMatchesAbsent()
+    public void ThreeThrees_Eliminated_OneThreePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfSpades,
-                Cards.ThreeOfClubs,
-                Cards.TwoOfClubs,
-                Cards.TwoOfDiamonds
+                Cards.ThreeOfClubs
             },
             HandsToEvaluate = new()
             {
-                FullHouses.ThreesOverTwos
+                ThreeOfAKind.Threes
             },
             RemainingCardCount = 0
         };
 
-        List<HandSegment> expectedOutstanding = new()
+        HandSegment expectedOutstanding = new()
         {
-            new()
+            RequiredCount = 2,
+            EligibleCards = new()
             {
-                RequiredCount = 1,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfDiamonds
-                }
+                Cards.ThreeOfHearts,
+                Cards.ThreeOfSpades,
+                Cards.ThreeOfDiamonds
             }
         };
 
@@ -97,36 +87,36 @@ public class FullHouseTests
         var actualOutstanding = response
             .Single()
             .EvalulatedHandSegments
-            .Where(x => x.MeetsRequirements == false)
-            .Select(x => x.Outstanding)
-            .ToList();
+            .Where(x => x.Outstanding.RequiredCount > 0)
+            .First()
+            .Outstanding;
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
-    [Fact]
-    public void ThreesOverTwos_Possible_OneRemainingCard()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfSpades,
                 Cards.ThreeOfClubs,
-                Cards.TwoOfClubs,
-                Cards.TwoOfDiamonds
+                Cards.ThreeOfHearts
             },
             HandsToEvaluate = new()
             {
-                FullHouses.ThreesOverTwos
+                ThreeOfAKind.Threes
             },
-            RemainingCardCount = 1
+            RemainingCardCount = cardsRemaining
         };
 
-        // Act
         var response = HandEvaluator.Evaluate(request);
 
         // Assert

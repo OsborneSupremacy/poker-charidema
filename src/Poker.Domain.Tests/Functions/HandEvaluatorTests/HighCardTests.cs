@@ -1,10 +1,12 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class RoyalFlushTests
+public class HighCardTests
 {
     [Fact]
-    public void RoyalFlush_Qualifies_AllCardsPresent()
+    public void AceHigh_Qualifies_AcePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
@@ -12,14 +14,11 @@ public class RoyalFlushTests
             Cards = new()
             {
                 Cards.AceOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.TenOfClubs
+                Cards.KingOfClubs
             },
             HandsToEvaluate = new()
             {
-                RoyalFlushes.Clubs
+                HighCards.Ace
             },
             RemainingCardCount = 0
         };
@@ -32,7 +31,7 @@ public class RoyalFlushTests
     }
 
     [Fact]
-    public void RoyalFlush_Qualifies_WithJoker()
+    public void AceHigh_Qualifies_JokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
@@ -40,14 +39,11 @@ public class RoyalFlushTests
             Cards = new()
             {
                 Cards.AceOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
                 Cards.CreateJoker()
             },
             HandsToEvaluate = new()
             {
-                RoyalFlushes.Clubs
+                HighCards.Ace
             },
             RemainingCardCount = 0
         };
@@ -60,22 +56,18 @@ public class RoyalFlushTests
     }
 
     [Fact]
-    public void RoyalFlush_Eliminated_OneCardMissing()
+    public void AceHigh_Eliminated_NonAcePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TenOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.NineOfClubs
+                Cards.KingOfClubs
             },
             HandsToEvaluate = new()
             {
-                RoyalFlushes.Clubs
+                HighCards.Ace
             },
             RemainingCardCount = 0
         };
@@ -83,19 +75,12 @@ public class RoyalFlushTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
-                Cards.AceOfClubs
-            }
+            EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
         };
 
         // Act
         var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response
-            .Single()
-            .EvalulatedHandSegments
-            .Single()
-            .Outstanding;
+        var actualOutstanding = response.Single().EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
         response.Single().HandQualification.Should().Be(HandQualifications.Eliminated);
@@ -103,21 +88,15 @@ public class RoyalFlushTests
     }
 
     [Fact]
-    public void RoyalFlush_Possible_OneCardRemaining()
+    public void AceHigh_Possible_OneRemainingCard()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = new()
-            {
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.TenOfClubs
-            },
+            Cards = new(),
             HandsToEvaluate = new()
             {
-                RoyalFlushes.Clubs
+                HighCards.Ace
             },
             RemainingCardCount = 1
         };
