@@ -1,79 +1,76 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class PairTests
+public class HighCardTests
 {
-    [Theory]
-    [InlineData(2)]
-    [InlineData(3)]
-    [InlineData(4)]
-    public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
-    {
-        // Arrange
-        EvaluatedHandRequest request = new()
-        {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
-            HandToEvaluate = Pairs.Twos,
-            RemainingCardCount = 0
-        };
-
-        // Act
-        var response = HandEvaluator.Evaluate(request);
-
-        // Assert
-        response.HandQualification.Should().Be(HandQualifications.Qualifies);
-    }
-
     [Fact]
-    public void PairOfTwos_Qualifies_TwoAndJokerPresent()
+    public void AceHigh_Qualifies_AcePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
+                Cards.AceOfClubs,
+                Cards.KingOfClubs
+            },
+            HandToEvaluate = HighCards.Ace,
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = ClassicHandEvaluator.Evaluate(request);
+
+        // Assert
+        response.HandQualification.Should().Be(HandQualifications.Qualifies);
+    }
+
+    [Fact]
+    public void AceHigh_Qualifies_JokerPresent()
+    {
+        // Arrange
+        EvaluatedHandRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.AceOfClubs,
                 Cards.CreateJoker()
             },
-            HandToEvaluate = Pairs.Twos,
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void PairOfTwos_Eliminated_OneTwoPresent()
+    public void AceHigh_Eliminated_NonAcePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TwoOfClubs,
-                Cards.ThreeOfClubs
+                Cards.KingOfClubs
             },
-            HandToEvaluate = Pairs.Twos,
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
 
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
-                Cards.TwoOfSpades,
-                Cards.TwoOfHearts,
-                Cards.TwoOfDiamonds
-            }
+            EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response.EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
@@ -82,22 +79,18 @@ public class PairTests
     }
 
     [Fact]
-    public void PairOfTwos_Possible_OneRemainingCard()
+    public void AceHigh_Possible_OneRemainingCard()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = new()
-            {
-                Cards.TwoOfClubs,
-                Cards.ThreeOfClubs
-            },
-            HandToEvaluate = Pairs.Twos,
+            Cards = new(),
+            HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 1
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);

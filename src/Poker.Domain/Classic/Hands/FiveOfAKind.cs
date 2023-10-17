@@ -9,7 +9,7 @@
 /// hand's requirement don't work, because it assumes that a player can only have one of the
 /// same card in their hard. We could change that assumption, but the assumption is useful
 /// in every other scenario, and working around it would required complexity to be added
-/// to <see cref="Functions.HandEvaluator"/>.
+/// to <see cref="Functions.HandCollectionEvaluator"/>.
 /// 
 /// So we're getting around this by adding the same card to the list of
 /// <see cref="HandSegment.EligibleCards"/> for each possible Five-of-a-Kind, giving it

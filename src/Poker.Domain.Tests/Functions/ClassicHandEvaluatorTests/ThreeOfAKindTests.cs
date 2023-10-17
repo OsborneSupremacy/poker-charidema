@@ -1,90 +1,84 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class StraightFlushTests
+public class ThreeOfAKindTests
 {
-    [Fact]
-    public void SixHighStraightFlush_Qualifies_AllCardsPresent()
+    [Theory]
+    [InlineData(3)]
+    [InlineData(4)]
+    public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = new()
-            {
-                Cards.SixOfClubs,
-                Cards.FiveOfClubs,
-                Cards.FourOfClubs,
-                Cards.ThreeOfClubs,
-                Cards.TwoOfClubs
-            },
-            HandToEvaluate = StraightFlushes.SixHighClubs,
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
+            HandToEvaluate = ThreeOfAKind.Twos,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void SixHighStraightFlush_Qualifies_WithJoker()
+    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfClubs,
-                Cards.FourOfClubs,
                 Cards.ThreeOfClubs,
+                Cards.ThreeOfDiamonds,
                 Cards.CreateJoker()
             },
-            HandToEvaluate = StraightFlushes.SixHighClubs,
+            HandToEvaluate = ThreeOfAKind.Threes,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void SixHighStraightFlush_Eliminated_OneCardMissing()
+    public void ThreeThrees_Eliminated_OneThreePresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfClubs,
-                Cards.FourOfClubs,
                 Cards.ThreeOfClubs
             },
-            HandToEvaluate = StraightFlushes.SixHighClubs,
+            HandToEvaluate = ThreeOfAKind.Threes,
             RemainingCardCount = 0
         };
 
         HandSegment expectedOutstanding = new()
         {
-            RequiredCount = 1,
+            RequiredCount = 2,
             EligibleCards = new()
             {
-                Cards.TwoOfClubs
+                Cards.ThreeOfHearts,
+                Cards.ThreeOfSpades,
+                Cards.ThreeOfDiamonds
             }
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
-            .Single()
+            .First()
             .Outstanding;
 
         // Assert
@@ -92,26 +86,25 @@ public class StraightFlushTests
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
-    [Fact]
-    public void SixHighStraightFlush_Possible_OneCardRemaining()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.SixOfClubs,
-                Cards.FiveOfClubs,
-                Cards.FourOfClubs,
-                Cards.ThreeOfClubs
-
+                Cards.ThreeOfClubs,
+                Cards.ThreeOfHearts
             },
-            HandToEvaluate = StraightFlushes.SixHighClubs,
-            RemainingCardCount = 1
+            HandToEvaluate = ThreeOfAKind.Threes,
+            RemainingCardCount = cardsRemaining
         };
 
-        // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);

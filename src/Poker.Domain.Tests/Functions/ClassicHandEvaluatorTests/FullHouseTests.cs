@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class FullHouseTests
@@ -22,7 +24,7 @@ public class FullHouseTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -47,7 +49,7 @@ public class FullHouseTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -84,7 +86,7 @@ public class FullHouseTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
             .EvalulatedHandSegments
             .Where(x => x.MeetsRequirements == false)
@@ -114,7 +116,7 @@ public class FullHouseTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);

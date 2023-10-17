@@ -1,108 +1,105 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class ThreeOfAKindTests
+public class PairTests
 {
     [Theory]
+    [InlineData(2)]
     [InlineData(3)]
     [InlineData(4)]
-    public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
+    public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
-            HandToEvaluate = ThreeOfAKind.Twos,
+            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
+    public void PairOfTwos_Qualifies_TwoAndJokerPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfDiamonds,
+                Cards.TwoOfClubs,
                 Cards.CreateJoker()
             },
-            HandToEvaluate = ThreeOfAKind.Threes,
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void ThreeThrees_Eliminated_OneThreePresent()
+    public void PairOfTwos_Eliminated_OneTwoPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
+                Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
             },
-            HandToEvaluate = ThreeOfAKind.Threes,
+            HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
 
         HandSegment expectedOutstanding = new()
         {
-            RequiredCount = 2,
+            RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.ThreeOfHearts,
-                Cards.ThreeOfSpades,
-                Cards.ThreeOfDiamonds
+                Cards.TwoOfSpades,
+                Cards.TwoOfHearts,
+                Cards.TwoOfDiamonds
             }
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
-        var actualOutstanding = response
-            .EvalulatedHandSegments
-            .Where(x => x.Outstanding.RequiredCount > 0)
-            .First()
-            .Outstanding;
+        var response = ClassicHandEvaluator.Evaluate(request);
+        var actualOutstanding = response.EvalulatedHandSegments.Single().Outstanding;
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Eliminated);
         actualOutstanding.Should().BeEquivalentTo(expectedOutstanding);
     }
 
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
+    [Fact]
+    public void PairOfTwos_Possible_OneRemainingCard()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.ThreeOfClubs,
-                Cards.ThreeOfHearts
+                Cards.TwoOfClubs,
+                Cards.ThreeOfClubs
             },
-            HandToEvaluate = ThreeOfAKind.Threes,
-            RemainingCardCount = cardsRemaining
+            HandToEvaluate = Pairs.Twos,
+            RemainingCardCount = 1
         };
 
-        var response = HandEvaluator.Evaluate(request);
+        // Act
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);

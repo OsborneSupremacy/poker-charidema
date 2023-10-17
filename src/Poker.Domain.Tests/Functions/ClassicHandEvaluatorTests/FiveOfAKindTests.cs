@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations.HandEvaluatorTests;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations.HandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class FiveOfAKindTests
@@ -22,7 +24,7 @@ public class FiveOfAKindTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);

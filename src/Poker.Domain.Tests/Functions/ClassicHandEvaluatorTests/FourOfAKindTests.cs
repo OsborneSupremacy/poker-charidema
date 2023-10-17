@@ -1,4 +1,6 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
 public class FourOfAKindTests
@@ -15,7 +17,7 @@ public class FourOfAKindTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -39,7 +41,7 @@ public class FourOfAKindTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
@@ -71,7 +73,7 @@ public class FourOfAKindTests
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
             .EvalulatedHandSegments
             .Where(x => x.Outstanding.RequiredCount > 0)
@@ -102,7 +104,7 @@ public class FourOfAKindTests
             RemainingCardCount = cardsRemaining
         };
 
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);

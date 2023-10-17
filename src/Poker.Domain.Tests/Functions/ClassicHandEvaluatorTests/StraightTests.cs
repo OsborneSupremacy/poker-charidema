@@ -1,73 +1,75 @@
-﻿namespace Poker.Domain.Tests.Implementations;
+﻿using Poker.Domain.Functions.Classic;
+
+namespace Poker.Domain.Tests.Implementations;
 
 [ExcludeFromCodeCoverage]
-public class RoyalFlushTests
+public class StraightTests
 {
     [Fact]
-    public void RoyalFlush_Qualifies_AllCardsPresent()
+    public void SixHighStraight_Qualifies_AllCardsPresent()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.AceOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.TenOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.FourOfClubs,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
-            HandToEvaluate = RoyalFlushes.Clubs,
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void RoyalFlush_Qualifies_WithJoker()
+    public void SixHighStraight_Qualifies_WithJoker()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.AceOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.FourOfClubs,
+                Cards.ThreeOfHearts,
                 Cards.CreateJoker()
             },
-            HandToEvaluate = RoyalFlushes.Clubs,
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Qualifies);
     }
 
     [Fact]
-    public void RoyalFlush_Eliminated_OneCardMissing()
+    public void SixHighStraight_Eliminated_OneCardMissing()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.TenOfClubs,
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.NineOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.AceOfHearts,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
-            HandToEvaluate = RoyalFlushes.Clubs,
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
 
@@ -76,14 +78,18 @@ public class RoyalFlushTests
             RequiredCount = 1,
             EligibleCards = new()
             {
-                Cards.AceOfClubs
+                Cards.FourOfSpades,
+                Cards.FourOfHearts,
+                Cards.FourOfClubs,
+                Cards.FourOfDiamonds
             }
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
             .EvalulatedHandSegments
+            .Where(x => x.Outstanding.RequiredCount > 0)
             .Single()
             .Outstanding;
 
@@ -93,24 +99,24 @@ public class RoyalFlushTests
     }
 
     [Fact]
-    public void RoyalFlush_Possible_OneCardRemaining()
+    public void SixHighStraight_Possible_OneCardRemaining()
     {
         // Arrange
         EvaluatedHandRequest request = new()
         {
             Cards = new()
             {
-                Cards.KingOfClubs,
-                Cards.QueenOfClubs,
-                Cards.JackOfClubs,
-                Cards.TenOfClubs
+                Cards.SixOfClubs,
+                Cards.FiveOfSpades,
+                Cards.ThreeOfHearts,
+                Cards.TwoOfClubs
             },
-            HandToEvaluate = RoyalFlushes.Clubs,
+            HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 1
         };
 
         // Act
-        var response = HandEvaluator.Evaluate(request);
+        var response = ClassicHandEvaluator.Evaluate(request);
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Possible);
