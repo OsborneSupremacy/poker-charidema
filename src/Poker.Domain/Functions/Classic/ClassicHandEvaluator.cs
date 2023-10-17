@@ -25,9 +25,9 @@ internal static class ClassicHandEvaluator
         };
     };
 
-    public static IEnumerable<EvaluatedHandSegmentResponse> EvaluateHandSegments(
+    private static IEnumerable<EvaluatedHandSegmentResponse> EvaluateHandSegments(
         EvaluatedHandRequest request
-         )
+    )
     {
         UnusedCardsMessage unusedCards = new(request.Cards);
 
