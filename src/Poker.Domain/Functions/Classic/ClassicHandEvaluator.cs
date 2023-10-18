@@ -21,7 +21,8 @@ internal static class ClassicHandEvaluator
                         : HandQualifications.Eliminated
                 },
             EvalulatedHandSegments = evalulatedHandSegments,
-            UnusedCards = evalulatedHandSegments.Last().UnusedCards
+            UnusedCards = evalulatedHandSegments.Last().UnusedCards,
+            RemainingCardCount = request.RemainingCardCount
         };
     };
 

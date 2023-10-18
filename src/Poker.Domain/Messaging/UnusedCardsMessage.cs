@@ -2,6 +2,8 @@
 
 public record UnusedCardsMessage
 {
+    public UnusedCardsMessage() { }
+
     [SetsRequiredMembers]
     public UnusedCardsMessage(List<Card> cards)
     {

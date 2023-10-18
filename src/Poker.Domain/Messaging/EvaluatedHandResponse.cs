@@ -9,4 +9,6 @@ public record EvaluatedHandResponse
     public required List<EvaluatedHandSegmentResponse> EvalulatedHandSegments { get; init; }
 
     public required UnusedCardsMessage UnusedCards { get; init; }
+
+    public required int RemainingCardCount { get; init; }
 }

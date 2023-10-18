@@ -27,4 +27,8 @@
     <ProjectReference Include="..\Poker.Domain\Poker.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

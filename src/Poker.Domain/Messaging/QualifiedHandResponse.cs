@@ -1,12 +1,5 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public enum HandQualifications
-{
-    Eliminated,
-    Possible,
-    Qualifies
-}
-
 /// <summary>
 /// A thorough result of a hand "qualification", which determines
 /// whether the player's cards satisfy the hand's requirements 
