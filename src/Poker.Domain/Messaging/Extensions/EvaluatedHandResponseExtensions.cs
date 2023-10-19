@@ -4,7 +4,7 @@ internal static class EvaluatedHandResponseExtensions
 {
     public static PlayerHand ToPlayerHand(this EvaluatedHandResponse input)
     {
-        var handCards = input.EvalulatedHandSegments
+        var handCards = input.EvaluatedHandSegments
             .Select(s => s.Contributing)
             .Combine();
 

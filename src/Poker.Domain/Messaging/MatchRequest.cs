@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record class MatchRequest
+public record MatchRequest
 {
     public required Match Match { get; init; }
 

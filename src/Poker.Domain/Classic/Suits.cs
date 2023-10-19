@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic;
 
-public class Suits
+public static class Suits
 {
     public static Suit Empty { get; } = new() {
         Name = nameof(Empty),

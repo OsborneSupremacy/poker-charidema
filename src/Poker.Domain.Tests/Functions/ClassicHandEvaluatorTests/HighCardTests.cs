@@ -1,6 +1,6 @@
 ﻿using Poker.Domain.Functions.Classic;
 
-namespace Poker.Domain.Tests.Implementations;
+namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class HighCardTests
@@ -71,7 +71,7 @@ public class HighCardTests
 
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
-        var actualOutstanding = response.EvalulatedHandSegments.Single().Outstanding;
+        var actualOutstanding = response.EvaluatedHandSegments.Single().Outstanding;
 
         // Assert
         response.HandQualification.Should().Be(HandQualifications.Eliminated);

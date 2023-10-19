@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic;
 
-public record Ranks
+public static class Ranks
 {
     public static Rank Empty { get; } = new Rank(nameof(Empty), 0);
 

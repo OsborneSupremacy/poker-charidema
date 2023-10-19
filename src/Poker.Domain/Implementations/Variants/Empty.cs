@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Implementations.Variants;
 
-public record class EmptyVariant
+public static class EmptyVariant
 {
     public static Variant GetVariant() =>
         new()

@@ -1,6 +1,6 @@
 ﻿using Poker.Domain.Functions.Classic;
 
-namespace Poker.Domain.Tests.Implementations;
+namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class FullHouseTests
@@ -88,7 +88,7 @@ public class FullHouseTests
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .EvalulatedHandSegments
+            .EvaluatedHandSegments
             .Where(x => x.MeetsRequirements == false)
             .Select(x => x.Outstanding)
             .ToList();

@@ -1,6 +1,6 @@
 ﻿using Poker.Domain.Functions.Classic;
 
-namespace Poker.Domain.Tests.Implementations;
+namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class ThreeOfAKindTests
@@ -76,9 +76,8 @@ public class ThreeOfAKindTests
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .EvalulatedHandSegments
-            .Where(x => x.Outstanding.RequiredCount > 0)
-            .First()
+            .EvaluatedHandSegments
+            .First(x => x.Outstanding.RequiredCount > 0)
             .Outstanding;
 
         // Assert

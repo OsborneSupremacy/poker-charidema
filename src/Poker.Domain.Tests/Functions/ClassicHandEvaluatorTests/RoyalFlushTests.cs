@@ -1,6 +1,6 @@
 ﻿using Poker.Domain.Functions.Classic;
 
-namespace Poker.Domain.Tests.Implementations;
+namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class RoyalFlushTests
@@ -85,7 +85,7 @@ public class RoyalFlushTests
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
-            .EvalulatedHandSegments
+            .EvaluatedHandSegments
             .Single()
             .Outstanding;
 

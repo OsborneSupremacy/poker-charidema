@@ -1,6 +1,6 @@
-﻿namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Implementations.Variants;
 
-public record SevenCardStud
+public static class SevenCardStud
 {
     public static Variant GetVariant() =>
         new()

@@ -10,10 +10,12 @@ internal static class RankLinqExtensions
 
     public static Rank High(this IEnumerable<Rank>? ranks)
     {
-        if(!ranks?.Any() ?? false)
+        var rankList = ranks?.ToList() ?? new List<Rank>();
+        
+        if(!rankList.Any())
             return Ranks.Empty;
 
         return Ranks.All
-            .SingleOrDefault(x => x.Value == ranks!.Max(x => x.Value)) ?? Ranks.Empty;
+            .SingleOrDefault(x => x.Value == rankList.Max(r => r.Value)) ?? Ranks.Empty;
     }
 }

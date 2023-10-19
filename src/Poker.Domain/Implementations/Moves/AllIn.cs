@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain.Implementations;
+﻿namespace Poker.Domain.Implementations.Moves;
 
 public record AllIn : IWageringMove
 {

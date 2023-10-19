@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic;
 
-public record HandDefinitions
+public static class HandDefinitions
 {
     public static HandDefinition NoHand { get; } = new HandDefinition
     {

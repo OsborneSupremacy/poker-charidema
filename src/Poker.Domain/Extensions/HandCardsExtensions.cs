@@ -5,10 +5,9 @@ public static class HandCardsExtensions
     public static int Count(this HandCards handCards) =>
         handCards.Standard.Count + handCards.Wild.Count;
 
-    public static List<Card> AllStandardized(this HandCards handCards) =>
+    public static IEnumerable<Card> AllStandardized(this HandCards handCards) =>
         handCards.Standard
-            .Concat(handCards.Wild.Select(c => c.DesignatedCard))
-            .ToList();
+            .Concat(handCards.Wild.Select(c => c.DesignatedCard));
 
     public static void Add(this HandCards handCards, Card card) =>
         handCards.Standard.Add(card);

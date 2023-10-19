@@ -2,7 +2,7 @@
 
 internal static class DefaultHandCollectionEvaluator
 {
-    public static HandCollectionEvaluator Evaluate = (EvaluatedHandCollectionRequest request) =>
+    public static readonly HandCollectionEvaluator Evaluate = request =>
     {
         return request.HandsToEvaluate
             .OrderByDescending(h => h.HandDefinition.Value)

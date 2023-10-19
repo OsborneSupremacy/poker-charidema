@@ -16,7 +16,7 @@ public class EvaluatedHandResponseExtensionTests
         {
             Hand = Pairs.Twos,
             HandQualification = HandQualifications.Qualifies,
-            EvalulatedHandSegments = new List<EvaluatedHandSegmentResponse>
+            EvaluatedHandSegments = new List<EvaluatedHandSegmentResponse>
             {
                 new()
                 {

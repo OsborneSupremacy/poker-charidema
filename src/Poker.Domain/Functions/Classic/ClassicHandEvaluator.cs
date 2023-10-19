@@ -2,26 +2,26 @@
 
 internal static class ClassicHandEvaluator
 {
-    public static HandEvaluator Evaluate = (EvaluatedHandRequest request) =>
+    public static readonly HandEvaluator Evaluate = request =>
     {
-        var evalulatedHandSegments =
+        var evaluatedHandSegments =
             EvaluateHandSegments(request).ToList();
 
         return new EvaluatedHandResponse
         {
             Hand = request.HandToEvaluate,
             HandQualification =
-                evalulatedHandSegments.AllMeetRequirements() switch
+                evaluatedHandSegments.AllMeetRequirements() switch
                 {
                     true => HandQualifications.Qualifies,
                     false =>
                         request.RemainingCardCount
-                            >= evalulatedHandSegments.TotalOutstandingCount()
+                            >= evaluatedHandSegments.TotalOutstandingCount()
                         ? HandQualifications.Possible
                         : HandQualifications.Eliminated
                 },
-            EvalulatedHandSegments = evalulatedHandSegments,
-            UnusedCards = evalulatedHandSegments.Last().UnusedCards,
+            EvaluatedHandSegments = evaluatedHandSegments,
+            UnusedCards = evaluatedHandSegments.Last().UnusedCards,
             RemainingCardCount = request.RemainingCardCount
         };
     };
@@ -32,21 +32,28 @@ internal static class ClassicHandEvaluator
     {
         UnusedCardsMessage unusedCards = new(request.Cards);
 
-        foreach (var segment in request.HandToEvaluate.HandSegments)
+        foreach (var response in request
+                     .HandToEvaluate
+                     .HandSegments
+                     .Select
+                     (
+                         segment => EvaluateHandSegment
+                         (
+                            new EvaluatedHandSegmentRequest
+                            {
+                                HandSegment = segment,
+                                UnusedCards = unusedCards
+                            }
+                        )
+                    )
+                 )
         {
-            var response = EvalulateHandSegment(
-                new EvaluatedHandSegmentRequest
-                {
-                    HandSegment = segment,
-                    UnusedCards = unusedCards
-                });
-
             unusedCards = response.UnusedCards;
             yield return response;
         }
     }
 
-    private static EvaluatedHandSegmentResponse EvalulateHandSegment(
+    private static EvaluatedHandSegmentResponse EvaluateHandSegment(
         EvaluatedHandSegmentRequest request
         )
     {
@@ -55,14 +62,15 @@ internal static class ClassicHandEvaluator
 
         for (var x = 0; x < request.HandSegment.RequiredCount; x++)
         {
-            if (requirmentsMet()) // segment is satisfied -- exit
+            if (RequirementsMet()) // segment is satisfied -- exit
                 break;
 
             if (!unusedCardsOut.Any()) // no more cards to contribute -- exit
                 break;
 
             var qualifyingCards = request.HandSegment.EligibleCards
-                .Except(contributingCards.AllStandardized());
+                .Except(contributingCards.AllStandardized())
+                .ToList();
 
             var standard = unusedCardsOut.UnusedStandard
                 .Where(qualifyingCards.Contains)
@@ -74,26 +82,22 @@ internal static class ClassicHandEvaluator
                 contributingCards.Add(standard);
                 unusedCardsOut.UnusedStandard.Remove(standard);
                 continue;
-            };
+            }
 
             if (!unusedCardsOut.UnusedWild.Any())
                 continue;
-
+            
             contributingCards.Add(
                 unusedCardsOut.UnusedWild.Dequeue(),
                 qualifyingCards
                     .OrderByPokerStandard()
                     .First()
             );
-        };
-
-        bool requirmentsMet() =>
-            contributingCards.Count()
-            >= request.HandSegment.RequiredCount;
+        }
 
         return new EvaluatedHandSegmentResponse()
         {
-            MeetsRequirements = requirmentsMet(),
+            MeetsRequirements = RequirementsMet(),
             Contributing = contributingCards,
             UnusedCards = unusedCardsOut,
             Outstanding = new HandSegment
@@ -105,5 +109,9 @@ internal static class ClassicHandEvaluator
                     .ToList()
             }
         };
+        
+        bool RequirementsMet() =>
+            contributingCards.Count()
+            >= request.HandSegment.RequiredCount;        
     }
 }
