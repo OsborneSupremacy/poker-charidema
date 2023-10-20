@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic.Hands;
 
-public record AllHands
+public static class AllHands
 {
     public static List<Hand> All { get; } =
         HighCards.AllHighCards

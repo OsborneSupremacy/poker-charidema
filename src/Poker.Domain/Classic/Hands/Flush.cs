@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Classic.Hands;
 
-public record Flushes
+public static class Flushes
 {
     public static Hand Spades { get; } = new Hand
     {
