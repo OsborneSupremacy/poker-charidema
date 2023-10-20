@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Functions.Classic;
-
-namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
+﻿namespace Poker.Domain.Tests.Functions.ClassicHandEvaluatorTests;
 
 [ExcludeFromCodeCoverage]
 public class FiveOfAKindTests
