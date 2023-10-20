@@ -18,7 +18,7 @@ public class PlayerFactory
             Random = new Randomizer(_randomFactory.GetSeed())
         };
 
-        return Task.FromResult<Participant>(new Participant
+        return Task.FromResult(new Participant
         {
             Id = Guid.NewGuid(),
             BeginningStack = args.BeginningStack,

@@ -28,18 +28,19 @@ public class ConsoleHostedService : IHostedService
     {
         _applicationLifetime.ApplicationStarted.Register(async () =>
         {
-            MatchResponse? matchResponse = null;
-            while (true)
+            MatchResponse matchResponse = MatchResponses.Empty with
+            {
+                PlayAgain = true
+            };
+            
+            while (matchResponse.PlayAgain)
             {
                 AnsiConsole.Clear();
-
+                
                 var matchRequest = await _matchPreferencesService
                     .CreateMatchRequest(matchResponse);
 
                 matchResponse = await _matchService.PlayAsync(matchRequest);
-
-                if (!matchResponse.PlayAgain)
-                    break;
             };
             _applicationLifetime.StopApplication();
         });

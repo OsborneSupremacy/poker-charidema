@@ -30,12 +30,12 @@ public class RoundRobinMoveService : IPhaseService
                 Pot = potOut
             };
 
-            var MoveResponse = await _moveServiceFactory
+            var moveResponse = await _moveServiceFactory
                 .Get(moveRequest)
                 .ExecuteAsync(moveRequest);
 
-            potOut = MoveResponse.Pot;
-            playersOut.Add(MoveResponse.PlayerInTurn);
+            potOut = moveResponse.Pot;
+            playersOut.Add(moveResponse.PlayerInTurn);
 
             playerInTurn = request.Game.Players.NextPlayer(playerInTurn);
         }

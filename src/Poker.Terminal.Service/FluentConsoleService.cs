@@ -35,7 +35,7 @@ public class FluentConsoleService : IUserInterfaceService
     public string PromptForString(string prompt, int minLength)
     {
         var result = string.Empty;
-        while ((result?.Length ?? 0) < minLength)
+        while (result.Length < minLength)
         {
             result = AnsiConsole.Prompt(
                 new TextPrompt<string>($"{prompt}: ")
@@ -43,7 +43,7 @@ public class FluentConsoleService : IUserInterfaceService
                         $"Input must be at least {minLength} characters long.")
                 );
         }
-        return result!;
+        return result;
     }
 
     public IUserInterfaceService PromptForString(
@@ -52,7 +52,7 @@ public class FluentConsoleService : IUserInterfaceService
         Action<string> onValidInput
         )
     {
-        onValidInput(PromptForString(prompt, minLength)!);
+        onValidInput(PromptForString(prompt, minLength));
         return this;
     }
 
@@ -81,7 +81,7 @@ public class FluentConsoleService : IUserInterfaceService
         Action<int> onValidInput
         )
     {
-        onValidInput(PromptForInt(prompt, minVal, maxVal)!);
+        onValidInput(PromptForInt(prompt, minVal, maxVal));
         return this;
     }
 
@@ -108,7 +108,7 @@ public class FluentConsoleService : IUserInterfaceService
         Action<int> onValidInput
         )
     {
-        onValidInput(PromptForMoney(prompt, minVal, maxVal)!);
+        onValidInput(PromptForMoney(prompt, minVal, maxVal));
         return this;
     }
 
@@ -119,7 +119,7 @@ public class FluentConsoleService : IUserInterfaceService
         Action<bool> onValidInput
         )
     {
-        onValidInput(PromptForBool(prompt)!);
+        onValidInput(PromptForBool(prompt));
         return this;
     }
 

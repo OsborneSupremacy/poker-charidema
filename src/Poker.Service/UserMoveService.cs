@@ -59,7 +59,7 @@ public class UserMoveService : IUserMoveService
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.PhaseRequest.Pot + ante
             }
-        ); ;
+        );
     }
 
     private Task<MoveResponse> SitOutAsync(MoveRequest request)

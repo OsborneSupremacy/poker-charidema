@@ -6,7 +6,7 @@ public record Match
 
     public required Variant FixedVariant { get; init; }
 
-    public Deck? FixedDeck {  get; init; }
+    public required Deck FixedDeck { get; init; }
 
     public required List<Participant> Players { get; init; }
 
@@ -30,6 +30,7 @@ public record AntePreferences
 
 public enum AnteTypes
 {
+    Empty,
     Fixed,
     DealersChoice
 }

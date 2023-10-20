@@ -39,7 +39,7 @@ public class MatchService : IMatchService
                 {
                     Match = message.Match,
                     Players = message.Match.Players,
-                    Variant = message.Match.FixedVariant!,
+                    Variant = message.Match.FixedVariant,
                     Deck = message.Match.FixedDeck!,
                     Button = message.GameResponse?.Button ?? request.InitialButton
                 }
@@ -49,7 +49,7 @@ public class MatchService : IMatchService
         return new MatchResponse
         {
             Cancelled = false,
-            Match = message!.Match,
+            Match = message.Match,
             Winners = message.Match.Players.GetRichest(),
             PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
@@ -70,7 +70,7 @@ public class MatchService : IMatchService
             message = await CoordinateGameAsync(new GameRequest { 
                 Match = message.Match,
                 Players = message.Match.Players,
-                Variant = message.Match.FixedVariant!,
+                Variant = message.Match.FixedVariant,
                 Deck = message.Match.FixedDeck!,
                 Button = message.GameResponse?.Button ?? request.InitialButton
             });
@@ -106,12 +106,13 @@ public class MatchService : IMatchService
 
         s.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
-        s.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant?.Name ?? "Dealer's Choice"}");
+        s.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant.Name}");
 
-        if (match.FixedNumberOfGames.HasValue())
-            s.WriteLine($"The match will consist of {match.FixedNumberOfGames} games.");
-        else
-            s.WriteLine($"The match has no fixed number of games.");
+        s.WriteLine(
+            match.FixedNumberOfGames.HasValue()
+            ? $"The match will consist of {match.FixedNumberOfGames} games."
+            : $"The match has no fixed number of games."
+        );
 
         return Task.CompletedTask;
     }
@@ -178,8 +179,7 @@ public class MatchService : IMatchService
             {
                 Match = request.Match,
                 Players = request.Match.Players,
-                Variant = request.Match.FixedVariant
-                    ?? (await _gamePreferencesService.GetVariant(button)),
+                Variant = request.Match.FixedVariant,
                 Deck = request.Match.FixedDeck
                     ?? (await _gamePreferencesService.GetDeck(button)),
                 Button = button

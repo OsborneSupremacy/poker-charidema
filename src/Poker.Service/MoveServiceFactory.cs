@@ -16,16 +16,13 @@ public class MoveServiceFactory : IMoveServiceFactory
     }
 
     public IMoveService Get(MoveRequest request) =>
-        _requiresUserInput(request) switch
+        RequiresUserInput(request) switch
         {
             true => _userMoveService,
             false => _automatonMoveService
         };
 
-    static readonly Func<MoveRequest, bool> _requiresUserInput = (MoveRequest request) =>
-    {
-        return
-            !request.PlayerInTurn.Participant.Automaton
-            && request.PhaseRequest.Phase.PhaseType != PhaseType.Deal;
-    };
+    static readonly Func<MoveRequest, bool> RequiresUserInput = request =>
+        !request.PlayerInTurn.Participant.Automaton
+        && request.PhaseRequest.Phase.PhaseType != PhaseType.Deal;
 }

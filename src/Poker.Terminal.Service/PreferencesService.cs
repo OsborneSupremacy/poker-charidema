@@ -46,7 +46,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
-            "Please enter your name", 1, (string name) =>
+            "Please enter your name", 1, name =>
             {
                 userName = name;
                 _c.WriteLine($"Welcome, {userName}!");
@@ -54,14 +54,14 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .WriteLine()
 
-        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, (int c) =>
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, c =>
         {
             playerCount = c;
         })
 
         .WriteLine()
 
-        .PromptForMoney("How much money should players start with?", 10, 1000000, (int m) =>
+        .PromptForMoney("How much money should players start with?", 10, 1000000, m =>
         {
             startingStack = m;
         })
@@ -75,7 +75,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 fixedNumberOfGames = gameCount;
             },
             new InputOption<int>(
-                "Play indefinitely", () => { return 0; }
+                "Play indefinitely", () => 0
             ),
             new InputOption<int>(
                 "Play fixed number of games", () =>
@@ -138,7 +138,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                     // subtracting 1 because we can't make the minimum ante equal to the 
                     // starting stack -- otherwise it will be impossible for there to be a 
                     // range. And if there's not a range, dealer's choice doesn't make sense.
-                    _c.PromptForMoney("Mininum ante", 0, startingStack - 1, input =>
+                    _c.PromptForMoney("Minimum ante", 0, startingStack - 1, input =>
                     {
                         min = input;
                     });
@@ -214,15 +214,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     {
         throw new NotImplementedException();
     }
-
+    
     public Task<bool> ConfirmStartAsync() =>
         Task.FromResult(_c.PromptForBool("Ready to Begin?"));
-
-    public IUserInterfaceService PromptForOption<T>(string prompt, Action<T> onValidInput, params IInputOption<T>[] options) =>
-        PromptForOption(prompt, onValidInput, options);
-
-    public IInputOption<T> PromptForOption<T>(string prompt, params IInputOption<T>[] options) =>
-        PromptForOption(prompt, options);
 
     public Task<bool> GetPlayAgain(Game game) =>
         Task.FromResult(_c.PromptForBool($"Would you like to play another game of {game.Variant.Name}?"));
