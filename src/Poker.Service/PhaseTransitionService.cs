@@ -51,7 +51,7 @@ public class PhaseTransitionService : IPhaseTransitionService
             .WriteLine()
             .WriteLine($"Pot: {gameOut.Pot:C}")
             .WriteLine()
-            .WriteLine("Your Cards")
+            .WriteHeading(HeadingLevel.Six, "Your Cards")
             .RenderCards(user.Cards);
 
         return new PhaseTransitionResponse

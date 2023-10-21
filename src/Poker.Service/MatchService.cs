@@ -9,6 +9,8 @@ public class MatchService : IMatchService
     private readonly IGamePreferencesService _gamePreferencesService;
 
     private readonly IGameService _gameService;
+    
+    private readonly IDealerService _dealerService;
 
     private readonly IUserInterfaceService _userInterfaceService;
 
@@ -16,13 +18,14 @@ public class MatchService : IMatchService
         IMatchPreferencesService matchPreferencesService,
         IGamePreferencesService gamePreferencesService,
         IGameService gameService,
-        IUserInterfaceService userInterfaceService
-        )
+        IUserInterfaceService userInterfaceService,
+        IDealerService dealerService)
     {
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 
     private async Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request)
@@ -118,7 +121,7 @@ public class MatchService : IMatchService
         _userInterfaceService.WriteLine();
     }
 
-    protected Task WriteMatchStartInfoAsync(Match match)
+    private Task WriteMatchStartInfoAsync(Match match)
     {
         var s = _userInterfaceService;
 
@@ -182,7 +185,7 @@ public class MatchService : IMatchService
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    protected async Task<MatchMessage> CoordinateGameAsync(GameRequest request)
+    private async Task<MatchMessage> CoordinateGameAsync(GameRequest request)
     {
         var gamesOut = request.Match.Games;
 
@@ -212,6 +215,16 @@ public class MatchService : IMatchService
 
         gamesOut.Add(gameResponse);
 
+        // TODO: Find a better place for this
+        List<Card> cards = gameResponse.Game.Deck.Cards;
+        foreach(var player in gameResponse.Players)
+            cards.AddRange(player.Cards);
+        
+        var deck = await _dealerService.ShuffleAsync(gameResponse.Game.Deck with
+        {
+            Cards = cards
+        });
+        
         var matchOut = request.Match with
         {
             Games = gamesOut,
@@ -221,7 +234,7 @@ public class MatchService : IMatchService
         WriteStandings(matchOut);
         
         return new MatchMessage {
-            Match = matchOut,
+            Match = matchOut with { FixedDeck = deck },
             Cancelled = false,
             GameResponse = gameResponse
         };

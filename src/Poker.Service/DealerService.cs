@@ -11,22 +11,20 @@ public class DealerService : IDealerService, IPhaseService
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        var playersOut = new List<Player>();
-
+        var playersOut = request.Game.Players;
+        
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
 
-        var playerInTurn = request.StartingPlayer;
+        var playerInTurn = playersOut
+            .Single(p => p == request.StartingPlayer);
 
         for(var c = 0; c < request.Phase.CardsToDealCount; c++)
         {
-            while(playersOut.Count < request.Game.Players.Count)
+            for(var i = 0; i < request.Game.Players.Count; i++)
             {
                 if(playerInTurn.Folded)
-                {
-                    playersOut.Add(playerInTurn);
                     continue;
-                }
 
                 var dealResponse = DealCard(
                     new() {
@@ -37,10 +35,10 @@ public class DealerService : IDealerService, IPhaseService
                 );
 
                 deckOut = dealResponse.Deck;
-                playerInTurn = dealResponse.Player;
-                playersOut.Add(playerInTurn);
-
-                playerInTurn = request.Game.Players.NextPlayer(playerInTurn);
+                
+                playerInTurn = playersOut.NextPlayer(playerInTurn);
+                playersOut.RemoveAll(p => p.Id == dealResponse.Player.Id);
+                playersOut.Add(dealResponse.Player);
             }
         }
 
@@ -56,7 +54,11 @@ public class DealerService : IDealerService, IPhaseService
 
     private DealCardResponse DealCard(DealCardRequest request)
     {
-        var cardToDeal = request.Deck.Cards.First();
+        var cardToDeal = request.Deck.Cards.FirstOrDefault();
+        
+        if(cardToDeal is null)
+            throw new InvalidOperationException("No cards left in deck.");
+
         /*
         cardToDeal = cardToDeal with
         {

@@ -58,24 +58,20 @@ public class AutomatonMoveService : IAutomatonMoveService
     private Task<MoveResponse> DealAsync(MoveRequest request)
     {
         var playerCardsOut = request.PlayerInTurn.Cards;
-        var deckCardsOut = request.PhaseRequest.Game.Deck.Cards;
-
-        var dealtCards = deckCardsOut
-            .Take(request.PhaseRequest.Phase.CardsToDealCount);
-
-        playerCardsOut.AddRange(dealtCards);
-
-        deckCardsOut.RemoveAll(
-            c => dealtCards
-                .Select(x => x.Value)
-                .Contains(c.Value)
-        );
+        var deckCardsOut = request.PhaseRequest.Game.Deck.Cards
+            .ToQueue();
+        
+        for(int x = 0; x < request.PhaseRequest.Phase.CardsToDealCount; x++)
+        {
+            var card = deckCardsOut.Dequeue();
+            playerCardsOut.Add(card);
+        }
 
         return Task.FromResult(
             new MoveResponse
             {
                 PlayerInTurn = request.PlayerInTurn with { Cards = playerCardsOut },
-                Deck = request.PhaseRequest.Game.Deck with { Cards = deckCardsOut },
+                Deck = request.PhaseRequest.Game.Deck with { Cards = deckCardsOut.ToList() },
                 Pot = request.Pot
             }
         );

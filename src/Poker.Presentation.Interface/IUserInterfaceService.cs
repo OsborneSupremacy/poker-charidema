@@ -8,7 +8,8 @@ public enum HeadingLevel
     Two,
     Three,
     Four,
-    Five
+    Five,
+    Six
 }
 
 public interface IUserInterfaceService

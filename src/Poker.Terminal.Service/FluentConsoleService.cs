@@ -159,6 +159,7 @@ public class FluentConsoleService : IUserInterfaceService
             HeadingLevel.Three => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(80)}[/]"),
             HeadingLevel.Four => () => AnsiConsole.MarkupLine($"[bold]{'~'.Repeat(70)}[/]"),
             HeadingLevel.Five => () => AnsiConsole.MarkupLine($"[bold]{'^'.Repeat(60)}[/]"),
+            HeadingLevel.Six => () => AnsiConsole.MarkupLine($"[bold]{'>'.Repeat(50)}[/]"),
             _ => () => { }
         };
 
