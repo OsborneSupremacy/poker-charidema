@@ -8,7 +8,7 @@ public record Match
 
     public required Deck FixedDeck { get; init; }
 
-    public required List<Participant> Players { get; init; }
+    public required List<Player> Players { get; init; }
 
     public required List<GameResponse> Games { get; init; }
 

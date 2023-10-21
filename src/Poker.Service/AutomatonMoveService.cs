@@ -33,12 +33,12 @@ public class AutomatonMoveService : IAutomatonMoveService
 
     private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var stackOut = request.PlayerInTurn.Participant.Stack;
+        var stackOut = request.PlayerInTurn.Stack;
 
         var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{request.PlayerInTurn.Participant.Name} antes.");
+            .WriteLines($"{request.PlayerInTurn.Name} antes.");
 
         stackOut -= ante;
 
@@ -47,9 +47,7 @@ public class AutomatonMoveService : IAutomatonMoveService
             {
                 PlayerInTurn = request.PlayerInTurn with
                 {
-                    Participant = request.PlayerInTurn.Participant with {
-                        Stack = stackOut
-                    }
+                    Stack = stackOut
                 },
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.Pot + ante

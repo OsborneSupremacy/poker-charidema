@@ -44,17 +44,14 @@ public class UserMoveService : IUserMoveService
         var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{request.PlayerInTurn.Participant.Name} antes.");
+            .WriteLines($"{request.PlayerInTurn.Name} antes.");
 
         return Task.FromResult(
             new MoveResponse
             {
                 PlayerInTurn = request.PlayerInTurn with
                 {
-                    Participant = request.PlayerInTurn.Participant with
-                    {
-                        Stack = request.PlayerInTurn.Participant.Stack - ante
-                    }
+                    Stack = request.PlayerInTurn.Stack - ante
                 },
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.PhaseRequest.Pot + ante
@@ -65,7 +62,7 @@ public class UserMoveService : IUserMoveService
     private Task<MoveResponse> SitOutAsync(MoveRequest request)
     {
         _userInterfaceService
-            .WriteLines($"{request.PlayerInTurn.Participant.Name} sits out.");
+            .WriteLines($"{request.PlayerInTurn.Name} sits out.");
 
         return Task.FromResult(
             new MoveResponse

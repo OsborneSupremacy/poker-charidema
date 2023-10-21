@@ -4,30 +4,30 @@ public class GameService : IGameService
 {
     private readonly IDealerService _dealerService;
 
-    private readonly IPhaseService _phaseService;
-
     private readonly IAnteSetService _anteSetService;
 
     private readonly IUserInterfaceService _userInterfaceService;
+    
+    private readonly IPhaseTransitionService _phaseTransitionService;
 
     public GameService(
         IDealerService dealerService,
-        IPhaseService phaseService,
         IAnteSetService anteSetService,
-        IUserInterfaceService userInterfaceService
+        IUserInterfaceService userInterfaceService,
+        IPhaseTransitionService phaseTransitionService
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
-        _phaseService = phaseService ?? throw new ArgumentNullException(nameof(phaseService));
         _anteSetService = anteSetService ?? throw new ArgumentNullException(nameof(anteSetService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _phaseTransitionService = phaseTransitionService ?? throw new ArgumentNullException(nameof(phaseTransitionService));
     }
 
-    protected Task WriteStartInfoAsync(Game game)
+    private Task WriteStartInfoAsync(Game game)
     {
         _userInterfaceService.WriteLines(
             $"The game is {game.Variant.Name}.",
-            $"{game.Button.Participant.Name} has the deal.",
+            $"{game.Button.Name} has the deal.",
             $"Ante is set at {game.Ante:C}"
         );
 
@@ -38,75 +38,57 @@ public class GameService : IGameService
     {
         var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
-
-        var deck = await _dealerService
-            .ShuffleAsync(request.Deck);
-
-        var playersOut = request.Match.Players;
-
-        foreach (var action in request.Variant.Phases)
+     
+        PhaseTransitionResponse phaseTransitionResponse = new()
         {
-            var result = await _phaseService
-                .ExecuteAsync(new PhaseRequest
-                {
-                    Game = game,
-                    Phase = action,
-                    Deck = deck,
-                    CommunityCards = new(),
-                    StartingPlayer = game.Players.NextPlayer(game.Button),
-                    Pot = game.Pot
-                });
-
-            deck = result.Deck;
-
-            game = game with
+            PhaseResponse = new()
             {
-                Deck = deck,
-                CommunityCards = result.CommunityCards,
-                Players = result.Players,
-                Pot = result.Pot
+                CommunityCards = game.CommunityCards,
+                Deck = await _dealerService.ShuffleAsync(request.Deck),
+                GameOver = false,
+                Players = game.Players,
+                Pot = game.Pot
+            },
+            GameResponse = new()
+            {
+                Game = game,
+                Players = game.Players,
+                Variant = game.Variant,
+                Button = game.Button
+            }
+        };
+
+        foreach (var phase in request.Variant.Phases)
+        {
+            PhaseTransitionRequest phaseTransitionRequest = new()
+            {
+                Game = phaseTransitionResponse.GameResponse.Game,
+                Deck = phaseTransitionResponse.PhaseResponse.Deck,
+                Phase = phase 
             };
+            
+            phaseTransitionResponse = await _phaseTransitionService
+                .ExecuteAsync(phaseTransitionRequest);
 
-            var user = result.Players.Single(x => !x.Participant.Automaton);
-
-            _userInterfaceService
-                .WriteLine()
-                .WriteLine($"Pot: {game.Pot:C}")
-                .WriteLine()
-                .WriteLine("Your Cards")
-                .RenderCards(user.Cards);
-
-            if (result.GameOver)
-                return new GameResponse {
-                    Game = game,
-                    Players = request.Players,
-                    Variant = request.Variant,
-                    Button = request.Button
-                };
+            if (phaseTransitionResponse.PhaseResponse.GameOver)
+                return phaseTransitionResponse.GameResponse;
         }
 
-        return new GameResponse
-        {
-            Game = game,
-            Players = request.Players, // TODO: this needs to be updated!
-            Variant = request.Variant,
-            Button = request.Button
-        };
+        return phaseTransitionResponse.GameResponse;
     }
 
     private async Task<Game> CreateGameAsync(GameRequest request)
     {
         var gamePlayers = request.Players
-            .Select(p => new Player
+            .Select(p => p with
             {
-                Participant = p,
                 Cards = new(),
-                Folded = false
+                Folded = false       
             })
             .ToList();
 
         var gameButton = gamePlayers
-            .Single(x => x.Participant.Id == request.Button.Id);
+            .Single(x => x.Id == request.Button.Id);
 
         Game game = new()
         {
@@ -122,4 +104,5 @@ public class GameService : IGameService
 
         return game;
     }
+
 }

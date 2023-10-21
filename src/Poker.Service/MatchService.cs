@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Domain.Implementations.Variants;
+
+namespace Poker.Service;
 
 public class MatchService : IMatchService
 {
@@ -29,7 +31,13 @@ public class MatchService : IMatchService
         {
             Cancelled = false,
             Match = request.Match,
-            GameResponse = null
+            GameResponse = new()
+            {
+                Game = Games.Empty,
+                Players = new(),
+                Variant = EmptyVariant.GetVariant(),
+                Button = Players.Empty         
+            }
         };
 
         while (request.Match.Games.Count < request.Match.FixedNumberOfGames)
@@ -40,8 +48,8 @@ public class MatchService : IMatchService
                     Match = message.Match,
                     Players = message.Match.Players,
                     Variant = message.Match.FixedVariant,
-                    Deck = message.Match.FixedDeck!,
-                    Button = message.GameResponse?.Button ?? request.InitialButton
+                    Deck = message.Match.FixedDeck,
+                    Button = message.GameResponse.Button
                 }
             );
         }
@@ -57,11 +65,23 @@ public class MatchService : IMatchService
 
     private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
     {
+        var players = request.Match.Players.ToList();
+
+        var button = players
+            .SingleOrDefault(x => x.Id == request.InitialButton.Id)
+            ?? players.First();
+        
         MatchMessage message = new()
         {
             Cancelled = false,
             Match = request.Match,
-            GameResponse = null
+            GameResponse = new()
+            {
+                Game = Games.Empty,
+                Players = request.Match.Players,
+                Button = button,
+                Variant = EmptyVariant.GetVariant()
+            }
         };
 
         var keepPlaying = true;
@@ -71,8 +91,8 @@ public class MatchService : IMatchService
                 Match = message.Match,
                 Players = message.Match.Players,
                 Variant = message.Match.FixedVariant,
-                Deck = message.Match.FixedDeck!,
-                Button = message.GameResponse?.Button ?? request.InitialButton
+                Deck = message.Match.FixedDeck,
+                Button = message.GameResponse.Button
             });
 
             WriteStandings(message.Match);
@@ -180,8 +200,7 @@ public class MatchService : IMatchService
                 Match = request.Match,
                 Players = request.Match.Players,
                 Variant = request.Match.FixedVariant,
-                Deck = request.Match.FixedDeck
-                    ?? (await _gamePreferencesService.GetDeck(button)),
+                Deck = request.Match.FixedDeck,
                 Button = button
             }
         );
@@ -208,7 +227,7 @@ public class MatchService : IMatchService
         };
     }
 
-    protected async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) => 
+    private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) => 
         new MatchResponse()
         {
             Cancelled = false,

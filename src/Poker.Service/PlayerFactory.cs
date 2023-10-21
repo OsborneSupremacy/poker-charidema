@@ -11,21 +11,23 @@ public class PlayerFactory
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<Participant> CreateAsync(PlayerCreateArgs args)
+    public Task<Player> CreateAsync(PlayerCreateArgs args)
     {
         Faker faker = new()
         {
             Random = new Randomizer(_randomFactory.GetSeed())
         };
 
-        return Task.FromResult(new Participant
+        return Task.FromResult(new Player
         {
             Id = Guid.NewGuid(),
             BeginningStack = args.BeginningStack,
             Stack = args.BeginningStack,
             Name = faker.Person.FirstName,
             Automaton = args.Automaton,
-            Busted = false
+            Busted = false,
+            Cards = new(),
+            Folded = false
         });
     }
 }

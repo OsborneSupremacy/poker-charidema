@@ -6,7 +6,7 @@ public record MatchResponse
 
     public required Match Match { get; init; }
 
-    public required List<Participant> Winners { get; init; }
+    public required List<Player> Winners { get; init; }
 
     public required bool PlayAgain { get; init; }
 }

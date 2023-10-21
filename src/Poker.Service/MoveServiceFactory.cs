@@ -23,6 +23,6 @@ public class MoveServiceFactory : IMoveServiceFactory
         };
 
     static readonly Func<MoveRequest, bool> RequiresUserInput = request =>
-        !request.PlayerInTurn.Participant.Automaton
+        !request.PlayerInTurn.Automaton
         && request.PhaseRequest.Phase.PhaseType != PhaseType.Deal;
 }

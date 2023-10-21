@@ -26,12 +26,12 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
-    public Task<int> GetAnte(Participant button)
+    public Task<int> GetAnte(Player button)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Deck> GetDeck(Participant button)
+    public Task<Deck> GetDeck(Player button)
     {
         throw new NotImplementedException();
     }
@@ -122,7 +122,13 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
     private AntePreferences GetAntePreferences(int startingStack)
     {
-        AntePreferences? antePreferences = null;
+        AntePreferences? antePreferences = new()
+        {
+            AnteType = AnteTypes.Empty,
+            Fixed = 0,
+            Min = 0,
+            Max = 0
+        };
 
         _c.PromptForOption(
             "Should the ante amount be dealer's choice, or fixed?",
@@ -174,23 +180,25 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             })
         );
 
-        return antePreferences!;
+        return antePreferences;
     }
 
-    protected async IAsyncEnumerable<Participant> GeneratePlayers(
+    private async IAsyncEnumerable<Player> GeneratePlayers(
         string userName,
         int startingStack,
         int playerCount
         )
     {
-        yield return new Participant
+        yield return new Player
         {
             Id = Guid.NewGuid(),
             Name = userName,
             Stack = startingStack,
             BeginningStack = startingStack,
             Automaton = false,
-            Busted = false
+            Busted = false,
+            Cards = new(),
+            Folded = false
         };
 
         for (int p = 0; p < playerCount; p++)
@@ -210,7 +218,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public Task<bool> GetPlayAgain(GameResponse lastGame) =>
         Task.FromResult(_c.PromptForBool($"Would you like to play another game of {lastGame.Variant.Name}?"));
 
-    public Task<Variant> GetVariant(Participant button)
+    public Task<Variant> GetVariant(Player button)
     {
         throw new NotImplementedException();
     }

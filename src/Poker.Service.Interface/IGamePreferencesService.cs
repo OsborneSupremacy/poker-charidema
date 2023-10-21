@@ -2,11 +2,11 @@
 
 public interface IGamePreferencesService
 {
-    Task<int> GetAnte(Participant button);
+    Task<int> GetAnte(Player button);
 
-    Task<Variant> GetVariant(Participant button);
+    Task<Variant> GetVariant(Player button);
 
-    Task<Deck> GetDeck(Participant button);
+    Task<Deck> GetDeck(Player button);
 
     Task<bool> GetPlayAgain(GameResponse game);
 }

@@ -18,3 +18,18 @@ public record Game
 
     public required Variant Variant { get; init; }
 }
+
+public static class Games
+{
+    public static Game Empty { get; } = new()
+    {
+        Ante = 0,
+        Pot = 0,
+        Deck = Decks.Empty,
+        CommunityCards = new(),
+        Discards = new(),
+        Players = new(),
+        Button = Players.Empty,
+        Variant = Implementations.Variants.EmptyVariant.GetVariant()
+    };
+}

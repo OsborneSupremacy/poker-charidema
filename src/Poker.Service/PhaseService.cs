@@ -19,7 +19,7 @@ public class PhaseService : IPhaseService
         _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 
-    protected Task WriteStartInfoAsync(PhaseRequest request)
+    private Task WriteStartInfoAsync(PhaseRequest request)
     {
         _userInterfaceService.WriteHeading(
             HeadingLevel.Five,

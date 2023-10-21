@@ -6,5 +6,5 @@ public record MatchMessage
 
     public required Match Match { get; init; }
 
-    public required GameResponse? GameResponse { get; init; }
+    public required GameResponse GameResponse { get; init; }
 }
