@@ -32,13 +32,14 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    private string PromptForString(string prompt, int minLength)
+    private string PromptForString(string prompt, int minLength, string defaultVal)
     {
         var result = string.Empty;
         while (result.Length < minLength)
         {
             result = AnsiConsole.Prompt(
                 new TextPrompt<string>($"{prompt}: ")
+                    .DefaultValue(defaultVal)
                     .Validate(input => input.Length >= minLength,
                         $"Input must be at least {minLength} characters long.")
                 );
@@ -49,10 +50,11 @@ public class FluentConsoleService : IUserInterfaceService
     public IUserInterfaceService PromptForString(
         string prompt,
         int minLength,
+        string defaultVal,
         Action<string> onValidInput
         )
     {
-        onValidInput(PromptForString(prompt, minLength));
+        onValidInput(PromptForString(prompt, minLength, defaultVal));
         return this;
     }
 

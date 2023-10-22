@@ -46,7 +46,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
-            "Please enter your name", 1, name =>
+            "Please enter your name", 1, Environment.UserName, name =>
             {
                 userName = name;
                 _c.WriteLine($"Welcome, {userName}!");

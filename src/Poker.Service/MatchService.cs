@@ -8,24 +8,21 @@ public class MatchService : IMatchService
 
     private readonly IGamePreferencesService _gamePreferencesService;
 
-    private readonly IGameService _gameService;
-    
-    private readonly IDealerService _dealerService;
-
     private readonly IUserInterfaceService _userInterfaceService;
+    
+    private readonly IGameCoordinationService _gameCoordinationService;
 
     public MatchService(
         IMatchPreferencesService matchPreferencesService,
         IGamePreferencesService gamePreferencesService,
-        IGameService gameService,
         IUserInterfaceService userInterfaceService,
-        IDealerService dealerService)
+        IGameCoordinationService gameCoordinationService
+        )
     {
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
-        _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
+        _gameCoordinationService = gameCoordinationService ?? throw new ArgumentNullException(nameof(gameCoordinationService));
     }
 
     private async Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request)
@@ -44,8 +41,7 @@ public class MatchService : IMatchService
         };
 
         while (request.Match.Games.Count < request.Match.FixedNumberOfGames)
-        {
-            message = await CoordinateGameAsync(
+            message = await _gameCoordinationService.ExecuteAsync(
                 new GameRequest
                 {
                     Match = message.Match,
@@ -55,7 +51,6 @@ public class MatchService : IMatchService
                     Button = message.GameResponse.Button
                 }
             );
-        }
 
         return new MatchResponse
         {
@@ -90,15 +85,13 @@ public class MatchService : IMatchService
         var keepPlaying = true;
         while (keepPlaying)
         {
-            message = await CoordinateGameAsync(new GameRequest { 
+            message = await _gameCoordinationService.ExecuteAsync(new GameRequest { 
                 Match = message.Match,
                 Players = message.Match.Players,
                 Variant = message.Match.FixedVariant,
                 Deck = message.Match.FixedDeck,
                 Button = message.GameResponse.Button
             });
-
-            WriteStandings(message.Match);
 
             keepPlaying =
                 await _gamePreferencesService.GetPlayAgain(message.GameResponse);
@@ -111,14 +104,6 @@ public class MatchService : IMatchService
             Winners = message.Match.Players.GetRichest(),
             PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
-    }
-
-    private void WriteStandings(Match match)
-    {
-        _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
-        foreach (var player in match.Players.OrderByDescending(p => p.Stack))
-            _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
-        _userInterfaceService.WriteLine();
     }
 
     private Task WriteMatchStartInfoAsync(Match match)
@@ -173,68 +158,6 @@ public class MatchService : IMatchService
             Match = match,
             Winners = new(),
             PlayAgain = await _matchPreferencesService.GetPlayAgain(match)
-        };
-    }
-
-    /// <summary>
-    /// It may unclear why this method is needed. Here's what it does that
-    /// GameService does not do:
-    /// 
-    /// Invokes the game service, add the results to the match, updates
-    /// the player information
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-    private async Task<MatchMessage> CoordinateGameAsync(GameRequest request)
-    {
-        var gamesOut = request.Match.Games;
-
-        _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Starting game {request.Match.Games.Count + 1}");
-
-        // pass button to next player if it's not the first game
-        var button = gamesOut.Any()
-            ? request.Match.Players.NextPlayer(request.Button)
-            : request.Button;
-
-        var gameResponse = await _gameService.PlayAsync(
-            new GameRequest()
-            {
-                Match = request.Match,
-                Players = request.Match.Players,
-                Variant = request.Match.FixedVariant,
-                Deck = request.Match.FixedDeck,
-                Button = button
-            }
-        );
-
-        gamesOut.Add(gameResponse);
-
-        _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
-
-        gamesOut.Add(gameResponse);
-        
-        var deck = await _dealerService.ReshuffleAsync(
-            new ReshuffleRequest()
-            {
-                Deck = gameResponse.Game.Deck,
-                Players = gameResponse.Players
-            }
-        );
-        
-        var matchOut = request.Match with
-        {
-            Games = gamesOut,
-            Players = gameResponse.Players
-        };
-
-        WriteStandings(matchOut);
-        
-        return new MatchMessage {
-            Match = matchOut with { FixedDeck = deck },
-            Cancelled = false,
-            GameResponse = gameResponse
         };
     }
 

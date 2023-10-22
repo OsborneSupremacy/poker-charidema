@@ -28,6 +28,7 @@ public interface IUserInterfaceService
     IUserInterfaceService PromptForString(
         string prompt,
         int minLength,
+        string defaultVal,
         Action<string> onValidInput
         );
 
