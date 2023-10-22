@@ -101,7 +101,7 @@ public class MatchService : IMatchService
             WriteStandings(message.Match);
 
             keepPlaying =
-                await _gamePreferencesService.GetPlayAgain(message.GameResponse!);
+                await _gamePreferencesService.GetPlayAgain(message.GameResponse);
         }
 
         return new MatchResponse
@@ -214,16 +214,14 @@ public class MatchService : IMatchService
             .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
 
         gamesOut.Add(gameResponse);
-
-        // TODO: Find a better place for this
-        List<Card> cards = gameResponse.Game.Deck.Cards;
-        foreach(var player in gameResponse.Players)
-            cards.AddRange(player.Cards);
         
-        var deck = await _dealerService.ShuffleAsync(gameResponse.Game.Deck with
-        {
-            Cards = cards
-        });
+        var deck = await _dealerService.ReshuffleAsync(
+            new ReshuffleRequest()
+            {
+                Deck = gameResponse.Game.Deck,
+                Players = gameResponse.Players
+            }
+        );
         
         var matchOut = request.Match with
         {
@@ -241,7 +239,7 @@ public class MatchService : IMatchService
     }
 
     private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) => 
-        new MatchResponse()
+        new()
         {
             Cancelled = false,
             Match = responseIn.Match,

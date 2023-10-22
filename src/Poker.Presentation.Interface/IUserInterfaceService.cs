@@ -17,7 +17,8 @@ public interface IUserInterfaceService
     IUserInterfaceService PromptForOption<T>(
         string prompt,
         Action<T> onValidInput,
-        params IInputOption<T>[] options);
+        params IInputOption<T>[] options
+        );
 
     IInputOption<T> PromptForOption<T>(
         string prompt,
@@ -34,6 +35,7 @@ public interface IUserInterfaceService
         string prompt,
         int minVal,
         int maxVal,
+        int defaultVal,
         Action<int> onValidInput
         );
 
@@ -41,6 +43,7 @@ public interface IUserInterfaceService
         string prompt,
         int minVal,
         int maxVal,
+        int defaultVal,
         Action<int> onValidInput
         );
 

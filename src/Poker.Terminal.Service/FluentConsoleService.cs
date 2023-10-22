@@ -32,7 +32,7 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public string PromptForString(string prompt, int minLength)
+    private string PromptForString(string prompt, int minLength)
     {
         var result = string.Empty;
         while (result.Length < minLength)
@@ -56,13 +56,14 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public int PromptForInt(string prompt, int minVal, int maxVal)
+    private int PromptForInt(string prompt, int minVal, int maxVal, int defaultVal)
     {
         int result = minVal - 1;
         while (result < minVal || result > maxVal)
         {
             result = AnsiConsole.Prompt(
                 new TextPrompt<int>($"{prompt} {minVal}-{maxVal}: ")
+                    .DefaultValue(defaultVal)
                     .Validate(input =>
                     {
                         if (input < minVal || input > maxVal)
@@ -78,19 +79,21 @@ public class FluentConsoleService : IUserInterfaceService
         string prompt,
         int minVal,
         int maxVal,
+        int defaultVal,
         Action<int> onValidInput
         )
     {
-        onValidInput(PromptForInt(prompt, minVal, maxVal));
+        onValidInput(PromptForInt(prompt, minVal, maxVal, defaultVal));
         return this;
     }
 
-    public int PromptForMoney(string prompt, int minVal, int maxVal)
+    private int PromptForMoney(string prompt, int minVal, int maxVal, int defaultVal)
     {
         int result = minVal - 1;
         while (result < minVal || result > maxVal)
             result = AnsiConsole.Prompt(
                 new TextPrompt<int>($"{prompt} {minVal:C} - {maxVal:C}: ")
+                    .DefaultValue(defaultVal)
                     .Validate(input =>
                     {
                         if (input < minVal || input > maxVal)
@@ -105,10 +108,11 @@ public class FluentConsoleService : IUserInterfaceService
         string prompt,
         int minVal,
         int maxVal,
+        int defaultVal,
         Action<int> onValidInput
         )
     {
-        onValidInput(PromptForMoney(prompt, minVal, maxVal));
+        onValidInput(PromptForMoney(prompt, minVal, maxVal, defaultVal));
         return this;
     }
 

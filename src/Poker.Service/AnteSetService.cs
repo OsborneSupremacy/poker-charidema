@@ -61,6 +61,7 @@ public class AnteSetService : IAnteSetService
                 "Specify ante amount",
                 antePrefs.Min,
                 antePrefs.Max,
+                new Randomizer(_randomFactory.GetSeed()).Int(antePrefs.Min, antePrefs.Max),
                 input =>
                 {
                     anteAmount = input;

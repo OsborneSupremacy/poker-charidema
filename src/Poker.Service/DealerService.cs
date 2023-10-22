@@ -59,13 +59,6 @@ public class DealerService : IDealerService, IPhaseService
         if(cardToDeal is null)
             throw new InvalidOperationException("No cards left in deck.");
 
-        /*
-        cardToDeal = cardToDeal with
-        {
-            CardOrientation = request.Phase.CardOrientation
-        };
-        */
-
         var playerCardsOut = request.Player.Cards;
         playerCardsOut.Add(cardToDeal);
 
@@ -92,5 +85,19 @@ public class DealerService : IDealerService, IPhaseService
         }
 
         return Task.FromResult(deck);
+    }
+
+    public Task<Deck> ReshuffleAsync(ReshuffleRequest request)
+    {
+        var cards = request.Deck.Cards;
+        foreach(var player in request.Players)
+            cards.AddRange(player.Cards);
+        
+        var deck = request.Deck with
+        {
+            Cards = cards
+        };
+
+        return ShuffleAsync(deck);
     }
 }

@@ -54,14 +54,14 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
         .WriteLine()
 
-        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, c =>
+        .PromptForInt("How many other players would you like to be part of this match?", 1, 9, 2, c =>
         {
             playerCount = c;
         })
 
         .WriteLine()
 
-        .PromptForMoney("How much money should players start with?", 10, 1000000, m =>
+        .PromptForMoney("How much money should players start with?", 10, 1000000, 1000, m =>
         {
             startingStack = m;
         })
@@ -81,7 +81,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 "Play fixed number of games", () =>
                 {
                     int gameCount = 0;
-                    _c.PromptForInt("How many games?", 1, 100, input =>
+                    _c.PromptForInt("How many games?", 1, 100, 10, input =>
                     {
                         gameCount = input;
                     });
@@ -144,13 +144,13 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                     // subtracting 1 because we can't make the minimum ante equal to the 
                     // starting stack -- otherwise it will be impossible for there to be a 
                     // range. And if there's not a range, dealer's choice doesn't make sense.
-                    _c.PromptForMoney("Minimum ante", 0, startingStack - 1, input =>
+                    _c.PromptForMoney("Minimum ante", 0, startingStack - 1, 1, input =>
                     {
                         min = input;
                     });
 
                     int max = 0;
-                    _c.PromptForMoney("Maximum ante", min + 1, startingStack, input =>
+                    _c.PromptForMoney("Maximum ante", min + 1, startingStack, startingStack, input =>
                     {
                         max = input;
                     });
@@ -167,7 +167,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<AntePreferences>("Fixed ante amount", () =>
             {
                 int anteAmount = 0;
-                _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, input =>
+                _c.PromptForMoney("Specify fixed ante amount", 1, startingStack, 25, input =>
                 {
                     anteAmount = input;
                 });
