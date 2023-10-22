@@ -87,6 +87,7 @@ public static class HandDefinitions
     };
 
     public static List<HandDefinition> All { get; } = new(){
+        NoHand,
         HighCard,
         Pair,
         TwoPair,

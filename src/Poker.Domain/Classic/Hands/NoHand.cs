@@ -9,5 +9,17 @@ public static class NoHands
         HighRank = Ranks.Empty,
         Suit = Suits.Empty,
         HandSegments = new()
+        {
+            new()
+            {
+                RequiredCount = 0,
+                EligibleCards = new()
+            }
+        }
+    };
+    
+    public static List<Hand> All { get; } = new()
+    {
+        NoHand
     };
 }

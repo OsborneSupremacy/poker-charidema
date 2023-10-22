@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Microsoft.AspNetCore.SignalR.Protocol;
+
+namespace Poker.Service;
 
 public class PhaseCoordinator : IPhaseCoordinator
 {
@@ -47,12 +49,27 @@ public class PhaseCoordinator : IPhaseCoordinator
 
         var user = phaseResponse.Players.Single(x => !x.Automaton);
 
-        _userInterfaceService
-            .WriteLine()
-            .WriteLine($"Pot: {gameOut.Pot:C}")
-            .WriteLine()
-            .WriteHeading(HeadingLevel.Six, "Your Cards")
-            .RenderCards(user.Cards);
+        if(user.Cards.Any())
+        {
+            _userInterfaceService
+                .WriteLine()
+                .WriteLine($"Pot: {gameOut.Pot:C}")
+                .WriteLine()
+                .WriteHeading(HeadingLevel.Six, "Your Cards")
+                .RenderCards(user.Cards);
+
+            var bestHand = DefaultHandCollectionEvaluator.Evaluate(
+                new EvaluatedHandCollectionRequest
+                {
+                    Cards = user.Cards,
+                    HandEvaluator = ClassicHandEvaluator.Evaluate,
+                    HandsToEvaluate = Domain.Classic.Hands.AllHands.All,
+                    RemainingCardCount = request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
+                }
+            ).First(h => h.HandQualification == HandQualifications.Qualifies);
+        
+            _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");           
+        }
 
         return new PhaseCoordinatorResponse
         {

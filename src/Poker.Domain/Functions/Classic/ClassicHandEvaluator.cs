@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Functions.Classic;
 
-internal static class ClassicHandEvaluator
+public static class ClassicHandEvaluator
 {
     public static readonly HandEvaluator Evaluate = request =>
     {

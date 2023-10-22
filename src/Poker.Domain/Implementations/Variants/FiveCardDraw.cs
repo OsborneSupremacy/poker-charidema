@@ -9,6 +9,7 @@ public static class FiveCardDraw
             Phases = new()
             {
                 new() {
+                    Number = 0,
                     Name = "Ante",
                     PhaseType = PhaseType.Ante,
                     GameCanEndAfter = true,
@@ -20,6 +21,7 @@ public static class FiveCardDraw
                 },
                 new()
                 {
+                    Number = 1,
                     Name = "Deal",
                     PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
@@ -31,6 +33,7 @@ public static class FiveCardDraw
                 },
                 new()
                 {
+                    Number = 2,
                     Name = "Betting Interval",
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
@@ -42,6 +45,7 @@ public static class FiveCardDraw
                 },
                 new()
                 {
+                    Number = 3,
                     Name = "Draw",
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
@@ -53,12 +57,13 @@ public static class FiveCardDraw
                         new()
                         {
                             Rank = Ranks.Ace,
-                            Maximum  = 4
+                            Maximum = 4
                         }
                     }
                 },
                 new()
                 {
+                    Number = 4,
                     Name = "Betting Interval",
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
@@ -70,6 +75,7 @@ public static class FiveCardDraw
                 },
                 new()
                 {
+                    Number = 5,
                     Name = "Evaluation",
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,

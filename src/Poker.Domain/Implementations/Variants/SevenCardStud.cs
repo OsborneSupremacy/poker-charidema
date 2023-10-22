@@ -9,6 +9,7 @@ public static class SevenCardStud
             Phases = new()
             {
                 new() {
+                    Number = 0,
                     Name = "Ante",
                     PhaseType = PhaseType.Ante,
                     GameCanEndAfter = true,
@@ -20,6 +21,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 1,
                     Name = "Deal",
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
@@ -31,6 +33,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 2,
                     Name = "Deal",
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
@@ -42,6 +45,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 3,
                     Name = "Betting Interval",
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
@@ -53,6 +57,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 4,
                     Name = "Deal",
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
@@ -64,6 +69,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 5,
                     Name = "Betting Interval",
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
@@ -75,6 +81,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 6,
                     Name = "Deal",
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
@@ -86,6 +93,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 7,
                     Name = "Betting Interval",
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
@@ -97,6 +105,7 @@ public static class SevenCardStud
                 },
                 new()
                 {
+                    Number = 8,
                     Name = "Evaluation",
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,

@@ -3,7 +3,8 @@
 public static class AllHands
 {
     public static List<Hand> All { get; } =
-        HighCards.AllHighCards
+        NoHands.All
+        .Concat(HighCards.AllHighCards)
         .Concat(Pairs.All)
         .Concat(TwoPair.All)
         .Concat(ThreeOfAKind.All)
