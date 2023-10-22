@@ -1,6 +1,6 @@
 namespace Poker.Service.Interface;
 
-public interface IGameCoordinationService
+public interface IGameCoordinator
 {
     Task<MatchMessage> ExecuteAsync(GameRequest request);
 }

@@ -11,7 +11,7 @@ public class PlayerFactory
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
     }
 
-    public Task<Player> CreateAsync(PlayerCreateArgs args)
+    public Task<Player> CreateAsync(PlayerCreateRequest request)
     {
         Faker faker = new()
         {
@@ -20,11 +20,11 @@ public class PlayerFactory
 
         return Task.FromResult(new Player
         {
-            Id = Guid.NewGuid(),
-            BeginningStack = args.BeginningStack,
-            Stack = args.BeginningStack,
+            Id = request.Id,
+            BeginningStack = request.BeginningStack,
+            Stack = request.BeginningStack,
             Name = faker.Person.FirstName,
-            Automaton = args.Automaton,
+            Automaton = request.Automaton,
             Busted = false,
             Cards = new(),
             Folded = false

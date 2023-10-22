@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record PhaseTransitionRequest
+public record PhaseCoordinatorRequest
 {
     public required Game Game { get; init; }
     

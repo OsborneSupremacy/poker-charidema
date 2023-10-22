@@ -8,19 +8,19 @@ public class GameService : IGameService
 
     private readonly IUserInterfaceService _userInterfaceService;
     
-    private readonly IPhaseTransitionService _phaseTransitionService;
+    private readonly IPhaseCoordinator _phaseCoordinator;
 
     public GameService(
         IDealerService dealerService,
         IAnteSetService anteSetService,
         IUserInterfaceService userInterfaceService,
-        IPhaseTransitionService phaseTransitionService
+        IPhaseCoordinator phaseCoordinator
         )
     {
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _anteSetService = anteSetService ?? throw new ArgumentNullException(nameof(anteSetService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _phaseTransitionService = phaseTransitionService ?? throw new ArgumentNullException(nameof(phaseTransitionService));
+        _phaseCoordinator = phaseCoordinator ?? throw new ArgumentNullException(nameof(phaseCoordinator));
     }
 
     private Task WriteStartInfoAsync(Game game)
@@ -39,7 +39,7 @@ public class GameService : IGameService
         var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
      
-        PhaseTransitionResponse phaseTransitionResponse = new()
+        PhaseCoordinatorResponse phaseCoordinatorResponse = new()
         {
             PhaseResponse = new()
             {
@@ -60,21 +60,21 @@ public class GameService : IGameService
 
         foreach (var phase in request.Variant.Phases)
         {
-            PhaseTransitionRequest phaseTransitionRequest = new()
+            PhaseCoordinatorRequest phaseCoordinatorRequest = new()
             {
-                Game = phaseTransitionResponse.GameResponse.Game,
-                Deck = phaseTransitionResponse.PhaseResponse.Deck,
+                Game = phaseCoordinatorResponse.GameResponse.Game,
+                Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
                 Phase = phase 
             };
             
-            phaseTransitionResponse = await _phaseTransitionService
-                .ExecuteAsync(phaseTransitionRequest);
+            phaseCoordinatorResponse = await _phaseCoordinator
+                .ExecuteAsync(phaseCoordinatorRequest);
 
-            if (phaseTransitionResponse.PhaseResponse.GameOver)
-                return phaseTransitionResponse.GameResponse;
+            if (phaseCoordinatorResponse.PhaseResponse.GameOver)
+                return phaseCoordinatorResponse.GameResponse;
         }
 
-        return phaseTransitionResponse.GameResponse;
+        return phaseCoordinatorResponse.GameResponse;
     }
 
     private async Task<Game> CreateGameAsync(GameRequest request)

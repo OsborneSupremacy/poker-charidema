@@ -1,6 +1,6 @@
 namespace Poker.Service;
 
-public class GameCoordinationService : IGameCoordinationService
+public class GameCoordinator : IGameCoordinator
 {
     private readonly IUserInterfaceService _userInterfaceService;
     
@@ -8,7 +8,7 @@ public class GameCoordinationService : IGameCoordinationService
     
     private readonly IGameService _gameService;
     
-    public GameCoordinationService(
+    public GameCoordinator(
         IUserInterfaceService userInterfaceService,
         IDealerService dealerService,
         IGameService gameService

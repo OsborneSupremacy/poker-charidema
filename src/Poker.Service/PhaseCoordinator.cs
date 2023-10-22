@@ -1,12 +1,12 @@
 ﻿namespace Poker.Service;
 
-public class PhaseTransitionService : IPhaseTransitionService
+public class PhaseCoordinator : IPhaseCoordinator
 {
     private readonly IPhaseService _phaseService;
 
     private readonly IUserInterfaceService _userInterfaceService;
 
-    public PhaseTransitionService(
+    public PhaseCoordinator(
         IPhaseService phaseService,
         IUserInterfaceService userInterfaceService
         )
@@ -15,8 +15,8 @@ public class PhaseTransitionService : IPhaseTransitionService
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
-    public async Task<PhaseTransitionResponse> ExecuteAsync(
-        PhaseTransitionRequest request
+    public async Task<PhaseCoordinatorResponse> ExecuteAsync(
+        PhaseCoordinatorRequest request
         )
     {
         var startingPlayer = request.Game
@@ -54,7 +54,7 @@ public class PhaseTransitionService : IPhaseTransitionService
             .WriteHeading(HeadingLevel.Six, "Your Cards")
             .RenderCards(user.Cards);
 
-        return new PhaseTransitionResponse
+        return new PhaseCoordinatorResponse
         {
             PhaseResponse = phaseResponse,
             GameResponse = new GameResponse

@@ -10,19 +10,19 @@ public class MatchService : IMatchService
 
     private readonly IUserInterfaceService _userInterfaceService;
     
-    private readonly IGameCoordinationService _gameCoordinationService;
+    private readonly IGameCoordinator _gameCoordinator;
 
     public MatchService(
         IMatchPreferencesService matchPreferencesService,
         IGamePreferencesService gamePreferencesService,
         IUserInterfaceService userInterfaceService,
-        IGameCoordinationService gameCoordinationService
+        IGameCoordinator gameCoordinator
         )
     {
         _matchPreferencesService = matchPreferencesService ?? throw new ArgumentNullException(nameof(matchPreferencesService));
         _gamePreferencesService = gamePreferencesService ?? throw new ArgumentNullException(nameof(gamePreferencesService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _gameCoordinationService = gameCoordinationService ?? throw new ArgumentNullException(nameof(gameCoordinationService));
+        _gameCoordinator = gameCoordinator ?? throw new ArgumentNullException(nameof(gameCoordinator));
     }
 
     private async Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request)
@@ -41,7 +41,7 @@ public class MatchService : IMatchService
         };
 
         while (request.Match.Games.Count < request.Match.FixedNumberOfGames)
-            message = await _gameCoordinationService.ExecuteAsync(
+            message = await _gameCoordinator.ExecuteAsync(
                 new GameRequest
                 {
                     Match = message.Match,
@@ -85,7 +85,7 @@ public class MatchService : IMatchService
         var keepPlaying = true;
         while (keepPlaying)
         {
-            message = await _gameCoordinationService.ExecuteAsync(new GameRequest { 
+            message = await _gameCoordinator.ExecuteAsync(new GameRequest { 
                 Match = message.Match,
                 Players = message.Match.Players,
                 Variant = message.Match.FixedVariant,

@@ -4,6 +4,7 @@ using Poker.Domain.Classic;
 using Poker.Domain.Implementations.Variants;
 using Poker.Domain.Messaging;
 using Poker.Presentation.Interface;
+using Poker.Utility;
 
 namespace Poker.Terminal.Service;
 
@@ -46,7 +47,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
 
         .PromptForString(
-            "Please enter your name", 1, Environment.UserName, name =>
+            "Please enter your name", 1, Environment.UserName.ToTitleCase(), name =>
             {
                 userName = name;
                 _c.WriteLine($"Welcome, {userName}!");
@@ -204,7 +205,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         for (int p = 0; p < playerCount; p++)
             yield return await _playerFactory
                 .CreateAsync(
-                    new PlayerCreateArgs
+                    new PlayerCreateRequest
                     {
                         BeginningStack = startingStack,
                         Id = Guid.NewGuid(),
