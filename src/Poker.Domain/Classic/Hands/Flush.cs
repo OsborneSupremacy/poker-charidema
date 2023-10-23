@@ -124,12 +124,4 @@ public static class Flushes
             }
         }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        Spades,
-        Hearts,
-        Clubs,
-        Diamonds
-    };
 }

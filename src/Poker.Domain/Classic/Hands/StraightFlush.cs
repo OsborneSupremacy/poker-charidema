@@ -737,41 +737,4 @@ public static class StraightFlushes
             }
         }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        SixHighSpades,
-        SevenHighSpades,
-        EightHighSpades,
-        NineHighSpades,
-        TenHighSpades,
-        JackHighSpades,
-        QueenHighSpades,
-        KingHighSpades,
-        SixHighHearts,
-        SevenHighHearts,
-        EightHighHearts,
-        NineHighHearts,
-        TenHighHearts,
-        JackHighHearts,
-        QueenHighHearts,
-        KingHighHearts,
-        SixHighClubs,
-        SevenHighClubs,
-        EightHighClubs,
-        NineHighClubs,
-        TenHighClubs,
-        JackHighClubs,
-        QueenHighClubs,
-        KingHighClubs,
-        SixHighDiamonds,
-        SevenHighDiamonds,
-        EightHighDiamonds,
-        NineHighDiamonds,
-        TenHighDiamonds,
-        JackHighDiamonds,
-        QueenHighDiamonds,
-        KingHighDiamonds
-    };
-
 }

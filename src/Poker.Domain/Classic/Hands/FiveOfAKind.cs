@@ -319,21 +319,4 @@ public record FiveOfAKind
             }
         }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        Twos,
-        Threes,
-        Fours,
-        Fives,
-        Sixes,
-        Sevens,
-        Eights,
-        Nines,
-        Tens,
-        Jacks,
-        Queens,
-        Kings,
-        Aces
-    };
 }

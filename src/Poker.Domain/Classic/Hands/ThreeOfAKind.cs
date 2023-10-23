@@ -6,7 +6,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Twos",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -22,7 +22,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Threes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -38,7 +38,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -54,7 +54,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Fives",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -70,7 +70,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Sixes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -86,7 +86,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Sevens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -102,7 +102,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -118,7 +118,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Nines",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -134,7 +134,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -150,7 +150,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Jacks",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -166,7 +166,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Queens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -182,7 +182,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Kings",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -198,7 +198,7 @@ public static class ThreeOfAKind
     {
         Name = "Three Aces",
         HandDefinition = HandDefinitions.ThreeOfAKind,
-        HighRank =Ranks.Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
         {
@@ -208,22 +208,5 @@ public static class ThreeOfAKind
                 EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
             }
         }
-    };
-
-    public static List<Hand> All { get; } = new()
-    {
-        Twos,
-        Threes,
-        Fours,
-        Fives,
-        Sixes,
-        Sevens,
-        Eights,
-        Nines,
-        Tens,
-        Jacks,
-        Queens,
-        Kings,
-        Aces
     };
 }

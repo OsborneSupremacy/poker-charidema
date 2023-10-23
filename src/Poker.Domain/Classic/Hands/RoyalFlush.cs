@@ -93,12 +93,4 @@ public static class RoyalFlushes
             }
         }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        Hearts,
-        Spades,
-        Diamonds,
-        Clubs
-    };
 }

@@ -17,9 +17,4 @@ public static class NoHands
             }
         }
     };
-    
-    public static List<Hand> All { get; } = new()
-    {
-        NoHand
-    };
 }

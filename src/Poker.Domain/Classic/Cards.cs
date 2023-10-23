@@ -2,7 +2,7 @@
 
 public static class Cards
 {
-    public static Card Empty { get; } = new Card
+    public static Card Empty { get; } = new()
     {
         Value = string.Empty,
         CardType = CardTypes.Empty,
@@ -13,7 +13,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TwoOfHearts { get; } = new Card
+    public static Card TwoOfHearts { get; } = new()
     {
         Value = "2H",
         CardType = CardTypes.Spot,
@@ -24,7 +24,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card ThreeOfHearts { get; } = new Card
+    public static Card ThreeOfHearts { get; } = new()
     {
         Value = "3H",
         CardType = CardTypes.Spot,
@@ -35,7 +35,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FourOfHearts { get; } = new Card
+    public static Card FourOfHearts { get; } = new()
     {
         Value = "4H",
         CardType = CardTypes.Spot,
@@ -46,7 +46,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FiveOfHearts { get; } = new Card
+    public static Card FiveOfHearts { get; } = new()
     {
         Value = "5H",
         CardType = CardTypes.Spot,
@@ -57,7 +57,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SixOfHearts { get; } = new Card
+    public static Card SixOfHearts { get; } = new()
     {
         Value = "6H",
         CardType = CardTypes.Spot,
@@ -68,7 +68,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SevenOfHearts { get; } = new Card
+    public static Card SevenOfHearts { get; } = new()
     {
         Value = "7H",
         CardType = CardTypes.Spot,
@@ -79,7 +79,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card EightOfHearts { get; } = new Card
+    public static Card EightOfHearts { get; } = new()
     {
         Value = "8H",
         CardType = CardTypes.Spot,
@@ -90,7 +90,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card NineOfHearts { get; } = new Card
+    public static Card NineOfHearts { get; } = new()
     {
         Value = "9H",
         CardType = CardTypes.Spot,
@@ -101,7 +101,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TenOfHearts { get; } = new Card
+    public static Card TenOfHearts { get; } = new()
     {
         Value = "10H",
         CardType = CardTypes.Spot,
@@ -112,7 +112,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card JackOfHearts { get; } = new Card
+    public static Card JackOfHearts { get; } = new()
     {
         Value = "JH",
         CardType = CardTypes.Face,
@@ -126,7 +126,7 @@ public static class Cards
             }
     };
 
-    public static Card QueenOfHearts { get; } = new Card
+    public static Card QueenOfHearts { get; } = new()
     {
         Value = "QH",
         CardType = CardTypes.Face,
@@ -140,7 +140,7 @@ public static class Cards
             }
     };
 
-    public static Card KingOfHearts { get; } = new Card
+    public static Card KingOfHearts { get; } = new()
     {
         Value = "KH",
         CardType = CardTypes.Face,
@@ -154,7 +154,7 @@ public static class Cards
             }
     };
 
-    public static Card AceOfHearts { get; } = new Card
+    public static Card AceOfHearts { get; } = new()
     {
         Value = "AH",
         IsWild = false,
@@ -165,7 +165,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TwoOfDiamonds { get; } = new Card
+    public static Card TwoOfDiamonds { get; } = new()
     {
         Value = "2D",
         IsWild = false,
@@ -176,7 +176,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card ThreeOfDiamonds { get; } = new Card
+    public static Card ThreeOfDiamonds { get; } = new()
     {
         Value = "3D",
         IsWild = false,
@@ -187,7 +187,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FourOfDiamonds { get; } = new Card
+    public static Card FourOfDiamonds { get; } = new()
     {
         Value = "4D",
         IsWild = false,
@@ -198,7 +198,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FiveOfDiamonds { get; } = new Card
+    public static Card FiveOfDiamonds { get; } = new()
     {
         Value = "5D",
         IsWild = false,
@@ -209,7 +209,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SixOfDiamonds { get; } = new Card
+    public static Card SixOfDiamonds { get; } = new()
     {
         Value = "6D",
         IsWild = false,
@@ -220,7 +220,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SevenOfDiamonds { get; } = new Card
+    public static Card SevenOfDiamonds { get; } = new()
     {
         Value = "7D",
         IsWild = false,
@@ -231,7 +231,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card EightOfDiamonds { get; } = new Card
+    public static Card EightOfDiamonds { get; } = new()
     {
         Value = "8D",
         IsWild = false,
@@ -242,7 +242,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card NineOfDiamonds { get; } = new Card
+    public static Card NineOfDiamonds { get; } = new()
     {
         Value = "9D",
         IsWild = false,
@@ -253,7 +253,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TenOfDiamonds { get; } = new Card
+    public static Card TenOfDiamonds { get; } = new()
     {
         Value = "10D",
         IsWild = false,
@@ -264,7 +264,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card JackOfDiamonds { get; } = new Card
+    public static Card JackOfDiamonds { get; } = new()
     {
         Value = "JD",
         IsWild = false,
@@ -278,7 +278,7 @@ public static class Cards
             }
     };
 
-    public static Card QueenOfDiamonds { get; } = new Card
+    public static Card QueenOfDiamonds { get; } = new()
     {
         Value = "QD",
         IsWild = false,
@@ -292,7 +292,7 @@ public static class Cards
             }
     };
 
-    public static Card KingOfDiamonds { get; } = new Card
+    public static Card KingOfDiamonds { get; } = new()
     {
         Value = "KD",
         IsWild = false,
@@ -306,7 +306,7 @@ public static class Cards
             }
     };
 
-    public static Card AceOfDiamonds { get; } = new Card
+    public static Card AceOfDiamonds { get; } = new()
     {
         Value = "AD",
         CardType = CardTypes.Ace,
@@ -317,7 +317,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TwoOfClubs { get; } = new Card
+    public static Card TwoOfClubs { get; } = new()
     {
         Value = "2C",
         IsWild = false,
@@ -328,7 +328,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card ThreeOfClubs { get; } = new Card
+    public static Card ThreeOfClubs { get; } = new()
     {
         Value = "3C",
         IsWild = false,
@@ -339,7 +339,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card FourOfClubs { get; } = new Card
+    public static Card FourOfClubs { get; } = new()
     {
         Value = "4C",
         IsWild = false,
@@ -350,7 +350,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card FiveOfClubs { get; } = new Card
+    public static Card FiveOfClubs { get; } = new()
     {
         Value = "5C",
         IsWild = false,
@@ -361,7 +361,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card SixOfClubs { get; } = new Card
+    public static Card SixOfClubs { get; } = new()
     {
         Value = "6C",
         IsWild = false,
@@ -372,7 +372,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card SevenOfClubs { get; } = new Card
+    public static Card SevenOfClubs { get; } = new()
     {
         Value = "7C",
         IsWild = false,
@@ -383,7 +383,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card EightOfClubs { get; } = new Card
+    public static Card EightOfClubs { get; } = new()
     {
         Value = "8C",
         IsWild = false,
@@ -394,7 +394,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card NineOfClubs { get; } = new Card
+    public static Card NineOfClubs { get; } = new()
     {
         Value = "9C",
         IsWild = false,
@@ -405,7 +405,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card TenOfClubs { get; } = new Card
+    public static Card TenOfClubs { get; } = new()
     {
         Value = "10C",
         IsWild = false,
@@ -416,7 +416,7 @@ public static class Cards
         CardType = CardTypes.Spot
     };
 
-    public static Card JackOfClubs { get; } = new Card
+    public static Card JackOfClubs { get; } = new()
     {
         Value = "JC",
         IsWild = false,
@@ -430,7 +430,7 @@ public static class Cards
             }
     };
 
-    public static Card QueenOfClubs { get; } = new Card
+    public static Card QueenOfClubs { get; } = new()
     {
         Value = "QC",
         IsWild = false,
@@ -444,7 +444,7 @@ public static class Cards
             }
     };
 
-    public static Card KingOfClubs { get; } = new Card
+    public static Card KingOfClubs { get; } = new()
     {
         Value = "KC",
         IsWild = false,
@@ -458,7 +458,7 @@ public static class Cards
             }
     };
 
-    public static Card AceOfClubs { get; } = new Card
+    public static Card AceOfClubs { get; } = new()
     {
         Value = "AC",
         IsWild = false,
@@ -469,7 +469,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TwoOfSpades { get; } = new Card
+    public static Card TwoOfSpades { get; } = new()
     {
         Value = "2S",
         IsWild = false,
@@ -480,7 +480,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card ThreeOfSpades { get; } = new Card
+    public static Card ThreeOfSpades { get; } = new()
     {
         Value = "3S",
         IsWild = false,
@@ -491,7 +491,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FourOfSpades { get; } = new Card
+    public static Card FourOfSpades { get; } = new()
     {
         Value = "4S",
         IsWild = false,
@@ -502,7 +502,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card FiveOfSpades { get; } = new Card
+    public static Card FiveOfSpades { get; } = new()
     {
         Value = "5S",
         IsWild = false,
@@ -513,7 +513,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SixOfSpades { get; } = new Card
+    public static Card SixOfSpades { get; } = new()
     {
         Value = "6S",
         IsWild = false,
@@ -524,7 +524,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card SevenOfSpades { get; } = new Card
+    public static Card SevenOfSpades { get; } = new()
     {
         Value = "7S",
         IsWild = false,
@@ -535,7 +535,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card EightOfSpades { get; } = new Card
+    public static Card EightOfSpades { get; } = new()
     {
         Value = "8S",
         IsWild = false,
@@ -546,7 +546,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card NineOfSpades { get; } = new Card
+    public static Card NineOfSpades { get; } = new()
     {
         Value = "9S",
         IsWild = false,
@@ -557,7 +557,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card TenOfSpades { get; } = new Card
+    public static Card TenOfSpades { get; } = new()
     {
         Value = "10S",
         IsWild = false,
@@ -568,7 +568,7 @@ public static class Cards
         Holdings = new()
     };
 
-    public static Card JackOfSpades { get; } = new Card
+    public static Card JackOfSpades { get; } = new()
     {
         Value = "JS",
         IsWild = false,
@@ -582,7 +582,7 @@ public static class Cards
             }
     };
 
-    public static Card QueenOfSpades { get; } = new Card
+    public static Card QueenOfSpades { get; } = new()
     {
         Value = "QS",
         IsWild = false,
@@ -596,7 +596,7 @@ public static class Cards
             }
     };
 
-    public static Card KingOfSpades { get; } = new Card
+    public static Card KingOfSpades { get; } = new()
     {
         Value = "KS",
         IsWild = false,
@@ -610,7 +610,7 @@ public static class Cards
             }
     };
 
-    public static Card AceOfSpades { get; } = new Card
+    public static Card AceOfSpades { get; } = new()
     {
         Value = "AS",
         IsWild = false,
@@ -633,6 +633,7 @@ public static class Cards
     };
 
     public static List<Card> All { get; } = new() {
+        // hearts
         TwoOfHearts,
         ThreeOfHearts,
         FourOfHearts,
@@ -646,6 +647,8 @@ public static class Cards
         QueenOfHearts,
         KingOfHearts,
         AceOfHearts,
+        
+        // diamonds
         TwoOfDiamonds,
         ThreeOfDiamonds,
         FourOfDiamonds,
@@ -659,6 +662,8 @@ public static class Cards
         QueenOfDiamonds,
         KingOfDiamonds,
         AceOfDiamonds,
+        
+        // clubs
         TwoOfClubs,
         ThreeOfClubs,
         FourOfClubs,
@@ -672,6 +677,8 @@ public static class Cards
         QueenOfClubs,
         KingOfClubs,
         AceOfClubs,
+        
+        // spades
         TwoOfSpades,
         ThreeOfSpades,
         FourOfSpades,

@@ -139,21 +139,4 @@ public static class Pairs
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment> { new() { RequiredCount = 2, EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList() } }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        Twos,
-        Threes,
-        Fours,
-        Fives,
-        Sixes,
-        Sevens,
-        Eights,
-        Nines,
-        Tens,
-        Jacks,
-        Queens,
-        Kings,
-        Aces
-    };
 }

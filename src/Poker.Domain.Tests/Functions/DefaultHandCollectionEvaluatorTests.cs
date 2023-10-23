@@ -109,6 +109,32 @@ public class DefaultHandCollectionEvaluatorTests
         response.Should().NotBeNull();
         response!.Hand.Should().Be(Pairs.Fours);
     }
-    
-    
+
+    [Fact]
+    public void Evaluate_KingHigh_KingIsBestCard()
+    {
+        // Arrange
+        EvaluatedHandCollectionRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.KingOfSpades,
+                Cards.TenOfSpades,
+                Cards.NineOfDiamonds,
+                Cards.SevenOfClubs,
+                Cards.SixOfHearts
+            },
+            HandEvaluator = ClassicHandEvaluator.Evaluate,
+            HandsToEvaluate = AllHands.All,
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = DefaultHandCollectionEvaluator.Evaluate(request)
+            .FirstOrDefault(h => h.HandQualification == HandQualifications.Qualifies);
+
+        // Assert
+        response.Should().NotBeNull();
+        response!.Hand.Should().Be(HighCards.King);        
+    }
 }

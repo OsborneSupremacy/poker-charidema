@@ -595,17 +595,4 @@ public static class Straights
             }
         }
     };
-
-    public static List<Hand> All { get; } = new()
-    {
-        SixHigh,
-        SevenHigh,
-        EightHigh,
-        NineHigh,
-        TenHigh,
-        JackHigh,
-        QueenHigh,
-        KingHigh,
-        AceHigh
-    };
 }
