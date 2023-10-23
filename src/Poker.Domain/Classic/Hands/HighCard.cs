@@ -2,7 +2,7 @@
 
 public static class HighCards
 {
-    public static Hand Two { get; } = new Hand
+    public static Hand Two { get; } = new()
     {
         Name = "Two High",
         HandDefinition = HandDefinitions.HighCard,
@@ -18,7 +18,7 @@ public static class HighCards
         }
     };
 
-    public static Hand Three { get; } = new Hand
+    public static Hand Three { get; } = new()
     {
         Name = "Three High",
         HandDefinition = HandDefinitions.HighCard,
@@ -34,7 +34,7 @@ public static class HighCards
         }
     };
 
-    public static Hand Four { get; } = new Hand
+    public static Hand Four { get; } = new()
     {
         Name = "Four High",
         HandDefinition = HandDefinitions.HighCard,
@@ -43,7 +43,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList() } }
     };
 
-    public static Hand Five { get; } = new Hand
+    public static Hand Five { get; } = new()
     {
         Name = "Five High",
         HandDefinition = HandDefinitions.HighCard,
@@ -52,7 +52,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList() } }
     };
 
-    public static Hand Six { get; } = new Hand
+    public static Hand Six { get; } = new()
     {
         Name = "Six High",
         HandDefinition = HandDefinitions.HighCard,
@@ -61,7 +61,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList() } }
     };
 
-    public static Hand Seven { get; } = new Hand
+    public static Hand Seven { get; } = new()
     {
         Name = "Seven High",
         HandDefinition = HandDefinitions.HighCard,
@@ -70,7 +70,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList() } }
     };
 
-    public static Hand Eight { get; } = new Hand
+    public static Hand Eight { get; } = new()
     {
         Name = "Eight High",
         HandDefinition = HandDefinitions.HighCard,
@@ -79,7 +79,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList() } }
     };
 
-    public static Hand Nine { get; } = new Hand
+    public static Hand Nine { get; } = new()
     {
         Name = "Nine High",
         HandDefinition = HandDefinitions.HighCard,
@@ -88,7 +88,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList() } }
     };
 
-    public static Hand Ten { get; } = new Hand
+    public static Hand Ten { get; } = new()
     {
         Name = "Ten High",
         HandDefinition = HandDefinitions.HighCard,
@@ -97,7 +97,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList() } }
     };
 
-    public static Hand Jack { get; } = new Hand
+    public static Hand Jack { get; } = new()
     {
         Name = "Jack High",
         HandDefinition = HandDefinitions.HighCard,
@@ -106,7 +106,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList() } }
     };
 
-    public static Hand Queen { get; } = new Hand
+    public static Hand Queen { get; } = new()
     {
         Name = "Queen High",
         HandDefinition = HandDefinitions.HighCard,
@@ -115,7 +115,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList() } }
     };
 
-    public static Hand King { get; } = new Hand
+    public static Hand King { get; } = new()
     {
         Name = "King High",
         HandDefinition = HandDefinitions.HighCard,
@@ -124,7 +124,7 @@ public static class HighCards
         HandSegments = new List<HandSegment> { new() { RequiredCount = 1, EligibleCards = Cards.All.WhereRank(Ranks.King).ToList() } }
     };
 
-    public static Hand Ace { get; } = new Hand
+    public static Hand Ace { get; } = new()
     {
         Name = "Ace High",
         HandDefinition = HandDefinitions.HighCard,

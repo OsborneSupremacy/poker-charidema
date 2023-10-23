@@ -2,7 +2,7 @@
 
 public static class RoyalFlushes
 {
-    public static Hand Spades { get; } = new Hand
+    public static Hand Spades { get; } = new()
     {
         Name = "Spades Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -25,7 +25,7 @@ public static class RoyalFlushes
         }
     };
 
-    public static Hand Hearts { get; } = new Hand
+    public static Hand Hearts { get; } = new()
     {
         Name = "Hearts Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -48,7 +48,7 @@ public static class RoyalFlushes
         }
     };
 
-    public static Hand Diamonds { get; } = new Hand
+    public static Hand Diamonds { get; } = new()
     {
         Name = "Diamonds Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,
@@ -71,7 +71,7 @@ public static class RoyalFlushes
         }
     };
 
-    public static Hand Clubs { get; } = new Hand
+    public static Hand Clubs { get; } = new()
     {
         Name = "Clubs Royal Flush",
         HandDefinition = HandDefinitions.RoyalFlush,

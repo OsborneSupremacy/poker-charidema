@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Delegates;
 
-public delegate IEnumerable<EvaluatedHandResponse> HandCollectionEvaluator(
+public delegate IOrderedEnumerable<EvaluatedHandResponse> HandCollectionEvaluator(
     EvaluatedHandCollectionRequest request
 );
 

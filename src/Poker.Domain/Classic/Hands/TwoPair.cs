@@ -2,7 +2,7 @@
 
 public static class TwoPair
 {
-    public static Hand ThreesOverTwos { get; } = new Hand
+    public static Hand ThreesOverTwos { get; } = new()
     {
         Name = "Threes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -23,7 +23,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand FoursOverTwos { get; } = new Hand
+    public static Hand FoursOverTwos { get; } = new()
     {
         Name = "Fours Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -44,7 +44,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand FivesOverTwos { get; } = new Hand
+    public static Hand FivesOverTwos { get; } = new()
     {
         Name = "Fives Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -65,7 +65,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SixesOverTwos { get; } = new Hand
+    public static Hand SixesOverTwos { get; } = new()
     {
         Name = "Sixes Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -86,7 +86,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SevensOverTwos { get; } = new Hand
+    public static Hand SevensOverTwos { get; } = new()
     {
         Name = "Sevens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -107,7 +107,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverTwos { get; } = new Hand
+    public static Hand EightsOverTwos { get; } = new()
     {
         Name = "Eights Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -128,7 +128,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverTwos { get; } = new Hand
+    public static Hand NinesOverTwos { get; } = new()
     {
         Name = "Nines Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -149,7 +149,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverTwos { get; } = new Hand
+    public static Hand TensOverTwos { get; } = new()
     {
         Name = "Tens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -170,7 +170,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverTwos { get; } = new Hand
+    public static Hand JacksOverTwos { get; } = new()
     {
         Name = "Jacks Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -191,7 +191,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverTwos { get; } = new Hand
+    public static Hand QueensOverTwos { get; } = new()
     {
         Name = "Queens Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -212,7 +212,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverTwos { get; } = new Hand
+    public static Hand KingsOverTwos { get; } = new()
     {
         Name = "Kings Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -233,7 +233,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverTwos { get; } = new Hand
+    public static Hand AcesOverTwos { get; } = new()
     {
         Name = "Aces Over Twos",
         HandDefinition = HandDefinitions.TwoPair,
@@ -254,7 +254,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand FoursOverThrees { get; } = new Hand
+    public static Hand FoursOverThrees { get; } = new()
     {
         Name = "Fours Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -275,7 +275,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand FivesOverThrees { get; } = new Hand
+    public static Hand FivesOverThrees { get; } = new()
     {
         Name = "Fives Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -296,7 +296,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SixesOverThrees { get; } = new Hand
+    public static Hand SixesOverThrees { get; } = new()
     {
         Name = "Sixes Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -317,7 +317,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SevensOverThrees { get; } = new Hand
+    public static Hand SevensOverThrees { get; } = new()
     {
         Name = "Sevens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -338,7 +338,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverThrees { get; } = new Hand
+    public static Hand EightsOverThrees { get; } = new()
     {
         Name = "Eights Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -359,7 +359,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverThrees { get; } = new Hand
+    public static Hand NinesOverThrees { get; } = new()
     {
         Name = "Nines Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -380,7 +380,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverThrees { get; } = new Hand
+    public static Hand TensOverThrees { get; } = new()
     {
         Name = "Tens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -401,7 +401,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverThrees { get; } = new Hand
+    public static Hand JacksOverThrees { get; } = new()
     {
         Name = "Jacks Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -422,7 +422,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverThrees { get; } = new Hand
+    public static Hand QueensOverThrees { get; } = new()
     {
         Name = "Queens Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -443,7 +443,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverThrees { get; } = new Hand
+    public static Hand KingsOverThrees { get; } = new()
     {
         Name = "Kings Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -464,7 +464,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverThrees { get; } = new Hand
+    public static Hand AcesOverThrees { get; } = new()
     {
         Name = "Aces Over Threes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -485,7 +485,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand FivesOverFours { get; } = new Hand
+    public static Hand FivesOverFours { get; } = new()
     {
         Name = "Fives Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -506,7 +506,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SixesOverFours { get; } = new Hand
+    public static Hand SixesOverFours { get; } = new()
     {
         Name = "Sixes Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -527,7 +527,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SevensOverFours { get; } = new Hand
+    public static Hand SevensOverFours { get; } = new()
     {
         Name = "Sevens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -548,7 +548,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverFours { get; } = new Hand
+    public static Hand EightsOverFours { get; } = new()
     {
         Name = "Eights Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -569,7 +569,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverFours { get; } = new Hand
+    public static Hand NinesOverFours { get; } = new()
     {
         Name = "Nines Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -590,7 +590,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverFours { get; } = new Hand
+    public static Hand TensOverFours { get; } = new()
     {
         Name = "Tens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -611,7 +611,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverFours { get; } = new Hand
+    public static Hand JacksOverFours { get; } = new()
     {
         Name = "Jacks Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -632,7 +632,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverFours { get; } = new Hand
+    public static Hand QueensOverFours { get; } = new()
     {
         Name = "Queens Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -653,7 +653,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverFours { get; } = new Hand
+    public static Hand KingsOverFours { get; } = new()
     {
         Name = "Kings Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -674,7 +674,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverFours { get; } = new Hand
+    public static Hand AcesOverFours { get; } = new()
     {
         Name = "Aces Over Fours",
         HandDefinition = HandDefinitions.TwoPair,
@@ -695,7 +695,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SixesOverFives { get; } = new Hand
+    public static Hand SixesOverFives { get; } = new()
     {
         Name = "Sixes Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -716,7 +716,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SevensOverFives { get; } = new Hand
+    public static Hand SevensOverFives { get; } = new()
     {
         Name = "Sevens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -737,7 +737,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverFives { get; } = new Hand
+    public static Hand EightsOverFives { get; } = new()
     {
         Name = "Eights Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -760,7 +760,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverFives { get; } = new Hand
+    public static Hand NinesOverFives { get; } = new()
     {
         Name = "Nines Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -783,7 +783,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverFives { get; } = new Hand
+    public static Hand TensOverFives { get; } = new()
     {
         Name = "Tens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -806,7 +806,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverFives { get; } = new Hand
+    public static Hand JacksOverFives { get; } = new()
     {
         Name = "Jacks Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -829,7 +829,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverFives { get; } = new Hand
+    public static Hand QueensOverFives { get; } = new()
     {
         Name = "Queens Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -852,7 +852,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverFives { get; } = new Hand
+    public static Hand KingsOverFives { get; } = new()
     {
         Name = "Kings Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -875,7 +875,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverFives { get; } = new Hand
+    public static Hand AcesOverFives { get; } = new()
     {
         Name = "Aces Over Fives",
         HandDefinition = HandDefinitions.TwoPair,
@@ -898,7 +898,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand SevensOverSixes { get; } = new Hand
+    public static Hand SevensOverSixes { get; } = new()
     {
         Name = "Sevens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -921,7 +921,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverSixes { get; } = new Hand
+    public static Hand EightsOverSixes { get; } = new()
     {
         Name = "Eights Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -944,7 +944,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverSixes { get; } = new Hand
+    public static Hand NinesOverSixes { get; } = new()
     {
         Name = "Nines Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -967,7 +967,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverSixes { get; } = new Hand
+    public static Hand TensOverSixes { get; } = new()
     {
         Name = "Tens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -990,7 +990,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverSixes { get; } = new Hand
+    public static Hand JacksOverSixes { get; } = new()
     {
         Name = "Jacks Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1013,7 +1013,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverSixes { get; } = new Hand
+    public static Hand QueensOverSixes { get; } = new()
     {
         Name = "Queens Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1036,7 +1036,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverSixes { get; } = new Hand
+    public static Hand KingsOverSixes { get; } = new()
     {
         Name = "Kings Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1059,7 +1059,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverSixes { get; } = new Hand
+    public static Hand AcesOverSixes { get; } = new()
     {
         Name = "Aces Over Sixes",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1082,7 +1082,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand EightsOverSevens { get; } = new Hand
+    public static Hand EightsOverSevens { get; } = new()
     {
         Name = "Eights Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1107,7 +1107,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverSevens { get; } = new Hand
+    public static Hand NinesOverSevens { get; } = new()
     {
         Name = "Nines Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1128,7 +1128,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverSevens { get; } = new Hand
+    public static Hand TensOverSevens { get; } = new()
     {
         Name = "Tens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1149,7 +1149,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverSevens { get; } = new Hand
+    public static Hand JacksOverSevens { get; } = new()
     {
         Name = "Jacks Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1170,7 +1170,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverSevens { get; } = new Hand
+    public static Hand QueensOverSevens { get; } = new()
     {
         Name = "Queens Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1191,7 +1191,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverSevens { get; } = new Hand
+    public static Hand KingsOverSevens { get; } = new()
     {
         Name = "Kings Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1212,7 +1212,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverSevens { get; } = new Hand
+    public static Hand AcesOverSevens { get; } = new()
     {
         Name = "Aces Over Sevens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1233,7 +1233,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand NinesOverEights { get; } = new Hand
+    public static Hand NinesOverEights { get; } = new()
     {
         Name = "Nines Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1256,7 +1256,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverEights { get; } = new Hand
+    public static Hand TensOverEights { get; } = new()
     {
         Name = "Tens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1279,7 +1279,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverEights { get; } = new Hand
+    public static Hand JacksOverEights { get; } = new()
     {
         Name = "Jacks Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1302,7 +1302,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverEights { get; } = new Hand
+    public static Hand QueensOverEights { get; } = new()
     {
         Name = "Queens Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1325,7 +1325,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverEights { get; } = new Hand
+    public static Hand KingsOverEights { get; } = new()
     {
         Name = "Kings Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1348,7 +1348,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverEights { get; } = new Hand
+    public static Hand AcesOverEights { get; } = new()
     {
         Name = "Aces Over Eights",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1371,7 +1371,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand TensOverNines { get; } = new Hand
+    public static Hand TensOverNines { get; } = new()
     {
         Name = "Tens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1394,7 +1394,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverNines { get; } = new Hand
+    public static Hand JacksOverNines { get; } = new()
     {
         Name = "Jacks Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1417,7 +1417,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverNines { get; } = new Hand
+    public static Hand QueensOverNines { get; } = new()
     {
         Name = "Queens Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1440,7 +1440,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverNines { get; } = new Hand
+    public static Hand KingsOverNines { get; } = new()
     {
         Name = "Kings Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1463,7 +1463,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverNines { get; } = new Hand
+    public static Hand AcesOverNines { get; } = new()
     {
         Name = "Aces Over Nines",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1486,7 +1486,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand JacksOverTens { get; } = new Hand
+    public static Hand JacksOverTens { get; } = new()
     {
         Name = "Jacks Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1509,7 +1509,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverTens { get; } = new Hand
+    public static Hand QueensOverTens { get; } = new()
     {
         Name = "Queens Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1532,7 +1532,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverTens { get; } = new Hand
+    public static Hand KingsOverTens { get; } = new()
     {
         Name = "Kings Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1555,7 +1555,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverTens { get; } = new Hand
+    public static Hand AcesOverTens { get; } = new()
     {
         Name = "Aces Over Tens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1578,7 +1578,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand QueensOverJacks { get; } = new Hand
+    public static Hand QueensOverJacks { get; } = new()
     {
         Name = "Queens Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1601,7 +1601,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverJacks { get; } = new Hand
+    public static Hand KingsOverJacks { get; } = new()
     {
         Name = "Kings Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1624,7 +1624,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverJacks { get; } = new Hand
+    public static Hand AcesOverJacks { get; } = new()
     {
         Name = "Aces Over Jacks",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1647,7 +1647,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand KingsOverQueens { get; } = new Hand
+    public static Hand KingsOverQueens { get; } = new()
     {
         Name = "Kings Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1670,7 +1670,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverQueens { get; } = new Hand
+    public static Hand AcesOverQueens { get; } = new()
     {
         Name = "Aces Over Queens",
         HandDefinition = HandDefinitions.TwoPair,
@@ -1693,7 +1693,7 @@ public static class TwoPair
         }
     };
 
-    public static Hand AcesOverKings { get; } = new Hand
+    public static Hand AcesOverKings { get; } = new()
     {
         Name = "Aces Over Kings",
         HandDefinition = HandDefinitions.TwoPair,

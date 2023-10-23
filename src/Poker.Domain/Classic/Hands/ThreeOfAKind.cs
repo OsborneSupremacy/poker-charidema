@@ -2,7 +2,7 @@
 
 public static class ThreeOfAKind
 {
-    public static Hand Twos { get; } = new Hand
+    public static Hand Twos { get; } = new()
     {
         Name = "Three Twos",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -18,7 +18,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Threes { get; } = new Hand
+    public static Hand Threes { get; } = new()
     {
         Name = "Three Threes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -34,7 +34,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Fours { get; } = new Hand
+    public static Hand Fours { get; } = new()
     {
         Name = "Three Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -50,7 +50,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Fives { get; } = new Hand
+    public static Hand Fives { get; } = new()
     {
         Name = "Three Fives",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -66,7 +66,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Sixes { get; } = new Hand
+    public static Hand Sixes { get; } = new()
     {
         Name = "Three Sixes",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -82,7 +82,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Sevens { get; } = new Hand
+    public static Hand Sevens { get; } = new()
     {
         Name = "Three Sevens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -98,7 +98,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Eights { get; } = new Hand
+    public static Hand Eights { get; } = new()
     {
         Name = "Three Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -114,7 +114,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Nines { get; } = new Hand
+    public static Hand Nines { get; } = new()
     {
         Name = "Three Nines",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -130,7 +130,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Tens { get; } = new Hand
+    public static Hand Tens { get; } = new()
     {
         Name = "Three Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -146,7 +146,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Jacks { get; } = new Hand
+    public static Hand Jacks { get; } = new()
     {
         Name = "Three Jacks",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -162,7 +162,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Queens { get; } = new Hand
+    public static Hand Queens { get; } = new()
     {
         Name = "Three Queens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -178,7 +178,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Kings { get; } = new Hand
+    public static Hand Kings { get; } = new()
     {
         Name = "Three Kings",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -194,7 +194,7 @@ public static class ThreeOfAKind
         }
     };
 
-    public static Hand Aces { get; } = new Hand
+    public static Hand Aces { get; } = new()
     {
         Name = "Three Aces",
         HandDefinition = HandDefinitions.ThreeOfAKind,

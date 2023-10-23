@@ -58,7 +58,7 @@ public class PhaseCoordinator : IPhaseCoordinator
                 .WriteHeading(HeadingLevel.Six, "Your Cards")
                 .RenderCards(user.Cards);
 
-            var bestHand = DefaultHandCollectionEvaluator.Evaluate(
+            var hands = DefaultHandCollectionEvaluator.Evaluate(
                 new EvaluatedHandCollectionRequest
                 {
                     Cards = user.Cards,
@@ -66,7 +66,15 @@ public class PhaseCoordinator : IPhaseCoordinator
                     HandsToEvaluate = Domain.Classic.Hands.AllHands.All,
                     RemainingCardCount = request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
                 }
-            ).First(h => h.HandQualification == HandQualifications.Qualifies);
+            )
+                .Where(h => h.HandQualification == HandQualifications.Qualifies)
+                .ToList();
+            
+            var bestHand = hands
+                .OrderByDescending(x => x.Hand.HandDefinition.Value)
+                .ThenByDescending(x => x.Hand.HighRank.Value)
+                .ThenByDescending(x => x.Hand.Suit.Priority)
+                .First();
         
             _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");           
         }

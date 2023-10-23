@@ -21,10 +21,10 @@
 /// </summary>
 public record FiveOfAKind
 {
-    public static Hand Twos { get; } = new Hand
+    public static Hand Twos { get; } = new()
     {
         Name = "Five Twos",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -38,16 +38,16 @@ public record FiveOfAKind
                     Cards.TwoOfHearts,
                     Cards.TwoOfClubs,
                     Cards.TwoOfDiamonds,
-                    Cards.TwoOfSpades with { Id = Guid.NewGuid() }
+                    Cards.TwoOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Threes { get; } = new Hand
+    public static Hand Threes { get; } = new()
     {
         Name = "Five Threes",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -61,13 +61,13 @@ public record FiveOfAKind
                     Cards.ThreeOfHearts,
                     Cards.ThreeOfClubs,
                     Cards.ThreeOfDiamonds,
-                    Cards.ThreeOfSpades with { Id = Guid.NewGuid() }
+                    Cards.ThreeOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Fours { get; } = new Hand
+    public static Hand Fours { get; } = new()
     {
         Name = "Five Fours",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -84,16 +84,16 @@ public record FiveOfAKind
                     Cards.FourOfHearts,
                     Cards.FourOfClubs,
                     Cards.FourOfDiamonds,
-                    Cards.FourOfSpades with { Id = Guid.NewGuid() }
+                    Cards.FourOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Fives { get; } = new Hand
+    public static Hand Fives { get; } = new()
     {
         Name = "Five Fives",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -107,16 +107,16 @@ public record FiveOfAKind
                     Cards.FiveOfHearts,
                     Cards.FiveOfClubs,
                     Cards.FiveOfDiamonds,
-                    Cards.FiveOfSpades with { Id = Guid.NewGuid() }
+                    Cards.FiveOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Sixes { get; } = new Hand
+    public static Hand Sixes { get; } = new()
     {
         Name = "Five Sixes",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -130,16 +130,16 @@ public record FiveOfAKind
                     Cards.SixOfHearts,
                     Cards.SixOfClubs,
                     Cards.SixOfDiamonds,
-                    Cards.SixOfSpades with { Id = Guid.NewGuid() }
+                    Cards.SixOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Sevens { get; } = new Hand
+    public static Hand Sevens { get; } = new()
     {
         Name = "Five Sevens",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -153,13 +153,13 @@ public record FiveOfAKind
                     Cards.SevenOfHearts,
                     Cards.SevenOfClubs,
                     Cards.SevenOfDiamonds,
-                    Cards.SevenOfSpades with { Id = Guid.NewGuid() }
+                    Cards.SevenOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Eights { get; } = new Hand
+    public static Hand Eights { get; } = new()
     {
         Name = "Five Eights",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -176,16 +176,16 @@ public record FiveOfAKind
                     Cards.EightOfHearts,
                     Cards.EightOfClubs,
                     Cards.EightOfDiamonds,
-                    Cards.EightOfSpades with { Id = Guid.NewGuid() }
+                    Cards.EightOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Nines { get; } = new Hand
+    public static Hand Nines { get; } = new()
     {
         Name = "Five Nines",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -199,13 +199,13 @@ public record FiveOfAKind
                     Cards.NineOfHearts,
                     Cards.NineOfClubs,
                     Cards.NineOfDiamonds,
-                    Cards.NineOfSpades with { Id = Guid.NewGuid() }
+                    Cards.NineOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Tens { get; } = new Hand
+    public static Hand Tens { get; } = new()
     {
         Name = "Five Tens",
         HandDefinition = HandDefinitions.ThreeOfAKind,
@@ -222,16 +222,16 @@ public record FiveOfAKind
                     Cards.TenOfHearts,
                     Cards.TenOfClubs,
                     Cards.TenOfDiamonds,
-                    Cards.TenOfSpades with { Id = Guid.NewGuid() }
+                    Cards.TenOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Jacks { get; } = new Hand
+    public static Hand Jacks { get; } = new()
     {
         Name = "Five Jacks",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -245,16 +245,16 @@ public record FiveOfAKind
                     Cards.JackOfHearts,
                     Cards.JackOfClubs,
                     Cards.JackOfDiamonds,
-                    Cards.JackOfSpades with { Id = Guid.NewGuid() }
+                    Cards.JackOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Queens { get; } = new Hand
+    public static Hand Queens { get; } = new()
     {
         Name = "Five Queens",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -268,16 +268,16 @@ public record FiveOfAKind
                     Cards.QueenOfHearts,
                     Cards.QueenOfClubs,
                     Cards.QueenOfDiamonds,
-                    Cards.QueenOfSpades with { Id = Guid.NewGuid() }
+                    Cards.QueenOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Kings { get; } = new Hand
+    public static Hand Kings { get; } = new()
     {
         Name = "Five Kings",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -291,16 +291,16 @@ public record FiveOfAKind
                     Cards.KingOfHearts,
                     Cards.KingOfClubs,
                     Cards.KingOfDiamonds,
-                    Cards.KingOfSpades with { Id = Guid.NewGuid() }
+                    Cards.KingOfSpades with { }
                 }
             }
         }
     };
 
-    public static Hand Aces { get; } = new Hand
+    public static Hand Aces { get; } = new()
     {
         Name = "Five Aces",
-        HandDefinition = HandDefinitions.ThreeOfAKind,
+        HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments = new List<HandSegment>
@@ -314,7 +314,7 @@ public record FiveOfAKind
                     Cards.AceOfHearts,
                     Cards.AceOfClubs,
                     Cards.AceOfDiamonds,
-                    Cards.AceOfSpades with { Id = Guid.NewGuid() }
+                    Cards.AceOfSpades with { }
                 }
             }
         }

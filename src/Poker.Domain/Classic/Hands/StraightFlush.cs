@@ -2,10 +2,10 @@
 
 public static class StraightFlushes
 {
-    public static Hand SixHighSpades { get; } = new Hand
+    public static Hand SixHighSpades { get; } = new()
     {
         Name = "Six High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Six,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -25,10 +25,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SevenHighSpades { get; } = new Hand
+    public static Hand SevenHighSpades { get; } = new()
     {
         Name = "Seven High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Seven,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -48,10 +48,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand EightHighSpades { get; } = new Hand
+    public static Hand EightHighSpades { get; } = new()
     {
         Name = "Eight High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Eight,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -71,10 +71,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand NineHighSpades { get; } = new Hand
+    public static Hand NineHighSpades { get; } = new()
     {
         Name = "Nine High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Nine,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -94,10 +94,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand TenHighSpades { get; } = new Hand
+    public static Hand TenHighSpades { get; } = new()
     {
         Name = "Ten High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Ten,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -117,10 +117,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand JackHighSpades { get; } = new Hand
+    public static Hand JackHighSpades { get; } = new()
     {
         Name = "Jack High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Jack,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -140,10 +140,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand QueenHighSpades { get; } = new Hand
+    public static Hand QueenHighSpades { get; } = new()
     {
         Name = "Queen High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Queen,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -163,10 +163,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand KingHighSpades { get; } = new Hand
+    public static Hand KingHighSpades { get; } = new()
     {
         Name = "King High Spades Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.King,
         Suit = Suits.Spades,
         HandSegments = new List<HandSegment>
@@ -186,10 +186,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SixHighHearts { get; } = new Hand
+    public static Hand SixHighHearts { get; } = new()
     {
         Name = "Six High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Six,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -209,10 +209,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SevenHighHearts { get; } = new Hand
+    public static Hand SevenHighHearts { get; } = new()
     {
         Name = "Seven High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Seven,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -232,10 +232,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand EightHighHearts { get; } = new Hand
+    public static Hand EightHighHearts { get; } = new()
     {
         Name = "Eight High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Eight,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -255,10 +255,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand NineHighHearts { get; } = new Hand
+    public static Hand NineHighHearts { get; } = new()
     {
         Name = "Nine High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Nine,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -278,10 +278,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand TenHighHearts { get; } = new Hand
+    public static Hand TenHighHearts { get; } = new()
     {
         Name = "Ten High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Ten,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -301,10 +301,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand JackHighHearts { get; } = new Hand
+    public static Hand JackHighHearts { get; } = new()
     {
         Name = "Jack High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Jack,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -324,10 +324,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand QueenHighHearts { get; } = new Hand
+    public static Hand QueenHighHearts { get; } = new()
     {
         Name = "Queen High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Queen,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -347,10 +347,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand KingHighHearts { get; } = new Hand
+    public static Hand KingHighHearts { get; } = new()
     {
         Name = "King High Hearts Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.King,
         Suit = Suits.Hearts,
         HandSegments = new List<HandSegment>
@@ -370,10 +370,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SixHighClubs { get; } = new Hand
+    public static Hand SixHighClubs { get; } = new()
     {
         Name = "Six High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Six,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -393,10 +393,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SevenHighClubs { get; } = new Hand
+    public static Hand SevenHighClubs { get; } = new()
     {
         Name = "Seven High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Seven,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -416,10 +416,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand EightHighClubs { get; } = new Hand
+    public static Hand EightHighClubs { get; } = new()
     {
         Name = "Eight High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Eight,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -439,10 +439,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand NineHighClubs { get; } = new Hand
+    public static Hand NineHighClubs { get; } = new()
     {
         Name = "Nine High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Nine,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -462,10 +462,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand TenHighClubs { get; } = new Hand
+    public static Hand TenHighClubs { get; } = new()
     {
         Name = "Ten High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Ten,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -485,10 +485,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand JackHighClubs { get; } = new Hand
+    public static Hand JackHighClubs { get; } = new()
     {
         Name = "Jack High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Jack,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -508,10 +508,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand QueenHighClubs { get; } = new Hand
+    public static Hand QueenHighClubs { get; } = new()
     {
         Name = "Queen High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Queen,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -531,10 +531,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand KingHighClubs { get; } = new Hand
+    public static Hand KingHighClubs { get; } = new()
     {
         Name = "King High Clubs Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.King,
         Suit = Suits.Clubs,
         HandSegments = new List<HandSegment>
@@ -554,10 +554,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SixHighDiamonds { get; } = new Hand
+    public static Hand SixHighDiamonds { get; } = new()
     {
         Name = "Six High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Six,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -577,10 +577,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand SevenHighDiamonds { get; } = new Hand
+    public static Hand SevenHighDiamonds { get; } = new()
     {
         Name = "Seven High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Seven,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -600,10 +600,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand EightHighDiamonds { get; } = new Hand
+    public static Hand EightHighDiamonds { get; } = new()
     {
         Name = "Eight High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Eight,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -623,10 +623,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand NineHighDiamonds { get; } = new Hand
+    public static Hand NineHighDiamonds { get; } = new()
     {
         Name = "Nine High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Nine,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -646,10 +646,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand TenHighDiamonds { get; } = new Hand
+    public static Hand TenHighDiamonds { get; } = new()
     {
         Name = "Ten High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Ten,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -669,10 +669,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand JackHighDiamonds { get; } = new Hand
+    public static Hand JackHighDiamonds { get; } = new()
     {
         Name = "Jack High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Jack,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -692,10 +692,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand QueenHighDiamonds { get; } = new Hand
+    public static Hand QueenHighDiamonds { get; } = new()
     {
         Name = "Queen High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.Queen,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>
@@ -715,10 +715,10 @@ public static class StraightFlushes
         }
     };
 
-    public static Hand KingHighDiamonds { get; } = new Hand
+    public static Hand KingHighDiamonds { get; } = new()
     {
         Name = "King High Diamonds Straight Flush",
-        HandDefinition = HandDefinitions.Straight,
+        HandDefinition = HandDefinitions.StraightFlush,
         HighRank = Ranks.King,
         Suit = Suits.Diamonds,
         HandSegments = new List<HandSegment>

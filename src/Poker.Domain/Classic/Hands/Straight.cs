@@ -2,7 +2,7 @@
 
 public static class Straights
 {
-    public static Hand SixHigh { get; } = new Hand
+    public static Hand SixHigh { get; } = new()
     {
         Name = "Six High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -68,7 +68,7 @@ public static class Straights
         }
     };
 
-    public static Hand SevenHigh { get; } = new Hand
+    public static Hand SevenHigh { get; } = new()
     {
         Name = "Seven High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -134,7 +134,7 @@ public static class Straights
         }
     };
 
-    public static Hand EightHigh { get; } = new Hand
+    public static Hand EightHigh { get; } = new()
     {
         Name = "Eight High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -200,7 +200,7 @@ public static class Straights
         }
     };
 
-    public static Hand NineHigh { get; } = new Hand
+    public static Hand NineHigh { get; } = new()
     {
         Name = "Nine High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -266,7 +266,7 @@ public static class Straights
         }
     };
 
-    public static Hand TenHigh { get; } = new Hand
+    public static Hand TenHigh { get; } = new()
     {
         Name = "Ten High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -332,7 +332,7 @@ public static class Straights
         }
     };
 
-    public static Hand JackHigh { get; } = new Hand
+    public static Hand JackHigh { get; } = new()
     {
         Name = "Jack High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -398,7 +398,7 @@ public static class Straights
         }
     };
 
-    public static Hand QueenHigh { get; } = new Hand
+    public static Hand QueenHigh { get; } = new()
     {
         Name = "Queen High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -464,7 +464,7 @@ public static class Straights
         }
     };
 
-    public static Hand KingHigh { get; } = new Hand
+    public static Hand KingHigh { get; } = new()
     {
         Name = "King High Straight",
         HandDefinition = HandDefinitions.Straight,
@@ -530,7 +530,7 @@ public static class Straights
         }
     };
 
-    public static Hand AceHigh { get; } = new Hand
+    public static Hand AceHigh { get; } = new()
     {
         Name = "Ace High Straight",
         HandDefinition = HandDefinitions.Straight,

@@ -2,7 +2,7 @@
 
 public static class NoHands
 {
-    public static Hand NoHand { get; } = new Hand
+    public static Hand NoHand { get; } = new()
     {
         Name = "No Hand",
         HandDefinition = HandDefinitions.NoHand,

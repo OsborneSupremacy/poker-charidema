@@ -81,4 +81,34 @@ public class DefaultHandCollectionEvaluatorTests
         response.Should().NotBeNull();
         response!.Hand.Should().Be(Pairs.Threes);
     }
+    
+    [Fact]
+    public void Evaluate_PairOfFours_PairOfFoursPresent()
+    {
+        // Arrange
+        EvaluatedHandCollectionRequest request = new()
+        {
+            Cards = new()
+            {
+                Cards.EightOfDiamonds,
+                Cards.SixOfDiamonds,
+                Cards.FourOfSpades,
+                Cards.FourOfClubs,
+                Cards.ThreeOfClubs
+            },
+            HandEvaluator = ClassicHandEvaluator.Evaluate,
+            HandsToEvaluate = AllHands.All,
+            RemainingCardCount = 0
+        };
+
+        // Act
+        var response = DefaultHandCollectionEvaluator.Evaluate(request)
+            .FirstOrDefault(h => h.HandQualification == HandQualifications.Qualifies);
+
+        // Assert
+        response.Should().NotBeNull();
+        response!.Hand.Should().Be(Pairs.Fours);
+    }
+    
+    
 }

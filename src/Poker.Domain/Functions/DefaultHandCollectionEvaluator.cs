@@ -5,9 +5,6 @@ public static class DefaultHandCollectionEvaluator
     public static readonly HandCollectionEvaluator Evaluate = request =>
     {
         return request.HandsToEvaluate
-            .OrderByDescending(h => h.HandDefinition.Value)
-            .ThenByDescending(h => h.HighRank.Value)
-            .ThenByDescending(h => h.Suit.Priority)
             .Select(
                 hand => request.HandEvaluator
                 (
@@ -18,6 +15,9 @@ public static class DefaultHandCollectionEvaluator
                         RemainingCardCount = request.RemainingCardCount
                     }
                 )
-            );
+            )
+            .OrderByDescending(h => h.Hand.HandDefinition.Value)
+            .ThenByDescending(h => h.Hand.HighRank.Value)
+            .ThenByDescending(h => h.Hand.Suit.Priority);
     };
 }
