@@ -18,8 +18,7 @@ public static class FourOfAKind
                     Cards.TwoOfSpades,
                     Cards.TwoOfHearts,
                     Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds,
-                    Cards.TwoOfSpades 
+                    Cards.TwoOfDiamonds
                 }
             }
         }
@@ -41,8 +40,7 @@ public static class FourOfAKind
                     Cards.ThreeOfSpades,
                     Cards.ThreeOfHearts,
                     Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds,
-                    Cards.ThreeOfSpades                  
+                    Cards.ThreeOfDiamonds               
                 }
             }
         }
@@ -64,8 +62,7 @@ public static class FourOfAKind
                     Cards.FourOfSpades,
                     Cards.FourOfHearts,
                     Cards.FourOfClubs,
-                    Cards.FourOfDiamonds,
-                    Cards.FourOfSpades                  
+                    Cards.FourOfDiamonds            
                 }
             }
         }
@@ -87,8 +84,7 @@ public static class FourOfAKind
                     Cards.FiveOfSpades,
                     Cards.FiveOfHearts,
                     Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds,
-                    Cards.FiveOfSpades                  
+                    Cards.FiveOfDiamonds            
                 }
             }
         }
@@ -110,8 +106,7 @@ public static class FourOfAKind
                     Cards.SixOfSpades,
                     Cards.SixOfHearts,
                     Cards.SixOfClubs,
-                    Cards.SixOfDiamonds,
-                    Cards.SixOfSpades                  
+                    Cards.SixOfDiamonds             
                 }
             }
         }
@@ -133,8 +128,7 @@ public static class FourOfAKind
                     Cards.SevenOfSpades,
                     Cards.SevenOfHearts,
                     Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds,
-                    Cards.SevenOfSpades                  
+                    Cards.SevenOfDiamonds              
                 }
             }
         }
@@ -156,8 +150,7 @@ public static class FourOfAKind
                     Cards.EightOfSpades,
                     Cards.EightOfHearts,
                     Cards.EightOfClubs,
-                    Cards.EightOfDiamonds,
-                    Cards.EightOfSpades                  
+                    Cards.EightOfDiamonds             
                 }
             }
         }
@@ -179,8 +172,7 @@ public static class FourOfAKind
                     Cards.NineOfSpades,
                     Cards.NineOfHearts,
                     Cards.NineOfClubs,
-                    Cards.NineOfDiamonds,
-                    Cards.NineOfSpades                  
+                    Cards.NineOfDiamonds             
                 }
             }
         }
@@ -202,8 +194,7 @@ public static class FourOfAKind
                     Cards.TenOfSpades,
                     Cards.TenOfHearts,
                     Cards.TenOfClubs,
-                    Cards.TenOfDiamonds,
-                    Cards.TenOfSpades                  
+                    Cards.TenOfDiamonds               
                 }
             }
         }
@@ -225,8 +216,7 @@ public static class FourOfAKind
                     Cards.JackOfSpades,
                     Cards.JackOfHearts,
                     Cards.JackOfClubs,
-                    Cards.JackOfDiamonds,
-                    Cards.JackOfSpades                  
+                    Cards.JackOfDiamonds              
                 }
             }
         }
@@ -248,8 +238,7 @@ public static class FourOfAKind
                     Cards.QueenOfSpades,
                     Cards.QueenOfHearts,
                     Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds,
-                    Cards.QueenOfSpades                  
+                    Cards.QueenOfDiamonds               
                 }
             }
         }
@@ -271,8 +260,7 @@ public static class FourOfAKind
                     Cards.KingOfSpades,
                     Cards.KingOfHearts,
                     Cards.KingOfClubs,
-                    Cards.KingOfDiamonds,
-                    Cards.KingOfSpades                  
+                    Cards.KingOfDiamonds             
                 }
             }
         }
@@ -294,8 +282,7 @@ public static class FourOfAKind
                     Cards.AceOfSpades,
                     Cards.AceOfHearts,
                     Cards.AceOfClubs,
-                    Cards.AceOfDiamonds,
-                    Cards.AceOfSpades                  
+                    Cards.AceOfDiamonds              
                 }
             }
         }

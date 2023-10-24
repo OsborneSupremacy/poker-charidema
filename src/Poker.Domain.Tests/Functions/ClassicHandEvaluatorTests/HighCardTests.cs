@@ -64,7 +64,13 @@ public class HighCardTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+            EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
         };
 
         // Act

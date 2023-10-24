@@ -13,12 +13,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -34,12 +46,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -55,12 +79,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -76,12 +112,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -97,12 +145,18 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -118,12 +172,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -139,12 +205,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -160,12 +238,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -181,12 +271,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -202,12 +304,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -223,12 +337,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -244,12 +370,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -265,12 +403,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -286,12 +436,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -307,12 +469,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -328,12 +502,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -349,12 +535,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -370,12 +568,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -391,12 +601,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -412,12 +634,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -433,12 +667,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -454,12 +700,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -475,12 +733,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -496,12 +766,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -517,12 +799,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -538,12 +832,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -559,12 +865,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -580,12 +898,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -601,12 +931,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -622,12 +964,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -643,12 +997,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -664,12 +1030,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -685,12 +1063,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -706,12 +1096,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -727,12 +1129,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -748,14 +1162,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -771,14 +1195,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -794,14 +1228,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -817,14 +1261,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -840,14 +1294,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -863,14 +1327,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -886,14 +1360,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -909,14 +1393,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -932,14 +1426,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -955,14 +1459,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -978,14 +1492,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1001,14 +1525,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1024,14 +1558,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1047,14 +1591,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1070,14 +1624,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -1093,16 +1657,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards
-                    .All
-                    .WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards
-                    .All
-                    .WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1118,12 +1690,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1139,12 +1723,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1160,12 +1756,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1181,12 +1789,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1202,12 +1822,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1223,12 +1855,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -1244,14 +1888,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1267,14 +1921,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1290,14 +1954,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1313,14 +1987,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1336,14 +2020,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1359,14 +2053,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                    Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -1382,14 +2086,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -1405,14 +2119,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -1428,14 +2152,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -1451,14 +2185,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                EligibleCards =
-                        Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -1474,14 +2218,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -1497,14 +2251,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             }
         }
     };
@@ -1520,14 +2284,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             }
         }
     };
@@ -1543,14 +2317,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             }
         }
     };
@@ -1566,14 +2350,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             }
         }
     };
@@ -1589,14 +2383,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             }
         }
     };
@@ -1612,14 +2416,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             }
         }
     };
@@ -1635,14 +2449,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             }
         }
     };
@@ -1658,14 +2482,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             }
         }
     };
@@ -1681,14 +2515,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             }
         }
     };
@@ -1704,14 +2548,24 @@ public static class FullHouses
             new()
             {
                 RequiredCount = 3,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             },
             new()
             {
                 RequiredCount = 2,
-                    EligibleCards =
-                        Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
             }
         }
     };

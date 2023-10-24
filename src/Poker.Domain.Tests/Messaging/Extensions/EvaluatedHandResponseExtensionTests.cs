@@ -33,7 +33,7 @@ public class EvaluatedHandResponseExtensionTests
                     Outstanding = new()
                     {
                         RequiredCount = 0,
-                        EligibleCards = new()
+                    EligibleCards = new()
                     },
                     UnusedCards = new UnusedCardsMessage
                     {
