@@ -13,7 +13,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Two).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
             }
         }
     };
@@ -29,7 +35,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Three).ToList()
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
             }
         }
     };
@@ -45,7 +57,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Four).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
             }
         }
     };
@@ -61,7 +79,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Five).ToList()
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
             }
         }
     };
@@ -77,7 +101,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Six).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
             }
         }
     };
@@ -93,7 +123,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Seven).ToList()
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
             }
         }
     };
@@ -109,7 +145,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Eight).ToList()
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
             }
         }
     };
@@ -125,7 +167,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Nine).ToList()
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
             }
         }
     };
@@ -141,7 +189,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ten).ToList()
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
             }
         }
     };
@@ -157,7 +211,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Jack).ToList()
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
             }
         }
     };
@@ -173,7 +233,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Queen).ToList()
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
             }
         }
     };
@@ -189,7 +255,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.King).ToList()
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds                    
+                }
             }
         }
     };
@@ -205,7 +277,13 @@ public static class ThreeOfAKind
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = Cards.All.WhereRank(Ranks.Ace).ToList()
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
             }
         }
     };
