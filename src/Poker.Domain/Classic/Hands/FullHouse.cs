@@ -2,6 +2,402 @@
 
 public static class FullHouses
 {
+    public static Hand TwosOverThrees { get; } = new()
+    {
+        Name = "Full House, Twos Over Threes",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.ThreeOfSpades,
+                    Cards.ThreeOfHearts,
+                    Cards.ThreeOfClubs,
+                    Cards.ThreeOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverFours { get; } = new()
+    {
+        Name = "Full House, Twos Over Fours",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.FourOfSpades,
+                    Cards.FourOfHearts,
+                    Cards.FourOfClubs,
+                    Cards.FourOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverFives { get; } = new()
+    {
+        Name = "Full House, Twos Over Fives",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.FiveOfSpades,
+                    Cards.FiveOfHearts,
+                    Cards.FiveOfClubs,
+                    Cards.FiveOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverSixes { get; } = new()
+    {
+        Name = "Full House, Twos Over Sixes",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.SixOfSpades,
+                    Cards.SixOfHearts,
+                    Cards.SixOfClubs,
+                    Cards.SixOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverSevens { get; } = new()
+    {
+        Name = "Full House, Twos Over Sevens",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.SevenOfSpades,
+                    Cards.SevenOfHearts,
+                    Cards.SevenOfClubs,
+                    Cards.SevenOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverEights { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.EightOfSpades,
+                    Cards.EightOfHearts,
+                    Cards.EightOfClubs,
+                    Cards.EightOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverNines { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.NineOfSpades,
+                    Cards.NineOfHearts,
+                    Cards.NineOfClubs,
+                    Cards.NineOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverTens { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.TenOfSpades,
+                    Cards.TenOfHearts,
+                    Cards.TenOfClubs,
+                    Cards.TenOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverJacks { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.JackOfSpades,
+                    Cards.JackOfHearts,
+                    Cards.JackOfClubs,
+                    Cards.JackOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverQueens { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.QueenOfSpades,
+                    Cards.QueenOfHearts,
+                    Cards.QueenOfClubs,
+                    Cards.QueenOfDiamonds
+                }
+            }
+        }
+    };  
+    
+    public static Hand TwosOverKings { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.KingOfSpades,
+                    Cards.KingOfHearts,
+                    Cards.KingOfClubs,
+                    Cards.KingOfDiamonds
+                }
+            }
+        }
+    };
+    
+    public static Hand TwosOverAces { get; } = new()
+    {
+        Name = "Full House, Twos Over Eights",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks.Two,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.TwoOfSpades,
+                    Cards.TwoOfHearts,
+                    Cards.TwoOfClubs,
+                    Cards.TwoOfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.AceOfSpades,
+                    Cards.AceOfHearts,
+                    Cards.AceOfClubs,
+                    Cards.AceOfDiamonds
+                }
+            }
+        }
+    };
+    
     public static Hand ThreesOverTwos { get; } = new()
     {
         Name = "Full House, Threes Over Twos",
