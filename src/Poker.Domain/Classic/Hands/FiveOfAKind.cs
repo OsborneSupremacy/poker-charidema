@@ -44,7 +44,13 @@ public record FiveOfAKind
                     Cards.TwoOfHearts,
                     Cards.TwoOfClubs,
                     Cards.TwoOfDiamonds,
-                    Cards.TwoOfSpades with { }
+                    Cards.TwoOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -67,7 +73,13 @@ public record FiveOfAKind
                     Cards.ThreeOfHearts,
                     Cards.ThreeOfClubs,
                     Cards.ThreeOfDiamonds,
-                    Cards.ThreeOfSpades with { }
+                    Cards.ThreeOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -90,7 +102,13 @@ public record FiveOfAKind
                     Cards.FourOfHearts,
                     Cards.FourOfClubs,
                     Cards.FourOfDiamonds,
-                    Cards.FourOfSpades with { }
+                    Cards.FourOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -113,7 +131,13 @@ public record FiveOfAKind
                     Cards.FiveOfHearts,
                     Cards.FiveOfClubs,
                     Cards.FiveOfDiamonds,
-                    Cards.FiveOfSpades with { }
+                    Cards.FiveOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -136,7 +160,13 @@ public record FiveOfAKind
                     Cards.SixOfHearts,
                     Cards.SixOfClubs,
                     Cards.SixOfDiamonds,
-                    Cards.SixOfSpades with { }
+                    Cards.SixOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -159,7 +189,13 @@ public record FiveOfAKind
                     Cards.SevenOfHearts,
                     Cards.SevenOfClubs,
                     Cards.SevenOfDiamonds,
-                    Cards.SevenOfSpades with { }
+                    Cards.SevenOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -182,7 +218,13 @@ public record FiveOfAKind
                     Cards.EightOfHearts,
                     Cards.EightOfClubs,
                     Cards.EightOfDiamonds,
-                    Cards.EightOfSpades with { }
+                    Cards.EightOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -205,7 +247,13 @@ public record FiveOfAKind
                     Cards.NineOfHearts,
                     Cards.NineOfClubs,
                     Cards.NineOfDiamonds,
-                    Cards.NineOfSpades with { }
+                    Cards.NineOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -228,7 +276,13 @@ public record FiveOfAKind
                     Cards.TenOfHearts,
                     Cards.TenOfClubs,
                     Cards.TenOfDiamonds,
-                    Cards.TenOfSpades with { }
+                    Cards.TenOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -251,7 +305,13 @@ public record FiveOfAKind
                     Cards.JackOfHearts,
                     Cards.JackOfClubs,
                     Cards.JackOfDiamonds,
-                    Cards.JackOfSpades with { }
+                    Cards.JackOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -274,7 +334,13 @@ public record FiveOfAKind
                     Cards.QueenOfHearts,
                     Cards.QueenOfClubs,
                     Cards.QueenOfDiamonds,
-                    Cards.QueenOfSpades with { }
+                    Cards.QueenOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -297,7 +363,13 @@ public record FiveOfAKind
                     Cards.KingOfHearts,
                     Cards.KingOfClubs,
                     Cards.KingOfDiamonds,
-                    Cards.KingOfSpades with { }
+                    Cards.KingOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
@@ -320,7 +392,13 @@ public record FiveOfAKind
                     Cards.AceOfHearts,
                     Cards.AceOfClubs,
                     Cards.AceOfDiamonds,
-                    Cards.AceOfSpades with { }
+                    Cards.AceOfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }

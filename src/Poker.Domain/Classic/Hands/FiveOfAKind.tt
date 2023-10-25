@@ -50,7 +50,13 @@ public record FiveOfAKind
                     Cards.<#= rank.singular#>OfHearts,
                     Cards.<#= rank.singular#>OfClubs,
                     Cards.<#= rank.singular#>OfDiamonds,
-                    Cards.<#= rank.singular#>OfSpades with { }
+                    Cards.<#= rank.singular#>OfSpades with
+                    {
+                        Suit = Suits.Spades with
+                        {
+                            Priority = 0
+                        }
+                    }
                 }
             }
         }
