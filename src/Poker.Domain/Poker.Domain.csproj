@@ -24,6 +24,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>All.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\FiveOfAKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FiveOfAKind.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +36,9 @@
     </Compile>
     <Compile Update="Classic\Hands\All.cs">
       <DependentUpon>All.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\FiveOfAKind.cs">
+      <DependentUpon>FiveOfAKind.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
