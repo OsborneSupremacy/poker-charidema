@@ -15,4 +15,17 @@
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Classic\Hands\FullHouse.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FullHouse.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Classic\Hands\FullHouse.cs">
+      <DependentUpon>FullHouse.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

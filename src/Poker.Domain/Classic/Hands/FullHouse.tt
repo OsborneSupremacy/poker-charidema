@@ -1,0 +1,70 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#
+    List<(string singular, string plural)> ranks = new()
+    {
+        ("Two", "Twos"),
+        ("Three", "Threes"),
+        ("Four", "Fours"),
+        ("Five", "Fives"),
+        ("Six", "Sixes"),
+        ("Seven", "Sevens"),
+        ("Eight", "Eights"),
+        ("Nine", "Nines"),
+        ("Ten", "Tens"),
+        ("Jack", "Jacks"),
+        ("Queen", "Queens"),
+        ("King", "Kings"),
+        ("Ace", "Aces")
+    };
+#>
+namespace Poker.Domain.Classic.Hands;
+
+public static class FullHouses
+{
+<#
+foreach(var primaryrank in ranks)
+{
+    foreach (var secondaryrank in ranks)
+    {
+        if(primaryrank == secondaryrank) continue;
+#>
+    public static Hand <#= primaryrank.plural #>Over<#= secondaryrank.plural #> { get; } = new()
+    {
+        Name = "Full House, <#= primaryrank.plural #> Over <#= secondaryrank.plural #>",
+        HandDefinition = HandDefinitions.FullHouse,
+        HighRank = Ranks. <#= primaryrank.singular #>,
+        Suit = Suits.Empty,
+        HandSegments = new List<HandSegment>
+        {
+            new()
+            {
+                RequiredCount = 3,
+                EligibleCards = new()
+                {
+                    Cards.<#= primaryrank.singular #>OfSpades,
+                    Cards.<#= primaryrank.singular #>OfHearts,
+                    Cards.<#= primaryrank.singular #>OfClubs,
+                    Cards.<#= primaryrank.singular #>OfDiamonds
+                }
+            },
+            new()
+            {
+                RequiredCount = 2,
+                EligibleCards = new()
+                {
+                    Cards.<#= secondaryrank.singular #>OfSpades,
+                    Cards.<#= secondaryrank.singular #>OfHearts,
+                    Cards.<#= secondaryrank.singular #>OfClubs,
+                    Cards.<#= secondaryrank.singular #>OfDiamonds
+                }
+            }
+        }
+    };
+
+<#
+    } // secondary rank foreach
+} // primary rank foreach
+#>
+}
