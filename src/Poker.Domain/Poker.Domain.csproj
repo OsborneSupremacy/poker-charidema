@@ -40,6 +40,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Pair.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\ThreeOfAKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ThreeOfAKind.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +64,9 @@
     </Compile>
     <Compile Update="Classic\Hands\Pair.cs">
       <DependentUpon>Pair.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\ThreeOfAKind.cs">
+      <DependentUpon>ThreeOfAKind.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
