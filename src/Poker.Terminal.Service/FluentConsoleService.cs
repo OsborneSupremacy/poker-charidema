@@ -184,10 +184,10 @@ public class FluentConsoleService : IUserInterfaceService
     {
         foreach(var card in playerHand.HandCards.Standard
             .Concat(playerHand.HandCards.Wild.Select(x => x.WildCard)))
-            AnsiConsole.WriteLine(card.ToDisplayString(true));
+            AnsiConsole.MarkupLine(card.ToDisplayString(true));
         
         foreach(var card in playerHand.Kickers.Concat(playerHand.DeadCards))
-            AnsiConsole.WriteLine(card.ToDisplayString(false));
+            AnsiConsole.MarkupLine(card.ToDisplayString(false));
             
         return this;
     }
