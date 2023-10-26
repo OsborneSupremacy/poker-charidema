@@ -56,6 +56,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Cards.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\HighCard.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HighCard.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -88,6 +92,9 @@
     </Compile>
     <Compile Update="Classic\Cards.cs">
       <DependentUpon>Cards.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\HighCard.cs">
+      <DependentUpon>HighCard.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
