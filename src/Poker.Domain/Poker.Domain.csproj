@@ -52,6 +52,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Straight.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Cards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Cards.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -81,6 +85,9 @@
     </Compile>
     <Compile Update="Classic\Hands\Straight.cs">
       <DependentUpon>Straight.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Cards.cs">
+      <DependentUpon>Cards.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
