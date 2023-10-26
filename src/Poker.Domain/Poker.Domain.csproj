@@ -44,6 +44,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ThreeOfAKind.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\FourOfAKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FourOfAKind.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +71,9 @@
     </Compile>
     <Compile Update="Classic\Hands\ThreeOfAKind.cs">
       <DependentUpon>ThreeOfAKind.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\FourOfAKind.cs">
+      <DependentUpon>FourOfAKind.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
