@@ -1,9 +1,4 @@
-﻿using Poker.Domain;
-using Poker.Presentation.Interface;
-using Poker.Utility;
-using Spectre.Console;
-
-namespace Poker.Terminal.Service;
+﻿namespace Poker.Terminal.Service;
 
 public class FluentConsoleService : IUserInterfaceService
 {
@@ -185,19 +180,17 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public IUserInterfaceService RenderCards(List<Card> cards)
+    public IUserInterfaceService RenderCards(PlayerHand playerHand)
     {
-        foreach(var card in cards
-            .OrderByDescending(x => x.IsWild)
-            .ThenByDescending(x =>  x.Rank.Value)
-            .ThenByDescending(x => x.Suit.Priority)
-            )
-        {
-            AnsiConsole.WriteLine(card.Value);
-        }
+        foreach(var card in playerHand.HandCards.Standard
+            .Concat(playerHand.HandCards.Wild.Select(x => x.WildCard)))
+            AnsiConsole.WriteLine(card.ToDisplayString(true));
+        
+        foreach(var card in playerHand.Kickers.Concat(playerHand.DeadCards))
+            AnsiConsole.WriteLine(card.ToDisplayString(false));
+            
         return this;
     }
-
 }
 
 public class InputOption<T> : IInputOption<T>

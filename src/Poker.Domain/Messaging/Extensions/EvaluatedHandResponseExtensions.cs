@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging.Extensions;
 
-internal static class EvaluatedHandResponseExtensions
+public static class EvaluatedHandResponseExtensions
 {
     public static PlayerHand ToPlayerHand(this EvaluatedHandResponse input)
     {

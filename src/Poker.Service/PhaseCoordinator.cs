@@ -51,30 +51,26 @@ public class PhaseCoordinator : IPhaseCoordinator
 
         if(user.Cards.Any())
         {
-            _userInterfaceService
-                .WriteLine()
-                .WriteLine($"Pot: {gameOut.Pot:C}")
-                .WriteLine()
-                .WriteHeading(HeadingLevel.Six, "Your Cards")
-                .RenderCards(user.Cards);
-
-            var hands = DefaultHandCollectionEvaluator.Evaluate(
+            var bestHand = DefaultHandCollectionEvaluator.Evaluate(
                 new EvaluatedHandCollectionRequest
                 {
                     Cards = user.Cards,
                     HandEvaluator = ClassicHandEvaluator.Evaluate,
                     HandsToEvaluate = Domain.Classic.Hands.AllHands.All,
                     RemainingCardCount = request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
-                }
-            )
-                .Where(h => h.HandQualification == HandQualifications.Qualifies)
-                .ToList();
-            
-            var bestHand = hands
+                })
+                .Where(x => x.HandQualification == HandQualifications.Qualifies)
                 .OrderByDescending(x => x.Hand.HandDefinition.Value)
                 .ThenByDescending(x => x.Hand.HighRank.Value)
                 .ThenByDescending(x => x.Hand.Suit.Priority)
                 .First();
+            
+            _userInterfaceService
+                .WriteLine()
+                .WriteLine($"Pot: {gameOut.Pot:C}")
+                .WriteLine()
+                .WriteHeading(HeadingLevel.Six, "Your Cards")
+                .RenderCards(bestHand.ToPlayerHand());
         
             _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");           
         }

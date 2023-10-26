@@ -2,33 +2,103 @@
 
 public static class Ranks
 {
-    public static Rank Empty { get; } = new(nameof(Empty), 0);
-
-    public static Rank Two { get; } = new(nameof(Two), 2);
-
-    public static Rank Three { get; } = new(nameof(Three), 3);
-
-    public static Rank Four { get; } = new(nameof(Four), 4);
-
-    public static Rank Five { get; } = new(nameof(Five), 5);
-
-    public static Rank Six { get; } = new(nameof(Six), 6);
-
-    public static Rank Seven { get; } = new(nameof(Seven), 7);
-
-    public static Rank Eight { get; } = new(nameof(Eight), 8);
-
-    public static Rank Nine { get; } = new(nameof(Nine), 9);
-
-    public static Rank Ten { get; } = new(nameof(Ten), 10);
-
-    public static Rank Jack { get; } = new(nameof(Jack), 11);
-
-    public static Rank Queen { get; } = new(nameof(Queen), 12);
-
-    public static Rank King { get; } = new(nameof(King), 13);
-
-    public static Rank Ace { get; } = new(nameof(Ace), 14);
+    public static Rank Empty { get; } = new()
+    {
+        Name = "Empty",
+        Value = 0,
+        IsStandard = false
+    };
+    
+    public static Rank Two { get; } = new()
+    {
+        Name = "Two",
+        Value = 2,
+        IsStandard = true
+    };
+    
+    public static Rank Three { get; } = new()
+    {
+        Name = "Three",
+        Value = 3,
+        IsStandard = true
+    };
+    
+    public static Rank Four { get; } = new()
+    {
+        Name = "Four",
+        Value = 4,
+        IsStandard = true
+    };
+    
+    public static Rank Five { get; } = new()
+    {
+        Name = "Five",
+        Value = 5,
+        IsStandard = true
+    };
+    
+    public static Rank Six { get; } = new()
+    {
+        Name = "Six",
+        Value = 6,
+        IsStandard = true
+    };
+    
+    public static Rank Seven { get; } = new()
+    {
+        Name = "Seven",
+        Value = 7,
+        IsStandard = true
+    };
+    
+    public static Rank Eight { get; } = new()
+    {
+        Name = "Eight",
+        Value = 8,
+        IsStandard = true
+    };
+    
+    public static Rank Nine { get; } = new()
+    {
+        Name = "Nine",
+        Value = 9,
+        IsStandard = true
+    };
+    
+    public static Rank Ten { get; } = new()
+    {
+        Name = "Ten",
+        Value = 10,
+        IsStandard = true
+    };
+    
+    public static Rank Jack { get; } = new()
+    {
+        Name = "Jack",
+        Value = 11,
+        IsStandard = false
+    };
+    
+    public static Rank Queen { get; } = new()
+    {
+        Name = "Queen",
+        Value = 12,
+        IsStandard = false
+    };
+    
+    public static Rank King { get; } = new()
+    {
+        Name = "King",
+        Value = 13,
+        IsStandard = false
+    };
+    
+    public static Rank Ace { get; } = new()
+    {
+        Name = "Ace",
+        Value = 14,
+        IsStandard = false
+    };
 
     public static List<Rank> All { get; } = new() {
         Two,

@@ -1,4 +1,5 @@
 ﻿global using System.Diagnostics.CodeAnalysis;
+global using System.Text;
 global using Poker.Domain.Abstractions;
 global using Poker.Domain.Classic;
 global using Poker.Domain.Messaging;

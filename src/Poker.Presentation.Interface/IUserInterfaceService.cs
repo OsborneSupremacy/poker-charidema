@@ -67,5 +67,5 @@ public interface IUserInterfaceService
 
     IUserInterfaceService WriteLines(params string[] lines);
 
-    IUserInterfaceService RenderCards(List<Card> cards);
+    IUserInterfaceService RenderCards(PlayerHand hand);
 }
