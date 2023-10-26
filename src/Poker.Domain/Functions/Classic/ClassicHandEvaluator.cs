@@ -72,15 +72,15 @@ public static class ClassicHandEvaluator
                 .Except(contributingCards.AllStandardized())
                 .ToList();
 
-            var standard = unusedCardsOut.UnusedStandard
+            var contributingStandardCard = unusedCardsOut.UnusedStandard
                 .Where(qualifyingCards.Contains)
                 .OrderByPokerStandard()
                 .FirstOrDefault() ?? Cards.Empty;
 
-            if (standard != Cards.Empty)
+            if (contributingStandardCard != Cards.Empty)
             {
-                contributingCards.Add(standard);
-                unusedCardsOut.UnusedStandard.Remove(standard);
+                contributingCards.Add(contributingStandardCard);
+                unusedCardsOut.UnusedStandard.Remove(contributingStandardCard);
                 continue;
             }
 
