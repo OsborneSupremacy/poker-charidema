@@ -32,6 +32,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TwoPair.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\StraightFlush.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StraightFlush.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +50,9 @@
     </Compile>
     <Compile Update="Classic\Hands\TwoPair.cs">
       <DependentUpon>TwoPair.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\StraightFlush.cs">
+      <DependentUpon>StraightFlush.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
