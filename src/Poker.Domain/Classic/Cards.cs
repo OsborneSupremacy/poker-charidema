@@ -623,7 +623,7 @@ public static class Cards
 
     public static Card CreateJoker() => new()
     {
-        Value = "J",
+        Value = "W",
         IsWild = true,
         CardType = CardTypes.Joker,
         Rank = Ranks.Empty,
