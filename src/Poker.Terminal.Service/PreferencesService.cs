@@ -44,7 +44,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         int startingStack = 0;
         int fixedNumberOfGames = 0;
 
-        _c.WriteHeading(HeadingLevel.One, "Welcome to OsborneSupremacy/poker-charidema!")
+        _c.WriteHeading(HeadingLevel.One, "Welcome to poker-charidema!")
 
         .PromptForString(
             "Please enter your name", 1, Environment.UserName.ToTitleCase(), name =>

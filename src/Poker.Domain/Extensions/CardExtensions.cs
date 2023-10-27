@@ -16,6 +16,8 @@ public static class CardExtensions
         
         var bold = contributing ? " bold" : string.Empty;
 
+        // using gray100 instead of white because white is interpreted
+        // by the terminal, and not always displayed as white.
         s.Append(card switch
         {
             { Suit.Name: "Spades" } => $"[black on grey100{bold}]",

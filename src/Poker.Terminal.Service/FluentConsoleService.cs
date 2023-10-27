@@ -1,4 +1,6 @@
-﻿namespace Poker.Terminal.Service;
+﻿using System.Text;
+
+namespace Poker.Terminal.Service;
 
 public class FluentConsoleService : IUserInterfaceService
 {
@@ -166,7 +168,12 @@ public class FluentConsoleService : IUserInterfaceService
 
         AnsiConsole.WriteLine();
         writeDelimiter();
-        AnsiConsole.MarkupLine($"[bold]{input}[/]");
+
+        if (level == HeadingLevel.One)
+            AnsiConsole.Write(new FigletText(input).LeftJustified());
+        else 
+            AnsiConsole.MarkupLine($"[bold]{input}[/]");
+        
         writeDelimiter();
 
         AnsiConsole.WriteLine();
@@ -175,21 +182,31 @@ public class FluentConsoleService : IUserInterfaceService
 
     public IUserInterfaceService WriteList(string heading, params string[] items)
     {
-        foreach(var item in items)
-            AnsiConsole.MarkupLine($"[bold]* {item}[/]");
+        StringBuilder content = new();
+        foreach (var item in items)
+            content.AppendLine(item);
+        
+        AnsiConsole.Write(new Panel(content.ToString().Trim())
+            .Header(heading)
+        );
+
         return this;
     }
 
-    public IUserInterfaceService RenderCards(PlayerHand playerHand)
+    public IUserInterfaceService RenderCards(string heading, PlayerHand playerHand)
     {
+        StringBuilder content = new();
+        
         foreach(var card in playerHand.HandCards.Standard
             .Concat(playerHand.HandCards.Wild.Select(x => x.WildCard)))
-            AnsiConsole.Markup(card.ToDisplayString(true));
+            content.Append(card.ToDisplayString(true));
         
         foreach(var card in playerHand.Kickers.Concat(playerHand.DeadCards))
-            AnsiConsole.Markup(card.ToDisplayString(false));
+            content.Append(card.ToDisplayString(false));
         
-        AnsiConsole.WriteLine();
+        AnsiConsole.Write(new Panel(content.ToString().Trim())
+            .Header(heading)
+        );
             
         return this;
     }

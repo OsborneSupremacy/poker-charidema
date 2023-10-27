@@ -69,10 +69,9 @@ public class PhaseCoordinator : IPhaseCoordinator
                 .WriteLine()
                 .WriteLine($"Pot: {gameOut.Pot:C}")
                 .WriteLine()
-                .WriteHeading(HeadingLevel.Six, "Your Cards")
-                .RenderCards(bestHand.ToPlayerHand());
+                .RenderCards("Your Cards", bestHand.ToPlayerHand());
         
-            _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");           
+            _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");
         }
 
         return new PhaseCoordinatorResponse
