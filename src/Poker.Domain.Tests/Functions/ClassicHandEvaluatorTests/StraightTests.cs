@@ -87,8 +87,7 @@ public class StraightTests
         var response = ClassicHandEvaluator.Evaluate(request);
         var actualOutstanding = response
             .EvaluatedHandSegments
-            .Where(x => x.Outstanding.RequiredCount > 0)
-            .Single()
+            .Single(x => x.Outstanding.RequiredCount > 0)
             .Outstanding;
 
         // Assert
