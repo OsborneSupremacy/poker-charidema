@@ -74,9 +74,10 @@ public class GameCoordinator : IGameCoordinator
     
     private void WriteStandings(Match match)
     {
-        _userInterfaceService.WriteHeading(HeadingLevel.Five, "Standings");
-        foreach (var player in match.Players.OrderByDescending(p => p.Stack))
-            _userInterfaceService.WriteLine($"{player.Name} - {player.Stack:C}");
-        _userInterfaceService.WriteLine();
+        var stacks = match.Players
+            .OrderByDescending(p => p.Stack)
+            .Select(p => $"{p.Name} - {p.Stack:C}");
+
+        _userInterfaceService.WriteList("Standings", stacks.ToArray());
     }    
 }

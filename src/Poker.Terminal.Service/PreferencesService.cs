@@ -1,10 +1,7 @@
 ﻿using Bogus;
-using Poker.Domain;
 using Poker.Domain.Classic;
 using Poker.Domain.Implementations.Variants;
 using Poker.Domain.Messaging;
-using Poker.Presentation.Interface;
-using Poker.Utility;
 
 namespace Poker.Terminal.Service;
 

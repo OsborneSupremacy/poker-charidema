@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Poker.Domain.Extensions;
+﻿namespace Poker.Domain.Extensions;
 
 public static class CardExtensions
 {

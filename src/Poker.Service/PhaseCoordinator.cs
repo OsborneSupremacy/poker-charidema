@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR.Protocol;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class PhaseCoordinator : IPhaseCoordinator
 {
