@@ -45,6 +45,7 @@ public class RoundRobinMoveService : IPhaseService
             Deck = deckOut,
             CommunityCards = ccOut,
             Players = playersOut,
+            Winners = new(),
             GameOver = false,
             Pot = potOut
         };

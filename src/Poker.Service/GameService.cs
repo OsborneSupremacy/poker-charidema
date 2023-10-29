@@ -47,6 +47,7 @@ public class GameService : IGameService
                 Deck = await _dealerService.ShuffleAsync(request.Deck),
                 GameOver = false,
                 Players = game.Players,
+                Winners = new(),
                 Pot = game.Pot
             },
             GameResponse = new()

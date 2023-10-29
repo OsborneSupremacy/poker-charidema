@@ -47,6 +47,7 @@ public class DealerService : IDealerService, IPhaseService
             Deck = deckOut,
             CommunityCards = ccOut,
             Players = playersOut,
+            Winners = new(),
             GameOver = false,
             Pot = request.Pot
         });

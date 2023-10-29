@@ -45,31 +45,16 @@ public class PhaseCoordinator : IPhaseCoordinator
             Pot = phaseResponse.Pot
         };
 
-        var user = phaseResponse.Players.Single(x => !x.Automaton);
-
-        if(user.Cards.Any())
+        if (!phaseResponse.GameOver)
         {
-            var bestHand = DefaultHandCollectionEvaluator.Evaluate(
-                new EvaluatedHandCollectionRequest
-                {
-                    Cards = user.Cards,
-                    HandEvaluator = ClassicHandEvaluator.Evaluate,
-                    HandsToEvaluate = Domain.Classic.Hands.AllHands.All,
-                    RemainingCardCount = request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
-                })
-                .Where(x => x.HandQualification == HandQualifications.Qualifies)
-                .OrderByDescending(x => x.Hand.HandDefinition.Value)
-                .ThenByDescending(x => x.Hand.HighRank.Value)
-                .ThenByDescending(x => x.Hand.Suit.Priority)
-                .First();
-            
             _userInterfaceService
                 .WriteLine()
-                .WriteLine($"Pot: {gameOut.Pot:C}")
-                .WriteLine()
-                .RenderCards("Your Cards", bestHand.ToPlayerHand());
+                .WriteLine($"Pot: {gameOut.Pot:C}");
         
-            _userInterfaceService.WriteLine($"Your best hand is: {bestHand.Hand.Name}");
+            RenderPlayerCards(
+                phaseResponse.Players.Single(x => !x.Automaton),
+                request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
+            );
         }
 
         return new PhaseCoordinatorResponse
@@ -84,4 +69,29 @@ public class PhaseCoordinator : IPhaseCoordinator
             }
         };
     }
+
+    private void RenderPlayerCards(Player player, int remainingCardCount)
+    {
+        if (!player.Cards.Any())
+            return;
+
+        var bestHand = DefaultBestHandEvaluator.Evaluate
+        (
+            new BestHandRequest
+            {
+                Cards = player.Cards,
+                RemainingCardCount = remainingCardCount,
+                HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+                HandEvaluator = ClassicHandEvaluator.Evaluate
+            }
+        );
+
+        var label = !player.Automaton ? "Your" : $"{player.Name}'s";
+        
+        _userInterfaceService
+            .WriteLine()
+            .RenderCards($"{label} Cards", bestHand.ToPlayerHand());
+    
+        _userInterfaceService.WriteLine($"{label} best hand is: {bestHand.Hand.Name}");
+    }      
 }

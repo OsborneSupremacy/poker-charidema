@@ -7,9 +7,9 @@ public static class RegistrationService
     public static IServiceCollection RegisterStandard(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
-
         serviceCollection.AddScoped<IDealerService, DealerService>();
         serviceCollection.AddScoped<RoundRobinMoveService>();
+        serviceCollection.AddScoped<EvaluationService>();
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
         serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();

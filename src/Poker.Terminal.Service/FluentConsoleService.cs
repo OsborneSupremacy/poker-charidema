@@ -180,7 +180,7 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
-    public IUserInterfaceService WriteList(string heading, params string[] items)
+    public IUserInterfaceService WriteList(string heading, IEnumerable<string> items)
     {
         StringBuilder content = new();
         foreach (var item in items)
@@ -189,10 +189,12 @@ public class FluentConsoleService : IUserInterfaceService
         AnsiConsole.Write(new Panel(content.ToString().Trim())
             .Header(heading)
         );
-
         return this;
     }
-
+    
+    public IUserInterfaceService WriteList(string heading, params string[] items) =>
+        WriteList(heading, items.AsEnumerable());
+    
     public IUserInterfaceService RenderCards(string heading, PlayerHand playerHand)
     {
         StringBuilder content = new();
