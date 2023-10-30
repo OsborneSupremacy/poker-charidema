@@ -13,7 +13,7 @@ public class TwoPairTests
         )
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = Cards.All
@@ -40,7 +40,7 @@ public class TwoPairTests
     public void ThreesOverTwos_Qualifies_TwoThreesOneTwoAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -65,7 +65,7 @@ public class TwoPairTests
     public void ThreesOverTwos_Eliminated_OneThreePresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -105,7 +105,7 @@ public class TwoPairTests
     public void ThreesOverTwos_Eliminated_NeitherPairPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -158,7 +158,7 @@ public class TwoPairTests
     public void ThreesOverTwos_Possible_OneRemainingCard()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

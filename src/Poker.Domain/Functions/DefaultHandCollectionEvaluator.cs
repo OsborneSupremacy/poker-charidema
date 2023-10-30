@@ -8,7 +8,7 @@ public static class DefaultHandCollectionEvaluator
             .Select(
                 hand => request.HandEvaluator
                 (
-                    new EvaluatedHandRequest
+                    new EvaluateHandRequest
                     {
                         Player = request.Player,
                         Cards = request.Cards,

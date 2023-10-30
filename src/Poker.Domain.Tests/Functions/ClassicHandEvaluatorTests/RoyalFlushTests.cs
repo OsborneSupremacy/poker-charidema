@@ -7,7 +7,7 @@ public class RoyalFlushTests
     public void RoyalFlush_Qualifies_AllCardsPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -33,7 +33,7 @@ public class RoyalFlushTests
     public void RoyalFlush_Qualifies_WithJoker()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -59,7 +59,7 @@ public class RoyalFlushTests
     public void RoyalFlush_Eliminated_OneCardMissing()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -99,7 +99,7 @@ public class RoyalFlushTests
     public void RoyalFlush_Possible_OneCardRemaining()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

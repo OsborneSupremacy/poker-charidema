@@ -7,7 +7,7 @@ public class FlushTests
     public void ClubsFlush_Qualifies_FiveClubsPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -33,7 +33,7 @@ public class FlushTests
     public void ClubsFlush_Qualifies_FourClubsWithJoker()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -59,7 +59,7 @@ public class FlushTests
     public void ClubsFlush_Eliminated_OneCardMissing()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -107,7 +107,7 @@ public class FlushTests
     public void ClubsFlush_Possible_OneCardRemaining()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

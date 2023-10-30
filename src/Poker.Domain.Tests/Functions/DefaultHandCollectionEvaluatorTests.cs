@@ -7,7 +7,7 @@ public class DefaultHandCollectionEvaluatorTests
     public void Evaluate_NoHand_NoCards()
     {
         // Arrange
-        EvaluatedHandCollectionRequest request = new()
+        EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -31,7 +31,7 @@ public class DefaultHandCollectionEvaluatorTests
     public void Evaluate_HighCard_NoOtherHand()
     {
         // Arrange
-        EvaluatedHandCollectionRequest request = new()
+        EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -60,7 +60,7 @@ public class DefaultHandCollectionEvaluatorTests
     public void Evaluate_Pair_PairPresent()
     {
         // Arrange
-        EvaluatedHandCollectionRequest request = new()
+        EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -89,7 +89,7 @@ public class DefaultHandCollectionEvaluatorTests
     public void Evaluate_PairOfFours_PairOfFoursPresent()
     {
         // Arrange
-        EvaluatedHandCollectionRequest request = new()
+        EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -118,7 +118,7 @@ public class DefaultHandCollectionEvaluatorTests
     public void Evaluate_KingHigh_KingIsBestCard()
     {
         // Arrange
-        EvaluatedHandCollectionRequest request = new()
+        EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

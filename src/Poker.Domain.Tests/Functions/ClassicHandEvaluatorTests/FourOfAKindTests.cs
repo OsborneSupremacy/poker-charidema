@@ -7,7 +7,7 @@ public class FourOfAKindTests
     public void FourTwos_Qualifies_FourPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = Cards.All.WhereRank(Ranks.Two).Take(4).ToList(),
@@ -26,7 +26,7 @@ public class FourOfAKindTests
     public void FourThrees_Qualifies_ThreeThreesAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -51,7 +51,7 @@ public class FourOfAKindTests
     public void FourThrees_Eliminated_TwoThreesPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -92,7 +92,7 @@ public class FourOfAKindTests
     public void FourThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

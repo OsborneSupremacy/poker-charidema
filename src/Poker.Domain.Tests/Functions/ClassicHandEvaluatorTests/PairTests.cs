@@ -10,7 +10,7 @@ public class PairTests
     public void PairOfTwos_Qualifies_TwoOrMorePresent(int twoCount)
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
@@ -29,7 +29,7 @@ public class PairTests
     public void PairOfTwos_Qualifies_TwoAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -52,7 +52,7 @@ public class PairTests
     public void PairOfTwos_Eliminated_OneTwoPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -88,7 +88,7 @@ public class PairTests
     public void PairOfTwos_Possible_OneRemainingCard()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

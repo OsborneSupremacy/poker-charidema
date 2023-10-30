@@ -28,9 +28,12 @@ public class WinnerEvaluationService : IPhaseService
                     );
         
             var label = response.Winners.Count > 1 ? "Winners" : "Winner";
+
+            var messages = response.Winners.Select(w => w.Name).ToList();
+            messages.Add($"with {response.WinningHand.Name}");
         
             _userInterfaceService
-                .WriteList(label, response.Winners.Select(w => w.Name));
+                .WriteList(label, messages);
 
         return Task.FromResult(new PhaseResponse()
         {

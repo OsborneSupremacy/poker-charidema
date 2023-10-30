@@ -7,7 +7,7 @@ public class HighCardTests
     public void AceHigh_Qualifies_AcePresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -30,7 +30,7 @@ public class HighCardTests
     public void AceHigh_Qualifies_JokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -53,7 +53,7 @@ public class HighCardTests
     public void AceHigh_Eliminated_NonAcePresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -89,7 +89,7 @@ public class HighCardTests
     public void AceHigh_Possible_OneRemainingCard()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new(),

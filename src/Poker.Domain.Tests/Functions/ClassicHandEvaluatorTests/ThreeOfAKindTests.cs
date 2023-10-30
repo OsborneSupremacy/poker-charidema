@@ -9,7 +9,7 @@ public class ThreeOfAKindTests
     public void ThreeTwos_Qualifies_ThreeOrMorePresent(int threeCount)
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
@@ -28,7 +28,7 @@ public class ThreeOfAKindTests
     public void ThreeTwos_Qualifies_TwoThreesAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -52,7 +52,7 @@ public class ThreeOfAKindTests
     public void ThreeThrees_Eliminated_OneThreePresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -93,7 +93,7 @@ public class ThreeOfAKindTests
     public void ThreeThrees_Possible_OneOrMoreCardsRemaining(int cardsRemaining)
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

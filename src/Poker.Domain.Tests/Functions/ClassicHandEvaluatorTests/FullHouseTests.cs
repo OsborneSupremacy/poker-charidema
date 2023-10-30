@@ -7,7 +7,7 @@ public class FullHouseTests
     public void ThreesOverTwos_Qualifies_RequiredMatchesPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -33,7 +33,7 @@ public class FullHouseTests
     public void ThreesOverTwos_Qualifies_ThreeThreesOneTwoAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -59,7 +59,7 @@ public class FullHouseTests
     public void ThreesOverTwos_Eliminated_RequiredMatchesAbsent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -103,7 +103,7 @@ public class FullHouseTests
     public void ThreesOverTwos_Possible_OneRemainingCard()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

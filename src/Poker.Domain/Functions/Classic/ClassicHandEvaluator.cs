@@ -27,8 +27,8 @@ public static class ClassicHandEvaluator
         };
     };
 
-    private static IEnumerable<EvaluatedHandSegmentResponse> EvaluateHandSegments(
-        EvaluatedHandRequest request
+    private static IEnumerable<EvaluateHandSegmentResponse> EvaluateHandSegments(
+        EvaluateHandRequest request
     )
     {
         UnusedCardsMessage unusedCards = new(request.Cards);
@@ -40,7 +40,7 @@ public static class ClassicHandEvaluator
                      (
                          segment => EvaluateHandSegment
                          (
-                            new EvaluatedHandSegmentRequest
+                            new EvaluateHandSegmentRequest
                             {
                                 HandSegment = segment,
                                 UnusedCards = unusedCards
@@ -54,8 +54,8 @@ public static class ClassicHandEvaluator
         }
     }
 
-    private static EvaluatedHandSegmentResponse EvaluateHandSegment(
-        EvaluatedHandSegmentRequest request
+    private static EvaluateHandSegmentResponse EvaluateHandSegment(
+        EvaluateHandSegmentRequest request
         )
     {
         HandCards contributingCards = new();
@@ -96,7 +96,7 @@ public static class ClassicHandEvaluator
             );
         }
 
-        return new EvaluatedHandSegmentResponse()
+        return new EvaluateHandSegmentResponse()
         {
             MeetsRequirements = RequirementsMet(),
             Contributing = contributingCards,

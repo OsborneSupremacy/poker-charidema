@@ -79,7 +79,7 @@ public static class ClassicWinnerEvaluator
 
         return finalists
             .Select(x => x.Player)
-            .ToList();      
+            .ToList();
     }
 
     private static List<Player> GetPlayersWithBestHandIncludingKickers(
@@ -95,5 +95,5 @@ public static class ClassicWinnerEvaluator
         return playersWithBestHand.Count == 1
             ? playersWithBestHand
             : GetPlayersWithBestKickers(playerBestHands, playersWithBestHand);
-    }    
+    }
 }

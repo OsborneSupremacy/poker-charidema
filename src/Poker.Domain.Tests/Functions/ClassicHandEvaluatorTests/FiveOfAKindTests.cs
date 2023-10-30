@@ -7,7 +7,7 @@ public class FiveOfAKindTests
     public void FiveThrees_Qualifies_FourThreesAndJokerPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

@@ -7,7 +7,7 @@ public class StraightFlushTests
     public void SixHighStraightFlush_Qualifies_AllCardsPresent()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -33,7 +33,7 @@ public class StraightFlushTests
     public void SixHighStraightFlush_Qualifies_WithJoker()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -59,7 +59,7 @@ public class StraightFlushTests
     public void SixHighStraightFlush_Eliminated_OneCardMissing()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()
@@ -98,7 +98,7 @@ public class StraightFlushTests
     public void SixHighStraightFlush_Possible_OneCardRemaining()
     {
         // Arrange
-        EvaluatedHandRequest request = new()
+        EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
             Cards = new()

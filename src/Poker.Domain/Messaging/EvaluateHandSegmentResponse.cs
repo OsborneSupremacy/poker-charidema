@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record EvaluatedHandSegmentResponse
+public record EvaluateHandSegmentResponse
 {
     public required bool MeetsRequirements { get; init; }
 

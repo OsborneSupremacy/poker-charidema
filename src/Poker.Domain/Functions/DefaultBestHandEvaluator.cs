@@ -7,7 +7,7 @@ public static class DefaultBestHandEvaluator
     public static readonly BestHandEvaluator Evaluate = request =>
     {
         return request
-            .HandCollectionEvaluator(new EvaluatedHandCollectionRequest
+            .HandCollectionEvaluator(new EvaluateHandCollectionRequest
             {
                 Player = request.Player,
                 Cards = request.Player.Cards,

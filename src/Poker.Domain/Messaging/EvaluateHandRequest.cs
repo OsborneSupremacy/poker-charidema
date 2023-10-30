@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record EvaluatedHandRequest
+public record EvaluateHandRequest
 {
     public required Player Player { get; init; }
     
