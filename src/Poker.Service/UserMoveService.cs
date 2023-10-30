@@ -54,7 +54,7 @@ public class UserMoveService : IUserMoveService
                     Stack = request.PlayerInTurn.Stack - ante
                 },
                 Deck = request.PhaseRequest.Game.Deck,
-                Pot = request.PhaseRequest.Pot + ante
+                Pot = request.Pot + ante
             }
         );
     }

@@ -33,21 +33,17 @@ public class AutomatonMoveService : IAutomatonMoveService
 
     private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var stackOut = request.PlayerInTurn.Stack;
-
         var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
             .WriteLines($"{request.PlayerInTurn.Name} antes.");
-
-        stackOut -= ante;
 
         return Task.FromResult(
             new MoveResponse
             {
                 PlayerInTurn = request.PlayerInTurn with
                 {
-                    Stack = stackOut
+                    Stack = request.PlayerInTurn.Stack - ante
                 },
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.Pot + ante
