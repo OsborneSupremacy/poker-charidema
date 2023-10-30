@@ -11,6 +11,7 @@ public class ThreeOfAKindTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
             HandToEvaluate = ThreeOfAKind.Twos,
             RemainingCardCount = 0
@@ -29,6 +30,7 @@ public class ThreeOfAKindTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfClubs,
@@ -52,6 +54,7 @@ public class ThreeOfAKindTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfClubs
@@ -92,6 +95,7 @@ public class ThreeOfAKindTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfClubs,

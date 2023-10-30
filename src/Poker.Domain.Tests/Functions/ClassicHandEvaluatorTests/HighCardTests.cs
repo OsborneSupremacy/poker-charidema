@@ -9,6 +9,7 @@ public class HighCardTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.AceOfClubs,
@@ -31,6 +32,7 @@ public class HighCardTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.AceOfClubs,
@@ -53,6 +55,7 @@ public class HighCardTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.KingOfClubs
@@ -88,6 +91,7 @@ public class HighCardTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new(),
             HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 1

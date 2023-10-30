@@ -2,6 +2,8 @@
 
 public record PlayerHand
 {
+    public required Player Player { get; init; }
+    
     public required Hand Hand { get; init; }
 
     public required HandCards HandCards { get; init; }

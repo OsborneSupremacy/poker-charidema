@@ -9,6 +9,7 @@ public class StraightTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.SixOfClubs,
@@ -34,6 +35,7 @@ public class StraightTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.SixOfClubs,
@@ -59,6 +61,7 @@ public class StraightTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.SixOfClubs,
@@ -101,6 +104,7 @@ public class StraightTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.SixOfClubs,

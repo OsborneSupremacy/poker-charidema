@@ -2,7 +2,7 @@
 
 public record BestHandRequest
 {
-    public required List<Card> Cards { get; init; }
+    public required Player Player { get; init; }
     
     public required int RemainingCardCount { get; init; }
 

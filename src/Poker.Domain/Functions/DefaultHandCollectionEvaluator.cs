@@ -10,6 +10,7 @@ public static class DefaultHandCollectionEvaluator
                 (
                     new EvaluatedHandRequest
                     {
+                        Player = request.Player,
                         Cards = request.Cards,
                         HandToEvaluate = hand,
                         RemainingCardCount = request.RemainingCardCount

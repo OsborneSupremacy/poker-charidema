@@ -12,6 +12,7 @@ public class PairTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
             HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
@@ -30,6 +31,7 @@ public class PairTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,
@@ -52,6 +54,7 @@ public class PairTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,
@@ -87,6 +90,7 @@ public class PairTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,

@@ -9,6 +9,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.AceOfClubs,
@@ -34,6 +35,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.AceOfClubs,
@@ -59,6 +61,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TenOfClubs,
@@ -98,6 +101,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.KingOfClubs,

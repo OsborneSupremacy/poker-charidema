@@ -205,6 +205,9 @@ public class FluentConsoleService : IUserInterfaceService
         
         foreach(var card in playerHand.Kickers.Concat(playerHand.DeadCards))
             content.Append(card.ToDisplayString(false));
+
+        content.AppendLine();
+        content.AppendLine(playerHand.Hand.Name);
         
         AnsiConsole.Write(new Panel(content.ToString().Trim())
             .Header(heading)

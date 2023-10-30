@@ -9,6 +9,7 @@ public static class ClassicHandEvaluator
 
         return new EvaluatedHandResponse
         {
+            Player = request.Player,
             Hand = request.HandToEvaluate,
             HandQualification =
                 evaluatedHandSegments.AllMeetRequirements() switch

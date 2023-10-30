@@ -79,7 +79,7 @@ public class PhaseCoordinator : IPhaseCoordinator
         (
             new BestHandRequest
             {
-                Cards = player.Cards,
+                Player = player,
                 RemainingCardCount = remainingCardCount,
                 HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
                 HandEvaluator = ClassicHandEvaluator.Evaluate

@@ -9,7 +9,8 @@ public static class DefaultBestHandEvaluator
         return request
             .HandCollectionEvaluator(new EvaluatedHandCollectionRequest
             {
-                Cards = request.Cards,
+                Player = request.Player,
+                Cards = request.Player.Cards,
                 HandEvaluator = request.HandEvaluator,
                 HandsToEvaluate = AllHands.All,
                 RemainingCardCount = request.RemainingCardCount

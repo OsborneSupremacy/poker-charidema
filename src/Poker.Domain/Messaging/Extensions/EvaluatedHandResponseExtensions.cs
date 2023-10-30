@@ -25,6 +25,7 @@ public static class EvaluatedHandResponseExtensions
 
         return new PlayerHand
         {
+            Player = input.Player,
             Hand = input.Hand,
             HandCards = handCards,
             Kickers = kickers,

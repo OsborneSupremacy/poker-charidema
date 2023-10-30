@@ -9,6 +9,7 @@ public class FullHouseTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfDiamonds,
@@ -34,6 +35,7 @@ public class FullHouseTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfDiamonds,
@@ -59,6 +61,7 @@ public class FullHouseTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfSpades,
@@ -102,6 +105,7 @@ public class FullHouseTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.ThreeOfSpades,

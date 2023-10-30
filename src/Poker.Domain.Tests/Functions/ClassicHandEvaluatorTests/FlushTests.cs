@@ -9,6 +9,7 @@ public class FlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,
@@ -34,6 +35,7 @@ public class FlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,
@@ -59,6 +61,7 @@ public class FlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,
@@ -106,6 +109,7 @@ public class FlushTests
         // Arrange
         EvaluatedHandRequest request = new()
         {
+            Player = Players.Empty,
             Cards = new()
             {
                 Cards.TwoOfClubs,

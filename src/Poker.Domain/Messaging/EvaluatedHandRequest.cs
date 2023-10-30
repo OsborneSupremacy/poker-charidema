@@ -2,6 +2,8 @@
 
 public record EvaluatedHandRequest
 {
+    public required Player Player { get; init; }
+    
     public required List<Card> Cards { get; init; }
 
     public required Hand HandToEvaluate { get; init; }
