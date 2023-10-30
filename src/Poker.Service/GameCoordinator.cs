@@ -43,11 +43,6 @@ public class GameCoordinator : IGameCoordinator
         );
 
         gamesOut.Add(gameResponse);
-
-        _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Game over! TBD wins.");
-
-        gamesOut.Add(gameResponse);
         
         var deck = await _dealerService.ReshuffleAsync(
             new ReshuffleRequest()

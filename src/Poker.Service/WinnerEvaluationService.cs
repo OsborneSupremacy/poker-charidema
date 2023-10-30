@@ -35,11 +35,23 @@ public class WinnerEvaluationService : IPhaseService
             _userInterfaceService
                 .WriteList(label, messages);
 
+            var playersOut = DefaultWinningsDistributor
+                .Distribute
+                (
+                    new()
+                    {
+                        Players = request.Game.Players,
+                        Winners = response.Winners,
+                        Pot = request.Pot
+                    }
+                )
+                .Players;
+
         return Task.FromResult(new PhaseResponse()
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
-            Players = request.Game.Players,
+            Players = playersOut,
             Winners = response.Winners,
             GameOver = true,
             Pot = request.Pot
