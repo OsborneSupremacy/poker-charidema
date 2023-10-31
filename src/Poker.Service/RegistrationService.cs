@@ -6,6 +6,7 @@ public static class RegistrationService
 {
     public static IServiceCollection RegisterStandard(this IServiceCollection serviceCollection)
     {
+        // services
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
         serviceCollection.AddScoped<IDealerService, DealerService>();
         serviceCollection.AddScoped<RoundRobinMoveService>();
@@ -19,8 +20,10 @@ public static class RegistrationService
         serviceCollection.AddScoped<IGameCoordinator, GameCoordinator>();
         serviceCollection.AddScoped<IAnteSetService, AnteSetService>();
         serviceCollection.AddScoped<IMatchService, MatchService>();
-
         serviceCollection.AddScoped<PlayerFactory>();
+        
+        // delegates
+        serviceCollection.AddSingleton<WinnerEvaluator>(ClassicWinnerEvaluator.Evaluate);;  
 
         return serviceCollection;
     }

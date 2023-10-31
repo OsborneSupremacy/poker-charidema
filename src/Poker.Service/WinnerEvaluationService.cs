@@ -4,17 +4,19 @@ public class WinnerEvaluationService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
+    private readonly WinnerEvaluator _winnerEvaluator;
+
     public WinnerEvaluationService(
-        IUserInterfaceService userInterfaceService
-        )
+        IUserInterfaceService userInterfaceService, WinnerEvaluator winnerEvaluator)
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _winnerEvaluator = winnerEvaluator ?? throw new ArgumentException(nameof(winnerEvaluator));
     }
     
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        var response = ClassicWinnerEvaluator
-            .Evaluate(new()
+        var response = _winnerEvaluator(
+            new()
             {
                 Game = request.Game
             });
