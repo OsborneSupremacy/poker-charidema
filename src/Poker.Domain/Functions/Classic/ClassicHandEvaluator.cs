@@ -34,20 +34,20 @@ public static class ClassicHandEvaluator
         UnusedCardsMessage unusedCards = new(request.Cards);
 
         foreach (var response in request
-                     .HandToEvaluate
-                     .HandSegments
-                     .Select
-                     (
-                         segment => EvaluateHandSegment
-                         (
-                            new EvaluateHandSegmentRequest
-                            {
-                                HandSegment = segment,
-                                UnusedCards = unusedCards
-                            }
-                        )
-                    )
-                 )
+            .HandToEvaluate
+            .HandSegments
+            .Select
+            (
+                segment => EvaluateHandSegment
+                (
+                    new EvaluateHandSegmentRequest
+                    {
+                        HandSegment = segment,
+                        UnusedCards = unusedCards
+                    }
+                )
+            )
+        )
         {
             unusedCards = response.UnusedCards;
             yield return response;
