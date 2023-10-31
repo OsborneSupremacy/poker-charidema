@@ -43,20 +43,13 @@ public static class ClassicWinnerEvaluator
             .First();
 
     private static List<Player> GetPlayersWithBestKickers(
-        List<PlayerHand> playerHands,
-        List<Player> playersWithBestHand
+        List<PlayerHand> playerHands
         )
     {
-        // there's a tie. Evaluate kickers.
         var kickerRanks = playerHands
             .SelectMany(x => x.Kickers.Select(k => k.Rank))
             .Distinct()
             .ToList();
-        
-        // if there are no kickers (which will be the case with 5-card hands)
-        // tie is unbreakable.
-        if (!kickerRanks.Any())
-            return playersWithBestHand;
         
         var finalists = playerHands;
         
@@ -92,8 +85,8 @@ public static class ClassicWinnerEvaluator
             .Select(x => x.Player)
             .ToList();
 
-        return playersWithBestHand.Count == 1
+        return (playersWithBestHand.Count == 1 || overallBestHand.IsFiveCardHand())
             ? playersWithBestHand
-            : GetPlayersWithBestKickers(playerBestHands, playersWithBestHand);
+            : GetPlayersWithBestKickers(playerBestHands);
     }
 }

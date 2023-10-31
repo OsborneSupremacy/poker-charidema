@@ -10,9 +10,7 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
-            },
+            Cards = new(),
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0

@@ -67,7 +67,7 @@ public class EvaluatedHandResponseExtensionTests
                 Standard = new()
                 {
                     Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds                  
+                    Cards.TwoOfDiamonds
                 },
                 Wild = new()
             },
