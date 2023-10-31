@@ -6,19 +6,36 @@ public class WinnerEvaluationService : IPhaseService
 
     private readonly WinnerEvaluator _winnerEvaluator;
 
+    private readonly WinningsDistributor _winningsDistributor;
+
+    private readonly HandCollectionEvaluator _handCollectionEvaluator;
+
+    private readonly HandEvaluator _handEvaluator;
+
     public WinnerEvaluationService(
-        IUserInterfaceService userInterfaceService, WinnerEvaluator winnerEvaluator)
+        IUserInterfaceService userInterfaceService,
+        WinnerEvaluator winnerEvaluator,
+        WinningsDistributor winningsDistributor,
+        HandCollectionEvaluator handCollectionEvaluator,
+        HandEvaluator handEvaluator
+        )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _winnerEvaluator = winnerEvaluator ?? throw new ArgumentException(nameof(winnerEvaluator));
+        _winnerEvaluator = winnerEvaluator ?? throw new ArgumentNullException(nameof(winnerEvaluator));
+        _winningsDistributor = winningsDistributor ?? throw new ArgumentNullException(nameof(winningsDistributor));
+        _handCollectionEvaluator =
+            handCollectionEvaluator ?? throw new ArgumentNullException(nameof(handCollectionEvaluator));
+        _handEvaluator = handEvaluator ?? throw new ArgumentNullException(nameof(handEvaluator));
     }
-    
+
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
         var response = _winnerEvaluator(
             new()
             {
-                Game = request.Game
+                Game = request.Game,
+                HandCollectionEvaluator = _handCollectionEvaluator,
+                HandEvaluator = _handEvaluator
             });
         
             foreach (var playerHand in response.PlayerHands)
@@ -37,17 +54,14 @@ public class WinnerEvaluationService : IPhaseService
             _userInterfaceService
                 .WriteList(label, messages);
 
-            var playersOut = DefaultWinningsDistributor
-                .Distribute
-                (
-                    new()
-                    {
-                        Players = request.Game.Players,
-                        Winners = response.Winners,
-                        Pot = request.Pot
-                    }
-                )
-                .Players;
+            var playersOut = _winningsDistributor(
+                new()
+                {
+                    Players = request.Game.Players,
+                    Winners = response.Winners,
+                    Pot = request.Pot
+                }
+            ).Players;
 
         return Task.FromResult(new PhaseResponse()
         {

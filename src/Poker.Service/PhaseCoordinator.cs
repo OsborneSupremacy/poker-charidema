@@ -6,13 +6,19 @@ public class PhaseCoordinator : IPhaseCoordinator
 
     private readonly IUserInterfaceService _userInterfaceService;
 
-    public PhaseCoordinator(
-        IPhaseService phaseService,
-        IUserInterfaceService userInterfaceService
-        )
+    private readonly BestHandEvaluator _bestHandEvaluator;
+
+    private readonly HandCollectionEvaluator _handCollectionEvaluator;
+    
+    private readonly HandEvaluator _handEvaluator;
+
+    public PhaseCoordinator(IPhaseService phaseService, IUserInterfaceService userInterfaceService, BestHandEvaluator bestHandEvaluator, HandCollectionEvaluator handCollectionEvaluator, HandEvaluator handEvaluator)
     {
-        _phaseService = phaseService ?? throw new ArgumentNullException(nameof(phaseService));
-        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
+        _phaseService = phaseService;
+        _userInterfaceService = userInterfaceService;
+        _bestHandEvaluator = bestHandEvaluator;
+        _handCollectionEvaluator = handCollectionEvaluator;
+        _handEvaluator = handEvaluator;
     }
 
     public async Task<PhaseCoordinatorResponse> ExecuteAsync(
@@ -75,14 +81,14 @@ public class PhaseCoordinator : IPhaseCoordinator
         if (!player.Cards.Any())
             return;
 
-        var bestHand = DefaultBestHandEvaluator.Evaluate
+        var bestHand = _bestHandEvaluator
         (
             new BestHandRequest
             {
                 Player = player,
                 RemainingCardCount = remainingCardCount,
-                HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
-                HandEvaluator = ClassicHandEvaluator.Evaluate
+                HandCollectionEvaluator = _handCollectionEvaluator,
+                HandEvaluator = _handEvaluator
             }
         );
 

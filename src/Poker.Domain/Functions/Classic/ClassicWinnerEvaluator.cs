@@ -29,8 +29,8 @@ public static class ClassicWinnerEvaluator
                         {
                             Player = player,
                             RemainingCardCount = 0,
-                            HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
-                            HandEvaluator = ClassicHandEvaluator.Evaluate
+                            HandCollectionEvaluator = request.HandCollectionEvaluator,
+                            HandEvaluator = request.HandEvaluator
                         }
                     ).ToPlayerHand()
             );

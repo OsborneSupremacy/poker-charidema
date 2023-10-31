@@ -22,8 +22,12 @@ public static class RegistrationService
         serviceCollection.AddScoped<IMatchService, MatchService>();
         serviceCollection.AddScoped<PlayerFactory>();
         
-        // delegates
-        serviceCollection.AddSingleton<WinnerEvaluator>(ClassicWinnerEvaluator.Evaluate);;  
+        // functions
+        serviceCollection.AddSingleton(ClassicHandEvaluator.Evaluate);
+        serviceCollection.AddSingleton(ClassicWinnerEvaluator.Evaluate);
+        serviceCollection.AddSingleton(DefaultBestHandEvaluator.Evaluate);
+        serviceCollection.AddSingleton(DefaultHandCollectionEvaluator.Evaluate);
+        serviceCollection.AddSingleton(DefaultWinningsDistributor.Distribute);
 
         return serviceCollection;
     }
