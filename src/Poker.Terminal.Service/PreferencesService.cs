@@ -111,16 +111,16 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 Games = new()
             },
 
-            InitialButton = new Faker()
+            InitialButton = new Faker
             {
                 Random = new Randomizer(_randomFactory.GetSeed())
-            }.PickRandom(players),
+            }.PickRandom(players)
         };
     }
 
     private AntePreferences GetAntePreferences(int startingStack)
     {
-        AntePreferences? antePreferences = new()
+        AntePreferences antePreferences = new()
         {
             AnteType = AnteTypes.Empty,
             Fixed = 0,

@@ -96,7 +96,7 @@ public static class ClassicHandEvaluator
             );
         }
 
-        return new EvaluateHandSegmentResponse()
+        return new EvaluateHandSegmentResponse
         {
             MeetsRequirements = RequirementsMet(),
             Contributing = contributingCards,

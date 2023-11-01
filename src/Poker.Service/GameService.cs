@@ -59,15 +59,21 @@ public class GameService : IGameService
             }
         };
 
-        foreach (var phase in request.Variant.Phases)
+        foreach (
+            var phaseCoordinatorRequest in request
+                .Variant
+                .Phases
+                .Select
+                (
+                    phase => new PhaseCoordinatorRequest
+                    {
+                        Game = phaseCoordinatorResponse.GameResponse.Game,
+                        Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
+                        Phase = phase 
+                    }
+                )
+        )
         {
-            PhaseCoordinatorRequest phaseCoordinatorRequest = new()
-            {
-                Game = phaseCoordinatorResponse.GameResponse.Game,
-                Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
-                Phase = phase 
-            };
-            
             phaseCoordinatorResponse = await _phaseCoordinator
                 .ExecuteAsync(phaseCoordinatorRequest);
 

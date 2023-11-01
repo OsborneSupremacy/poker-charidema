@@ -22,20 +22,16 @@ public static class DefaultWinningsDistributor
         }
 
         var pi = 0;
-        
-        List<Player> playersOut = new();
+
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
-        
-        foreach (var player in request.Players)
-            playersOut.Add
-            (
-                player with
-                {
-                    Stack = winnerIds.Contains(player.Id)
-                        ? player.Stack + winnerPayouts[pi++]
-                        : player.Stack
-                }
-            );
+
+        List<Player> playersOut = request.Players.Select(player => player with
+            {
+                Stack = winnerIds.Contains(player.Id)
+                    ? player.Stack + winnerPayouts[pi++]
+                    : player.Stack
+            })
+            .ToList();
 
         return new DistributeWinningsResponse
         {

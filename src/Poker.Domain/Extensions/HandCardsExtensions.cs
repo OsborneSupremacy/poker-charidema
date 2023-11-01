@@ -32,7 +32,7 @@ public static class HandCardsExtensions
         {
             standard.AddRange(handCard.Standard);
             wildCards.AddRange(handCard.Wild);
-        };
+        }
 
         return new HandCards
         {

@@ -12,7 +12,7 @@ namespace Poker.Domain.Classic.Hands;
 public static class Straights
 {
 <#
-    foreach(var rank in ranks.Where(r => r.value is >= 6))
+    foreach(var rank in ranks.Where(r => r.value >= 6))
     {
 #>
     public static Hand <#= rank.singular #>High { get; } = new()

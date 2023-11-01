@@ -26,6 +26,7 @@ public class ConsoleHostedService : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        // ReSharper disable once AsyncVoidLambda
         _applicationLifetime.ApplicationStarted.Register(async () =>
         {
             MatchResponse matchResponse = MatchResponses.Empty with
@@ -41,7 +42,7 @@ public class ConsoleHostedService : IHostedService
                     .CreateMatchRequest(matchResponse);
 
                 matchResponse = await _matchService.PlayAsync(matchRequest);
-            };
+            }
             _applicationLifetime.StopApplication();
         });
         return Task.CompletedTask;

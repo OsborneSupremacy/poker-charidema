@@ -1,6 +1,6 @@
 ﻿namespace Poker.Presentation.Interface;
 
-public interface IInputOption<T>
+public interface IInputOption<out T>
 {
     string Name { get; }
 

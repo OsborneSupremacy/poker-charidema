@@ -19,7 +19,7 @@ public class PhaseService : IPhaseService
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _roundRobinMoveService = roundRobinMoveService ?? throw new ArgumentNullException(nameof(roundRobinMoveService));
-        _evaluationService = winnerEvaluationService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));;
+        _evaluationService = winnerEvaluationService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
         _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 

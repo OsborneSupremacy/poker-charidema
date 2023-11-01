@@ -2,13 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-var builder = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json");
-
-var configuration = builder.Build();
-
 await Host.CreateDefaultBuilder(args)
-    .ConfigureServices((hostContext, services) =>
+    .ConfigureServices((_, services) =>
     {
         services.AddSingleton(AnsiConsole.Console);
         services.AddSingleton<FluentConsoleService>();

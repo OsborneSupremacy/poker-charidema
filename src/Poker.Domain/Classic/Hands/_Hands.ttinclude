@@ -16,22 +16,7 @@
         ("King", "Kings", 13),
         ("Ace", "Aces", 14)
     };
-
-    List<string> hands = new()
-    {
-        "HighCard",
-        "Pair",
-        "TwoPair",
-        "ThreeOfAKind",
-        "Straight",
-        "Flush",
-        "FullHouse",
-        "FourOfAKind",
-        "StraightFlush",
-        "RoyalFlush",
-        "FiveOfAKind"
-    };
-
+    
     List<string> suits = new()
     {
         "Spades",

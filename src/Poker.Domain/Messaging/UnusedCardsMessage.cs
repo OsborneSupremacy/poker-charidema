@@ -5,7 +5,7 @@ public record UnusedCardsMessage
     public UnusedCardsMessage() { }
 
     [SetsRequiredMembers]
-    public UnusedCardsMessage(List<Card> cards)
+    public UnusedCardsMessage(IReadOnlyCollection<Card> cards)
     {
         UnusedStandard = cards
             .WhereStandard()

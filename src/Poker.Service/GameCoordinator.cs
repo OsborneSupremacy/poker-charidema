@@ -32,7 +32,7 @@ public class GameCoordinator : IGameCoordinator
             : request.Button;
 
         var gameResponse = await _gameService.PlayAsync(
-            new GameRequest()
+            new GameRequest
             {
                 Match = request.Match,
                 Players = request.Match.Players,
@@ -45,7 +45,7 @@ public class GameCoordinator : IGameCoordinator
         gamesOut.Add(gameResponse);
         
         var deck = await _dealerService.ReshuffleAsync(
-            new ReshuffleRequest()
+            new ReshuffleRequest
             {
                 Deck = gameResponse.Game.Deck,
                 Players = gameResponse.Players

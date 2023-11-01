@@ -10,7 +10,7 @@ public record HandCards
     }
 
     [SetsRequiredMembers]
-    public HandCards(List<Card> cards)
+    public HandCards(IReadOnlyCollection<Card> cards)
     {
         Standard = cards.WhereStandard().ToList();
         Wild = cards.WhereWild()

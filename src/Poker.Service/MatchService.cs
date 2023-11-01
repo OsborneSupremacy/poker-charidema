@@ -108,18 +108,16 @@ public class MatchService : IMatchService
 
     private Task WriteMatchStartInfoAsync(Match match)
     {
-        var s = _userInterfaceService;
+        _userInterfaceService.WriteHeading(HeadingLevel.Two, "Welcome to the new match!");
 
-        s.WriteHeading(HeadingLevel.Two, "Welcome to the new match!");
+        _userInterfaceService.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
-        s.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
+        _userInterfaceService.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant.Name}");
 
-        s.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant.Name}");
-
-        s.WriteLine(
+        _userInterfaceService.WriteLine(
             match.FixedNumberOfGames.HasValue()
             ? $"The match will consist of {match.FixedNumberOfGames} games."
-            : $"The match has no fixed number of games."
+            : "The match has no fixed number of games."
         );
 
         return Task.CompletedTask;

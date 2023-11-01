@@ -65,7 +65,7 @@ public class WinnerEvaluationService : IPhaseService
         )
         .Players;
 
-        return Task.FromResult(new PhaseResponse()
+        return Task.FromResult(new PhaseResponse
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
