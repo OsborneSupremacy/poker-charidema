@@ -19,7 +19,7 @@ sequenceDiagram
 
         MatchService->>GameCoordinator : GameRequest
 
-        loop Every game
+        loop Each Game
 
             GameCoordinator->>GameService : GameRequest
 

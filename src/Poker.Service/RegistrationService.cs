@@ -29,6 +29,7 @@ public static class RegistrationService
         serviceCollection.AddSingleton(DefaultHandCollectionEvaluator.Evaluate);
         serviceCollection.AddSingleton(DefaultWinningsDistributor.Distribute);
         serviceCollection.AddSingleton(FisherYatesShuffleAlgorithm.Shuffle);
+        serviceCollection.AddSingleton(DefaultDealer.Deal);
 
         return serviceCollection;
     }
