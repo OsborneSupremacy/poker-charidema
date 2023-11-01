@@ -36,32 +36,34 @@ public class WinnerEvaluationService : IPhaseService
                 Game = request.Game,
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
-            });
+            }
+        );
         
-            foreach (var playerHand in response.PlayerHands)
-                _userInterfaceService
-                    .RenderCards
-                    (
-                        playerHand.Player.Name,
-                        playerHand
-                    );
-        
-            var label = response.Winners.Count > 1 ? "Winners" : "Winner";
-
-            var messages = response.Winners.Select(w => w.Name).ToList();
-            messages.Add($"{response.WinningHand.Name}");
-        
+        foreach (var playerHand in response.PlayerHands)
             _userInterfaceService
-                .WriteList(label, messages);
+                .RenderCards
+                (
+                    playerHand.Player.Name,
+                    playerHand
+                );
+    
+        var label = response.Winners.Count > 1 ? "Winners" : "Winner";
 
-            var playersOut = _winningsDistributor(
-                new()
-                {
-                    Players = request.Game.Players,
-                    Winners = response.Winners,
-                    Pot = request.Pot
-                }
-            ).Players;
+        var messages = response.Winners.Select(w => w.Name).ToList();
+        messages.Add($"{response.WinningHand.Name}");
+    
+        _userInterfaceService
+            .WriteList(label, messages);
+
+        var playersOut = _winningsDistributor(
+            new()
+            {
+                Players = request.Game.Players,
+                Winners = response.Winners,
+                Pot = request.Pot
+            }
+        )
+        .Players;
 
         return Task.FromResult(new PhaseResponse()
         {

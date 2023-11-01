@@ -51,7 +51,7 @@ public class PhaseCoordinator : IPhaseCoordinator
             Pot = phaseResponse.Pot
         };
 
-        if (!phaseResponse.GameOver)
+        if(!phaseResponse.GameOver)
         {
             _userInterfaceService
                 .WriteLine()
@@ -71,7 +71,7 @@ public class PhaseCoordinator : IPhaseCoordinator
                 Game = gameOut,
                 Players = phaseResponse.Players,
                 Variant = gameOut.Variant,
-                Button = gameOut.Button              
+                Button = gameOut.Button
             }
         };
     }
@@ -99,5 +99,5 @@ public class PhaseCoordinator : IPhaseCoordinator
             .RenderCards($"{label} Cards", bestHand.ToPlayerHand());
     
         _userInterfaceService.WriteLine($"{label} best hand is: {bestHand.Hand.Name}");
-    }      
+    }
 }
