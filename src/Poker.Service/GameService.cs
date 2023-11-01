@@ -84,7 +84,7 @@ public class GameService : IGameService
             .Select(p => p with
             {
                 Cards = new(),
-                Folded = false       
+                Folded = false
             })
             .ToList();
 

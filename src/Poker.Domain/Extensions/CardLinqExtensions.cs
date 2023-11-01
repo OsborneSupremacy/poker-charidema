@@ -2,10 +2,6 @@
 
 internal static class CardLinqExtensions
 {
-    public static IEnumerable<Card> WhereSuit(
-        this IEnumerable<Card> cards, Suit suit
-        ) => cards.Where(x => x.MatchesSuit(suit));
-
     public static IEnumerable<Card> WhereRank(
         this IEnumerable<Card> cards, Rank rank
         ) => cards.Where(x => x.MatchesRank(rank));

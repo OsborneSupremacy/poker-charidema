@@ -4,9 +4,12 @@ public class DealerService : IDealerService, IPhaseService
 {
     private readonly IRandomFactory _randomFactory;
 
-    public DealerService(IRandomFactory randomFactory)
+    private readonly ShuffleAlgorithm _shuffleAlgorithm;
+
+    public DealerService(IRandomFactory randomFactory, ShuffleAlgorithm shuffleAlgorithm)
     {
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
+        _shuffleAlgorithm = shuffleAlgorithm ?? throw new ArgumentNullException(nameof(shuffleAlgorithm));
     }
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
@@ -74,19 +77,10 @@ public class DealerService : IDealerService, IPhaseService
         };
     }
 
-    public Task<Deck> ShuffleAsync(Deck deck)
-    {
-        var random = _randomFactory.Create();
-
-        // Fisher-Yates shuffle algorithm
-        for (int i = deck.Cards.Count - 1; i > 0; i--)
-        {
-            int j = random.Next(i + 1);
-            (deck.Cards[j], deck.Cards[i]) = (deck.Cards[i], deck.Cards[j]);
-        }
-
-        return Task.FromResult(deck);
-    }
+    public Task<Deck> ShuffleAsync(Deck deck) =>
+        Task.FromResult(
+            _shuffleAlgorithm(_randomFactory.Create(), deck)
+        );
 
     public Task<Deck> ReshuffleAsync(ReshuffleRequest request)
     {
