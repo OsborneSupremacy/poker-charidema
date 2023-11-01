@@ -33,7 +33,7 @@ public class WinnerEvaluationService : IPhaseService
         var response = _winnerEvaluator(
             new()
             {
-                Game = request.Game,
+                Players = request.Game.Players,
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
             }

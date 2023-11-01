@@ -18,7 +18,6 @@ public static class ClassicWinnerEvaluator
 
     private static IEnumerable<PlayerHand> GetPlayerBestHands(EvaluateWinnerRequest request) =>
         request
-            .Game
             .Players
             .Where(p => !p.Folded)
             .Select(
@@ -43,22 +42,22 @@ public static class ClassicWinnerEvaluator
             .First();
 
     private static List<Player> GetPlayersWithBestKickers(
-        List<PlayerHand> playerHands
+        List<PlayerHand> playerBestHands
         )
     {
-        var kickerRanks = playerHands
+        var kickerRanks = playerBestHands
             .SelectMany(x => x.Kickers.Select(k => k.Rank))
             .Distinct()
             .ToList();
         
-        var finalists = playerHands;
+        var finalists = playerBestHands;
         
         foreach(
             Rank kickerRank in kickerRanks
                 .OrderByDescending(r => r.Value)
             )
         {
-            finalists = playerHands
+            finalists = playerBestHands
                 .Where
                 (
                     x => x.Kickers
@@ -82,11 +81,10 @@ public static class ClassicWinnerEvaluator
     {
         var playersWithBestHand = playerBestHands
             .Where(x => x.Hand == overallBestHand)
-            .Select(x => x.Player)
             .ToList();
 
         return (playersWithBestHand.Count == 1 || overallBestHand.IsFiveCardHand())
-            ? playersWithBestHand
-            : GetPlayersWithBestKickers(playerBestHands);
+            ? playersWithBestHand.Select(x => x.Player).ToList()
+            : GetPlayersWithBestKickers(playersWithBestHand);
     }
 }
