@@ -6,7 +6,7 @@ public class PhaseService : IPhaseService
 
     private readonly IPhaseService _roundRobinMoveService;
     
-    private readonly IPhaseService _evaluationService;
+    private readonly IPhaseService _winnerEvaluationService;
 
     private readonly IPhaseService _dealerService;
 
@@ -19,7 +19,7 @@ public class PhaseService : IPhaseService
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _roundRobinMoveService = roundRobinMoveService ?? throw new ArgumentNullException(nameof(roundRobinMoveService));
-        _evaluationService = winnerEvaluationService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
+        _winnerEvaluationService = winnerEvaluationService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
         _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
     }
 
@@ -40,7 +40,7 @@ public class PhaseService : IPhaseService
         var phaseService = request.Phase.PhaseType switch
         {
             PhaseType.Deal => _dealerService,
-            PhaseType.Evaluation => _evaluationService,
+            PhaseType.Evaluation => _winnerEvaluationService,
             _ => _roundRobinMoveService
         };
 
