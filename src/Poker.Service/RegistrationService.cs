@@ -6,30 +6,43 @@ public static class RegistrationService
 {
     public static IServiceCollection RegisterStandard(this IServiceCollection serviceCollection)
     {
-        // services
+        // utility services
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
-        serviceCollection.AddScoped<IDealerService, DealerService>();
-        serviceCollection.AddScoped<RoundRobinMoveService>();
-        serviceCollection.AddScoped<WinnerEvaluationService>();
-        serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
-        serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
-        serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
-        serviceCollection.AddScoped<IPhaseService, PhaseService>();
-        serviceCollection.AddScoped<IPhaseCoordinator, PhaseCoordinator>();
-        serviceCollection.AddScoped<IGameService, GameService>();
-        serviceCollection.AddScoped<IGameCoordinator, GameCoordinator>();
-        serviceCollection.AddScoped<IAnteSetService, AnteSetService>();
-        serviceCollection.AddScoped<IMatchService, MatchService>();
-        serviceCollection.AddScoped<PlayerFactory>();
         
-        // functions
+        // business services
+        serviceCollection.AddScoped<PlayerFactory>();
+        serviceCollection.AddScoped<IMatchService, MatchService>();
+        serviceCollection.AddScoped<IDealerService, DealerService>();
+        serviceCollection.AddScoped<IAnteSetService, AnteSetService>();
+        
+        serviceCollection.AddScoped<IGameCoordinator, GameCoordinator>();
+        serviceCollection.AddScoped<IGameService, GameService>();
+        
+        serviceCollection.AddScoped<IPhaseCoordinator, PhaseCoordinator>();
+        serviceCollection.AddScoped<IPhaseService, PhaseService>();
+        
+        serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
+        serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
+        serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
+        
+        // in .net 8, make this a keyed service
+        serviceCollection.AddScoped<RoundRobinMoveService>();
+
+        serviceCollection.AddScoped<IBetCoordinator, BetCoordinator>();
+        serviceCollection.AddScoped<IBetService, BetService>();
+        serviceCollection.AddScoped<IBetOptionsService, BetOptionsService>();
+        
+        // in .net 8, make this a keyed service
+        serviceCollection.AddScoped<WinnerEvaluationService>();
+        
+        // domain functions
+        serviceCollection.AddSingleton(DefaultDealer.Deal);
+        serviceCollection.AddSingleton(FisherYatesShuffleAlgorithm.Shuffle);
         serviceCollection.AddSingleton(ClassicHandEvaluator.Evaluate);
         serviceCollection.AddSingleton(ClassicWinnerEvaluator.Evaluate);
         serviceCollection.AddSingleton(DefaultBestHandEvaluator.Evaluate);
         serviceCollection.AddSingleton(DefaultHandCollectionEvaluator.Evaluate);
         serviceCollection.AddSingleton(DefaultWinningsDistributor.Distribute);
-        serviceCollection.AddSingleton(FisherYatesShuffleAlgorithm.Shuffle);
-        serviceCollection.AddSingleton(DefaultDealer.Deal);
 
         return serviceCollection;
     }
