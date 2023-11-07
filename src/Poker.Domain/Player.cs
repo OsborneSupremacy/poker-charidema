@@ -15,6 +15,11 @@ public record Player
     public required bool Busted { get; init; } 
 
     public required List<Card> Cards { get; init; }
+    
+    /// <summary>
+    /// the amount the player has contributed to the current game's pot.
+    /// </summary>
+    public required int Stake { get; init; }
 
     public required bool Folded { get; init; }
 }
@@ -30,6 +35,7 @@ public static class Players
         Automaton = true,
         Busted = false,
         Cards = new(),
+        Stake = 0,
         Folded = true
     };
 }

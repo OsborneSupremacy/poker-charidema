@@ -43,6 +43,7 @@ public class DefaultBestHandEvaluatorTests
                     Busted = false,
                     Id = Guid.NewGuid(),
                     Name = "Test Player",
+                    Stake = 0,
                     Cards = new()
                     {
                         Cards.AceOfSpades,

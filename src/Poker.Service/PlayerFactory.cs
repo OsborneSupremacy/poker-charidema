@@ -27,6 +27,7 @@ public class PlayerFactory
             Automaton = request.Automaton,
             Busted = false,
             Cards = new(),
+            Stake = 0,
             Folded = false
         });
     }

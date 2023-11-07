@@ -29,8 +29,8 @@ public static class RegistrationService
         serviceCollection.AddScoped<RoundRobinMoveService>();
 
         serviceCollection.AddScoped<IBetCoordinator, BetCoordinator>();
-        serviceCollection.AddScoped<IBetService, BetService>();
-        serviceCollection.AddScoped<IBetOptionsService, BetOptionsService>();
+        serviceCollection.AddScoped<IBettingIntervalService, BettingIntervalService>();
+        serviceCollection.AddScoped<IBettingIntervalOptionsService, BettingIntervalOptionsService>();
         
         // in .net 8, make this a keyed service
         serviceCollection.AddScoped<WinnerEvaluationService>();

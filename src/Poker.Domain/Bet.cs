@@ -1,20 +1,20 @@
 ﻿namespace Poker.Domain;
 
-public enum BetType
-{
-    Empty,
-    Check,
-    Call,
-    Bet,
-    Raise,
-    Fold
-}
-
 public record Bet
 {
     public required int Amount { get; init; }
-    
-    public required BetType Type { get; init; }
 
-    public required Guid PlayerId { get; init; }
+    public required Guid InitiatingPlayerId { get; init; }
+    
+    public required List<Guid> CallingPlayerIds { get; init; }
+}
+
+public static class Bets
+{
+    public static Bet Empty => new()
+    {
+        Amount = 0,
+        InitiatingPlayerId = Players.Empty.Id,
+        CallingPlayerIds = new()
+    };
 }

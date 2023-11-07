@@ -196,6 +196,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             Automaton = false,
             Busted = false,
             Cards = new(),
+            Stake = 0,
             Folded = false
         };
 

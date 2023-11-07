@@ -51,7 +51,8 @@ public class UserMoveService : IUserMoveService
             {
                 PlayerInTurn = request.PlayerInTurn with
                 {
-                    Stack = request.PlayerInTurn.Stack - ante
+                    Stack = request.PlayerInTurn.Stack - ante,
+                    Stake = request.PlayerInTurn.Stake + ante
                 },
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.Pot + ante
