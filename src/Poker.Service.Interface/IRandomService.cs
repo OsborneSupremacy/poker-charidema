@@ -2,11 +2,11 @@
 
 namespace Poker.Service.Interface;
 
-public interface IRandomFactory
+public interface IRandomService
 {
-    Random Create();
-
-    int GetSeed();
-
-    Faker CreateFaker();
+    public T PickFromList<T>(IList<T> items);
+    
+    public Person CreatePerson();
+    
+    public int GetAmount(int min, int max);
 }

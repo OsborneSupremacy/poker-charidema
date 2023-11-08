@@ -17,7 +17,8 @@ public record Player
     public required List<Card> Cards { get; init; }
     
     /// <summary>
-    /// the amount the player has contributed to the current game's pot.
+    /// The amount the player has contributed to the current game's pot.
+    /// This may end up not being used for anything. Revisit and remove if not.
     /// </summary>
     public required int Stake { get; init; }
 

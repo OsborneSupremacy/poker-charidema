@@ -1,6 +1,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#+
-    List<(string singular, string plural, int value)> ranks = new()
+    readonly List<(string singular, string plural, int value)> _ranks = new()
     {
         ("Two", "Twos", 2),
         ("Three", "Threes", 3),
@@ -16,8 +16,8 @@
         ("King", "Kings", 13),
         ("Ace", "Aces", 14)
     };
-    
-    List<string> suits = new()
+
+    readonly List<string> _suits = new()
     {
         "Spades",
         "Hearts",

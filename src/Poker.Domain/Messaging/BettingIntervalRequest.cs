@@ -2,7 +2,7 @@
 
 public record BettingIntervalRequest
 {
-    public required List<Bet> Bets { get; init; }
+    public required Bet CurrentBet { get; init; }
     
     public required int Pot { get; init; }
     

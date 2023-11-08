@@ -13,7 +13,7 @@ public class ClassicHandWinnerEvaluatorTests
 
     public ClassicHandWinnerEvaluatorTests()
     {
-        PlayerFactory playerFactory = new(new TimeRandomFactory());
+        PlayerFactory playerFactory = new(new RandomService(new TimeRandomFactory()));
         
         _playerOne = playerFactory.CreateAsync(new PlayerCreateRequest
         {

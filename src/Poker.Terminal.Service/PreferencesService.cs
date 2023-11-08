@@ -1,5 +1,4 @@
-﻿using Bogus;
-using Poker.Domain.Classic;
+﻿using Poker.Domain.Classic;
 using Poker.Domain.Implementations.Variants;
 using Poker.Domain.Messaging;
 
@@ -9,18 +8,18 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 {
     private readonly PlayerFactory _playerFactory;
 
-    private readonly IRandomFactory _randomFactory;
+    private readonly IRandomService _randomService;
 
     private readonly IUserInterfaceService _c;
 
     public PreferencesService(
         PlayerFactory playerFactory,
-        IRandomFactory randomFactory,
+        IRandomService randomService,
         IUserInterfaceService console
         )
     {
         _playerFactory = playerFactory ?? throw new ArgumentNullException(nameof(playerFactory));
-        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
+        _randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
         _c = console ?? throw new ArgumentNullException(nameof(console));
     }
 
@@ -111,10 +110,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 Games = new()
             },
 
-            InitialButton = new Faker
-            {
-                Random = new Randomizer(_randomFactory.GetSeed())
-            }.PickRandom(players)
+            InitialButton = _randomService.PickFromList(players)
         };
     }
 

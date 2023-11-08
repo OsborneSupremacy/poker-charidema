@@ -1,34 +1,25 @@
-﻿using Bogus;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class PlayerFactory
 {
-    private readonly IRandomFactory _randomFactory;
+    private readonly IRandomService _randomService;
 
-    public PlayerFactory(IRandomFactory randomFactory)
+    public PlayerFactory(IRandomService randomService)
     {
-        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
+        _randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
     }
 
-    public Task<Player> CreateAsync(PlayerCreateRequest request)
-    {
-        Faker faker = new()
-        {
-            Random = new Randomizer(_randomFactory.GetSeed())
-        };
-
-        return Task.FromResult(new Player
+    public Task<Player> CreateAsync(PlayerCreateRequest request) =>
+        Task.FromResult(new Player
         {
             Id = request.Id,
             BeginningStack = request.BeginningStack,
             Stack = request.BeginningStack,
-            Name = faker.Person.FirstName,
+            Name = _randomService.CreatePerson().FirstName,
             Automaton = request.Automaton,
             Busted = false,
             Cards = new(),
             Stake = 0,
             Folded = false
         });
-    }
 }

@@ -1,19 +1,14 @@
-﻿using Bogus;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class AnteSetService : IAnteSetService
 {
-    private readonly IRandomFactory _randomFactory;
+    private readonly IRandomService _randomService;
 
     private readonly IUserInterfaceService _userInterfaceService;
 
-    public AnteSetService(
-        IRandomFactory randomFactory,
-        IUserInterfaceService userInterfaceService
-        )
+    public AnteSetService(IRandomService randomService, IUserInterfaceService userInterfaceService)
     {
-        _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
+        _randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
     }
 
@@ -26,15 +21,14 @@ public class AnteSetService : IAnteSetService
 
         int anteAmount = button.Automaton switch
         {
-            true => new Randomizer(_randomFactory.GetSeed())
-                .Int(antePrefs.Min, antePrefs.Max),
+            true => _randomService.GetAmount(antePrefs.Max, antePrefs.Max),
             false => GetAnteFromUser(antePrefs)
         };
 
         return Task.FromResult(anteAmount);
     }
 
-    private AntePreferences GetAntePrefs(GameRequest request)
+    private static AntePreferences GetAntePrefs(GameRequest request)
     {
         var minPlayerStack = request.Players.Min(p => p.Stack);
 
@@ -61,7 +55,7 @@ public class AnteSetService : IAnteSetService
                 "Specify ante amount",
                 antePrefs.Min,
                 antePrefs.Max,
-                new Randomizer(_randomFactory.GetSeed()).Int(antePrefs.Min, antePrefs.Max),
+                _randomService.GetAmount(antePrefs.Max, antePrefs.Max),
                 input =>
                 {
                     anteAmount = input;

@@ -8,6 +8,7 @@ public static class RegistrationService
     {
         // utility services
         serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
+        serviceCollection.AddSingleton<IRandomService, RandomService>();
         
         // business services
         serviceCollection.AddScoped<PlayerFactory>();
@@ -20,6 +21,9 @@ public static class RegistrationService
         
         serviceCollection.AddScoped<IPhaseCoordinator, PhaseCoordinator>();
         serviceCollection.AddScoped<IPhaseService, PhaseService>();
+
+        serviceCollection.AddScoped<IBettingIntervalService, BettingIntervalService>();
+        serviceCollection.AddScoped<IBettingIntervalOptionsService, BettingIntervalOptionsService>();
         
         serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
