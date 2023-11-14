@@ -24,7 +24,7 @@ public class BettingIntervalOptionsService : IBettingIntervalOptionsService
             RequiredAmountToCall = request.CurrentBet.Amount,
             // we're currently going to prevent a player from better more
             // than another player has.
-            MaximumBet = request.ActivePlayers.Max(p => p.Stack),
+            MaximumBet = request.ActivePlayers.Min(p => p.Stack),
             AvailableBettingIntervalActions = actions
         });
     }

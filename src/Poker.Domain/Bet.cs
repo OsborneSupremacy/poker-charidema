@@ -6,7 +6,9 @@ public record Bet
 
     public required Guid InitiatingPlayerId { get; init; }
     
-    public required List<ContributedPlayer> ContributedPlayers { get; init; }
+    public required List<Guid> CheckedPlayerIds { get; init; }
+    
+    public required List<ContributingPlayer> ContributingPlayers { get; init; }
 }
 
 public static class Bets
@@ -15,6 +17,7 @@ public static class Bets
     {
         Amount = 0,
         InitiatingPlayerId = Players.Empty.Id,
-        ContributedPlayers = new()
+        CheckedPlayerIds = new(),
+        ContributingPlayers = new()
     };
 }

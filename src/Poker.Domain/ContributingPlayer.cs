@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain;
 
-public record ContributedPlayer()
+public record ContributingPlayer()
 {
     public required Guid PlayerId { get; init; }
     

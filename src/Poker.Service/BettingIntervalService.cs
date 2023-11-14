@@ -37,18 +37,18 @@ public class BettingIntervalService: IBettingIntervalService
 
         return optionDelegate(
             request,
-            () => _randomService.GetAmount(request.CurrentBet.Amount, maxBet)
+            () => _randomService.GetAmount(request.CurrentBet.Amount + 1, maxBet)
         );
     }
     
     private delegate BettingIntervalResponse BettingIntervalDelegate(
         BettingIntervalRequest request,
-        Func<int> getBetAmount
+        Func<int> getAdditionalAmount
         );
 
-    private static readonly BettingIntervalDelegate Bet = (request, getBetAmount) =>
+    private static readonly BettingIntervalDelegate Bet = (request, getAdditionalAmount) =>
     {
-        var betAmount = getBetAmount();
+        var betAmount = getAdditionalAmount();
         
         return new BettingIntervalResponse
         {
@@ -56,9 +56,10 @@ public class BettingIntervalService: IBettingIntervalService
             {
                 Amount = betAmount,
                 InitiatingPlayerId = request.PlayerInTurn.Id,
-                ContributedPlayers = new()
+                CheckedPlayerIds = new(),
+                ContributingPlayers = new()
                 {
-                    new ContributedPlayer
+                    new ContributingPlayer
                     {
                         PlayerId = request.PlayerInTurn.Id,
                         Amount = betAmount
@@ -76,9 +77,15 @@ public class BettingIntervalService: IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Check = (request, _) =>
     {
+        var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds;
+        checkedPlayerIds.Add(request.PlayerInTurn.Id);
+        
         return new BettingIntervalResponse
         {
-            CurrentBet = request.CurrentBet,
+            CurrentBet = request.CurrentBet with
+            {
+                CheckedPlayerIds = checkedPlayerIds
+            },
             Pot = request.Pot, 
             PlayerInTurn = request.PlayerInTurn
         };
@@ -86,37 +93,87 @@ public class BettingIntervalService: IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Call = (request, _) =>
     {
+        var contributingPlayers = request.CurrentBet.ContributingPlayers;
+
+        var currentContribution = contributingPlayers
+            .SingleOrDefault(cp => cp.PlayerId == request.PlayerInTurn.Id);
+
+        if (currentContribution is not null)
+            contributingPlayers.Remove(currentContribution);
+        
+        var additionalAmount =
+            request.CurrentBet.Amount
+            - currentContribution?.Amount ?? 0;
+        
+        contributingPlayers.Add(new ContributingPlayer
+        {
+            PlayerId = request.PlayerInTurn.Id,
+            Amount = request.CurrentBet.Amount
+        });
+        
         return new BettingIntervalResponse
         {
-            CurrentBet = request.CurrentBet,
-            Pot = request.Pot + request.CurrentBet.Amount,
+            CurrentBet = request.CurrentBet with
+            {
+                ContributingPlayers = contributingPlayers
+            },
+            Pot = request.Pot + additionalAmount,
             PlayerInTurn = request.PlayerInTurn with
             {
-                Stack = request.PlayerInTurn.Stack - request.CurrentBet.Amount,
-                Stake = request.PlayerInTurn.Stake + request.CurrentBet.Amount
+                Stack = request.PlayerInTurn.Stack - additionalAmount,
+                Stake = request.PlayerInTurn.Stake + additionalAmount
             }
         };
     };
     
-    private static readonly BettingIntervalDelegate Raise = (request, _) =>
+    private static readonly BettingIntervalDelegate Raise = (request, getAdditionalAmount) =>
     {
+        var raiseDelta = getAdditionalAmount();
+        var newBetAmount = request.CurrentBet.Amount + raiseDelta;
+        
+        var contributingPlayers = request.CurrentBet.ContributingPlayers;
+        
+        var currentContribution = contributingPlayers
+            .SingleOrDefault(cp => cp.PlayerId == request.PlayerInTurn.Id);
+        
+        if (currentContribution is not null)
+            contributingPlayers.Remove(currentContribution);
+        
+        var playerAdditionalAmount = 
+            newBetAmount
+            - currentContribution?.Amount ?? 0;
+
+        contributingPlayers.Add(new ContributingPlayer
+        {
+            PlayerId = request.PlayerInTurn.Id,
+            Amount = newBetAmount
+        });
+        
         return new BettingIntervalResponse
         {
-            CurrentBet = request.CurrentBet,
-            Pot = request.Pot,
-            PlayerInTurn = request.PlayerInTurn
+            CurrentBet = new Bet
+            {
+                Amount = newBetAmount,
+                InitiatingPlayerId = request.PlayerInTurn.Id,
+                CheckedPlayerIds = new(),
+                ContributingPlayers = contributingPlayers
+            },
+            Pot = request.Pot + playerAdditionalAmount,
+            PlayerInTurn = request.PlayerInTurn with
+            {
+                Stack = request.PlayerInTurn.Stack - playerAdditionalAmount,
+                Stake = request.PlayerInTurn.Stake + playerAdditionalAmount                
+            }
         };
     };
 
     private static readonly BettingIntervalDelegate Fold = (request, _) =>
-    {
-        return new BettingIntervalResponse
+        new BettingIntervalResponse
         {
             CurrentBet = request.CurrentBet,
             Pot = request.Pot,
             PlayerInTurn = request.PlayerInTurn with { Folded = true }
         };
-    };
 
     private static readonly Dictionary<BettingIntervalActionType, BettingIntervalDelegate?> BettingIntervalDelegates =
         new()
