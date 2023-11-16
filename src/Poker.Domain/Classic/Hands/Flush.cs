@@ -57,7 +57,7 @@ public static class Flushes
                     Cards.JackOfHearts,
                     Cards.QueenOfHearts,
                     Cards.KingOfHearts,
-                    Cards.AceOfHearts                  
+                    Cards.AceOfHearts
                 }
             }
         }
@@ -88,7 +88,7 @@ public static class Flushes
                     Cards.JackOfDiamonds,
                     Cards.QueenOfDiamonds,
                     Cards.KingOfDiamonds,
-                    Cards.AceOfDiamonds                  
+                    Cards.AceOfDiamonds
                 }
             }
         }
@@ -119,7 +119,7 @@ public static class Flushes
                     Cards.JackOfClubs,
                     Cards.QueenOfClubs,
                     Cards.KingOfClubs,
-                    Cards.AceOfClubs                  
+                    Cards.AceOfClubs
                 }
             }
         }
