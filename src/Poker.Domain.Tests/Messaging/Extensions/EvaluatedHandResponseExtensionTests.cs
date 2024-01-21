@@ -17,42 +17,29 @@ public class EvaluatedHandResponseExtensionTests
             Player = Players.Empty,
             Hand = Pairs.Twos,
             HandQualification = HandQualifications.Qualifies,
-            EvaluatedHandSegments = new List<EvaluateHandSegmentResponse>
-            {
+            EvaluatedHandSegments =
+            [
                 new()
                 {
                     MeetsRequirements = true,
-                    Contributing = new()
-                    {
-                        Standard = new()
-                        {
-                            Cards.TwoOfClubs,
-                            Cards.TwoOfDiamonds
-                        },
-                        Wild = new()
-                    },
-                    Outstanding = new()
-                    {
-                        RequiredCount = 0,
-                    EligibleCards = new()
-                    },
+                    Contributing = new() { Standard = [Cards.TwoOfClubs, Cards.TwoOfDiamonds], Wild = [] },
+                    Outstanding = new() { RequiredCount = 0, EligibleCards = [] },
                     UnusedCards = new UnusedCardsMessage
                     {
                         // the unused cards in the particular segments don't matter. The final
                         // list of unused cards is a property of the EvaluatedHandResponse
-                        UnusedStandard = new(),
-                        UnusedWild = new()
+                        UnusedStandard = [], UnusedWild = new()
                     }
                 }
-            },
+            ],
             UnusedCards = new UnusedCardsMessage
             {
-                UnusedStandard = new List<Card>
-                {
+                UnusedStandard =
+                [
                     Cards.ThreeOfClubs,
                     Cards.FourOfClubs,
                     Cards.FiveOfClubs
-                },
+                ],
                 UnusedWild = unusedWild
             },
             RemainingCardCount = 0
@@ -64,23 +51,20 @@ public class EvaluatedHandResponseExtensionTests
             Hand = Pairs.Twos,
             HandCards = new()
             {
-                Standard = new()
-                {
+                Standard =
+                [
                     Cards.TwoOfClubs,
                     Cards.TwoOfDiamonds
-                },
-                Wild = new()
+                ],
+                Wild = []
             },
-            Kickers = new()
-            {
+            Kickers =
+            [
                 joker,
                 Cards.FiveOfClubs,
                 Cards.FourOfClubs
-            },
-            DeadCards = new()
-            {
-                Cards.ThreeOfClubs
-            }
+            ],
+            DeadCards = [Cards.ThreeOfClubs]
         };
         
         // Act

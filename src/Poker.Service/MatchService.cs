@@ -34,7 +34,7 @@ public class MatchService : IMatchService
             GameResponse = new()
             {
                 Game = Games.Empty,
-                Players = new(),
+                Players = [],
                 Variant = EmptyVariant.GetVariant(),
                 Button = Players.Empty         
             }
@@ -154,7 +154,7 @@ public class MatchService : IMatchService
         {
             Cancelled = true,
             Match = match,
-            Winners = new(),
+            Winners = [],
             PlayAgain = await _matchPreferencesService.GetPlayAgain(match)
         };
     }
@@ -164,7 +164,7 @@ public class MatchService : IMatchService
         {
             Cancelled = false,
             Match = responseIn.Match,
-            Winners = new(),
+            Winners = [],
             PlayAgain = await _matchPreferencesService.GetPlayAgain(responseIn.Match)
         };
 }

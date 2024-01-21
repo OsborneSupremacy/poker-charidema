@@ -10,14 +10,14 @@ public class StraightFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfClubs,
                 Cards.FourOfClubs,
                 Cards.ThreeOfClubs,
                 Cards.TwoOfClubs
-            },
+            ],
             HandToEvaluate = StraightFlushes.SixHighClubs,
             RemainingCardCount = 0
         };
@@ -36,14 +36,14 @@ public class StraightFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfClubs,
                 Cards.FourOfClubs,
                 Cards.ThreeOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = StraightFlushes.SixHighClubs,
             RemainingCardCount = 0
         };
@@ -62,13 +62,13 @@ public class StraightFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfClubs,
                 Cards.FourOfClubs,
                 Cards.ThreeOfClubs
-            },
+            ],
             HandToEvaluate = StraightFlushes.SixHighClubs,
             RemainingCardCount = 0
         };
@@ -76,10 +76,7 @@ public class StraightFlushTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
-                Cards.TwoOfClubs
-            }
+            EligibleCards = [Cards.TwoOfClubs]
         };
 
         // Act
@@ -101,14 +98,13 @@ public class StraightFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfClubs,
                 Cards.FourOfClubs,
                 Cards.ThreeOfClubs
-
-            },
+            ],
             HandToEvaluate = StraightFlushes.SixHighClubs,
             RemainingCardCount = 1
         };

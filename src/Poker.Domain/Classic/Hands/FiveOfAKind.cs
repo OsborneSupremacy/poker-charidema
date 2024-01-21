@@ -33,27 +33,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TwoOfSpades,
                     Cards.TwoOfHearts,
                     Cards.TwoOfClubs,
                     Cards.TwoOfDiamonds,
-                    Cards.TwoOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.TwoOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Threes { get; } = new()
@@ -62,27 +56,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.ThreeOfSpades,
                     Cards.ThreeOfHearts,
                     Cards.ThreeOfClubs,
                     Cards.ThreeOfDiamonds,
-                    Cards.ThreeOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.ThreeOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Fours { get; } = new()
@@ -91,27 +79,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.FourOfSpades,
                     Cards.FourOfHearts,
                     Cards.FourOfClubs,
                     Cards.FourOfDiamonds,
-                    Cards.FourOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.FourOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Fives { get; } = new()
@@ -120,27 +102,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.FiveOfSpades,
                     Cards.FiveOfHearts,
                     Cards.FiveOfClubs,
                     Cards.FiveOfDiamonds,
-                    Cards.FiveOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.FiveOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Sixes { get; } = new()
@@ -149,27 +125,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.SixOfSpades,
                     Cards.SixOfHearts,
                     Cards.SixOfClubs,
                     Cards.SixOfDiamonds,
-                    Cards.SixOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.SixOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Sevens { get; } = new()
@@ -178,27 +148,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.SevenOfSpades,
                     Cards.SevenOfHearts,
                     Cards.SevenOfClubs,
                     Cards.SevenOfDiamonds,
-                    Cards.SevenOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.SevenOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Eights { get; } = new()
@@ -207,27 +171,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.EightOfSpades,
                     Cards.EightOfHearts,
                     Cards.EightOfClubs,
                     Cards.EightOfDiamonds,
-                    Cards.EightOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.EightOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Nines { get; } = new()
@@ -236,27 +194,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.NineOfSpades,
                     Cards.NineOfHearts,
                     Cards.NineOfClubs,
                     Cards.NineOfDiamonds,
-                    Cards.NineOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.NineOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Tens { get; } = new()
@@ -265,27 +217,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TenOfSpades,
                     Cards.TenOfHearts,
                     Cards.TenOfClubs,
                     Cards.TenOfDiamonds,
-                    Cards.TenOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.TenOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Jacks { get; } = new()
@@ -294,27 +240,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.JackOfSpades,
                     Cards.JackOfHearts,
                     Cards.JackOfClubs,
                     Cards.JackOfDiamonds,
-                    Cards.JackOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.JackOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Queens { get; } = new()
@@ -323,27 +263,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.QueenOfSpades,
                     Cards.QueenOfHearts,
                     Cards.QueenOfClubs,
                     Cards.QueenOfDiamonds,
-                    Cards.QueenOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.QueenOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Kings { get; } = new()
@@ -352,27 +286,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.KingOfSpades,
                     Cards.KingOfHearts,
                     Cards.KingOfClubs,
                     Cards.KingOfDiamonds,
-                    Cards.KingOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.KingOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Aces { get; } = new()
@@ -381,27 +309,21 @@ public record FiveOfAKind
         HandDefinition = HandDefinitions.FiveOfAKind,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.AceOfSpades,
                     Cards.AceOfHearts,
                     Cards.AceOfClubs,
                     Cards.AceOfDiamonds,
-                    Cards.AceOfSpades with
-                    {
-                        Suit = Suits.Spades with
-                        {
-                            Priority = 0
-                        }
-                    }
-                }
+                    Cards.AceOfSpades with { Suit = Suits.Spades with { Priority = 0 } }
+                ]
             }
-        }
+        ]
     };
 
 }

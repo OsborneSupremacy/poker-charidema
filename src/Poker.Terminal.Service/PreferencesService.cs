@@ -107,7 +107,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 },
                 FixedVariant = FiveCardDraw.GetVariant(),
                 StartingStack = startingStack,
-                Games = new()
+                Games = []
             },
 
             InitialButton = _randomService.PickFromList(players)
@@ -191,7 +191,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             BeginningStack = startingStack,
             Automaton = false,
             Busted = false,
-            Cards = new(),
+            Cards = [],
             Stake = 0,
             Folded = false
         };

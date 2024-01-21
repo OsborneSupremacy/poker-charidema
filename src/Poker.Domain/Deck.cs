@@ -11,7 +11,7 @@ public static class Decks
 {
     public static Deck Empty { get; } = new()
     {
-        Cards = new(),
+        Cards = [],
         NumberOfJokers = 0
     };
 }

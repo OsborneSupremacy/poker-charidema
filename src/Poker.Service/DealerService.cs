@@ -35,7 +35,7 @@ public class DealerService : IDealerService, IPhaseService
             Deck = dealResponse.Deck,
             CommunityCards = dealResponse.CommunityCards,
             Players = dealResponse.Players,
-            Winners = new(),
+            Winners = [],
             GameOver = false,
             Pot = request.Pot
         });

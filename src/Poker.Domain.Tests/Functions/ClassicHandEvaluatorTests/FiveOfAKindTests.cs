@@ -10,14 +10,14 @@ public class FiveOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades,
                 Cards.ThreeOfHearts,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = FiveOfAKind.Threes,
             RemainingCardCount = 0
         };

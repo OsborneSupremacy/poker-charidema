@@ -10,11 +10,11 @@ public class HighCardTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.AceOfClubs,
                 Cards.KingOfClubs
-            },
+            ],
             HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
@@ -33,11 +33,11 @@ public class HighCardTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.AceOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
@@ -56,10 +56,7 @@ public class HighCardTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
-                Cards.KingOfClubs
-            },
+            Cards = [Cards.KingOfClubs],
             HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 0
         };
@@ -67,13 +64,13 @@ public class HighCardTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+            EligibleCards =
+            [
+                Cards.AceOfSpades,
+                Cards.AceOfHearts,
+                Cards.AceOfClubs,
+                Cards.AceOfDiamonds
+            ]
         };
 
         // Act
@@ -92,7 +89,7 @@ public class HighCardTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new(),
+            Cards = [],
             HandToEvaluate = HighCards.Ace,
             RemainingCardCount = 1
         };

@@ -6,9 +6,10 @@ public static class TexasHoldEm
         new()
         {
             Name = "Texas Hold 'Em",
-            Phases = new()
-            {
-                new() {
+            Phases =
+            [
+                new()
+                {
                     Number = 0,
                     Name = "Ante",
                     PhaseType = PhaseType.Ante,
@@ -17,8 +18,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 1,
@@ -27,10 +29,11 @@ public static class TexasHoldEm
                     GameCanEndAfter = false,
                     CardsToDealCount = 2,
                     CardDestination = CardLocations.PlayerHand,
-                    CardOrientation = CardOrientations.Facedown,
+                    CardOrientation = CardOrientations.FaceDown,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 2,
@@ -41,8 +44,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 3,
@@ -51,10 +55,11 @@ public static class TexasHoldEm
                     GameCanEndAfter = false,
                     CardsToDealCount = 2,
                     CardDestination = CardLocations.Community,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 4,
@@ -65,8 +70,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 5,
@@ -75,10 +81,11 @@ public static class TexasHoldEm
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
                     CardDestination = CardLocations.Community,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 6,
@@ -89,8 +96,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 7,
@@ -99,10 +107,11 @@ public static class TexasHoldEm
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
                     CardDestination = CardLocations.Community,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 8,
@@ -113,8 +122,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 9,
@@ -123,10 +133,11 @@ public static class TexasHoldEm
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
                     CardDestination = CardLocations.Community,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 10,
@@ -137,8 +148,9 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 11,
@@ -149,8 +161,8 @@ public static class TexasHoldEm
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 }
-            }
+            ]
         };
 }

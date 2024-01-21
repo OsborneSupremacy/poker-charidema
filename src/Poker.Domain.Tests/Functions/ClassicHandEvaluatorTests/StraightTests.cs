@@ -10,14 +10,14 @@ public class StraightTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfSpades,
                 Cards.FourOfClubs,
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
-            },
+            ],
             HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
@@ -36,14 +36,14 @@ public class StraightTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfSpades,
                 Cards.FourOfClubs,
                 Cards.ThreeOfHearts,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
@@ -62,14 +62,14 @@ public class StraightTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfSpades,
                 Cards.AceOfHearts,
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
-            },
+            ],
             HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 0
         };
@@ -77,13 +77,13 @@ public class StraightTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
+            EligibleCards =
+            [
                 Cards.FourOfSpades,
                 Cards.FourOfHearts,
                 Cards.FourOfClubs,
                 Cards.FourOfDiamonds
-            }
+            ]
         };
 
         // Act
@@ -105,13 +105,13 @@ public class StraightTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.SixOfClubs,
                 Cards.FiveOfSpades,
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs
-            },
+            ],
             HandToEvaluate = Straights.SixHigh,
             RemainingCardCount = 1
         };

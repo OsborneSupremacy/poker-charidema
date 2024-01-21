@@ -31,12 +31,12 @@ public class ThreeOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = ThreeOfAKind.Threes,
             RemainingCardCount = 0
         };
@@ -55,10 +55,7 @@ public class ThreeOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
-                Cards.ThreeOfClubs
-            },
+            Cards = [Cards.ThreeOfClubs],
             HandToEvaluate = ThreeOfAKind.Threes,
             RemainingCardCount = 0
         };
@@ -66,12 +63,12 @@ public class ThreeOfAKindTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 2,
-            EligibleCards = new()
-            {
+            EligibleCards =
+            [
                 Cards.ThreeOfHearts,
                 Cards.ThreeOfSpades,
                 Cards.ThreeOfDiamonds
-            }
+            ]
         };
 
         // Act
@@ -96,11 +93,11 @@ public class ThreeOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfHearts
-            },
+            ],
             HandToEvaluate = ThreeOfAKind.Threes,
             RemainingCardCount = cardsRemaining
         };

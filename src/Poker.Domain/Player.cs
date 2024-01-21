@@ -35,7 +35,7 @@ public static class Players
         Stack = 0,
         Automaton = true,
         Busted = false,
-        Cards = new(),
+        Cards = [],
         Stake = 0,
         Folded = true
     };

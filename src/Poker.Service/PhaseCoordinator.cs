@@ -38,7 +38,7 @@ public class PhaseCoordinator : IPhaseCoordinator
                 Game = request.Game,
                 Phase = request.Phase,
                 Deck = request.Deck,
-                CommunityCards = new(),
+                CommunityCards = [],
                 StartingPlayer = startingPlayer,
                 Pot = request.Game.Pot
             });

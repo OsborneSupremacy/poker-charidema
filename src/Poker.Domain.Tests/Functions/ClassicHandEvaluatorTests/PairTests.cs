@@ -32,11 +32,11 @@ public class PairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
@@ -55,11 +55,11 @@ public class PairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
-            },
+            ],
             HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };
@@ -67,12 +67,12 @@ public class PairTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
+            EligibleCards =
+            [
                 Cards.TwoOfSpades,
                 Cards.TwoOfHearts,
                 Cards.TwoOfDiamonds
-            }
+            ]
         };
 
         // Act
@@ -91,11 +91,11 @@ public class PairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.ThreeOfClubs
-            },
+            ],
             HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 1
         };

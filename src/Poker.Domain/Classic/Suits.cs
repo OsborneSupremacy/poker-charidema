@@ -37,10 +37,11 @@ public static class Suits
         Symbol = '♠'
     };
 
-    public static List<Suit> All { get; } = new() {
+    public static List<Suit> All { get; } =
+    [
         Hearts,
         Diamonds,
         Clubs,
         Spades
-    };
+    ];
 }

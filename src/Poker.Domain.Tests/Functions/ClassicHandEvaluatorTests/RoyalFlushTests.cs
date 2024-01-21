@@ -10,14 +10,14 @@ public class RoyalFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.AceOfClubs,
                 Cards.KingOfClubs,
                 Cards.QueenOfClubs,
                 Cards.JackOfClubs,
                 Cards.TenOfClubs
-            },
+            ],
             HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
@@ -36,14 +36,14 @@ public class RoyalFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.AceOfClubs,
                 Cards.KingOfClubs,
                 Cards.QueenOfClubs,
                 Cards.JackOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
@@ -62,14 +62,14 @@ public class RoyalFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TenOfClubs,
                 Cards.KingOfClubs,
                 Cards.QueenOfClubs,
                 Cards.JackOfClubs,
                 Cards.NineOfClubs
-            },
+            ],
             HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 0
         };
@@ -77,10 +77,7 @@ public class RoyalFlushTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
-                Cards.AceOfClubs
-            }
+            EligibleCards = [Cards.AceOfClubs]
         };
 
         // Act
@@ -102,13 +99,13 @@ public class RoyalFlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.KingOfClubs,
                 Cards.QueenOfClubs,
                 Cards.JackOfClubs,
                 Cards.TenOfClubs
-            },
+            ],
             HandToEvaluate = RoyalFlushes.Clubs,
             RemainingCardCount = 1
         };

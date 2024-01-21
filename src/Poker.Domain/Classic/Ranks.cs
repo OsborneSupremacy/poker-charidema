@@ -100,7 +100,8 @@ public static class Ranks
         IsStandard = false
     };
 
-    public static List<Rank> All { get; } = new() {
+    public static List<Rank> All { get; } =
+    [
         Two,
         Three,
         Four,
@@ -114,5 +115,5 @@ public static class Ranks
         Queen,
         King,
         Ace
-    };
+    ];
 }

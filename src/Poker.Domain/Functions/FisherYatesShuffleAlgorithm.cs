@@ -4,7 +4,7 @@ public static class FisherYatesShuffleAlgorithm
 {
     public static readonly ShuffleAlgorithm Shuffle = (random, deckIn) =>
     {
-        List<Card> cardsOut = new();
+        List<Card> cardsOut = [];
         cardsOut.AddRange(deckIn.Cards);
         
         for (int i = cardsOut.Count - 1; i > 0; i--)

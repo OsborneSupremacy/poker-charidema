@@ -10,14 +10,14 @@ public class FullHouseTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfHearts,
                 Cards.ThreeOfSpades,
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
@@ -36,14 +36,14 @@ public class FullHouseTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfHearts,
                 Cards.ThreeOfSpades,
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
@@ -62,29 +62,21 @@ public class FullHouseTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfSpades,
                 Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 0
         };
 
-        List<HandSegment> expectedOutstanding = new()
-        {
-            new()
-            {
-                RequiredCount = 1,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfDiamonds
-                }
-            }
-        };
+        List<HandSegment> expectedOutstanding =
+        [
+            new() { RequiredCount = 1, EligibleCards = [Cards.ThreeOfHearts, Cards.ThreeOfDiamonds] }
+        ];
 
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
@@ -106,13 +98,13 @@ public class FullHouseTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfSpades,
                 Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = FullHouses.ThreesOverTwos,
             RemainingCardCount = 1
         };

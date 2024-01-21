@@ -8,12 +8,13 @@ public static class Flushes
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Spades,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new() {
+                EligibleCards =
+                [
                     Cards.TwoOfSpades,
                     Cards.ThreeOfSpades,
                     Cards.FourOfSpades,
@@ -27,9 +28,9 @@ public static class Flushes
                     Cards.QueenOfSpades,
                     Cards.KingOfSpades,
                     Cards.AceOfSpades
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Hearts { get; } = new()
@@ -38,13 +39,13 @@ public static class Flushes
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Hearts,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TwoOfHearts,
                     Cards.ThreeOfHearts,
                     Cards.FourOfHearts,
@@ -58,9 +59,9 @@ public static class Flushes
                     Cards.QueenOfHearts,
                     Cards.KingOfHearts,
                     Cards.AceOfHearts
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Diamonds { get; } = new()
@@ -69,13 +70,13 @@ public static class Flushes
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Diamonds,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TwoOfDiamonds,
                     Cards.ThreeOfDiamonds,
                     Cards.FourOfDiamonds,
@@ -89,9 +90,9 @@ public static class Flushes
                     Cards.QueenOfDiamonds,
                     Cards.KingOfDiamonds,
                     Cards.AceOfDiamonds
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Clubs { get; } = new()
@@ -100,13 +101,13 @@ public static class Flushes
         HandDefinition = HandDefinitions.Flush,
         HighRank = Ranks.Empty,
         Suit = Suits.Clubs,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TwoOfClubs,
                     Cards.ThreeOfClubs,
                     Cards.FourOfClubs,
@@ -120,8 +121,8 @@ public static class Flushes
                     Cards.QueenOfClubs,
                     Cards.KingOfClubs,
                     Cards.AceOfClubs
-                }
+                ]
             }
-        }
+        ]
     };
 }

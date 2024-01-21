@@ -10,7 +10,7 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new(),
+            Cards = [],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0
@@ -32,14 +32,14 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.FourOfHearts,
                 Cards.FiveOfDiamonds,
                 Cards.EightOfDiamonds,
                 Cards.TenOfSpades
-            },
+            ],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0
@@ -61,14 +61,14 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfHearts,
                 Cards.FiveOfDiamonds,
                 Cards.EightOfDiamonds,
                 Cards.TenOfSpades
-            },
+            ],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0
@@ -90,14 +90,14 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.EightOfDiamonds,
                 Cards.SixOfDiamonds,
                 Cards.FourOfSpades,
                 Cards.FourOfClubs,
                 Cards.ThreeOfClubs
-            },
+            ],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0
@@ -119,14 +119,14 @@ public class DefaultHandCollectionEvaluatorTests
         EvaluateHandCollectionRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.KingOfSpades,
                 Cards.TenOfSpades,
                 Cards.NineOfDiamonds,
                 Cards.SevenOfClubs,
                 Cards.SixOfHearts
-            },
+            ],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = 0

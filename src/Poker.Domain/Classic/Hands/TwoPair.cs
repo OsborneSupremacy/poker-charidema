@@ -14,31 +14,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverTwos { get; } = new()
@@ -47,31 +36,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverThrees { get; } = new()
@@ -80,31 +58,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverTwos { get; } = new()
@@ -113,31 +80,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverThrees { get; } = new()
@@ -146,31 +102,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverFours { get; } = new()
@@ -179,31 +124,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverTwos { get; } = new()
@@ -212,31 +146,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverThrees { get; } = new()
@@ -245,31 +168,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverFours { get; } = new()
@@ -278,31 +190,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverFives { get; } = new()
@@ -311,31 +212,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverTwos { get; } = new()
@@ -344,31 +234,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverThrees { get; } = new()
@@ -377,31 +256,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverFours { get; } = new()
@@ -410,31 +278,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverFives { get; } = new()
@@ -443,31 +300,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverSixes { get; } = new()
@@ -476,31 +322,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverTwos { get; } = new()
@@ -509,31 +344,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverThrees { get; } = new()
@@ -542,31 +366,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverFours { get; } = new()
@@ -575,31 +388,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverFives { get; } = new()
@@ -608,31 +410,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverSixes { get; } = new()
@@ -641,31 +432,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverSevens { get; } = new()
@@ -674,31 +454,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverTwos { get; } = new()
@@ -707,31 +476,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverThrees { get; } = new()
@@ -740,31 +498,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverFours { get; } = new()
@@ -773,31 +520,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverFives { get; } = new()
@@ -806,31 +542,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverSixes { get; } = new()
@@ -839,31 +564,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverSevens { get; } = new()
@@ -872,31 +586,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverEights { get; } = new()
@@ -905,31 +608,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverTwos { get; } = new()
@@ -938,31 +630,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverThrees { get; } = new()
@@ -971,31 +652,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverFours { get; } = new()
@@ -1004,31 +674,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverFives { get; } = new()
@@ -1037,31 +696,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverSixes { get; } = new()
@@ -1070,31 +718,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverSevens { get; } = new()
@@ -1103,31 +740,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverEights { get; } = new()
@@ -1136,31 +762,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverNines { get; } = new()
@@ -1169,31 +784,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverTwos { get; } = new()
@@ -1202,31 +806,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverThrees { get; } = new()
@@ -1235,31 +828,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverFours { get; } = new()
@@ -1268,31 +850,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverFives { get; } = new()
@@ -1301,31 +872,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverSixes { get; } = new()
@@ -1334,31 +894,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverSevens { get; } = new()
@@ -1367,31 +916,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverEights { get; } = new()
@@ -1400,31 +938,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverNines { get; } = new()
@@ -1433,31 +960,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverTens { get; } = new()
@@ -1466,31 +982,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverTwos { get; } = new()
@@ -1499,31 +1004,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverThrees { get; } = new()
@@ -1532,31 +1026,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverFours { get; } = new()
@@ -1565,31 +1048,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverFives { get; } = new()
@@ -1598,31 +1070,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverSixes { get; } = new()
@@ -1631,31 +1092,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverSevens { get; } = new()
@@ -1664,31 +1114,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverEights { get; } = new()
@@ -1697,31 +1136,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverNines { get; } = new()
@@ -1730,31 +1158,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverTens { get; } = new()
@@ -1763,31 +1180,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverJacks { get; } = new()
@@ -1796,31 +1202,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverTwos { get; } = new()
@@ -1829,31 +1224,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverThrees { get; } = new()
@@ -1862,31 +1246,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverFours { get; } = new()
@@ -1895,31 +1268,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverFives { get; } = new()
@@ -1928,31 +1290,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverSixes { get; } = new()
@@ -1961,31 +1312,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverSevens { get; } = new()
@@ -1994,31 +1334,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverEights { get; } = new()
@@ -2027,31 +1356,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverNines { get; } = new()
@@ -2060,31 +1378,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverTens { get; } = new()
@@ -2093,31 +1400,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverJacks { get; } = new()
@@ -2126,31 +1422,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverQueens { get; } = new()
@@ -2159,31 +1444,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverTwos { get; } = new()
@@ -2192,31 +1466,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverThrees { get; } = new()
@@ -2225,31 +1488,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverFours { get; } = new()
@@ -2258,31 +1510,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverFives { get; } = new()
@@ -2291,31 +1532,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverSixes { get; } = new()
@@ -2324,31 +1554,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverSevens { get; } = new()
@@ -2357,31 +1576,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverEights { get; } = new()
@@ -2390,31 +1598,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverNines { get; } = new()
@@ -2423,31 +1620,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverTens { get; } = new()
@@ -2456,31 +1642,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverJacks { get; } = new()
@@ -2489,31 +1664,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverQueens { get; } = new()
@@ -2522,31 +1686,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverKings { get; } = new()
@@ -2555,31 +1708,20 @@ public static class TwoPair
         HandDefinition = HandDefinitions.TwoPair,
         HighRank = Ranks.Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
 }

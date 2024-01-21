@@ -6,17 +6,17 @@ public class BettingIntervalOptionsService : IBettingIntervalOptionsService
     {
         List<BettingIntervalActionType> actions = (request.CurrentBet == Bets.Empty) switch
         {
-            true => new()
-            {
+            true =>
+            [
                 BettingIntervalActionType.Check,
                 BettingIntervalActionType.Bet
-            },
-            false => new()
-            {
+            ],
+            false =>
+            [
                 BettingIntervalActionType.Call,
                 BettingIntervalActionType.Raise,
                 BettingIntervalActionType.Fold
-            }
+            ]
         };
 
         return Task.FromResult(new BettingIntervalOptionsResponse

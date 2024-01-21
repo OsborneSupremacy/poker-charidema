@@ -26,9 +26,9 @@ public static class Games
         Ante = 0,
         Pot = 0,
         Deck = Decks.Empty,
-        CommunityCards = new(),
-        Discards = new(),
-        Players = new(),
+        CommunityCards = [],
+        Discards = [],
+        Players = [],
         Button = Players.Empty,
         Variant = Implementations.Variants.EmptyVariant.GetVariant()
     };

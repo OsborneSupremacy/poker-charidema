@@ -2,9 +2,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-    List<(string singular, string plural, string cardtype, int value)> ranks = new()
-    {
-        ("Two", "Twos", "Spot", 2),
+    List<(string singular, string plural, string cardtype, int value)> ranks = [("Two", "Twos", "Spot", 2),
         ("Three", "Threes", "Spot", 3),
         ("Four", "Fours", "Spot", 4),
         ("Five", "Fives", "Spot", 5),
@@ -16,16 +14,12 @@
         ("Jack", "Jacks", "Face", 11),
         ("Queen", "Queens", "Face", 12),
         ("King", "Kings", "Face", 13),
-        ("Ace", "Aces", "Ace", 14)
-    };
+        ("Ace", "Aces", "Ace", 14)];
 
-    List<string> suits = new()
-    {
-        "Spades",
+    List<string> suits = ["Spades",
         "Hearts",
         "Clubs",
-        "Diamonds"
-    };
+        "Diamonds"];
 #>
 namespace Poker.Domain.Classic;
 

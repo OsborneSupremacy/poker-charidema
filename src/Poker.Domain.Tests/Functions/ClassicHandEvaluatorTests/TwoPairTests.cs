@@ -43,13 +43,13 @@ public class TwoPairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfHearts,
                 Cards.TwoOfClubs,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = TwoPair.ThreesOverTwos,
             RemainingCardCount = 0
         };
@@ -68,12 +68,12 @@ public class TwoPairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = TwoPair.ThreesOverTwos,
             RemainingCardCount = 0
         };
@@ -81,12 +81,12 @@ public class TwoPairTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
+            EligibleCards =
+            [
                 Cards.ThreeOfHearts,
                 Cards.ThreeOfSpades,
                 Cards.ThreeOfDiamonds
-            }
+            ]
         };
 
         // Act
@@ -108,38 +108,28 @@ public class TwoPairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = TwoPair.ThreesOverTwos,
             RemainingCardCount = 0
         };
 
-        List<HandSegment> expectedOutstanding = new()
-        {
+        List<HandSegment> expectedOutstanding =
+        [
             new()
             {
                 RequiredCount = 1,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfHearts, Cards.ThreeOfSpades, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
-                RequiredCount = 1,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs
-                }
+                RequiredCount = 1, EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs]
             }
-        };
+        ];
 
         // Act
         var response = ClassicHandEvaluator.Evaluate(request);
@@ -161,12 +151,12 @@ public class TwoPairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.TwoOfClubs,
                 Cards.TwoOfDiamonds
-            },
+            ],
             HandToEvaluate = TwoPair.ThreesOverTwos,
             RemainingCardCount = 1
         };

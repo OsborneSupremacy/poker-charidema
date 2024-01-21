@@ -18,7 +18,7 @@ public class PlayerFactory
             Name = _randomService.CreatePerson().FirstName,
             Automaton = request.Automaton,
             Busted = false,
-            Cards = new(),
+            Cards = [],
             Stake = 0,
             Folded = false
         });

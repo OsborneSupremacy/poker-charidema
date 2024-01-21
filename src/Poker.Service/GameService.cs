@@ -47,7 +47,7 @@ public class GameService : IGameService
                 Deck = await _dealerService.ShuffleAsync(request.Deck),
                 GameOver = false,
                 Players = game.Players,
-                Winners = new(),
+                Winners = [],
                 Pot = game.Pot
             },
             GameResponse = new()
@@ -89,7 +89,7 @@ public class GameService : IGameService
         var gamePlayers = request.Players
             .Select(p => p with
             {
-                Cards = new(),
+                Cards = [],
                 Folded = false
             })
             .ToList();
@@ -103,8 +103,8 @@ public class GameService : IGameService
             Variant = request.Variant,
             Players = gamePlayers,
             Deck = request.Deck,
-            CommunityCards = new(),
-            Discards = new(),
+            CommunityCards = [],
+            Discards = [],
             Ante = await _anteSetService.GetAsync(request, gameButton),
             Pot = 0
         };

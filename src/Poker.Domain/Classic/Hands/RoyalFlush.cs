@@ -8,21 +8,21 @@ public static class RoyalFlushes
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Spades,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TenOfSpades,
                     Cards.JackOfSpades,
                     Cards.QueenOfSpades,
                     Cards.KingOfSpades,
                     Cards.AceOfSpades
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Hearts { get; } = new()
@@ -31,21 +31,21 @@ public static class RoyalFlushes
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Hearts,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TenOfHearts,
                     Cards.JackOfHearts,
                     Cards.QueenOfHearts,
                     Cards.KingOfHearts,
                     Cards.AceOfHearts
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Diamonds { get; } = new()
@@ -54,21 +54,21 @@ public static class RoyalFlushes
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Diamonds,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TenOfDiamonds,
                     Cards.JackOfDiamonds,
                     Cards.QueenOfDiamonds,
                     Cards.KingOfDiamonds,
                     Cards.AceOfDiamonds
-                }
+                ]
             }
-        }
+        ]
     };
 
     public static Hand Clubs { get; } = new()
@@ -77,20 +77,20 @@ public static class RoyalFlushes
         HandDefinition = HandDefinitions.RoyalFlush,
         HighRank = Ranks.Ace,
         Suit = Suits.Clubs,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 5,
-                EligibleCards = new()
-                {
+                EligibleCards =
+                [
                     Cards.TenOfClubs,
                     Cards.JackOfClubs,
                     Cards.QueenOfClubs,
                     Cards.KingOfClubs,
                     Cards.AceOfClubs
-                }
+                ]
             }
-        }
+        ]
     };
 }

@@ -10,14 +10,14 @@ public class FlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.FiveOfClubs,
                 Cards.SevenOfClubs,
                 Cards.JackOfClubs,
                 Cards.AceOfClubs
-            },
+            ],
             HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
@@ -36,14 +36,14 @@ public class FlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.FiveOfClubs,
                 Cards.SevenOfClubs,
                 Cards.CreateJoker(),
                 Cards.AceOfClubs
-            },
+            ],
             HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
@@ -62,14 +62,14 @@ public class FlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.FiveOfClubs,
                 Cards.SevenOfClubs,
                 Cards.JackOfClubs,
                 Cards.AceOfDiamonds
-            },
+            ],
             HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 0
         };
@@ -77,8 +77,8 @@ public class FlushTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
+            EligibleCards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.FourOfClubs,
                 Cards.SixOfClubs,
@@ -88,7 +88,7 @@ public class FlushTests
                 Cards.QueenOfClubs,
                 Cards.KingOfClubs,
                 Cards.AceOfClubs
-            }
+            ]
         };
 
         // Act
@@ -110,13 +110,13 @@ public class FlushTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.TwoOfClubs,
                 Cards.FiveOfClubs,
                 Cards.SevenOfClubs,
                 Cards.JackOfClubs
-            },
+            ],
             HandToEvaluate = Flushes.Clubs,
             RemainingCardCount = 1
         };

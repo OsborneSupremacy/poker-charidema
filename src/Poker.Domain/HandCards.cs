@@ -5,8 +5,8 @@ public record HandCards
     [SetsRequiredMembers]
     public HandCards()
     {
-        Standard = new List<Card>();
-        Wild = new List<DesignatedWildCard>();
+        Standard = [];
+        Wild = [];
     }
 
     [SetsRequiredMembers]

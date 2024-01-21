@@ -41,18 +41,18 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnerIdentified_OnePlayerHasPairOfTwos()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = new() { Cards.TwoOfSpades, Cards.TwoOfHearts } };
-        _playerTwo = _playerTwo with { Cards = new() { Cards.TwoOfSpades, Cards.ThreeOfSpades }};
-        _playerThree = _playerThree with { Cards = new() { Cards.TwoOfSpades, Cards.ThreeOfSpades } };
+        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts] };
+        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfSpades, Cards.ThreeOfSpades] };
+        _playerThree = _playerThree with { Cards = [Cards.TwoOfSpades, Cards.ThreeOfSpades] };
         
         EvaluateWinnerRequest request = new()
         {
-            Players = new()
-            {
+            Players =
+            [
                 _playerOne,
                 _playerTwo,
                 _playerThree
-            },
+            ],
             HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
             HandEvaluator = ClassicHandEvaluator.Evaluate
         };
@@ -69,18 +69,18 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnersIdentified_TwoPlayersHavePairOfTwos()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = new() { Cards.TwoOfSpades, Cards.TwoOfHearts } };
-        _playerTwo = _playerTwo with { Cards = new() { Cards.TwoOfClubs, Cards.TwoOfDiamonds }};
-        _playerThree = _playerThree with { Cards = new() { Cards.FiveOfSpades, Cards.ThreeOfSpades } };
+        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts] };
+        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfClubs, Cards.TwoOfDiamonds] };
+        _playerThree = _playerThree with { Cards = [Cards.FiveOfSpades, Cards.ThreeOfSpades] };
         
         EvaluateWinnerRequest request = new()
         {
-            Players = new()
-            {
+            Players =
+            [
                 _playerOne,
                 _playerTwo,
                 _playerThree
-            },
+            ],
             HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
             HandEvaluator = ClassicHandEvaluator.Evaluate
         };
@@ -97,18 +97,18 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnerIdentified_TwoPlayersHavePairOfTwosButOneHasHigherKicker()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = new() { Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.AceOfClubs } };
-        _playerTwo = _playerTwo with { Cards = new() { Cards.TwoOfClubs, Cards.TwoOfDiamonds, Cards.KingOfClubs }};
-        _playerThree = _playerThree with { Cards = new() { Cards.FiveOfSpades, Cards.ThreeOfSpades, Cards.NineOfSpades } };
+        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.AceOfClubs] };
+        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfClubs, Cards.TwoOfDiamonds, Cards.KingOfClubs] };
+        _playerThree = _playerThree with { Cards = [Cards.FiveOfSpades, Cards.ThreeOfSpades, Cards.NineOfSpades] };
         
         EvaluateWinnerRequest request = new()
         {
-            Players = new()
-            {
+            Players =
+            [
                 _playerOne,
                 _playerTwo,
                 _playerThree
-            },
+            ],
             HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
             HandEvaluator = ClassicHandEvaluator.Evaluate
         };

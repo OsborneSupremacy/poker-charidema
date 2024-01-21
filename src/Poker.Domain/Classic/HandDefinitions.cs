@@ -86,7 +86,8 @@ public static class HandDefinitions
         ImpersonateContributing = true
     };
 
-    public static List<HandDefinition> All { get; } = new(){
+    public static List<HandDefinition> All { get; } =
+    [
         NoHand,
         HighCard,
         Pair,
@@ -99,5 +100,5 @@ public static class HandDefinitions
         StraightFlush,
         RoyalFlush,
         FiveOfAKind
-    };
+    ];
 }

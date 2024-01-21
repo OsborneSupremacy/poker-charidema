@@ -13,31 +13,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverFours { get; } = new()
@@ -46,31 +35,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverFives { get; } = new()
@@ -79,31 +57,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverSixes { get; } = new()
@@ -112,31 +79,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverSevens { get; } = new()
@@ -145,31 +101,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverEights { get; } = new()
@@ -178,31 +123,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverNines { get; } = new()
@@ -211,31 +145,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverTens { get; } = new()
@@ -244,31 +167,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverJacks { get; } = new()
@@ -277,31 +189,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverQueens { get; } = new()
@@ -310,31 +211,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverKings { get; } = new()
@@ -343,31 +233,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TwosOverAces { get; } = new()
@@ -376,31 +255,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Two,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverTwos { get; } = new()
@@ -409,31 +277,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverFours { get; } = new()
@@ -442,31 +299,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverFives { get; } = new()
@@ -475,31 +321,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverSixes { get; } = new()
@@ -508,31 +343,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverSevens { get; } = new()
@@ -541,31 +365,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverEights { get; } = new()
@@ -574,31 +387,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverNines { get; } = new()
@@ -607,31 +409,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverTens { get; } = new()
@@ -640,31 +431,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverJacks { get; } = new()
@@ -673,31 +453,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverQueens { get; } = new()
@@ -706,31 +475,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverKings { get; } = new()
@@ -739,31 +497,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand ThreesOverAces { get; } = new()
@@ -772,31 +519,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Three,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverTwos { get; } = new()
@@ -805,31 +541,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverThrees { get; } = new()
@@ -838,31 +563,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverFives { get; } = new()
@@ -871,31 +585,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverSixes { get; } = new()
@@ -904,31 +607,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverSevens { get; } = new()
@@ -937,31 +629,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverEights { get; } = new()
@@ -970,31 +651,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverNines { get; } = new()
@@ -1003,31 +673,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverTens { get; } = new()
@@ -1036,31 +695,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverJacks { get; } = new()
@@ -1069,31 +717,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverQueens { get; } = new()
@@ -1102,31 +739,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverKings { get; } = new()
@@ -1135,31 +761,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FoursOverAces { get; } = new()
@@ -1168,31 +783,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Four,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverTwos { get; } = new()
@@ -1201,31 +805,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverThrees { get; } = new()
@@ -1234,31 +827,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverFours { get; } = new()
@@ -1267,31 +849,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverSixes { get; } = new()
@@ -1300,31 +871,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverSevens { get; } = new()
@@ -1333,31 +893,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverEights { get; } = new()
@@ -1366,31 +915,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverNines { get; } = new()
@@ -1399,31 +937,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverTens { get; } = new()
@@ -1432,31 +959,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverJacks { get; } = new()
@@ -1465,31 +981,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverQueens { get; } = new()
@@ -1498,31 +1003,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverKings { get; } = new()
@@ -1531,31 +1025,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand FivesOverAces { get; } = new()
@@ -1564,31 +1047,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Five,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverTwos { get; } = new()
@@ -1597,31 +1069,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverThrees { get; } = new()
@@ -1630,31 +1091,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverFours { get; } = new()
@@ -1663,31 +1113,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverFives { get; } = new()
@@ -1696,31 +1135,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverSevens { get; } = new()
@@ -1729,31 +1157,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverEights { get; } = new()
@@ -1762,31 +1179,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverNines { get; } = new()
@@ -1795,31 +1201,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverTens { get; } = new()
@@ -1828,31 +1223,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverJacks { get; } = new()
@@ -1861,31 +1245,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverQueens { get; } = new()
@@ -1894,31 +1267,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverKings { get; } = new()
@@ -1927,31 +1289,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SixesOverAces { get; } = new()
@@ -1960,31 +1311,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Six,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverTwos { get; } = new()
@@ -1993,31 +1333,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverThrees { get; } = new()
@@ -2026,31 +1355,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverFours { get; } = new()
@@ -2059,31 +1377,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverFives { get; } = new()
@@ -2092,31 +1399,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverSixes { get; } = new()
@@ -2125,31 +1421,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverEights { get; } = new()
@@ -2158,31 +1443,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverNines { get; } = new()
@@ -2191,31 +1465,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverTens { get; } = new()
@@ -2224,31 +1487,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverJacks { get; } = new()
@@ -2257,31 +1509,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverQueens { get; } = new()
@@ -2290,31 +1531,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverKings { get; } = new()
@@ -2323,31 +1553,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand SevensOverAces { get; } = new()
@@ -2356,31 +1575,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Seven,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverTwos { get; } = new()
@@ -2389,31 +1597,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverThrees { get; } = new()
@@ -2422,31 +1619,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverFours { get; } = new()
@@ -2455,31 +1641,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverFives { get; } = new()
@@ -2488,31 +1663,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverSixes { get; } = new()
@@ -2521,31 +1685,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverSevens { get; } = new()
@@ -2554,31 +1707,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverNines { get; } = new()
@@ -2587,31 +1729,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverTens { get; } = new()
@@ -2620,31 +1751,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverJacks { get; } = new()
@@ -2653,31 +1773,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverQueens { get; } = new()
@@ -2686,31 +1795,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverKings { get; } = new()
@@ -2719,31 +1817,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand EightsOverAces { get; } = new()
@@ -2752,31 +1839,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Eight,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverTwos { get; } = new()
@@ -2785,31 +1861,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverThrees { get; } = new()
@@ -2818,31 +1883,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverFours { get; } = new()
@@ -2851,31 +1905,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverFives { get; } = new()
@@ -2884,31 +1927,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverSixes { get; } = new()
@@ -2917,31 +1949,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverSevens { get; } = new()
@@ -2950,31 +1971,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverEights { get; } = new()
@@ -2983,31 +1993,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverTens { get; } = new()
@@ -3016,31 +2015,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverJacks { get; } = new()
@@ -3049,31 +2037,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverQueens { get; } = new()
@@ -3082,31 +2059,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverKings { get; } = new()
@@ -3115,31 +2081,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand NinesOverAces { get; } = new()
@@ -3148,31 +2103,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Nine,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverTwos { get; } = new()
@@ -3181,31 +2125,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverThrees { get; } = new()
@@ -3214,31 +2147,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverFours { get; } = new()
@@ -3247,31 +2169,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverFives { get; } = new()
@@ -3280,31 +2191,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverSixes { get; } = new()
@@ -3313,31 +2213,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverSevens { get; } = new()
@@ -3346,31 +2235,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverEights { get; } = new()
@@ -3379,31 +2257,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverNines { get; } = new()
@@ -3412,31 +2279,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverJacks { get; } = new()
@@ -3445,31 +2301,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverQueens { get; } = new()
@@ -3478,31 +2323,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverKings { get; } = new()
@@ -3511,31 +2345,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand TensOverAces { get; } = new()
@@ -3544,31 +2367,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ten,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverTwos { get; } = new()
@@ -3577,31 +2389,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverThrees { get; } = new()
@@ -3610,31 +2411,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverFours { get; } = new()
@@ -3643,31 +2433,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverFives { get; } = new()
@@ -3676,31 +2455,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverSixes { get; } = new()
@@ -3709,31 +2477,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverSevens { get; } = new()
@@ -3742,31 +2499,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverEights { get; } = new()
@@ -3775,31 +2521,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverNines { get; } = new()
@@ -3808,31 +2543,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverTens { get; } = new()
@@ -3841,31 +2565,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverQueens { get; } = new()
@@ -3874,31 +2587,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverKings { get; } = new()
@@ -3907,31 +2609,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand JacksOverAces { get; } = new()
@@ -3940,31 +2631,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Jack,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverTwos { get; } = new()
@@ -3973,31 +2653,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverThrees { get; } = new()
@@ -4006,31 +2675,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverFours { get; } = new()
@@ -4039,31 +2697,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverFives { get; } = new()
@@ -4072,31 +2719,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverSixes { get; } = new()
@@ -4105,31 +2741,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverSevens { get; } = new()
@@ -4138,31 +2763,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverEights { get; } = new()
@@ -4171,31 +2785,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverNines { get; } = new()
@@ -4204,31 +2807,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverTens { get; } = new()
@@ -4237,31 +2829,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverJacks { get; } = new()
@@ -4270,31 +2851,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverKings { get; } = new()
@@ -4303,31 +2873,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand QueensOverAces { get; } = new()
@@ -4336,31 +2895,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Queen,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverTwos { get; } = new()
@@ -4369,31 +2917,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverThrees { get; } = new()
@@ -4402,31 +2939,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverFours { get; } = new()
@@ -4435,31 +2961,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverFives { get; } = new()
@@ -4468,31 +2983,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverSixes { get; } = new()
@@ -4501,31 +3005,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverSevens { get; } = new()
@@ -4534,31 +3027,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverEights { get; } = new()
@@ -4567,31 +3049,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverNines { get; } = new()
@@ -4600,31 +3071,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverTens { get; } = new()
@@ -4633,31 +3093,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverJacks { get; } = new()
@@ -4666,31 +3115,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverQueens { get; } = new()
@@ -4699,31 +3137,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand KingsOverAces { get; } = new()
@@ -4732,31 +3159,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. King,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverTwos { get; } = new()
@@ -4765,31 +3181,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TwoOfSpades,
-                    Cards.TwoOfHearts,
-                    Cards.TwoOfClubs,
-                    Cards.TwoOfDiamonds
-                }
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs, Cards.TwoOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverThrees { get; } = new()
@@ -4798,31 +3203,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.ThreeOfSpades,
-                    Cards.ThreeOfHearts,
-                    Cards.ThreeOfClubs,
-                    Cards.ThreeOfDiamonds
-                }
+                EligibleCards = [Cards.ThreeOfSpades, Cards.ThreeOfHearts, Cards.ThreeOfClubs, Cards.ThreeOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverFours { get; } = new()
@@ -4831,31 +3225,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FourOfSpades,
-                    Cards.FourOfHearts,
-                    Cards.FourOfClubs,
-                    Cards.FourOfDiamonds
-                }
+                EligibleCards = [Cards.FourOfSpades, Cards.FourOfHearts, Cards.FourOfClubs, Cards.FourOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverFives { get; } = new()
@@ -4864,31 +3247,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.FiveOfSpades,
-                    Cards.FiveOfHearts,
-                    Cards.FiveOfClubs,
-                    Cards.FiveOfDiamonds
-                }
+                EligibleCards = [Cards.FiveOfSpades, Cards.FiveOfHearts, Cards.FiveOfClubs, Cards.FiveOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverSixes { get; } = new()
@@ -4897,31 +3269,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SixOfSpades,
-                    Cards.SixOfHearts,
-                    Cards.SixOfClubs,
-                    Cards.SixOfDiamonds
-                }
+                EligibleCards = [Cards.SixOfSpades, Cards.SixOfHearts, Cards.SixOfClubs, Cards.SixOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverSevens { get; } = new()
@@ -4930,31 +3291,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.SevenOfSpades,
-                    Cards.SevenOfHearts,
-                    Cards.SevenOfClubs,
-                    Cards.SevenOfDiamonds
-                }
+                EligibleCards = [Cards.SevenOfSpades, Cards.SevenOfHearts, Cards.SevenOfClubs, Cards.SevenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverEights { get; } = new()
@@ -4963,31 +3313,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.EightOfSpades,
-                    Cards.EightOfHearts,
-                    Cards.EightOfClubs,
-                    Cards.EightOfDiamonds
-                }
+                EligibleCards = [Cards.EightOfSpades, Cards.EightOfHearts, Cards.EightOfClubs, Cards.EightOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverNines { get; } = new()
@@ -4996,31 +3335,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.NineOfSpades,
-                    Cards.NineOfHearts,
-                    Cards.NineOfClubs,
-                    Cards.NineOfDiamonds
-                }
+                EligibleCards = [Cards.NineOfSpades, Cards.NineOfHearts, Cards.NineOfClubs, Cards.NineOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverTens { get; } = new()
@@ -5029,31 +3357,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.TenOfSpades,
-                    Cards.TenOfHearts,
-                    Cards.TenOfClubs,
-                    Cards.TenOfDiamonds
-                }
+                EligibleCards = [Cards.TenOfSpades, Cards.TenOfHearts, Cards.TenOfClubs, Cards.TenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverJacks { get; } = new()
@@ -5062,31 +3379,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.JackOfSpades,
-                    Cards.JackOfHearts,
-                    Cards.JackOfClubs,
-                    Cards.JackOfDiamonds
-                }
+                EligibleCards = [Cards.JackOfSpades, Cards.JackOfHearts, Cards.JackOfClubs, Cards.JackOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverQueens { get; } = new()
@@ -5095,31 +3401,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.QueenOfSpades,
-                    Cards.QueenOfHearts,
-                    Cards.QueenOfClubs,
-                    Cards.QueenOfDiamonds
-                }
+                EligibleCards = [Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.QueenOfClubs, Cards.QueenOfDiamonds]
             }
-        }
+        ]
     };
 
     public static Hand AcesOverKings { get; } = new()
@@ -5128,31 +3423,20 @@ public static class FullHouses
         HandDefinition = HandDefinitions.FullHouse,
         HighRank = Ranks. Ace,
         Suit = Suits.Empty,
-        HandSegments = new List<HandSegment>
-        {
+        HandSegments =
+        [
             new()
             {
                 RequiredCount = 3,
-                EligibleCards = new()
-                {
-                    Cards.AceOfSpades,
-                    Cards.AceOfHearts,
-                    Cards.AceOfClubs,
-                    Cards.AceOfDiamonds
-                }
+                EligibleCards = [Cards.AceOfSpades, Cards.AceOfHearts, Cards.AceOfClubs, Cards.AceOfDiamonds]
             },
+
             new()
             {
                 RequiredCount = 2,
-                EligibleCards = new()
-                {
-                    Cards.KingOfSpades,
-                    Cards.KingOfHearts,
-                    Cards.KingOfClubs,
-                    Cards.KingOfDiamonds
-                }
+                EligibleCards = [Cards.KingOfSpades, Cards.KingOfHearts, Cards.KingOfClubs, Cards.KingOfDiamonds]
             }
-        }
+        ]
     };
 
 }

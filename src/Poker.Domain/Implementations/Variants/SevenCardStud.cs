@@ -6,9 +6,10 @@ public static class SevenCardStud
         new()
         {
             Name = "Seven Card Stud",
-            Phases = new()
-            {
-                new() {
+            Phases =
+            [
+                new()
+                {
                     Number = 0,
                     Name = "Ante",
                     PhaseType = PhaseType.Ante,
@@ -17,8 +18,9 @@ public static class SevenCardStud
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new ()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 1,
@@ -26,11 +28,12 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 2,
-                    CardOrientation = CardOrientations.Facedown,
+                    CardOrientation = CardOrientations.FaceDown,
                     CardDestination = CardLocations.PlayerHand,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 2,
@@ -38,11 +41,12 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardDestination = CardLocations.PlayerHand,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 3,
@@ -53,8 +57,9 @@ public static class SevenCardStud
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 4,
@@ -62,11 +67,12 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 3,
-                    CardOrientation = CardOrientations.Faceup,
+                    CardOrientation = CardOrientations.FaceUp,
                     CardDestination = CardLocations.PlayerHand,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 5,
@@ -77,8 +83,9 @@ public static class SevenCardStud
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 6,
@@ -86,11 +93,12 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
-                    CardOrientation = CardOrientations.Facedown,
+                    CardOrientation = CardOrientations.FaceDown,
                     CardDestination = CardLocations.PlayerHand,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 7,
@@ -101,8 +109,9 @@ public static class SevenCardStud
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 },
+
                 new()
                 {
                     Number = 8,
@@ -113,8 +122,8 @@ public static class SevenCardStud
                     CardDestination = CardLocations.Empty,
                     CardOrientation = CardOrientations.Empty,
                     CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = new()
+                    CardsToDrawMaximumOverrides = []
                 }
-            }
+            ]
         };
 }

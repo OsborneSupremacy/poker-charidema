@@ -11,8 +11,8 @@ public enum CardLocations
 public enum CardOrientations
 {
     Empty,
-    Faceup,
-    Facedown
+    FaceUp,
+    FaceDown
 }
 
 public enum FaceDirections

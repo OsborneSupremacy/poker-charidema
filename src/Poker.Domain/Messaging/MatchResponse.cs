@@ -21,8 +21,8 @@ public static class MatchResponses
             FixedNumberOfGames = 0,
             FixedVariant = Implementations.Variants.EmptyVariant.GetVariant(),
             FixedDeck = Decks.Empty,
-            Players = new(),
-            Games = new(),
+            Players = [],
+            Games = [],
             AntePreferences = new()
             {
                 Min = 0,
@@ -32,7 +32,7 @@ public static class MatchResponses
             },
             StartingStack = 0
         },
-        Winners = new(),
+        Winners = [],
         PlayAgain = true
     };
 }

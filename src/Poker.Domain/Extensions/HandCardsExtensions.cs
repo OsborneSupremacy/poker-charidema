@@ -25,8 +25,8 @@ public static class HandCardsExtensions
 
     public static HandCards Combine(this IEnumerable<HandCards> handCards)
     {
-        List<Card> standard = new();
-        List<DesignatedWildCard> wildCards = new();
+        List<Card> standard = [];
+        List<DesignatedWildCard> wildCards = [];
 
         foreach(var handCard in handCards)
         {

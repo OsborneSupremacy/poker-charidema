@@ -6,6 +6,6 @@ public static class EmptyVariant
         new()
         {
             Name = GlobalConstants.Empty,
-            Phases = new()
+            Phases = []
         };
 }

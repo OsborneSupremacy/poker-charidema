@@ -29,13 +29,13 @@ public class FourOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades,
                 Cards.CreateJoker()
-            },
+            ],
             HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = 0
         };
@@ -54,12 +54,12 @@ public class FourOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades
-            },
+            ],
             HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = 0
         };
@@ -67,10 +67,7 @@ public class FourOfAKindTests
         HandSegment expectedOutstanding = new()
         {
             RequiredCount = 1,
-            EligibleCards = new()
-            {
-                Cards.ThreeOfHearts
-            }
+            EligibleCards = [Cards.ThreeOfHearts]
         };
 
         // Act
@@ -95,12 +92,12 @@ public class FourOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = new()
-            {
+            Cards =
+            [
                 Cards.ThreeOfClubs,
                 Cards.ThreeOfDiamonds,
                 Cards.ThreeOfSpades
-            },
+            ],
             HandToEvaluate = FourOfAKind.Threes,
             RemainingCardCount = cardsRemaining
         };

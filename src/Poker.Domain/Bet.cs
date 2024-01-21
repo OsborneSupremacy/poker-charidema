@@ -17,7 +17,7 @@ public static class Bets
     {
         Amount = 0,
         InitiatingPlayerId = Players.Empty.Id,
-        CheckedPlayerIds = new(),
-        ContributingPlayers = new()
+        CheckedPlayerIds = [],
+        ContributingPlayers = []
     };
 }

@@ -56,15 +56,11 @@ public class BettingIntervalService: IBettingIntervalService
             {
                 Amount = betAmount,
                 InitiatingPlayerId = request.PlayerInTurn.Id,
-                CheckedPlayerIds = new(),
-                ContributingPlayers = new()
-                {
-                    new ContributingPlayer
-                    {
-                        PlayerId = request.PlayerInTurn.Id,
-                        Amount = betAmount
-                    }
-                }
+                CheckedPlayerIds = [],
+                ContributingPlayers =
+                [
+                    new ContributingPlayer { PlayerId = request.PlayerInTurn.Id, Amount = betAmount }
+                ]
             },
             Pot = request.Pot + betAmount,
             PlayerInTurn = request.PlayerInTurn with
@@ -155,7 +151,7 @@ public class BettingIntervalService: IBettingIntervalService
             {
                 Amount = newBetAmount,
                 InitiatingPlayerId = request.PlayerInTurn.Id,
-                CheckedPlayerIds = new(),
+                CheckedPlayerIds = [],
                 ContributingPlayers = contributingPlayers
             },
             Pot = request.Pot + playerAdditionalAmount,

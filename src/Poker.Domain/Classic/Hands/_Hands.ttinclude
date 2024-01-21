@@ -1,8 +1,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#+
-    List<(string singular, string plural, int value)> ranks = new()
-    {
-        ("Two", "Twos", 2),
+    List<(string singular, string plural, int value)> ranks = [("Two", "Twos", 2),
         ("Three", "Threes", 3),
         ("Four", "Fours", 4),
         ("Five", "Fives", 5),
@@ -14,15 +12,11 @@
         ("Jack", "Jacks", 11),
         ("Queen", "Queens", 12),
         ("King", "Kings", 13),
-        ("Ace", "Aces", 14)
-    };
+        ("Ace", "Aces", 14)];
 
-    List<string> suits = new()
-    {
-        "Spades",
+    List<string> suits = ["Spades",
         "Hearts",
         "Clubs",
-        "Diamonds"
-    };
+        "Diamonds"];
 #>
 
