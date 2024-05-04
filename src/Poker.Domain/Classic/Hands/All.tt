@@ -16,7 +16,7 @@ public static class AllHands
         {
             NoHands.NoHand,
 <#
-    foreach (var rank in ranks) // generate high cards, pairs, three of a kind, four of a kind, five of a kind, and straights
+    foreach (var rank in _ranks) // generate high cards, pairs, three of a kind, four of a kind, five of a kind, and straights
     {
 #>
             HighCards.<#= rank.singular #>,
@@ -33,9 +33,9 @@ public static class AllHands
         }
     } // end rank loop
     
-    foreach (var primaryrank in ranks) // generate two pair and full houses
+    foreach (var primaryrank in _ranks) // generate two pair and full houses
     {
-        foreach (var secondaryrank in ranks)
+        foreach (var secondaryrank in _ranks)
         {
             if(secondaryrank.value < primaryrank.value)
             {
@@ -52,7 +52,7 @@ public static class AllHands
         } // end secondary rank loop
     } // end primary rank loop
     
-    foreach (var suit in suits) // generate regular flushes and royal flushes
+    foreach (var suit in _suits) // generate regular flushes and royal flushes
     {
 #>
             Flushes.<#= suit #>,
@@ -60,9 +60,9 @@ public static class AllHands
 <#        
     } // end suit loop
     
-    foreach (var suit in suits) // generate straight flushes
+    foreach (var suit in _suits) // generate straight flushes
     {
-        foreach (var rank in ranks
+        foreach (var rank in _ranks
             .Where(r => r.value >= 6)
             .Where(r => r.value < 14))
         {
