@@ -60,6 +60,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HighCard.cs</LastGenOutput>
     </None>
+    <None Update="Classic\Hands\_Hands.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>_Hands.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +99,11 @@
     </Compile>
     <Compile Update="Classic\Hands\HighCard.cs">
       <DependentUpon>HighCard.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Classic\Hands\_Hands.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Hands.ttinclude</DependentUpon>
     </Compile>
   </ItemGroup>
 

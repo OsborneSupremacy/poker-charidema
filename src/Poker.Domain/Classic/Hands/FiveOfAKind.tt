@@ -10,21 +10,21 @@ namespace Poker.Domain.Classic.Hands;
 
 /// <summary>
 /// Five-of-a-Kind is not a classic Poker hand. It is not always allowed. It can only be
-/// met with a wild card, and when that happens the wild card has to impersonate another
+/// satisfied with a wild card, and when that happens the wild card has to impersonate another
 /// card that the player is holding (or a card being impersonated by another wild card).
-/// 
-/// Because of that, the typically strategy for determining if a player's card satisfy a 
+///
+/// Because of that, the typical strategies for determining if a player's card satisfy a
 /// hand's requirement don't work, because it assumes that a player can only have one of the
 /// same card in their hard. We could change that assumption, but the assumption is useful
 /// in every other scenario, and working around it would required complexity to be added
 /// to <see cref="Functions.Classic.ClassicHandEvaluator"/>.
-/// 
+///
 /// So we're getting around this by adding the same card to the list of
 /// <see cref="HandSegment.EligibleCards"/> for each possible Five-of-a-Kind, giving it
 /// a different Id so that it's not considered identical to the original card. We only
-/// need to add a second Spade, because we'll only ever need one "duplicate" standard card 
+/// need to add a second Spade, because we'll only ever need one "duplicate" standard card
 /// (Spade being the highest <see cref="Suit.Priority"/> (not value) suit in this application.
-/// By doing that, a wild card can impersonate the second spade, and we can continue to 
+/// By doing that, a wild card can impersonate the second spade, and we can continue to
 /// make the useful assumption described earlier.
 /// </summary>
 public record FiveOfAKind
