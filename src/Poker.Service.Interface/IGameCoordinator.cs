@@ -1,4 +1,4 @@
-namespace Poker.Service.Interface;
+﻿namespace Poker.Service.Interface;
 
 public interface IGameCoordinator
 {

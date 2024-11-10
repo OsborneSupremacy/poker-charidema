@@ -7,7 +7,7 @@ public record PhaseResponse
     public required List<Card> CommunityCards { get; init; }
 
     public required List<Player> Players { get; init; }
-    
+
     public required List<Player> Winners { get; init; }
 
     public required bool GameOver { get; init; }

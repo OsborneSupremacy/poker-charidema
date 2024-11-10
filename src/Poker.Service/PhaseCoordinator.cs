@@ -9,7 +9,7 @@ public class PhaseCoordinator : IPhaseCoordinator
     private readonly BestHandEvaluator _bestHandEvaluator;
 
     private readonly HandCollectionEvaluator _handCollectionEvaluator;
-    
+
     private readonly HandEvaluator _handEvaluator;
 
     public PhaseCoordinator(IPhaseService phaseService, IUserInterfaceService userInterfaceService, BestHandEvaluator bestHandEvaluator, HandCollectionEvaluator handCollectionEvaluator, HandEvaluator handEvaluator)
@@ -31,7 +31,7 @@ public class PhaseCoordinator : IPhaseCoordinator
             (
                 request.Game.Button
             );
-        
+
         var phaseResponse = await _phaseService
             .ExecuteAsync(new PhaseRequest
             {
@@ -51,12 +51,12 @@ public class PhaseCoordinator : IPhaseCoordinator
             Pot = phaseResponse.Pot
         };
 
-        if(!phaseResponse.GameOver)
+        if (!phaseResponse.GameOver)
         {
             _userInterfaceService
                 .WriteLine()
                 .WriteLine($"Pot: {gameOut.Pot:C}");
-        
+
             RenderPlayerCards(
                 phaseResponse.Players.Single(x => !x.Automaton),
                 request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
@@ -93,11 +93,11 @@ public class PhaseCoordinator : IPhaseCoordinator
         );
 
         var label = !player.Automaton ? "Your" : $"{player.Name}'s";
-        
+
         _userInterfaceService
             .WriteLine()
             .RenderCards($"{label} Cards", bestHand.ToPlayerHand());
-    
+
         _userInterfaceService.WriteLine($"{label} best hand is: {bestHand.Hand.Name}");
     }
 }

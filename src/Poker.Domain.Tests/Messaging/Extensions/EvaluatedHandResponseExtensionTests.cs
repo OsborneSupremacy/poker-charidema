@@ -8,10 +8,10 @@ public class EvaluatedHandResponseExtensionTests
     {
         // Arrange
         Card joker = Cards.CreateJoker();
-        
+
         Queue<Card> unusedWild = new();
         unusedWild.Enqueue(joker);
-        
+
         var response = new EvaluatedHandResponse
         {
             Player = Players.Empty,
@@ -28,7 +28,8 @@ public class EvaluatedHandResponseExtensionTests
                     {
                         // the unused cards in the particular segments don't matter. The final
                         // list of unused cards is a property of the EvaluatedHandResponse
-                        UnusedStandard = [], UnusedWild = new()
+                        UnusedStandard = [],
+                        UnusedWild = new()
                     }
                 }
             ],
@@ -44,7 +45,7 @@ public class EvaluatedHandResponseExtensionTests
             },
             RemainingCardCount = 0
         };
-        
+
         PlayerHand expectedResult = new()
         {
             Player = Players.Empty,
@@ -66,10 +67,10 @@ public class EvaluatedHandResponseExtensionTests
             ],
             DeadCards = [Cards.ThreeOfClubs]
         };
-        
+
         // Act
         var result = response.ToPlayerHand();
-        
+
         // Assert
         result.Should().BeEquivalentTo(expectedResult);
     }

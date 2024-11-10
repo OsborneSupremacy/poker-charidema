@@ -28,7 +28,7 @@ public static class HandCardsExtensions
         List<Card> standard = [];
         List<DesignatedWildCard> wildCards = [];
 
-        foreach(var handCard in handCards)
+        foreach (var handCard in handCards)
         {
             standard.AddRange(handCard.Standard);
             wildCards.AddRange(handCard.Wild);

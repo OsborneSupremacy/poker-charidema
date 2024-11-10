@@ -56,8 +56,8 @@ public class AutomatonMoveService : IAutomatonMoveService
         var playerCardsOut = request.PlayerInTurn.Cards;
         var deckCardsOut = request.PhaseRequest.Game.Deck.Cards
             .ToQueue();
-        
-        for(int x = 0; x < request.PhaseRequest.Phase.CardsToDealCount; x++)
+
+        for (int x = 0; x < request.PhaseRequest.Phase.CardsToDealCount; x++)
         {
             var card = deckCardsOut.Dequeue();
             playerCardsOut.Add(card);

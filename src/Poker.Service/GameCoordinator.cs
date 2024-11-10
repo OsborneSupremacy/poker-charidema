@@ -1,13 +1,13 @@
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public class GameCoordinator : IGameCoordinator
 {
     private readonly IUserInterfaceService _userInterfaceService;
-    
+
     private readonly IDealerService _dealerService;
-    
+
     private readonly IGameService _gameService;
-    
+
     public GameCoordinator(
         IUserInterfaceService userInterfaceService,
         IDealerService dealerService,
@@ -18,7 +18,7 @@ public class GameCoordinator : IGameCoordinator
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
     }
-    
+
     public async Task<MatchMessage> ExecuteAsync(GameRequest request)
     {
         var gamesOut = request.Match.Games;
@@ -43,7 +43,7 @@ public class GameCoordinator : IGameCoordinator
         );
 
         gamesOut.Add(gameResponse);
-        
+
         var deck = await _dealerService.ReshuffleAsync(
             new ReshuffleRequest
             {
@@ -51,7 +51,7 @@ public class GameCoordinator : IGameCoordinator
                 Players = gameResponse.Players
             }
         );
-        
+
         var matchOut = request.Match with
         {
             Games = gamesOut,
@@ -59,14 +59,15 @@ public class GameCoordinator : IGameCoordinator
         };
 
         WriteStandings(matchOut);
-        
-        return new MatchMessage {
+
+        return new MatchMessage
+        {
             Match = matchOut with { FixedDeck = deck },
             Cancelled = false,
             GameResponse = gameResponse
         };
     }
-    
+
     private void WriteStandings(Match match)
     {
         var stacks = match.Players
@@ -74,5 +75,5 @@ public class GameCoordinator : IGameCoordinator
             .Select(p => $"{p.Name} - {p.Stack:C}");
 
         _userInterfaceService.WriteList("Standings", stacks.ToArray());
-    }    
+    }
 }

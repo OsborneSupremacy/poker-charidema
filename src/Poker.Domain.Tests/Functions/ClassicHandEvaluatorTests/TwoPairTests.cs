@@ -127,7 +127,8 @@ public class TwoPairTests
 
             new()
             {
-                RequiredCount = 1, EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs]
+                RequiredCount = 1,
+                EligibleCards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.TwoOfClubs]
             }
         ];
 

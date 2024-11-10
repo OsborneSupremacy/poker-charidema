@@ -9,7 +9,7 @@ public class MatchService : IMatchService
     private readonly IGamePreferencesService _gamePreferencesService;
 
     private readonly IUserInterfaceService _userInterfaceService;
-    
+
     private readonly IGameCoordinator _gameCoordinator;
 
     public MatchService(
@@ -36,7 +36,7 @@ public class MatchService : IMatchService
                 Game = Games.Empty,
                 Players = [],
                 Variant = EmptyVariant.GetVariant(),
-                Button = Players.Empty         
+                Button = Players.Empty
             }
         };
 
@@ -68,7 +68,7 @@ public class MatchService : IMatchService
         var button = players
             .SingleOrDefault(x => x.Id == request.InitialButton.Id)
             ?? players.First();
-        
+
         MatchMessage message = new()
         {
             Cancelled = false,
@@ -85,7 +85,8 @@ public class MatchService : IMatchService
         var keepPlaying = true;
         while (keepPlaying)
         {
-            message = await _gameCoordinator.ExecuteAsync(new GameRequest { 
+            message = await _gameCoordinator.ExecuteAsync(new GameRequest
+            {
                 Match = message.Match,
                 Players = message.Match.Players,
                 Variant = message.Match.FixedVariant,
@@ -159,7 +160,7 @@ public class MatchService : IMatchService
         };
     }
 
-    private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) => 
+    private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) =>
         new()
         {
             Cancelled = false,

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class BettingIntervalService: IBettingIntervalService
+public class BettingIntervalService : IBettingIntervalService
 {
     private readonly IBettingIntervalOptionsService _bettingIntervalOptionsService;
 
@@ -17,22 +17,22 @@ public class BettingIntervalService: IBettingIntervalService
     public async Task<BettingIntervalResponse> ExecuteAsync(BettingIntervalRequest request)
     {
         var currentBet = Bets.Empty;
-        
+
         BettingIntervalOptionsRequest optionsRequest = new()
         {
             CurrentBet = currentBet,
             ActivePlayers = request.ActivePlayers
         };
-        
+
         var optionsResponse = await _bettingIntervalOptionsService
             .ExecuteAsync(optionsRequest);
-        
+
         // pick random option
         var option = _randomService
             .PickFromList(optionsResponse.AvailableBettingIntervalActions);
-        
+
         var optionDelegate = BettingIntervalDelegates[option] ?? Fold;
-        
+
         var maxBet = request.ActivePlayers.Min(ap => ap.Stack);
 
         return optionDelegate(
@@ -40,7 +40,7 @@ public class BettingIntervalService: IBettingIntervalService
             () => _randomService.GetAmount(request.CurrentBet.Amount + 1, maxBet)
         );
     }
-    
+
     private delegate BettingIntervalResponse BettingIntervalDelegate(
         BettingIntervalRequest request,
         Func<int> getAdditionalAmount
@@ -49,7 +49,7 @@ public class BettingIntervalService: IBettingIntervalService
     private static readonly BettingIntervalDelegate Bet = (request, getAdditionalAmount) =>
     {
         var betAmount = getAdditionalAmount();
-        
+
         return new BettingIntervalResponse
         {
             CurrentBet = new Bet
@@ -75,14 +75,14 @@ public class BettingIntervalService: IBettingIntervalService
     {
         var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds;
         checkedPlayerIds.Add(request.PlayerInTurn.Id);
-        
+
         return new BettingIntervalResponse
         {
             CurrentBet = request.CurrentBet with
             {
                 CheckedPlayerIds = checkedPlayerIds
             },
-            Pot = request.Pot, 
+            Pot = request.Pot,
             PlayerInTurn = request.PlayerInTurn
         };
     };
@@ -96,17 +96,17 @@ public class BettingIntervalService: IBettingIntervalService
 
         if (currentContribution is not null)
             contributingPlayers.Remove(currentContribution);
-        
+
         var additionalAmount =
             request.CurrentBet.Amount
             - currentContribution?.Amount ?? 0;
-        
+
         contributingPlayers.Add(new ContributingPlayer
         {
             PlayerId = request.PlayerInTurn.Id,
             Amount = request.CurrentBet.Amount
         });
-        
+
         return new BettingIntervalResponse
         {
             CurrentBet = request.CurrentBet with
@@ -121,21 +121,21 @@ public class BettingIntervalService: IBettingIntervalService
             }
         };
     };
-    
+
     private static readonly BettingIntervalDelegate Raise = (request, getAdditionalAmount) =>
     {
         var raiseDelta = getAdditionalAmount();
         var newBetAmount = request.CurrentBet.Amount + raiseDelta;
-        
+
         var contributingPlayers = request.CurrentBet.ContributingPlayers;
-        
+
         var currentContribution = contributingPlayers
             .SingleOrDefault(cp => cp.PlayerId == request.PlayerInTurn.Id);
-        
+
         if (currentContribution is not null)
             contributingPlayers.Remove(currentContribution);
-        
-        var playerAdditionalAmount = 
+
+        var playerAdditionalAmount =
             newBetAmount
             - currentContribution?.Amount ?? 0;
 
@@ -144,7 +144,7 @@ public class BettingIntervalService: IBettingIntervalService
             PlayerId = request.PlayerInTurn.Id,
             Amount = newBetAmount
         });
-        
+
         return new BettingIntervalResponse
         {
             CurrentBet = new Bet
@@ -158,7 +158,7 @@ public class BettingIntervalService: IBettingIntervalService
             PlayerInTurn = request.PlayerInTurn with
             {
                 Stack = request.PlayerInTurn.Stack - playerAdditionalAmount,
-                Stake = request.PlayerInTurn.Stake + playerAdditionalAmount                
+                Stake = request.PlayerInTurn.Stake + playerAdditionalAmount
             }
         };
     };
@@ -179,5 +179,5 @@ public class BettingIntervalService: IBettingIntervalService
             { BettingIntervalActionType.Call, Call },
             { BettingIntervalActionType.Raise, Raise },
             { BettingIntervalActionType.Fold, Fold }
-        };    
+        };
 }

@@ -12,7 +12,7 @@ public enum PhaseType
 public record Phase
 {
     public required int Number { get; init; }
-    
+
     public required string Name { get; init; }
 
     public required PhaseType PhaseType { get; init; }

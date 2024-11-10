@@ -23,7 +23,7 @@ public class DefaultBestHandEvaluatorTests
         // Assert
         response.Hand.Should().Be(NoHands.NoHand);
     }
-    
+
     [Fact]
     public void Evaluate_TwoPairReturned_TwoPairPlusOtherPairsPresent()
     {

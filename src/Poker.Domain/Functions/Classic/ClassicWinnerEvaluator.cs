@@ -33,7 +33,7 @@ public static class ClassicWinnerEvaluator
                         }
                     ).ToPlayerHand()
             );
-    
+
     private static Hand GetOverallBestHand(IEnumerable<PlayerHand> playerBestHands) =>
         playerBestHands
             .OrderByDescending(x => x.Hand.HandDefinition.Value)
@@ -49,10 +49,10 @@ public static class ClassicWinnerEvaluator
             .SelectMany(x => x.Kickers.Select(k => k.Rank))
             .Distinct()
             .ToList();
-        
+
         var finalists = playerBestHands;
-        
-        foreach(
+
+        foreach (
             Rank kickerRank in kickerRanks
                 .OrderByDescending(r => r.Value)
             )
@@ -64,7 +64,7 @@ public static class ClassicWinnerEvaluator
                         .Any(k => k.Rank == kickerRank)
                 )
                 .ToList();
-            
+
             if (finalists.Count == 1)
                 break;
         }

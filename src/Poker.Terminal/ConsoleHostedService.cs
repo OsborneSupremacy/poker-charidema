@@ -33,11 +33,11 @@ public class ConsoleHostedService : IHostedService
             {
                 PlayAgain = true
             };
-            
+
             while (matchResponse.PlayAgain)
             {
                 AnsiConsole.Clear();
-                
+
                 var matchRequest = await _matchPreferencesService
                     .CreateMatchRequest(matchResponse);
 

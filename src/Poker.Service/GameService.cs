@@ -7,7 +7,7 @@ public class GameService : IGameService
     private readonly IAnteSetService _anteSetService;
 
     private readonly IUserInterfaceService _userInterfaceService;
-    
+
     private readonly IPhaseCoordinator _phaseCoordinator;
 
     public GameService(
@@ -38,7 +38,7 @@ public class GameService : IGameService
     {
         var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
-     
+
         PhaseCoordinatorResponse phaseCoordinatorResponse = new()
         {
             PhaseResponse = new()
@@ -69,7 +69,7 @@ public class GameService : IGameService
                     {
                         Game = phaseCoordinatorResponse.GameResponse.Game,
                         Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
-                        Phase = phase 
+                        Phase = phase
                     }
                 )
         )

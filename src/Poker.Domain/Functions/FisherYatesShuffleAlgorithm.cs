@@ -6,7 +6,7 @@ public static class FisherYatesShuffleAlgorithm
     {
         List<Card> cardsOut = [];
         cardsOut.AddRange(deckIn.Cards);
-        
+
         for (int i = cardsOut.Count - 1; i > 0; i--)
         {
             int j = random.Next(i + 1);

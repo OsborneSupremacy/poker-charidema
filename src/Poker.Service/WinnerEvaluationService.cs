@@ -38,7 +38,7 @@ public class WinnerEvaluationService : IPhaseService
                 HandEvaluator = _handEvaluator
             }
         );
-        
+
         foreach (var playerHand in response.PlayerHands)
             _userInterfaceService
                 .RenderCards
@@ -46,12 +46,12 @@ public class WinnerEvaluationService : IPhaseService
                     playerHand.Player.Name,
                     playerHand
                 );
-    
+
         var label = response.Winners.Count > 1 ? "Winners" : "Winner";
 
         var messages = response.Winners.Select(w => w.Name).ToList();
         messages.Add($"{response.WinningHand.Name}");
-    
+
         _userInterfaceService
             .WriteList(label, messages);
 

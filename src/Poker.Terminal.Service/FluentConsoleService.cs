@@ -171,9 +171,9 @@ public class FluentConsoleService : IUserInterfaceService
 
         if (level == HeadingLevel.One)
             AnsiConsole.Write(new FigletText(input).LeftJustified());
-        else 
+        else
             AnsiConsole.MarkupLine($"[bold]{input}[/]");
-        
+
         writeDelimiter();
 
         AnsiConsole.WriteLine();
@@ -185,34 +185,34 @@ public class FluentConsoleService : IUserInterfaceService
         StringBuilder content = new();
         foreach (var item in items)
             content.AppendLine(item);
-        
+
         AnsiConsole.Write(new Panel(content.ToString().Trim())
             .Header(heading)
         );
         return this;
     }
-    
+
     public IUserInterfaceService WriteList(string heading, params string[] items) =>
         WriteList(heading, items.AsEnumerable());
-    
+
     public IUserInterfaceService RenderCards(string heading, PlayerHand playerHand)
     {
         StringBuilder content = new();
-        
-        foreach(var card in playerHand.HandCards.Standard
+
+        foreach (var card in playerHand.HandCards.Standard
             .Concat(playerHand.HandCards.Wild.Select(x => x.WildCard)))
             content.Append(card.ToDisplayString(true));
-        
-        foreach(var card in playerHand.Kickers.Concat(playerHand.DeadCards))
+
+        foreach (var card in playerHand.Kickers.Concat(playerHand.DeadCards))
             content.Append(card.ToDisplayString(false));
 
         content.AppendLine();
         content.AppendLine(playerHand.Hand.Name);
-        
+
         AnsiConsole.Write(new Panel(content.ToString().Trim())
             .Header(heading)
         );
-            
+
         return this;
     }
 }

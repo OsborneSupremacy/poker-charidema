@@ -58,7 +58,7 @@ public interface IUserInterfaceService
     IUserInterfaceService WriteHeading(HeadingLevel level, string input);
 
     IUserInterfaceService WriteList(string heading, IEnumerable<string> items);
-    
+
     IUserInterfaceService WriteList(string heading, params string[] items);
 
     IUserInterfaceService Write(string input);

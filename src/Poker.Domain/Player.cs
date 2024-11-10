@@ -12,10 +12,10 @@ public record Player
 
     public required bool Automaton { get; init; }
 
-    public required bool Busted { get; init; } 
+    public required bool Busted { get; init; }
 
     public required List<Card> Cards { get; init; }
-    
+
     /// <summary>
     /// The amount the player has contributed to the current game's pot.
     /// This may end up not being used for anything. Revisit and remove if not.

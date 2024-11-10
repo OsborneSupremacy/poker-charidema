@@ -101,7 +101,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 Players = players,
                 FixedNumberOfGames = fixedNumberOfGames,
                 AntePreferences = antePreferences,
-                FixedDeck = new Deck {
+                FixedDeck = new Deck
+                {
                     Cards = Cards.All,
                     NumberOfJokers = 0
                 },
@@ -131,7 +132,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 antePreferences = pref;
             },
             new InputOption<AntePreferences>(
-                "Dealer's choice ante amount", () => {
+                "Dealer's choice ante amount", () =>
+                {
 
                     int min = 0;
 
@@ -165,7 +167,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 {
                     anteAmount = input;
                 });
-                return new AntePreferences {
+                return new AntePreferences
+                {
                     Fixed = anteAmount,
                     Min = 0,
                     Max = 0,
@@ -217,7 +220,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     {
         throw new NotImplementedException();
     }
-    
+
     public Task<bool> ConfirmStartAsync() =>
         Task.FromResult(_c.PromptForBool("Ready to Begin?"));
 

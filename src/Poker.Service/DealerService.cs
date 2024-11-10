@@ -5,7 +5,7 @@ public class DealerService : IDealerService, IPhaseService
     private readonly IRandomFactory _randomFactory;
 
     private readonly ShuffleAlgorithm _shuffleAlgorithm;
-    
+
     private readonly Dealer _dealer;
 
     public DealerService(
@@ -27,9 +27,9 @@ public class DealerService : IDealerService, IPhaseService
             Players = request.Game.Players,
             CommunityCards = request.CommunityCards,
             StartingPlayer = request.StartingPlayer,
-            CardsToDealCount = request.Phase.CardsToDealCount    
+            CardsToDealCount = request.Phase.CardsToDealCount
         });
-        
+
         return Task.FromResult(new PhaseResponse
         {
             Deck = dealResponse.Deck,
@@ -40,7 +40,7 @@ public class DealerService : IDealerService, IPhaseService
             Pot = request.Pot
         });
     }
-    
+
     public Task<Deck> ShuffleAsync(Deck deck) =>
         Task.FromResult(
             _shuffleAlgorithm(_randomFactory.Create(), deck)
@@ -49,9 +49,9 @@ public class DealerService : IDealerService, IPhaseService
     public Task<Deck> ReshuffleAsync(ReshuffleRequest request)
     {
         var cards = request.Deck.Cards;
-        foreach(var player in request.Players)
+        foreach (var player in request.Players)
             cards.AddRange(player.Cards);
-        
+
         var deck = request.Deck with
         {
             Cards = cards

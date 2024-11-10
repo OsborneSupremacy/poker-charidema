@@ -24,7 +24,7 @@ public class DefaultHandCollectionEvaluatorTests
         response.Should().NotBeNull();
         response!.Hand.Should().Be(NoHands.NoHand);
     }
-    
+
     [Fact]
     public void Evaluate_HighCard_NoOtherHand()
     {
@@ -53,7 +53,7 @@ public class DefaultHandCollectionEvaluatorTests
         response.Should().NotBeNull();
         response!.Hand.Should().Be(HighCards.Ten);
     }
-    
+
     [Fact]
     public void Evaluate_Pair_PairPresent()
     {
@@ -82,7 +82,7 @@ public class DefaultHandCollectionEvaluatorTests
         response.Should().NotBeNull();
         response!.Hand.Should().Be(Pairs.Threes);
     }
-    
+
     [Fact]
     public void Evaluate_PairOfFours_PairOfFoursPresent()
     {
@@ -138,6 +138,6 @@ public class DefaultHandCollectionEvaluatorTests
 
         // Assert
         response.Should().NotBeNull();
-        response!.Hand.Should().Be(HighCards.King);        
+        response!.Hand.Should().Be(HighCards.King);
     }
 }

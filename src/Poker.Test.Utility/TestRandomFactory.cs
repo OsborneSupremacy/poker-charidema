@@ -16,7 +16,8 @@ public class TestRandomFactory : IRandomFactory
     public int GetSeed() => _seed;
 
     public Faker CreateFaker() =>
-        new() {
+        new()
+        {
             Random = new Randomizer(GetSeed())
         };
 }

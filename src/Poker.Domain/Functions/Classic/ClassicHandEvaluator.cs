@@ -87,7 +87,7 @@ public static class ClassicHandEvaluator
 
             if (!unusedCardsOut.UnusedWild.Any())
                 continue;
-            
+
             contributingCards.Add(
                 unusedCardsOut.UnusedWild.Dequeue(),
                 qualifyingCards
@@ -110,7 +110,7 @@ public static class ClassicHandEvaluator
                     .ToList()
             }
         };
-        
+
         bool RequirementsMet() =>
             contributingCards.Count()
             >= request.HandSegment.RequiredCount;

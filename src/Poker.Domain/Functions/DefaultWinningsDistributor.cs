@@ -7,14 +7,14 @@ public static class DefaultWinningsDistributor
         var pot = request.Pot;
 
         var winnerPayouts = new int[request.Winners.Count];
-        for(int x = 0; x < winnerPayouts.Length; x++)
+        for (int x = 0; x < winnerPayouts.Length; x++)
             winnerPayouts[x] = 0;
 
         while (pot > 0)
         {
             for (int x = 0; x < winnerPayouts.Length; x++)
             {
-                if(pot <= 0)
+                if (pot <= 0)
                     break;
                 winnerPayouts[x] += 1;
                 pot -= 1;
@@ -26,11 +26,11 @@ public static class DefaultWinningsDistributor
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
 
         List<Player> playersOut = request.Players.Select(player => player with
-            {
-                Stack = winnerIds.Contains(player.Id)
+        {
+            Stack = winnerIds.Contains(player.Id)
                     ? player.Stack + winnerPayouts[pi++]
                     : player.Stack
-            })
+        })
             .ToList();
 
         return new DistributeWinningsResponse

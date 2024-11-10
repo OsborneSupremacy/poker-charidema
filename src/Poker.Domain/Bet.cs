@@ -5,9 +5,9 @@ public record Bet
     public required int Amount { get; init; }
 
     public required Guid InitiatingPlayerId { get; init; }
-    
+
     public required List<Guid> CheckedPlayerIds { get; init; }
-    
+
     public required List<ContributingPlayer> ContributingPlayers { get; init; }
 }
 

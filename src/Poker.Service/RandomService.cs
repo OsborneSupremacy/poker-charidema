@@ -17,12 +17,12 @@ public class RandomService : IRandomService
             Random = new Randomizer(_randomFactory.GetSeed())
         }.PickRandom(items);
 
-    public Person CreatePerson()=>
+    public Person CreatePerson() =>
         new Faker
         {
             Random = new Randomizer(_randomFactory.GetSeed())
         }.Person;
-    
+
     public int GetAmount(int min, int max) =>
         new Randomizer(_randomFactory.GetSeed()).Int(min, max);
 }

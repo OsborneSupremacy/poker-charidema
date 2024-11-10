@@ -5,47 +5,49 @@ public static class DefaultDealer
     public static readonly Dealer Deal = request =>
     {
         var playersOut = request.Players;
-        
+
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
 
         var playerInTurn = playersOut
             .Single(p => p == request.StartingPlayer);
 
-        for(var c = 0; c < request.CardsToDealCount; c++)
+        for (var c = 0; c < request.CardsToDealCount; c++)
         {
-            for(var i = 0; i < request.Players.Count; i++)
+            for (var i = 0; i < request.Players.Count; i++)
             {
-                if(playerInTurn.Folded)
+                if (playerInTurn.Folded)
                     continue;
 
                 var dealResponse = DealCard(
-                    new() {
+                    new()
+                    {
                         Deck = deckOut,
                         Player = playerInTurn
                     }
                 );
-                
-                if(!dealResponse.CardWasDealt)
+
+                if (!dealResponse.CardWasDealt)
                     continue;
-                
+
                 playerInTurn = playersOut.NextPlayer(playerInTurn);
                 playersOut.RemoveAll(p => p.Id == dealResponse.Player.Id);
                 playersOut.Add(dealResponse.Player);
             }
         }
-        return new DealResponse {
+        return new DealResponse
+        {
             Deck = deckOut,
             CommunityCards = ccOut,
             Players = playersOut
         };
     };
-    
+
     private static DealCardResponse DealCard(DealCardRequest request)
     {
         var cardToDeal = request.Deck.Cards.FirstOrDefault();
-        
-        if(cardToDeal is null)
+
+        if (cardToDeal is null)
             return new DealCardResponse
             {
                 Card = Cards.Empty,
@@ -68,7 +70,7 @@ public static class DefaultDealer
             CardWasDealt = true
         };
     }
-    
+
     private record DealCardRequest
     {
         public required Deck Deck { get; init; }
@@ -83,7 +85,7 @@ public static class DefaultDealer
         public required Deck Deck { get; init; }
 
         public required Player Player { get; init; }
-    
+
         public required bool CardWasDealt { get; init; }
     }
 }

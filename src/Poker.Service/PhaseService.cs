@@ -5,7 +5,7 @@ public class PhaseService : IPhaseService
     private readonly IUserInterfaceService _userInterfaceService;
 
     private readonly IPhaseService _roundRobinMoveService;
-    
+
     private readonly IPhaseService _winnerEvaluationService;
 
     private readonly IPhaseService _dealerService;

@@ -6,7 +6,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -28,7 +28,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -50,7 +50,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -72,7 +72,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -94,7 +94,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -116,7 +116,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -138,7 +138,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -160,7 +160,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -182,7 +182,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -204,7 +204,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -226,7 +226,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -248,7 +248,7 @@ public static class FullHouses
     {
         Name = "Full House, Twos Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Two,
+        HighRank = Ranks.Two,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -270,7 +270,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -292,7 +292,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -314,7 +314,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -336,7 +336,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -358,7 +358,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -380,7 +380,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -402,7 +402,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -424,7 +424,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -446,7 +446,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -468,7 +468,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -490,7 +490,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -512,7 +512,7 @@ public static class FullHouses
     {
         Name = "Full House, Threes Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Three,
+        HighRank = Ranks.Three,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -534,7 +534,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -556,7 +556,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -578,7 +578,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -600,7 +600,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -622,7 +622,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -644,7 +644,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -666,7 +666,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -688,7 +688,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -710,7 +710,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -732,7 +732,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -754,7 +754,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -776,7 +776,7 @@ public static class FullHouses
     {
         Name = "Full House, Fours Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Four,
+        HighRank = Ranks.Four,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -798,7 +798,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -820,7 +820,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -842,7 +842,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -864,7 +864,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -886,7 +886,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -908,7 +908,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -930,7 +930,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -952,7 +952,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -974,7 +974,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -996,7 +996,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1018,7 +1018,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1040,7 +1040,7 @@ public static class FullHouses
     {
         Name = "Full House, Fives Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Five,
+        HighRank = Ranks.Five,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1062,7 +1062,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1084,7 +1084,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1106,7 +1106,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1128,7 +1128,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1150,7 +1150,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1172,7 +1172,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1194,7 +1194,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1216,7 +1216,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1238,7 +1238,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1260,7 +1260,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1282,7 +1282,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1304,7 +1304,7 @@ public static class FullHouses
     {
         Name = "Full House, Sixes Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Six,
+        HighRank = Ranks.Six,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1326,7 +1326,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1348,7 +1348,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1370,7 +1370,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1392,7 +1392,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1414,7 +1414,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1436,7 +1436,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1458,7 +1458,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1480,7 +1480,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1502,7 +1502,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1524,7 +1524,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1546,7 +1546,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1568,7 +1568,7 @@ public static class FullHouses
     {
         Name = "Full House, Sevens Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Seven,
+        HighRank = Ranks.Seven,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1590,7 +1590,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1612,7 +1612,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1634,7 +1634,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1656,7 +1656,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1678,7 +1678,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1700,7 +1700,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1722,7 +1722,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1744,7 +1744,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1766,7 +1766,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1788,7 +1788,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1810,7 +1810,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1832,7 +1832,7 @@ public static class FullHouses
     {
         Name = "Full House, Eights Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Eight,
+        HighRank = Ranks.Eight,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1854,7 +1854,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1876,7 +1876,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1898,7 +1898,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1920,7 +1920,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1942,7 +1942,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1964,7 +1964,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -1986,7 +1986,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2008,7 +2008,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2030,7 +2030,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2052,7 +2052,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2074,7 +2074,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2096,7 +2096,7 @@ public static class FullHouses
     {
         Name = "Full House, Nines Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Nine,
+        HighRank = Ranks.Nine,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2118,7 +2118,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2140,7 +2140,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2162,7 +2162,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2184,7 +2184,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2206,7 +2206,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2228,7 +2228,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2250,7 +2250,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2272,7 +2272,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2294,7 +2294,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2316,7 +2316,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2338,7 +2338,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2360,7 +2360,7 @@ public static class FullHouses
     {
         Name = "Full House, Tens Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ten,
+        HighRank = Ranks.Ten,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2382,7 +2382,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2404,7 +2404,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2426,7 +2426,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2448,7 +2448,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2470,7 +2470,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2492,7 +2492,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2514,7 +2514,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2536,7 +2536,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2558,7 +2558,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2580,7 +2580,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2602,7 +2602,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2624,7 +2624,7 @@ public static class FullHouses
     {
         Name = "Full House, Jacks Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Jack,
+        HighRank = Ranks.Jack,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2646,7 +2646,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2668,7 +2668,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2690,7 +2690,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2712,7 +2712,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2734,7 +2734,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2756,7 +2756,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2778,7 +2778,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2800,7 +2800,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2822,7 +2822,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2844,7 +2844,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2866,7 +2866,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2888,7 +2888,7 @@ public static class FullHouses
     {
         Name = "Full House, Queens Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Queen,
+        HighRank = Ranks.Queen,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2910,7 +2910,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2932,7 +2932,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2954,7 +2954,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2976,7 +2976,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -2998,7 +2998,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3020,7 +3020,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3042,7 +3042,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3064,7 +3064,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3086,7 +3086,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3108,7 +3108,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3130,7 +3130,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3152,7 +3152,7 @@ public static class FullHouses
     {
         Name = "Full House, Kings Over Aces",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. King,
+        HighRank = Ranks.King,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3174,7 +3174,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Twos",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3196,7 +3196,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Threes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3218,7 +3218,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Fours",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3240,7 +3240,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Fives",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3262,7 +3262,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Sixes",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3284,7 +3284,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Sevens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3306,7 +3306,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Eights",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3328,7 +3328,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Nines",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3350,7 +3350,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Tens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3372,7 +3372,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Jacks",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3394,7 +3394,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Queens",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
@@ -3416,7 +3416,7 @@ public static class FullHouses
     {
         Name = "Full House, Aces Over Kings",
         HandDefinition = HandDefinitions.FullHouse,
-        HighRank = Ranks. Ace,
+        HighRank = Ranks.Ace,
         Suit = Suits.Empty,
         HandSegments =
         [
