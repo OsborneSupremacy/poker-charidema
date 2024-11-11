@@ -96,7 +96,7 @@ public class PhaseCoordinator : IPhaseCoordinator
 
         _userInterfaceService
             .WriteLine()
-            .RenderCards($"{label} CardsInPlay", bestHand.ToPlayerHand());
+            .RenderCards($"{label} Cards", bestHand.ToPlayerHand());
 
         _userInterfaceService.WriteLine($"{label} best hand is: {bestHand.Hand.Name}");
     }

@@ -38,28 +38,28 @@ public static class CardExtensions
 
     public static CardInPlay DealToPlayer(
         this Card input,
-        CardOrientations orientation
+        CardOrientation orientation
         ) =>
         new()
         {
             Card = input,
-            CardLocation = CardLocations.PlayerHand,
+            CardLocation = CardLocation.PlayerHand,
             CardOrientation = orientation
         };
 
     public static CardInPlay DealFaceDownToPlayer(
         this Card input
-    ) => input.DealToPlayer(CardOrientations.FaceDown);
+    ) => input.DealToPlayer(CardOrientation.FaceDown);
 
     public static List<CardInPlay> DealToPlayer(
         this IEnumerable<Card> input,
-        CardOrientations orientation
+        CardOrientation orientation
     ) =>
         input
             .Select(c => new CardInPlay
             {
                 Card = c,
-                CardLocation = CardLocations.PlayerHand,
+                CardLocation = CardLocation.PlayerHand,
                 CardOrientation = orientation
             })
             .ToList();

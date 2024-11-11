@@ -15,8 +15,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.Ante,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -28,8 +28,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
                     CardsToDealCount = 5,
-                    CardDestination = CardLocations.PlayerHand,
-                    CardOrientation = CardOrientations.FaceDown,
+                    CardDestination = CardLocation.PlayerHand,
+                    CardOrientation = CardOrientation.FaceDown,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -41,8 +41,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -54,8 +54,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 3,
                     CardsToDrawMaximumOverrides = [new() { Rank = Ranks.Ace, Maximum = 4 }]
                 },
@@ -67,8 +67,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -80,8 +80,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 }

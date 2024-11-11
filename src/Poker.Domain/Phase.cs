@@ -21,9 +21,9 @@ public record Phase
 
     public required int CardsToDealCount { get; init; }
 
-    public required CardLocations CardDestination { get; init; }
+    public required CardLocation CardDestination { get; init; }
 
-    public required CardOrientations CardOrientation { get; init; }
+    public required CardOrientation CardOrientation { get; init; }
 
     public required int CardsToDrawMaximum { get; init; }
 

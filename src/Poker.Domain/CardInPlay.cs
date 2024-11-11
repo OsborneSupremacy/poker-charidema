@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain;
 
-public enum CardLocations
+public enum CardLocation
 {
     Empty,
     Deck,
@@ -9,7 +9,7 @@ public enum CardLocations
     DiscardPile
 }
 
-public enum CardOrientations
+public enum CardOrientation
 {
     Empty,
     FaceUp,
@@ -24,7 +24,7 @@ public record CardInPlay
 {
     public required Card Card { get; init; }
 
-    public required CardLocations CardLocation { get; init; }
+    public required CardLocation CardLocation { get; init; }
 
-    public required CardOrientations CardOrientation { get; init; }
+    public required CardOrientation CardOrientation { get; init; }
 }

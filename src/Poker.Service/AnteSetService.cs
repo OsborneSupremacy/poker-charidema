@@ -21,7 +21,7 @@ public class AnteSetService : IAnteSetService
 
         int anteAmount = button.Automaton switch
         {
-            true => _randomService.GetAmount(antePrefs.Max, antePrefs.Max),
+            true => _randomService.GetAmount(antePrefs.Min, antePrefs.Max),
             false => GetAnteFromUser(antePrefs)
         };
 
@@ -55,7 +55,7 @@ public class AnteSetService : IAnteSetService
                 "Specify ante amount",
                 antePrefs.Min,
                 antePrefs.Max,
-                _randomService.GetAmount(antePrefs.Max, antePrefs.Max),
+                _randomService.GetAmount(antePrefs.Min, antePrefs.Max),
                 input =>
                 {
                     anteAmount = input;

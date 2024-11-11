@@ -2,40 +2,57 @@
 
 public class BetCoordinator : IPhaseService
 {
+    private readonly IUserInterfaceService _userInterfaceService;
+
     private readonly IBettingIntervalService _bettingIntervalService;
 
-    private readonly WinnerEvaluator _winnerEvaluator;
+    private readonly ILeadPlayerService  _leadPlayerService;
 
-    public BetCoordinator(IBettingIntervalService bettingIntervalService, WinnerEvaluator winnerEvaluator)
+    public BetCoordinator(
+        IUserInterfaceService userInterfaceService,
+        IBettingIntervalService bettingIntervalService,
+        ILeadPlayerService leadPlayerService
+        )
     {
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _bettingIntervalService =
             bettingIntervalService ?? throw new ArgumentNullException(nameof(bettingIntervalService));
-        _winnerEvaluator = winnerEvaluator ?? throw new ArgumentNullException(nameof(winnerEvaluator));
+        _leadPlayerService = leadPlayerService ?? throw new ArgumentNullException(nameof(leadPlayerService));
     }
 
-    public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
+    private async Task<Player> GetCurrentBettorAsync(PhaseRequest request)
     {
-        var currentBettor = request.StartingPlayer;
-
-        // are there any face-up cards in player hands? If so, determine who has best hand showing.
-        // otherwise, player to left of the dealer bets
-        // we'll need a service to determine who has the best hand that's showing. "LeadPlayer"
-
         var anyFaceUpCards = request.Game.Players
             .SelectMany(p => p.CardsInPlay)
-            .Any(c => c.CardOrientation == CardOrientations.FaceUp);
+            .Any(c => c.CardOrientation == CardOrientation.FaceUp);
 
-        if (anyFaceUpCards)
+        if (!anyFaceUpCards)
+            return request.StartingPlayer;
+
+        var leadPlayerResponse = await _leadPlayerService.ExecuteAsync(
+            new EvaluateLeadPlayerRequest
+            {
+                CommunityCards = request.CommunityCards,
+                Players = request.Game.Players
+            }
+        );
+
+        if (leadPlayerResponse.LeadPlayers.Count > 1)
         {
-            // we will need a service to identity
+            _userInterfaceService.WriteLine($"Multiple players have the best hand showing, with {leadPlayerResponse.LeadingHand.Name}.");
+            _userInterfaceService.WriteLine("The tie goes to the player closest to the dealer.");
+            return leadPlayerResponse.LeadPlayers.First();
         }
 
+        var leadPlayer = leadPlayerResponse.LeadPlayers.First();
+        _userInterfaceService.WriteLine($"{leadPlayer.Name} has the best hand showing with {leadPlayerResponse.LeadingHand.Name}.");
+        return leadPlayer;
+    }
 
-
-
-
-
-
+    public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
+    {
+        var currentBettor = await GetCurrentBettorAsync(request);
+        _userInterfaceService.WriteLine($"{currentBettor.Name} bets.");
 
 
         PhaseResponse response = new()
@@ -48,6 +65,6 @@ public class BetCoordinator : IPhaseService
             Pot = request.Pot
         };
 
-        return Task.FromResult(response);
+        return response;
     }
 }

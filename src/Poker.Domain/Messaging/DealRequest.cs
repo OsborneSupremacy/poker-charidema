@@ -12,5 +12,5 @@ public record DealRequest
 
     public required int CardsToDealCount { get; init; }
 
-    public required CardOrientations CardOrientation { get; init; }
+    public required CardOrientation CardOrientation { get; init; }
 }

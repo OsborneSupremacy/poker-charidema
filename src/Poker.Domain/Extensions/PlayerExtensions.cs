@@ -18,7 +18,7 @@ public static class PlayerExtensions
 
     public static Player DealCards(
         this Player input,
-        CardOrientations orientation,
+        CardOrientation orientation,
         IEnumerable<Card> cards
         )
     {
@@ -26,7 +26,7 @@ public static class PlayerExtensions
         cardsOut.AddRange(cards.Select(c => new CardInPlay
         {
             Card = c,
-            CardLocation = CardLocations.PlayerHand,
+            CardLocation = CardLocation.PlayerHand,
             CardOrientation = orientation
         }));
         return input with { CardsInPlay = cardsOut };
@@ -35,5 +35,5 @@ public static class PlayerExtensions
     public static Player DealFaceDownCards(
         this Player input,
         IEnumerable<Card> cards
-    ) => input.DealCards(CardOrientations.FaceDown, cards);
+    ) => input.DealCards(CardOrientation.FaceDown, cards);
 }

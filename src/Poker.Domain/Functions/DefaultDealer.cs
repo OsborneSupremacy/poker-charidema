@@ -78,7 +78,7 @@ public static class DefaultDealer
 
         public required Player Player { get; init; }
 
-        public required CardOrientations CardOrientation { get; init; }
+        public required CardOrientation CardOrientation { get; init; }
     }
 
     private record DealCardResponse

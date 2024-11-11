@@ -15,8 +15,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Ante,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -28,8 +28,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 2,
-                    CardOrientation = CardOrientations.FaceDown,
-                    CardDestination = CardLocations.PlayerHand,
+                    CardOrientation = CardOrientation.FaceDown,
+                    CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -41,8 +41,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
-                    CardOrientation = CardOrientations.FaceUp,
-                    CardDestination = CardLocations.PlayerHand,
+                    CardOrientation = CardOrientation.FaceUp,
+                    CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -54,8 +54,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -67,8 +67,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 3,
-                    CardOrientation = CardOrientations.FaceUp,
-                    CardDestination = CardLocations.PlayerHand,
+                    CardOrientation = CardOrientation.FaceUp,
+                    CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -80,8 +80,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -93,8 +93,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
-                    CardOrientation = CardOrientations.FaceDown,
-                    CardDestination = CardLocations.PlayerHand,
+                    CardOrientation = CardOrientation.FaceDown,
+                    CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -106,8 +106,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.BettingInterval,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 },
@@ -119,8 +119,8 @@ public static class SevenCardStud
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocations.Empty,
-                    CardOrientation = CardOrientations.Empty,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
                 }
