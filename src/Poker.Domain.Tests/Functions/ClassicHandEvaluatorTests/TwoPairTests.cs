@@ -17,11 +17,11 @@ public class TwoPairTests
         {
             Player = Players.Empty,
             Cards = Cards.All
-                .WhereRank(Ranks.Two)
+                .Rank(Ranks.Two)
                 .Take(twoCount)
                 .Concat(
                     Cards.All
-                        .WhereRank(Ranks.Three)
+                        .Rank(Ranks.Three)
                         .Take(threeCount)
                 )
                 .ToList(),

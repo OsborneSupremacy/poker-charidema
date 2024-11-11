@@ -23,15 +23,14 @@ public class LeadPlayerService : ILeadPlayerService
 
     private static IEnumerable<Player> GetPlayersWithFaceUpCardsOnly(EvaluateLeadPlayerRequest request)
     {
-        foreach (var player in request.Players.Where(p => !p.Folded))
+        foreach (var player in request.Players.NotFolded())
         {
             var faceUpCards = player
                 .CardsInPlay
-                .Where(c => c.CardOrientation == CardOrientation.FaceUp)
+                .FaceUp()
                 .Concat
                 (
-                    request.CommunityCards
-                        .Where(c => c.CardOrientation == CardOrientation.FaceUp)
+                    request.CommunityCards.FaceUp()
                 )
                 .ToList();
             yield return player with { CardsInPlay = faceUpCards };

@@ -6,4 +6,7 @@ public static class CardInPlayExtensions
         input
             .Select(x => x.Card)
             .ToList();
+
+    public static IEnumerable<CardInPlay> FaceUp(this IEnumerable<CardInPlay> input) =>
+        input.Where(x => x.CardOrientation  == CardOrientation.FaceUp);
 }

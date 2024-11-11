@@ -13,7 +13,7 @@ public class PairTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(twoCount).ToList(),
+            Cards = Cards.All.Rank(Ranks.Two).Take(twoCount).ToList(),
             HandToEvaluate = Pairs.Twos,
             RemainingCardCount = 0
         };

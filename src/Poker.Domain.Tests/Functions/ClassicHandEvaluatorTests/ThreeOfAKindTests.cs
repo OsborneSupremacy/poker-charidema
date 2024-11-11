@@ -12,7 +12,7 @@ public class ThreeOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(threeCount).ToList(),
+            Cards = Cards.All.Rank(Ranks.Two).Take(threeCount).ToList(),
             HandToEvaluate = ThreeOfAKind.Twos,
             RemainingCardCount = 0
         };

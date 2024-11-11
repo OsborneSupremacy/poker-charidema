@@ -8,11 +8,11 @@ public record UnusedCardsMessage
     public UnusedCardsMessage(IReadOnlyCollection<Card> cards)
     {
         UnusedStandard = cards
-            .WhereStandard()
+            .Standard()
             .ToList();
 
         UnusedWild = cards
-            .WhereWild()
+            .Wild()
             .ToQueue();
     }
 

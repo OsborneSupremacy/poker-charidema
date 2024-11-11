@@ -2,14 +2,14 @@
 
 internal static class CardLinqExtensions
 {
-    public static IEnumerable<Card> WhereRank(
+    public static IEnumerable<Card> Rank(
         this IEnumerable<Card> cards, Rank rank
         ) => cards.Where(x => x.MatchesRank(rank));
 
-    public static IEnumerable<Card> WhereStandard(this IEnumerable<Card> cards) =>
+    public static IEnumerable<Card> Standard(this IEnumerable<Card> cards) =>
         cards.Where(x => !x.IsWild);
 
-    public static IEnumerable<Card> WhereWild(this IEnumerable<Card> cards) =>
+    public static IEnumerable<Card> Wild(this IEnumerable<Card> cards) =>
         cards.Where(x => x.IsWild);
 
     public static IOrderedEnumerable<Card> OrderByPokerStandard(this IEnumerable<Card> cards) =>
@@ -17,4 +17,3 @@ internal static class CardLinqExtensions
             .OrderByDescending(c => c.Rank.Value)
             .ThenByDescending(c => c.Suit.Priority);
 }
-

@@ -12,8 +12,8 @@ public record HandCards
     [SetsRequiredMembers]
     public HandCards(IReadOnlyCollection<Card> cards)
     {
-        Standard = cards.WhereStandard().ToList();
-        Wild = cards.WhereWild()
+        Standard = cards.Standard().ToList();
+        Wild = cards.Wild()
             .Select(c => new DesignatedWildCard { DesignatedCard = Cards.Empty, WildCard = c })
             .ToList();
     }

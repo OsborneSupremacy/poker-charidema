@@ -24,7 +24,8 @@ public class BetCoordinator : IPhaseService
     {
         var anyFaceUpCards = request.Game.Players
             .SelectMany(p => p.CardsInPlay)
-            .Any(c => c.CardOrientation == CardOrientation.FaceUp);
+            .FaceUp()
+            .Any();
 
         if (!anyFaceUpCards)
             return request.StartingPlayer;

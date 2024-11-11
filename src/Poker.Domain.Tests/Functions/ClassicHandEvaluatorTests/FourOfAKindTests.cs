@@ -10,7 +10,7 @@ public class FourOfAKindTests
         EvaluateHandRequest request = new()
         {
             Player = Players.Empty,
-            Cards = Cards.All.WhereRank(Ranks.Two).Take(4).ToList(),
+            Cards = Cards.All.Rank(Ranks.Two).Take(4).ToList(),
             HandToEvaluate = FourOfAKind.Twos,
             RemainingCardCount = 0
         };

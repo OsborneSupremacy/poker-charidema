@@ -58,7 +58,7 @@ public class PhaseCoordinator : IPhaseCoordinator
                 .WriteLine($"Pot: {gameOut.Pot:C}");
 
             RenderPlayerCards(
-                phaseResponse.Players.Single(x => !x.Automaton),
+                phaseResponse.Players.HumanPlayer(),
                 request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
             );
         }

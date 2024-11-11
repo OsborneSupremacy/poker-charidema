@@ -56,7 +56,7 @@ public class MatchService : IMatchService
         {
             Cancelled = false,
             Match = message.Match,
-            Winners = message.Match.Players.GetRichest(),
+            Winners = message.Match.Players.Richest(),
             PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
     }
@@ -102,7 +102,7 @@ public class MatchService : IMatchService
         {
             Cancelled = false,
             Match = message.Match,
-            Winners = message.Match.Players.GetRichest(),
+            Winners = message.Match.Players.Richest(),
             PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
         };
     }
