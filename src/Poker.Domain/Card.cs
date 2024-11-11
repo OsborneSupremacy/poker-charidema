@@ -1,20 +1,5 @@
 ﻿namespace Poker.Domain;
 
-public enum CardLocations
-{
-    Empty,
-    Deck,
-    PlayerHand,
-    Community
-}
-
-public enum CardOrientations
-{
-    Empty,
-    FaceUp,
-    FaceDown
-}
-
 public enum FaceDirections
 {
     NotApplicable,

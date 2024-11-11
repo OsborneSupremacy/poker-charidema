@@ -27,7 +27,8 @@ public class DealerService : IDealerService, IPhaseService
             Players = request.Game.Players,
             CommunityCards = request.CommunityCards,
             StartingPlayer = request.StartingPlayer,
-            CardsToDealCount = request.Phase.CardsToDealCount
+            CardsToDealCount = request.Phase.CardsToDealCount,
+            CardOrientation = request.Phase.CardOrientation
         });
 
         return Task.FromResult(new PhaseResponse
@@ -50,7 +51,7 @@ public class DealerService : IDealerService, IPhaseService
     {
         var cards = request.Deck.Cards;
         foreach (var player in request.Players)
-            cards.AddRange(player.Cards);
+            cards.AddRange(player.CardsInPlay.ToCards());
 
         var deck = request.Deck with
         {

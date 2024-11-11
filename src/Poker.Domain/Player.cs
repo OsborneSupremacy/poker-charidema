@@ -14,7 +14,7 @@ public record Player
 
     public required bool Busted { get; init; }
 
-    public required List<Card> Cards { get; init; }
+    public required List<CardInPlay> CardsInPlay { get; init; }
 
     /// <summary>
     /// The amount the player has contributed to the current game's pot.
@@ -35,7 +35,7 @@ public static class Players
         Stack = 0,
         Automaton = true,
         Busted = false,
-        Cards = [],
+        CardsInPlay = [],
         Stake = 0,
         Folded = true
     };

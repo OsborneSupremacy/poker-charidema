@@ -23,7 +23,8 @@ public static class DefaultDealer
                     new()
                     {
                         Deck = deckOut,
-                        Player = playerInTurn
+                        Player = playerInTurn,
+                        CardOrientation = request.CardOrientation
                     }
                 );
 
@@ -56,8 +57,8 @@ public static class DefaultDealer
                 CardWasDealt = false
             };
 
-        var playerCardsOut = request.Player.Cards;
-        playerCardsOut.Add(cardToDeal);
+        var playerCardsOut = request.Player.CardsInPlay;
+        playerCardsOut.Add(cardToDeal.DealToPlayer(request.CardOrientation));
 
         var deckCardsOut = request.Deck.Cards;
         deckCardsOut.Remove(cardToDeal);
@@ -65,7 +66,7 @@ public static class DefaultDealer
         return new DealCardResponse
         {
             Card = cardToDeal,
-            Player = request.Player with { Cards = playerCardsOut },
+            Player = request.Player with { CardsInPlay = playerCardsOut },
             Deck = request.Deck with { Cards = deckCardsOut },
             CardWasDealt = true
         };
@@ -76,6 +77,8 @@ public static class DefaultDealer
         public required Deck Deck { get; init; }
 
         public required Player Player { get; init; }
+
+        public required CardOrientations CardOrientation { get; init; }
     }
 
     private record DealCardResponse

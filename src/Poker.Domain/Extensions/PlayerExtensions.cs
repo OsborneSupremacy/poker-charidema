@@ -15,4 +15,25 @@ public static class PlayerExtensions
 
     public static List<Player> GetRichest(this List<Player> players) =>
         players.Where(x => x.Stack == players.Max(p => p.Stack)).ToList();
+
+    public static Player DealCards(
+        this Player input,
+        CardOrientations orientation,
+        IEnumerable<Card> cards
+        )
+    {
+        var cardsOut = input.CardsInPlay;
+        cardsOut.AddRange(cards.Select(c => new CardInPlay
+        {
+            Card = c,
+            CardLocation = CardLocations.PlayerHand,
+            CardOrientation = orientation
+        }));
+        return input with { CardsInPlay = cardsOut };
+    }
+
+    public static Player DealFaceDownCards(
+        this Player input,
+        IEnumerable<Card> cards
+    ) => input.DealCards(CardOrientations.FaceDown, cards);
 }

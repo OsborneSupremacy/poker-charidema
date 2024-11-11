@@ -89,7 +89,7 @@ public class GameService : IGameService
         var gamePlayers = request.Players
             .Select(p => p with
             {
-                Cards = [],
+                CardsInPlay = [],
                 Folded = false
             })
             .ToList();

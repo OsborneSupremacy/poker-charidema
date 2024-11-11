@@ -78,7 +78,7 @@ public class PhaseCoordinator : IPhaseCoordinator
 
     private void RenderPlayerCards(Player player, int remainingCardCount)
     {
-        if (!player.Cards.Any())
+        if (!player.CardsInPlay.Any())
             return;
 
         var bestHand = _bestHandEvaluator
@@ -96,7 +96,7 @@ public class PhaseCoordinator : IPhaseCoordinator
 
         _userInterfaceService
             .WriteLine()
-            .RenderCards($"{label} Cards", bestHand.ToPlayerHand());
+            .RenderCards($"{label} CardsInPlay", bestHand.ToPlayerHand());
 
         _userInterfaceService.WriteLine($"{label} best hand is: {bestHand.Hand.Name}");
     }

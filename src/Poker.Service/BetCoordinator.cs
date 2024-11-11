@@ -1,21 +1,40 @@
 ﻿namespace Poker.Service;
 
-public class BetCoordinator : IBetCoordinator
+public class BetCoordinator : IPhaseService
 {
-    private readonly IRandomFactory _randomFactory;
+    private readonly IBettingIntervalService _bettingIntervalService;
+
+    private readonly WinnerEvaluator _winnerEvaluator;
+
+    public BetCoordinator(IBettingIntervalService bettingIntervalService, WinnerEvaluator winnerEvaluator)
+    {
+        _bettingIntervalService =
+            bettingIntervalService ?? throw new ArgumentNullException(nameof(bettingIntervalService));
+        _winnerEvaluator = winnerEvaluator ?? throw new ArgumentNullException(nameof(winnerEvaluator));
+    }
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        // get player to the left of the dealer
-        var playerInTurn = request.StartingPlayer;
-
-        // if player is automaton, whether it bets will be random, initially.
-        bool playerWillBet = _randomFactory.Create().Next(0, 2) == 1;
+        // are there any face-up cards? If so, determine who has best hand showing.
+        // otherwise, player to left of the dealer bets
 
 
 
 
 
-        throw new NotImplementedException();
+
+
+
+        PhaseResponse response = new()
+        {
+            Deck = request.Deck,
+            CommunityCards = request.CommunityCards,
+            Players = request.Game.Players,
+            Winners = [],
+            GameOver = false,
+            Pot = request.Pot
+        };
+
+        return Task.FromResult(response);
     }
 }

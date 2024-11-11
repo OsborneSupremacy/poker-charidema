@@ -44,13 +44,13 @@ public class DefaultBestHandEvaluatorTests
                     Id = Guid.NewGuid(),
                     Name = "Test Player",
                     Stake = 0,
-                    Cards =
+                    CardsInPlay =
                     [
-                        Cards.AceOfSpades,
-                        Cards.AceOfClubs,
-                        Cards.KingOfClubs,
-                        Cards.KingOfDiamonds,
-                        Cards.QueenOfClubs
+                        Cards.AceOfSpades.DealFaceDownToPlayer(),
+                        Cards.AceOfClubs.DealFaceDownToPlayer(),
+                        Cards.KingOfClubs.DealFaceDownToPlayer(),
+                        Cards.KingOfDiamonds.DealFaceDownToPlayer(),
+                        Cards.QueenOfClubs.DealFaceDownToPlayer()
                     ]
                 },
                 RemainingCardCount = 0,

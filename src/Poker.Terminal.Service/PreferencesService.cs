@@ -194,7 +194,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             BeginningStack = startingStack,
             Automaton = false,
             Busted = false,
-            Cards = [],
+            CardsInPlay = [],
             Stake = 0,
             Folded = false
         };

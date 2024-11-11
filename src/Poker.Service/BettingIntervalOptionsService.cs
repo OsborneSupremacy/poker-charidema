@@ -22,7 +22,7 @@ public class BettingIntervalOptionsService : IBettingIntervalOptionsService
         return Task.FromResult(new BettingIntervalOptionsResponse
         {
             RequiredAmountToCall = request.CurrentBet.Amount,
-            // we're currently going to prevent a player from better more
+            // we're currently going to prevent a player from betting more
             // than another player has.
             MaximumBet = request.ActivePlayers.Min(p => p.Stack),
             AvailableBettingIntervalActions = actions

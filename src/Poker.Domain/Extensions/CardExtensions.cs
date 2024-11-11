@@ -35,4 +35,33 @@ public static class CardExtensions
         // it is particular to Spectre Console
         return s.ToString();
     }
+
+    public static CardInPlay DealToPlayer(
+        this Card input,
+        CardOrientations orientation
+        ) =>
+        new()
+        {
+            Card = input,
+            CardLocation = CardLocations.PlayerHand,
+            CardOrientation = orientation
+        };
+
+    public static CardInPlay DealFaceDownToPlayer(
+        this Card input
+    ) => input.DealToPlayer(CardOrientations.FaceDown);
+
+    public static List<CardInPlay> DealToPlayer(
+        this IEnumerable<Card> input,
+        CardOrientations orientation
+    ) =>
+        input
+            .Select(c => new CardInPlay
+            {
+                Card = c,
+                CardLocation = CardLocations.PlayerHand,
+                CardOrientation = orientation
+            })
+            .ToList();
+
 }

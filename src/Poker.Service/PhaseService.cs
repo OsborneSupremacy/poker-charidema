@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Poker.Service;
 
 public class PhaseService : IPhaseService
 {
@@ -10,17 +12,21 @@ public class PhaseService : IPhaseService
 
     private readonly IPhaseService _dealerService;
 
+    private readonly IPhaseService _betCoordinator;
+
     public PhaseService(
         IUserInterfaceService userInterfaceService,
-        RoundRobinMoveService roundRobinMoveService,
-        IDealerService dealerService,
-        WinnerEvaluationService winnerEvaluationService
+        [FromKeyedServices("move")] IPhaseService roundRobinMoveService,
+        [FromKeyedServices(PhaseType.Deal)] IPhaseService dealerService,
+        [FromKeyedServices(PhaseType.Evaluation)] IPhaseService winnerEvaluationService,
+        [FromKeyedServices(PhaseType.BettingInterval)] IPhaseService betCoordinator
         )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _roundRobinMoveService = roundRobinMoveService ?? throw new ArgumentNullException(nameof(roundRobinMoveService));
-        _winnerEvaluationService = winnerEvaluationService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
-        _dealerService = dealerService as IPhaseService ?? throw new ArgumentNullException(nameof(dealerService));
+        _winnerEvaluationService = winnerEvaluationService ?? throw new ArgumentNullException(nameof(winnerEvaluationService));
+        _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
+        _betCoordinator = betCoordinator ?? throw new ArgumentNullException(nameof(betCoordinator));
     }
 
     private Task WriteStartInfoAsync(PhaseRequest request)
@@ -41,6 +47,7 @@ public class PhaseService : IPhaseService
         {
             PhaseType.Deal => _dealerService,
             PhaseType.Evaluation => _winnerEvaluationService,
+            PhaseType.BettingInterval => _betCoordinator,
             _ => _roundRobinMoveService
         };
 

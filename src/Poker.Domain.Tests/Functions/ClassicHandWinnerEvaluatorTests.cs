@@ -41,9 +41,9 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnerIdentified_OnePlayerHasPairOfTwos()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts] };
-        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfSpades, Cards.ThreeOfSpades] };
-        _playerThree = _playerThree with { Cards = [Cards.TwoOfSpades, Cards.ThreeOfSpades] };
+        _playerOne = _playerOne.DealFaceDownCards([Cards.TwoOfSpades, Cards.TwoOfHearts]);
+        _playerTwo = _playerTwo.DealFaceDownCards([Cards.TwoOfSpades, Cards.ThreeOfSpades]);
+        _playerThree = _playerThree.DealFaceDownCards([Cards.TwoOfSpades, Cards.ThreeOfSpades]);
 
         EvaluateWinnerRequest request = new()
         {
@@ -69,9 +69,9 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnersIdentified_TwoPlayersHavePairOfTwos()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts] };
-        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfClubs, Cards.TwoOfDiamonds] };
-        _playerThree = _playerThree with { Cards = [Cards.FiveOfSpades, Cards.ThreeOfSpades] };
+        _playerOne = _playerOne.DealFaceDownCards([Cards.TwoOfSpades, Cards.TwoOfHearts]);
+        _playerTwo = _playerTwo.DealFaceDownCards([Cards.TwoOfClubs, Cards.TwoOfDiamonds]);
+        _playerThree = _playerThree.DealFaceDownCards([Cards.FiveOfSpades, Cards.ThreeOfSpades]);
 
         EvaluateWinnerRequest request = new()
         {
@@ -97,9 +97,9 @@ public class ClassicHandWinnerEvaluatorTests
     public void Evaluate_WinnerIdentified_TwoPlayersHavePairOfTwosButOneHasHigherKicker()
     {
         // Arrange
-        _playerOne = _playerOne with { Cards = [Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.AceOfClubs] };
-        _playerTwo = _playerTwo with { Cards = [Cards.TwoOfClubs, Cards.TwoOfDiamonds, Cards.KingOfClubs] };
-        _playerThree = _playerThree with { Cards = [Cards.FiveOfSpades, Cards.ThreeOfSpades, Cards.NineOfSpades] };
+        _playerOne = _playerOne.DealFaceDownCards([Cards.TwoOfSpades, Cards.TwoOfHearts, Cards.AceOfClubs]);
+        _playerTwo = _playerTwo.DealFaceDownCards([Cards.TwoOfClubs, Cards.TwoOfDiamonds, Cards.KingOfClubs]);
+        _playerThree = _playerThree.DealFaceDownCards([Cards.FiveOfSpades, Cards.ThreeOfSpades, Cards.NineOfSpades]);
 
         EvaluateWinnerRequest request = new()
         {

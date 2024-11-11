@@ -6,9 +6,11 @@ public record DealRequest
 
     public required List<Player> Players { get; init; }
 
-    public required List<Card> CommunityCards { get; init; }
+    public required List<CardInPlay> CommunityCards { get; init; }
 
     public required Player StartingPlayer { get; init; }
 
     public required int CardsToDealCount { get; init; }
+
+    public required CardOrientations CardOrientation { get; init; }
 }

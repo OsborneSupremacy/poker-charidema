@@ -8,7 +8,7 @@ public record PhaseRequest
 
     public required Deck Deck { get; init; }
 
-    public required List<Card> CommunityCards { get; init; }
+    public required List<CardInPlay> CommunityCards { get; init; }
 
     public required Player StartingPlayer { get; init; }
 

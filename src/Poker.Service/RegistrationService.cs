@@ -29,15 +29,13 @@ public static class RegistrationService
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
 
-        // in .net 8, make this a keyed service
-        serviceCollection.AddScoped<RoundRobinMoveService>();
+        serviceCollection.AddKeyedScoped<IPhaseService, DealerService>(PhaseType.Deal);
+        serviceCollection.AddKeyedScoped<IPhaseService, RoundRobinMoveService>("move");
+        serviceCollection.AddKeyedScoped<IPhaseService, BetCoordinator>(PhaseType.BettingInterval);
+        serviceCollection.AddKeyedScoped<IPhaseService, WinnerEvaluationService>(PhaseType.Evaluation);
 
-        serviceCollection.AddScoped<IBetCoordinator, BetCoordinator>();
         serviceCollection.AddScoped<IBettingIntervalService, BettingIntervalService>();
         serviceCollection.AddScoped<IBettingIntervalOptionsService, BettingIntervalOptionsService>();
-
-        // in .net 8, make this a keyed service
-        serviceCollection.AddScoped<WinnerEvaluationService>();
 
         // domain functions
         serviceCollection.AddSingleton(DefaultDealer.Deal);
