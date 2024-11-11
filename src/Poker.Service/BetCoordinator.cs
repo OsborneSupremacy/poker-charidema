@@ -15,8 +15,21 @@ public class BetCoordinator : IPhaseService
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        // are there any face-up cards? If so, determine who has best hand showing.
+        var currentBettor = request.StartingPlayer;
+
+        // are there any face-up cards in player hands? If so, determine who has best hand showing.
         // otherwise, player to left of the dealer bets
+        // we'll need a service to determine who has the best hand that's showing. "LeadPlayer"
+
+        var anyFaceUpCards = request.Game.Players
+            .SelectMany(p => p.CardsInPlay)
+            .Any(c => c.CardOrientation == CardOrientations.FaceUp);
+
+        if (anyFaceUpCards)
+        {
+            // we will need a service to identity
+        }
+
 
 
 
