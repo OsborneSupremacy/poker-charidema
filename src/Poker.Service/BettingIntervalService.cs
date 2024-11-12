@@ -16,11 +16,9 @@ public class BettingIntervalService : IBettingIntervalService
 
     public async Task<BettingIntervalResponse> ExecuteAsync(BettingIntervalRequest request)
     {
-        var currentBet = Bets.Empty;
-
         BettingIntervalOptionsRequest optionsRequest = new()
         {
-            CurrentBet = currentBet,
+            CurrentBet = request.CurrentBet,
             ActivePlayers = request.ActivePlayers
         };
 
@@ -52,6 +50,7 @@ public class BettingIntervalService : IBettingIntervalService
 
         return new BettingIntervalResponse
         {
+            Description = $"Bet {betAmount:C0}",
             CurrentBet = new Bet
             {
                 Amount = betAmount,
@@ -60,14 +59,16 @@ public class BettingIntervalService : IBettingIntervalService
                 ContributingPlayers =
                 [
                     new ContributingPlayer { PlayerId = request.PlayerInTurn.Id, Amount = betAmount }
-                ]
+                ],
+                TerminalPlayerIds = []
             },
             Pot = request.Pot + betAmount,
             PlayerInTurn = request.PlayerInTurn with
             {
                 Stack = request.PlayerInTurn.Stack - betAmount,
                 Stake = request.PlayerInTurn.Stake + betAmount
-            }
+            },
+            CloseBetting = false
         };
     };
 
@@ -76,14 +77,19 @@ public class BettingIntervalService : IBettingIntervalService
         var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds;
         checkedPlayerIds.Add(request.PlayerInTurn.Id);
 
+        var closeBetting =
+            checkedPlayerIds.Count >= request.ActivePlayers.NotFolded().Count();
+
         return new BettingIntervalResponse
         {
+            Description = "Checks",
             CurrentBet = request.CurrentBet with
             {
                 CheckedPlayerIds = checkedPlayerIds
             },
             Pot = request.Pot,
-            PlayerInTurn = request.PlayerInTurn
+            PlayerInTurn = request.PlayerInTurn,
+            CloseBetting = closeBetting
         };
     };
 
@@ -107,18 +113,25 @@ public class BettingIntervalService : IBettingIntervalService
             Amount = request.CurrentBet.Amount
         });
 
+        var closeBetting =
+            contributingPlayers
+                .PaidUp(request.CurrentBet.Amount).Count() >= request.ActivePlayers.NotFolded().Count();
+
         return new BettingIntervalResponse
         {
+            Description = "Calls",
             CurrentBet = request.CurrentBet with
             {
-                ContributingPlayers = contributingPlayers
+                ContributingPlayers = contributingPlayers,
+                TerminalPlayerIds = request.CurrentBet.TerminalPlayerIds
             },
             Pot = request.Pot + additionalAmount,
             PlayerInTurn = request.PlayerInTurn with
             {
                 Stack = request.PlayerInTurn.Stack - additionalAmount,
                 Stake = request.PlayerInTurn.Stake + additionalAmount
-            }
+            },
+            CloseBetting = closeBetting
         };
     };
 
@@ -147,29 +160,39 @@ public class BettingIntervalService : IBettingIntervalService
 
         return new BettingIntervalResponse
         {
+            Description = $"Raises {playerAdditionalAmount:C0}",
             CurrentBet = new Bet
             {
                 Amount = newBetAmount,
                 InitiatingPlayerId = request.PlayerInTurn.Id,
                 CheckedPlayerIds = [],
-                ContributingPlayers = contributingPlayers
+                ContributingPlayers = contributingPlayers,
+                TerminalPlayerIds = []
             },
             Pot = request.Pot + playerAdditionalAmount,
             PlayerInTurn = request.PlayerInTurn with
             {
                 Stack = request.PlayerInTurn.Stack - playerAdditionalAmount,
                 Stake = request.PlayerInTurn.Stake + playerAdditionalAmount
-            }
+            },
+            CloseBetting = false
         };
     };
 
     private static readonly BettingIntervalDelegate Fold = (request, _) =>
-        new BettingIntervalResponse
+    {
+        // if only one player remains, close betting.
+        var closeBetting = (request.ActivePlayers.NotFolded().Count() - 1) == 1;
+
+        return new BettingIntervalResponse
         {
+            Description = "Folds",
             CurrentBet = request.CurrentBet,
             Pot = request.Pot,
-            PlayerInTurn = request.PlayerInTurn with { Folded = true }
+            PlayerInTurn = request.PlayerInTurn with { Folded = true },
+            CloseBetting = closeBetting
         };
+    };
 
     private static readonly Dictionary<BettingIntervalActionType, BettingIntervalDelegate?> BettingIntervalDelegates =
         new()

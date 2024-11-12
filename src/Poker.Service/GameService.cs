@@ -28,7 +28,7 @@ public class GameService : IGameService
         _userInterfaceService.WriteLines(
             $"The game is {game.Variant.Name}.",
             $"{game.Button.Name} has the deal.",
-            $"Ante is set at {game.Ante:C}"
+            $"Ante is set at {game.Ante:C0}"
         );
 
         return Task.CompletedTask;

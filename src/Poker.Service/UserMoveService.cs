@@ -33,7 +33,7 @@ public class UserMoveService : IUserMoveService
     }
 
     private Task<MoveResponse> AntePromptAsync(MoveRequest request) =>
-        _userInterfaceService.PromptForBool($"Ante {request.PhaseRequest.Game.Ante:C}?") switch
+        _userInterfaceService.PromptForBool($"Ante {request.PhaseRequest.Game.Ante:C0}?") switch
         {
             true => AnteAsync(request),
             false => SitOutAsync(request)

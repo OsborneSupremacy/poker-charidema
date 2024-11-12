@@ -25,7 +25,7 @@ public static class DefaultWinningsDistributor
 
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
 
-        List<Player> playersOut = request.Players.Select(player => player with
+        var playersOut = request.Players.Select(player => player with
         {
             Stack = winnerIds.Contains(player.Id)
                     ? player.Stack + winnerPayouts[pi++]

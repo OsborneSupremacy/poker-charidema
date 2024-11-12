@@ -72,7 +72,7 @@ public class GameCoordinator : IGameCoordinator
     {
         var stacks = match.Players
             .OrderByDescending(p => p.Stack)
-            .Select(p => $"{p.Name} - {p.Stack:C}");
+            .Select(p => $"{p.Name} - {p.Stack:C0}");
 
         _userInterfaceService.WriteList("Standings", stacks.ToArray());
     }

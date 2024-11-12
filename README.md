@@ -15,8 +15,9 @@ The application makes extensive use of messaging classes. These are immutable va
 As I've been using messaging classes, I've thought of some guidelines that helps them be used the correct way. My use of them in this application doesn't always follow these guidelines, but I intend to refactor as I go.
 
 * Immutable.
-* Should not contain any logic.
-    * If we want any behavior, we should use an extension method or something else. 
+* Should not use inheritance (use composition instead, when needed).
+* Should not contain any behavior.
+    * If we want behavior, we should use an extension method or something else. 
 * No dependencies.
 * All properties are required.
 

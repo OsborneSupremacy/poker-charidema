@@ -8,5 +8,5 @@ public static class CardInPlayExtensions
             .ToList();
 
     public static IEnumerable<CardInPlay> FaceUp(this IEnumerable<CardInPlay> input) =>
-        input.Where(x => x.CardOrientation  == CardOrientation.FaceUp);
+        input.Where(x => x.CardOrientation == CardOrientation.FaceUp);
 }

@@ -55,7 +55,7 @@ public class PhaseCoordinator : IPhaseCoordinator
         {
             _userInterfaceService
                 .WriteLine()
-                .WriteLine($"Pot: {gameOut.Pot:C}");
+                .WriteLine($"Pot: {gameOut.Pot:C0}");
 
             RenderPlayerCards(
                 phaseResponse.Players.HumanPlayer(),

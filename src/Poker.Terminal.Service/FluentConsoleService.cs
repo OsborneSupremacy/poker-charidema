@@ -91,12 +91,12 @@ public class FluentConsoleService : IUserInterfaceService
         int result = minVal - 1;
         while (result < minVal || result > maxVal)
             result = AnsiConsole.Prompt(
-                new TextPrompt<int>($"{prompt} {minVal:C} - {maxVal:C}: ")
+                new TextPrompt<int>($"{prompt} {minVal:C0} - {maxVal:C0}: ")
                     .DefaultValue(defaultVal)
                     .Validate(input =>
                     {
                         if (input < minVal || input > maxVal)
-                            return ValidationResult.Error($"Input must be between {minVal:C} and {maxVal:C}.");
+                            return ValidationResult.Error($"Input must be between {minVal:C0} and {maxVal:C0}.");
                         return ValidationResult.Success();
                     })
                 );
