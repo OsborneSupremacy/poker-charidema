@@ -2,6 +2,8 @@
 
 public class DealerService : IDealerService, IPhaseService
 {
+    private readonly IUserInterfaceService _userInterfaceService;
+
     private readonly IRandomFactory _randomFactory;
 
     private readonly ShuffleAlgorithm _shuffleAlgorithm;
@@ -9,11 +11,13 @@ public class DealerService : IDealerService, IPhaseService
     private readonly Dealer _dealer;
 
     public DealerService(
+        IUserInterfaceService userInterfaceService,
         IRandomFactory randomFactory,
         ShuffleAlgorithm shuffleAlgorithm,
         Dealer dealer
         )
     {
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _randomFactory = randomFactory ?? throw new ArgumentNullException(nameof(randomFactory));
         _shuffleAlgorithm = shuffleAlgorithm ?? throw new ArgumentNullException(nameof(shuffleAlgorithm));
         _dealer = dealer ?? throw new ArgumentNullException(nameof(dealer));
@@ -21,6 +25,14 @@ public class DealerService : IDealerService, IPhaseService
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
+        if(request.GameOver)
+            return Task.FromResult(request.ToGameOverResponse());
+
+        _userInterfaceService.WriteHeading(
+            HeadingLevel.Five,
+            $"{request.Phase.Name}"
+        );
+
         var dealResponse = _dealer(new DealRequest
         {
             Deck = request.Deck,

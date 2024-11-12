@@ -59,6 +59,8 @@ public class GameService : IGameService
             }
         };
 
+        var gameOver = false;
+
         foreach (
             var phaseCoordinatorRequest in request
                 .Variant
@@ -69,7 +71,8 @@ public class GameService : IGameService
                     {
                         Game = phaseCoordinatorResponse.GameResponse.Game,
                         Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
-                        Phase = phase
+                        Phase = phase,
+                        GameOver = gameOver
                     }
                 )
         )
@@ -77,8 +80,7 @@ public class GameService : IGameService
             phaseCoordinatorResponse = await _phaseCoordinator
                 .ExecuteAsync(phaseCoordinatorRequest);
 
-            if (phaseCoordinatorResponse.PhaseResponse.GameOver)
-                return phaseCoordinatorResponse.GameResponse;
+            gameOver = phaseCoordinatorResponse.PhaseResponse.GameOver;
         }
 
         return phaseCoordinatorResponse.GameResponse;

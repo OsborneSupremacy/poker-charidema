@@ -22,6 +22,14 @@ public class BetCoordinator : IPhaseService
 
     public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
+        if (request.GameOver)
+            return request.ToGameOverResponse();
+
+        _userInterfaceService.WriteHeading(
+            HeadingLevel.Five,
+            $"{request.Phase.Name}"
+        );
+
         var currentBettor = await GetCurrentBettorAsync(request);
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");
 
@@ -56,7 +64,7 @@ public class BetCoordinator : IPhaseService
         var activePlayers = players.Values.NotFolded().ToList();
         var gameOver = activePlayers.Count == 1;
 
-        PhaseResponse response = new()
+        return new()
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
@@ -65,8 +73,6 @@ public class BetCoordinator : IPhaseService
             GameOver = gameOver,
             Pot = betResponse.Pot
         };
-
-        return response;
     }
 
     private async Task<Player> GetCurrentBettorAsync(PhaseRequest request)

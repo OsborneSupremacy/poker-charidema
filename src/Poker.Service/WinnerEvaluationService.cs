@@ -30,10 +30,51 @@ public class WinnerEvaluationService : IPhaseService
 
     public Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
-        var response = _winnerEvaluator(
+        _userInterfaceService.WriteHeading(
+            HeadingLevel.Five,
+            $"{request.Phase.Name}"
+        );
+
+        var remainingPlayers = request.Game.Players.NotFolded().ToList();
+        return remainingPlayers.Count switch
+        {
+            1 => ExecuteWinByDefaultAsync(request),
+            _ => ExecuteContestedAsync(request)
+        };
+    }
+
+    private Task<PhaseResponse> ExecuteWinByDefaultAsync(PhaseRequest request)
+    {
+        var winner = request.Game.Players.NotFolded().Single();
+
+        _userInterfaceService.WriteLine($"{winner.Name} wins by default.");
+
+        var playersOut = _winningsDistributor(
             new()
             {
                 Players = request.Game.Players,
+                Winners = [ winner ],
+                Pot = request.Pot
+            }
+        ).Players;
+
+        return Task.FromResult(new PhaseResponse
+        {
+            Deck = request.Deck,
+            CommunityCards = request.CommunityCards,
+            Players = playersOut,
+            Winners = [ winner ],
+            GameOver = true,
+            Pot = request.Pot
+        });
+    }
+
+    private Task<PhaseResponse> ExecuteContestedAsync(PhaseRequest request)
+    {
+        var response = _winnerEvaluator(
+            new()
+            {
+                Players = request.Game.Players.NotFolded().ToList(),
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
             }
@@ -52,8 +93,7 @@ public class WinnerEvaluationService : IPhaseService
         var messages = response.Winners.Select(w => w.Name).ToList();
         messages.Add($"{response.WinningHand.Name}");
 
-        _userInterfaceService
-            .WriteList(label, messages);
+        _userInterfaceService.WriteList(label, messages);
 
         var playersOut = _winningsDistributor(
             new()
@@ -62,8 +102,7 @@ public class WinnerEvaluationService : IPhaseService
                 Winners = response.Winners,
                 Pot = request.Pot
             }
-        )
-        .Players;
+        ).Players;
 
         return Task.FromResult(new PhaseResponse
         {

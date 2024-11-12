@@ -2,15 +2,28 @@
 
 public class RoundRobinMoveService : IPhaseService
 {
+    private readonly IUserInterfaceService _userInterfaceService;
+
     private readonly IMoveServiceFactory _moveServiceFactory;
 
-    public RoundRobinMoveService(IMoveServiceFactory moveServiceFactory)
+    public RoundRobinMoveService(
+        IUserInterfaceService userInterfaceService,
+        IMoveServiceFactory moveServiceFactory)
     {
+        _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
         _moveServiceFactory = moveServiceFactory ?? throw new ArgumentNullException(nameof(moveServiceFactory));
     }
 
     public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
     {
+        if (request.GameOver)
+            return request.ToGameOverResponse();
+
+        _userInterfaceService.WriteHeading(
+            HeadingLevel.Five,
+            $"{request.Phase.Name}"
+        );
+
         var playersOut = new List<Player>();
 
         var ccOut = request.CommunityCards;

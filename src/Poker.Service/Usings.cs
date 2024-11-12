@@ -1,4 +1,5 @@
-﻿global using Poker.Domain;
+﻿global using Microsoft.Extensions.DependencyInjection;
+global using Poker.Domain;
 global using Poker.Domain.Delegates;
 global using Poker.Domain.Extensions;
 global using Poker.Domain.Functions;

@@ -40,7 +40,8 @@ public class PhaseCoordinator : IPhaseCoordinator
                 Deck = request.Deck,
                 CommunityCards = [],
                 StartingPlayer = startingPlayer,
-                Pot = request.Game.Pot
+                Pot = request.Game.Pot,
+                GameOver = request.GameOver
             });
 
         var gameOut = request.Game with
@@ -51,17 +52,27 @@ public class PhaseCoordinator : IPhaseCoordinator
             Pot = phaseResponse.Pot
         };
 
-        if (!phaseResponse.GameOver)
-        {
-            _userInterfaceService
-                .WriteLine()
-                .WriteLine($"Pot: {gameOut.Pot:C0}");
+        if (phaseResponse.GameOver)
+            return new PhaseCoordinatorResponse
+            {
+                PhaseResponse = phaseResponse,
+                GameResponse = new GameResponse
+                {
+                    Game = gameOut,
+                    Players = phaseResponse.Players,
+                    Variant = gameOut.Variant,
+                    Button = gameOut.Button
+                }
+            };
 
-            RenderPlayerCards(
-                phaseResponse.Players.HumanPlayer(),
-                request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
-            );
-        }
+        _userInterfaceService
+            .WriteLine()
+            .WriteLine($"Pot: {gameOut.Pot:C0}");
+
+        RenderPlayerCards(
+            phaseResponse.Players.HumanPlayer(),
+            request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
+        );
 
         return new PhaseCoordinatorResponse
         {
