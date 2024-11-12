@@ -35,8 +35,7 @@ public class WinnerEvaluationService : IPhaseService
             $"{request.Phase.Name}"
         );
 
-        var remainingPlayers = request.Game.Players.NotFolded().ToList();
-        return remainingPlayers.Count switch
+        return request.Game.Players.NotFolded().Count() switch
         {
             1 => ExecuteWinByDefaultAsync(request),
             _ => ExecuteContestedAsync(request)
