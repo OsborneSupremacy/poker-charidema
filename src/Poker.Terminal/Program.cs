@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Poker.Service.Abstractions;
 
 await Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>

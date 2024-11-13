@@ -1,1 +1,1 @@
-﻿global using Poker.Service.Interface;
+﻿global using Poker.Service.Abstractions;

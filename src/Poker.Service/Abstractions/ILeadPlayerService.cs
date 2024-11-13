@@ -1,4 +1,4 @@
-﻿namespace Poker.Service.Interface;
+﻿namespace Poker.Service.Abstractions;
 
 /// <summary>
 /// Evaluates the current lead player. Uses face up cards only.

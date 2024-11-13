@@ -1,6 +1,6 @@
 ﻿using Bogus;
 
-namespace Poker.Service.Interface;
+namespace Poker.Service.Abstractions;
 
 public interface IRandomService
 {

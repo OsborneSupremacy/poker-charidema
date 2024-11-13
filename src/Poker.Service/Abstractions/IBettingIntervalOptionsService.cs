@@ -1,4 +1,4 @@
-﻿namespace Poker.Service.Interface;
+﻿namespace Poker.Service.Abstractions;
 
 /// <summary>
 /// Gets the options available to current bettor during a betting interval.

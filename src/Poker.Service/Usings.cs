@@ -7,5 +7,5 @@ global using Poker.Domain.Functions.Classic;
 global using Poker.Domain.Messaging;
 global using Poker.Domain.Messaging.Extensions;
 global using Poker.Presentation.Interface;
-global using Poker.Service.Interface;
+global using Poker.Service.Abstractions;
 global using Poker.Utility;

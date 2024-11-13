@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Poker.Domain.Messaging;
+using Poker.Service.Abstractions;
 
 namespace Poker.Terminal;
 
