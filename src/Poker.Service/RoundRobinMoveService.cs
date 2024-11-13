@@ -30,8 +30,6 @@ public class RoundRobinMoveService : IPhaseService
         var deckOut = request.Deck;
         var potOut = request.Pot;
 
-        // TODO: if this is a betting round and any non-community cards are face-up, start with player showing
-        // best hand. Otherwise, start with player to the left of dealer
         var playerInTurn = request.StartingPlayer;
 
         while (playersOut.Count < request.Game.Players.Count)

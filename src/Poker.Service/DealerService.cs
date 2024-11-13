@@ -28,10 +28,7 @@ public class DealerService : IDealerService, IPhaseService
         if(request.GameOver)
             return Task.FromResult(request.ToGameOverResponse());
 
-        _userInterfaceService.WriteHeading(
-            HeadingLevel.Five,
-            $"{request.Phase.Name}"
-        );
+        _userInterfaceService.WriteHeading(HeadingLevel.Five, $"{request.Phase.Name}");
 
         var dealResponse = _dealer(new DealRequest
         {

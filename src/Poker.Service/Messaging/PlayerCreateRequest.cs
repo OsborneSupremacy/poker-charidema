@@ -1,4 +1,4 @@
-﻿namespace Poker.Service;
+﻿namespace Poker.Service.Messaging;
 
 public record PlayerCreateRequest
 {

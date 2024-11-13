@@ -1,6 +1,7 @@
 ﻿using Poker.Domain.Classic;
 using Poker.Domain.Implementations.Variants;
 using Poker.Domain.Messaging;
+using Poker.Service.Messaging;
 
 namespace Poker.Terminal.Service;
 

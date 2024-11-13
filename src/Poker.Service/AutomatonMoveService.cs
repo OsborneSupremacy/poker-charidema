@@ -17,7 +17,7 @@ public class AutomatonMoveService : IAutomatonMoveService
             _ => DefaultMoveAsync(request)
         };
 
-    private Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
+    private static Task<MoveResponse> DefaultMoveAsync(MoveRequest request)
     {
         int potOut = request.Pot;
 
@@ -51,7 +51,7 @@ public class AutomatonMoveService : IAutomatonMoveService
         );
     }
 
-    private Task<MoveResponse> DealAsync(MoveRequest request)
+    private static Task<MoveResponse> DealAsync(MoveRequest request)
     {
         var playerCardsOut = request.PlayerInTurn.CardsInPlay;
         var deckCardsOut = request.PhaseRequest.Game.Deck.Cards

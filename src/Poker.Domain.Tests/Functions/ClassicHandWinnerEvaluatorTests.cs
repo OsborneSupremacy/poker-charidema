@@ -1,4 +1,5 @@
 ﻿using Poker.Service;
+using Poker.Service.Messaging;
 
 namespace Poker.Domain.Tests.Functions;
 

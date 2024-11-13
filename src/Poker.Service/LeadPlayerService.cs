@@ -28,10 +28,7 @@ public class LeadPlayerService : ILeadPlayerService
             var faceUpCards = player
                 .CardsInPlay
                 .FaceUp()
-                .Concat
-                (
-                    request.CommunityCards.FaceUp()
-                )
+                .Concat(request.CommunityCards.FaceUp())
                 .ToList();
             yield return player with { CardsInPlay = faceUpCards };
         }

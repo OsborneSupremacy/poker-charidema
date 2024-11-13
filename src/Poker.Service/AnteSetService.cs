@@ -17,34 +17,34 @@ public class AnteSetService : IAnteSetService
         if (request.Match.AntePreferences.AnteType == AnteTypes.Fixed)
             return Task.FromResult(request.Match.AntePreferences.Fixed);
 
-        var antePrefs = GetAntePrefs(request);
+        var antePreferences = GetAntePreferences(request);
 
         int anteAmount = button.Automaton switch
         {
-            true => _randomService.GetAmount(antePrefs.Min, antePrefs.Max),
-            false => GetAnteFromUser(antePrefs)
+            true => _randomService.GetAmount(antePreferences.Min, antePreferences.Max),
+            false => GetAnteFromUser(antePreferences)
         };
 
         return Task.FromResult(anteAmount);
     }
 
-    private static AntePreferences GetAntePrefs(GameRequest request)
+    private static AntePreferences GetAntePreferences(GameRequest request)
     {
         var minPlayerStack = request.Players.Min(p => p.Stack);
 
-        var antePrefs = request.Match.AntePreferences;
+        var antePreferences = request.Match.AntePreferences;
 
         // all players have enough for max ante
-        if (minPlayerStack >= antePrefs.Max)
-            return antePrefs;
+        if (minPlayerStack >= antePreferences.Max)
+            return antePreferences;
 
-        var effectivePrefs = antePrefs with
+        var effectivePreferences = antePreferences with
         {
-            Min = (minPlayerStack < antePrefs.Min) ? minPlayerStack : antePrefs.Min,
+            Min = (minPlayerStack < antePreferences.Min) ? minPlayerStack : antePreferences.Min,
             Max = minPlayerStack
         };
 
-        return effectivePrefs;
+        return effectivePreferences;
     }
 
     private int GetAnteFromUser(AntePreferences antePrefs)

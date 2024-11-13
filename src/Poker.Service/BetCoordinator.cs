@@ -25,10 +25,7 @@ public class BetCoordinator : IPhaseService
         if (request.GameOver)
             return request.ToGameOverResponse();
 
-        _userInterfaceService.WriteHeading(
-            HeadingLevel.Five,
-            $"{request.Phase.Name}"
-        );
+        _userInterfaceService.WriteHeading(HeadingLevel.Five, $"{request.Phase.Name}");
 
         var currentBettor = await GetCurrentBettorAsync(request);
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");

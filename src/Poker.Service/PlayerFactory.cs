@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Service.Messaging;
+
+namespace Poker.Service;
 
 public class PlayerFactory
 {

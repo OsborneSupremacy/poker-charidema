@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 public static class RegistrationService
 {
