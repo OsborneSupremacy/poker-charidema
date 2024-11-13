@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class RoundRobinMoveService : IPhaseService
+internal class RoundRobinMoveService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 

@@ -1,7 +1,7 @@
 ﻿namespace Poker.Service;
 
 /// <inheritdoc />
-public class LeadPlayerService : ILeadPlayerService
+internal class LeadPlayerService : ILeadPlayerService
 {
     private readonly WinnerEvaluator _winnerEvaluator;
 

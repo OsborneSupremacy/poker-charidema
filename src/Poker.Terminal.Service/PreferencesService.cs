@@ -8,14 +8,14 @@ namespace Poker.Terminal.Service;
 
 public class PreferencesService : IGamePreferencesService, IMatchPreferencesService
 {
-    private readonly PlayerFactory _playerFactory;
+    private readonly IPlayerFactory _playerFactory;
 
     private readonly IRandomService _randomService;
 
     private readonly IUserInterfaceService _c;
 
     public PreferencesService(
-        PlayerFactory playerFactory,
+        IPlayerFactory playerFactory,
         IRandomService randomService,
         IUserInterfaceService console
         )
@@ -139,8 +139,8 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
                     int min = 0;
 
-                    // subtracting 1 because we can't make the minimum ante equal to the 
-                    // starting stack -- otherwise it will be impossible for there to be a 
+                    // subtracting 1 because we can't make the minimum ante equal to the
+                    // starting stack -- otherwise it will be impossible for there to be a
                     // range. And if there's not a range, dealer's choice doesn't make sense.
                     _c.PromptForMoney("Minimum ante", 0, startingStack - 1, 1, input =>
                     {

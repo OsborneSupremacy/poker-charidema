@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class WinnerEvaluationService : IPhaseService
+internal class WinnerEvaluationService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class AnteSetService : IAnteSetService
+internal class AnteSetService : IAnteSetService
 {
     private readonly IRandomService _randomService;
 

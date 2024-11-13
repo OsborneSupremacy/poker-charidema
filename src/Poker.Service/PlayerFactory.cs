@@ -2,7 +2,7 @@
 
 namespace Poker.Service;
 
-public class PlayerFactory
+internal class PlayerFactory : IPlayerFactory
 {
     private readonly IRandomService _randomService;
 

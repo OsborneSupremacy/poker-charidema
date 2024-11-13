@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class DealerService : IDealerService, IPhaseService
+internal class DealerService : IDealerService, IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 

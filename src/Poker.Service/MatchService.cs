@@ -2,7 +2,7 @@
 
 namespace Poker.Service;
 
-public class MatchService : IMatchService
+internal class MatchService : IMatchService
 {
     private readonly IMatchPreferencesService _matchPreferencesService;
 

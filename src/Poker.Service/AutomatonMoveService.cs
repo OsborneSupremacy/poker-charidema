@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class AutomatonMoveService : IAutomatonMoveService
+internal class AutomatonMoveService : IAutomatonMoveService
 {
     private readonly IUserInterfaceService _userInterfaceService;
 

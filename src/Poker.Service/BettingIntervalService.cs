@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class BettingIntervalService : IBettingIntervalService
+internal class BettingIntervalService : IBettingIntervalService
 {
     private readonly IBettingIntervalOptionsService _bettingIntervalOptionsService;
 

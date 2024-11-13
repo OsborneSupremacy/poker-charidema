@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class TimeRandomFactory : IRandomFactory
+internal class TimeRandomFactory : IRandomFactory
 {
     public Random Create() =>
         new(GetSeed());

@@ -16,4 +16,9 @@
         <ProjectReference Include="..\Poker.Presentation.Interface\Poker.Presentation.Interface.csproj" />
         <ProjectReference Include="..\Poker.Utility\Poker.Utility.csproj" />
     </ItemGroup>
+  
+    <ItemGroup>
+        <InternalsVisibleTo Include="Poker.Domain.Tests" />
+    </ItemGroup>
+
 </Project>

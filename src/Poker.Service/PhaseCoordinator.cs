@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class PhaseCoordinator : IPhaseCoordinator
+internal class PhaseCoordinator : IPhaseCoordinator
 {
     private readonly IPhaseService _phaseService;
 

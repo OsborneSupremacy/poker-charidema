@@ -9,7 +9,7 @@ public static class RegistrationService
         serviceCollection.AddSingleton<IRandomService, RandomService>();
 
         // business services
-        serviceCollection.AddScoped<PlayerFactory>();
+        serviceCollection.AddScoped<IPlayerFactory, PlayerFactory>();
         serviceCollection.AddScoped<IMatchService, MatchService>();
         serviceCollection.AddScoped<IDealerService, DealerService>();
         serviceCollection.AddScoped<IAnteSetService, AnteSetService>();

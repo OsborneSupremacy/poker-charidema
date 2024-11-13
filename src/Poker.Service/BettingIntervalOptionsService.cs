@@ -3,7 +3,7 @@
 /// <summary>
 /// <inheritdoc />
 /// </summary>
-public class BettingIntervalOptionsService : IBettingIntervalOptionsService
+internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 {
     public Task<BettingIntervalOptionsResponse> ExecuteAsync(BettingIntervalOptionsRequest request)
     {

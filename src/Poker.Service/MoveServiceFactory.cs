@@ -1,6 +1,6 @@
 ﻿namespace Poker.Service;
 
-public class MoveServiceFactory : IMoveServiceFactory
+internal class MoveServiceFactory : IMoveServiceFactory
 {
     private readonly IUserMoveService _userMoveService;
 
