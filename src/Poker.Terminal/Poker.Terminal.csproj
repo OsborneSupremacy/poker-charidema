@@ -20,13 +20,14 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Spectre.Console" Version="0.49.1" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Poker.Presentation.Interface\Poker.Presentation.Interface.csproj" />
     <ProjectReference Include="..\Poker.Presentation.Utility\Poker.Presentation.Utility.csproj" />
     <ProjectReference Include="..\Poker.Service\Poker.Service.csproj" />
-    <ProjectReference Include="..\Poker.Terminal.Service\Poker.Terminal.Service.csproj" />
   </ItemGroup>
 
 </Project>

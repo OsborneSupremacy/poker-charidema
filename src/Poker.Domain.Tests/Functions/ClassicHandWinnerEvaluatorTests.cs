@@ -62,7 +62,7 @@ public class ClassicHandWinnerEvaluatorTests
         var response = ClassicWinnerEvaluator.Evaluate(request);
 
         // Assert
-        response.Winners.Should().BeEquivalentTo(new List<Player> { _playerOne });
+        response.Winners.Should().BeEquivalentTo([_playerOne]);
         response.WinningHand.Should().Be(Pairs.Twos);
     }
 
@@ -90,7 +90,7 @@ public class ClassicHandWinnerEvaluatorTests
         var response = ClassicWinnerEvaluator.Evaluate(request);
 
         // Assert
-        response.Winners.Should().BeEquivalentTo(new List<Player> { _playerOne, _playerTwo });
+        response.Winners.Should().BeEquivalentTo([_playerOne, _playerTwo ]);
         response.WinningHand.Should().Be(Pairs.Twos);
     }
 
@@ -118,7 +118,7 @@ public class ClassicHandWinnerEvaluatorTests
         var response = ClassicWinnerEvaluator.Evaluate(request);
 
         // Assert
-        response.Winners.Should().BeEquivalentTo(new List<Player> { _playerOne });
+        response.Winners.Should().BeEquivalentTo([_playerOne]);
         response.WinningHand.Should().Be(Pairs.Twos);
     }
 }

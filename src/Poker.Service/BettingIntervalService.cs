@@ -182,6 +182,8 @@ internal class BettingIntervalService : IBettingIntervalService
     private static readonly BettingIntervalDelegate Fold = (request, _) =>
     {
         // if only one player remains, close betting.
+        // subtracting one, because the betting player has not folded yet
+        // but should be counting as folding.
         var closeBetting = (request.ActivePlayers.NotFolded().Count() - 1) == 1;
 
         return new BettingIntervalResponse

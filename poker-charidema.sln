@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Utility.Tests", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal", "src\Poker.Terminal\Poker.Terminal.csproj", "{CE4FF02E-F83C-49AE-9574-99C6024A52D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Terminal.Service", "src\Poker.Terminal.Service\Poker.Terminal.Service.csproj", "{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3B53AA8-BDF6-444E-B5E3-FA1AFB0223AC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -70,10 +68,6 @@ Global
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE4FF02E-F83C-49AE-9574-99C6024A52D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BEDAF39-20E2-4FAD-B725-913BD10A2B43}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63AD990E-B88E-4B6C-BC5F-2EB685AFC6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63AD990E-B88E-4B6C-BC5F-2EB685AFC6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63AD990E-B88E-4B6C-BC5F-2EB685AFC6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU

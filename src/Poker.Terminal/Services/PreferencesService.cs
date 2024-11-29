@@ -4,7 +4,7 @@ using Poker.Domain.Messaging;
 using Poker.Service.Abstractions;
 using Poker.Service.Messaging;
 
-namespace Poker.Terminal.Service;
+namespace Poker.Terminal.Services;
 
 public class PreferencesService : IGamePreferencesService, IMatchPreferencesService
 {
@@ -136,7 +136,6 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
             new InputOption<AntePreferences>(
                 "Dealer's choice ante amount", () =>
                 {
-
                     int min = 0;
 
                     // subtracting 1 because we can't make the minimum ante equal to the

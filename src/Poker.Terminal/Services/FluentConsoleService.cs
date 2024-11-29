@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Poker.Terminal.Service;
+namespace Poker.Terminal.Services;
 
 public class FluentConsoleService : IUserInterfaceService
 {

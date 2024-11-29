@@ -7,6 +7,8 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 {
     public Task<BettingIntervalOptionsResponse> ExecuteAsync(BettingIntervalOptionsRequest request)
     {
+        // need to make this make sense
+
         List<BettingIntervalActionType> actions = (request.CurrentBet == Bets.Empty) switch
         {
             true =>

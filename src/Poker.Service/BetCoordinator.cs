@@ -30,7 +30,7 @@ internal class BetCoordinator : IPhaseService
         var currentBettor = await GetCurrentBettorAsync(request);
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");
 
-        Dictionary<Guid, Player> players = request
+        var players = request
             .Game
             .Players
             .ToDictionary(p => p.Id, p => p);
@@ -38,6 +38,22 @@ internal class BetCoordinator : IPhaseService
         var betResponse = BettingIntervalResponses.Empty with { Pot = request.Pot };
 
         while (!betResponse.CloseBetting)
+            await AdvanceBettingAsync();
+
+        var activePlayers = players.Values.NotFolded().ToList();
+        var gameOver = activePlayers.Count == 1;
+
+        return new()
+        {
+            Deck = request.Deck,
+            CommunityCards = request.CommunityCards,
+            Players = players.Values.ToList(),
+            Winners = gameOver ? activePlayers : [],
+            GameOver = gameOver,
+            Pot = betResponse.Pot
+        };
+
+        async Task AdvanceBettingAsync()
         {
             BettingIntervalRequest betRequest = new()
             {
@@ -57,19 +73,6 @@ internal class BetCoordinator : IPhaseService
                 betResponse.CloseBetting ? currentBettor
                     : request.Game.Players.NotFolded().ToList().NextPlayer(currentBettor);
         }
-
-        var activePlayers = players.Values.NotFolded().ToList();
-        var gameOver = activePlayers.Count == 1;
-
-        return new()
-        {
-            Deck = request.Deck,
-            CommunityCards = request.CommunityCards,
-            Players = players.Values.ToList(),
-            Winners = gameOver ? activePlayers : [],
-            GameOver = gameOver,
-            Pot = betResponse.Pot
-        };
     }
 
     private async Task<Player> GetCurrentBettorAsync(PhaseRequest request)
