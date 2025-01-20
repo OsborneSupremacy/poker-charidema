@@ -25,12 +25,13 @@ public static class DefaultWinningsDistributor
 
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
 
-        var playersOut = request.Players.Select(player => player with
-        {
-            Stack = winnerIds.Contains(player.Id)
+        var playersOut = request.Players
+            .Select(player => player with
+            {
+                Stack = winnerIds.Contains(player.Id)
                     ? player.Stack + winnerPayouts[pi++]
                     : player.Stack
-        })
+            })
             .ToList();
 
         return new DistributeWinningsResponse
