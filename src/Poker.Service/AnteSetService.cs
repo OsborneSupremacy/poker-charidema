@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class AnteSetService : IAnteSetService
 {
     private readonly IRandomService _randomService;

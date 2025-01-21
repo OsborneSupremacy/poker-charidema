@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class PhaseCoordinator : IPhaseCoordinator
 {
     private readonly IPhaseService _phaseService;

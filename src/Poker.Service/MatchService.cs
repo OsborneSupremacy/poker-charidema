@@ -2,6 +2,7 @@
 
 namespace Poker.Service;
 
+/// <inheritdoc />
 internal class MatchService : IMatchService
 {
     private readonly IMatchPreferencesService _matchPreferencesService;

@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class RoundRobinMoveService : IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;

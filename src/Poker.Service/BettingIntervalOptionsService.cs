@@ -1,8 +1,6 @@
 ﻿namespace Poker.Service;
 
-/// <summary>
 /// <inheritdoc />
-/// </summary>
 internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 {
     public Task<BettingIntervalOptionsResponse> ExecuteAsync(BettingIntervalOptionsRequest request)

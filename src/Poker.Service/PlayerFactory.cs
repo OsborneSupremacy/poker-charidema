@@ -2,6 +2,7 @@
 
 namespace Poker.Service;
 
+/// <inheritdoc />
 internal class PlayerFactory : IPlayerFactory
 {
     private readonly IRandomService _randomService;

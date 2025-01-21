@@ -1,5 +1,7 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc cref="IDealerService"/>
+/// <inheritdoc cref="IPhaseService"/>
 internal class DealerService : IDealerService, IPhaseService
 {
     private readonly IUserInterfaceService _userInterfaceService;

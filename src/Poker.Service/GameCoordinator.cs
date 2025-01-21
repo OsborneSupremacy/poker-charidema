@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class GameCoordinator : IGameCoordinator
 {
     private readonly IUserInterfaceService _userInterfaceService;

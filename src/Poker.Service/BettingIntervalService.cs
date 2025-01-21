@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class BettingIntervalService : IBettingIntervalService
 {
     private readonly IBettingIntervalOptionsService _bettingIntervalOptionsService;

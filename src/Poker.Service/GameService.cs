@@ -1,5 +1,6 @@
 ﻿namespace Poker.Service;
 
+/// <inheritdoc />
 internal class GameService : IGameService
 {
     private readonly IDealerService _dealerService;
