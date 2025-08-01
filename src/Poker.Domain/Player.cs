@@ -12,6 +12,9 @@ public record Player
 
     public required bool Automaton { get; init; }
 
+    /// <summary>
+    /// Player is out of money and cannot continue playing.
+    /// </summary>
     public required bool Busted { get; init; }
 
     public required List<CardInPlay> CardsInPlay { get; init; }

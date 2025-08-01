@@ -19,6 +19,14 @@ public static class PlayerExtensions
     public static IEnumerable<Player> NotFolded(this IEnumerable<Player> players) =>
         players.Where(x => !x.Folded);
 
+    /// <summary>
+    /// Players that are still in the match, i.e. not busted.
+    /// </summary>
+    /// <param name="players"></param>
+    /// <returns></returns>
+    public static IEnumerable<Player> InMatch(this IEnumerable<Player> players) =>
+        players.Where(x => !x.Busted);
+
     public static List<Player> Richest(this List<Player> players) =>
         players.Where(x => x.Stack == players.Max(p => p.Stack)).ToList();
 

@@ -31,7 +31,7 @@ internal class AnteSetService : IAnteSetService
 
     private static AntePreferences GetAntePreferences(GameRequest request)
     {
-        var minPlayerStack = request.Players.Min(p => p.Stack);
+        var minPlayerStack = request.Players.InMatch().Min(p => p.Stack);
 
         var antePreferences = request.Match.AntePreferences;
 

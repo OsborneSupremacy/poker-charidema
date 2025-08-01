@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using System.Text;
+
+namespace Poker.Service;
 
 /// <inheritdoc />
 internal class GameCoordinator : IGameCoordinator
@@ -73,8 +75,13 @@ internal class GameCoordinator : IGameCoordinator
     {
         var stacks = match.Players
             .OrderByDescending(p => p.Stack)
-            .Select(p => $"{p.Name} - {p.Stack:C0}");
+            .Select(WritePlayerStanding);
 
         _userInterfaceService.WriteList("Standings", stacks.ToArray());
     }
+
+    private static string WritePlayerStanding(Player player) =>
+        player.Busted
+            ? $"{player.Name} - Busted"
+            : $"{player.Name} - {player.Stack:C0}";
 }

@@ -54,17 +54,27 @@ internal class PhaseCoordinator : IPhaseCoordinator
         };
 
         if (phaseResponse.GameOver)
+        {
+            List<Player> playersOut = phaseResponse
+                .Players
+                .Select(p => p with
+                {
+                    Busted = p.Stack <= 0,
+                })
+                .ToList();
+
             return new PhaseCoordinatorResponse
             {
                 PhaseResponse = phaseResponse,
                 GameResponse = new GameResponse
                 {
                     Game = gameOut,
-                    Players = phaseResponse.Players,
+                    Players = playersOut,
                     Variant = gameOut.Variant,
                     Button = gameOut.Button
                 }
             };
+        }
 
         _userInterfaceService
             .WriteLine()
