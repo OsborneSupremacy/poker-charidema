@@ -25,19 +25,19 @@ internal class RoundRobinMoveService : IPhaseService
             $"{request.Phase.Name}"
         );
 
-        var playersOut = new List<Player>();
+        var playersOut = new List<Participant>();
 
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
         var potOut = request.Pot;
 
-        var playerInTurn = request.StartingPlayer;
+        var playerInTurn = request.StartingParticipant;
 
-        while (playersOut.Count < request.Game.Players.Count)
+        while (playersOut.Count < request.Game.Participants.Count)
         {
             MoveRequest moveRequest = new()
             {
-                PlayerInTurn = playerInTurn,
+                ParticipantInTurn = playerInTurn,
                 PhaseRequest = request,
                 Pot = potOut
             };
@@ -47,16 +47,16 @@ internal class RoundRobinMoveService : IPhaseService
                 .ExecuteAsync(moveRequest);
 
             potOut = moveResponse.Pot;
-            playersOut.Add(moveResponse.PlayerInTurn);
+            playersOut.Add(moveResponse.ParticipantInTurn);
 
-            playerInTurn = request.Game.Players.NextPlayer(playerInTurn);
+            playerInTurn = request.Game.Participants.NextParticipant(playerInTurn);
         }
 
         return new PhaseResponse
         {
             Deck = deckOut,
             CommunityCards = ccOut,
-            Players = playersOut,
+            Participants = playersOut,
             Winners = [],
             GameOver = false,
             Pot = potOut

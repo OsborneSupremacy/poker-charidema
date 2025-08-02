@@ -35,9 +35,9 @@ internal class DealerService : IDealerService, IPhaseService
         var dealResponse = _dealer(new DealRequest
         {
             Deck = request.Deck,
-            Players = request.Game.Players,
+            Participants = request.Game.Participants,
             CommunityCards = request.CommunityCards,
-            StartingPlayer = request.StartingPlayer,
+            StartingParticipant = request.StartingParticipant,
             CardsToDealCount = request.Phase.CardsToDealCount,
             CardOrientation = request.Phase.CardOrientation
         });
@@ -46,7 +46,7 @@ internal class DealerService : IDealerService, IPhaseService
         {
             Deck = dealResponse.Deck,
             CommunityCards = dealResponse.CommunityCards,
-            Players = dealResponse.Players,
+            Participants = dealResponse.Participants,
             Winners = [],
             GameOver = false,
             Pot = request.Pot
@@ -61,7 +61,7 @@ internal class DealerService : IDealerService, IPhaseService
     public Task<Deck> ReshuffleAsync(ReshuffleRequest request)
     {
         var cards = request.Deck.Cards;
-        foreach (var player in request.Players)
+        foreach (var player in request.Participants)
             cards.AddRange(player.CardsInPlay.ToCards());
 
         var deck = request.Deck with

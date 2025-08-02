@@ -13,7 +13,7 @@ public class DefaultBestHandEvaluatorTests
         (
             new BestHandRequest
             {
-                Player = Players.Empty,
+                Participant = Participants.Empty,
                 RemainingCardCount = 0,
                 HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
                 HandEvaluator = ClassicHandEvaluator.Evaluate
@@ -34,7 +34,7 @@ public class DefaultBestHandEvaluatorTests
         (
             new BestHandRequest
             {
-                Player = new()
+                Participant = new()
                 {
                     Automaton = true,
                     BeginningStack = 100,
@@ -42,7 +42,7 @@ public class DefaultBestHandEvaluatorTests
                     Folded = false,
                     Busted = false,
                     Id = Guid.NewGuid(),
-                    Name = "Test Player",
+                    Name = "Test Participant",
                     Stake = 0,
                     CardsInPlay =
                     [

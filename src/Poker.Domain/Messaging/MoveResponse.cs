@@ -2,7 +2,7 @@
 
 public record MoveResponse
 {
-    public required Player PlayerInTurn { get; init; }
+    public required Participant ParticipantInTurn { get; init; }
 
     public required Deck Deck { get; init; }
 

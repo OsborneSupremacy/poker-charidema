@@ -1,7 +1,7 @@
 ﻿namespace Poker.Service;
 
 /// <inheritdoc />
-internal class LeadPlayerService : ILeadPlayerService
+internal class LeadParticipantService : ILeadPlayerService
 {
     private readonly WinnerEvaluator _winnerEvaluator;
 
@@ -9,7 +9,7 @@ internal class LeadPlayerService : ILeadPlayerService
 
     private readonly HandEvaluator _handEvaluator;
 
-    public LeadPlayerService(
+    public LeadParticipantService(
         WinnerEvaluator winnerEvaluator,
         HandCollectionEvaluator handCollectionEvaluator,
         HandEvaluator handEvaluator
@@ -21,9 +21,9 @@ internal class LeadPlayerService : ILeadPlayerService
         _handEvaluator = handEvaluator ?? throw new ArgumentNullException(nameof(handEvaluator));
     }
 
-    private static IEnumerable<Player> GetPlayersWithFaceUpCardsOnly(EvaluateLeadPlayerRequest request)
+    private static IEnumerable<Participant> GetParticipantsWithFaceUpCardsOnly(EvaluateLeadParticipantRequest request)
     {
-        foreach (var player in request.Players.NotFolded())
+        foreach (var player in request.Participants.NotFolded())
         {
             var faceUpCards = player
                 .CardsInPlay
@@ -34,14 +34,14 @@ internal class LeadPlayerService : ILeadPlayerService
         }
     }
 
-    public Task<EvaluateLeaderPlayerResponse> ExecuteAsync(EvaluateLeadPlayerRequest request)
+    public Task<EvaluateLeaderPlayerResponse> ExecuteAsync(EvaluateLeadParticipantRequest request)
     {
-        var playersIn = GetPlayersWithFaceUpCardsOnly(request).ToList();
+        var playersIn = GetParticipantsWithFaceUpCardsOnly(request).ToList();
 
         var winnerResponse = _winnerEvaluator(
             new()
             {
-                Players = playersIn,
+                Participants = playersIn,
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
             }
@@ -49,8 +49,8 @@ internal class LeadPlayerService : ILeadPlayerService
 
         return Task.FromResult(new EvaluateLeaderPlayerResponse
         {
-            LeadPlayers = winnerResponse.Winners,
-            PlayerHands = winnerResponse.PlayerHands,
+            LeadParticipants = winnerResponse.Winners,
+            ParticipantHands = winnerResponse.ParticipantHands,
             LeadingHand = winnerResponse.WinningHand
         });
     }

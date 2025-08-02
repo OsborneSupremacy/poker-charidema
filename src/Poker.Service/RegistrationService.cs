@@ -26,7 +26,7 @@ public static class RegistrationService
         serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
-        serviceCollection.AddScoped<ILeadPlayerService, LeadPlayerService>();
+        serviceCollection.AddScoped<ILeadPlayerService, LeadParticipantService>();
 
         serviceCollection.AddKeyedScoped<IPhaseService, DealerService>(PhaseType.Deal);
         serviceCollection.AddKeyedScoped<IPhaseService, RoundRobinMoveService>("move");

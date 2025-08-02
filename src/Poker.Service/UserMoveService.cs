@@ -26,7 +26,7 @@ internal class UserMoveService : IUserMoveService
         return Task.FromResult(
             new MoveResponse
             {
-                PlayerInTurn = request.PlayerInTurn,
+                ParticipantInTurn = request.ParticipantInTurn,
                 Deck = request.PhaseRequest.Deck,
                 Pot = potOut
             }
@@ -45,15 +45,15 @@ internal class UserMoveService : IUserMoveService
         var ante = request.PhaseRequest.Game.Ante;
 
         _userInterfaceService
-            .WriteLines($"{request.PlayerInTurn.Name} antes.");
+            .WriteLines($"{request.ParticipantInTurn.Name} antes.");
 
         return Task.FromResult(
             new MoveResponse
             {
-                PlayerInTurn = request.PlayerInTurn with
+                ParticipantInTurn = request.ParticipantInTurn with
                 {
-                    Stack = request.PlayerInTurn.Stack - ante,
-                    Stake = request.PlayerInTurn.Stake + ante
+                    Stack = request.ParticipantInTurn.Stack - ante,
+                    Stake = request.ParticipantInTurn.Stake + ante
                 },
                 Deck = request.PhaseRequest.Game.Deck,
                 Pot = request.Pot + ante
@@ -64,12 +64,12 @@ internal class UserMoveService : IUserMoveService
     private Task<MoveResponse> SitOutAsync(MoveRequest request)
     {
         _userInterfaceService
-            .WriteLines($"{request.PlayerInTurn.Name} sits out.");
+            .WriteLines($"{request.ParticipantInTurn.Name} sits out.");
 
         return Task.FromResult(
             new MoveResponse
             {
-                PlayerInTurn = request.PlayerInTurn with
+                ParticipantInTurn = request.ParticipantInTurn with
                 {
                     Folded = true
                 },

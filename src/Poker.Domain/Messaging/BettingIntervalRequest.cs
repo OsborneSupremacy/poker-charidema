@@ -6,7 +6,7 @@ public record BettingIntervalRequest
 
     public required int Pot { get; init; }
 
-    public required Player PlayerInTurn { get; init; }
+    public required Participant ParticipantInTurn { get; init; }
 
-    public required List<Player> ActivePlayers { get; init; }
+    public required List<Participant> ActiveParticipants { get; init; }
 }

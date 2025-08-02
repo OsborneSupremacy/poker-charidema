@@ -5,5 +5,5 @@
 /// </summary>
 public interface ILeadPlayerService
 {
-    Task<EvaluateLeaderPlayerResponse> ExecuteAsync(EvaluateLeadPlayerRequest request);
+    Task<EvaluateLeaderPlayerResponse> ExecuteAsync(EvaluateLeadParticipantRequest request);
 }

@@ -31,14 +31,25 @@ internal class GameCoordinator : IGameCoordinator
 
         // pass button to next player if it's not the first game
         var button = gamesOut.Any()
-            ? request.Match.Players.NextPlayer(request.Button)
+            ? request.Participants.NextParticipant(request.Button)
             : request.Button;
 
         var gameResponse = await _gameService.PlayAsync(
             new GameRequest
             {
                 Match = request.Match,
-                Players = request.Match.Players,
+                Participants = request.Match.Players.NotBusted().Select(p => new Participant
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    BeginningStack = p.BeginningStack,
+                    Stack = p.Stack,
+                    Automaton = p.Automaton,
+                    Busted = p.Busted,
+                    Stake = 0,
+                    Folded = false,
+                    CardsInPlay = []
+                }).ToList(),
                 Variant = request.Match.FixedVariant,
                 Deck = request.Match.FixedDeck,
                 Button = button
@@ -51,14 +62,22 @@ internal class GameCoordinator : IGameCoordinator
             new ReshuffleRequest
             {
                 Deck = gameResponse.Game.Deck,
-                Players = gameResponse.Players
+                Participants = gameResponse.Participants
             }
         );
 
         var matchOut = request.Match with
         {
             Games = gamesOut,
-            Players = gameResponse.Players
+            Players = gameResponse.Participants.Select(p => new Player
+            {
+                Id = p.Id,
+                Name = p.Name,
+                BeginningStack = p.BeginningStack,
+                Stack = p.Stack,
+                Automaton = p.Automaton,
+                Busted = p.Busted
+            }).ToList(),
         };
 
         WriteStandings(matchOut);

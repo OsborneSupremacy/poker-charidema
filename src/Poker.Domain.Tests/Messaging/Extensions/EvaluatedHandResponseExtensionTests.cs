@@ -14,7 +14,7 @@ public class EvaluatedHandResponseExtensionTests
 
         var response = new EvaluatedHandResponse
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Hand = Pairs.Twos,
             HandQualification = HandQualifications.Qualifies,
             EvaluatedHandSegments =
@@ -46,9 +46,9 @@ public class EvaluatedHandResponseExtensionTests
             RemainingCardCount = 0
         };
 
-        PlayerHand expectedResult = new()
+        ParticipantHand expectedResult = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Hand = Pairs.Twos,
             HandCards = new()
             {

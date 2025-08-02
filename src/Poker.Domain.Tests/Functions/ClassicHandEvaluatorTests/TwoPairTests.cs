@@ -15,7 +15,7 @@ public class TwoPairTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards = Cards.All
                 .Rank(Ranks.Two)
                 .Take(twoCount)
@@ -42,7 +42,7 @@ public class TwoPairTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfDiamonds,
@@ -67,7 +67,7 @@ public class TwoPairTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -107,7 +107,7 @@ public class TwoPairTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -151,7 +151,7 @@ public class TwoPairTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,

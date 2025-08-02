@@ -10,7 +10,7 @@ public record PhaseRequest
 
     public required List<CardInPlay> CommunityCards { get; init; }
 
-    public required Player StartingPlayer { get; init; }
+    public required Participant StartingParticipant { get; init; }
 
     public required int Pot { get; init; }
 

@@ -2,7 +2,7 @@
 
 public record MoveRequest
 {
-    public required Player PlayerInTurn { get; init; }
+    public required Participant ParticipantInTurn { get; init; }
 
     public required PhaseRequest PhaseRequest { get; init; }
 

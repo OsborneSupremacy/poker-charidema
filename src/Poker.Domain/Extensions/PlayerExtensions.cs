@@ -16,11 +16,8 @@ public static class PlayerExtensions
     public static Player HumanPlayer(this IEnumerable<Player> players) =>
         players.Single(x => !x.Automaton);
 
-    public static IEnumerable<Player> NotFolded(this IEnumerable<Player> players) =>
-        players.Where(x => !x.Folded);
-
     /// <summary>
-    /// Players that are still in the match, i.e. not busted.
+    /// ParticipatingPlayers that are still in the match, i.e. not busted.
     /// </summary>
     /// <param name="players"></param>
     /// <returns></returns>
@@ -30,24 +27,19 @@ public static class PlayerExtensions
     public static List<Player> Richest(this List<Player> players) =>
         players.Where(x => x.Stack == players.Max(p => p.Stack)).ToList();
 
-    public static Player DealCards(
-        this Player input,
-        CardOrientation orientation,
-        IEnumerable<Card> cards
-        )
-    {
-        var cardsOut = input.CardsInPlay;
-        cardsOut.AddRange(cards.Select(c => new CardInPlay
-        {
-            Card = c,
-            CardLocation = CardLocation.PlayerHand,
-            CardOrientation = orientation
-        }));
-        return input with { CardsInPlay = cardsOut };
-    }
+    public static List<Player> NotBusted(this List<Player> players) =>
+        players.Where(x => !x.Busted).ToList();
 
-    public static Player DealFaceDownCards(
-        this Player input,
-        IEnumerable<Card> cards
-    ) => input.DealCards(CardOrientation.FaceDown, cards);
+    public static Participant ToParticipant(this Player player) => new Participant
+    {
+        Id = player.Id,
+        Name = player.Name,
+        BeginningStack = player.BeginningStack,
+        Stack = player.Stack,
+        Automaton = player.Automaton,
+        Busted = player.Busted,
+        Stake = 0,
+        Folded = false,
+        CardsInPlay = []
+    };
 }

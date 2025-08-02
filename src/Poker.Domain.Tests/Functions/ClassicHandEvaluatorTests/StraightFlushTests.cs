@@ -9,7 +9,7 @@ public class StraightFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.SixOfClubs,
@@ -35,7 +35,7 @@ public class StraightFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.SixOfClubs,
@@ -61,7 +61,7 @@ public class StraightFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.SixOfClubs,
@@ -97,7 +97,7 @@ public class StraightFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.SixOfClubs,

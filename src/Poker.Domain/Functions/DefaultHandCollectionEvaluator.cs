@@ -8,7 +8,7 @@ public static class DefaultHandCollectionEvaluator
             (
                 new EvaluateHandRequest
                 {
-                    Player = request.Player,
+                    Participant = request.Participant,
                     Cards = request.Cards,
                     HandToEvaluate = hand,
                     RemainingCardCount = request.RemainingCardCount

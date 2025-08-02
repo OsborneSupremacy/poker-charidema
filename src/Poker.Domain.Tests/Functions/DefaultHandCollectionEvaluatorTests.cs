@@ -9,7 +9,7 @@ public class DefaultHandCollectionEvaluatorTests
         // Arrange
         EvaluateHandCollectionRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards = [],
             HandEvaluator = ClassicHandEvaluator.Evaluate,
             HandsToEvaluate = AllHands.All,
@@ -31,7 +31,7 @@ public class DefaultHandCollectionEvaluatorTests
         // Arrange
         EvaluateHandCollectionRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -60,7 +60,7 @@ public class DefaultHandCollectionEvaluatorTests
         // Arrange
         EvaluateHandCollectionRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -89,7 +89,7 @@ public class DefaultHandCollectionEvaluatorTests
         // Arrange
         EvaluateHandCollectionRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.EightOfDiamonds,
@@ -118,7 +118,7 @@ public class DefaultHandCollectionEvaluatorTests
         // Arrange
         EvaluateHandCollectionRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.KingOfSpades,

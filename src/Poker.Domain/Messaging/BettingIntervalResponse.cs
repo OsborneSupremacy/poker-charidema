@@ -8,7 +8,7 @@ public record BettingIntervalResponse
 
     public required int Pot { get; init; }
 
-    public required Player PlayerInTurn { get; init; }
+    public required Participant ParticipantInTurn { get; init; }
 
     /// <summary>
     /// Whether the betting interval should be closed. e.g., every player has either called or folded.
@@ -23,7 +23,7 @@ public static class BettingIntervalResponses
         CurrentBet = Bets.Empty,
         Description = string.Empty,
         Pot = 0,
-        PlayerInTurn = Players.Empty,
+        ParticipantInTurn = Participants.Empty,
         CloseBetting = false
     };
 }

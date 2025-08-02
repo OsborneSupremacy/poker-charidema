@@ -11,14 +11,14 @@ public static class ClassicWinnerEvaluator
         return new EvaluateWinnerResponse
         {
             Winners = winners,
-            PlayerHands = playerBestHands,
+            ParticipantHands = playerBestHands,
             WinningHand = overallBestHand
         };
     };
 
-    private static IEnumerable<PlayerHand> GetPlayerBestHands(EvaluateWinnerRequest request) =>
+    private static IEnumerable<ParticipantHand> GetPlayerBestHands(EvaluateWinnerRequest request) =>
         request
-            .Players
+            .Participants
             .Where(p => !p.Folded)
             .Select(
                 player =>
@@ -26,7 +26,7 @@ public static class ClassicWinnerEvaluator
                     (
                         new BestHandRequest
                         {
-                            Player = player,
+                            Participant = player,
                             RemainingCardCount = 0,
                             HandCollectionEvaluator = request.HandCollectionEvaluator,
                             HandEvaluator = request.HandEvaluator
@@ -34,15 +34,15 @@ public static class ClassicWinnerEvaluator
                     ).ToPlayerHand()
             );
 
-    private static Hand GetOverallBestHand(IEnumerable<PlayerHand> playerBestHands) =>
+    private static Hand GetOverallBestHand(IEnumerable<ParticipantHand> playerBestHands) =>
         playerBestHands
             .OrderByDescending(x => x.Hand.HandDefinition.Value)
             .ThenByDescending(x => x.Hand.HighRank.Value)
             .Select(x => x.Hand)
             .First();
 
-    private static List<Player> GetPlayersWithBestKickers(
-        List<PlayerHand> playerBestHands
+    private static List<Participant> GetPlayersWithBestKickers(
+        List<ParticipantHand> playerBestHands
         )
     {
         var kickerRanks = playerBestHands
@@ -70,12 +70,12 @@ public static class ClassicWinnerEvaluator
         }
 
         return finalists
-            .Select(x => x.Player)
+            .Select(x => x.Participant)
             .ToList();
     }
 
-    private static List<Player> GetPlayersWithBestHandIncludingKickers(
-        List<PlayerHand> playerBestHands,
+    private static List<Participant> GetPlayersWithBestHandIncludingKickers(
+        List<ParticipantHand> playerBestHands,
         Hand overallBestHand
         )
     {
@@ -84,7 +84,7 @@ public static class ClassicWinnerEvaluator
             .ToList();
 
         return (playersWithBestHand.Count == 1 || overallBestHand.IsFiveCardHand())
-            ? playersWithBestHand.Select(x => x.Player).ToList()
+            ? playersWithBestHand.Select(x => x.Participant).ToList()
             : GetPlayersWithBestKickers(playersWithBestHand);
     }
 }

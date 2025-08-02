@@ -27,8 +27,8 @@ internal class PhaseCoordinator : IPhaseCoordinator
         )
     {
         var startingPlayer = request.Game
-            .Players
-            .NextPlayer
+            .Participants
+            .NextParticipant
             (
                 request.Game.Button
             );
@@ -40,7 +40,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
                 Phase = request.Phase,
                 Deck = request.Deck,
                 CommunityCards = [],
-                StartingPlayer = startingPlayer,
+                StartingParticipant = startingPlayer,
                 Pot = request.Game.Pot,
                 GameOver = request.GameOver
             });
@@ -49,39 +49,29 @@ internal class PhaseCoordinator : IPhaseCoordinator
         {
             Deck = phaseResponse.Deck,
             CommunityCards = phaseResponse.CommunityCards,
-            Players = phaseResponse.Players,
+            Participants = phaseResponse.Participants,
             Pot = phaseResponse.Pot
         };
 
         if (phaseResponse.GameOver)
-        {
-            List<Player> playersOut = phaseResponse
-                .Players
-                .Select(p => p with
-                {
-                    Busted = p.Stack <= 0,
-                })
-                .ToList();
-
             return new PhaseCoordinatorResponse
             {
                 PhaseResponse = phaseResponse,
                 GameResponse = new GameResponse
                 {
                     Game = gameOut,
-                    Players = playersOut,
+                    Participants = phaseResponse.Participants,
                     Variant = gameOut.Variant,
                     Button = gameOut.Button
                 }
             };
-        }
 
         _userInterfaceService
             .WriteLine()
             .WriteLine($"Pot: {gameOut.Pot:C0}");
 
         RenderPlayerCards(
-            phaseResponse.Players.HumanPlayer(),
+            phaseResponse.Participants.HumanParticipant(),
             request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
         );
 
@@ -91,14 +81,14 @@ internal class PhaseCoordinator : IPhaseCoordinator
             GameResponse = new GameResponse
             {
                 Game = gameOut,
-                Players = phaseResponse.Players,
+                Participants = phaseResponse.Participants,
                 Variant = gameOut.Variant,
                 Button = gameOut.Button
             }
         };
     }
 
-    private void RenderPlayerCards(Player player, int remainingCardCount)
+    private void RenderPlayerCards(Participant player, int remainingCardCount)
     {
         if (!player.CardsInPlay.Any())
             return;
@@ -107,7 +97,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
         (
             new BestHandRequest
             {
-                Player = player,
+                Participant = player,
                 RemainingCardCount = remainingCardCount,
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator

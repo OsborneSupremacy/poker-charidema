@@ -13,19 +13,9 @@ public record Player
     public required bool Automaton { get; init; }
 
     /// <summary>
-    /// Player is out of money and cannot continue playing.
+    /// Participant is out of money and cannot continue playing.
     /// </summary>
     public required bool Busted { get; init; }
-
-    public required List<CardInPlay> CardsInPlay { get; init; }
-
-    /// <summary>
-    /// The amount the player has contributed to the current game's pot.
-    /// This may end up not being used for anything. Revisit and remove if not.
-    /// </summary>
-    public required int Stake { get; init; }
-
-    public required bool Folded { get; init; }
 }
 
 public static class Players
@@ -37,9 +27,6 @@ public static class Players
         BeginningStack = 0,
         Stack = 0,
         Automaton = true,
-        Busted = false,
-        CardsInPlay = [],
-        Stake = 0,
-        Folded = true
+        Busted = false
     };
 }

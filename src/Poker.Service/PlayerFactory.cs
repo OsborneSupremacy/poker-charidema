@@ -20,9 +20,6 @@ internal class PlayerFactory : IPlayerFactory
             Stack = request.BeginningStack,
             Name = _randomService.CreatePerson().FirstName,
             Automaton = request.Automaton,
-            Busted = false,
-            CardsInPlay = [],
-            Stake = 0,
-            Folded = false
+            Busted = false
         });
 }

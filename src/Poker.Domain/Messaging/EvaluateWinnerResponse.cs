@@ -2,9 +2,9 @@
 
 public class EvaluateWinnerResponse
 {
-    public required List<Player> Winners { get; init; }
+    public required List<Participant> Winners { get; init; }
 
-    public required List<PlayerHand> PlayerHands { get; init; }
+    public required List<ParticipantHand> ParticipantHands { get; init; }
 
     public required Hand WinningHand { get; init; }
 }

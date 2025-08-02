@@ -4,17 +4,17 @@ public static class DefaultDealer
 {
     public static readonly Dealer Deal = request =>
     {
-        var playersOut = request.Players;
+        var playersOut = request.Participants;
 
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
 
         var playerInTurn = playersOut
-            .Single(p => p == request.StartingPlayer);
+            .Single(p => p == request.StartingParticipant);
 
         for (var c = 0; c < request.CardsToDealCount; c++)
         {
-            for (var i = 0; i < request.Players.Count; i++)
+            for (var i = 0; i < request.Participants.Count; i++)
             {
                 if (playerInTurn.Folded)
                     continue;
@@ -23,7 +23,7 @@ public static class DefaultDealer
                     new()
                     {
                         Deck = deckOut,
-                        Player = playerInTurn,
+                        Participant = playerInTurn,
                         CardOrientation = request.CardOrientation
                     }
                 );
@@ -31,16 +31,16 @@ public static class DefaultDealer
                 if (!dealResponse.CardWasDealt)
                     continue;
 
-                playerInTurn = playersOut.NextPlayer(playerInTurn);
-                playersOut.RemoveAll(p => p.Id == dealResponse.Player.Id);
-                playersOut.Add(dealResponse.Player);
+                playerInTurn = playersOut.NextParticipant(playerInTurn);
+                playersOut.RemoveAll(p => p.Id == dealResponse.Participant.Id);
+                playersOut.Add(dealResponse.Participant);
             }
         }
         return new DealResponse
         {
             Deck = deckOut,
             CommunityCards = ccOut,
-            Players = playersOut
+            Participants = playersOut
         };
     };
 
@@ -52,12 +52,12 @@ public static class DefaultDealer
             return new DealCardResponse
             {
                 Card = Cards.Empty,
-                Player = request.Player,
+                Participant = request.Participant,
                 Deck = request.Deck,
                 CardWasDealt = false
             };
 
-        var playerCardsOut = request.Player.CardsInPlay;
+        var playerCardsOut = request.Participant.CardsInPlay;
         playerCardsOut.Add(cardToDeal.DealToPlayer(request.CardOrientation));
 
         var deckCardsOut = request.Deck.Cards;
@@ -66,7 +66,7 @@ public static class DefaultDealer
         return new DealCardResponse
         {
             Card = cardToDeal,
-            Player = request.Player with { CardsInPlay = playerCardsOut },
+            Participant = request.Participant with { CardsInPlay = playerCardsOut },
             Deck = request.Deck with { Cards = deckCardsOut },
             CardWasDealt = true
         };
@@ -76,7 +76,7 @@ public static class DefaultDealer
     {
         public required Deck Deck { get; init; }
 
-        public required Player Player { get; init; }
+        public required Participant Participant { get; init; }
 
         public required CardOrientation CardOrientation { get; init; }
     }
@@ -87,7 +87,7 @@ public static class DefaultDealer
 
         public required Deck Deck { get; init; }
 
-        public required Player Player { get; init; }
+        public required Participant Participant { get; init; }
 
         public required bool CardWasDealt { get; init; }
     }

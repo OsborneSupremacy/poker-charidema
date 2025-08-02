@@ -35,9 +35,9 @@ internal class MatchService : IMatchService
             GameResponse = new()
             {
                 Game = Games.Empty,
-                Players = [],
+                Participants = [],
                 Variant = EmptyVariant.GetVariant(),
-                Button = Players.Empty
+                Button = Participants.Empty
             }
         };
 
@@ -46,7 +46,18 @@ internal class MatchService : IMatchService
                 new GameRequest
                 {
                     Match = message.Match,
-                    Players = message.Match.Players,
+                    Participants = message.Match.Players.NotBusted().Select(p => new Participant
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        BeginningStack = p.BeginningStack,
+                        Stack = p.Stack,
+                        Automaton = p.Automaton,
+                        Busted = p.Busted,
+                        Stake = 0,
+                        Folded = false,
+                        CardsInPlay = []
+                    }).ToList(),
                     Variant = message.Match.FixedVariant,
                     Deck = message.Match.FixedDeck,
                     Button = message.GameResponse.Button
@@ -70,6 +81,21 @@ internal class MatchService : IMatchService
             .SingleOrDefault(x => x.Id == request.InitialButton.Id)
             ?? players.First();
 
+        var participants = players
+            .Select(p => new Participant
+            {
+                Id = p.Id,
+                Name = p.Name,
+                BeginningStack = p.BeginningStack,
+                Stack = p.Stack,
+                Automaton = p.Automaton,
+                Busted = p.Busted,
+                Stake = 0,
+                Folded = false,
+                CardsInPlay = []
+            })
+            .ToList();
+
         MatchMessage message = new()
         {
             Cancelled = false,
@@ -77,8 +103,8 @@ internal class MatchService : IMatchService
             GameResponse = new()
             {
                 Game = Games.Empty,
-                Players = request.Match.Players,
-                Button = button,
+                Participants = participants,
+                Button = participants.Single(p => p.Id == button.Id),
                 Variant = EmptyVariant.GetVariant()
             }
         };
@@ -89,7 +115,18 @@ internal class MatchService : IMatchService
             message = await _gameCoordinator.ExecuteAsync(new GameRequest
             {
                 Match = message.Match,
-                Players = message.Match.Players,
+                Participants = message.Match.Players.NotBusted().Select(p => new Participant
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    BeginningStack = p.BeginningStack,
+                    Stack = p.Stack,
+                    Automaton = p.Automaton,
+                    Busted = p.Busted,
+                    Stake = 0,
+                    Folded = false,
+                    CardsInPlay = []
+                }).ToList(),
                 Variant = message.Match.FixedVariant,
                 Deck = message.Match.FixedDeck,
                 Button = message.GameResponse.Button
@@ -112,7 +149,7 @@ internal class MatchService : IMatchService
     {
         _userInterfaceService.WriteHeading(HeadingLevel.Two, "Welcome to the new match!");
 
-        _userInterfaceService.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
+        _userInterfaceService.WriteList("ParticipatingPlayers:", match.Players.Select(x => x.Name).ToArray());
 
         _userInterfaceService.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant.Name}");
 

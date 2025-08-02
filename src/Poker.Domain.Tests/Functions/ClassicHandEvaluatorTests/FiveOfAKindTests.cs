@@ -9,7 +9,7 @@ public class FiveOfAKindTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,

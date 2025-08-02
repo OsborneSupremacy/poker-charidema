@@ -2,7 +2,7 @@
 
 public record EvaluatedHandResponse
 {
-    public required Player Player { get; init; }
+    public required Participant Participant { get; init; }
 
     public required Hand Hand { get; init; }
 

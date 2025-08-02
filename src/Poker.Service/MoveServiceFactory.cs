@@ -24,6 +24,6 @@ internal class MoveServiceFactory : IMoveServiceFactory
         };
 
     static readonly Func<MoveRequest, bool> RequiresUserInput = request =>
-        !request.PlayerInTurn.Automaton
+        !request.ParticipantInTurn.Automaton
         && request.PhaseRequest.Phase.PhaseType != PhaseType.Deal;
 }

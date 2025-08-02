@@ -2,7 +2,7 @@
 
 public static class EvaluatedHandResponseExtensions
 {
-    public static PlayerHand ToPlayerHand(this EvaluatedHandResponse input)
+    public static ParticipantHand ToPlayerHand(this EvaluatedHandResponse input)
     {
         var handCards = input.EvaluatedHandSegments
             .Select(s => s.Contributing)
@@ -23,9 +23,9 @@ public static class EvaluatedHandResponseExtensions
             .Take(GlobalConstants.HandSize - handCards.Count())
             .ToList();
 
-        return new PlayerHand
+        return new ParticipantHand
         {
-            Player = input.Player,
+            Participant = input.Participant,
             Hand = input.Hand,
             HandCards = handCards,
             Kickers = kickers,

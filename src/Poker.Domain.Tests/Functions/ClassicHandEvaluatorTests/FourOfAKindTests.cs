@@ -9,7 +9,7 @@ public class FourOfAKindTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards = Cards.All.Rank(Ranks.Two).Take(4).ToList(),
             HandToEvaluate = FourOfAKind.Twos,
             RemainingCardCount = 0
@@ -28,7 +28,7 @@ public class FourOfAKindTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -53,7 +53,7 @@ public class FourOfAKindTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,
@@ -91,7 +91,7 @@ public class FourOfAKindTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.ThreeOfClubs,

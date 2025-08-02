@@ -12,9 +12,9 @@ public record Game
 
     public required List<CardInPlay> Discards { get; init; }
 
-    public required List<Player> Players { get; init; }
+    public required List<Participant> Participants { get; init; }
 
-    public required Player Button { get; init; }
+    public required Participant Button { get; init; }
 
     public required Variant Variant { get; init; }
 }
@@ -28,8 +28,8 @@ public static class Games
         Deck = Decks.Empty,
         CommunityCards = [],
         Discards = [],
-        Players = [],
-        Button = Players.Empty,
+        Participants = [],
+        Button = Participants.Empty,
         Variant = Implementations.Variants.EmptyVariant.GetVariant()
     };
 }

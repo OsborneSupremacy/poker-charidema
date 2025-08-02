@@ -69,5 +69,5 @@ public interface IUserInterfaceService
 
     IUserInterfaceService WriteLines(params string[] lines);
 
-    IUserInterfaceService RenderCards(string heading, PlayerHand hand);
+    IUserInterfaceService RenderCards(string heading, ParticipantHand hand);
 }

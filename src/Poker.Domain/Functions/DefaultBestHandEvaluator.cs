@@ -7,8 +7,8 @@ public static class DefaultBestHandEvaluator
     public static readonly BestHandEvaluator Evaluate = request => request
         .HandCollectionEvaluator(new EvaluateHandCollectionRequest
         {
-            Player = request.Player,
-            Cards = request.Player.CardsInPlay.ToCards(),
+            Participant = request.Participant,
+            Cards = request.Participant.CardsInPlay.ToCards(),
             HandEvaluator = request.HandEvaluator,
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = request.RemainingCardCount

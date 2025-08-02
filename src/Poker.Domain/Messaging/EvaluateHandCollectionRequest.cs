@@ -2,7 +2,7 @@
 
 public record EvaluateHandCollectionRequest
 {
-    public required Player Player { get; init; }
+    public required Participant Participant { get; init; }
 
     public required List<Card> Cards { get; init; }
 

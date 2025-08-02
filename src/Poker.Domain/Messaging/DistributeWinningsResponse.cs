@@ -2,5 +2,5 @@
 
 public record DistributeWinningsResponse
 {
-    public required List<Player> Players { get; init; }
+    public required List<Participant> Participants { get; init; }
 }

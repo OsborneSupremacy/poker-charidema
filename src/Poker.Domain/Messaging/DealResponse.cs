@@ -4,7 +4,7 @@ public record DealResponse
 {
     public required Deck Deck { get; init; }
 
-    public required List<Player> Players { get; init; }
+    public required List<Participant> Participants { get; init; }
 
     public required List<CardInPlay> CommunityCards { get; init; }
 }

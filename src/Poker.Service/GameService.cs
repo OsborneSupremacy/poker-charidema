@@ -47,14 +47,14 @@ internal class GameService : IGameService
                 CommunityCards = game.CommunityCards,
                 Deck = await _dealerService.ShuffleAsync(request.Deck),
                 GameOver = false,
-                Players = game.Players.InMatch().ToList(),
+                Participants = game.Participants.NotFolded().ToList(),
                 Winners = [],
                 Pot = game.Pot
             },
             GameResponse = new()
             {
                 Game = game,
-                Players = game.Players.InMatch().ToList(),
+                Participants = game.Participants.ToList(),
                 Variant = game.Variant,
                 Button = game.Button
             }
@@ -89,7 +89,7 @@ internal class GameService : IGameService
 
     private async Task<Game> CreateGameAsync(GameRequest request)
     {
-        var gamePlayers = request.Players.InMatch()
+        var gamePlayers = request.Participants
             .Select(p => p with
             {
                 CardsInPlay = [],
@@ -104,7 +104,7 @@ internal class GameService : IGameService
         {
             Button = gameButton,
             Variant = request.Variant,
-            Players = gamePlayers,
+            Participants = gamePlayers,
             Deck = request.Deck,
             CommunityCards = [],
             Discards = [],

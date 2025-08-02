@@ -9,7 +9,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.AceOfClubs,
@@ -35,7 +35,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.AceOfClubs,
@@ -61,7 +61,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.TenOfClubs,
@@ -98,7 +98,7 @@ public class RoyalFlushTests
         // Arrange
         EvaluateHandRequest request = new()
         {
-            Player = Players.Empty,
+            Participant = Participants.Empty,
             Cards =
             [
                 Cards.KingOfClubs,
