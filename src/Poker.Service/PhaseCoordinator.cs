@@ -27,7 +27,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
         )
     {
         var startingPlayer = request.Game
-            .Participants
+            .Participants.ToList()
             .NextParticipant
             (
                 request.Game.Button

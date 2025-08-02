@@ -4,7 +4,7 @@ public record EvaluateHandRequest
 {
     public required Participant Participant { get; init; }
 
-    public required List<Card> Cards { get; init; }
+    public required IReadOnlyList<Card> Cards { get; init; }
 
     public required Hand HandToEvaluate { get; init; }
 

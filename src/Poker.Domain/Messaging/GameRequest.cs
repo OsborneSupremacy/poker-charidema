@@ -4,7 +4,7 @@ public record GameRequest
 {
     public required Match Match { get; init; }
 
-    public required List<Participant> Participants { get; init; }
+    public required IReadOnlyList<Participant> Participants { get; init; }
 
     public required Variant Variant { get; init; }
 

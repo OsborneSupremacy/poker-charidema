@@ -115,4 +115,5 @@ public static class ClassicHandEvaluator
             contributingCards.Count()
             >= request.HandSegment.RequiredCount;
     }
+
 }

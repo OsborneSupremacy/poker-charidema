@@ -4,5 +4,5 @@ public record Variant
 {
     public required string Name { get; init; }
 
-    public required List<Phase> Phases { get; init; }
+    public required IReadOnlyList<Phase> Phases { get; init; }
 }

@@ -18,7 +18,7 @@ public record HandCards
             .ToList();
     }
 
-    public required List<Card> Standard { get; init; }
+    public required IList<Card> Standard { get; init; }
 
-    public required List<DesignatedWildCard> Wild { get; init; }
+    public required IList<DesignatedWildCard> Wild { get; init; }
 }

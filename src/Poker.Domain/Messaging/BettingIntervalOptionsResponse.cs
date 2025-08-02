@@ -9,5 +9,5 @@ public record BettingIntervalOptionsResponse
 
     public required int MaximumBet { get; init; }
 
-    public required List<BettingIntervalActionType> AvailableBettingIntervalActions { get; init; }
+    public required IReadOnlyList<BettingIntervalActionType> AvailableBettingIntervalActions { get; init; }
 }

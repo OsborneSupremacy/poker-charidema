@@ -29,7 +29,7 @@ public class EvaluatedHandResponseExtensionTests
                         // the unused cards in the particular segments don't matter. The final
                         // list of unused cards is a property of the EvaluatedHandResponse
                         UnusedStandard = [],
-                        UnusedWild = new()
+                        UnusedWild = []
                     }
                 }
             ],

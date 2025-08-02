@@ -10,5 +10,5 @@ public record Hand
 
     public required Suit Suit { get; init; }
 
-    public required List<HandSegment> HandSegments { get; init; }
+    public required IReadOnlyList<HandSegment> HandSegments { get; init; }
 }

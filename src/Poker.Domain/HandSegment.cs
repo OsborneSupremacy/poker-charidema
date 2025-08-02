@@ -4,5 +4,5 @@ public record HandSegment
 {
     public required int RequiredCount { get; init; }
 
-    public required List<Card> EligibleCards { get; init; }
+    public required IReadOnlyList<Card> EligibleCards { get; init; }
 }

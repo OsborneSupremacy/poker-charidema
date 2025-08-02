@@ -60,9 +60,15 @@ internal class DealerService : IDealerService, IPhaseService
 
     public Task<Deck> ReshuffleAsync(ReshuffleRequest request)
     {
-        var cards = request.Deck.Cards;
+        var cards = request.Deck.Cards.ToList();
         foreach (var player in request.Participants)
             cards.AddRange(player.CardsInPlay.ToCards());
+
+        // TODO: Do you see the problem here?
+        // We are adding all player cards to the deck, but we are not removing
+        // them from the players' hands.
+        // Update this method to return a response that contains both the reshuffled deck
+        // and the updated participants with their cards removed from their hands.
 
         var deck = request.Deck with
         {

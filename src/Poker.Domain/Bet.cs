@@ -6,14 +6,14 @@ public record Bet
 
     public required Guid InitiatingPlayerId { get; init; }
 
-    public required List<Guid> CheckedPlayerIds { get; init; }
+    public required IReadOnlyList<Guid> CheckedPlayerIds { get; init; }
 
-    public required List<ContributingPlayer> ContributingPlayers { get; init; }
+    public required IReadOnlyList<ContributingPlayer> ContributingPlayers { get; init; }
 
     /// <summary>
     /// IDs of players who are done with this bet for whatever reason.
     /// </summary>
-    public required List<Guid> TerminalPlayerIds { get; init; }
+    public required IList<Guid> TerminalPlayerIds { get; init; }
 }
 
 public static class Bets

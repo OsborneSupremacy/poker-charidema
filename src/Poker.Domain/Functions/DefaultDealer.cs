@@ -4,7 +4,7 @@ public static class DefaultDealer
 {
     public static readonly Dealer Deal = request =>
     {
-        var playersOut = request.Participants;
+        var playersOut = request.Participants.ToList();
 
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
@@ -57,10 +57,10 @@ public static class DefaultDealer
                 CardWasDealt = false
             };
 
-        var playerCardsOut = request.Participant.CardsInPlay;
+        var playerCardsOut = request.Participant.CardsInPlay.ToList();
         playerCardsOut.Add(cardToDeal.DealToPlayer(request.CardOrientation));
 
-        var deckCardsOut = request.Deck.Cards;
+        var deckCardsOut = request.Deck.Cards.ToList();
         deckCardsOut.Remove(cardToDeal);
 
         return new DealCardResponse

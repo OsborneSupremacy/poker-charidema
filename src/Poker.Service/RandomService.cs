@@ -18,6 +18,12 @@ internal class RandomService : IRandomService
             Random = new Randomizer(_randomFactory.GetSeed())
         }.PickRandom(items);
 
+    public T PickFromReadOnlyList<T>(IReadOnlyList<T> items) =>
+        new Faker
+        {
+            Random = new Randomizer(_randomFactory.GetSeed())
+        }.PickRandom(items.ToList());
+
     public Person CreatePerson() =>
         new Faker
         {

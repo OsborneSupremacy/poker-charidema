@@ -1,5 +1,10 @@
 ﻿namespace Poker.Domain;
 
+/// <summary>
+/// A player that is part of the Poker match. They may not be part of every
+/// individual game (e.g. they may have run out of money), but they are still
+/// considered a player in the match for the sake of tracking and reporting.
+/// </summary>
 public record Player
 {
     public required Guid Id { get; init; }

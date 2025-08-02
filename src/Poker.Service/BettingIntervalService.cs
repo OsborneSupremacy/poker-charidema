@@ -28,7 +28,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         // pick random option
         var option = _randomService
-            .PickFromList(optionsResponse.AvailableBettingIntervalActions);
+            .PickFromReadOnlyList(optionsResponse.AvailableBettingIntervalActions);
 
         var optionDelegate = BettingIntervalDelegates[option] ?? Fold;
 
@@ -75,7 +75,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Check = (request, _) =>
     {
-        var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds;
+        var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds.ToList();
         checkedPlayerIds.Add(request.ParticipantInTurn.Id);
 
         var closeBetting =
@@ -96,7 +96,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Call = (request, _) =>
     {
-        var contributingPlayers = request.CurrentBet.ContributingPlayers;
+        var contributingPlayers = request.CurrentBet.ContributingPlayers.ToList();
 
         var currentContribution = contributingPlayers
             .SingleOrDefault(cp => cp.PlayerId == request.ParticipantInTurn.Id);
@@ -141,7 +141,7 @@ internal class BettingIntervalService : IBettingIntervalService
         var raiseDelta = getAdditionalAmount();
         var newBetAmount = request.CurrentBet.Amount + raiseDelta;
 
-        var contributingPlayers = request.CurrentBet.ContributingPlayers;
+        var contributingPlayers = request.CurrentBet.ContributingPlayers.ToList();
 
         var currentContribution = contributingPlayers
             .SingleOrDefault(cp => cp.PlayerId == request.ParticipantInTurn.Id);

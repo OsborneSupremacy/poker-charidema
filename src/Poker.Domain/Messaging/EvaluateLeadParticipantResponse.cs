@@ -2,9 +2,9 @@
 
 public record EvaluateLeaderPlayerResponse
 {
-    public required List<Participant> LeadParticipants { get; init; }
+    public required IReadOnlyList<Participant> LeadParticipants { get; init; }
 
-    public required List<ParticipantHand> ParticipantHands { get; init; }
+    public required IReadOnlyList<ParticipantHand> ParticipantHands { get; init; }
 
     public required Hand LeadingHand { get; init; }
 }

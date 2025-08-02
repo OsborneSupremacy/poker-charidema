@@ -24,7 +24,7 @@ internal class GameCoordinator : IGameCoordinator
 
     public async Task<MatchMessage> ExecuteAsync(GameRequest request)
     {
-        var gamesOut = request.Match.Games;
+        var gamesOut = request.Match.Games.ToList();
 
         _userInterfaceService
             .WriteHeading(HeadingLevel.Four, $"Starting game {request.Match.Games.Count + 1}");

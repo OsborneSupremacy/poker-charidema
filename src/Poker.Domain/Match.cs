@@ -8,9 +8,9 @@ public record Match
 
     public required Deck FixedDeck { get; init; }
 
-    public required List<Player> Players { get; init; }
+    public required IReadOnlyList<Player> Players { get; init; }
 
-    public required List<GameResponse> Games { get; init; }
+    public required IReadOnlyList<GameResponse> Games { get; init; }
 
     public required AntePreferences AntePreferences { get; init; }
 

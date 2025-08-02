@@ -27,7 +27,7 @@ public record Phase
 
     public required int CardsToDrawMaximum { get; init; }
 
-    public required List<DrawCardsMaximums> CardsToDrawMaximumOverrides { get; init; }
+    public required IReadOnlyList<DrawCardsMaximums> CardsToDrawMaximumOverrides { get; init; }
 }
 
 public record DrawCardsMaximums

@@ -8,7 +8,7 @@ public record EvaluatedHandResponse
 
     public required HandQualifications HandQualification { get; init; }
 
-    public required List<EvaluateHandSegmentResponse> EvaluatedHandSegments { get; init; }
+    public required IReadOnlyList<EvaluateHandSegmentResponse> EvaluatedHandSegments { get; init; }
 
     public required UnusedCardsMessage UnusedCards { get; init; }
 

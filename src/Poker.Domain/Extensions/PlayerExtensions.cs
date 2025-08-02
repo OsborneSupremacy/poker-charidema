@@ -24,10 +24,10 @@ public static class PlayerExtensions
     public static IEnumerable<Player> InMatch(this IEnumerable<Player> players) =>
         players.Where(x => !x.Busted);
 
-    public static List<Player> Richest(this List<Player> players) =>
+    public static IReadOnlyList<Player> Richest(this IReadOnlyList<Player> players) =>
         players.Where(x => x.Stack == players.Max(p => p.Stack)).ToList();
 
-    public static List<Player> NotBusted(this List<Player> players) =>
+    public static IReadOnlyList<Player> NotBusted(this IReadOnlyList<Player> players) =>
         players.Where(x => !x.Busted).ToList();
 
     public static Participant ToParticipant(this Player player) => new Participant

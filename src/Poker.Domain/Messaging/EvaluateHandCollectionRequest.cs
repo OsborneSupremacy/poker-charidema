@@ -4,9 +4,9 @@ public record EvaluateHandCollectionRequest
 {
     public required Participant Participant { get; init; }
 
-    public required List<Card> Cards { get; init; }
+    public required IReadOnlyList<Card> Cards { get; init; }
 
-    public required List<Hand> HandsToEvaluate { get; init; }
+    public required IReadOnlyList<Hand> HandsToEvaluate { get; init; }
 
     public required int RemainingCardCount { get; init; }
 

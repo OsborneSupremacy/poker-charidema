@@ -16,7 +16,7 @@ public record UnusedCardsMessage
             .ToQueue();
     }
 
-    public required List<Card> UnusedStandard { get; init; }
+    public required IList<Card> UnusedStandard { get; init; }
 
     public required Queue<Card> UnusedWild { get; init; }
 }

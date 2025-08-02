@@ -31,7 +31,7 @@ public record Participant
 
     public required bool Folded { get; init; }
 
-    public required List<CardInPlay> CardsInPlay { get; init; }
+    public required IReadOnlyList<CardInPlay> CardsInPlay { get; init; }
 }
 
 public static class Participants

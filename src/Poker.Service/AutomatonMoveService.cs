@@ -54,7 +54,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
 
     private static Task<MoveResponse> DealAsync(MoveRequest request)
     {
-        var playerCardsOut = request.ParticipantInTurn.CardsInPlay;
+        var playerCardsOut = request.ParticipantInTurn.CardsInPlay.ToList();
         var deckCardsOut = request.PhaseRequest.Game.Deck.Cards
             .ToQueue();
 

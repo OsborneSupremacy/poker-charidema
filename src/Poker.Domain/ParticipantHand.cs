@@ -8,7 +8,7 @@ public record ParticipantHand
 
     public required HandCards HandCards { get; init; }
 
-    public required List<Card> Kickers { get; init; }
+    public required IReadOnlyList<Card> Kickers { get; init; }
 
-    public required List<Card> DeadCards { get; init; }
+    public required IReadOnlyList<Card> DeadCards { get; init; }
 }

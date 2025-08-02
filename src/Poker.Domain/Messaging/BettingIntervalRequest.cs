@@ -8,5 +8,5 @@ public record BettingIntervalRequest
 
     public required Participant ParticipantInTurn { get; init; }
 
-    public required List<Participant> ActiveParticipants { get; init; }
+    public required IReadOnlyList<Participant> ActiveParticipants { get; init; }
 }

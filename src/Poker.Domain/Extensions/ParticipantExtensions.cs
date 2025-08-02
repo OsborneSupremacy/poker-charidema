@@ -3,6 +3,11 @@
 public static class ParticipantExtensions
 {
     public static Participant NextParticipant(
+        this IReadOnlyList<Participant> participants,
+        Participant currentParticipant
+    ) => participants.ToList().NextParticipant(currentParticipant);
+
+    public static Participant NextParticipant(
         this List<Participant> participants,
         Participant currentParticipant
     )
@@ -26,7 +31,7 @@ public static class ParticipantExtensions
     )
     {
         var cardsOut = input.CardsInPlay;
-        cardsOut.AddRange(cards.Select(c => new CardInPlay
+        cardsOut.ToList().AddRange(cards.Select(c => new CardInPlay
         {
             Card = c,
             CardLocation = CardLocation.PlayerHand,
