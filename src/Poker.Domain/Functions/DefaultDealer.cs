@@ -31,6 +31,8 @@ public static class DefaultDealer
                 if (!dealResponse.CardWasDealt)
                     continue;
 
+                deckOut = dealResponse.Deck;
+
                 playerInTurn = playersOut.NextParticipant(playerInTurn);
                 playersOut.RemoveAll(p => p.Id == dealResponse.Participant.Id);
                 playersOut.Add(dealResponse.Participant);
@@ -46,9 +48,9 @@ public static class DefaultDealer
 
     private static DealCardResponse DealCard(DealCardRequest request)
     {
-        var cardToDeal = request.Deck.Cards.FirstOrDefault();
+        var cardToDeal = request.Deck.Cards.FirstOrDefault() ?? Cards.Empty;
 
-        if (cardToDeal is null)
+        if (cardToDeal == Cards.Empty)
             return new DealCardResponse
             {
                 Card = Cards.Empty,
