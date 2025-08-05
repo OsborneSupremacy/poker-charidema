@@ -110,6 +110,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 },
                 FixedVariant = FiveCardDraw.GetVariant(),
                 StartingStack = startingStack,
+                TotalMoneyInPlay = players.Count * startingStack,
                 Games = []
             },
 

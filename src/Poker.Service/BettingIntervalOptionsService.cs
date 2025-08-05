@@ -37,8 +37,8 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         request.CurrentBet.Amount > 0;
 
     private static readonly Predicate<BettingIntervalOptionsRequest> PlayerInTurnNeedsToContributeMoreToStayIn = request =>
-        request.CurrentBet.Amount > CurrentPlayerStake!(request);
+        request.CurrentBet.Amount > PlayerInTurnStake!(request);
 
-    private static readonly Func<BettingIntervalOptionsRequest, int> CurrentPlayerStake = request =>
+    private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStake = request =>
         request.CurrentBet.ContributingPlayers.SingleOrDefault(p => p.PlayerId == request.ParticipantInTurnId)?.Amount ?? 0;
 }

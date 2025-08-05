@@ -56,6 +56,16 @@ internal class GameCoordinator : IGameCoordinator
             }
         );
 
+        var totalMoneyInPlay = gameResponse.Participants
+            .Sum(p => p.Stack);
+
+#if DEBUG
+        Console.WriteLine($"Participants have {totalMoneyInPlay:C0} in play.");
+        Console.WriteLine(totalMoneyInPlay == request.Match.TotalMoneyInPlay
+            ? "Total money in play matches the match total."
+            : $"Total money in play does not match the match total: {request.Match.TotalMoneyInPlay:C0}. Difference: {totalMoneyInPlay - request.Match.TotalMoneyInPlay:C0}. Something went wrong.");
+#endif
+
         gamesOut.Add(gameResponse);
 
         var deck = await _dealerService.ReshuffleAsync(
@@ -101,6 +111,6 @@ internal class GameCoordinator : IGameCoordinator
 
     private static string WritePlayerStanding(Player player) =>
         player.Busted
-            ? $"{player.Name} - Busted"
-            : $"{player.Name} - {player.Stack:C0}";
+            ? $"{player.Name}: Busted"
+            : $"{player.Name}: {player.Stack:C0}";
 }

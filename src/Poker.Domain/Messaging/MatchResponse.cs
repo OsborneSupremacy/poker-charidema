@@ -30,7 +30,8 @@ public static class MatchResponses
                 Fixed = 0,
                 AnteType = AnteTypes.Empty
             },
-            StartingStack = 0
+            StartingStack = 0,
+            TotalMoneyInPlay = 0
         },
         Winners = [],
         PlayAgain = true

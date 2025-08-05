@@ -35,7 +35,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         var optionDelegate = BettingIntervalDelegates[option] ?? Fold;
 
-        var maxBet = request.ActiveParticipants.Min(ap => ap.Stack);
+        var maxBet = optionsResponse.MaximumBet;
 
         return optionDelegate(
             request,
@@ -164,7 +164,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         return new BettingIntervalResponse
         {
-            Description = $"Raises {playerAdditionalAmount:C0}",
+            Description = $"Raises {playerAdditionalAmount:C0} to {newBetAmount:C0}",
             CurrentBet = new Bet
             {
                 Amount = newBetAmount,

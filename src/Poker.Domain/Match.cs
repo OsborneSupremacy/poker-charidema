@@ -15,6 +15,8 @@ public record Match
     public required AntePreferences AntePreferences { get; init; }
 
     public required int StartingStack { get; init; }
+
+    public required int TotalMoneyInPlay { get; init; }
 }
 
 public record AntePreferences
