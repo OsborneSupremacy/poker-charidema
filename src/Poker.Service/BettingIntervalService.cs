@@ -7,8 +7,10 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private readonly IRandomService _randomService;
 
-    public BettingIntervalService(IBettingIntervalOptionsService bettingIntervalOptionsService,
-        IRandomService randomService)
+    public BettingIntervalService(
+        IBettingIntervalOptionsService bettingIntervalOptionsService,
+        IRandomService randomService
+        )
     {
         _bettingIntervalOptionsService = bettingIntervalOptionsService ??
                                          throw new ArgumentNullException(nameof(bettingIntervalOptionsService));
@@ -51,7 +53,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         return new BettingIntervalResponse
         {
-            Description = $"Bet {betAmount:C0}",
+            Description = $"Bets {betAmount:C0}",
             CurrentBet = new Bet
             {
                 Amount = betAmount,
@@ -106,7 +108,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         var additionalAmount =
             request.CurrentBet.Amount
-            - currentContribution?.Amount ?? 0;
+            - (currentContribution?.Amount ?? 0);
 
         contributingPlayers.Add(new ContributingPlayer
         {
@@ -120,7 +122,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         return new BettingIntervalResponse
         {
-            Description = "Calls",
+            Description = $"Calls with {additionalAmount:C0}",
             CurrentBet = request.CurrentBet with
             {
                 ContributingPlayers = contributingPlayers,
@@ -151,7 +153,7 @@ internal class BettingIntervalService : IBettingIntervalService
 
         var playerAdditionalAmount =
             newBetAmount
-            - currentContribution?.Amount ?? 0;
+            - (currentContribution?.Amount ?? 0);
 
         contributingPlayers.Add(new ContributingPlayer
         {

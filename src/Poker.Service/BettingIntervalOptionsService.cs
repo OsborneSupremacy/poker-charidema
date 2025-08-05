@@ -5,9 +5,14 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 {
     public Task<BettingIntervalOptionsResponse> ExecuteAsync(BettingIntervalOptionsRequest request)
     {
-        // need to make this make sense
+        var noBet = (request.CurrentBet.Amount == 0);
 
-        List<BettingIntervalActionType> actions = (request.CurrentBet == Bets.Empty) switch
+        #if DEBUG
+        if (noBet)
+            Console.WriteLine("No current bet.");
+        #endif
+
+        List<BettingIntervalActionType> actions = (noBet) switch
         {
             true =>
             [
