@@ -30,14 +30,14 @@ public static class ParticipantExtensions
         IEnumerable<Card> cards
     )
     {
-        var cardsOut = input.CardsInPlay;
-        cardsOut.ToList().AddRange(cards.Select(c => new CardInPlay
+        var cardsOut = input.CardsInPlay.ToList();
+        cardsOut.AddRange(cards.Select(c => new CardInPlay
         {
             Card = c,
             CardLocation = CardLocation.PlayerHand,
             CardOrientation = orientation
         }));
-        return input with { CardsInPlay = cardsOut };
+        return input with { CardsInPlay = cardsOut, };
     }
 
     public static Participant DealCardsFaceDownTo(
