@@ -22,6 +22,7 @@ internal class BettingIntervalService : IBettingIntervalService
         BettingIntervalOptionsRequest optionsRequest = new()
         {
             CurrentBet = request.CurrentBet,
+            ParticipantInTurnId = request.ParticipantInTurn.Id,
             ActiveParticipants = request.ActiveParticipants
         };
 
