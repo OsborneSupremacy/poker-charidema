@@ -26,13 +26,15 @@ internal class MatchService : IMatchService
 
     private async Task<MatchResponse> PlayGames(
         MatchRequest request,
-        Func<int, bool> playAgainCondition
+        Func<int, bool> keepPlayingGamesCondition
         )
     {
         var gameHistory = request.Match.GameHistory.ToList();
         var playersWorking = request.Match.Players;
 
-        while (request.Match.GameHistory.Count < request.Match.FixedNumberOfGames)
+        var keepPlaying = true;
+
+        while (keepPlaying)
         {
             var coordinatedGameResponse = await _gameCoordinator.ExecuteAsync(
                 new CoordinateGameRequest
@@ -48,6 +50,7 @@ internal class MatchService : IMatchService
 
             gameHistory.Add(coordinatedGameResponse.GameResponse);
             playersWorking = UpdatePlayers(coordinatedGameResponse.GameResponse.Participants, playersWorking);
+            keepPlaying = keepPlayingGamesCondition(gameHistory.Count);
         }
 
         return new MatchResponse
@@ -59,7 +62,7 @@ internal class MatchService : IMatchService
                 Players = playersWorking
             },
             Winners = playersWorking.Richest(),
-            PlayAgain = playAgainCondition(gameHistory.Count)
+            PlayAgain = false // need to create match preferences service to handle this
         };
     }
 
