@@ -40,7 +40,7 @@ internal class GameService : IGameService
         var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
 
-        PhaseCoordinatorResponse phaseCoordinatorResponse = new()
+        CoordinatePhaseResponse coordinatePhaseResponse = new()
         {
             PhaseResponse = new()
             {
@@ -68,23 +68,23 @@ internal class GameService : IGameService
                 .Phases
                 .Select
                 (
-                    phase => new PhaseCoordinatorRequest
+                    phase => new CoordinatePhaseRequest
                     {
-                        Game = phaseCoordinatorResponse.GameResponse.Game,
-                        Deck = phaseCoordinatorResponse.PhaseResponse.Deck,
+                        Game = coordinatePhaseResponse.GameResponse.Game,
+                        Deck = coordinatePhaseResponse.PhaseResponse.Deck,
                         Phase = phase,
                         GameOver = gameOver
                     }
                 )
         )
         {
-            phaseCoordinatorResponse = await _phaseCoordinator
+            coordinatePhaseResponse = await _phaseCoordinator
                 .ExecuteAsync(phaseCoordinatorRequest);
 
-            gameOver = phaseCoordinatorResponse.PhaseResponse.GameOver;
+            gameOver = coordinatePhaseResponse.PhaseResponse.GameOver;
         }
 
-        return phaseCoordinatorResponse.GameResponse;
+        return coordinatePhaseResponse.GameResponse;
     }
 
     private async Task<Game> CreateGameAsync(GameRequest request)
@@ -102,6 +102,7 @@ internal class GameService : IGameService
 
         Game game = new()
         {
+            GameNumber = request.Match.GameHistory.Count + 1,
             Button = gameButton,
             Variant = request.Variant,
             Participants = gamePlayers,

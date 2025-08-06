@@ -2,5 +2,5 @@
 
 public interface IPhaseCoordinator
 {
-    public Task<PhaseCoordinatorResponse> ExecuteAsync(PhaseCoordinatorRequest request);
+    public Task<CoordinatePhaseResponse> ExecuteAsync(CoordinatePhaseRequest request);
 }

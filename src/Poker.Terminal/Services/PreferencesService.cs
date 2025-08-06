@@ -111,7 +111,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 FixedVariant = FiveCardDraw.GetVariant(),
                 StartingStack = startingStack,
                 TotalMoneyInPlay = players.Count * startingStack,
-                Games = []
+                GameHistory = []
             },
 
             InitialButton = _randomService.PickFromList(players)
@@ -211,6 +211,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
     public Task<bool> GetPlayAgain(Match? lastMatch) =>
         Task.FromResult(_c.PromptForBool("Would you like to play another match?"));
+
+    public Task<bool> GetPlayAgain(string variantName) =>
+        Task.FromResult(_c.PromptForBool($"Would you like to play another game of {variantName}?"));
 
     public Task<bool> GetPlayAgain(GameResponse lastGame) =>
         Task.FromResult(_c.PromptForBool($"Would you like to play another game of {lastGame.Variant.Name}?"));

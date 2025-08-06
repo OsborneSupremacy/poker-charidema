@@ -1,6 +1,4 @@
-﻿using Poker.Domain.Implementations.Variants;
-
-namespace Poker.Service;
+﻿namespace Poker.Service;
 
 /// <inheritdoc />
 internal class MatchService : IMatchService
@@ -26,123 +24,78 @@ internal class MatchService : IMatchService
         _gameCoordinator = gameCoordinator ?? throw new ArgumentNullException(nameof(gameCoordinator));
     }
 
-    private async Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request)
+    private async Task<MatchResponse> PlayGames(
+        MatchRequest request,
+        Func<int, bool> playAgainCondition
+        )
     {
-        MatchMessage message = new()
-        {
-            Cancelled = false,
-            Match = request.Match,
-            GameResponse = new()
-            {
-                Game = Games.Empty,
-                Participants = [],
-                Variant = EmptyVariant.GetVariant(),
-                Button = Participants.Empty
-            }
-        };
+        var gameHistory = request.Match.GameHistory.ToList();
+        var playersWorking = request.Match.Players;
 
-        while (request.Match.Games.Count < request.Match.FixedNumberOfGames)
-            message = await _gameCoordinator.ExecuteAsync(
-                new GameRequest
+        while (request.Match.GameHistory.Count < request.Match.FixedNumberOfGames)
+        {
+            var coordinatedGameResponse = await _gameCoordinator.ExecuteAsync(
+                new CoordinateGameRequest
                 {
-                    Match = message.Match,
-                    Participants = message.Match.Players.NotBusted().Select(p => new Participant
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                        BeginningStack = p.BeginningStack,
-                        Stack = p.Stack,
-                        Automaton = p.Automaton,
-                        Busted = p.Busted,
-                        Stake = 0,
-                        Folded = false,
-                        CardsInPlay = []
-                    }).ToList(),
-                    Variant = message.Match.FixedVariant,
-                    Deck = message.Match.FixedDeck,
-                    Button = message.GameResponse.Button
+                    Match = request.Match,
+                    Players = playersWorking,
+                    Variant = request.Match.FixedVariant,
+                    Deck = request.Match.FixedDeck,
+                    InitialButtonId = request.InitialButton.Id,
+                    GameHistory = gameHistory
                 }
             );
 
-        return new MatchResponse
-        {
-            Cancelled = false,
-            Match = message.Match,
-            Winners = message.Match.Players.Richest(),
-            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
-        };
-    }
-
-    private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
-    {
-        var players = request.Match.Players.ToList();
-
-        var button = players
-            .SingleOrDefault(x => x.Id == request.InitialButton.Id)
-            ?? players.First();
-
-        var participants = players
-            .Select(p => new Participant
-            {
-                Id = p.Id,
-                Name = p.Name,
-                BeginningStack = p.BeginningStack,
-                Stack = p.Stack,
-                Automaton = p.Automaton,
-                Busted = p.Busted,
-                Stake = 0,
-                Folded = false,
-                CardsInPlay = []
-            })
-            .ToList();
-
-        MatchMessage message = new()
-        {
-            Cancelled = false,
-            Match = request.Match,
-            GameResponse = new()
-            {
-                Game = Games.Empty,
-                Participants = participants,
-                Button = participants.Single(p => p.Id == button.Id),
-                Variant = EmptyVariant.GetVariant()
-            }
-        };
-
-        var keepPlaying = true;
-        while (keepPlaying)
-        {
-            message = await _gameCoordinator.ExecuteAsync(new GameRequest
-            {
-                Match = message.Match,
-                Participants = message.Match.Players.NotBusted().Select(p => new Participant
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    BeginningStack = p.BeginningStack,
-                    Stack = p.Stack,
-                    Automaton = p.Automaton,
-                    Busted = p.Busted,
-                    Stake = 0,
-                    Folded = false,
-                    CardsInPlay = []
-                }).ToList(),
-                Variant = message.Match.FixedVariant,
-                Deck = message.Match.FixedDeck,
-                Button = message.GameResponse.Button
-            });
-
-            keepPlaying =
-                await _gamePreferencesService.GetPlayAgain(message.GameResponse);
+            gameHistory.Add(coordinatedGameResponse.GameResponse);
+            playersWorking = UpdatePlayers(coordinatedGameResponse.GameResponse.Participants, playersWorking);
         }
 
         return new MatchResponse
         {
             Cancelled = false,
-            Match = message.Match,
-            Winners = message.Match.Players.Richest(),
-            PlayAgain = message.Match.Games.Count < request.Match.FixedNumberOfGames
+            Match = request.Match with
+            {
+                GameHistory = gameHistory,
+                Players = playersWorking
+            },
+            Winners = playersWorking.Richest(),
+            PlayAgain = playAgainCondition(gameHistory.Count)
         };
+    }
+
+    private Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request) =>
+        PlayGames(request, gameCount => gameCount < request.Match.FixedNumberOfGames);
+
+    private async Task<MatchResponse> PlayIndefinitely(MatchRequest request) =>
+        await PlayGames(request, _ => _gamePreferencesService
+            .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.Variant.Name ?? request.Match.FixedVariant.Name)
+            .GetAwaiter()
+            .GetResult()
+        );
+
+    private static List<Player> UpdatePlayers(
+        IReadOnlyList<Participant> participantsInGame,
+        IReadOnlyList<Player> playersInMatch
+    )
+    {
+        var participants = participantsInGame.ToDictionary(p => p.Id, p => p);
+
+        var playersOut = new List<Player>();
+
+        foreach (var player in playersInMatch)
+        {
+            if (!participants.TryGetValue(player.Id, out var playerInGame))
+            {
+                playersOut.Add(player);
+                continue;
+            }
+            playersOut.Add(player with
+            {
+                Stack = playerInGame.Stack,
+                Busted = playerInGame.Busted
+            });
+        }
+        return playersOut;
     }
 
     private Task WriteMatchStartInfoAsync(Match match)

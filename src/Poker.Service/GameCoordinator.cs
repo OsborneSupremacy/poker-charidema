@@ -1,5 +1,4 @@
-﻿using System.Text;
-
+﻿
 namespace Poker.Service;
 
 /// <inheritdoc />
@@ -22,34 +21,34 @@ internal class GameCoordinator : IGameCoordinator
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
     }
 
-    public async Task<MatchMessage> ExecuteAsync(GameRequest request)
+    public async Task<CoordinateGameResponse> ExecuteAsync(CoordinateGameRequest request)
     {
-        var gamesOut = request.Match.Games.ToList();
+        var playersIn = request.Players.ToList();
+        var gamesOut = request.GameHistory.ToList();
 
         _userInterfaceService
-            .WriteHeading(HeadingLevel.Four, $"Starting game {request.Match.Games.Count + 1}");
+            .WriteHeading(HeadingLevel.Four, $"Starting game {gamesOut.Count + 1}");
 
-        // pass button to next player if it's not the first game
-        var button = gamesOut.Any()
-            ? request.Participants.NextParticipant(request.Button)
-            : request.Button;
+        var participantsIn = playersIn.NotBusted().Select(p => new Participant
+        {
+            Id = p.Id,
+            Name = p.Name,
+            BeginningStack = p.BeginningStack,
+            Stack = p.Stack,
+            Automaton = p.Automaton,
+            Busted = p.Busted,
+            Stake = 0,
+            Folded = false,
+            CardsInPlay = []
+        }).ToList();
+
+        var button = DetermineButton(request.InitialButtonId, gamesOut, request.Players, participantsIn);
 
         var gameResponse = await _gameService.PlayAsync(
             new GameRequest
             {
                 Match = request.Match,
-                Participants = request.Match.Players.NotBusted().Select(p => new Participant
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    BeginningStack = p.BeginningStack,
-                    Stack = p.Stack,
-                    Automaton = p.Automaton,
-                    Busted = p.Busted,
-                    Stake = 0,
-                    Folded = false,
-                    CardsInPlay = []
-                }).ToList(),
+                Participants = participantsIn,
                 Variant = request.Match.FixedVariant,
                 Deck = request.Match.FixedDeck,
                 Button = button
@@ -78,7 +77,7 @@ internal class GameCoordinator : IGameCoordinator
 
         var matchOut = request.Match with
         {
-            Games = gamesOut,
+            GameHistory = gamesOut,
             Players = gameResponse.Participants.Select(p => new Player
             {
                 Id = p.Id,
@@ -92,12 +91,41 @@ internal class GameCoordinator : IGameCoordinator
 
         WriteStandings(matchOut);
 
-        return new MatchMessage
+        return new CoordinateGameResponse
         {
-            Match = matchOut with { FixedDeck = deck },
-            Cancelled = false,
             GameResponse = gameResponse
         };
+    }
+
+
+    /// <summary>
+    /// Determine the button for the game being coordinated. Can be a little complicated,
+    /// since we need to account for players that have busted and are no longer participating.
+    /// </summary>
+    private Participant DetermineButton(
+        Guid initialButtonId,
+        List<GameResponse> gameHistory,
+        IReadOnlyList<Player> players,
+        IReadOnlyList<Participant> participants
+        )
+    {
+        if(!gameHistory.Any())
+            return participants.Single(p => p.Id == initialButtonId);
+
+        var playersIn = players.ToList();
+
+        var lastButtonId = gameHistory
+            .OrderByDescending(g => g.Game.GameNumber)
+            .Select(g => g.Button.Id)
+            .FirstOrDefault();
+
+        var lastButton = playersIn.Single(p => p.Id == lastButtonId);
+        var nextButton = playersIn.ToList().NextPlayer(lastButton);
+
+        while (!participants.Select(p => p.Id).Contains(nextButton.Id))
+            nextButton = playersIn.NextPlayer(lastButton);
+
+        return participants.Single(p => p.Id == nextButton.Id);
     }
 
     private void WriteStandings(Match match)

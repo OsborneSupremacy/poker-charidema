@@ -22,7 +22,7 @@ public static class MatchResponses
             FixedVariant = Implementations.Variants.EmptyVariant.GetVariant(),
             FixedDeck = Decks.Empty,
             Players = [],
-            Games = [],
+            GameHistory = [],
             AntePreferences = new()
             {
                 Min = 0,

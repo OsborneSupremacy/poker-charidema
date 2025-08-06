@@ -22,8 +22,8 @@ internal class PhaseCoordinator : IPhaseCoordinator
         _handEvaluator = handEvaluator;
     }
 
-    public async Task<PhaseCoordinatorResponse> ExecuteAsync(
-        PhaseCoordinatorRequest request
+    public async Task<CoordinatePhaseResponse> ExecuteAsync(
+        CoordinatePhaseRequest request
         )
     {
         var startingPlayer = request.Game
@@ -54,7 +54,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
         };
 
         if (phaseResponse.GameOver)
-            return new PhaseCoordinatorResponse
+            return new CoordinatePhaseResponse
             {
                 PhaseResponse = phaseResponse,
                 GameResponse = new GameResponse
@@ -75,7 +75,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
             request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
         );
 
-        return new PhaseCoordinatorResponse
+        return new CoordinatePhaseResponse
         {
             PhaseResponse = phaseResponse,
             GameResponse = new GameResponse
