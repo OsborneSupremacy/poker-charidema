@@ -85,7 +85,7 @@ internal class GameCoordinator : IGameCoordinator
                 BeginningStack = p.BeginningStack,
                 Stack = p.Stack,
                 Automaton = p.Automaton,
-                Busted = p.Busted
+                Busted = p.Stack <= 0
             }).ToList(),
         };
 
@@ -102,7 +102,7 @@ internal class GameCoordinator : IGameCoordinator
     /// Determine the button for the game being coordinated. Can be a little complicated,
     /// since we need to account for players that have busted and are no longer participating.
     /// </summary>
-    private Participant DetermineButton(
+    private static Participant DetermineButton(
         Guid initialButtonId,
         List<GameResponse> gameHistory,
         IReadOnlyList<Player> players,

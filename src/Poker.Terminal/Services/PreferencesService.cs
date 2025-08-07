@@ -148,7 +148,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                     });
 
                     int max = 0;
-                    _c.PromptForMoney("Maximum ante", min + 1, startingStack, startingStack, input =>
+                    _c.PromptForMoney("Maximum ante", min + 1, startingStack, (int)(startingStack * 0.1), input =>
                     {
                         max = input;
                     });
@@ -225,7 +225,4 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
     public Task<bool> ConfirmStartAsync() =>
         Task.FromResult(_c.PromptForBool("Ready to Begin?"));
-
-    public Task<bool> GetPlayAgain(Game game) =>
-        Task.FromResult(_c.PromptForBool($"Would you like to play another game of {game.Variant.Name}?"));
 }
