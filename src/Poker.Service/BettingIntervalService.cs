@@ -52,6 +52,9 @@ internal class BettingIntervalService : IBettingIntervalService
     {
         var betAmount = getAdditionalAmount();
 
+        var contributions = request.ActiveParticipants.ToDictionary(p => p.Id, _ => 0);
+        contributions[request.ParticipantInTurn.Id] = betAmount;
+
         return new BettingIntervalResponse
         {
             Description = $"Bets {betAmount:C0}",
@@ -60,10 +63,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Amount = betAmount,
                 InitiatingPlayerId = request.ParticipantInTurn.Id,
                 CheckedPlayerIds = [],
-                ContributingPlayers =
-                [
-                    new ContributingPlayer { PlayerId = request.ParticipantInTurn.Id, Amount = betAmount }
-                ],
+                PlayerContributions = contributions,
                 TerminalPlayerIds = []
             },
             Pot = request.Pot + betAmount,
@@ -99,34 +99,19 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Call = (request, _) =>
     {
-        var contributingPlayers = request.CurrentBet.ContributingPlayers.ToList();
+        var contributions = request.CurrentBet.PlayerContributions.ToDictionary();
+        var currentContribution = contributions[request.ParticipantInTurn.Id];
+        var additionalAmount = request.CurrentBet.Amount - currentContribution;
 
-        var currentContribution = contributingPlayers
-            .SingleOrDefault(cp => cp.PlayerId == request.ParticipantInTurn.Id);
-
-        if (currentContribution is not null)
-            contributingPlayers.Remove(currentContribution);
-
-        var additionalAmount =
-            request.CurrentBet.Amount
-            - (currentContribution?.Amount ?? 0);
-
-        contributingPlayers.Add(new ContributingPlayer
-        {
-            PlayerId = request.ParticipantInTurn.Id,
-            Amount = request.CurrentBet.Amount
-        });
-
-        var closeBetting =
-            contributingPlayers
-                .PaidUp(request.CurrentBet.Amount).Count() >= request.ActiveParticipants.NotFolded().Count();
+        var allPlayersCalled = request.ActiveParticipants.NotFolded()
+            .All(p => contributions[p.Id] >= request.CurrentBet.Amount);
 
         return new BettingIntervalResponse
         {
             Description = $"Calls with {additionalAmount:C0}",
             CurrentBet = request.CurrentBet with
             {
-                ContributingPlayers = contributingPlayers,
+                PlayerContributions = contributions,
                 TerminalPlayerIds = request.CurrentBet.TerminalPlayerIds
             },
             Pot = request.Pot + additionalAmount,
@@ -135,7 +120,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Stack = request.ParticipantInTurn.Stack - additionalAmount,
                 Stake = request.ParticipantInTurn.Stake + additionalAmount
             },
-            CloseBetting = closeBetting
+            CloseBetting = allPlayersCalled
         };
     };
 
@@ -144,33 +129,21 @@ internal class BettingIntervalService : IBettingIntervalService
         var raiseDelta = getAdditionalAmount();
         var newBetAmount = request.CurrentBet.Amount + raiseDelta;
 
-        var contributingPlayers = request.CurrentBet.ContributingPlayers.ToList();
+        var contributions = request.CurrentBet.PlayerContributions.ToDictionary();
 
-        var currentContribution = contributingPlayers
-            .SingleOrDefault(cp => cp.PlayerId == request.ParticipantInTurn.Id);
-
-        if (currentContribution is not null)
-            contributingPlayers.Remove(currentContribution);
-
-        var playerAdditionalAmount =
-            newBetAmount
-            - (currentContribution?.Amount ?? 0);
-
-        contributingPlayers.Add(new ContributingPlayer
-        {
-            PlayerId = request.ParticipantInTurn.Id,
-            Amount = newBetAmount
-        });
+        var currentContribution = contributions[request.ParticipantInTurn.Id];
+        var playerAdditionalAmount = newBetAmount - currentContribution;
+        contributions[request.ParticipantInTurn.Id] = newBetAmount;
 
         return new BettingIntervalResponse
         {
-            Description = $"Raises {playerAdditionalAmount:C0} to {newBetAmount:C0}",
+            Description = $"Raises {raiseDelta:C0} to {newBetAmount:C0}",
             CurrentBet = new Bet
             {
                 Amount = newBetAmount,
                 InitiatingPlayerId = request.ParticipantInTurn.Id,
                 CheckedPlayerIds = [],
-                ContributingPlayers = contributingPlayers,
+                PlayerContributions = contributions,
                 TerminalPlayerIds = []
             },
             Pot = request.Pot + playerAdditionalAmount,
