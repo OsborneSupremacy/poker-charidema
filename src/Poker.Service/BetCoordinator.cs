@@ -79,6 +79,7 @@ internal class BetCoordinator : IPhaseService
     private async Task<Participant> GetCurrentBettorAsync(PhaseRequest request)
     {
         var anyFaceUpCards = request.Game.Participants
+            .NotFolded()
             .SelectMany(p => p.CardsInPlay)
             .FaceUp()
             .Any();

@@ -23,7 +23,7 @@ internal class BettingIntervalService : IBettingIntervalService
         {
             CurrentBet = request.CurrentBet,
             ParticipantInTurnId = request.ParticipantInTurn.Id,
-            ActiveParticipants = request.ActiveParticipants
+            ActiveParticipants = request.ActiveParticipants.NotFolded().ToList(),
         };
 
         var optionsResponse = await _bettingIntervalOptionsService

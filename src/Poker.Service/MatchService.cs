@@ -105,7 +105,7 @@ internal class MatchService : IMatchService
     {
         _userInterfaceService.WriteHeading(HeadingLevel.Two, "Welcome to the new match!");
 
-        _userInterfaceService.WriteList("ParticipatingPlayers:", match.Players.Select(x => x.Name).ToArray());
+        _userInterfaceService.WriteList("Players:", match.Players.Select(x => x.Name).ToArray());
 
         _userInterfaceService.WriteHeading(HeadingLevel.Three, $"The match type is {match.FixedVariant.Name}");
 

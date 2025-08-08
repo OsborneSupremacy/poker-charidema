@@ -20,15 +20,18 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
             options.Add(BettingIntervalActionType.Bet);
         }
 
+        var maximumBet = GetMaximumBet(request);
+
         return Task.FromResult(new BettingIntervalOptionsResponse
         {
             RequiredAmountToCall = request.CurrentBet.Amount,
-            // we're currently going to prevent a player from betting more
-            // than another player has.
-            MaximumBet = request.ActiveParticipants.Min(p => p.Stack),
+            MaximumBet = maximumBet,
             AvailableBettingIntervalActions = options
         });
     }
+
+    private static int GetMaximumBet(BettingIntervalOptionsRequest request) =>
+        Math.Min(MinimumPlayerStack(request), PlayerInTurnStack(request));
 
     private static readonly Predicate<BettingIntervalOptionsRequest> FoldIsAnOption = request =>
         ThereIsABet!(request) && PlayerInTurnNeedsToContributeMoreToStayIn!(request);
@@ -39,6 +42,15 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
     private static readonly Predicate<BettingIntervalOptionsRequest> PlayerInTurnNeedsToContributeMoreToStayIn = request =>
         request.CurrentBet.Amount > PlayerInTurnStake!(request);
 
+    private static readonly Func<BettingIntervalOptionsRequest, int> MinimumPlayerStack = request =>
+        request.ActiveParticipants.Min(p => p.Stack);
+
     private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStake = request =>
         request.CurrentBet.PlayerContributions[request.ParticipantInTurnId];
+
+    private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStack = request =>
+        request.ActiveParticipants
+            .Where(p => p.Id == request.ParticipantInTurnId)
+            .Select(p => p.Stack)
+            .Single();
 }
