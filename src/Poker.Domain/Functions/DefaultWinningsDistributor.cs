@@ -11,7 +11,6 @@ public static class DefaultWinningsDistributor
             winnerPayouts[x] = 0;
 
         while (pot > 0)
-        {
             for (int x = 0; x < winnerPayouts.Length; x++)
             {
                 if (pot <= 0)
@@ -19,9 +18,8 @@ public static class DefaultWinningsDistributor
                 winnerPayouts[x] += 1;
                 pot -= 1;
             }
-        }
 
-        var pi = 0;
+        var i = 0;
 
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
 
@@ -29,8 +27,15 @@ public static class DefaultWinningsDistributor
             .Select(p => p with
             {
                 Stack = winnerIds.Contains(p.Id)
-                    ? p.Stack + winnerPayouts[pi++]
+                    ? p.Stack + winnerPayouts[i++]
                     : p.Stack
+            })
+            .ToList();
+
+        playersOut = playersOut
+            .Select(p => p with
+            {
+                Busted = p.Stack <= 0
             })
             .ToList();
 

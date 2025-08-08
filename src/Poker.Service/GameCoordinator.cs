@@ -85,7 +85,7 @@ internal class GameCoordinator : IGameCoordinator
                 BeginningStack = p.BeginningStack,
                 Stack = p.Stack,
                 Automaton = p.Automaton,
-                Busted = p.Stack <= 0
+                Busted = p.Busted
             }).ToList(),
         };
 
@@ -138,7 +138,10 @@ internal class GameCoordinator : IGameCoordinator
     }
 
     private static string WritePlayerStanding(Player player) =>
-        player.Busted
-            ? $"{player.Name}: Busted"
-            : $"{player.Name}: {player.Stack:C0}";
+        (player.Busted, player.Stack) switch
+        {
+            (false, _) => $"{player.Name}: {player.Stack:C0}",
+            (true, 0) => $"{player.Name}: Busted",
+            (true, _) => $"{player.Name}: Busted, {player.Stack:C0} In the Red (This Shouldn't Happen)"
+        };
 }
