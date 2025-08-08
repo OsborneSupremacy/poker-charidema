@@ -31,7 +31,7 @@ internal class BetCoordinator : IPhaseService
         var currentBettor = await GetCurrentBettorAsync(request);
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");
 
-        var players = request
+        var participantsOut = request
             .Game
             .Participants
             .ToDictionary(p => p.Id, p => p);
@@ -39,41 +39,57 @@ internal class BetCoordinator : IPhaseService
         var betResponse = BettingIntervalResponses.Empty with { Pot = request.Pot };
 
         while (!betResponse.CloseBetting)
-            await AdvanceBettingAsync();
+        {
+            var (bettingIntervalResponse, nextBettor) = await AdvanceBettingAsync(
+                new BettingIntervalRequest
+                {
+                    CurrentBet = betResponse.CurrentBet,
+                    Pot = betResponse.Pot,
+                    ParticipantInTurn = currentBettor,
+                    ActiveParticipants = participantsOut.Values.ToList()
+                }
+            );
+            betResponse = bettingIntervalResponse;
+            currentBettor = nextBettor;
+            participantsOut[bettingIntervalResponse.ParticipantInTurn.Id] = bettingIntervalResponse.ParticipantInTurn;
+        }
 
-        var activePlayers = players.Values.NotFolded().ToList();
+        var activePlayers = participantsOut.Values.NotFolded().ToList();
         var gameOver = activePlayers.Count == 1;
 
         return new()
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
-            Participants = players.Values.ToList(),
+            Participants = participantsOut.Values.ToList(),
             Winners = gameOver ? activePlayers : [],
             GameOver = gameOver,
             Pot = betResponse.Pot
         };
+    }
 
-        async Task AdvanceBettingAsync()
+    private async Task<(BettingIntervalResponse bettingIntervalResponse, Participant nextBettor)>
+        AdvanceBettingAsync(BettingIntervalRequest request)
+    {
+        BettingIntervalRequest betRequest = new()
         {
-            BettingIntervalRequest betRequest = new()
-            {
-                CurrentBet = betResponse.CurrentBet,
-                Pot = betResponse.Pot,
-                ParticipantInTurn = players[currentBettor.Id],
-                ActiveParticipants = players.Values.NotFolded().ToList()
-            };
+            CurrentBet = request.CurrentBet,
+            Pot = request.Pot,
+            ParticipantInTurn = request.ParticipantInTurn,
+            ActiveParticipants = request.ActiveParticipants
+        };
 
-            betResponse = await _bettingIntervalService.ExecuteAsync(betRequest);
+        var bettingIntervalResponse = await _bettingIntervalService.ExecuteAsync(betRequest);
 
-            _userInterfaceService.WriteLine($"{currentBettor.Name} {betResponse.Description}.");
+        _userInterfaceService.WriteLine($"{request.ParticipantInTurn.Name} {bettingIntervalResponse.Description}.");
 
-            players[currentBettor.Id] = betResponse.ParticipantInTurn;
+        var nextBettor = bettingIntervalResponse.CloseBetting switch
+        {
+            true => request.ParticipantInTurn,
+            false => GetNextEligibleBettor(request.ActiveParticipants.NotFolded().ToList(), request.ParticipantInTurn, true)
+        };
 
-            currentBettor =
-                betResponse.CloseBetting ? currentBettor
-                    : request.Game.Participants.NotFolded().ToList().NextParticipant(currentBettor);
-        }
+        return (bettingIntervalResponse, nextBettor);
     }
 
     private async Task<Participant> GetCurrentBettorAsync(PhaseRequest request)
@@ -99,10 +115,10 @@ internal class BetCoordinator : IPhaseService
         {
             _userInterfaceService.WriteLine($"Multiple players have the best hand showing, with {leadPlayerResponse.LeadingHand.Name}.");
             _userInterfaceService.WriteLine("The tie goes to the player closest to the dealer.");
-            return leadPlayerResponse.LeadParticipants.First();
+            return leadPlayerResponse.LeadParticipants[0];
         }
 
-        var leadPlayer = leadPlayerResponse.LeadParticipants.First();
+        var leadPlayer = leadPlayerResponse.LeadParticipants[0];
         _userInterfaceService.WriteLine($"{leadPlayer.Name} has the best hand showing with {leadPlayerResponse.LeadingHand.Name}.");
         return leadPlayer;
     }
@@ -114,14 +130,27 @@ internal class BetCoordinator : IPhaseService
     /// <param name="request"></param>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException">If all players have folded, this method should not have been invoked.</exception>
-    private static Participant GetFirstEligibleBettor(PhaseRequest request)
+    private static Participant GetFirstEligibleBettor(PhaseRequest request) =>
+        GetNextEligibleBettor(request.Game.Participants, request.StartingParticipant, false);
+
+    private static Participant GetNextEligibleBettor(
+        IReadOnlyList<Participant> participants,
+        Participant bettorIn,
+        bool advanceToNext
+        )
     {
-        // if we don't do this check here, we risk an infinite loop
-        if (!request.Game.Participants.NotFolded().Any())
+        if (!participants.NotFolded().Any())
             throw new InvalidOperationException("All players folded");
-        var currentBettor = request.StartingParticipant;
-        while (currentBettor.Folded)
-            currentBettor = request.Game.Participants.NextParticipant(currentBettor);
-        return currentBettor;
+
+        if(advanceToNext && participants.Count == 1)
+            throw new InvalidOperationException("Only one player remains");
+
+        var bettorOut = bettorIn;
+        if(advanceToNext)
+            bettorOut = participants.NextParticipant(bettorIn);
+
+        while (bettorOut.Folded)
+            bettorOut = participants.NextParticipant(bettorOut);
+        return bettorOut;
     }
 }
