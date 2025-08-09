@@ -170,7 +170,7 @@ public class FluentConsoleService : IUserInterfaceService
         writeDelimiter();
 
         if (level == HeadingLevel.One)
-            AnsiConsole.Write(new FigletText(input).LeftJustified());
+            AnsiConsole.Write(new FigletText(input).LeftJustified().Color(Color.Green));
         else
             AnsiConsole.MarkupLine($"[bold]{input}[/]");
 

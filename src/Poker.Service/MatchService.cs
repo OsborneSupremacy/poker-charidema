@@ -26,20 +26,27 @@ internal class MatchService : IMatchService
 
     private async Task<MatchResponse> PlayGames(
         MatchRequest request,
-        Func<int, bool> keepPlayingGamesCondition
+        Func<MatchRequest, bool> playGameDelegate
         )
     {
         var gameHistory = request.Match.GameHistory.ToList();
         var playersWorking = request.Match.Players;
+        var matchWorking = request.Match;
 
         var keepPlaying = true;
 
         while (keepPlaying)
         {
+            matchWorking = matchWorking with
+            {
+                GameHistory = gameHistory,
+                Players = playersWorking
+            };
+
             var coordinatedGameResponse = await _gameCoordinator.ExecuteAsync(
                 new CoordinateGameRequest
                 {
-                    Match = request.Match,
+                    Match = matchWorking,
                     Players = playersWorking,
                     Variant = request.Match.FixedVariant,
                     Deck = request.Match.FixedDeck,
@@ -50,31 +57,46 @@ internal class MatchService : IMatchService
 
             gameHistory.Add(coordinatedGameResponse.GameResponse);
             playersWorking = UpdatePlayers(coordinatedGameResponse.GameResponse.Participants, playersWorking);
-            keepPlaying = keepPlayingGamesCondition(gameHistory.Count);
+
+            matchWorking = matchWorking with
+            {
+                GameHistory = gameHistory,
+                Players = playersWorking
+            };
+
+            keepPlaying = playGameDelegate(request with
+            {
+                Match = matchWorking
+            });
         }
 
         return new MatchResponse
         {
             Cancelled = false,
-            Match = request.Match with
-            {
-                GameHistory = gameHistory,
-                Players = playersWorking
-            },
+            Match = matchWorking,
             Winners = playersWorking.Richest(),
             PlayAgain = false // need to create match preferences service to handle this
         };
     }
 
     private Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request) =>
-        PlayGames(request, gameCount => gameCount < request.Match.FixedNumberOfGames);
-
-    private async Task<MatchResponse> PlayIndefinitely(MatchRequest request) =>
-        await PlayGames(request, _ => _gamePreferencesService
-            .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.Variant.Name ?? request.Match.FixedVariant.Name)
-            .GetAwaiter()
-            .GetResult()
+        PlayGames(request, _ =>
+            request.Match.GameHistory.Count < request.Match.FixedNumberOfGames
+            && request.Match.Players.NotBusted().Count > 1
         );
+
+    private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
+    {
+        return await PlayGames(request, _ =>
+        {
+            if(request.Match.Players.NotBusted().Count <= 1)
+                return false;
+            return _gamePreferencesService
+                .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.Variant.Name ?? request.Match.FixedVariant.Name)
+                .GetAwaiter()
+                .GetResult();
+        });
+    }
 
     private static List<Player> UpdatePlayers(
         IReadOnlyList<Participant> participantsInGame,
