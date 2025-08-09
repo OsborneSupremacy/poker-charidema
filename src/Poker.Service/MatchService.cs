@@ -46,7 +46,8 @@ internal class MatchService : IMatchService
             var coordinatedGameResponse = await _gameCoordinator.ExecuteAsync(
                 new CoordinateGameRequest
                 {
-                    Match = matchWorking,
+                    AntePreferences = request.Match.AntePreferences,
+                    TotalMoneyInPlay = matchWorking.TotalMoneyInPlay,
                     Players = playersWorking,
                     Variant = request.Match.FixedVariant,
                     Deck = request.Match.FixedDeck,

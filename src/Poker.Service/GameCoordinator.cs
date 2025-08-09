@@ -47,10 +47,11 @@ internal class GameCoordinator : IGameCoordinator
         var gameResponse = await _gameService.PlayAsync(
             new GameRequest
             {
-                Match = request.Match,
+                GameCount = gamesOut.Count,
+                AntePreferences = request.AntePreferences,
                 Participants = participantsIn,
-                Variant = request.Match.FixedVariant,
-                Deck = request.Match.FixedDeck,
+                Variant = request.Variant,
+                Deck = request.Deck,
                 Button = button
             }
         );
@@ -60,9 +61,9 @@ internal class GameCoordinator : IGameCoordinator
 
 #if DEBUG
         Console.WriteLine($"Participants have {totalMoneyInPlay:C0} in play.");
-        Console.WriteLine(totalMoneyInPlay == request.Match.TotalMoneyInPlay
+        Console.WriteLine(totalMoneyInPlay == request.TotalMoneyInPlay
             ? "Total money in play matches the match total."
-            : $"Total money in play does not match the match total: {request.Match.TotalMoneyInPlay:C0}. Difference: {totalMoneyInPlay - request.Match.TotalMoneyInPlay:C0}. Something went wrong.");
+            : $"Total money in play does not match the match total: {request.TotalMoneyInPlay:C0}. Difference: {totalMoneyInPlay - request.TotalMoneyInPlay:C0}. Something went wrong.");
 #endif
 
         gamesOut.Add(gameResponse);
@@ -75,21 +76,7 @@ internal class GameCoordinator : IGameCoordinator
             }
         );
 
-        var matchOut = request.Match with
-        {
-            GameHistory = gamesOut,
-            Players = gameResponse.Participants.Select(p => new Player
-            {
-                Id = p.Id,
-                Name = p.Name,
-                BeginningStack = p.BeginningStack,
-                Stack = p.Stack,
-                Automaton = p.Automaton,
-                Busted = p.Busted
-            }).ToList(),
-        };
-
-        WriteStandings(matchOut);
+        WriteStandings(gameResponse.Participants);
 
         return new CoordinateGameResponse
         {
@@ -128,16 +115,16 @@ internal class GameCoordinator : IGameCoordinator
         return participants.Single(p => p.Id == nextButton.Id);
     }
 
-    private void WriteStandings(Match match)
+    private void WriteStandings(IReadOnlyList<Participant> participants)
     {
-        var stacks = match.Players
+        var stacks = participants
             .OrderByDescending(p => p.Stack)
             .Select(WritePlayerStanding);
 
         _userInterfaceService.WriteList("Standings", stacks.ToArray());
     }
 
-    private static string WritePlayerStanding(Player player) =>
+    private static string WritePlayerStanding(Participant player) =>
         (player.Busted, player.Stack) switch
         {
             (false, _) => $"{player.Name}: {player.Stack:C0}",

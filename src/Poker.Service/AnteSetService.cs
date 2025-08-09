@@ -15,14 +15,14 @@ internal class AnteSetService : IAnteSetService
 
     public Task<int> GetAsync(GameRequest request, Participant button)
     {
-        if (request.Match.AntePreferences.AnteType == AnteTypes.Fixed)
-            return Task.FromResult(request.Match.AntePreferences.Fixed);
+        if (request.AntePreferences.AnteType == AnteTypes.Fixed)
+            return Task.FromResult(request.AntePreferences.FixedAnteAmount);
 
         var antePreferences = GetAntePreferences(request);
 
         int anteAmount = button.Automaton switch
         {
-            true => _randomService.GetAmount(antePreferences.Min, antePreferences.Max),
+            true => _randomService.GetAmount(antePreferences.MinAnteAmount, antePreferences.MaxAnteAmount),
             false => GetAnteFromUser(antePreferences)
         };
 
@@ -33,16 +33,16 @@ internal class AnteSetService : IAnteSetService
     {
         var minPlayerStack = request.Participants.Min(p => p.Stack);
 
-        var antePreferences = request.Match.AntePreferences;
+        var antePreferences = request.AntePreferences;
 
         // all players have enough for max ante
-        if (minPlayerStack >= antePreferences.Max)
+        if (minPlayerStack >= antePreferences.MaxAnteAmount)
             return antePreferences;
 
         var effectivePreferences = antePreferences with
         {
-            Min = (minPlayerStack < antePreferences.Min) ? minPlayerStack : antePreferences.Min,
-            Max = minPlayerStack
+            MinAnteAmount = (minPlayerStack < antePreferences.MinAnteAmount) ? minPlayerStack : antePreferences.MinAnteAmount,
+            MaxAnteAmount = minPlayerStack
         };
 
         return effectivePreferences;
@@ -54,9 +54,9 @@ internal class AnteSetService : IAnteSetService
         _userInterfaceService
             .PromptForMoney(
                 "Specify ante amount",
-                antePrefs.Min,
-                antePrefs.Max,
-                _randomService.GetAmount(antePrefs.Min, antePrefs.Max),
+                antePrefs.MinAnteAmount,
+                antePrefs.MaxAnteAmount,
+                _randomService.GetAmount(antePrefs.MinAnteAmount, antePrefs.MaxAnteAmount),
                 input =>
                 {
                     anteAmount = input;

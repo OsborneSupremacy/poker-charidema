@@ -123,9 +123,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         AntePreferences antePreferences = new()
         {
             AnteType = AnteTypes.Empty,
-            Fixed = 0,
-            Min = 0,
-            Max = 0
+            FixedAnteAmount = 0,
+            MinAnteAmount = 0,
+            MaxAnteAmount = 0
         };
 
         _c.PromptForOption(
@@ -155,9 +155,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
 
                     return new AntePreferences
                     {
-                        Min = min,
-                        Max = max,
-                        Fixed = 0,
+                        MinAnteAmount = min,
+                        MaxAnteAmount = max,
+                        FixedAnteAmount = 0,
                         AnteType = AnteTypes.DealersChoice
                     };
                 }
@@ -171,9 +171,9 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                 });
                 return new AntePreferences
                 {
-                    Fixed = anteAmount,
-                    Min = 0,
-                    Max = 0,
+                    FixedAnteAmount = anteAmount,
+                    MinAnteAmount = 0,
+                    MaxAnteAmount = 0,
                     AnteType = AnteTypes.Fixed
                 };
             })

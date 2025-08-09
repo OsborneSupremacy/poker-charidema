@@ -2,7 +2,12 @@
 
 public record GameRequest
 {
-    public required Match Match { get; init; }
+    /// <summary>
+    /// Count of games played up to this point, not including the game that will be played with this request.
+    /// </summary>
+    public required int GameCount { get; init; }
+
+    public required AntePreferences AntePreferences { get; init; }
 
     public required IReadOnlyList<Participant> Participants { get; init; }
 

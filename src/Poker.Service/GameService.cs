@@ -102,7 +102,7 @@ internal class GameService : IGameService
 
         Game game = new()
         {
-            GameNumber = request.Match.GameHistory.Count + 1,
+            GameNumber = request.GameCount + 1,
             Button = gameButton,
             Variant = request.Variant,
             Participants = gamePlayers,

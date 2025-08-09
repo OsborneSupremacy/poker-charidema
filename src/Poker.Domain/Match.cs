@@ -21,11 +21,11 @@ public record Match
 
 public record AntePreferences
 {
-    public required int Min { get; init; }
+    public required int MinAnteAmount { get; init; }
 
-    public required int Max { get; init; }
+    public required int MaxAnteAmount { get; init; }
 
-    public required int Fixed { get; init; }
+    public required int FixedAnteAmount { get; init; }
 
     public required AnteTypes AnteType { get; init; }
 }

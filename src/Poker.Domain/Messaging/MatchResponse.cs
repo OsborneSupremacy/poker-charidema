@@ -25,9 +25,9 @@ public static class MatchResponses
             GameHistory = [],
             AntePreferences = new()
             {
-                Min = 0,
-                Max = 0,
-                Fixed = 0,
+                MinAnteAmount = 0,
+                MaxAnteAmount = 0,
+                FixedAnteAmount = 0,
                 AnteType = AnteTypes.Empty
             },
             StartingStack = 0,

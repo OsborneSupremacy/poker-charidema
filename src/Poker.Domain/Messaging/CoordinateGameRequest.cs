@@ -2,7 +2,9 @@
 
 public record CoordinateGameRequest
 {
-    public required Match Match { get; init; }
+    public required AntePreferences AntePreferences { get; init; }
+
+    public required int TotalMoneyInPlay { get; init; }
 
     public required IReadOnlyList<Player> Players { get; init; }
 
