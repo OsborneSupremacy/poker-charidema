@@ -71,7 +71,7 @@ internal class GameCoordinator : IGameCoordinator
         var deck = await _dealerService.ReshuffleAsync(
             new ReshuffleRequest
             {
-                Deck = gameResponse.Game.Deck,
+                Deck = request.Deck,
                 Participants = gameResponse.Participants
             }
         );
@@ -102,8 +102,8 @@ internal class GameCoordinator : IGameCoordinator
         var playersIn = players.ToList();
 
         var lastButtonId = gameHistory
-            .OrderByDescending(g => g.Game.GameNumber)
-            .Select(g => g.Button.Id)
+            .OrderByDescending(g => g.CompletedGame.GameNumber)
+            .Select(g => g.CompletedGame.Id)
             .FirstOrDefault();
 
         var lastButton = playersIn.Single(p => p.Id == lastButtonId);

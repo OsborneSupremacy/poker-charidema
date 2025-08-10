@@ -33,7 +33,7 @@ internal class RoundRobinMoveService : IPhaseService
 
         var playerInTurn = request.StartingParticipant;
 
-        while (playersOut.Count < request.Game.Participants.Count)
+        while (playersOut.Count < request.Participants.Count)
         {
             MoveRequest moveRequest = new()
             {
@@ -49,7 +49,7 @@ internal class RoundRobinMoveService : IPhaseService
             potOut = moveResponse.Pot;
             playersOut.Add(moveResponse.ParticipantInTurn);
 
-            playerInTurn = request.Game.Participants.NextParticipant(playerInTurn);
+            playerInTurn = request.Participants.NextParticipant(playerInTurn);
         }
 
         return new PhaseResponse

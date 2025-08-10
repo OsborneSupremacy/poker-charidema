@@ -2,7 +2,17 @@
 
 public record CoordinatePhaseRequest
 {
-    public required Game Game { get; init; }
+    public required IReadOnlyList<Participant> Participants { get; init; }
+
+    public required int Ante { get; init; }
+
+    public required Variant Variant { get; init; }
+
+    public required Participant Button { get; init; }
+
+    public required int GameNumber { get; init; }
+
+    public required int Pot { get; init; }
 
     public required Phase Phase { get; init; }
 

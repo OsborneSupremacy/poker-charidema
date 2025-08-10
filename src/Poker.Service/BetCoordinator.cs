@@ -32,7 +32,6 @@ internal class BetCoordinator : IPhaseService
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");
 
         var participantsOut = request
-            .Game
             .Participants
             .ToDictionary(p => p.Id, p => p);
 
@@ -94,7 +93,7 @@ internal class BetCoordinator : IPhaseService
 
     private async Task<Participant> GetCurrentBettorAsync(PhaseRequest request)
     {
-        var anyFaceUpCards = request.Game.Participants
+        var anyFaceUpCards = request.Participants
             .NotFolded()
             .SelectMany(p => p.CardsInPlay)
             .FaceUp()
@@ -107,7 +106,7 @@ internal class BetCoordinator : IPhaseService
             new EvaluateLeadParticipantRequest
             {
                 CommunityCards = request.CommunityCards,
-                Participants = request.Game.Participants
+                Participants = request.Participants
             }
         );
 
@@ -131,7 +130,7 @@ internal class BetCoordinator : IPhaseService
     /// <returns></returns>
     /// <exception cref="InvalidOperationException">If all players have folded, this method should not have been invoked.</exception>
     private static Participant GetFirstEligibleBettor(PhaseRequest request) =>
-        GetNextEligibleBettor(request.Game.Participants, request.StartingParticipant, false);
+        GetNextEligibleBettor(request.Participants, request.StartingParticipant, false);
 
     private static Participant GetNextEligibleBettor(
         IReadOnlyList<Participant> participants,

@@ -26,65 +26,54 @@ internal class PhaseCoordinator : IPhaseCoordinator
         CoordinatePhaseRequest request
         )
     {
-        var startingPlayer = request.Game
+        var startingPlayer = request
             .Participants.ToList()
             .NextParticipant
             (
-                request.Game.Button
+                request.Button
             );
 
         var phaseResponse = await _phaseService
             .ExecuteAsync(new PhaseRequest
             {
-                Game = request.Game,
                 Phase = request.Phase,
                 Deck = request.Deck,
                 CommunityCards = [],
                 StartingParticipant = startingPlayer,
-                Pot = request.Game.Pot,
-                GameOver = request.GameOver
+                Pot = request.Pot,
+                GameOver = request.GameOver,
+                Participants = request.Participants,
+                Ante = request.Ante
             });
-
-        var gameOut = request.Game with
-        {
-            Deck = phaseResponse.Deck,
-            CommunityCards = phaseResponse.CommunityCards,
-            Participants = phaseResponse.Participants,
-            Pot = phaseResponse.Pot
-        };
 
         if (phaseResponse.GameOver)
             return new CoordinatePhaseResponse
             {
-                PhaseResponse = phaseResponse,
-                GameResponse = new GameResponse
-                {
-                    Game = gameOut,
-                    Participants = phaseResponse.Participants,
-                    Variant = gameOut.Variant,
-                    Button = gameOut.Button
-                }
+                Deck = phaseResponse.Deck,
+                CommunityCards = phaseResponse.CommunityCards,
+                Participants = phaseResponse.Participants,
+                Winners = phaseResponse.Winners,
+                GameOver = phaseResponse.GameOver,
+                Pot = phaseResponse.Pot
             };
 
         _userInterfaceService
             .WriteLine()
-            .WriteLine($"Pot: {gameOut.Pot:C0}");
+            .WriteLine($"Pot: {phaseResponse.Pot:C0}");
 
         RenderPlayerCards(
             phaseResponse.Participants.HumanParticipant(),
-            request.Game.Variant.GetRemainingCardCount(request.Phase.Number)
+            request.Variant.GetRemainingCardCount(request.Phase.Number)
         );
 
         return new CoordinatePhaseResponse
         {
-            PhaseResponse = phaseResponse,
-            GameResponse = new GameResponse
-            {
-                Game = gameOut,
-                Participants = phaseResponse.Participants,
-                Variant = gameOut.Variant,
-                Button = gameOut.Button
-            }
+            Deck = phaseResponse.Deck,
+            CommunityCards = phaseResponse.CommunityCards,
+            Participants = phaseResponse.Participants,
+            Winners = phaseResponse.Winners,
+            GameOver = phaseResponse.GameOver,
+            Pot = phaseResponse.Pot
         };
     }
 

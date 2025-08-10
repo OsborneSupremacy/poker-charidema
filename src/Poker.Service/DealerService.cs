@@ -35,7 +35,7 @@ internal class DealerService : IDealerService, IPhaseService
         var dealResponse = _dealer(new DealRequest
         {
             Deck = request.Deck,
-            Participants = request.Game.Participants,
+            Participants = request.Participants,
             CommunityCards = request.CommunityCards,
             StartingParticipant = request.StartingParticipant,
             CardsToDealCount = request.Phase.CardsToDealCount,

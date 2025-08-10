@@ -2,9 +2,17 @@
 
 public record CoordinatePhaseResponse
 {
-    public required PhaseResponse PhaseResponse { get; init; }
+    public required Deck Deck { get; init; }
 
-    public required GameResponse GameResponse { get; init; }
+    public required IReadOnlyList<CardInPlay> CommunityCards { get; init; }
+
+    public required IReadOnlyList<Participant> Participants { get; init; }
+
+    public required IReadOnlyList<Participant> Winners { get; init; }
+
+    public required bool GameOver { get; init; }
+
+    public required int Pot { get; init; }
 }
 
 

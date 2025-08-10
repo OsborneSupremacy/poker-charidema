@@ -34,7 +34,7 @@ internal class UserMoveService : IUserMoveService
     }
 
     private Task<MoveResponse> AntePromptAsync(MoveRequest request) =>
-        _userInterfaceService.PromptForBool($"Ante {request.PhaseRequest.Game.Ante:C0}?") switch
+        _userInterfaceService.PromptForBool($"Ante {request.PhaseRequest.Ante:C0}?") switch
         {
             true => AnteAsync(request),
             false => SitOutAsync(request)
@@ -42,7 +42,7 @@ internal class UserMoveService : IUserMoveService
 
     private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var ante = request.PhaseRequest.Game.Ante;
+        var ante = request.PhaseRequest.Ante;
 
         _userInterfaceService
             .WriteLines($"{request.ParticipantInTurn.Name} antes.");
@@ -55,7 +55,7 @@ internal class UserMoveService : IUserMoveService
                     Stack = request.ParticipantInTurn.Stack - ante,
                     Stake = request.ParticipantInTurn.Stake + ante
                 },
-                Deck = request.PhaseRequest.Game.Deck,
+                Deck = request.PhaseRequest.Deck,
                 Pot = request.Pot + ante
             }
         );
@@ -73,7 +73,7 @@ internal class UserMoveService : IUserMoveService
                 {
                     Folded = true
                 },
-                Deck = request.PhaseRequest.Game.Deck,
+                Deck = request.PhaseRequest.Deck,
                 Pot = request.Pot
             }
         );

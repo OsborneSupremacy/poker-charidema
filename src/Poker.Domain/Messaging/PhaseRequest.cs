@@ -2,11 +2,13 @@
 
 public record PhaseRequest
 {
-    public required Game Game { get; init; }
+    public required IReadOnlyList<Participant> Participants { get; init; }
 
     public required Phase Phase { get; init; }
 
     public required Deck Deck { get; init; }
+
+    public required int Ante { get; init; }
 
     public required IReadOnlyList<CardInPlay> CommunityCards { get; init; }
 

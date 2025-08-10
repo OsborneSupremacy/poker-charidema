@@ -36,7 +36,7 @@ internal class WinnerEvaluationService : IPhaseService
             $"{request.Phase.Name}"
         );
 
-        return request.Game.Participants.NotFolded().Count() switch
+        return request.Participants.NotFolded().Count() switch
         {
             1 => ExecuteWinByDefaultAsync(request),
             _ => ExecuteContestedAsync(request)
@@ -45,14 +45,14 @@ internal class WinnerEvaluationService : IPhaseService
 
     private Task<PhaseResponse> ExecuteWinByDefaultAsync(PhaseRequest request)
     {
-        var winner = request.Game.Participants.NotFolded().Single();
+        var winner = request.Participants.NotFolded().Single();
 
         _userInterfaceService.WriteLine($"{winner.Name} wins by default.");
 
         var playersOut = _winningsDistributor(
             new()
             {
-                Participants = request.Game.Participants,
+                Participants = request.Participants,
                 Winners = [ winner ],
                 Pot = request.Pot
             }
@@ -74,7 +74,7 @@ internal class WinnerEvaluationService : IPhaseService
         var response = _winnerEvaluator(
             new()
             {
-                Participants = request.Game.Participants.NotFolded().ToList(),
+                Participants = request.Participants.NotFolded().ToList(),
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
             }
@@ -98,7 +98,7 @@ internal class WinnerEvaluationService : IPhaseService
         var playersOut = _winningsDistributor(
             new()
             {
-                Participants = request.Game.Participants,
+                Participants = request.Participants,
                 Winners = response.Winners,
                 Pot = request.Pot
             }

@@ -215,7 +215,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
     public Task<bool> GetPlayAgain(string variantName) =>
         Task.FromResult(_c.PromptForBool($"Would you like to play another game of {variantName}?"));
 
-    public Task<bool> GetPlayAgain(GameResponse lastGame) =>
+    public Task<bool> GetPlayAgain(CompletedGame lastGame) =>
         Task.FromResult(_c.PromptForBool($"Would you like to play another game of {lastGame.Variant.Name}?"));
 
     public Task<Variant> GetVariant(Player button)

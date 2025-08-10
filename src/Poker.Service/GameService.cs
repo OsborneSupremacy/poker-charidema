@@ -40,24 +40,16 @@ internal class GameService : IGameService
         var game = await CreateGameAsync(request);
         await WriteStartInfoAsync(game);
 
+        var participantsWorking = game.Participants.NotFolded().ToList();
+
         CoordinatePhaseResponse coordinatePhaseResponse = new()
         {
-            PhaseResponse = new()
-            {
-                CommunityCards = game.CommunityCards,
-                Deck = await _dealerService.ShuffleAsync(request.Deck),
-                GameOver = false,
-                Participants = game.Participants.NotFolded().ToList(),
-                Winners = [],
-                Pot = game.Pot
-            },
-            GameResponse = new()
-            {
-                Game = game,
-                Participants = game.Participants.ToList(),
-                Variant = game.Variant,
-                Button = game.Button
-            }
+            CommunityCards = game.CommunityCards,
+            Deck = await _dealerService.ShuffleAsync(request.Deck),
+            GameOver = false,
+            Participants = participantsWorking,
+            Winners = [],
+            Pot = game.Pot
         };
 
         var gameOver = false;
@@ -70,10 +62,15 @@ internal class GameService : IGameService
                 (
                     phase => new CoordinatePhaseRequest
                     {
-                        Game = coordinatePhaseResponse.GameResponse.Game,
-                        Deck = coordinatePhaseResponse.PhaseResponse.Deck,
+                        Deck = coordinatePhaseResponse.Deck,
                         Phase = phase,
-                        GameOver = gameOver
+                        GameOver = gameOver,
+                        GameNumber = game.GameNumber,
+                        Participants = coordinatePhaseResponse.Participants,
+                        Ante = game.Ante,
+                        Variant = request.Variant,
+                        Button = request.Button,
+                        Pot = game.Pot // why does phase coordinator need this?
                     }
                 )
         )
@@ -81,10 +78,24 @@ internal class GameService : IGameService
             coordinatePhaseResponse = await _phaseCoordinator
                 .ExecuteAsync(phaseCoordinatorRequest);
 
-            gameOver = coordinatePhaseResponse.PhaseResponse.GameOver;
+            gameOver = coordinatePhaseResponse.GameOver;
         }
 
-        return coordinatePhaseResponse.GameResponse;
+        return new GameResponse
+        {
+            CompletedGame = new CompletedGame
+            {
+                Id = game.Id,
+                GameNumber = game.GameNumber,
+                Variant = game.Variant,
+                Button = game.Button,
+                Participants = coordinatePhaseResponse.Participants,
+                Winners = coordinatePhaseResponse.Winners,
+                PrizeAmount = coordinatePhaseResponse.Pot,
+                PrizePerWinner =  coordinatePhaseResponse.Pot / coordinatePhaseResponse.Winners.Count
+            },
+            Participants = coordinatePhaseResponse.Participants
+        };
     }
 
     private async Task<Game> CreateGameAsync(GameRequest request)
@@ -102,6 +113,7 @@ internal class GameService : IGameService
 
         Game game = new()
         {
+            Id = Guid.NewGuid(),
             GameNumber = request.GameCount + 1,
             Button = gameButton,
             Variant = request.Variant,

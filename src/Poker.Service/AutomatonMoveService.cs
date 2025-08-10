@@ -26,7 +26,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
             new MoveResponse
             {
                 ParticipantInTurn = request.ParticipantInTurn,
-                Deck = request.PhaseRequest.Game.Deck,
+                Deck = request.PhaseRequest.Deck,
                 Pot = potOut
             }
         );
@@ -34,7 +34,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
 
     private Task<MoveResponse> AnteAsync(MoveRequest request)
     {
-        var ante = request.PhaseRequest.Game.Ante;
+        var ante = request.PhaseRequest.Ante;
 
         _userInterfaceService
             .WriteLines($"{request.ParticipantInTurn.Name} antes.");
@@ -46,7 +46,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
                 {
                     Stack = request.ParticipantInTurn.Stack - ante
                 },
-                Deck = request.PhaseRequest.Game.Deck,
+                Deck = request.PhaseRequest.Deck,
                 Pot = request.Pot + ante
             }
         );
@@ -55,7 +55,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
     private static Task<MoveResponse> DealAsync(MoveRequest request)
     {
         var playerCardsOut = request.ParticipantInTurn.CardsInPlay.ToList();
-        var deckCardsOut = request.PhaseRequest.Game.Deck.Cards
+        var deckCardsOut = request.PhaseRequest.Deck.Cards
             .ToQueue();
 
         for (int x = 0; x < request.PhaseRequest.Phase.CardsToDealCount; x++)
@@ -69,7 +69,7 @@ internal class AutomatonMoveService : IAutomatonMoveService
             new MoveResponse
             {
                 ParticipantInTurn = request.ParticipantInTurn with { CardsInPlay = playerCardsOut },
-                Deck = request.PhaseRequest.Game.Deck with { Cards = deckCardsOut.ToList() },
+                Deck = request.PhaseRequest.Deck with { Cards = deckCardsOut.ToList() },
                 Pot = request.Pot
             }
         );

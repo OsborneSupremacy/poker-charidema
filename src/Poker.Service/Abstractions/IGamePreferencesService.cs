@@ -8,7 +8,7 @@ public interface IGamePreferencesService
 
     Task<Deck> GetDeck(Player button);
 
-    Task<bool> GetPlayAgain(GameResponse game);
+    Task<bool> GetPlayAgain(CompletedGame game);
 
     Task<bool> GetPlayAgain(string lastVariantName);
 }
