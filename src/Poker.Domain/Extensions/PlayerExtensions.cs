@@ -22,11 +22,24 @@ public static class PlayerExtensions
     /// <param name="players"></param>
     /// <returns></returns>
     public static IEnumerable<Player> InMatch(this IEnumerable<Player> players) =>
-        players.Where(x => !x.Busted());
+        players.Where(x => !x.Busted);
 
     public static IReadOnlyList<Player> Richest(this IReadOnlyList<Player> players) =>
         players.Where(x => x.Stack == players.Max(p => p.Stack)).ToList();
 
     public static IReadOnlyList<Player> NotBusted(this IReadOnlyList<Player> players) =>
-        players.Where(x => !x.Busted()).ToList();
+        players.Where(x => !x.Busted).ToList();
+
+    public static Participant ToParticipant(this Player player) => new Participant
+    {
+        Id = player.Id,
+        Name = player.Name,
+        BeginningStack = player.BeginningStack,
+        Stack = player.Stack,
+        Automaton = player.Automaton,
+        Busted = player.Busted,
+        Stake = 0,
+        Folded = false,
+        CardsInPlay = []
+    };
 }
