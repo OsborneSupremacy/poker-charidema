@@ -8,4 +8,5 @@ global using Poker.Domain.Messaging;
 global using Poker.Domain.Messaging.Extensions;
 global using Poker.Presentation.Interface;
 global using Poker.Service.Abstractions;
+global using Poker.Service.Models;
 global using Poker.Utility;
