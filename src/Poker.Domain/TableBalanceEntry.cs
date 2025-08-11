@@ -1,10 +1,10 @@
 ﻿namespace Poker.Domain;
 
-public record LedgerEntry
+public record TableBalanceEntry
 {
     public required Guid Id { get; init; }
 
-    public required DateTimeOffset Timestamp { get; init; }
+    public required DateTime Timestamp { get; init; }
 
     public required Guid PlayerId { get; init; }
 
@@ -13,9 +13,8 @@ public record LedgerEntry
     public int Debit { get; init; }
 }
 
-public enum LedgerEntryType
+public enum TableBalanceEntryType
 {
-    InitialBalance,
     Ante,
     Bet,
     PayOut

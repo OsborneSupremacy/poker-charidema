@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public record LedgerUpdateRequest
+public record TableBalanceUpdateRequest
 {
     public required Guid PlayerId { get; init; }
 
@@ -8,5 +8,5 @@ public record LedgerUpdateRequest
 
     public required int Debit { get; init; }
 
-    public required LedgerEntryType Type { get; init; }
+    public required TableBalanceEntryType Type { get; init; }
 }
