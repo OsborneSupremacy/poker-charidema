@@ -11,6 +11,7 @@ await Host.CreateDefaultBuilder(args)
         services.AddSingleton<IUserInterfaceService, FluentConsoleService>();
         services.AddSingleton<IGamePreferencesService, PreferencesService>();
         services.AddSingleton<IMatchPreferencesService, PreferencesService>();
+        services.AddSingleton<ILedgerService, LedgerService>()
         services.RegisterStandard();
         services.AddHostedService<ConsoleHostedService>();
     })

@@ -20,28 +20,20 @@ public static class DefaultWinningsDistributor
             }
 
         var i = 0;
-
         var winnerIds = request.Winners.Select(w => w.Id).ToList();
 
-        var playersOut = request.Participants
-            .Select(p => p with
-            {
-                Stack = winnerIds.Contains(p.Id)
-                    ? p.Stack + winnerPayouts[i++]
-                    : p.Stack
-            })
-            .ToList();
+        List<Participant> participantsOut = [];
 
-        playersOut = playersOut
-            .Select(p => p with
-            {
-                Busted = p.Stack <= 0
-            })
-            .ToList();
+        foreach(var participant in request.Participants)
+        {
+            if(winnerIds.Contains(participant.Id))
+                participant.Pay(winnerPayouts[i++]);
+            participantsOut.Add(participant);
+        }
 
         return new DistributeWinningsResponse
         {
-            Participants = playersOut
+            Participants = participantsOut
         };
     };
 }

@@ -7,14 +7,17 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private readonly IRandomService _randomService;
 
+    private readonly ILedgerService _ledgerService;
+
     public BettingIntervalService(
         IBettingIntervalOptionsService bettingIntervalOptionsService,
-        IRandomService randomService
-        )
+        IRandomService randomService,
+        ILedgerService ledgerService)
     {
         _bettingIntervalOptionsService = bettingIntervalOptionsService ??
                                          throw new ArgumentNullException(nameof(bettingIntervalOptionsService));
         _randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
+        _ledgerService = ledgerService ?? throw new ArgumentNullException(nameof(ledgerService));
     }
 
     public async Task<BettingIntervalResponse> ExecuteAsync(BettingIntervalRequest request)
@@ -48,12 +51,14 @@ internal class BettingIntervalService : IBettingIntervalService
         Func<int> getAdditionalAmount
         );
 
-    private static readonly BettingIntervalDelegate Bet = (request, getAdditionalAmount) =>
+    private readonly BettingIntervalDelegate _bet = (request, getAdditionalAmount) =>
     {
         var betAmount = getAdditionalAmount();
 
         var contributions = request.ActiveParticipants.ToDictionary(p => p.Id, _ => 0);
         contributions[request.ParticipantInTurn.Id] = betAmount;
+
+        _ledgerService.Bet(contributions);
 
         return new BettingIntervalResponse
         {
@@ -176,7 +181,7 @@ internal class BettingIntervalService : IBettingIntervalService
     private static readonly Dictionary<BettingIntervalActionType, BettingIntervalDelegate?> BettingIntervalDelegates =
         new()
         {
-            { BettingIntervalActionType.Bet, Bet },
+            { BettingIntervalActionType.Bet, _bet },
             { BettingIntervalActionType.Check, Check },
             { BettingIntervalActionType.Call, Call },
             { BettingIntervalActionType.Raise, Raise },

@@ -2,7 +2,7 @@
 
 namespace Poker.Service;
 
-internal class LedgerService : ILedgerService
+public class LedgerService : ILedgerService
 {
     /// <summary>
     /// Ledger entries keyed by player ID.
@@ -38,6 +38,12 @@ internal class LedgerService : ILedgerService
         }
     }
 
+    public int GetPlayerGetBeginningStack(Guid playerId)
+    {
+        var playerEntries = _ledgerEntries.GetValueOrDefault(playerId, []);
+        return playerEntries.Single(p => p.LedgerEntryType == LedgerEntryType.InitialBalance).Credit;
+    }
+
     public int GetPlayerStack(Guid playerId)
     {
         var playerEntries = _ledgerEntries.GetValueOrDefault(playerId, []);
@@ -50,6 +56,12 @@ internal class LedgerService : ILedgerService
                 gameId,
                 participantIds.ToDictionary<Guid, Guid, List<TableBalanceEntry>>(playerId => playerId, _ => [])
             );
+
+    public bool IsPlayerBusted(Guid requestId)
+    {
+        var playerStack = GetPlayerStack(requestId);
+        return playerStack <= 0;
+    }
 
     public int GetGamePot(Guid gameId)
     {
