@@ -8,5 +8,5 @@ public record LedgerUpdateRequest
 
     public required int Debit { get; init; }
 
-    public required LedgerEntryType Type { get; init; }
+    public required LedgerEntryType LedgerEntryType { get; init; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain;
 
-public class TableBalance
+public record TableBalance
 {
     public required IReadOnlyList<TableBalanceEntry> Tables { get; init; }
 }

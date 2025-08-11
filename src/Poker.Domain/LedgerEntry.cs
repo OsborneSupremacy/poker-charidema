@@ -11,6 +11,8 @@ public record LedgerEntry
     public int Credit { get; init; }
 
     public int Debit { get; init; }
+
+    public LedgerEntryType LedgerEntryType { get; init; }
 }
 
 public enum LedgerEntryType

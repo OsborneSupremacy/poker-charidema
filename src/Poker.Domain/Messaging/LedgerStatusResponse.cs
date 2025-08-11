@@ -1,4 +1,4 @@
-﻿namespace Poker.Domain;
+﻿namespace Poker.Domain.Messaging;
 
 public record LedgerStatusResponse
 {
