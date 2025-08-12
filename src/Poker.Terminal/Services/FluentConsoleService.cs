@@ -157,7 +157,7 @@ public class FluentConsoleService : IUserInterfaceService
     {
         Action writeDelimiter = level switch
         {
-            HeadingLevel.One => () => AnsiConsole.MarkupLine($"[bold]{'*'.Repeat(100)}[/]"),
+            HeadingLevel.One => () => AnsiConsole.MarkupLine($"[bold green]{'*'.Repeat(100)}[/]"),
             HeadingLevel.Two => () => AnsiConsole.MarkupLine($"[bold]{'-'.Repeat(90)}[/]"),
             HeadingLevel.Three => () => AnsiConsole.MarkupLine($"[bold]{'.'.Repeat(80)}[/]"),
             HeadingLevel.Four => () => AnsiConsole.MarkupLine($"[bold]{'~'.Repeat(70)}[/]"),
@@ -169,10 +169,7 @@ public class FluentConsoleService : IUserInterfaceService
         AnsiConsole.WriteLine();
         writeDelimiter();
 
-        if (level == HeadingLevel.One)
-            AnsiConsole.Write(new FigletText(input).LeftJustified().Color(Color.Green));
-        else
-            AnsiConsole.MarkupLine($"[bold]{input}[/]");
+        AnsiConsole.MarkupLine($"[bold]{input}[/]");
 
         writeDelimiter();
 

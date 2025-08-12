@@ -19,7 +19,7 @@ public static class MatchResponses
         Match = new()
         {
             FixedNumberOfGames = 0,
-            FixedVariant = Implementations.Variants.EmptyVariant.GetVariant(),
+            FixedVariant = EmptyVariant.GetVariant(),
             FixedDeck = Decks.Empty,
             Players = [],
             GameHistory = [],

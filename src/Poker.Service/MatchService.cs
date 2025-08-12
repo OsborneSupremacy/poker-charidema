@@ -56,7 +56,7 @@ internal class MatchService : IMatchService
                 }
             );
 
-            gameHistory.Add(coordinatedGameResponse.GameResponse);
+            gameHistory.Add(coordinatedGameResponse.GameResponse.CompletedGame);
             playersWorking = UpdatePlayers(coordinatedGameResponse.GameResponse.Participants, playersWorking);
 
             matchWorking = matchWorking with
@@ -93,7 +93,7 @@ internal class MatchService : IMatchService
             if(request.Match.Players.NotBusted().Count <= 1)
                 return false;
             return _gamePreferencesService
-                .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.CompletedGame.Variant.Name ?? request.Match.FixedVariant.Name)
+                .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.Variant.Name ?? request.Match.FixedVariant.Name)
                 .GetAwaiter()
                 .GetResult();
         });

@@ -67,8 +67,7 @@ internal class BetCoordinator : IPhaseService
         };
     }
 
-    private async Task<(BettingIntervalResponse bettingIntervalResponse, Participant nextBettor)>
-        AdvanceBettingAsync(BettingIntervalRequest request)
+    private async Task<(BettingIntervalResponse bettingIntervalResponse, Participant nextBettor)> AdvanceBettingAsync(BettingIntervalRequest request)
     {
         BettingIntervalRequest betRequest = new()
         {

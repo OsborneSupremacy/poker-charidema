@@ -10,7 +10,7 @@ public record Match
 
     public required IReadOnlyList<Player> Players { get; init; }
 
-    public required IReadOnlyList<GameResponse> GameHistory { get; init; }
+    public required IReadOnlyList<CompletedGame> GameHistory { get; init; }
 
     public required AntePreferences AntePreferences { get; init; }
 

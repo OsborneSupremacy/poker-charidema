@@ -66,7 +66,7 @@ internal class GameCoordinator : IGameCoordinator
             : $"Total money in play does not match the match total: {request.TotalMoneyInPlay:C0}. Difference: {totalMoneyInPlay - request.TotalMoneyInPlay:C0}. Something went wrong.");
 #endif
 
-        gamesOut.Add(gameResponse);
+        gamesOut.Add(gameResponse.CompletedGame);
 
         var deck = await _dealerService.ReshuffleAsync(
             new ReshuffleRequest
@@ -91,7 +91,7 @@ internal class GameCoordinator : IGameCoordinator
     /// </summary>
     private static Participant DetermineButton(
         Guid initialButtonId,
-        List<GameResponse> gameHistory,
+        List<CompletedGame> gameHistory,
         IReadOnlyList<Player> players,
         IReadOnlyList<Participant> participants
         )
@@ -102,8 +102,8 @@ internal class GameCoordinator : IGameCoordinator
         var playersIn = players.ToList();
 
         var lastButtonId = gameHistory
-            .OrderByDescending(g => g.CompletedGame.GameNumber)
-            .Select(g => g.CompletedGame.Id)
+            .OrderByDescending(g => g.GameNumber)
+            .Select(g => g.Id)
             .FirstOrDefault();
 
         var lastButton = playersIn.Single(p => p.Id == lastButtonId);

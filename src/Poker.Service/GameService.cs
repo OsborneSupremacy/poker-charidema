@@ -70,7 +70,7 @@ internal class GameService : IGameService
                         Ante = game.Ante,
                         Variant = request.Variant,
                         Button = request.Button,
-                        Pot = game.Pot // why does phase coordinator need this?
+                        Pot = coordinatePhaseResponse.Pot
                     }
                 )
         )

@@ -17,5 +17,5 @@ public record CoordinateGameRequest
     /// <summary>
     /// The history of games played in this match, not including the current game.
     /// </summary>
-    public required IList<GameResponse> GameHistory { get; init; }
+    public required IList<CompletedGame> GameHistory { get; init; }
 }
