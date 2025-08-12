@@ -19,7 +19,7 @@ public static class ParticipantExtensions
     }
 
     public static Participant HumanParticipant(this IEnumerable<Participant> participants) =>
-        participants.Single(x => !x.Automaton);
+        participants.SingleOrDefault(x => !x.Automaton) ?? Participants.Empty;
 
     public static IEnumerable<Participant> NotFolded(this IEnumerable<Participant> participants) =>
         participants.Where(x => !x.Folded);

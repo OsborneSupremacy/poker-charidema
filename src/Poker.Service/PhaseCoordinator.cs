@@ -61,10 +61,13 @@ internal class PhaseCoordinator : IPhaseCoordinator
             .WriteLine()
             .WriteLine($"Pot: {phaseResponse.Pot:C0}");
 
-        RenderPlayerCards(
-            phaseResponse.Participants.HumanParticipant(),
-            request.Variant.GetRemainingCardCount(request.Phase.Number)
-        );
+        var humanParticipant = phaseResponse.Participants.HumanParticipant();
+
+        if(humanParticipant != Participants.Empty)
+            RenderPlayerCards(
+                humanParticipant,
+                request.Variant.GetRemainingCardCount(request.Phase.Number)
+            );
 
         return new CoordinatePhaseResponse
         {

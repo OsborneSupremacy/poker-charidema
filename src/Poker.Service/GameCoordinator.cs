@@ -103,14 +103,14 @@ internal class GameCoordinator : IGameCoordinator
 
         var lastButtonId = gameHistory
             .OrderByDescending(g => g.GameNumber)
-            .Select(g => g.Id)
-            .FirstOrDefault();
+            .First()
+            .Button.Id;
 
         var lastButton = playersIn.Single(p => p.Id == lastButtonId);
-        var nextButton = playersIn.ToList().NextPlayer(lastButton);
+        var nextButton = playersIn.NextPlayer(lastButton);
 
-        while (!participants.Select(p => p.Id).Contains(nextButton.Id))
-            nextButton = playersIn.NextPlayer(lastButton);
+        while (nextButton.Busted)
+            nextButton = playersIn.NextPlayer(nextButton);
 
         return participants.Single(p => p.Id == nextButton.Id);
     }
