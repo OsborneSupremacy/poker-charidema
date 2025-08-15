@@ -44,7 +44,8 @@ internal class AutomatonMoveService : IAutomatonMoveService
             {
                 ParticipantInTurn = request.ParticipantInTurn with
                 {
-                    Stack = request.ParticipantInTurn.Stack - ante
+                    Stack = request.ParticipantInTurn.Stack - ante,
+                    Stake = request.ParticipantInTurn.Stake + ante,
                 },
                 Deck = request.PhaseRequest.Deck,
                 Pot = request.Pot + ante

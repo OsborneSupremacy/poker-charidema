@@ -30,8 +30,22 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         });
     }
 
-    private static int GetMaximumBet(BettingIntervalOptionsRequest request) =>
-        Math.Min(MinimumPlayerStack(request), PlayerInTurnStack(request));
+    private static int GetMaximumBet(BettingIntervalOptionsRequest request)
+    {
+        var maxBet = Math.Min(MinimumPlayerStack(request), PlayerInTurnStack(request));
+#if DEBUG
+        Console.WriteLine("  - Determining maximum bet.");
+        Console.WriteLine("    - Player stacks (* = player in turn):");
+        foreach (var player in request.ActiveParticipants)
+        {
+            Console.WriteLine(request.ParticipantInTurnId == player.Id
+                ? $"      - * {player.Name}: {player.Stack:C0}"
+                : $"      - {player.Name}: {player.Stack:C0}");
+        }
+        Console.WriteLine();
+#endif
+        return maxBet;
+    }
 
     private static readonly Predicate<BettingIntervalOptionsRequest> FoldIsAnOption = request =>
         ThereIsABet!(request) && PlayerInTurnNeedsToContributeMoreToStayIn!(request);

@@ -146,7 +146,7 @@ internal class MatchService : IMatchService
         await WriteMatchStartInfoAsync(request.Match);
 
 #if DEBUG
-        Console.WriteLine($"Total money in play: {request.Match.TotalMoneyInPlay}");
+        Console.WriteLine($"Total money in play: {request.Match.TotalMoneyInPlay:C0}");
         Console.WriteLine("Total money in play should never change. If it changes, something went wrong.");
 #endif
 

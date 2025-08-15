@@ -39,12 +39,19 @@ internal class BettingIntervalService : IBettingIntervalService
 
         var maxBet = optionsResponse.MaximumBet;
 
+#if DEBUG
+        Console.WriteLine($"  - Current Bet {request.CurrentBet.Amount:C0}.");
+        Console.WriteLine($"  - Maximum Bet {maxBet:C0}.");
+#endif
         return optionDelegate(
             request,
-            () => _randomService.GetAmount(request.CurrentBet.Amount + 1, maxBet)
+            () => _randomService.GetAmount(1, maxBet)
         );
     }
 
+    /// <summary>
+    /// <param name="getAdditionalAmount">Gets the amount the player is adding to the current bet.</param>
+    /// </summary>
     private delegate BettingIntervalResponse BettingIntervalDelegate(
         BettingIntervalRequest request,
         Func<int> getAdditionalAmount
@@ -120,6 +127,10 @@ internal class BettingIntervalService : IBettingIntervalService
         var currentContribution = contributions[request.ParticipantInTurn.Id];
 
         var additionalAmount = request.CurrentBet.Amount - currentContribution;
+
+#if DEBUG
+        Console.WriteLine($"  - {request.ParticipantInTurn.Name} needs to contribute {additionalAmount:C0} to call.");
+#endif
 
         var allPlayersCalled = request.ActiveParticipants.NotFolded()
             .All(p => contributions[p.Id] >= request.CurrentBet.Amount);

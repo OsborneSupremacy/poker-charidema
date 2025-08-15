@@ -45,7 +45,8 @@ internal class BetCoordinator : IPhaseService
                     CurrentBet = betResponse.CurrentBet,
                     Pot = betResponse.Pot,
                     ParticipantInTurn = currentBettor,
-                    ActiveParticipants = participantsOut.Values.ToList()
+                    ActiveParticipants = participantsOut.Values.ToList(),
+                    EmitObservation = input => _userInterfaceService.WriteLine(input)
                 }
             );
             betResponse = bettingIntervalResponse;
@@ -74,7 +75,8 @@ internal class BetCoordinator : IPhaseService
             CurrentBet = request.CurrentBet,
             Pot = request.Pot,
             ParticipantInTurn = request.ParticipantInTurn,
-            ActiveParticipants = request.ActiveParticipants
+            ActiveParticipants = request.ActiveParticipants,
+            EmitObservation = request.EmitObservation
         };
 
         var bettingIntervalResponse = await _bettingIntervalService.ExecuteAsync(betRequest);

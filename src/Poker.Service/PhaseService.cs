@@ -32,6 +32,7 @@ internal class PhaseService : IPhaseService
             PhaseType.Deal => _dealerService,
             PhaseType.Evaluation => _winnerEvaluationService,
             PhaseType.BettingInterval => _betCoordinator,
+            // move service covers phases like ante and draw
             _ => _roundRobinMoveService
         };
 
