@@ -1,4 +1,5 @@
-﻿namespace Poker.Domain.Messaging;
+﻿
+namespace Poker.Domain.Messaging;
 
 public record DealRequest
 {
@@ -13,4 +14,6 @@ public record DealRequest
     public required int CardsToDealCount { get; init; }
 
     public required CardOrientation CardOrientation { get; init; }
+
+    public required Action<CardDealtToParticipant> CardDealtToParticipantAction { get; init; }
 }

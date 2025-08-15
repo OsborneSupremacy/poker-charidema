@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using System.Text;
+
+namespace Poker.Service;
 
 /// <inheritdoc />
 internal class BettingIntervalService : IBettingIntervalService
@@ -55,9 +57,24 @@ internal class BettingIntervalService : IBettingIntervalService
         var contributions = request.ActiveParticipants.ToDictionary(p => p.Id, _ => 0);
         contributions[request.ParticipantInTurn.Id] = betAmount;
 
+        var newStack = request.ParticipantInTurn.Stack - betAmount;
+        var newStake = request.ParticipantInTurn.Stake + betAmount;
+        var newPot = request.Pot + betAmount;
+
+        StringBuilder d = new();
+        d.Append($"Bets {betAmount:C0}");
+
+#if DEBUG
+        d.AppendLine();
+        d.AppendLine($"  - New Stake: {newStake:C0}");
+        d.AppendLine($"  - New Stack: {newStack:C0}");
+        d.AppendLine($"  - New Pot: {newPot:C0}");
+        d.AppendLine();
+#endif
+
         return new BettingIntervalResponse
         {
-            Description = $"Bets {betAmount:C0}",
+            Description = d.ToString(),
             CurrentBet = new Bet
             {
                 Amount = betAmount,
@@ -66,11 +83,11 @@ internal class BettingIntervalService : IBettingIntervalService
                 PlayerContributions = contributions,
                 TerminalPlayerIds = []
             },
-            Pot = request.Pot + betAmount,
+            Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
             {
-                Stack = request.ParticipantInTurn.Stack - betAmount,
-                Stake = request.ParticipantInTurn.Stake + betAmount
+                Stack = newStack,
+                Stake = newStake
             },
             CloseBetting = false
         };
@@ -101,24 +118,40 @@ internal class BettingIntervalService : IBettingIntervalService
     {
         var contributions = request.CurrentBet.PlayerContributions.ToDictionary();
         var currentContribution = contributions[request.ParticipantInTurn.Id];
+
         var additionalAmount = request.CurrentBet.Amount - currentContribution;
 
         var allPlayersCalled = request.ActiveParticipants.NotFolded()
             .All(p => contributions[p.Id] >= request.CurrentBet.Amount);
 
+        var newStack = request.ParticipantInTurn.Stack - additionalAmount;
+        var newStake = request.ParticipantInTurn.Stake + additionalAmount;
+        var newPot = request.Pot + additionalAmount;
+
+        StringBuilder d = new();
+        d.Append($"Calls with {additionalAmount:C0}");
+
+#if DEBUG
+        d.AppendLine();
+        d.AppendLine($"  - New Stake: {newStake:C0}");
+        d.AppendLine($"  - New Stack: {newStack:C0}");
+        d.AppendLine($"  - New Pot: {newPot:C0}");
+        d.AppendLine();
+#endif
+
         return new BettingIntervalResponse
         {
-            Description = $"Calls with {additionalAmount:C0}",
+            Description = d.ToString(),
             CurrentBet = request.CurrentBet with
             {
                 PlayerContributions = contributions,
                 TerminalPlayerIds = request.CurrentBet.TerminalPlayerIds
             },
-            Pot = request.Pot + additionalAmount,
+            Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
             {
-                Stack = request.ParticipantInTurn.Stack - additionalAmount,
-                Stake = request.ParticipantInTurn.Stake + additionalAmount
+                Stack = newStack,
+                Stake = newStake
             },
             CloseBetting = allPlayersCalled
         };
@@ -135,9 +168,24 @@ internal class BettingIntervalService : IBettingIntervalService
         var playerAdditionalAmount = newBetAmount - currentContribution;
         contributions[request.ParticipantInTurn.Id] = newBetAmount;
 
+        var newStack = request.ParticipantInTurn.Stack - playerAdditionalAmount;
+        var newStake = request.ParticipantInTurn.Stake + playerAdditionalAmount;
+        var newPot = request.Pot + playerAdditionalAmount;
+
+        StringBuilder d = new();
+        d.Append($"Raises {raiseDelta:C0} to {newBetAmount:C0}");
+
+#if DEBUG
+        d.AppendLine();
+        d.AppendLine($"  - New Stake: {newStake:C0}");
+        d.AppendLine($"  - New Stack: {newStack:C0}");
+        d.AppendLine($"  - New Pot: {newPot:C0}");
+        d.AppendLine();
+#endif
+
         return new BettingIntervalResponse
         {
-            Description = $"Raises {raiseDelta:C0} to {newBetAmount:C0}",
+            Description = d.ToString(),
             CurrentBet = new Bet
             {
                 Amount = newBetAmount,
@@ -146,11 +194,11 @@ internal class BettingIntervalService : IBettingIntervalService
                 PlayerContributions = contributions,
                 TerminalPlayerIds = []
             },
-            Pot = request.Pot + playerAdditionalAmount,
+            Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
             {
-                Stack = request.ParticipantInTurn.Stack - playerAdditionalAmount,
-                Stake = request.ParticipantInTurn.Stake + playerAdditionalAmount
+                Stack = newStack,
+                Stake = newStake
             },
             CloseBetting = false
         };

@@ -31,6 +31,12 @@ public static class DefaultDealer
                 if (!dealResponse.CardWasDealt)
                     continue;
 
+                request.CardDealtToParticipantAction(new()
+                {
+                    Card = dealResponse.Card,
+                    Participant = dealResponse.Participant
+                });
+
                 deckOut = dealResponse.Deck;
 
                 playerInTurn = playersOut.NextParticipant(playerInTurn);

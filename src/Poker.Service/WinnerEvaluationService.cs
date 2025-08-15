@@ -48,6 +48,7 @@ internal class WinnerEvaluationService : IPhaseService
         var winner = request.Participants.NotFolded().Single();
 
         _userInterfaceService.WriteLine($"{winner.Name} wins by default.");
+        _userInterfaceService.WriteLine($"Prize awarded: {request.Pot:C0}");
 
         var playersOut = _winningsDistributor(
             new()

@@ -1,4 +1,6 @@
-﻿namespace Poker.Service;
+﻿using Poker.Domain.Events;
+
+namespace Poker.Service;
 
 /// <inheritdoc cref="IDealerService"/>
 /// <inheritdoc cref="IPhaseService"/>
@@ -39,7 +41,11 @@ internal class DealerService : IDealerService, IPhaseService
             CommunityCards = request.CommunityCards,
             StartingParticipant = request.StartingParticipant,
             CardsToDealCount = request.Phase.CardsToDealCount,
-            CardOrientation = request.Phase.CardOrientation
+            CardOrientation = request.Phase.CardOrientation,
+            CardDealtToParticipantAction = cardDealt =>
+            {
+                _userInterfaceService.WriteLine($"Card dealt to {cardDealt.Participant.Name}");
+            }
         });
 
         return Task.FromResult(new PhaseResponse
