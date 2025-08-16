@@ -87,8 +87,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Amount = betAmount,
                 InitiatingPlayerId = request.ParticipantInTurn.Id,
                 CheckedPlayerIds = [],
-                PlayerContributions = contributions,
-                TerminalPlayerIds = []
+                PlayerContributions = contributions
             },
             Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
@@ -156,8 +155,7 @@ internal class BettingIntervalService : IBettingIntervalService
             Description = d.ToString(),
             CurrentBet = request.CurrentBet with
             {
-                PlayerContributions = contributions,
-                TerminalPlayerIds = request.CurrentBet.TerminalPlayerIds
+                PlayerContributions = contributions
             },
             Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
@@ -200,8 +198,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Amount = newBetAmount,
                 InitiatingPlayerId = request.ParticipantInTurn.Id,
                 CheckedPlayerIds = [],
-                PlayerContributions = contributions,
-                TerminalPlayerIds = []
+                PlayerContributions = contributions
             },
             Pot = newPot,
             ParticipantInTurn = request.ParticipantInTurn with
