@@ -131,6 +131,7 @@ internal class BettingIntervalService : IBettingIntervalService
 #if DEBUG
         Console.WriteLine($"  - {request.ParticipantInTurn.Name} needs to contribute {additionalAmount:C0} to call.");
 #endif
+        contributions[request.ParticipantInTurn.Id] = request.CurrentBet.Amount;
 
         var allPlayersCalled = request.ActiveParticipants.NotFolded()
             .All(p => contributions[p.Id] >= request.CurrentBet.Amount);

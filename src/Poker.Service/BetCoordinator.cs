@@ -35,21 +35,27 @@ internal class BetCoordinator : IPhaseService
             .Participants
             .ToDictionary(p => p.Id, p => p);
 
-        var betResponse = BettingIntervalResponses.Empty with { Pot = request.Pot };
+        var betInOut = Bets.Empty;
+        var potInOut = request.Pot;
+        var closeBetting = false;
 
-        while (!betResponse.CloseBetting)
+        while (!closeBetting)
         {
             var (bettingIntervalResponse, nextBettor) = await AdvanceBettingAsync(
                 new BettingIntervalRequest
                 {
-                    CurrentBet = betResponse.CurrentBet,
-                    Pot = betResponse.Pot,
+                    CurrentBet = betInOut,
+                    Pot = potInOut,
                     ParticipantInTurn = currentBettor,
                     ActiveParticipants = participantsOut.Values.ToList(),
                     EmitObservation = input => _userInterfaceService.WriteLine(input)
                 }
             );
-            betResponse = bettingIntervalResponse;
+
+            betInOut = bettingIntervalResponse.CurrentBet;
+            potInOut = bettingIntervalResponse.Pot;
+            closeBetting = bettingIntervalResponse.CloseBetting;
+
             currentBettor = nextBettor;
             participantsOut[bettingIntervalResponse.ParticipantInTurn.Id] = bettingIntervalResponse.ParticipantInTurn;
         }
@@ -64,7 +70,7 @@ internal class BetCoordinator : IPhaseService
             Participants = participantsOut.Values.ToList(),
             Winners = gameOver ? activePlayers : [],
             GameOver = gameOver,
-            Pot = betResponse.Pot
+            Pot = potInOut
         };
     }
 
