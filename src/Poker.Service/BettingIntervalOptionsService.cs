@@ -57,7 +57,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         request.CurrentBet.Amount > PlayerInTurnStake!(request);
 
     private static readonly Func<BettingIntervalOptionsRequest, int> MinimumPlayerStack = request =>
-        request.ActiveParticipants.Min(p => p.Stack);
+        request.ActiveParticipants.NotFolded().Min(p => p.Stack);
 
     private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStake = request =>
         request.CurrentBet.PlayerContributions[request.ParticipantInTurnId];

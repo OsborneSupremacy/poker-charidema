@@ -170,21 +170,18 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Raise = (request, getAdditionalAmount) =>
     {
-        var raiseDelta = getAdditionalAmount();
-        var newBetAmount = request.CurrentBet.Amount + raiseDelta;
+        var raiseAmount = getAdditionalAmount();
+        var newBetAmount = request.CurrentBet.Amount + raiseAmount; // newBetAmount is also new player stake / contribution
 
         var contributions = request.CurrentBet.PlayerContributions.ToDictionary();
-
-        var currentContribution = contributions[request.ParticipantInTurn.Id];
-        var playerAdditionalAmount = newBetAmount - currentContribution;
         contributions[request.ParticipantInTurn.Id] = newBetAmount;
 
-        var newStack = request.ParticipantInTurn.Stack - playerAdditionalAmount;
-        var newStake = request.ParticipantInTurn.Stake + playerAdditionalAmount;
-        var newPot = request.Pot + playerAdditionalAmount;
+        var newStack = request.ParticipantInTurn.Stack - raiseAmount;
+        var newStake = newBetAmount;
+        var newPot = request.Pot + raiseAmount;
 
         StringBuilder d = new();
-        d.Append($"Raises {raiseDelta:C0} to {newBetAmount:C0}");
+        d.Append($"Raises {raiseAmount:C0} to {newBetAmount:C0}");
 
 #if DEBUG
         d.AppendLine();
