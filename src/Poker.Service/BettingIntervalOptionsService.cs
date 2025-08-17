@@ -80,7 +80,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         foreach(var player in request.ActiveParticipants.NotFolded())
         {
             var availableFunds = player.Stack;
-            var neededToCallAmount = player.Stake - currentBet;
+            var neededToCallAmount = currentBet - player.Stake;
 
             if(neededToCallAmount > 0)
                 availableFunds -= neededToCallAmount;
