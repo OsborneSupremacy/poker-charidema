@@ -6,6 +6,8 @@ public record BettingIntervalRequest
 
     public required int Pot { get; init; }
 
+    public required bool APlayerIsAllIn { get; init; }
+
     public required Participant ParticipantInTurn { get; init; }
 
     public required IReadOnlyList<Participant> ActiveParticipants { get; init; }

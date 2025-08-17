@@ -26,6 +26,7 @@ internal class BettingIntervalService : IBettingIntervalService
             CurrentBet = request.CurrentBet,
             ParticipantInTurnId = request.ParticipantInTurn.Id,
             ActiveParticipants = request.ActiveParticipants.NotFolded().ToList(),
+            APlayerIsAllIn = request.APlayerIsAllIn
         };
 
         var optionsResponse = await _bettingIntervalOptionsService
@@ -59,6 +60,9 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Bet = (request, getAdditionalAmount) =>
     {
+        if(request.APlayerIsAllIn)
+            throw new InvalidOperationException("Cannot bet while another participant is all-in.");
+
         var betAmount = getAdditionalAmount();
 
         var contributions = request.ActiveParticipants.ToDictionary(p => p.Id, _ => 0);
@@ -68,8 +72,13 @@ internal class BettingIntervalService : IBettingIntervalService
         var newStake = request.ParticipantInTurn.Stake + betAmount;
         var newPot = request.Pot + betAmount;
 
+        var allIn = newStack <= 0;
+
         StringBuilder d = new();
-        d.Append($"Bets {betAmount:C0}");
+        if (allIn)
+            d.Append($"Goes all-in with {betAmount:C0}");
+        else
+            d.Append($"Bets {betAmount:C0}");
 
 #if DEBUG
         d.AppendLine();
@@ -95,6 +104,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Stack = newStack,
                 Stake = newStake
             },
+            AllIn = allIn,
             CloseBetting = false
         };
     };
@@ -116,6 +126,7 @@ internal class BettingIntervalService : IBettingIntervalService
             },
             Pot = request.Pot,
             ParticipantInTurn = request.ParticipantInTurn,
+            AllIn = request.APlayerIsAllIn,
             CloseBetting = closeBetting
         };
     };
@@ -139,8 +150,13 @@ internal class BettingIntervalService : IBettingIntervalService
         var newStake = request.ParticipantInTurn.Stake + additionalAmount;
         var newPot = request.Pot + additionalAmount;
 
+        var allIn = newStack <= 0;
+
         StringBuilder d = new();
-        d.Append($"Calls with {additionalAmount:C0}");
+        if (allIn)
+            d.Append($"Goes all-in with {additionalAmount:C0}");
+        else
+            d.Append($"Calls with {additionalAmount:C0}");
 
 #if DEBUG
         d.AppendLine();
@@ -163,6 +179,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Stack = newStack,
                 Stake = newStake
             },
+            AllIn = request.APlayerIsAllIn || allIn,
             CloseBetting = allPlayersCalled
         };
     };
@@ -179,8 +196,14 @@ internal class BettingIntervalService : IBettingIntervalService
         var newStake = newBetAmount;
         var newPot = request.Pot + raiseAmount;
 
+        var allIn = newStack <= 0;
+
         StringBuilder d = new();
-        d.Append($"Raises {raiseAmount:C0} to {newBetAmount:C0}");
+
+        if (allIn)
+            d.Append($"Goes all-in with {newBetAmount:C0}");
+        else
+            d.Append($"Raises {raiseAmount:C0} to {newBetAmount:C0}");
 
 #if DEBUG
         d.AppendLine();
@@ -206,6 +229,7 @@ internal class BettingIntervalService : IBettingIntervalService
                 Stack = newStack,
                 Stake = newStake
             },
+            AllIn = request.APlayerIsAllIn || allIn,
             CloseBetting = false
         };
     };
@@ -223,6 +247,7 @@ internal class BettingIntervalService : IBettingIntervalService
             CurrentBet = request.CurrentBet,
             Pot = request.Pot,
             ParticipantInTurn = request.ParticipantInTurn with { Folded = true },
+            AllIn = request.APlayerIsAllIn,
             CloseBetting = closeBetting
         };
     };

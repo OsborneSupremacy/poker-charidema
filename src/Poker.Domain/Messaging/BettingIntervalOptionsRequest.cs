@@ -6,5 +6,7 @@ public class BettingIntervalOptionsRequest
 
     public required Bet CurrentBet { get; init; }
 
+    public required bool APlayerIsAllIn {get; init; }
+
     public required IReadOnlyList<Participant> ActiveParticipants { get; init; }
 }

@@ -37,6 +37,7 @@ internal class BetCoordinator : IPhaseService
 
         var betInOut = Bets.Empty;
         var potInOut = request.Pot;
+        var aPlayerIsAllIn = false;
         var closeBetting = false;
 
         while (!closeBetting)
@@ -48,7 +49,8 @@ internal class BetCoordinator : IPhaseService
                     Pot = potInOut,
                     ParticipantInTurn = currentBettor,
                     ActiveParticipants = participantsOut.Values.ToList(),
-                    EmitObservation = input => _userInterfaceService.WriteLine(input)
+                    EmitObservation = input => _userInterfaceService.WriteLine(input),
+                    APlayerIsAllIn = aPlayerIsAllIn
                 }
             );
 
@@ -82,7 +84,8 @@ internal class BetCoordinator : IPhaseService
             Pot = request.Pot,
             ParticipantInTurn = request.ParticipantInTurn,
             ActiveParticipants = request.ActiveParticipants,
-            EmitObservation = request.EmitObservation
+            EmitObservation = request.EmitObservation,
+            APlayerIsAllIn = request.APlayerIsAllIn
         };
 
         var bettingIntervalResponse = await _bettingIntervalService.ExecuteAsync(betRequest);
