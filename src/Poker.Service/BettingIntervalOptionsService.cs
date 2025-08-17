@@ -11,18 +11,16 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         {
             options.Add(BettingIntervalActionType.Call);
 
-            if(!APlayerIsAllIn(request)) // can't raise if someone is all-in
+            if(!request.APlayerIsAllIn) // can't raise if someone is all-in
                 options.Add(BettingIntervalActionType.Raise);
 
             if(FoldIsAnOption(request))
                 options.Add(BettingIntervalActionType.Fold);
         }
-        else
+        else // there is no bet
         {
             options.Add(BettingIntervalActionType.Check);
-
-            if(!APlayerIsAllIn(request)) // can't raise if someone is all-in
-                options.Add(BettingIntervalActionType.Bet);
+            options.Add(BettingIntervalActionType.Bet);
         }
 
         var maximumBet = GetMaximumBet(request);
@@ -67,9 +65,6 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 
     private static readonly Predicate<BettingIntervalOptionsRequest> PlayerInTurnNeedsToContributeMoreToStayIn = request =>
         request.CurrentBet.Amount > PlayerInTurnStake!(request);
-
-    private static readonly Predicate<BettingIntervalOptionsRequest> APlayerIsAllIn = request =>
-        request.APlayerIsAllIn;
 
     private static readonly Func<BettingIntervalOptionsRequest, int> MaxBettableAmount = request =>
     {
