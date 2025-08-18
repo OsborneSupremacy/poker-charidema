@@ -156,7 +156,7 @@ internal class BettingIntervalService : IBettingIntervalService
         if (allIn)
             d.Append($"Goes all-in with {additionalAmount:C0}");
         else
-            d.Append($"Calls with {additionalAmount:C0}");
+            d.Append($"Calls with {additionalAmount:C0} (for a total stake of {newStake:C0})");
 
 #if DEBUG
         d.AppendLine();
