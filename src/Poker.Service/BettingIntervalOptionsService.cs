@@ -5,22 +5,39 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 {
     public Task<BettingIntervalOptionsResponse> ExecuteAsync(BettingIntervalOptionsRequest request)
     {
-        List<BettingIntervalActionType> options = [];
+        List<BettingIntervalActionTypeResponse> options = [];
 
         if (ThereIsABet(request))
         {
-            options.Add(BettingIntervalActionType.Call);
+            options.Add(new BettingIntervalActionTypeResponse {
+                BettingIntervalActionType = BettingIntervalActionType.Call,
+                Weight = 60
+            });
 
             if(!request.APlayerIsAllIn) // can't raise if someone is all-in
-                options.Add(BettingIntervalActionType.Raise);
+                options.Add(new BettingIntervalActionTypeResponse {
+                    BettingIntervalActionType = BettingIntervalActionType.Raise,
+                    Weight = 10
+                });
 
             if(FoldIsAnOption(request))
-                options.Add(BettingIntervalActionType.Fold);
+                options.Add(new BettingIntervalActionTypeResponse {
+                    BettingIntervalActionType = BettingIntervalActionType.Fold,
+                    Weight = 30
+                });
         }
         else // there is no bet
         {
-            options.Add(BettingIntervalActionType.Check);
-            options.Add(BettingIntervalActionType.Bet);
+            options.Add(new BettingIntervalActionTypeResponse
+            {
+                BettingIntervalActionType = BettingIntervalActionType.Check,
+                Weight = 65
+            });
+            options.Add(new BettingIntervalActionTypeResponse
+            {
+                BettingIntervalActionType = BettingIntervalActionType.Bet,
+                Weight = 35
+            });
         }
 
         var maximumBet = GetMaximumBet(request);

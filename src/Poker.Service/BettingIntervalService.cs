@@ -34,9 +34,9 @@ internal class BettingIntervalService : IBettingIntervalService
 
         // pick random option
         var option = _randomService
-            .PickFromReadOnlyList(optionsResponse.AvailableBettingIntervalActions);
+            .PickFromWeightedList(optionsResponse.AvailableBettingIntervalActions);
 
-        var optionDelegate = BettingIntervalDelegates[option] ?? Fold;
+        var optionDelegate = BettingIntervalDelegates[option.BettingIntervalActionType] ?? Fold;
 
         var maxBet = optionsResponse.MaximumBet;
 
@@ -236,10 +236,14 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Fold = (request, _) =>
     {
-        // if only one player remains, close betting.
-        // subtracting one, because the betting player has not folded yet
-        // but should be counting as folding.
-        var closeBetting = (request.ActiveParticipants.NotFolded().Count() - 1) == 1;
+        var remainingPlayerIds = request.ActiveParticipants
+            .Where(p => p.Id != request.ParticipantInTurn.Id)
+            .NotFolded()
+            .ToList();
+
+        var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds.ToList();
+
+        var closeBetting = remainingPlayerIds.All(p => checkedPlayerIds.Contains(p.Id));
 
         return new BettingIntervalResponse
         {

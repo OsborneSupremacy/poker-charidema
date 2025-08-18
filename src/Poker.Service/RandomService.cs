@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Poker.Domain.Abstractions;
 
 namespace Poker.Service;
 
@@ -23,6 +24,15 @@ internal class RandomService : IRandomService
         {
             Random = new Randomizer(_randomFactory.GetSeed())
         }.PickRandom(items.ToList());
+
+    public T PickFromWeightedList<T>(IReadOnlyList<T> items) where T : IWeightedItem
+    {
+        var list = new List<T>();
+        foreach (var item in items)
+            for (var i = 0; i < item.Weight; i++)
+                list.Add(item);
+        return PickFromList(list);
+    }
 
     public Person CreatePerson() =>
         new Faker
