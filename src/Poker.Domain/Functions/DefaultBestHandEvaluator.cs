@@ -1,4 +1,5 @@
 ﻿using Poker.Domain.Classic.Hands;
+using Poker.Domain.Functions.Classic;
 
 namespace Poker.Domain.Functions;
 
@@ -13,5 +14,7 @@ public static class DefaultBestHandEvaluator
             HandsToEvaluate = AllHands.All,
             RemainingCardCount = request.RemainingCardCount
         })
-        .First(x => x.HandQualification == HandQualifications.Qualifies);
+        .Where(x => x.HandQualification == HandQualifications.Qualifies)
+        .OrderByDescending(x => x.ToPlayerHand(), ClassicHandComparer.Comparer)
+        .First();
 }

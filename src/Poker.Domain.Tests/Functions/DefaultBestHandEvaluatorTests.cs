@@ -62,4 +62,72 @@ public class DefaultBestHandEvaluatorTests
         // Assert
         response.Hand.Should().Be(TwoPair.AcesOverKings);
     }
+
+    [Fact]
+    public void Evaluate_HigherTwoPairReturned_ThreePairsPresent()
+    {
+        // Arrange
+        var participant = Participants.Empty with
+        {
+            CardsInPlay =
+            [
+                Cards.AceOfSpades.DealFaceDownToPlayer(),
+                Cards.AceOfClubs.DealFaceDownToPlayer(),
+                Cards.KingOfClubs.DealFaceDownToPlayer(),
+                Cards.KingOfDiamonds.DealFaceDownToPlayer(),
+                Cards.TwoOfClubs.DealFaceDownToPlayer(),
+                Cards.TwoOfHearts.DealFaceDownToPlayer(),
+                Cards.SevenOfHearts.DealFaceDownToPlayer()
+            ]
+        };
+
+        // Act
+        var response = DefaultBestHandEvaluator.Evaluate
+        (
+            new BestHandRequest
+            {
+                Participant = participant,
+                RemainingCardCount = 0,
+                HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+                HandEvaluator = ClassicHandEvaluator.Evaluate
+            }
+        );
+
+        // Assert
+        response.Hand.Should().Be(TwoPair.AcesOverKings);
+    }
+
+    [Fact]
+    public void Evaluate_HigherFullHouseReturned_ThreeOfAKindAndTwoPairsPresent()
+    {
+        // Arrange
+        var participant = Participants.Empty with
+        {
+            CardsInPlay =
+            [
+                Cards.AceOfSpades.DealFaceDownToPlayer(),
+                Cards.AceOfClubs.DealFaceDownToPlayer(),
+                Cards.AceOfHearts.DealFaceDownToPlayer(),
+                Cards.KingOfClubs.DealFaceDownToPlayer(),
+                Cards.KingOfDiamonds.DealFaceDownToPlayer(),
+                Cards.TwoOfClubs.DealFaceDownToPlayer(),
+                Cards.TwoOfHearts.DealFaceDownToPlayer()
+            ]
+        };
+
+        // Act
+        var response = DefaultBestHandEvaluator.Evaluate
+        (
+            new BestHandRequest
+            {
+                Participant = participant,
+                RemainingCardCount = 0,
+                HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+                HandEvaluator = ClassicHandEvaluator.Evaluate
+            }
+        );
+
+        // Assert
+        response.Hand.Should().Be(FullHouses.AcesOverKings);
+    }
 }

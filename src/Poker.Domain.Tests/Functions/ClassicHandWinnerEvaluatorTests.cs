@@ -185,4 +185,88 @@ public class ClassicHandWinnerEvaluatorTests
         response.Winners.Should().BeEquivalentTo([_playerOne, _playerTwo]);
         response.WinningHand.Should().Be(HighCards.Ace);
     }
+
+    [Fact]
+    public void Evaluate_WinnerIdentified_TwoPlayersHaveTwoPairWithSameHighPair()
+    {
+        // Arrange
+        _playerOne = _playerOne.DealCardsFaceDownTo(
+            [Cards.AceOfClubs, Cards.AceOfDiamonds, Cards.QueenOfSpades, Cards.QueenOfHearts, Cards.FourOfClubs]);
+        _playerTwo = _playerTwo.DealCardsFaceDownTo(
+            [Cards.AceOfSpades, Cards.AceOfHearts, Cards.KingOfSpades, Cards.KingOfHearts, Cards.ThreeOfClubs]);
+
+        EvaluateWinnerRequest request = new()
+        {
+            Participants =
+            [
+                _playerOne,
+                _playerTwo
+            ],
+            HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+            HandEvaluator = ClassicHandEvaluator.Evaluate
+        };
+
+        // Act
+        var response = ClassicWinnerEvaluator.Evaluate(request);
+
+        // Assert
+        response.Winners.Should().BeEquivalentTo([_playerTwo]);
+        response.WinningHand.Should().Be(TwoPair.AcesOverKings);
+    }
+
+    [Fact]
+    public void Evaluate_WinnerIdentified_TwoPlayersHaveFlushesInDifferentSuits()
+    {
+        // Arrange
+        _playerOne = _playerOne.DealCardsFaceDownTo(
+            [Cards.KingOfHearts, Cards.NineOfHearts, Cards.SevenOfHearts, Cards.FiveOfHearts, Cards.ThreeOfHearts]);
+        _playerTwo = _playerTwo.DealCardsFaceDownTo(
+            [Cards.AceOfSpades, Cards.EightOfSpades, Cards.SixOfSpades, Cards.FourOfSpades, Cards.TwoOfSpades]);
+
+        EvaluateWinnerRequest request = new()
+        {
+            Participants =
+            [
+                _playerOne,
+                _playerTwo
+            ],
+            HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+            HandEvaluator = ClassicHandEvaluator.Evaluate
+        };
+
+        // Act
+        var response = ClassicWinnerEvaluator.Evaluate(request);
+
+        // Assert
+        response.Winners.Should().BeEquivalentTo([_playerTwo]);
+        response.WinningHand.Should().Be(Flushes.Spades);
+    }
+
+    [Fact]
+    public void Evaluate_WinnerIdentified_TwoPlayersHaveFlushesInSameSuit()
+    {
+        // Arrange
+        _playerOne = _playerOne.DealCardsFaceDownTo(
+            [Cards.KingOfSpades, Cards.QueenOfSpades, Cards.EightOfSpades, Cards.SixOfSpades, Cards.FourOfSpades]);
+        _playerTwo = _playerTwo.DealCardsFaceDownTo(
+            [Cards.AceOfSpades, Cards.JackOfSpades, Cards.NineOfSpades, Cards.SevenOfSpades, Cards.FiveOfSpades]);
+
+        EvaluateWinnerRequest request = new()
+        {
+            Participants =
+            [
+                _playerOne,
+                _playerTwo
+            ],
+            HandCollectionEvaluator = DefaultHandCollectionEvaluator.Evaluate,
+            HandEvaluator = ClassicHandEvaluator.Evaluate
+        };
+
+        // Act
+        var response = ClassicWinnerEvaluator.Evaluate(request);
+
+        // Assert
+        response.Winners.Should().BeEquivalentTo([_playerTwo]);
+        response.WinningHand.Should().Be(Flushes.Spades);
+    }
 }
