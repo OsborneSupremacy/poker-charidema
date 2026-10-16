@@ -28,6 +28,12 @@ internal class BetCoordinator : IPhaseService
 
         _userInterfaceService.WriteHeading(HeadingLevel.Five, $"{request.Phase.Name}");
 
+        if (FewerThanTwoPlayersCanBet(request))
+        {
+            _userInterfaceService.WriteLine("Betting is skipped, since fewer than two players have money left to bet.");
+            return CreateResponse(request, request.Participants, request.Pot);
+        }
+
         var currentBettor = await GetCurrentBettorAsync(request);
         _userInterfaceService.WriteLine($"{currentBettor.Name} starts the bet.");
 
@@ -63,17 +69,31 @@ internal class BetCoordinator : IPhaseService
             participantsOut[bettingIntervalResponse.ParticipantInTurn.Id] = bettingIntervalResponse.ParticipantInTurn;
         }
 
-        var activePlayers = participantsOut.Values.NotFolded().ToList();
+        return CreateResponse(request, participantsOut.Values.ToList(), potInOut);
+    }
+
+    private static readonly Predicate<PhaseRequest> FewerThanTwoPlayersCanBet = request =>
+        request.Participants
+            .NotFolded()
+            .Count(p => p.Stack > 0) < 2;
+
+    private static PhaseResponse CreateResponse(
+        PhaseRequest request,
+        IReadOnlyList<Participant> participants,
+        int pot
+        )
+    {
+        var activePlayers = participants.NotFolded().ToList();
         var gameOver = activePlayers.Count == 1;
 
         return new()
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
-            Participants = participantsOut.Values.ToList(),
+            Participants = participants,
             Winners = gameOver ? activePlayers : [],
             GameOver = gameOver,
-            Pot = potInOut,
+            Pot = pot,
         };
     }
 

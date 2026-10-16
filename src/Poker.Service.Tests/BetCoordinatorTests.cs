@@ -111,4 +111,64 @@ public class BetCoordinatorTests
             .Should()
             .Equal(false, false);
     }
+
+    [Fact]
+    public async Task ExecuteAsync_BettingSkipped_OnlyOnePlayerHasChips()
+    {
+        // Arrange
+        // Two went all-in in an earlier betting interval.
+        var two = _participantTwo with { Stack = 0 };
+
+        var request = CreateRequest() with
+        {
+            Participants = [_participantOne, two],
+            Pot = 50
+        };
+
+        TestBettingIntervalService bettingIntervalService = new();
+
+        BetCoordinator betCoordinator = new(
+            new TestUserInterfaceService(),
+            bettingIntervalService,
+            _leadPlayerService
+        );
+
+        // Act
+        var response = await betCoordinator.ExecuteAsync(request);
+
+        // Assert
+        bettingIntervalService.Requests.Should().BeEmpty();
+        response.Participants.Should().Equal(_participantOne, two);
+        response.Pot.Should().Be(50);
+        response.GameOver.Should().BeFalse();
+        response.Winners.Should().BeEmpty();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_BettingSkipped_OnlyOtherPlayerWithChipsFolded()
+    {
+        // Arrange
+        var two = _participantTwo with { Stack = 0 };
+        var three = Participants.Empty with { Id = Guid.NewGuid(), Name = "Three", Stack = 100, Folded = true };
+
+        var request = CreateRequest() with
+        {
+            Participants = [_participantOne, two, three]
+        };
+
+        TestBettingIntervalService bettingIntervalService = new();
+
+        BetCoordinator betCoordinator = new(
+            new TestUserInterfaceService(),
+            bettingIntervalService,
+            _leadPlayerService
+        );
+
+        // Act
+        var response = await betCoordinator.ExecuteAsync(request);
+
+        // Assert
+        bettingIntervalService.Requests.Should().BeEmpty();
+        response.GameOver.Should().BeFalse();
+    }
 }
