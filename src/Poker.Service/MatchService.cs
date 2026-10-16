@@ -83,14 +83,14 @@ internal class MatchService : IMatchService
     private Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request) =>
         PlayGames(request, matchRequest =>
             matchRequest.Match.GameHistory.Count < matchRequest.Match.FixedNumberOfGames
-            && matchRequest.Match.Players.NotBusted().Count > 1
+            && !MatchIsOver(matchRequest.Match)
         );
 
     private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
     {
         return await PlayGames(request, matchRequest =>
         {
-            if(matchRequest.Match.Players.NotBusted().Count <= 1)
+            if(MatchIsOver(matchRequest.Match))
                 return false;
             return _gamePreferencesService
                 .GetPlayAgain(matchRequest.Match.GameHistory.LastOrDefault()?.Variant.Name ?? matchRequest.Match.FixedVariant.Name)
@@ -98,6 +98,16 @@ internal class MatchService : IMatchService
                 .GetResult();
         });
     }
+
+    /// <summary>
+    /// The match is over when only one player has money left, or when the human player has run out of money.
+    /// </summary>
+    private static readonly Predicate<Match> MatchIsOver = match =>
+        match.Players.NotBusted().Count <= 1
+        || HumanPlayerIsBusted!(match);
+
+    private static readonly Predicate<Match> HumanPlayerIsBusted = match =>
+        match.Players.Any(p => !p.Automaton && p.Busted);
 
     private static List<Player> UpdatePlayers(
         IReadOnlyList<Participant> participantsInGame,
@@ -136,6 +146,21 @@ internal class MatchService : IMatchService
             match.FixedNumberOfGames.HasValue()
             ? $"The match will consist of {match.FixedNumberOfGames} games."
             : "The match has no fixed number of games."
+        );
+
+        return Task.CompletedTask;
+    }
+
+    private Task WriteMatchEndInfoAsync(MatchResponse response)
+    {
+        _userInterfaceService.WriteHeading(HeadingLevel.Two, "The match is over!");
+
+        if (HumanPlayerIsBusted(response.Match))
+            _userInterfaceService.WriteLine("You ran out of money.");
+
+        _userInterfaceService.WriteList(
+            response.Winners.Count > 1 ? "Winners" : "Winner",
+            response.Winners.Select(w => $"{w.Name}: {w.Stack:C0}")
         );
 
         return Task.CompletedTask;
@@ -182,12 +207,16 @@ internal class MatchService : IMatchService
         };
     }
 
-    private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn) =>
-        new()
+    private async Task<MatchResponse> EvaluateResult(MatchResponse responseIn)
+    {
+        await WriteMatchEndInfoAsync(responseIn);
+
+        return new()
         {
             Cancelled = false,
             Match = responseIn.Match,
-            Winners = [],
+            Winners = responseIn.Winners,
             PlayAgain = await _matchPreferencesService.GetPlayAgain(responseIn.Match)
         };
+    }
 }
