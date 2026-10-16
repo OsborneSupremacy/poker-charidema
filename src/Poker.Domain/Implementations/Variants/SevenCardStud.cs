@@ -25,7 +25,7 @@ public static class SevenCardStud
                 {
                     Number = 1,
                     Name = "Deal",
-                    PhaseType = PhaseType.Draw,
+                    PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
                     CardsToDealCount = 2,
                     CardOrientation = CardOrientation.FaceDown,
@@ -37,8 +37,8 @@ public static class SevenCardStud
                 new()
                 {
                     Number = 2,
-                    Name = "Deal",
-                    PhaseType = PhaseType.Draw,
+                    Name = "Third Street",
+                    PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
                     CardOrientation = CardOrientation.FaceUp,
@@ -63,10 +63,10 @@ public static class SevenCardStud
                 new()
                 {
                     Number = 4,
-                    Name = "Deal",
-                    PhaseType = PhaseType.Draw,
+                    Name = "Fourth Street",
+                    PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
-                    CardsToDealCount = 3,
+                    CardsToDealCount = 1,
                     CardOrientation = CardOrientation.FaceUp,
                     CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
@@ -89,11 +89,11 @@ public static class SevenCardStud
                 new()
                 {
                     Number = 6,
-                    Name = "Deal",
-                    PhaseType = PhaseType.Draw,
+                    Name = "Fifth Street",
+                    PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
-                    CardOrientation = CardOrientation.FaceDown,
+                    CardOrientation = CardOrientation.FaceUp,
                     CardDestination = CardLocation.PlayerHand,
                     CardsToDrawMaximum = 0,
                     CardsToDrawMaximumOverrides = []
@@ -115,6 +115,58 @@ public static class SevenCardStud
                 new()
                 {
                     Number = 8,
+                    Name = "Sixth Street",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 1,
+                    CardOrientation = CardOrientation.FaceUp,
+                    CardDestination = CardLocation.PlayerHand,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = []
+                },
+
+                new()
+                {
+                    Number = 9,
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = []
+                },
+
+                new()
+                {
+                    Number = 10,
+                    Name = "Seventh Street",
+                    PhaseType = PhaseType.Deal,
+                    GameCanEndAfter = false,
+                    CardsToDealCount = 1,
+                    CardOrientation = CardOrientation.FaceDown,
+                    CardDestination = CardLocation.PlayerHand,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = []
+                },
+
+                new()
+                {
+                    Number = 11,
+                    Name = "Betting Interval",
+                    PhaseType = PhaseType.BettingInterval,
+                    GameCanEndAfter = true,
+                    CardsToDealCount = 0,
+                    CardDestination = CardLocation.Empty,
+                    CardOrientation = CardOrientation.Empty,
+                    CardsToDrawMaximum = 0,
+                    CardsToDrawMaximumOverrides = []
+                },
+
+                new()
+                {
+                    Number = 12,
                     Name = "Evaluation",
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,

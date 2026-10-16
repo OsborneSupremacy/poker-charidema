@@ -63,6 +63,7 @@ internal class GameService : IGameService
                     phase => new CoordinatePhaseRequest
                     {
                         Deck = coordinatePhaseResponse.Deck,
+                        CommunityCards = coordinatePhaseResponse.CommunityCards,
                         Phase = phase,
                         GameOver = gameOver,
                         GameNumber = game.GameNumber,

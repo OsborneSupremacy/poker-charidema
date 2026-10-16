@@ -75,7 +75,10 @@ internal class WinnerEvaluationService : IPhaseService
         var response = _winnerEvaluator(
             new()
             {
-                Participants = request.Participants.NotFolded().ToList(),
+                Participants = request.Participants
+                    .NotFolded()
+                    .Select(p => p.WithCommunityCards(request.CommunityCards))
+                    .ToList(),
                 HandCollectionEvaluator = _handCollectionEvaluator,
                 HandEvaluator = _handEvaluator
             }

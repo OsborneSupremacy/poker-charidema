@@ -15,5 +15,9 @@ public record DealRequest
 
     public required CardOrientation CardOrientation { get; init; }
 
+    public required CardLocation CardDestination { get; init; }
+
     public required Action<CardDealtToParticipant> CardDealtToParticipantAction { get; init; }
+
+    public required Action<CardDealtToCommunity> CardDealtToCommunityAction { get; init; }
 }

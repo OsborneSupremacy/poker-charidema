@@ -64,4 +64,17 @@ public static class CardExtensions
             })
             .ToList();
 
+    public static List<CardInPlay> DealToCommunity(
+        this IEnumerable<Card> input,
+        CardOrientation orientation
+    ) =>
+        input
+            .Select(c => new CardInPlay
+            {
+                Card = c,
+                CardLocation = CardLocation.Community,
+                CardOrientation = orientation
+            })
+            .ToList();
+
 }

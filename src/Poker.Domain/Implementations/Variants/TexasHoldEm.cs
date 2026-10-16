@@ -53,7 +53,7 @@ public static class TexasHoldEm
                     Name = "The Flop",
                     PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
-                    CardsToDealCount = 2,
+                    CardsToDealCount = 3,
                     CardDestination = CardLocation.Community,
                     CardOrientation = CardOrientation.FaceUp,
                     CardsToDrawMaximum = 0,
@@ -102,7 +102,7 @@ public static class TexasHoldEm
                 new()
                 {
                     Number = 7,
-                    Name = "The Street",
+                    Name = "The River",
                     PhaseType = PhaseType.Deal,
                     GameCanEndAfter = false,
                     CardsToDealCount = 1,
@@ -128,32 +128,6 @@ public static class TexasHoldEm
                 new()
                 {
                     Number = 9,
-                    Name = "The River",
-                    PhaseType = PhaseType.Deal,
-                    GameCanEndAfter = false,
-                    CardsToDealCount = 1,
-                    CardDestination = CardLocation.Community,
-                    CardOrientation = CardOrientation.FaceUp,
-                    CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = []
-                },
-
-                new()
-                {
-                    Number = 10,
-                    Name = "Betting Interval",
-                    PhaseType = PhaseType.BettingInterval,
-                    GameCanEndAfter = true,
-                    CardsToDealCount = 0,
-                    CardDestination = CardLocation.Empty,
-                    CardOrientation = CardOrientation.Empty,
-                    CardsToDrawMaximum = 0,
-                    CardsToDrawMaximumOverrides = []
-                },
-
-                new()
-                {
-                    Number = 11,
                     Name = "Evaluation",
                     PhaseType = PhaseType.Evaluation,
                     GameCanEndAfter = true,

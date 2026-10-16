@@ -45,4 +45,14 @@ public static class ParticipantExtensions
         IEnumerable<Card> cards
     ) =>
         input.DealCardsTo(CardOrientation.FaceDown, cards);
+
+    /// <summary>
+    /// Adds the community cards to the participant's cards in play, so that
+    /// the participant's hand can be evaluated with them.
+    /// </summary>
+    public static Participant WithCommunityCards(
+        this Participant input,
+        IEnumerable<CardInPlay> communityCards
+    ) =>
+        input with { CardsInPlay = input.CardsInPlay.Concat(communityCards).ToList() };
 }

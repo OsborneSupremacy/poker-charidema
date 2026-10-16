@@ -18,6 +18,8 @@ public record CoordinatePhaseRequest
 
     public required Deck Deck { get; init; }
 
+    public required IReadOnlyList<CardInPlay> CommunityCards { get; init; }
+
     /// <summary>
     /// Will only be true if a previous phase resulted in the game being over.
     /// Phases should generally not do any work if this is true.

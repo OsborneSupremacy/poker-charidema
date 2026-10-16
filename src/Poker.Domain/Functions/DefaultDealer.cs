@@ -3,6 +3,32 @@
 public static class DefaultDealer
 {
     public static readonly Dealer Deal = request =>
+        request.CardDestination switch
+        {
+            CardLocation.Community => DealToCommunity(request),
+            _ => DealToParticipants(request)
+        };
+
+    private static DealResponse DealToCommunity(DealRequest request)
+    {
+        var cardsToDeal = request.Deck.Cards
+            .Take(request.CardsToDealCount)
+            .ToList();
+
+        foreach (var card in cardsToDeal)
+            request.CardDealtToCommunityAction(new() { Card = card });
+
+        return new DealResponse
+        {
+            Deck = request.Deck with { Cards = request.Deck.Cards.Skip(cardsToDeal.Count).ToList() },
+            CommunityCards = request.CommunityCards
+                .Concat(cardsToDeal.DealToCommunity(request.CardOrientation))
+                .ToList(),
+            Participants = request.Participants
+        };
+    }
+
+    private static DealResponse DealToParticipants(DealRequest request)
     {
         var playersOut = request.Participants.ToList();
 
@@ -50,7 +76,7 @@ public static class DefaultDealer
             CommunityCards = ccOut,
             Participants = playersOut
         };
-    };
+    }
 
     private static DealCardResponse DealCard(DealCardRequest request)
     {

@@ -42,9 +42,14 @@ internal class DealerService : IDealerService, IPhaseService
             StartingParticipant = request.StartingParticipant,
             CardsToDealCount = request.Phase.CardsToDealCount,
             CardOrientation = request.Phase.CardOrientation,
+            CardDestination = request.Phase.CardDestination,
             CardDealtToParticipantAction = cardDealt =>
             {
                 _userInterfaceService.WriteLine($"Card dealt to {cardDealt.Participant.Name}");
+            },
+            CardDealtToCommunityAction = cardDealt =>
+            {
+                _userInterfaceService.WriteLine($"{cardDealt.Card.Rank.Name} of {cardDealt.Card.Suit.Name} dealt to the community");
             }
         });
 

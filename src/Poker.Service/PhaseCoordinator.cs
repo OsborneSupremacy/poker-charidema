@@ -38,7 +38,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
             {
                 Phase = request.Phase,
                 Deck = request.Deck,
-                CommunityCards = [],
+                CommunityCards = request.CommunityCards,
                 StartingParticipant = startingPlayer,
                 Pot = request.Pot,
                 GameOver = request.GameOver,
@@ -65,7 +65,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
 
         if(humanParticipant != Participants.Empty)
             RenderPlayerCards(
-                humanParticipant,
+                humanParticipant.WithCommunityCards(phaseResponse.CommunityCards),
                 request.Variant.GetRemainingCardCount(request.Phase.Number)
             );
 
