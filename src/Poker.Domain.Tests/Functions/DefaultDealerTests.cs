@@ -106,4 +106,110 @@ public class DefaultDealerTests
             });
         });
     }
+
+    [Fact]
+    public void Deal_CardsDealtInSeatOrder_StartingParticipantNotFirstSeat()
+    {
+        // Arrange
+        var request = CreateRequest(CardLocation.PlayerHand, 2, []) with
+        {
+            StartingParticipant = _participantTwo
+        };
+
+        // Act
+        var response = DefaultDealer.Deal(request);
+
+        // Assert
+        response.Participants.Single(p => p.Id == _participantTwo.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.AceOfSpades, Cards.QueenOfSpades);
+
+        response.Participants.Single(p => p.Id == _participantOne.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.KingOfSpades, Cards.JackOfSpades);
+    }
+
+    [Fact]
+    public void Deal_FoldedParticipantSkipped_MiddleParticipantFolded()
+    {
+        // Arrange
+        var foldedParticipant = Participants.Empty with { Id = Guid.NewGuid(), Name = "Folded", Folded = true };
+
+        var request = CreateRequest(CardLocation.PlayerHand, 2, []) with
+        {
+            Participants = [_participantOne, foldedParticipant, _participantTwo]
+        };
+
+        // Act
+        var response = DefaultDealer.Deal(request);
+
+        // Assert
+        response.Participants.Single(p => p.Id == _participantOne.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.AceOfSpades, Cards.QueenOfSpades);
+
+        response.Participants.Single(p => p.Id == foldedParticipant.Id)
+            .CardsInPlay.Should()
+            .BeEmpty();
+
+        response.Participants.Single(p => p.Id == _participantTwo.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.KingOfSpades, Cards.JackOfSpades);
+
+        response.Deck.Cards.Should().Equal(Cards.TenOfSpades);
+    }
+
+    [Fact]
+    public void Deal_FoldedParticipantSkipped_StartingParticipantFolded()
+    {
+        // Arrange
+        var foldedParticipant = Participants.Empty with { Id = Guid.NewGuid(), Name = "Folded", Folded = true };
+
+        var request = CreateRequest(CardLocation.PlayerHand, 2, []) with
+        {
+            Participants = [_participantOne, foldedParticipant, _participantTwo],
+            StartingParticipant = foldedParticipant
+        };
+
+        // Act
+        var response = DefaultDealer.Deal(request);
+
+        // Assert
+        response.Participants.Single(p => p.Id == _participantTwo.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.AceOfSpades, Cards.QueenOfSpades);
+
+        response.Participants.Single(p => p.Id == foldedParticipant.Id)
+            .CardsInPlay.Should()
+            .BeEmpty();
+
+        response.Participants.Single(p => p.Id == _participantOne.Id)
+            .CardsInPlay.ToCards()
+            .Should()
+            .Equal(Cards.KingOfSpades, Cards.JackOfSpades);
+    }
+
+    [Fact]
+    public void Deal_ParticipantSeatOrderUnchanged_PlayerHandDestination()
+    {
+        // Arrange
+        var request = CreateRequest(CardLocation.PlayerHand, 1, []) with
+        {
+            StartingParticipant = _participantTwo
+        };
+
+        // Act
+        var response = DefaultDealer.Deal(request);
+
+        // Assert
+        response.Participants
+            .Select(p => p.Id)
+            .Should()
+            .Equal(_participantOne.Id, _participantTwo.Id);
+    }
 }

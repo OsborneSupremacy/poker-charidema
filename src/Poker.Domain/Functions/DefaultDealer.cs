@@ -35,21 +35,19 @@ public static class DefaultDealer
         var ccOut = request.CommunityCards;
         var deckOut = request.Deck;
 
-        var playerInTurn = playersOut
-            .Single(p => p == request.StartingParticipant);
+        var dealingOrder = GetDealingOrder(request);
 
         for (var c = 0; c < request.CardsToDealCount; c++)
         {
-            for (var i = 0; i < request.Participants.Count; i++)
+            foreach (var participantId in dealingOrder)
             {
-                if (playerInTurn.Folded)
-                    continue;
+                var index = playersOut.FindIndex(p => p.Id == participantId);
 
                 var dealResponse = DealCard(
                     new()
                     {
                         Deck = deckOut,
-                        Participant = playerInTurn,
+                        Participant = playersOut[index],
                         CardOrientation = request.CardOrientation
                     }
                 );
@@ -64,10 +62,7 @@ public static class DefaultDealer
                 });
 
                 deckOut = dealResponse.Deck;
-
-                playerInTurn = playersOut.NextParticipant(playerInTurn);
-                playersOut.RemoveAll(p => p.Id == dealResponse.Participant.Id);
-                playersOut.Add(dealResponse.Participant);
+                playersOut[index] = dealResponse.Participant;
             }
         }
         return new DealResponse
@@ -76,6 +71,24 @@ public static class DefaultDealer
             CommunityCards = ccOut,
             Participants = playersOut
         };
+    }
+
+    /// <summary>
+    /// The ids of the participants who have not folded, in seat order,
+    /// beginning with the starting participant.
+    /// </summary>
+    private static List<Guid> GetDealingOrder(DealRequest request)
+    {
+        var startingIndex = request.Participants
+            .ToList()
+            .FindIndex(p => p.Id == request.StartingParticipant.Id);
+
+        return request.Participants
+            .Skip(startingIndex)
+            .Concat(request.Participants.Take(startingIndex))
+            .NotFolded()
+            .Select(p => p.Id)
+            .ToList();
     }
 
     private static DealCardResponse DealCard(DealCardRequest request)

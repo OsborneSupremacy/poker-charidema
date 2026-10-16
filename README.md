@@ -17,14 +17,14 @@ As I've been using messaging classes, I've thought of some guidelines that helps
 * Immutable.
 * Should not use inheritance (use composition instead, when needed).
 * Should not contain any behavior.
-    * If we want behavior, we should use an extension method or something else. 
+    * If we want behavior, we should use an extension method or something else.
 * No dependencies.
 * All properties are required.
 
 ### Request Guidelines
 
 * Only include properties that will be used.
-* If _only_ a parameter's child property will be used, only include the child property and not the entire class. 
+* If _only_ a parameter's child property will be used, only include the child property and not the entire class.
 
 ### Response Guidelines
 
