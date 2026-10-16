@@ -81,7 +81,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         request.CurrentBet.Amount > 0;
 
     private static readonly Predicate<BettingIntervalOptionsRequest> PlayerInTurnNeedsToContributeMoreToStayIn = request =>
-        request.CurrentBet.Amount > PlayerInTurnStake!(request);
+        request.CurrentBet.Amount > PlayerInTurnContribution!(request);
 
     private static readonly Func<BettingIntervalOptionsRequest, int> MaxBettableAmount = request =>
     {
@@ -92,7 +92,9 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         foreach(var player in request.ActiveParticipants.NotFolded())
         {
             var availableFunds = player.Stack;
-            var neededToCallAmount = currentBet - player.Stake;
+            // the current bet is for this betting interval only, so compare it to the player's
+            // contribution in this interval, not their stake in the whole game
+            var neededToCallAmount = currentBet - request.CurrentBet.PlayerContributions.GetValueOrDefault(player.Id);
 
             if(neededToCallAmount > 0)
                 availableFunds -= neededToCallAmount;
@@ -103,7 +105,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
         return playerFunds.Min();
     };
 
-    private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStake = request =>
+    private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnContribution = request =>
         request.CurrentBet.PlayerContributions[request.ParticipantInTurnId];
 
     private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStack = request =>
