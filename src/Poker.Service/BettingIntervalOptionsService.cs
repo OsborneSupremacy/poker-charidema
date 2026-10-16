@@ -7,6 +7,11 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
     {
         List<BettingIntervalActionTypeResponse> options = [];
 
+        var maximumBet = GetMaximumBet(request);
+
+        // can't bet or raise if someone is all-in, or if someone couldn't afford to call even the smallest bet
+        var aBetCanBeMade = !request.APlayerIsAllIn && maximumBet > 0;
+
         if (ThereIsABet(request))
         {
             options.Add(new BettingIntervalActionTypeResponse {
@@ -14,7 +19,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
                 Weight = 60
             });
 
-            if(!request.APlayerIsAllIn) // can't raise if someone is all-in
+            if(aBetCanBeMade)
                 options.Add(new BettingIntervalActionTypeResponse {
                     BettingIntervalActionType = BettingIntervalActionType.Raise,
                     Weight = 10
@@ -33,14 +38,14 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
                 BettingIntervalActionType = BettingIntervalActionType.Check,
                 Weight = 65
             });
-            options.Add(new BettingIntervalActionTypeResponse
-            {
-                BettingIntervalActionType = BettingIntervalActionType.Bet,
-                Weight = 35
-            });
-        }
 
-        var maximumBet = GetMaximumBet(request);
+            if(aBetCanBeMade)
+                options.Add(new BettingIntervalActionTypeResponse
+                {
+                    BettingIntervalActionType = BettingIntervalActionType.Bet,
+                    Weight = 35
+                });
+        }
 
         return Task.FromResult(new BettingIntervalOptionsResponse
         {
