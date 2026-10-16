@@ -5,7 +5,7 @@ public static class RegistrationService
     public static IServiceCollection RegisterStandard(this IServiceCollection serviceCollection)
     {
         // utility services
-        serviceCollection.AddSingleton<IRandomFactory, TimeRandomFactory>();
+        serviceCollection.AddSingleton<IRandomFactory, SystemRandomFactory>();
         serviceCollection.AddSingleton<IRandomService, RandomService>();
 
         // business services

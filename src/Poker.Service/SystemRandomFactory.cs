@@ -1,11 +1,11 @@
 ﻿namespace Poker.Service;
 
 /// <inheritdoc />
-internal class TimeRandomFactory : IRandomFactory
+internal class SystemRandomFactory : IRandomFactory
 {
     public Random Create() =>
         new(GetSeed());
 
     public int GetSeed() =>
-        DateTime.Now.Millisecond;
+        Random.Shared.Next();
 }
