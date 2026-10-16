@@ -240,14 +240,21 @@ internal class BettingIntervalService : IBettingIntervalService
 
     private static readonly BettingIntervalDelegate Fold = (request, _) =>
     {
-        var remainingPlayerIds = request.ActiveParticipants
+        var remainingPlayers = request.ActiveParticipants
             .Where(p => p.Id != request.ParticipantInTurn.Id)
             .NotFolded()
             .ToList();
 
-        var checkedPlayerIds = request.CurrentBet.CheckedPlayerIds.ToList();
+        var onlyOnePlayerRemains = remainingPlayers.Count <= 1;
 
-        var closeBetting = remainingPlayerIds.All(p => checkedPlayerIds.Contains(p.Id));
+        var allRemainingPlayersCalled = request.CurrentBet.Amount > 0
+            && remainingPlayers.All(p =>
+                request.CurrentBet.PlayerContributions.GetValueOrDefault(p.Id) >= request.CurrentBet.Amount);
+
+        var allRemainingPlayersChecked = request.CurrentBet.Amount == 0
+            && remainingPlayers.All(p => request.CurrentBet.CheckedPlayerIds.Contains(p.Id));
+
+        var closeBetting = onlyOnePlayerRemains || allRemainingPlayersCalled || allRemainingPlayersChecked;
 
         return new BettingIntervalResponse
         {

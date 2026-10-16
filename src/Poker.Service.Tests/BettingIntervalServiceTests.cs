@@ -3,7 +3,7 @@
 [ExcludeFromCodeCoverage]
 public class BettingIntervalServiceTests
 {
-    private static BettingIntervalService CreateRaiseService(int raiseAmount) =>
+    private static BettingIntervalService CreateService(BettingIntervalActionType actionType, int amount) =>
         new(
             new TestBettingIntervalOptionsService(new BettingIntervalOptionsResponse
             {
@@ -11,10 +11,10 @@ public class BettingIntervalServiceTests
                 MaximumBet = 100,
                 AvailableBettingIntervalActions =
                 [
-                    new() { BettingIntervalActionType = BettingIntervalActionType.Raise, Weight = 100 }
+                    new() { BettingIntervalActionType = actionType, Weight = 100 }
                 ]
             }),
-            new TestRandomService(raiseAmount)
+            new TestRandomService(amount)
         );
 
     [Fact]
@@ -47,7 +47,7 @@ public class BettingIntervalServiceTests
 
         // Act
         // Two raises $5, which means paying $10 to call and $5 more.
-        var response = await CreateRaiseService(5).ExecuteAsync(request);
+        var response = await CreateService(BettingIntervalActionType.Raise, 5).ExecuteAsync(request);
 
         // Assert
         response.CurrentBet.Amount.Should().Be(15);
@@ -87,7 +87,7 @@ public class BettingIntervalServiceTests
 
         // Act
         // Two re-raises $5, which means paying $15 to call and $5 more.
-        var response = await CreateRaiseService(5).ExecuteAsync(request);
+        var response = await CreateService(BettingIntervalActionType.Raise, 5).ExecuteAsync(request);
 
         // Assert
         response.CurrentBet.Amount.Should().Be(30);
@@ -95,5 +95,92 @@ public class BettingIntervalServiceTests
         response.ParticipantInTurn.Stack.Should().Be(60);
         response.ParticipantInTurn.Stake.Should().Be(40);
         response.Pot.Should().Be(75);
+    }
+
+    private static BettingIntervalRequest CreateFoldRequest(
+        Participant participantInTurn,
+        IReadOnlyList<Participant> activeParticipants,
+        IReadOnlyDictionary<Guid, int> playerContributions
+    ) =>
+        new()
+        {
+            CurrentBet = new Bet
+            {
+                Amount = 10,
+                InitiatingPlayerId = activeParticipants[0].Id,
+                CheckedPlayerIds = [],
+                PlayerContributions = playerContributions
+            },
+            Pot = 10,
+            APlayerIsAllIn = false,
+            ParticipantInTurn = participantInTurn,
+            ActiveParticipants = activeParticipants,
+            EmitObservation = _ => { }
+        };
+
+    [Fact]
+    public async Task ExecuteAsync_BettingClosed_FoldLeavesOneParticipant()
+    {
+        // Arrange
+        // One bet $10, and Two folds.
+        var one = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90 };
+        var two = Participants.Empty with { Id = Guid.NewGuid(), Stack = 100 };
+
+        var request = CreateFoldRequest(
+            two,
+            [one, two],
+            new Dictionary<Guid, int> { [one.Id] = 10, [two.Id] = 0 }
+        );
+
+        // Act
+        var response = await CreateService(BettingIntervalActionType.Fold, 0).ExecuteAsync(request);
+
+        // Assert
+        response.ParticipantInTurn.Folded.Should().BeTrue();
+        response.CloseBetting.Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_BettingClosed_FoldAfterRemainingParticipantsCalled()
+    {
+        // Arrange
+        // One bet $10, Two called, and Three folds.
+        var one = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90 };
+        var two = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90 };
+        var three = Participants.Empty with { Id = Guid.NewGuid(), Stack = 100 };
+
+        var request = CreateFoldRequest(
+            three,
+            [one, two, three],
+            new Dictionary<Guid, int> { [one.Id] = 10, [two.Id] = 10, [three.Id] = 0 }
+        );
+
+        // Act
+        var response = await CreateService(BettingIntervalActionType.Fold, 0).ExecuteAsync(request);
+
+        // Assert
+        response.CloseBetting.Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_BettingOpen_FoldBeforeRemainingParticipantCalled()
+    {
+        // Arrange
+        // One bet $10, and Two folds. Three has not acted yet.
+        var one = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90 };
+        var two = Participants.Empty with { Id = Guid.NewGuid(), Stack = 100 };
+        var three = Participants.Empty with { Id = Guid.NewGuid(), Stack = 100 };
+
+        var request = CreateFoldRequest(
+            two,
+            [one, two, three],
+            new Dictionary<Guid, int> { [one.Id] = 10, [two.Id] = 0, [three.Id] = 0 }
+        );
+
+        // Act
+        var response = await CreateService(BettingIntervalActionType.Fold, 0).ExecuteAsync(request);
+
+        // Assert
+        response.CloseBetting.Should().BeFalse();
     }
 }
