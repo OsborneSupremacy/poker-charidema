@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Poker.Service\Poker.Service.csproj" />
+    <ProjectReference Include="..\Poker.Test.Utility\Poker.Test.Utility.csproj" />
   </ItemGroup>
 
 </Project>

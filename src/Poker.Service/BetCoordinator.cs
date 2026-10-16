@@ -56,6 +56,7 @@ internal class BetCoordinator : IPhaseService
 
             betInOut = bettingIntervalResponse.CurrentBet;
             potInOut = bettingIntervalResponse.Pot;
+            aPlayerIsAllIn = bettingIntervalResponse.AllIn;
             closeBetting = bettingIntervalResponse.CloseBetting;
 
             currentBettor = nextBettor;
@@ -72,7 +73,7 @@ internal class BetCoordinator : IPhaseService
             Participants = participantsOut.Values.ToList(),
             Winners = gameOver ? activePlayers : [],
             GameOver = gameOver,
-            Pot = potInOut
+            Pot = potInOut,
         };
     }
 

@@ -20,6 +20,7 @@
   
     <ItemGroup>
         <InternalsVisibleTo Include="Poker.Domain.Tests" />
+        <InternalsVisibleTo Include="Poker.Service.Tests" />
     </ItemGroup>
 
 </Project>
