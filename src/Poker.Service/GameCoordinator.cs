@@ -6,18 +6,14 @@ internal class GameCoordinator : IGameCoordinator
 {
     private readonly IUserInterfaceService _userInterfaceService;
 
-    private readonly IDealerService _dealerService;
-
     private readonly IGameService _gameService;
 
     public GameCoordinator(
         IUserInterfaceService userInterfaceService,
-        IDealerService dealerService,
         IGameService gameService
         )
     {
         _userInterfaceService = userInterfaceService ?? throw new ArgumentNullException(nameof(userInterfaceService));
-        _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
     }
 
@@ -67,14 +63,6 @@ internal class GameCoordinator : IGameCoordinator
 #endif
 
         gamesOut.Add(gameResponse.CompletedGame);
-
-        var deck = await _dealerService.ReshuffleAsync(
-            new ReshuffleRequest
-            {
-                Deck = request.Deck,
-                Participants = gameResponse.Participants
-            }
-        );
 
         WriteStandings(gameResponse.Participants);
 
