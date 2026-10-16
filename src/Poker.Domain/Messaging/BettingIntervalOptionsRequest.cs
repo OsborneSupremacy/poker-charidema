@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public class BettingIntervalOptionsRequest
+public record BettingIntervalOptionsRequest
 {
     public required Guid ParticipantInTurnId { get; init; }
 

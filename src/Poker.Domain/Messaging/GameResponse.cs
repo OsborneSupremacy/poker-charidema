@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public class GameResponse
+public record GameResponse
 {
     public required CompletedGame CompletedGame { get; init; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Poker.Domain.Messaging;
 
-public class EvaluateWinnerResponse
+public record EvaluateWinnerResponse
 {
     public required IReadOnlyList<Participant> Winners { get; init; }
 
