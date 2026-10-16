@@ -81,19 +81,19 @@ internal class MatchService : IMatchService
     }
 
     private Task<MatchResponse> PlayFixedNumberOfGames(MatchRequest request) =>
-        PlayGames(request, _ =>
-            request.Match.GameHistory.Count < request.Match.FixedNumberOfGames
-            && request.Match.Players.NotBusted().Count > 1
+        PlayGames(request, matchRequest =>
+            matchRequest.Match.GameHistory.Count < matchRequest.Match.FixedNumberOfGames
+            && matchRequest.Match.Players.NotBusted().Count > 1
         );
 
     private async Task<MatchResponse> PlayIndefinitely(MatchRequest request)
     {
-        return await PlayGames(request, _ =>
+        return await PlayGames(request, matchRequest =>
         {
-            if(request.Match.Players.NotBusted().Count <= 1)
+            if(matchRequest.Match.Players.NotBusted().Count <= 1)
                 return false;
             return _gamePreferencesService
-                .GetPlayAgain(request.Match.GameHistory.LastOrDefault()?.Variant.Name ?? request.Match.FixedVariant.Name)
+                .GetPlayAgain(matchRequest.Match.GameHistory.LastOrDefault()?.Variant.Name ?? matchRequest.Match.FixedVariant.Name)
                 .GetAwaiter()
                 .GetResult();
         });
