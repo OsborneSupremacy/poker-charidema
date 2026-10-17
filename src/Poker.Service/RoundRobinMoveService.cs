@@ -35,10 +35,17 @@ internal class RoundRobinMoveService : IPhaseService
 
         while (playersOut.Count < request.Participants.Count)
         {
+            if (playerInTurn.Folded)
+            {
+                playersOut.Add(playerInTurn);
+                playerInTurn = request.Participants.NextParticipant(playerInTurn);
+                continue;
+            }
+
             MoveRequest moveRequest = new()
             {
                 ParticipantInTurn = playerInTurn,
-                PhaseRequest = request,
+                PhaseRequest = request with { Deck = deckOut },
                 Pot = potOut
             };
 
@@ -46,6 +53,7 @@ internal class RoundRobinMoveService : IPhaseService
                 .Get(moveRequest)
                 .ExecuteAsync(moveRequest);
 
+            deckOut = moveResponse.Deck;
             potOut = moveResponse.Pot;
             playersOut.Add(moveResponse.ParticipantInTurn);
 

@@ -33,9 +33,6 @@ public static class RegistrationService
         serviceCollection.AddKeyedScoped<IPhaseService, BetCoordinator>(PhaseType.BettingInterval);
         serviceCollection.AddKeyedScoped<IPhaseService, WinnerEvaluationService>(PhaseType.Evaluation);
 
-        serviceCollection.AddScoped<IBettingIntervalService, BettingIntervalService>();
-        serviceCollection.AddScoped<IBettingIntervalOptionsService, BettingIntervalOptionsService>();
-
         // domain functions
         serviceCollection.AddSingleton(DefaultDealer.Deal);
         serviceCollection.AddSingleton(FisherYatesShuffleAlgorithm.Shuffle);

@@ -32,8 +32,8 @@ public record Phase
 
 public record DrawCardsMaximums
 {
-    public required Rank Rank { get; set; }
+    public required Rank Rank { get; init; }
 
-    public required int Maximum { get; set; }
+    public required int Maximum { get; init; }
 }
 
