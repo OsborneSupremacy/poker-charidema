@@ -22,6 +22,8 @@ public static class RegistrationService
 
         serviceCollection.AddScoped<IBettingIntervalService, BettingIntervalService>();
         serviceCollection.AddScoped<IBettingIntervalOptionsService, BettingIntervalOptionsService>();
+        serviceCollection.AddScoped<IUserBettingIntervalActionSelectionService, UserBettingIntervalActionSelectionService>();
+        serviceCollection.AddScoped<IAutomatonBettingIntervalActionSelectionService, AutomatonBettingIntervalActionSelectionService>();
 
         serviceCollection.AddScoped<IMoveServiceFactory, MoveServiceFactory>();
         serviceCollection.AddScoped<IUserMoveService, UserMoveService>();

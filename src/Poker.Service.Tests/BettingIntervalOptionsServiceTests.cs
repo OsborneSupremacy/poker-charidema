@@ -179,4 +179,59 @@ public class BettingIntervalOptionsServiceTests
             .Should()
             .Equal(BettingIntervalActionType.Call, BettingIntervalActionType.Fold);
     }
+
+    [Fact]
+    public async Task ExecuteAsync_RequiredAmountToCallExcludesContribution_PlayerHasAlreadyContributed()
+    {
+        // Arrange
+        // Everyone anted $10, Two bet $10, then One raised to $25 in this interval.
+        var one = Participants.Empty with { Id = Guid.NewGuid(), Stack = 65, Stake = 35 };
+        var two = Participants.Empty with { Id = Guid.NewGuid(), Stack = 80, Stake = 20 };
+
+        BettingIntervalOptionsRequest request = new()
+        {
+            ParticipantInTurnId = two.Id,
+            CurrentBet = new Bet
+            {
+                Amount = 25,
+                InitiatingPlayerId = one.Id,
+                CheckedPlayerIds = [],
+                PlayerContributions = new Dictionary<Guid, int>
+                {
+                    [one.Id] = 25,
+                    [two.Id] = 10
+                }
+            },
+            APlayerIsAllIn = false,
+            ActiveParticipants = [one, two]
+        };
+
+        // Act
+        var response = await _bettingIntervalOptionsService.ExecuteAsync(request);
+
+        // Assert
+        response.RequiredAmountToCall.Should().Be(15);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_RequiredAmountToCallIsZero_NoBet()
+    {
+        // Arrange
+        var one = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90, Stake = 10 };
+        var two = Participants.Empty with { Id = Guid.NewGuid(), Stack = 90, Stake = 10 };
+
+        BettingIntervalOptionsRequest request = new()
+        {
+            ParticipantInTurnId = one.Id,
+            CurrentBet = Bets.Empty,
+            APlayerIsAllIn = false,
+            ActiveParticipants = [one, two]
+        };
+
+        // Act
+        var response = await _bettingIntervalOptionsService.ExecuteAsync(request);
+
+        // Assert
+        response.RequiredAmountToCall.Should().Be(0);
+    }
 }

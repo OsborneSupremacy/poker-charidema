@@ -49,7 +49,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
 
         return Task.FromResult(new BettingIntervalOptionsResponse
         {
-            RequiredAmountToCall = request.CurrentBet.Amount,
+            RequiredAmountToCall = request.CurrentBet.Amount - PlayerInTurnContribution(request),
             MaximumBet = maximumBet,
             AvailableBettingIntervalActions = options
         });
@@ -111,7 +111,7 @@ internal class BettingIntervalOptionsService : IBettingIntervalOptionsService
     };
 
     private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnContribution = request =>
-        request.CurrentBet.PlayerContributions[request.ParticipantInTurnId];
+        request.CurrentBet.PlayerContributions.GetValueOrDefault(request.ParticipantInTurnId);
 
     private static readonly Func<BettingIntervalOptionsRequest, int> PlayerInTurnStack = request =>
         request.ActiveParticipants
