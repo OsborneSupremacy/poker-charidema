@@ -54,8 +54,8 @@ public static class FiveCardDraw
                     PhaseType = PhaseType.Draw,
                     GameCanEndAfter = false,
                     CardsToDealCount = 0,
-                    CardDestination = CardLocation.Empty,
-                    CardOrientation = CardOrientation.Empty,
+                    CardDestination = CardLocation.PlayerHand,
+                    CardOrientation = CardOrientation.FaceDown,
                     CardsToDrawMaximum = 3,
                     CardsToDrawMaximumOverrides = [new() { Rank = Ranks.Ace, Maximum = 4 }]
                 },

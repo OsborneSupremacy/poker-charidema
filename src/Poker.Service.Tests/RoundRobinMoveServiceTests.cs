@@ -35,6 +35,7 @@ public class RoundRobinMoveServiceTests
             Deck = Decks.Empty with { Cards = [Cards.TwoOfClubs, Cards.ThreeOfClubs, Cards.FourOfClubs] },
             Ante = 0,
             CommunityCards = [],
+            Discards = [],
             StartingParticipant = participants.First(),
             Pot = 0,
             GameOver = false

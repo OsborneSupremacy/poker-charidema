@@ -153,6 +153,23 @@ public class FluentConsoleService : IUserInterfaceService
         return this;
     }
 
+    public IReadOnlyList<Card> PromptForCards(string prompt, ParticipantHand participantHand)
+    {
+        var cards = InDisplayOrder(participantHand).ToList();
+
+        var displayStrings = cards
+            .ToDictionary(c => c.Card, c => c.Card.ToDisplayString(c.Contributing));
+
+        return AnsiConsole.Prompt(
+            new MultiSelectionPrompt<Card>()
+                .Title(prompt)
+                .NotRequired()
+                .InstructionsText("[grey](Press [blue]<space>[/] to toggle, [green]<enter>[/] to accept)[/]")
+                .UseConverter(card => displayStrings[card])
+                .AddChoices(cards.Select(c => c.Card))
+        );
+    }
+
     public IUserInterfaceService WriteHeading(HeadingLevel level, string input)
     {
         Action writeDelimiter = level switch
@@ -196,12 +213,8 @@ public class FluentConsoleService : IUserInterfaceService
     {
         StringBuilder content = new();
 
-        foreach (var card in participantHand.HandCards.Standard
-            .Concat(participantHand.HandCards.Wild.Select(x => x.WildCard)))
-            content.Append(card.ToDisplayString(true));
-
-        foreach (var card in participantHand.Kickers.Concat(participantHand.DeadCards))
-            content.Append(card.ToDisplayString(false));
+        foreach (var (card, contributing) in InDisplayOrder(participantHand))
+            content.Append(card.ToDisplayString(contributing));
 
         content.AppendLine();
         content.AppendLine(participantHand.Hand.Name);
@@ -212,6 +225,18 @@ public class FluentConsoleService : IUserInterfaceService
 
         return this;
     }
+
+    /// <summary>
+    /// The hand's cards in the order they're displayed: the cards that make up the hand,
+    /// then the kickers and dead cards.
+    /// </summary>
+    private static IEnumerable<(Card Card, bool Contributing)> InDisplayOrder(ParticipantHand participantHand) =>
+        participantHand.HandCards.Standard
+            .Concat(participantHand.HandCards.Wild.Select(x => x.WildCard))
+            .Select(card => (card, true))
+            .Concat(participantHand.Kickers
+                .Concat(participantHand.DeadCards)
+                .Select(card => (card, false)));
 }
 
 public class InputOption<T> : IInputOption<T>

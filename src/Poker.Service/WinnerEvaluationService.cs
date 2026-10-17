@@ -63,6 +63,7 @@ internal class WinnerEvaluationService : IPhaseService
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
+            Discards = request.Discards,
             Participants = playersOut,
             Winners = [ winner ],
             GameOver = true,
@@ -112,6 +113,7 @@ internal class WinnerEvaluationService : IPhaseService
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
+            Discards = request.Discards,
             Participants = playersOut,
             Winners = response.Winners,
             GameOver = true,

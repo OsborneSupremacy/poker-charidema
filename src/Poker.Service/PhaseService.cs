@@ -12,17 +12,21 @@ internal class PhaseService : IPhaseService
 
     private readonly IPhaseService _betCoordinator;
 
+    private readonly IPhaseService _drawCoordinator;
+
     public PhaseService(
         [FromKeyedServices("move")] IPhaseService roundRobinMoveService,
         [FromKeyedServices(PhaseType.Deal)] IPhaseService dealerService,
         [FromKeyedServices(PhaseType.Evaluation)] IPhaseService winnerEvaluationService,
-        [FromKeyedServices(PhaseType.BettingInterval)] IPhaseService betCoordinator
+        [FromKeyedServices(PhaseType.BettingInterval)] IPhaseService betCoordinator,
+        [FromKeyedServices(PhaseType.Draw)] IPhaseService drawCoordinator
         )
     {
         _roundRobinMoveService = roundRobinMoveService ?? throw new ArgumentNullException(nameof(roundRobinMoveService));
         _winnerEvaluationService = winnerEvaluationService ?? throw new ArgumentNullException(nameof(winnerEvaluationService));
         _dealerService = dealerService ?? throw new ArgumentNullException(nameof(dealerService));
         _betCoordinator = betCoordinator ?? throw new ArgumentNullException(nameof(betCoordinator));
+        _drawCoordinator = drawCoordinator ?? throw new ArgumentNullException(nameof(drawCoordinator));
     }
 
     public async Task<PhaseResponse> ExecuteAsync(PhaseRequest request)
@@ -32,7 +36,8 @@ internal class PhaseService : IPhaseService
             PhaseType.Deal => _dealerService,
             PhaseType.Evaluation => _winnerEvaluationService,
             PhaseType.BettingInterval => _betCoordinator,
-            // move service covers phases like ante and draw
+            PhaseType.Draw => _drawCoordinator,
+            // move service covers phases like ante
             _ => _roundRobinMoveService
         };
 

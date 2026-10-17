@@ -57,6 +57,7 @@ internal class DealerService : IDealerService, IPhaseService
         {
             Deck = dealResponse.Deck,
             CommunityCards = dealResponse.CommunityCards,
+            Discards = request.Discards,
             Participants = dealResponse.Participants,
             Winners = [],
             GameOver = false,

@@ -64,6 +64,7 @@ internal class RoundRobinMoveService : IPhaseService
         {
             Deck = deckOut,
             CommunityCards = ccOut,
+            Discards = request.Discards,
             Participants = playersOut,
             Winners = [],
             GameOver = false,

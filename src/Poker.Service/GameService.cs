@@ -45,6 +45,7 @@ internal class GameService : IGameService
         CoordinatePhaseResponse coordinatePhaseResponse = new()
         {
             CommunityCards = game.CommunityCards,
+            Discards = game.Discards,
             Deck = await _dealerService.ShuffleAsync(request.Deck),
             GameOver = false,
             Participants = participantsWorking,
@@ -64,6 +65,7 @@ internal class GameService : IGameService
                     {
                         Deck = coordinatePhaseResponse.Deck,
                         CommunityCards = coordinatePhaseResponse.CommunityCards,
+                        Discards = coordinatePhaseResponse.Discards,
                         Phase = phase,
                         GameOver = gameOver,
                         GameNumber = game.GameNumber,

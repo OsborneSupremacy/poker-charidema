@@ -54,4 +54,18 @@ public class StringExtensionsTests
         // Assert
         result.Should().BeEmpty();
     }
+
+    [Theory]
+    [InlineData("Ace", "an Ace")]
+    [InlineData("Eight", "an Eight")]
+    [InlineData("King", "a King")]
+    [InlineData("Two", "a Two")]
+    public void WithIndefiniteArticle_ArticleMatchesFirstLetter(string input, string expected)
+    {
+        // Act
+        var result = input.WithIndefiniteArticle();
+
+        // Assert
+        result.Should().Be(expected);
+    }
 }

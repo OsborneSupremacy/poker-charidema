@@ -37,6 +37,7 @@ public class BetCoordinatorTests
             Deck = Decks.Empty,
             Ante = 0,
             CommunityCards = [],
+            Discards = [],
             StartingParticipant = _participantOne,
             Pot = 0,
             GameOver = false

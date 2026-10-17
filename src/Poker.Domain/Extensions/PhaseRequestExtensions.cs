@@ -14,6 +14,7 @@ public static class PhaseRequestExtensions
         {
             Deck = input.Deck,
             CommunityCards = input.CommunityCards,
+            Discards = input.Discards,
             Participants = input.Participants,
             Winners = [],
             GameOver = true,

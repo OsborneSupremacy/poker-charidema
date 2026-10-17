@@ -28,13 +28,19 @@ public static class RegistrationService
         serviceCollection.AddScoped<IAutomatonMoveService, AutomatonMoveService>();
         serviceCollection.AddScoped<ILeadPlayerService, LeadParticipantService>();
 
+        serviceCollection.AddScoped<IUserDiscardSelectionService, UserDiscardSelectionService>();
+        serviceCollection.AddScoped<IAutomatonDiscardSelectionService, AutomatonDiscardSelectionService>();
+
         serviceCollection.AddKeyedScoped<IPhaseService, DealerService>(PhaseType.Deal);
         serviceCollection.AddKeyedScoped<IPhaseService, RoundRobinMoveService>("move");
         serviceCollection.AddKeyedScoped<IPhaseService, BetCoordinator>(PhaseType.BettingInterval);
+        serviceCollection.AddKeyedScoped<IPhaseService, DrawCoordinator>(PhaseType.Draw);
         serviceCollection.AddKeyedScoped<IPhaseService, WinnerEvaluationService>(PhaseType.Evaluation);
 
         // domain functions
         serviceCollection.AddSingleton(DefaultDealer.Deal);
+        serviceCollection.AddSingleton(DefaultDrawer.Draw);
+        serviceCollection.AddSingleton(DefaultDiscardStrategy.Select);
         serviceCollection.AddSingleton(FisherYatesShuffleAlgorithm.Shuffle);
         serviceCollection.AddSingleton(ClassicHandEvaluator.Evaluate);
         serviceCollection.AddSingleton(ClassicWinnerEvaluator.Evaluate);

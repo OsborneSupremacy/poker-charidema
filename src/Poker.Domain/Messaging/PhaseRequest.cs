@@ -12,6 +12,8 @@ public record PhaseRequest
 
     public required IReadOnlyList<CardInPlay> CommunityCards { get; init; }
 
+    public required IReadOnlyList<CardInPlay> Discards { get; init; }
+
     public required Participant StartingParticipant { get; init; }
 
     public required int Pot { get; init; }

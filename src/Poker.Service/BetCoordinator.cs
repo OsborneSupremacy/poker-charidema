@@ -90,6 +90,7 @@ internal class BetCoordinator : IPhaseService
         {
             Deck = request.Deck,
             CommunityCards = request.CommunityCards,
+            Discards = request.Discards,
             Participants = participants,
             Winners = gameOver ? activePlayers : [],
             GameOver = gameOver,

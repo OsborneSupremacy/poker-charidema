@@ -19,6 +19,9 @@ public class TestUserInterfaceService : IUserInterfaceService
         ) =>
         throw new NotSupportedException();
 
+    public IReadOnlyList<Card> PromptForCards(string prompt, ParticipantHand hand) =>
+        throw new NotSupportedException();
+
     public IUserInterfaceService PromptForString(
         string prompt,
         int minLength,

@@ -77,4 +77,16 @@ public static class CardExtensions
             })
             .ToList();
 
+    public static List<CardInPlay> ToDiscards(
+        this IEnumerable<Card> input
+    ) =>
+        input
+            .Select(c => new CardInPlay
+            {
+                Card = c,
+                CardLocation = CardLocation.DiscardPile,
+                CardOrientation = CardOrientation.FaceDown
+            })
+            .ToList();
+
 }

@@ -18,6 +18,23 @@ public static class ParticipantExtensions
         return index == participants.Count - 1 ? participants.First() : participants[index + 1];
     }
 
+    /// <summary>
+    /// The participants in seat order, beginning with the starting participant.
+    /// </summary>
+    public static IEnumerable<Participant> InTurnOrderFrom(
+        this IReadOnlyList<Participant> participants,
+        Participant startingParticipant
+    )
+    {
+        var startingIndex = participants
+            .ToList()
+            .FindIndex(p => p.Id == startingParticipant.Id);
+
+        return participants
+            .Skip(startingIndex)
+            .Concat(participants.Take(startingIndex));
+    }
+
     public static Participant HumanParticipant(this IEnumerable<Participant> participants) =>
         participants.SingleOrDefault(x => !x.Automaton) ?? Participants.Empty;
 

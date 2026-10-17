@@ -25,6 +25,12 @@ public interface IUserInterfaceService
         params IInputOption<T>[] options
         );
 
+    /// <summary>
+    /// Prompts for any number of the hand's cards, including none. The cards are
+    /// listed in the same order and style as <see cref="RenderCards"/>.
+    /// </summary>
+    IReadOnlyList<Card> PromptForCards(string prompt, ParticipantHand hand);
+
     IUserInterfaceService PromptForString(
         string prompt,
         int minLength,

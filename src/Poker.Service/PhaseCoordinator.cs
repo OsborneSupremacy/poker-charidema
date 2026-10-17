@@ -39,6 +39,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
                 Phase = request.Phase,
                 Deck = request.Deck,
                 CommunityCards = request.CommunityCards,
+                Discards = request.Discards,
                 StartingParticipant = startingPlayer,
                 Pot = request.Pot,
                 GameOver = request.GameOver,
@@ -51,6 +52,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
             {
                 Deck = phaseResponse.Deck,
                 CommunityCards = phaseResponse.CommunityCards,
+                Discards = phaseResponse.Discards,
                 Participants = phaseResponse.Participants,
                 Winners = phaseResponse.Winners,
                 GameOver = phaseResponse.GameOver,
@@ -73,6 +75,7 @@ internal class PhaseCoordinator : IPhaseCoordinator
         {
             Deck = phaseResponse.Deck,
             CommunityCards = phaseResponse.CommunityCards,
+            Discards = phaseResponse.Discards,
             Participants = phaseResponse.Participants,
             Winners = phaseResponse.Winners,
             GameOver = phaseResponse.GameOver,

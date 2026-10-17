@@ -6,6 +6,8 @@ public record CoordinatePhaseResponse
 
     public required IReadOnlyList<CardInPlay> CommunityCards { get; init; }
 
+    public required IReadOnlyList<CardInPlay> Discards { get; init; }
+
     public required IReadOnlyList<Participant> Participants { get; init; }
 
     public required IReadOnlyList<Participant> Winners { get; init; }
