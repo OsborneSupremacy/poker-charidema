@@ -41,6 +41,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         int playerCount = 0;
         int startingStack = 0;
         int fixedNumberOfGames = 0;
+        Variant variant = EmptyVariant.GetVariant();
 
         _c.WriteHeading(HeadingLevel.One, "Welcome to poker-charidema!")
 
@@ -64,6 +65,19 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
         {
             startingStack = m;
         })
+
+        .WriteLine()
+
+        .PromptForOption(
+            "What type of match would you like to play?",
+            v =>
+            {
+                variant = v;
+            },
+            AllVariants.All
+                .Select(v => new InputOption<Variant>(v.Name, () => v))
+                .ToArray()
+        )
 
         .WriteLine()
 
@@ -108,7 +122,7 @@ public class PreferencesService : IGamePreferencesService, IMatchPreferencesServ
                     Cards = Cards.All,
                     NumberOfJokers = 0
                 },
-                FixedVariant = FiveCardDraw.GetVariant(),
+                FixedVariant = variant,
                 StartingStack = startingStack,
                 TotalMoneyInPlay = players.Count * startingStack,
                 GameHistory = []
